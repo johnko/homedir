@@ -1,21 +1,16 @@
 #!/usr/bin/env bash
 
 alias g=git
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 
 # MacOs aliases
 if [ -e /Users ]; then
     alias ls="ls -G"
     alias free="top -l 1 -s 0 | grep PhysMem | sed 's, (.*),,'"
 else
+    alias ls='ls --color=auto'
     # Add an "alert" alias for long running commands.  Use like so:
     #   sleep 10; alert
     alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -27,97 +22,120 @@ else
     alias zpl="sudo zpool list -oname,size,alloc,free,cap,dedup,health,frag,ashift,freeing,expandsz,expand,replace,readonly,altroot"
     alias zs="sudo zpool status"
     alias zio="sudo zpool iostat"
-    function whatismydhcpserver() {
+    whatismydhcpserver ()
+    {
         for i in $(ps aux | grep -o '[/]var/lib/NetworkManager/\S*.lease') \
         $(ps aux | grep -o '[/]var/lib/dhcp/dhclient\S*.leases'); do
             [ -f "${i}" ] && grep "dhcp-server-identifier" "${i}"
         done
     }
-    function copypubkey2clipboard() {
+    copypubkey2clipboard ()
+    {
         for i in ~/.ssh/id_*.pub; do
             [ -e "${i}" ] && cat "${i}" | xsel --clipboard
         done
     }
 fi
 
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
 alias rsynca="rsync -viaP"
 alias rsyncc="rsync -virchlmP"
 alias rsynct="rsync -virthlmP"
 
-function t() {
+t ()
+{
     tmux attach || tmux
 }
-function firstlastline() {
+
+firstlastline ()
+{
     head -n1 "${1}"
     tail -n1 "${1}"
 }
+
 # Usage: json '{"foo":42}' or echo '{"foo":42}' | json
-function json() { # Syntax-highlight JSON strings or files
-if [ -t 0 ]; then # argument
-python -mjson.tool <<<"$*" | pygmentize -l javascript
-else # pipe
-    python -mjson.tool | pygmentize -l javascript
-fi
+# Syntax-highlight JSON strings or files
+json ()
+{
+    if [ -t 0 ]; then
+        # has argument
+        python -mjson.tool <<<"$*" | pygmentize -l javascript
+    else
+        # is piped
+        python -mjson.tool | pygmentize -l javascript
+    fi
 }
+
 # Usage: ppgep bash
-function ppgrep() { pgrep "$@" | xargs --no-run-if-empty ps fp; }
-function d() {
+ppgrep ()
+{
+    pgrep "$@" | xargs --no-run-if-empty ps fp;
+}
+
+d ()
+{
     case "${1}" in
         i)
-        set -- docker images
-        ;;
+            set -- docker images
+            ;;
         p)
-        set -- docker ps -a
-        ;;
+            set -- docker ps -a
+            ;;
         e)
-        shift
-        set -- docker exec -it "${@}"
-        ;;
+            shift
+            set -- docker exec -it "${@}"
+            ;;
         gca)
-        # remove exited containers
-        for i in $(docker ps -q -f status=exited); do
-            docker rm "${i}"
-        done
-        # remove untagged docker images
-        for i in $(docker images -q -f dangling=true); do
-            docker rmi "${i}"
-        done
-        set --
-        ;;
+            # remove exited containers
+            for i in $(docker ps -q -f status=exited); do
+                docker rm "${i}"
+            done
+            # remove untagged docker images
+            for i in $(docker images -q -f dangling=true); do
+                docker rmi "${i}"
+            done
+            set --
+            ;;
         gc)
-        # remove untagged docker images
-        for i in $(docker images -q -f dangling=true); do
-            docker rmi "${i}"
-        done
-        set --
-        ;;
+            # remove untagged docker images
+            for i in $(docker images -q -f dangling=true); do
+                docker rmi "${i}"
+            done
+            set --
+            ;;
         *)
-        set -- docker "${@}"
-        ;;
+            set -- docker "${@}"
+            ;;
     esac
     "${@}"
 }
-function v() {
+
+v ()
+{
     case "${1}" in
         i)
-        set -- vagrant box list
-        ;;
+            set -- vagrant box list
+            ;;
         p)
-        set -- vagrant status
-        ;;
+            set -- vagrant status
+            ;;
         e)
-        shift
-        set -- vagrant ssh -c "${@}"
-        ;;
+            shift
+            set -- vagrant ssh -c "${@}"
+            ;;
         s)
-        set -- vagrant ssh
-        ;;
+            set -- vagrant ssh
+            ;;
         gc)
-        set -- vagrant destroy -f
-        ;;
+            set -- vagrant destroy -f
+            ;;
         *)
-        set -- vagrant "${@}"
-        ;;
+            set -- vagrant "${@}"
+            ;;
     esac
     "${@}"
 }

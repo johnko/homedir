@@ -10,10 +10,10 @@
 
 # if running bash
 if [ -n "${BASH_VERSION}" ]; then
-  # include .bashrc if it exists
-  [ -f "${HOME}/.bashrc" ] && . "${HOME}/.bashrc"
+    # include .bashrc if it exists
+    [ -f "${HOME}/.bashrc" ] && . "${HOME}/.bashrc"
 fi
 
 if [ "$(whoami)" = "root" ]; then
-  mesg n || true
+    mesg n || true
 fi

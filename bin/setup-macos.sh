@@ -40,36 +40,36 @@ func_brew_pkgs ()
 {
     ## Brew packages
     BREW_PACKAGES="
-        bash-completion
-        bash-git-prompt
-        git
-        npm
-        ruby
-        go
-        jq
-        wget
-        tmux
-        caskroom/cask/google-chrome
-        caskroom/cask/firefox
-        caskroom/cask/atom
-        shellcheck
-        shfmt
-        docker
-        docker-credential-helper
-        docker-compose-completion
-        caskroom/cask/virtualbox
-        caskroom/cask/vagrant
-        vagrant-completion
-        caskroom/cask/spotify
-        watch
-        iftop
-        terminal-notifier
-        caskroom/cask/gimp
-        caskroom/cask/inkscape
-        caskroom/cash/xquartz
-        caskroom/cask/fugu
-        caskroom/cask/keka
-        caskroom/cask/shiftit
+    bash-completion
+    bash-git-prompt
+    git
+    npm
+    ruby
+    go
+    jq
+    wget
+    tmux
+    caskroom/cask/google-chrome
+    caskroom/cask/firefox
+    caskroom/cask/atom
+    shellcheck
+    shfmt
+    docker
+    docker-credential-helper
+    docker-compose-completion
+    caskroom/cask/virtualbox
+    caskroom/cask/vagrant
+    vagrant-completion
+    caskroom/cask/spotify
+    watch
+    iftop
+    terminal-notifier
+    caskroom/cask/gimp
+    caskroom/cask/inkscape
+    caskroom/cash/xquartz
+    caskroom/cask/fugu
+    caskroom/cask/keka
+    caskroom/cask/shiftit
     "
 
     for i in ${BREW_PACKAGES}; do
@@ -86,8 +86,8 @@ func_npm_pkgs ()
 
     ## Linting tools via NPM
     NPM_PACKAGES="
-        standard
-        yaml-js
+    standard
+    yaml-js
     "
 
     npm install --global ${NPM_PACKAGES}
@@ -102,8 +102,8 @@ func_gem_pkgs ()
 
     ## Linting tools via Gem
     GEM_PACKAGES="
-        puppet-lint
-        bundler
+    puppet-lint
+    bundler
     "
 
     gem install ${GEM_PACKAGES}
@@ -144,20 +144,20 @@ func_atom_pkgs ()
 {
     ## Atom Editor packages
     ATOM_PACKAGES="
-        linter
-        linter-ui-default
-        intentions
-        busy-signal
-        linter-shellcheck
-        format-shell
-        linter-ruby
-        linter-erb
-        linter-python
-        linter-js-yaml
-        linter-js-standard
-        language-puppet
-        linter-puppet-lint
-        atom-alignment
+    linter
+    linter-ui-default
+    intentions
+    busy-signal
+    linter-shellcheck
+    format-shell
+    linter-ruby
+    linter-erb
+    linter-python
+    linter-js-yaml
+    linter-js-standard
+    language-puppet
+    linter-puppet-lint
+    atom-alignment
     "
 
     apm install ${ATOM_PACKAGES}
