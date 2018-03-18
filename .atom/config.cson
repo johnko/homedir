@@ -1,0 +1,20 @@
+"*":
+  core:
+    telemetryConsent: "no"
+    customFileTypes:
+      "source.shell": [
+        "Dockerfile"
+        "bash_completion"
+        "bash_path"
+        "bash_prompt"
+        "bash_profile"
+        "profile"
+      ]
+  editor:
+    showIndentGuide: true
+    showInvisibles: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "a9b76207-b3c5-4609-9f24-648cabb3bfea"
+  welcome:
+    showOnStartup: false
