@@ -8,7 +8,7 @@ if [ -e /Users ]; then
     alias free="top -l 1 -s 0 | grep PhysMem | sed 's, (.*),,'"
     alias iftop="sudo /usr/local/sbin/iftop -nBP"
     alias zl="zfs list -oname,lused,usedds,usedchild,usedsnap,used,avail,refer,encryption,mountpoint,mounted,canmount"
-    alias zll="zfs list -oname,dedup,compress,compressratio,checksum,sync,quota,copies,atime,devices,exec,rdonly,setuid,xattr,aclinherit"
+    alias zll="zfs list -oname,dedup,compress,compressratio,checksum,sync,quota,copies,atime,devices,exec,rdonly,setuid,xattr,aclinherit,casesensitivity,normalization"
     alias zls="zfs list -t snap -oname,used,avail,refer"
     alias zpl="zpool list -oname,size,alloc,free,cap,dedup,health,frag,ashift,freeing,expandsz,expand,replace,readonly,altroot"
     alias zs="zpool status"
