@@ -62,7 +62,13 @@ func_brew_pkgs ()
         vagrant-completion
         caskroom/cask/spotify
         watch
+        iftop
         terminal-notifier
+        caskroom/cask/gimp
+        caskroom/cask/inkscape
+        caskroom/cask/fugu
+        caskroom/cask/keka
+        caskroom/cask/shiftit
     "
 
     for i in ${BREW_PACKAGES}; do
