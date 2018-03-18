@@ -1,6 +1,5 @@
 "*":
   core:
-    telemetryConsent: "no"
     customFileTypes:
       "source.shell": [
         "Dockerfile"
@@ -10,6 +9,7 @@
         "bash_profile"
         "profile"
       ]
+    telemetryConsent: "no"
   editor:
     showIndentGuide: true
     showInvisibles: true

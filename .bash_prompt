@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+## Modified @gf3's Sexy Bash Prompt, inspired by "Extravagant Zsh Prompt"
+## Modified from from https://github.com/gf3/dotfiles
+## http://stackoverflow.com/questions/16715103/bash-prompt-with-last-exit-code
+
+## Uncomment below to use this bash prompt, otherwise you can use bash-git-prompt https://github.com/magicmonty/bash-git-prompt
+#PROMPT_COMMAND=__prompt_command
+
+if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+    export TERM=gnome-256color
+elif infocmp xterm-256color >/dev/null 2>&1; then
+    export TERM=xterm-256color
+fi
+
+if tput setaf 1 &>/dev/null; then
+    tput sgr0
+    #  if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
+    #  else
+    #BLACK=$(tput setaf 0)
+    __RED=$(tput setaf 1)
+    __GREEN=$(tput setaf 2)
+    __YELLOW=$(tput setaf 3)
+    __BLUE=$(tput setaf 4)
+    __PURPLE=$(tput setaf 5)
+    __CYAN=$(tput setaf 6)
+    __WHITE=$(tput setaf 7)
+    #  fi
+    __BOLD=$(tput bold)
+    __RESET=$(tput sgr0)
+    __ROOT=$(tput setab 1)$(tput setaf 7)
+else
+    __RED="\033[0;31m"
+    __GREEN="\033[0;32m"
+    __YELLOW="\033[0;33m"
+    __BLUE="\033[0;34m"
+    __PURPLE="\033[0;35m"
+    __CYAN="\033[0;36m"
+    __WHITE="\033[0;37m"
+    __BOLD=""
+    __RESET="\033[m"
+    __ROOT="\033[30;41m"
+fi
+
+export __RED
+export __GREEN
+export __YELLOW
+export __BLUE
+export __PURPLE
+export __CYAN
+export __WHITE
+export __BOLD
+export __RESET
+export __ROOT
+
+export __USER="\[${__GREEN}\]\u"
+if [ "$(whoami)" = "root" ]; then
+    export __USER="\[${__ROOT}\]\u"
+fi
+export __HOST="\[${__BLUE}\]@\[${__CYAN}\]\h"
+export __DIR="\[${__BLUE}\]:\[${__YELLOW}\]\w\[${__RESET}\]"
+export __DATE="\[${__PURPLE}\]\D{%Y-%m-%d %H:%M:%S %Z%z}"
+export __DEFAULT1="\[${__PURPLE}\]"
+export __DEFAULT2="\[${__YELLOW}\]"
+export __SIGN="%"
+if [ "$(whoami)" = "root" ]; then
+    export __SIGN="#"
+fi
+export __NEWLINE="\[$__RESET\]\n"
+
+function __parse_git_dirty() {
+    [[ $(git status 2>/dev/null | tail -n1) != *"working tree clean"* ]] && echo "*"
+}
+
+function __parse_git_branch() {
+    git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1$(__parse_git_dirty))/"
+}
+
+function __prompt_command() {
+    # this needs to be first
+    local __EXITCODE="$?"
+    local __GIT="\[${__WHITE}\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\$(__parse_git_branch)"
+
+    local __EXIT="\[${__ROOT}\]exit ${__EXITCODE}"
+    if [ "${__EXITCODE}" = "0" ]; then
+        local __EXIT="\[${__GREEN}\]exit ${__EXITCODE}"
+    fi
+
+    export PS1="${__USER}${__HOST}${__DIR}${__GIT} ${__DATE} ${__EXIT}${__NEWLINE}${__DEFAULT1}${__SIGN} \[${__RESET}\]"
+
+    export PS2="${__DEFAULT2}? \[${__RESET}\]"
+}
