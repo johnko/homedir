@@ -6,6 +6,12 @@ alias g=git
 if [ -e /Users ]; then
     alias ls="ls -G"
     alias free="top -l 1 -s 0 | grep PhysMem | sed 's, (.*),,'"
+    alias zl="zfs list -oname,lused,usedds,usedchild,usedsnap,used,avail,refer,encryption,mountpoint,mounted,canmount"
+    alias zll="zfs list -oname,dedup,compress,compressratio,checksum,sync,quota,copies,atime,devices,exec,rdonly,setuid,xattr,aclinherit"
+    alias zls="zfs list -t snap -oname,used,avail,refer"
+    alias zpl="zpool list -oname,size,alloc,free,cap,dedup,health,frag,ashift,freeing,expandsz,expand,replace,readonly,altroot"
+    alias zs="zpool status"
+    alias zio="zpool iostat"
 else
     alias ls='ls --color=auto'
     # Add an "alert" alias for long running commands.  Use like so:
