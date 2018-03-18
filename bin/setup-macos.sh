@@ -71,6 +71,7 @@ func_brew_pkgs ()
     caskroom/cask/keka
     caskroom/cask/shiftit
     pv
+    caskroom/cask/docker
     "
 
     for i in ${BREW_PACKAGES}; do
