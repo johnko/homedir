@@ -1,1 +1,6 @@
 .fseventsd
+.localized
+.DS_Store
+.Spotlight-V100
+.VolumeIcon.icns
+.stfolder
