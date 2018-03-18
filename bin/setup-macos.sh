@@ -60,6 +60,7 @@ func_brew_pkgs ()
         caskroom/cask/virtualbox
         caskroom/cask/vagrant
         vagrant-completion
+        caskroom/cask/spotify
     "
 
     for i in ${BREW_PACKAGES}; do
