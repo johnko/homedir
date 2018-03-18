@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
 alias g=git
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 
 # MacOs aliases
 if [ -e /Users ]; then
@@ -46,7 +43,7 @@ alias rsynca="rsync -viaP"
 alias rsyncc="rsync -virchlmP"
 alias rsynct="rsync -virthlmP"
 
-if which git; then
+if which -s git; then
     # Use Git’s colored diff when available
     diff ()
     {
