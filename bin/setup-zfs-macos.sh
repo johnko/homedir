@@ -22,7 +22,7 @@ create_data_filesystem ()
         -o encryption=on -o keylocation=prompt -o keyformat=passphrase \
         -o casesensitivity=sensitive \
         -o normalization=formD \
-        ${poolname}/data
+        ${poolname}/enc
 }
 
 create_default_zpool
