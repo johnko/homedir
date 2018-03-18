@@ -55,6 +55,7 @@ func_brew_pkgs ()
     shellcheck
     shfmt
     docker
+    caskroom/cask/docker
     docker-credential-helper
     docker-compose-completion
     caskroom/cask/virtualbox
@@ -65,13 +66,12 @@ func_brew_pkgs ()
     iftop
     terminal-notifier
     caskroom/cask/gimp
-    caskroom/cask/inkscape
     caskroom/cash/xquartz
+    caskroom/cask/inkscape
     caskroom/cask/fugu
     caskroom/cask/keka
     caskroom/cask/shiftit
     pv
-    caskroom/cask/docker
     "
 
     for i in ${BREW_PACKAGES}; do
