@@ -1,6 +1,7 @@
 .CFUserTextEncoding
 .DS_Store
 .Trash/
+.Xauthority*
 .atom/.apm/
 .atom/.node-gyp/
 .atom/blob-store/
@@ -10,9 +11,15 @@
 .atom/storage/
 .bash_history
 .bash_sessions/
+.cache/
 .config/
 .gem/
+.lesshst
+.local/share/recently-used.xbel
 .npm/
+.rnd
+.serverauth.*
+.ssh/id_rsa
 .viminfo
 Desktop/
 Documents/
@@ -22,6 +29,4 @@ Movies/
 Music/
 Pictures/
 Public/
-.ssh/id_rsa
 venv/
-.lesshst
