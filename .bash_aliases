@@ -46,6 +46,20 @@ alias rsynca="rsync -viaP"
 alias rsyncc="rsync -virchlmP"
 alias rsynct="rsync -virthlmP"
 
+if which git; then
+    # Use Git’s colored diff when available
+    diff ()
+    {
+        if [ -z "${1}" ]; then
+            git diff --ignore-space-change
+        elif [ -z "${2}" ]; then
+            git diff --ignore-space-change "$@"
+        else
+            git diff --no-index --ignore-space-change "$@"
+        fi
+    }
+fi
+
 t ()
 {
     tmux attach || tmux
