@@ -6,4 +6,4 @@ set -u
 MY_DOCKER_IMAGE=ubuntu:16.04
 
 docker pull ${MY_DOCKER_IMAGE}
-docker run --rm ${MY_DOCKER_IMAGE} bash
+docker run --rm --interactive --tty ${MY_DOCKER_IMAGE} bash
