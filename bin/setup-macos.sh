@@ -66,7 +66,7 @@ func_brew_pkgs ()
     iftop
     terminal-notifier
     caskroom/cask/gimp
-    caskroom/cash/xquartz
+    caskroom/cask/xquartz
     caskroom/cask/inkscape
     caskroom/cask/fugu
     caskroom/cask/keka
