@@ -62,6 +62,7 @@ func_brew_pkgs ()
         vagrant-completion
         caskroom/cask/spotify
         watch
+        terminal-notifier
     "
 
     for i in ${BREW_PACKAGES}; do
