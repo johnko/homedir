@@ -46,9 +46,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias rsynca="rsync -viaP"
-alias rsyncc="rsync -virchlmP"
-alias rsynct="rsync -virthlmP"
+alias rsynca="rsync -viaP --exclude-from=${HOME}/.rsync_exclude"
+alias rsyncc="rsync -virchlmP --exclude-from=${HOME}/.rsync_exclude"
+alias rsynct="rsync -virthlmP --exclude-from=${HOME}/.rsync_exclude"
 
 if which -s git; then
     # Use Git’s colored diff when available
