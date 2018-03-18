@@ -6,4 +6,9 @@ set -u
 MY_DOCKER_IMAGE=ubuntu:16.04
 
 docker pull ${MY_DOCKER_IMAGE}
-docker run --rm --interactive --tty ${MY_DOCKER_IMAGE} bash
+if [ -e ~/.git ]; then
+    MY_VOLUME_ARGS="--volume ~/.git:/root/.git:ro"
+else
+    MY_VOLUME_ARGS=""
+fi
+docker run --rm --interactive --tty ${MY_VOLUME_ARGS} ${MY_DOCKER_IMAGE} bash
