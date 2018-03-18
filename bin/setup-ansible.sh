@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 set -x
+set -u
 
 if which apt-get; then
     export DEBIAN_FRONTEND=noninteractive

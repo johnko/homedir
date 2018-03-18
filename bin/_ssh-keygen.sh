@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 set -x
+set -u
 
 # OUTFILE="${HOME}/.ssh/id_rsanopass"
 # if [ ! -f "${OUTFILE}" ]; then
