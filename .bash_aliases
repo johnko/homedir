@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-[ ! -e ~/.ssh ] && install -d -m 700 ~/.ssh
-grep -q "HashKnownHosts" ~/.ssh/config || tee -a ~/.ssh/config <<EOF
-HashKnownHosts no
-EOF
-for i in ~/.vim/backups ~/.vim/swaps ~/.vim/undo; do
-    [ ! -d $i ] && mkdir -p $i
-done
 
 alias g=git
 alias ls='ls --color=auto'

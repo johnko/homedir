@@ -123,7 +123,7 @@ func_puppet_cfg ()
     [ ! -f ~/.puppetlabs/etc/puppet/puppet.conf ] && touch ~/.puppetlabs/etc/puppet/puppet.conf
     set +u
     if [ -n "${BEAKER_FORGE_HOST}" ]; then
-        grep -q "module_repository" ~/.puppetlabs/etc/puppet/puppet.conf || printf -- "\n[main]\nmodule_repository=${BEAKER_FORGE_HOST}\n" >> ~/.puppetlabs/etc/puppet/puppet.conf 
+        grep -q "module_repository" ~/.puppetlabs/etc/puppet/puppet.conf || printf -- "\n[main]\nmodule_repository=${BEAKER_FORGE_HOST}\n" >> ~/.puppetlabs/etc/puppet/puppet.conf
     fi
     set -u
 }
@@ -190,29 +190,6 @@ func_docker_pkgs ()
 
 ##########
 
-func_bash_profile ()
-{
-    grep -q "bash_completion" ~/.bash_profile || \
-        echo '[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion' >> ~/.bash_profile
-
-    grep -q "/usr/local/opt/curl/bin" ~/.bash_profile || \
-        echo 'export PATH="/usr/local/opt/curl/bin:$PATH"' >> ~/.bash_profile
-
-    grep -q "/usr/local/opt/openssl/bin" ~/.bash_profile || \
-        echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
-
-    grep -q "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ~/.bash_profile || \
-        cat >> ~/.bash_profile <<EOF
-if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-    __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
-    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
-fi
-EOF
-
-}
-
-##########
-
 func_xcode_install
 func_homebrew_install
 func_curl_install
@@ -223,7 +200,6 @@ func_bundle_cfg
 func_puppet_cfg
 func_atom_pkgs
 func_docker_pkgs
-# func_bash_profile
 
 exit
 
