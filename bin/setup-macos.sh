@@ -70,6 +70,7 @@ func_brew_pkgs ()
     caskroom/cask/fugu
     caskroom/cask/keka
     caskroom/cask/shiftit
+    pv
     "
 
     for i in ${BREW_PACKAGES}; do
