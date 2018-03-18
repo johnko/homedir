@@ -3,9 +3,6 @@
 ## Modified from from https://github.com/gf3/dotfiles
 ## http://stackoverflow.com/questions/16715103/bash-prompt-with-last-exit-code
 
-## Uncomment below to use this bash prompt, otherwise you can use bash-git-prompt https://github.com/magicmonty/bash-git-prompt
-#PROMPT_COMMAND=__prompt_command
-
 if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
     export TERM=gnome-256color
 elif infocmp xterm-256color >/dev/null 2>&1; then
@@ -89,3 +86,25 @@ function __prompt_command() {
 
     export PS2="${__DEFAULT2}? \[${__RESET}\]"
 }
+
+## Attempt to use bash-git-prompt https://github.com/magicmonty/bash-git-prompt
+if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+    # Set config variables first
+    GIT_PROMPT_ONLY_IN_REPO=0
+
+    GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
+    GIT_PROMPT_IGNORE_SUBMODULES=1 # uncomment to avoid searching for changed files in submodules
+
+    #GIT_PROMPT_SHOW_UPSTREAM=1 # uncomment to show upstream tracking branch
+    GIT_PROMPT_SHOW_UNTRACKED_FILES=no # can be no, normal or all; determines counting of untracked files
+
+    #GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0 # uncomment to avoid printing the number of changed files
+
+    GIT_PROMPT_START="_LAST_COMMAND_INDICATOR_ ${__USER}${__HOST}${__DIR} ${__DATE}\[${__RESET}\]"    # uncomment for custom prompt start sequence
+    GIT_PROMPT_END="${__NEWLINE}${__DEFAULT1}${__SIGN} \[${__RESET}\]"      # uncomment for custom prompt end sequence
+
+    __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+else
+    PROMPT_COMMAND=__prompt_command
+fi
