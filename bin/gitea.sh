@@ -35,7 +35,7 @@ services:
     links:
       - mygitea-db:postgres
     ports:
-      - 127.0.0.1:3022:22
+      - 127.0.0.1:3022:3022
       - 127.0.0.1:3000:3000
     restart: always
     volumes:
