@@ -23,21 +23,29 @@ services:
       - 127.0.0.1:7990:7990
       - 127.0.0.1:7999:7999
     volumes:
-      - bitbucketVolume:/var/atlassian/application-data/bitbucket
+      - bitbucket_data:/var/atlassian/application-data/bitbucket
 
 volumes:
-  bitbucketVolume:
+  bitbucket_data:
 EOF
 
-## Create and run the stack interactively
-# docker-compose up
-## Create and run the stack in the background
-docker-compose up -d
-
-## Destroy the stack and data
-# docker-compose down --volumes
-## Destroy the stack but keep the data
-# docker-compose down
+set +u
+case ${1} in
+    stop)
+        ## Destroy the stack but keep the data
+        docker-compose down
+        ;;
+    destroy)
+        ## Destroy the stack and data
+        docker-compose down --volumes
+        ;;
+    start|*)
+        ## Create and run the stack interactively
+        # docker-compose up
+        ## Create and run the stack in the background
+        docker-compose up -d
+        ;;
+esac
 
 cd -
 rm -r ${MY_TMP_CONTEXT}
