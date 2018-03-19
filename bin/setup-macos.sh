@@ -121,7 +121,7 @@ func_bundle_cfg ()
         printf -- "---\n:backtrace: false\n:bulk_threshold: 1000\n:sources:\n- ${GEM_SOURCE}\n:update_sources: true\n:verbose: true\ngem: --no-ri --no-rdoc\nbenchmark: false\n" > ~/.gemrc
     fi
     set -u
-    #bundle config ${artifactory_host} ${artifactory_username}:${artifactory_password}
+    # bundle config ${artifactory_host} ${artifactory_username}:${artifactory_password}
 
     ## Now you can: bundle install
 }
@@ -173,29 +173,29 @@ func_docker_pkgs ()
     docker version
 
     ## Trusting a docker registry
-    #DOCKER_REGISTRY_HOST="reg.my.domain"
-    #DOCKER_REGISTRY_PORT="5001"
-    #DOCKER_REGISTRY="${DOCKER_REGISTRY_HOST}:${DOCKER_REGISTRY_PORT}"
-    #mkdir -p /etc/docker/certs.d/${DOCKER_REGISTRY}
+    # DOCKER_REGISTRY_HOST="reg.my.domain"
+    # DOCKER_REGISTRY_PORT="5001"
+    # DOCKER_REGISTRY="${DOCKER_REGISTRY_HOST}:${DOCKER_REGISTRY_PORT}"
+    # mkdir -p /etc/docker/certs.d/${DOCKER_REGISTRY}
     ## If you don't have the Root CA, you can trust the domain certificate as follows:
-    #echo | openssl s_client -servername ${DOCKER_REGISTRY_HOST} -connect ${DOCKER_REGISTRY} 2>/dev/null | openssl x509 >> /etc/docker/certs.d/${DOCKER_REGISTRY}/ca.crt
+    # echo | openssl s_client -servername ${DOCKER_REGISTRY_HOST} -connect ${DOCKER_REGISTRY} 2>/dev/null | openssl x509 >> /etc/docker/certs.d/${DOCKER_REGISTRY}/ca.crt
 
     ## Set proxy for dockerd service so you can pull through proxy, e.g. if using docker-machine:
-    #sudo tee /var/lib/boot2docker/profile <<EOF
-#EXTRA_ARGS='
-#--label provider=virtualbox
+    # sudo tee /var/lib/boot2docker/profile <<EOF
+# EXTRA_ARGS='
+# --label provider=virtualbox
 #
-#'
-#CACERT=/var/lib/boot2docker/ca.pem
-#DOCKER_HOST='-H tcp://0.0.0.0:2376'
-#DOCKER_STORAGE=aufs
-#DOCKER_TLS=auto
-#SERVERKEY=/var/lib/boot2docker/server-key.pem
-#SERVERCERT=/var/lib/boot2docker/server.pem
-#export HTTP_PROXY="${http_proxy}"
-#export HTTPS_PROXY="${http_proxy}"
-#export NO_PROXY="${no_proxy}"
-#EOF
+# '
+# CACERT=/var/lib/boot2docker/ca.pem
+# DOCKER_HOST='-H tcp://0.0.0.0:2376'
+# DOCKER_STORAGE=aufs
+# DOCKER_TLS=auto
+# SERVERKEY=/var/lib/boot2docker/server-key.pem
+# SERVERCERT=/var/lib/boot2docker/server.pem
+# export HTTP_PROXY="${http_proxy}"
+# export HTTPS_PROXY="${http_proxy}"
+# export NO_PROXY="${no_proxy}"
+# EOF
 
     ## Restart dockerd for proxy to take effect
 }
