@@ -92,7 +92,7 @@ json ()
     fi
 }
 
-# Usage: ppgep bash
+# Usage: ppgrep bash
 ppgrep ()
 {
     pgrep "$@" | xargs --no-run-if-empty ps fp;
