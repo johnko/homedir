@@ -5,10 +5,10 @@ set -u
 
 if which apt-get; then
     export DEBIAN_FRONTEND=noninteractive
-    # Dependency for virtualenv
+    ## Dependency for virtualenv
     sudo apt-get install --yes build-essential python-dev libffi-dev
     which virtualenv || sudo apt-get install --yes python-virtualenv
-    # Dependency for ansible
+    ## Dependency for ansible
     sudo apt-get install --yes libssl-dev
 fi
 
@@ -30,14 +30,14 @@ if ! which virtualenv; then
     fi
 fi
 
-# Install ansible in a virtualenv
+## Install ansible in a virtualenv
 VENV_FOLDER="venv"
 virtualenv ${VENV_FOLDER}
 . ${VENV_FOLDER}/bin/activate
 pip2 install --upgrade pip
 pip2 install --upgrade ansible
 
-# Instructions to user
+## Instructions to user
 set +x
 echo "======================================"
 echo "Ansible setup complete!"
