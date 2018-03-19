@@ -6,7 +6,7 @@ set -u
 ## See more docs at https://hub.docker.com/r/atlassian/bitbucket-server/
 
 
-MY_DOCKER_IMAGE=atlassian/bitbucket:5.8.1
+MY_DOCKER_IMAGE=atlassian/bitbucket-server:5.8.1
 MY_TMP_CONTEXT="tmpcontext-bitbucket-5.8"
 
 docker pull ${MY_DOCKER_IMAGE}
