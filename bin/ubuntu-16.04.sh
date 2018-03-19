@@ -39,4 +39,7 @@ if [ -e ${HOME}/.git ]; then
     MY_VOLUME_ARGS="${MY_VOLUME_ARGS} --volume ${HOME}/.git:/root/.git2:ro"
 fi
 
-docker run --rm --interactive --tty ${MY_VOLUME_ARGS} git-${MY_DOCKER_IMAGE} bash
+docker run --rm \
+    --interactive --tty \
+    ${MY_VOLUME_ARGS} \
+    git-${MY_DOCKER_IMAGE} bash
