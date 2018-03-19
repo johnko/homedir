@@ -53,7 +53,8 @@ alias rsynca="rsync -viaP --exclude-from=${HOME}/.rsync_exclude"
 alias rsyncc="rsync -virchlmP --exclude-from=${HOME}/.rsync_exclude"
 alias rsynct="rsync -virthlmP --exclude-from=${HOME}/.rsync_exclude"
 
-if which -s git; then
+# Linux 'which' doesn't have -s so we redirect output to /dev/null
+if which git >/dev/null 2>/dev/null; then
     # Use Git’s colored diff when available
     diff ()
     {
