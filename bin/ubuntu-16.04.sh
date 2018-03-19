@@ -12,11 +12,20 @@ docker pull ${MY_DOCKER_IMAGE}
 [ ! -d ${MY_TMP_CONTEXT} ] && mkdir ${MY_TMP_CONTEXT}
 cd ${MY_TMP_CONTEXT}
 cat > .bashrc <<EOF
-cd /root; cp -a .git2 .git ; git reset --hard ; rm -r .git ; source .profile
+if [ -e /root/.git2 ]; then
+    cd /root
+    cp -a .git2 .git
+    git reset --hard
+    rm -r .git
+    source .profile
+else
+    [ -e /root/.bashrc2 ] && source /root/.bashrc2
+fi
 EOF
 cat > Dockerfile <<EOF
 FROM ${MY_DOCKER_IMAGE}
 RUN which apt-get && apt-get update && apt-get upgrade --yes && apt-get install --yes git
+RUN cp -a /root/.bashrc /root/.bashrc2
 COPY .bashrc /root/.bashrc
 EOF
 docker build --tag git-${MY_DOCKER_IMAGE} .
