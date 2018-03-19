@@ -3,7 +3,7 @@ set -e
 set -x
 set -u
 
-## See more docs at https://github.com/go-gitea/gitea
+## See more docs at https://docs.gitea.io/en-us/install-with-docker/  or  https://docs.gitea.io/en-us/config-cheat-sheet/
 
 
 MY_DOCKER_IMAGE=gitea/gitea:1.3.3
@@ -19,9 +19,9 @@ services:
     container_name: mygitea-db
     image: postgres:9.5
     environment:
-      - "POSTGRES_USER=gitea"
-      - "POSTGRES_PASSWORD=gitea"
-      - "POSTGRES_DB=gitea"
+      - POSTGRES_USER=gitea
+      - POSTGRES_PASSWORD=gitea
+      - POSTGRES_DB=gitea
     restart: always
     volumes:
       - gitea_db:/var/lib/postgresql/data
@@ -31,7 +31,7 @@ services:
     depends_on:
       - mygitea-db
     environment:
-      - "RUN_CROND=true"
+      - RUN_CROND=true
     links:
       - mygitea-db:postgres
     ports:
