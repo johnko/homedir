@@ -4,6 +4,7 @@
       "source.shell": [
         "Dockerfile"
         "bash_completion"
+        "bash_exports"
         "bash_path"
         "bash_prompt"
         "bash_profile"
