@@ -36,7 +36,6 @@ volumes:
   gitlab_config:
   gitlab_data:
   gitlab_logs:
-==========
 EOF
 
 set +u
