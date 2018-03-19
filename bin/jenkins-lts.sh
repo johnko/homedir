@@ -9,8 +9,6 @@ set -u
 MY_DOCKER_IMAGE=jenkins/jenkins:2.107.1
 MY_TMP_CONTEXT="tmpcontext-jenkins-2.107"
 
-docker pull ${MY_DOCKER_IMAGE}
-
 [ ! -d ${MY_TMP_CONTEXT} ] && mkdir ${MY_TMP_CONTEXT}
 cd ${MY_TMP_CONTEXT}
 cat > docker-compose.yml <<EOF
@@ -42,6 +40,7 @@ case ${1} in
         docker-compose down --volumes
         ;;
     start|*)
+        docker-compose pull
         ## Create and run the stack interactively
         # docker-compose up
         ## Create and run the stack in the background
