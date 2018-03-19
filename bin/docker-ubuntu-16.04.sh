@@ -19,11 +19,17 @@ docker build --tag git-${MY_DOCKER_IMAGE} .
 rm Dockerfile
 cd -
 
-if [ -e ${HOME}/.git ]; then
-    MY_VOLUME_ARGS="${MY_VOLUME_ARGS} --volume ${HOME}/.git:/root/.git2:ro"
-fi
 if [ -e /usr/local/Cellar/bash-git-prompt/2.7.1 ]; then
     MY_VOLUME_ARGS="${MY_VOLUME_ARGS} --volume /usr/local/Cellar/bash-git-prompt/2.7.1:/usr/local/opt/bash-git-prompt:ro"
+fi
+if [ -e ${HOME}/.git ]; then
+    MY_VOLUME_ARGS="${MY_VOLUME_ARGS} --volume ${HOME}/.git:/root/.git2:ro"
+    set +x
+    echo "=========================================================="
+    echo "Try:"
+    echo "cd ; cp -a .git2 .git ; git reset --hard ; source .profile"
+    echo
+    set -x
 fi
 
 docker run --rm --interactive --tty ${MY_VOLUME_ARGS} git-${MY_DOCKER_IMAGE} bash
