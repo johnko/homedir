@@ -29,15 +29,23 @@ volumes:
   jenkins_home:
 EOF
 
-## Create and run the stack interactively
-# docker-compose up
-## Create and run the stack in the background
-docker-compose up -d
-
-## Destroy the stack and data
-# docker-compose down --volumes
-## Destroy the stack but keep the data
-# docker-compose down
+set +u
+case ${1} in
+    stop)
+        ## Destroy the stack but keep the data
+        docker-compose down
+        ;;
+    destroy)
+        ## Destroy the stack and data
+        docker-compose down --volumes
+        ;;
+    start|*)
+        ## Create and run the stack interactively
+        # docker-compose up
+        ## Create and run the stack in the background
+        docker-compose up -d
+        ;;
+esac
 
 cd -
 rm -r ${MY_TMP_CONTEXT}
