@@ -102,9 +102,11 @@ d ()
 {
     case "${1}" in
         i)
+            # docker image list
             set -- docker images
             ;;
         p)
+            # docker container list -a
             set -- docker ps -a
             ;;
         e)
@@ -113,20 +115,23 @@ d ()
             ;;
         gca)
             # remove exited containers
-            for i in $(docker ps -q -f status=exited); do
-                docker rm "${i}"
-            done
+            docker container prune -f
+            # for i in $(docker ps -q -f status=exited); do
+            #     docker rm "${i}"
+            # done
             # remove untagged docker images
-            for i in $(docker images -q -f dangling=true); do
-                docker rmi "${i}"
-            done
+            docker image prune -f
+            # for i in $(docker images -q -f dangling=true); do
+            #     docker rmi "${i}"
+            # done
             set --
             ;;
         gc)
             # remove untagged docker images
-            for i in $(docker images -q -f dangling=true); do
-                docker rmi "${i}"
-            done
+            docker image prune -f
+            # for i in $(docker images -q -f dangling=true); do
+            #     docker rmi "${i}"
+            # done
             set --
             ;;
         *)
