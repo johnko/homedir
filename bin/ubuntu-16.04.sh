@@ -4,7 +4,7 @@ set -x
 set -u
 
 MY_DOCKER_IMAGE=ubuntu:16.04
-MY_TMP_CONTEXT="tmpcontext"
+MY_TMP_CONTEXT="tmpcontext-ubuntu-16.04"
 MY_VOLUME_ARGS=""
 
 docker pull ${MY_DOCKER_IMAGE}
