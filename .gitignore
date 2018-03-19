@@ -13,6 +13,7 @@
 .bash_sessions/
 .cache/
 .config/
+.docker/.buildNodeID
 .gem/
 .lesshst
 .local/share/recently-used.xbel
@@ -30,4 +31,3 @@ Music/
 Pictures/
 Public/
 venv/
-.docker/.buildNodeID
