@@ -3,7 +3,9 @@ set -e
 set -x
 set -u
 
-#MY_DOCKER_IMAGE=jenkins/jenkins:lts
+## See more docs at https://github.com/jenkinsci/docker/blob/master/README.md
+
+# MY_DOCKER_IMAGE=jenkins/jenkins:lts
 MY_DOCKER_IMAGE=jenkins/jenkins:2.107.1
 MY_TMP_CONTEXT="tmpcontext-jenkins-2.107"
 
