@@ -6,9 +6,12 @@ export EDITOR="vim"
 # Larger bash history (allow 32³ entries; default is 500)
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
-export HISTCONTROL=ignoredups
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+export HISTCONTROL=ignoreboth:erasedups
+
 # Make some commands not show up in history
-export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+export HISTIGNORE="cd -:pwd:exit:date"
 
 # Prefer US English and use UTF-8
 export LANG="en_US"
@@ -23,4 +26,8 @@ export GIT_PAGER="less -erX"
 export LESS="-erX"
 
 # Always enable colored `grep` output
-export GREP_OPTIONS="--color=auto"
+# This is deprecated, so we comment it out
+#export GREP_OPTIONS="--color=auto"
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
