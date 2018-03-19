@@ -3,6 +3,6 @@ set -e
 set -x
 set -u
 
-g stash ; \
-g checkout johnko ; g rebase master ; \
-g checkout master ; g stash pop
+git stash ; \
+git checkout johnko ; git rebase master ; \
+git checkout master ; git stash pop
