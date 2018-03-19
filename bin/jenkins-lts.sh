@@ -18,10 +18,12 @@ version: "3.5"
 
 services:
   myjenkins:
+    container_name: myjenkins
     image: ${MY_DOCKER_IMAGE}
     ports:
       - 127.0.0.1:8080:8080
       - 127.0.0.1:50000:50000
+    restart: always
     volumes:
       - jenkins_home:/var/jenkins_home
 

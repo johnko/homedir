@@ -18,10 +18,12 @@ version: "3.5"
 
 services:
   mybitbucket:
+    container_name: mybitbucket
     image: ${MY_DOCKER_IMAGE}
     ports:
       - 127.0.0.1:7990:7990
       - 127.0.0.1:7999:7999
+    restart: always
     volumes:
       - bitbucket_data:/var/atlassian/application-data/bitbucket
 

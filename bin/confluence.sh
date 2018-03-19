@@ -18,10 +18,12 @@ version: "3.5"
 
 services:
   myconfluence:
+    container_name: myconfluence
     image: ${MY_DOCKER_IMAGE}
     ports:
       - 127.0.0.1:8090:8090
       - 127.0.0.1:8091:8091
+    restart: always
     volumes:
       - confluence_data:/var/atlassian/application-data/confluence
 
