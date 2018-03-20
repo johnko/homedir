@@ -18,13 +18,14 @@ services:
   mygitlab-app:
     container_name: mygitlab-app
     image: ${MY_DOCKER_IMAGE}
-    hostname: '127.0.0.1:9090'
+    hostname: 'localhost'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://127.0.0.1:9090'
+        external_url 'http://127.0.0.1'
         gitlab_rails['gitlab_shell_ssh_port'] = 9022
+        mattermost_external_url 'http://localhost'
     ports:
-      - 127.0.0.1:9090:9090
+      - 127.0.0.1:80:80
       - 127.0.0.1:9022:22
     restart: always
     volumes:
