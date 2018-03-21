@@ -109,6 +109,12 @@ d ()
             # docker container list -a
             set -- docker ps -a
             ;;
+        v)
+            set -- docker volume ls
+            ;;
+        n)
+            set -- docker network ls
+            ;;
         e)
             shift
             set -- docker exec -it "${@}"
