@@ -3,7 +3,7 @@ set -e
 set -x
 set -u
 
-## See more docs at https://docs.gitlab.com/omnibus/docker/README.html
+## See more docs at https://docs.gitlab.com/omnibus/docker/README.html  or  https://docs.gitlab.com/omnibus/gitlab-mattermost/
 
 
 MY_DOCKER_IMAGE=gitlab/gitlab-ce:10.5.4-ce.0
