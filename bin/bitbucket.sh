@@ -3,34 +3,16 @@ set -e
 set -x
 set -u
 
-## See more docs at https://hub.docker.com/r/atlassian/bitbucket-server/
+MY_TMP_CONTEXT="${HOME}/docker-files/bitbucket"
 
-
-MY_DOCKER_IMAGE=atlassian/bitbucket-server:5.8.1
-MY_TMP_CONTEXT="tmpcontext-bitbucket-5.8"
-
-[ ! -d ${MY_TMP_CONTEXT} ] && mkdir ${MY_TMP_CONTEXT}
+[ ! -d ${MY_TMP_CONTEXT} ] && exit 1
 cd ${MY_TMP_CONTEXT}
-cat > docker-compose.yml <<EOF
-version: "3.5"
-
-services:
-  mybitbucket:
-    container_name: mybitbucket
-    image: ${MY_DOCKER_IMAGE}
-    ports:
-      - 127.0.0.1:7990:7990
-      - 127.0.0.1:7999:7999
-    restart: always
-    volumes:
-      - bitbucket_data:/var/atlassian/application-data/bitbucket
-
-volumes:
-  bitbucket_data:
-EOF
 
 set +u
 case ${1} in
+    open)
+        open -a Firefox http://127.0.0.1:7990
+        ;;
     stop)
         ## Destroy the stack but keep the data
         docker-compose down
@@ -38,6 +20,15 @@ case ${1} in
     destroy)
         ## Destroy the stack and data
         docker-compose down --volumes
+        ;;
+    logs)
+        docker-compose logs
+        ;;
+    ps)
+        docker-compose ps
+        ;;
+    top)
+        docker-compose top
         ;;
     start|*)
         docker-compose pull
@@ -49,4 +40,3 @@ case ${1} in
 esac
 
 cd -
-rm -r ${MY_TMP_CONTEXT}

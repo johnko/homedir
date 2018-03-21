@@ -3,44 +3,17 @@ set -e
 set -x
 set -u
 
-## See more docs at https://docs.gitlab.com/omnibus/docker/README.html  or  https://docs.gitlab.com/omnibus/gitlab-mattermost/
+MY_TMP_CONTEXT="${HOME}/docker-files/gitlab-ce"
 
-
-MY_DOCKER_IMAGE=gitlab/gitlab-ce:10.5.4-ce.0
-MY_TMP_CONTEXT="tmpcontext-gitlab-10.5"
-
-[ ! -d ${MY_TMP_CONTEXT} ] && mkdir ${MY_TMP_CONTEXT}
+[ ! -d ${MY_TMP_CONTEXT} ] && exit 1
 cd ${MY_TMP_CONTEXT}
-cat > docker-compose.yml <<EOF
-version: "3.5"
-
-services:
-  mygitlab-app:
-    container_name: mygitlab-app
-    image: ${MY_DOCKER_IMAGE}
-    hostname: 'localhost'
-    environment:
-      GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://127.0.0.1'
-        gitlab_rails['gitlab_shell_ssh_port'] = 9022
-        mattermost_external_url 'http://localhost'
-    ports:
-      - 127.0.0.1:80:80
-      - 127.0.0.1:9022:22
-    restart: always
-    volumes:
-      - gitlab_config:/etc/gitlab
-      - gitlab_logs:/var/log/gitlab
-      - gitlab_data:/var/opt/gitlab
-
-volumes:
-  gitlab_config:
-  gitlab_data:
-  gitlab_logs:
-EOF
 
 set +u
 case ${1} in
+    open)
+        open -a Firefox http://127.0.0.1
+        open -a Firefox http://localhost
+        ;;
     stop)
         ## Destroy the stack but keep the data
         docker-compose down
@@ -48,6 +21,15 @@ case ${1} in
     destroy)
         ## Destroy the stack and data
         docker-compose down --volumes
+        ;;
+    logs)
+        docker-compose logs
+        ;;
+    ps)
+        docker-compose ps
+        ;;
+    top)
+        docker-compose top
         ;;
     start|*)
         docker-compose pull
@@ -59,4 +41,3 @@ case ${1} in
 esac
 
 cd -
-rm -r ${MY_TMP_CONTEXT}
