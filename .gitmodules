@@ -1,0 +1,6 @@
+[submodule "docker-files/dockelk"]
+	path = docker-files/dockelk
+	url = git@github.com:johnko/dockelk.git
+[submodule "docker-files/dockprom"]
+	path = docker-files/dockprom
+	url = git@github.com:johnko/dockprom.git
