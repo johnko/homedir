@@ -13,7 +13,7 @@ case ${1} in
     open)
         open -a Firefox http://127.0.0.1:3000
         ;;
-    stop)
+    down)
         ## Destroy the stack but keep the data
         docker-compose down
         ;;
@@ -30,7 +30,7 @@ case ${1} in
     top)
         docker-compose top
         ;;
-    start|*)
+    up|*)
         docker-compose pull
         ## Create and run the stack interactively
         # docker-compose up

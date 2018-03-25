@@ -8,7 +8,7 @@ services:
         ports:
             - 127.0.0.1:8080:8080
             - 127.0.0.1:50000:50000
-        restart: always
+        restart: unless-stopped
         volumes:
             - data:/var/jenkins_home
 
