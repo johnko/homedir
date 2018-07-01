@@ -34,3 +34,8 @@ venv/
 Applications/
 .cups/
 .vscode/
+VirtualBox VMs/
+.vagrant.d/boxes/
+.vagrant.d/data/
+.vagrant.d/rgloader/
+.vagrant.d/setup_version
