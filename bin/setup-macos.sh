@@ -52,6 +52,7 @@ func_brew_pkgs ()
     caskroom/cask/google-chrome
     caskroom/cask/firefox
     caskroom/cask/atom
+    homebrew/cask/visual-studio-code
     shellcheck
     shfmt
     docker
