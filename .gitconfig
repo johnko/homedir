@@ -63,7 +63,3 @@
   fsckObjects = true
 [push]
   default = simple
-
-# [user]
-#   name = johnko
-#   email = git@johnko.ca
