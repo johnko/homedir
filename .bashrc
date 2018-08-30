@@ -42,19 +42,20 @@ for i in ~/.vim/backups ~/.vim/swaps ~/.vim/undo; do
     [ ! -d $i ] && mkdir -p $i
 done
 
-[ -f ~/.bash_exports ] && . ~/.bash_exports
-
-# Custom PATH
-[ -f ~/.bash_path ] && . ~/.bash_path
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
+# Custom exports
+[ -f ~/.bash_exports ] && . ~/.bash_exports
+
 # Custom PS1 PS2 prompt
 [ -f ~/.bash_prompt ] && . ~/.bash_prompt
+
+# Custom PATH
+[ -f ~/.bash_path ] && . ~/.bash_path
 
 # Custom completion
 [ -f ~/.bash_completion ] && . ~/.bash_completion
