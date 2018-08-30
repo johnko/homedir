@@ -5,41 +5,37 @@ set -u
 
 ##########
 
-func_xcode_install ()
-{
-    ## Xcode (for git)
-    xcode-select --install || true
-    xcode-select --install 2>&1 | grep "already installed"
+func_xcode_install() {
+  ## Xcode (for git)
+  xcode-select --install || true
+  xcode-select --install 2>&1 | grep "already installed"
 }
 
 ##########
 
-func_homebrew_install ()
-{
-    ## Homebrew
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+func_homebrew_install() {
+  ## Homebrew
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 ##########
 
-func_curl_install ()
-{
-    ## Update curl
-    brew install curl
-    if [ ! -e /usr/local/bin/curl ]; then
-        if [ $( ls /usr/local/Cellar/curl/ | wc -l ) -eq 1 ]; then
-            CURL_VERSION=$(ls /usr/local/Cellar/curl/)
-            ln -s ../Cellar/curl/${CURL_VERSION}/bin/curl /usr/local/bin/curl
-        fi
+func_curl_install() {
+  ## Update curl
+  brew install curl
+  if [ ! -e /usr/local/bin/curl ]; then
+    if [ $(ls /usr/local/Cellar/curl/ | wc -l) -eq 1 ]; then
+      CURL_VERSION=$(ls /usr/local/Cellar/curl/)
+      ln -s ../Cellar/curl/${CURL_VERSION}/bin/curl /usr/local/bin/curl
     fi
+  fi
 }
 
 ##########
 
-func_brew_pkgs ()
-{
-    ## Brew packages
-    BREW_PACKAGES="
+func_brew_pkgs() {
+  ## Brew packages
+  BREW_PACKAGES="
     bash-completion
     bash-git-prompt
     git
@@ -75,80 +71,75 @@ func_brew_pkgs ()
     pv
     "
 
-    for i in ${BREW_PACKAGES}; do
-        brew upgrade $i || brew install $i
-    done
+  for i in ${BREW_PACKAGES}; do
+    brew upgrade $i || brew install $i
+  done
 }
 
 ##########
 
-func_npm_pkgs ()
-{
-    ## Update npm
-    npm install --global npm
+func_npm_pkgs() {
+  ## Update npm
+  npm install --global npm
 
-    ## Linting tools via NPM
-    NPM_PACKAGES="
+  ## Linting tools via NPM
+  NPM_PACKAGES="
     standard
     yaml-js
     "
 
-    npm install --global ${NPM_PACKAGES}
+  npm install --global ${NPM_PACKAGES}
 }
 
 ##########
 
-func_gem_pkgs ()
-{
-    ## Temporary use Internet gem source
-    printf -- "---\n:backtrace: false\n:bulk_threshold: 1000\n:update_sources: true\n:verbose: true\ngem: --no-ri --no-rdoc\nbenchmark: false\n" > ~/.gemrc
+func_gem_pkgs() {
+  ## Temporary use Internet gem source
+  printf -- "---\n:backtrace: false\n:bulk_threshold: 1000\n:update_sources: true\n:verbose: true\ngem: --no-ri --no-rdoc\nbenchmark: false\n" >~/.gemrc
 
-    ## Linting tools via Gem
-    GEM_PACKAGES="
+  ## Linting tools via Gem
+  GEM_PACKAGES="
     puppet-lint
     bundler
     "
 
-    ## https://bundler.io/v1.16/guides/rubygems_tls_ssl_troubleshooting_guide.html
+  ## https://bundler.io/v1.16/guides/rubygems_tls_ssl_troubleshooting_guide.html
 
-    /usr/local/bin/gem install ${GEM_PACKAGES}
+  /usr/local/bin/gem install ${GEM_PACKAGES}
 }
 
 ##########
 
-func_bundle_cfg ()
-{
-    ## Setup use of Artifactory gem source
-    set +u
-    if [ -n "${GEM_SOURCE}" ]; then
-        printf -- "---\n:backtrace: false\n:bulk_threshold: 1000\n:sources:\n- ${GEM_SOURCE}\n:update_sources: true\n:verbose: true\ngem: --no-ri --no-rdoc\nbenchmark: false\n" > ~/.gemrc
-    fi
-    set -u
-    # bundle config ${artifactory_host} ${artifactory_username}:${artifactory_password}
+func_bundle_cfg() {
+  ## Setup use of Artifactory gem source
+  set +u
+  if [ -n "${GEM_SOURCE}" ]; then
+    printf -- "---\n:backtrace: false\n:bulk_threshold: 1000\n:sources:\n- ${GEM_SOURCE}\n:update_sources: true\n:verbose: true\ngem: --no-ri --no-rdoc\nbenchmark: false\n" >~/.gemrc
+  fi
+  set -u
+  # bundle config ${artifactory_host} ${artifactory_username}:${artifactory_password}
 
-    ## Now you can: bundle install
+  ## Now you can: bundle install
 }
 
 ##########
 
-func_puppet_cfg ()
-{
-    ## Configure puppet module_repository
-    [ ! -d ~/.puppetlabs/etc/puppet ] && mkdir -p ~/.puppetlabs/etc/puppet
-    [ ! -f ~/.puppetlabs/etc/puppet/puppet.conf ] && touch ~/.puppetlabs/etc/puppet/puppet.conf
-    set +u
-    if [ -n "${BEAKER_FORGE_HOST}" ]; then
-        grep -q "module_repository" ~/.puppetlabs/etc/puppet/puppet.conf || printf -- "\n[main]\nmodule_repository=${BEAKER_FORGE_HOST}\n" >> ~/.puppetlabs/etc/puppet/puppet.conf
-    fi
-    set -u
+func_puppet_cfg() {
+  ## Configure puppet module_repository
+  [ ! -d ~/.puppetlabs/etc/puppet ] && mkdir -p ~/.puppetlabs/etc/puppet
+  [ ! -f ~/.puppetlabs/etc/puppet/puppet.conf ] && touch ~/.puppetlabs/etc/puppet/puppet.conf
+  set +u
+  if [ -n "${BEAKER_FORGE_HOST}" ]; then
+    grep -q "module_repository" ~/.puppetlabs/etc/puppet/puppet.conf || printf -- "\n[main]\nmodule_repository=${BEAKER_FORGE_HOST}\n" >>~/.puppetlabs/etc/puppet/puppet.conf
+  fi
+  set -u
 }
 
 ##########
 
-func_atom_pkgs ()
-{
-    ## Atom Editor packages
-    ATOM_PACKAGES="
+func_atom_pkgs() {
+  ## Atom Editor packages
+  ATOM_PACKAGES="
     linter
     linter-ui-default
     intentions
@@ -165,42 +156,41 @@ func_atom_pkgs ()
     atom-alignment
     "
 
-    apm install ${ATOM_PACKAGES}
+  apm install ${ATOM_PACKAGES}
 }
 
 ##########
 
-func_docker_pkgs ()
-{
-    ## Docker was installed by brew
-    docker version
+func_docker_pkgs() {
+  ## Docker was installed by brew
+  docker version
 
-    ## Trusting a docker registry
-    # DOCKER_REGISTRY_HOST="reg.my.domain"
-    # DOCKER_REGISTRY_PORT="5001"
-    # DOCKER_REGISTRY="${DOCKER_REGISTRY_HOST}:${DOCKER_REGISTRY_PORT}"
-    # mkdir -p /etc/docker/certs.d/${DOCKER_REGISTRY}
-    ## If you don't have the Root CA, you can trust the domain certificate as follows:
-    # echo | openssl s_client -servername ${DOCKER_REGISTRY_HOST} -connect ${DOCKER_REGISTRY} 2>/dev/null | openssl x509 >> /etc/docker/certs.d/${DOCKER_REGISTRY}/ca.crt
+  ## Trusting a docker registry
+  # DOCKER_REGISTRY_HOST="reg.my.domain"
+  # DOCKER_REGISTRY_PORT="5001"
+  # DOCKER_REGISTRY="${DOCKER_REGISTRY_HOST}:${DOCKER_REGISTRY_PORT}"
+  # mkdir -p /etc/docker/certs.d/${DOCKER_REGISTRY}
+  ## If you don't have the Root CA, you can trust the domain certificate as follows:
+  # echo | openssl s_client -servername ${DOCKER_REGISTRY_HOST} -connect ${DOCKER_REGISTRY} 2>/dev/null | openssl x509 >> /etc/docker/certs.d/${DOCKER_REGISTRY}/ca.crt
 
-    ## Set proxy for dockerd service so you can pull through proxy, e.g. if using docker-machine:
-    # sudo tee /var/lib/boot2docker/profile <<EOF
-# EXTRA_ARGS='
-# --label provider=virtualbox
-#
-# '
-# CACERT=/var/lib/boot2docker/ca.pem
-# DOCKER_HOST='-H tcp://0.0.0.0:2376'
-# DOCKER_STORAGE=aufs
-# DOCKER_TLS=auto
-# SERVERKEY=/var/lib/boot2docker/server-key.pem
-# SERVERCERT=/var/lib/boot2docker/server.pem
-# export HTTP_PROXY="${http_proxy}"
-# export HTTPS_PROXY="${http_proxy}"
-# export NO_PROXY="${no_proxy}"
-# EOF
+  ## Set proxy for dockerd service so you can pull through proxy, e.g. if using docker-machine:
+  # sudo tee /var/lib/boot2docker/profile <<EOF
+  # EXTRA_ARGS='
+  # --label provider=virtualbox
+  #
+  # '
+  # CACERT=/var/lib/boot2docker/ca.pem
+  # DOCKER_HOST='-H tcp://0.0.0.0:2376'
+  # DOCKER_STORAGE=aufs
+  # DOCKER_TLS=auto
+  # SERVERKEY=/var/lib/boot2docker/server-key.pem
+  # SERVERCERT=/var/lib/boot2docker/server.pem
+  # export HTTP_PROXY="${http_proxy}"
+  # export HTTPS_PROXY="${http_proxy}"
+  # export NO_PROXY="${no_proxy}"
+  # EOF
 
-    ## Restart dockerd for proxy to take effect
+  ## Restart dockerd for proxy to take effect
 }
 
 ##########

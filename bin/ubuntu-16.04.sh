@@ -13,13 +13,13 @@ docker build --tag ${MY_DOCKER_IMAGE} .
 cd -
 
 if [ -e /usr/local/Cellar/bash-git-prompt/2.7.1 ]; then
-    MY_VOLUME_ARGS="${MY_VOLUME_ARGS} --volume /usr/local/Cellar/bash-git-prompt/2.7.1:/usr/local/opt/bash-git-prompt:ro"
+  MY_VOLUME_ARGS="${MY_VOLUME_ARGS} --volume /usr/local/Cellar/bash-git-prompt/2.7.1:/usr/local/opt/bash-git-prompt:ro"
 fi
 if [ -e ${HOME}/.git ]; then
-    MY_VOLUME_ARGS="${MY_VOLUME_ARGS} --volume ${HOME}/.git:/root/.git2:ro"
+  MY_VOLUME_ARGS="${MY_VOLUME_ARGS} --volume ${HOME}/.git:/root/.git2:ro"
 fi
 
 docker run --rm \
-    --interactive --tty \
-    ${MY_VOLUME_ARGS} \
-    ${MY_DOCKER_IMAGE} bash
+  --interactive --tty \
+  ${MY_VOLUME_ARGS} \
+  ${MY_DOCKER_IMAGE} bash

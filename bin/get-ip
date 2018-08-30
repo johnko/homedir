@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-ifconfig | \
-    grep -v '127\.0\.0\.' | \
-    sed -e 's;broadcast.*;;' -e 's;Bcast.*;;' -e 's;netmask.*;;' -e 's;Mask.*;;' | \
-    grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
-
+ifconfig |
+  grep -v '127\.0\.0\.' |
+  sed -e 's;broadcast.*;;' -e 's;Bcast.*;;' -e 's;netmask.*;;' -e 's;Mask.*;;' |
+  grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
