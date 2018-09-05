@@ -21,6 +21,7 @@
 .rnd
 .serverauth.*
 .ssh/id_rsa
+.ssh/known_hosts.old
 .viminfo
 Desktop/
 Documents/
