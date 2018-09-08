@@ -12,12 +12,6 @@ if which apt-get; then
 fi
 
 if ! which virtualenv; then
-  if which pip2; then
-    pip2 install virtualenv
-  fi
-fi
-
-if ! which virtualenv; then
   if which pip; then
     pip install virtualenv
   fi
@@ -33,8 +27,8 @@ fi
 VENV_FOLDER="venv"
 virtualenv ${VENV_FOLDER}
 . ${VENV_FOLDER}/bin/activate
-pip2 install --upgrade pip
-pip2 install --upgrade ansible
+curl https://bootstrap.pypa.io/get-pip.py | python
+pip install --upgrade ansible
 
 # Instructions to user
 set +x
