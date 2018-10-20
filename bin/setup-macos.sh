@@ -14,8 +14,12 @@ func_xcode_install() {
 ##########
 
 func_homebrew_install() {
+
   ## Homebrew
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+  brew tap caskroom/cask
+
 }
 
 ##########
@@ -95,9 +99,6 @@ func_npm_pkgs() {
 ##########
 
 func_gem_pkgs() {
-  ## Temporary use Internet gem source
-  printf -- "---\n:backtrace: false\n:bulk_threshold: 1000\n:update_sources: true\n:verbose: true\ngem: --no-ri --no-rdoc\nbenchmark: false\n" >~/.gemrc
-
   ## Linting tools via Gem
   GEM_PACKAGES="
     puppet-lint
@@ -107,33 +108,6 @@ func_gem_pkgs() {
   ## https://bundler.io/v1.16/guides/rubygems_tls_ssl_troubleshooting_guide.html
 
   /usr/local/bin/gem install ${GEM_PACKAGES}
-}
-
-##########
-
-func_bundle_cfg() {
-  ## Setup use of Artifactory gem source
-  set +u
-  if [ -n "${GEM_SOURCE}" ]; then
-    printf -- "---\n:backtrace: false\n:bulk_threshold: 1000\n:sources:\n- ${GEM_SOURCE}\n:update_sources: true\n:verbose: true\ngem: --no-ri --no-rdoc\nbenchmark: false\n" >~/.gemrc
-  fi
-  set -u
-  # bundle config ${artifactory_host} ${artifactory_username}:${artifactory_password}
-
-  ## Now you can: bundle install
-}
-
-##########
-
-func_puppet_cfg() {
-  ## Configure puppet module_repository
-  [ ! -d ~/.puppetlabs/etc/puppet ] && mkdir -p ~/.puppetlabs/etc/puppet
-  [ ! -f ~/.puppetlabs/etc/puppet/puppet.conf ] && touch ~/.puppetlabs/etc/puppet/puppet.conf
-  set +u
-  if [ -n "${BEAKER_FORGE_HOST}" ]; then
-    grep -q "module_repository" ~/.puppetlabs/etc/puppet/puppet.conf || printf -- "\n[main]\nmodule_repository=${BEAKER_FORGE_HOST}\n" >>~/.puppetlabs/etc/puppet/puppet.conf
-  fi
-  set -u
 }
 
 ##########
@@ -162,50 +136,22 @@ func_atom_pkgs() {
 
 ##########
 
-func_docker_pkgs() {
-  ## Docker was installed by brew
-  docker version
+func_zsh_install() {
 
-  ## Trusting a docker registry
-  # DOCKER_REGISTRY_HOST="reg.my.domain"
-  # DOCKER_REGISTRY_PORT="5001"
-  # DOCKER_REGISTRY="${DOCKER_REGISTRY_HOST}:${DOCKER_REGISTRY_PORT}"
-  # mkdir -p /etc/docker/certs.d/${DOCKER_REGISTRY}
-  ## If you don't have the Root CA, you can trust the domain certificate as follows:
-  # echo | openssl s_client -servername ${DOCKER_REGISTRY_HOST} -connect ${DOCKER_REGISTRY} 2>/dev/null | openssl x509 >> /etc/docker/certs.d/${DOCKER_REGISTRY}/ca.crt
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-  ## Set proxy for dockerd service so you can pull through proxy, e.g. if using docker-machine:
-  # sudo tee /var/lib/boot2docker/profile <<EOF
-  # EXTRA_ARGS='
-  # --label provider=virtualbox
-  #
-  # '
-  # CACERT=/var/lib/boot2docker/ca.pem
-  # DOCKER_HOST='-H tcp://0.0.0.0:2376'
-  # DOCKER_STORAGE=aufs
-  # DOCKER_TLS=auto
-  # SERVERKEY=/var/lib/boot2docker/server-key.pem
-  # SERVERCERT=/var/lib/boot2docker/server.pem
-  # export HTTP_PROXY="${http_proxy}"
-  # export HTTPS_PROXY="${http_proxy}"
-  # export NO_PROXY="${no_proxy}"
-  # EOF
-
-  ## Restart dockerd for proxy to take effect
 }
 
 ##########
 
 func_xcode_install
 func_homebrew_install
+func_zsh_install
 func_curl_install
 func_brew_pkgs
 func_npm_pkgs
 func_gem_pkgs
-func_bundle_cfg
-func_puppet_cfg
 func_atom_pkgs
-func_docker_pkgs
 
 exit
 
