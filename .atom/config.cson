@@ -17,5 +17,8 @@
     tabLength: 4
   "exception-reporting":
     userId: "a9b76207-b3c5-4609-9f24-648cabb3bfea"
+  "linter-puppet-lint":
+    oldVersion: false
+  "linter-ui-default: {}
   welcome:
     showOnStartup: false
