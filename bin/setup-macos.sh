@@ -142,6 +142,7 @@ func_zsh_install() {
   echo sh -c "(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   set -x
+  git submodule update --init
   ## Vim-Powerline fonts
   if [ -d fonts ] && [ -x fonts/install.sh ]; then
     cd fonts
