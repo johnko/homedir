@@ -41,3 +41,4 @@ VirtualBox VMs/
 .vagrant.d/rgloader/
 .vagrant.d/setup_version
 .packer.d
+.vim/.netrwhist
