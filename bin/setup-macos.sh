@@ -40,6 +40,7 @@ func_curl_install() {
 func_brew_pkgs() {
   ## Brew packages
   BREW_PACKAGES="
+    zsh-syntax-highlighting
     bash-completion
     bash-git-prompt
     git
