@@ -107,12 +107,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# For rbenv (ruby env)
-eval "$(rbenv init -)"
-export PATH="${HOME}/.rbenv/shims:${PATH}"
-
 # Set BEAKER_debug to true if you need to debug (default unset)
 # export BEAKER_debug=true
 # Set BEAKER_destroy to no if you need to debug (we default to yes)
@@ -122,3 +116,10 @@ export GOPATH="${HOME}/go"
 
 DEFAULT_USER="$(whoami)"
 prompt_context(){}
+
+# For rbenv (ruby env)
+eval "$(rbenv init -)"
+export PATH="${HOME}/.rbenv/shims:${PATH}"
+
+# This should stay at THE END
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
