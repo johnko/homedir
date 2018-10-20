@@ -40,7 +40,6 @@ func_curl_install() {
 func_brew_pkgs() {
   ## Brew packages
   BREW_PACKAGES="
-    iterm2
     bash-completion
     bash-git-prompt
     git
@@ -53,6 +52,7 @@ func_brew_pkgs() {
     caskroom/cask/google-chrome
     caskroom/cask/firefox
     caskroom/cask/atom
+    caskroom/cask/iterm2
     homebrew/cask/visual-studio-code
     shellcheck
     shfmt
@@ -137,9 +137,13 @@ func_atom_pkgs() {
 ##########
 
 func_zsh_install() {
-
+  ## Oh My Zsh
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
+  ## Vim-Powerline fonts
+  if [ -d fonts ] && [ -x fonts/install.sh ]; then
+    cd fonts
+    ./install.sh
+  fi
 }
 
 ##########
