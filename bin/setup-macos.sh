@@ -36,6 +36,7 @@ func_curl_install() {
 func_brew_pkgs() {
   ## Brew packages
   BREW_PACKAGES="
+    iterm2
     bash-completion
     bash-git-prompt
     git
