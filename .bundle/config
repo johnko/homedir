@@ -1,0 +1,4 @@
+---
+BUNDLE_JOBS: "10"
+BUNDLE_RETRY: "3"
+BUNDLE_BUILD__NOKOGIRI: "--use-system-libraries --with-xml2-include=/opt/puppetlabs/puppet/include/libxml2"
