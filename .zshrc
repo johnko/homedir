@@ -118,5 +118,5 @@ export BEAKER_destroy=yes
 
 export GOPATH="${HOME}/go"
 
-DEFAULT_USER=johnko
+DEFAULT_USER="$(whoami)"
 prompt_context(){}
