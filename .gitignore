@@ -42,3 +42,6 @@ VirtualBox VMs/
 .vagrant.d/setup_version
 .packer.d
 .vim/.netrwhist
+.oh-my-zsh
+.zsh_history
+.zcompdump-mbpr-5.2
