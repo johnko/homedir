@@ -16,7 +16,8 @@ func_xcode_install() {
 func_homebrew_install() {
   ## Homebrew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  # brew tap caskroom/cask
+  brew tap caskroom/cask
+  brew tap homebrew/cask
 }
 
 ##########
@@ -41,36 +42,55 @@ func_brew_pkgs() {
     jq
     wget
     tmux
-    caskroom/cask/google-chrome
-    caskroom/cask/firefox
-    caskroom/cask/atom
-    caskroom/cask/iterm2
-    homebrew/cask/visual-studio-code
     shellcheck
     shfmt
     docker
-    caskroom/cask/docker
     docker-credential-helper
     docker-compose-completion
-    caskroom/cask/vagrant
     vagrant-completion
-    caskroom/cask/spotify
     watch
     iftop
-    terminal-notifier
-    caskroom/cask/gimp
-    caskroom/cask/fugu
-    caskroom/cask/keka
-    caskroom/cask/shiftit
     pv
-    caskroom/cask/virtualbox
-    caskroom/cask/xquartz
-    caskroom/cask/inkscape
+    terminal-notifier
     "
+  # brew remove ${BREW_PACKAGES} || true
+  brew upgrade ${BREW_PACKAGES} || brew install ${BREW_PACKAGES}
+  CASK_PACKAGES="
+    shiftit
+    iterm2
+    atom
+    visual-studio-code
+    google-chrome
+    firefox
+    docker
+    fugu
+    keka
+    spotify
+    gimp
+    vagrant
+    xquartz
+    inkscape
+    virtualbox
+    "
+  # brew cask remove ${CASK_PACKAGES} || true
+  brew cask upgrade ${CASK_PACKAGES} || brew cask install ${CASK_PACKAGES}
+}
 
-  for i in ${BREW_PACKAGES}; do
-    brew upgrade $i || brew install $i
-  done
+##########
+
+func_zsh_install() {
+  ## Oh My Zsh
+  rm -fr ~/.oh-my-zsh
+  git submodule update --init --depth=10
+  cd ~/.oh-my-zsh
+  git submodule update --init
+  cd -
+  ## Vim-Powerline fonts
+  if [ -d fonts ] && [ -x fonts/install.sh ]; then
+    cd fonts
+    ./install.sh
+    cd -
+  fi
 }
 
 ##########
@@ -78,13 +98,11 @@ func_brew_pkgs() {
 func_npm_pkgs() {
   ## Update npm
   npm install --global npm
-
   ## Linting tools via NPM
   NPM_PACKAGES="
     standard
     yaml-js
     "
-
   npm install --global ${NPM_PACKAGES}
 }
 
@@ -96,9 +114,7 @@ func_gem_pkgs() {
     puppet-lint
     bundler
     "
-
   ## https://bundler.io/v1.16/guides/rubygems_tls_ssl_troubleshooting_guide.html
-
   /usr/local/bin/gem install ${GEM_PACKAGES}
 }
 
@@ -122,24 +138,7 @@ func_atom_pkgs() {
     linter-puppet-lint
     atom-alignment
     "
-
   apm install ${ATOM_PACKAGES}
-}
-
-##########
-
-func_zsh_install() {
-  ## Oh My Zsh
-  set +x
-  echo sh -c "(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  set -x
-  git submodule update --init
-  ## Vim-Powerline fonts
-  if [ -d fonts ] && [ -x fonts/install.sh ]; then
-    cd fonts
-    ./install.sh
-  fi
 }
 
 ##########
@@ -147,8 +146,8 @@ func_zsh_install() {
 func_xcode_install
 func_homebrew_install
 func_curl_install
-func_zsh_install
 func_brew_pkgs
+func_zsh_install
 func_npm_pkgs
 func_gem_pkgs
 func_atom_pkgs
@@ -157,25 +156,146 @@ exit
 
 ##########
 
-## Example configuration has been installed to:
-##   /usr/local/opt/tmux/share/tmux
+==> curl Caveats
+curl is keg-only, which means it was not symlinked into /usr/local,
+because macOS already provides this software and installing another version in
+parallel can cause all kinds of trouble.
 
-## A valid GOPATH is required to use the `go get` command.
-## If $GOPATH is not specified, $HOME/go will be used by default:
-##   https://golang.org/doc/code.html#GOPATH
-## You may wish to add the GOROOT-based install location to your PATH:
-##   export PATH=$PATH:/usr/local/opt/go/libexec/bin
+If you need to have curl first in your PATH run:
+  echo 'export PATH="/usr/local/opt/curl/bin:$PATH"' >> ~/.bash_profile
 
-## A CA file has been bootstrapped using certificates from the SystemRoots
-## keychain. To add additional certificates (e.g. the certificates added in
-## the System keychain), place .pem files in
-##   /usr/local/etc/openssl/certs
-## and run
-##   /usr/local/opt/openssl/bin/c_rehash
+For compilers to find curl you may need to set:
+  export LDFLAGS="-L/usr/local/opt/curl/lib"
+  export CPPFLAGS="-I/usr/local/opt/curl/include"
 
-## For compilers to find this software you may need to set:
-##     LDFLAGS:  -L/usr/local/opt/curl/lib
-##     CPPFLAGS: -I/usr/local/opt/curl/include
-## For compilers to find this software you may need to set:
-##     LDFLAGS:  -L/usr/local/opt/openssl/lib
-##     CPPFLAGS: -I/usr/local/opt/openssl/include
+##########
+
+==> BREW_PACKAGES Caveats
+==> zsh-syntax-highlighting
+To activate the syntax highlighting, add the following at the end of your .zshrc:
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+If you receive "highlighters directory not found" error message,
+you may need to add the following to your .zshenv:
+  export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+==> bash-completion
+Add the following line to your ~/.bash_profile:
+  [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+==> bash-git-prompt
+You should add the following to your .bashrc (or .bash_profile):
+  if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+    __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+  fi
+==> gettext
+gettext is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides the BSD gettext library & some software gets confused if both are in the library path.
+
+If you need to have gettext first in your PATH run:
+  echo 'export PATH="/usr/local/opt/gettext/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find gettext you may need to set:
+  export LDFLAGS="-L/usr/local/opt/gettext/lib"
+  export CPPFLAGS="-I/usr/local/opt/gettext/include"
+
+==> git
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+
+zsh completions and functions have been installed to:
+  /usr/local/share/zsh/site-functions
+
+Emacs Lisp files have been installed to:
+  /usr/local/share/emacs/site-lisp/git
+==> icu4c
+icu4c is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides libicucore.dylib (but nothing else).
+
+If you need to have icu4c first in your PATH run:
+  echo 'export PATH="/usr/local/opt/icu4c/bin:$PATH"' >> ~/.bash_profile
+  echo 'export PATH="/usr/local/opt/icu4c/sbin:$PATH"' >> ~/.bash_profile
+
+For compilers to find icu4c you may need to set:
+  export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+  export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+
+==> node
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+==> openssl
+A CA file has been bootstrapped using certificates from the SystemRoots
+keychain. To add additional certificates (e.g. the certificates added in
+the System keychain), place .pem files in
+  /usr/local/etc/openssl/certs
+
+and run
+  /usr/local/opt/openssl/bin/c_rehash
+
+openssl is keg-only, which means it was not symlinked into /usr/local,
+because Apple has deprecated use of OpenSSL in favor of its own TLS and crypto libraries.
+
+If you need to have openssl first in your PATH run:
+  echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find openssl you may need to set:
+  export LDFLAGS="-L/usr/local/opt/openssl/lib"
+  export CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+==> readline
+readline is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides the BSD libedit library, which shadows libreadline.
+In order to prevent conflicts when programs look for libreadline we are
+defaulting this GNU Readline installation to keg-only.
+
+For compilers to find readline you may need to set:
+  export LDFLAGS="-L/usr/local/opt/readline/lib"
+  export CPPFLAGS="-I/usr/local/opt/readline/include"
+
+==> ruby
+Emacs Lisp files have been installed to:
+  /usr/local/share/emacs/site-lisp/ruby
+==> go
+A valid GOPATH is required to use the `go get` command.
+If $GOPATH is not specified, $HOME/go will be used by default:
+  https://golang.org/doc/code.html#GOPATH
+
+You may wish to add the GOROOT-based install location to your PATH:
+  export PATH=$PATH:/usr/local/opt/go/libexec/bin
+==> tmux
+Example configuration has been installed to:
+  /usr/local/opt/tmux/share/tmux
+
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+==> docker
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+
+zsh completions have been installed to:
+  /usr/local/share/zsh/site-functions
+==> docker-compose-completion
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+
+zsh completions have been installed to:
+  /usr/local/share/zsh/site-functions
+==> vagrant-completion
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+==> iftop
+iftop requires root privileges so you will need to run `sudo iftop`.
+You should be certain that you trust any software you grant root privileges.
+
+##########
+
+==> CASK_PACKAGES Caveats
+To install and/or use virtualbox you may need to enable their kernel extension in
+
+  System Preferences → Security & Privacy → General
+
+For more information refer to vendor documentation or the Apple Technical Note:
+
+  https://developer.apple.com/library/content/technotes/tn2459/_index.html
