@@ -39,6 +39,7 @@ func_brew_pkgs() {
     npm
     ruby
     go
+    python@2
     jq
     wget
     tmux
@@ -288,6 +289,28 @@ Bash completion has been installed to:
 ==> iftop
 iftop requires root privileges so you will need to run `sudo iftop`.
 You should be certain that you trust any software you grant root privileges.
+==> sqlite
+sqlite is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides an older sqlite3.
+
+If you need to have sqlite first in your PATH run:
+  echo 'export PATH="/usr/local/opt/sqlite/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find sqlite you may need to set:
+  export LDFLAGS="-L/usr/local/opt/sqlite/lib"
+  export CPPFLAGS="-I/usr/local/opt/sqlite/include"
+
+==> python@2
+Pip and setuptools have been installed. To update them
+  pip install --upgrade pip setuptools
+
+You can install Python packages with
+  pip install <package>
+
+They will install into the site-package directory
+  /usr/local/lib/python2.7/site-packages
+
+See: https://docs.brew.sh/Homebrew-and-Python
 
 ##########
 
