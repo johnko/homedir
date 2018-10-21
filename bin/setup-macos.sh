@@ -68,10 +68,10 @@ func_brew_pkgs() {
     spotify
     gimp
     vagrant
-    xquartz
-    inkscape
     virtualbox
     "
+    #xquartz
+    #inkscape
   # brew cask remove ${CASK_PACKAGES} || true
   brew cask upgrade ${CASK_PACKAGES} || brew cask install ${CASK_PACKAGES}
 }
