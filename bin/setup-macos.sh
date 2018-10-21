@@ -38,6 +38,7 @@ func_brew_pkgs() {
     git
     npm
     ruby
+    rbenv
     go
     python@2
     jq
@@ -311,6 +312,9 @@ They will install into the site-package directory
   /usr/local/lib/python2.7/site-packages
 
 See: https://docs.brew.sh/Homebrew-and-Python
+==> autoconf
+Emacs Lisp files have been installed to:
+  /usr/local/share/emacs/site-lisp/autoconf
 
 ##########
 
