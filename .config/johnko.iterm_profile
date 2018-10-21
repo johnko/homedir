@@ -33,20 +33,14 @@
     "Green Component" : "0.1607843",
     "Red Component" : "0.9372549"
   },
-  "Link Color" : {
-    "Red Component" : 0,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.73423302173614502,
-    "Alpha Component" : 1,
-    "Green Component" : 0.35916060209274292
+  "Ansi 0 Color" : {
+    "Blue Component" : "0",
+    "Green Component" : "0",
+    "Red Component" : "0"
   },
   "Rows" : 25,
   "Default Bookmark" : "No",
-  "Ansi 3 Color" : {
-    "Blue Component" : "0",
-    "Green Component" : "0.627451",
-    "Red Component" : "0.7686275"
-  },
+  "Guid" : "2AAB8DE6-9E9C-454F-91DB-8788EDDDDC29",
   "Cursor Guide Color" : {
     "Red Component" : 0.70213186740875244,
     "Color Space" : "sRGB",
@@ -93,9 +87,9 @@
     "Green Component" : "0.8353",
     "Red Component" : "0.7098"
   },
+  "Only The Default BG Color Uses Transparency" : true,
   "Columns" : 80,
   "Idle Code" : 0,
-  "Only The Default BG Color Uses Transparency" : true,
   "Ansi 13 Color" : {
     "Blue Component" : "0.6588235",
     "Green Component" : "0.4980392",
@@ -400,18 +394,24 @@
     "Green Component" : "1",
     "Red Component" : "1"
   },
-  "Ansi 0 Color" : {
+  "Transparency" : 0.5,
+  "Ansi 1 Color" : {
     "Blue Component" : "0",
     "Green Component" : "0",
-    "Red Component" : "0"
+    "Red Component" : "0.8"
   },
-  "Guid" : "2AAB8DE6-9E9C-454F-91DB-8788EDDDDC29",
-  "Custom Directory" : "No",
   "Horizontal Spacing" : 1,
-  "Ansi 4 Color" : {
-    "Blue Component" : "0.6431373",
-    "Green Component" : "0.3960784",
-    "Red Component" : "0.2039216"
+  "Ansi 3 Color" : {
+    "Blue Component" : "0",
+    "Green Component" : "0.627451",
+    "Red Component" : "0.7686275"
+  },
+  "Link Color" : {
+    "Red Component" : 0,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.73423302173614502,
+    "Alpha Component" : 1,
+    "Green Component" : 0.35916060209274292
   },
   "Ansi 5 Color" : {
     "Blue Component" : "0.4823529",
@@ -419,17 +419,17 @@
     "Red Component" : "0.4588235"
   },
   "Use Non-ASCII Font" : true,
-  "Transparency" : 0.71709827093908629,
-  "Normal Font" : "Monaco 12",
-  "Ansi 1 Color" : {
-    "Blue Component" : "0",
-    "Green Component" : "0",
-    "Red Component" : "0.8"
-  },
   "Ansi 2 Color" : {
     "Blue Component" : "0.02352941",
     "Green Component" : "0.6039215999999999",
     "Red Component" : "0.3058824"
+  },
+  "Normal Font" : "Monaco 12",
+  "Custom Directory" : "No",
+  "Ansi 4 Color" : {
+    "Blue Component" : "0.6431373",
+    "Green Component" : "0.3960784",
+    "Red Component" : "0.2039216"
   },
   "Allow Title Reporting" : false
 }
