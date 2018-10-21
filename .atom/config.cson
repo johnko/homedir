@@ -1,24 +1,11 @@
 "*":
   core:
-    customFileTypes:
-      "source.shell": [
-        "Dockerfile"
-        "bash_completion"
-        "bash_exports"
-        "bash_path"
-        "bash_prompt"
-        "bash_profile"
-        "profile"
-      ]
     telemetryConsent: "no"
   editor:
     showIndentGuide: true
     showInvisibles: true
     tabLength: 4
   "exception-reporting":
-    userId: "a9b76207-b3c5-4609-9f24-648cabb3bfea"
-  "linter-puppet-lint":
-    oldVersion: false
-  "linter-ui-default: {}
+    userId: "9684c31c-70dc-499d-ba7f-e8484a87d4ab"
   welcome:
     showOnStartup: false
