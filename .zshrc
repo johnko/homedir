@@ -79,6 +79,10 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+# Customization for POWERLEVEL9K
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs virtualenv rbenv kubecontext ram battery time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable vcs)
+POWERLEVEL9K_TIME_FORMAT='%D{%Y-%m-%d %H:%M:%S %Z%z}'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
