@@ -124,7 +124,7 @@ prompt_context(){}
 
 # For rbenv (ruby env)
 eval "$(rbenv init -)"
-export PATH="${HOME}/.rbenv/shims:${PATH}"
+#export PATH="${HOME}/.rbenv/shims:${PATH}"
 
 # This should stay at THE END
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
