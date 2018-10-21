@@ -14,12 +14,9 @@ func_xcode_install() {
 ##########
 
 func_homebrew_install() {
-
   ## Homebrew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-  brew tap caskroom/cask
-
+  # brew tap caskroom/cask
 }
 
 ##########
@@ -27,12 +24,6 @@ func_homebrew_install() {
 func_curl_install() {
   ## Update curl
   brew install curl
-  if [ ! -e /usr/local/bin/curl ]; then
-    if [ $(ls /usr/local/Cellar/curl/ | wc -l) -eq 1 ]; then
-      CURL_VERSION=$(ls /usr/local/Cellar/curl/)
-      ln -s ../Cellar/curl/${CURL_VERSION}/bin/curl /usr/local/bin/curl
-    fi
-  fi
 }
 
 ##########
@@ -61,7 +52,6 @@ func_brew_pkgs() {
     caskroom/cask/docker
     docker-credential-helper
     docker-compose-completion
-    caskroom/cask/virtualbox
     caskroom/cask/vagrant
     vagrant-completion
     caskroom/cask/spotify
@@ -69,12 +59,13 @@ func_brew_pkgs() {
     iftop
     terminal-notifier
     caskroom/cask/gimp
-    caskroom/cask/xquartz
-    caskroom/cask/inkscape
     caskroom/cask/fugu
     caskroom/cask/keka
     caskroom/cask/shiftit
     pv
+    caskroom/cask/virtualbox
+    caskroom/cask/xquartz
+    caskroom/cask/inkscape
     "
 
   for i in ${BREW_PACKAGES}; do
@@ -155,8 +146,8 @@ func_zsh_install() {
 
 func_xcode_install
 func_homebrew_install
-func_zsh_install
 func_curl_install
+func_zsh_install
 func_brew_pkgs
 func_npm_pkgs
 func_gem_pkgs
