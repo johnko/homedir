@@ -74,6 +74,7 @@ plugins=(
   rbenv
   bundler
   rake
+  colored-man-pages
 )
 
 source $ZSH/oh-my-zsh.sh
