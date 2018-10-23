@@ -21,6 +21,7 @@
 .npm/anonymous-cli-metrics.json
 .npm/_cacache/
 .npm/_locks/
+.npm/_logs/
 .oh-my-zsh
 .packer.d/
 .rnd
@@ -34,6 +35,7 @@
 .vagrant.d/setup_version
 .vim/.netrwhist
 .viminfo
+.vscode/extensions/
 .Xauthority*
 .zcompdump-mbpr-5.2
 .zcompdump-mbpt-5.3
