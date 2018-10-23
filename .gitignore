@@ -37,8 +37,7 @@
 .viminfo
 .vscode/extensions/
 .Xauthority*
-.zcompdump-mbpr-5.2
-.zcompdump-mbpt-5.3
+.zcompdump-*
 .zshrc.pre-oh-my-zsh
 .zsh_history
 Applications/
