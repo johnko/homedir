@@ -10,7 +10,7 @@
 .cache/
 .CFUserTextEncoding
 .config/configstore/update-notifier-npm.json
-.docker
+.docker/
 .docker/.buildNodeID
 .DS_Store
 .gem/specs/
