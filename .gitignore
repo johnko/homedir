@@ -23,6 +23,7 @@
 .npm/_locks/
 .npm/_logs/
 .oh-my-zsh
+.oracle_jre_usage/
 .packer.d/
 .rnd
 .serverauth.*
