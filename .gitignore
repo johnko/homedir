@@ -11,6 +11,7 @@
 .cache/
 .CFUserTextEncoding
 .config/configstore/update-notifier-npm.json
+.config/gcloud/
 .docker/
 .docker/.buildNodeID
 .DS_Store
