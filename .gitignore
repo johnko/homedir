@@ -27,6 +27,7 @@
 .oh-my-zsh
 .oracle_jre_usage/
 .packer.d/
+.rbenv/
 .rnd
 .serverauth.*
 .ssh/id_rsa
