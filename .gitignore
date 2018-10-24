@@ -4,6 +4,7 @@
 .atom/compile-cache/
 .atom/github.cson
 .atom/packages/
+.atom/recovery/
 .atom/storage/
 .bash_history
 .bash_sessions/
