@@ -117,7 +117,7 @@ func_gem_pkgs() {
     bundler
     "
   ## https://bundler.io/v1.16/guides/rubygems_tls_ssl_troubleshooting_guide.html
-  /usr/local/bin/gem install ${GEM_PACKAGES}
+  gem install ${GEM_PACKAGES}
 }
 
 ##########
