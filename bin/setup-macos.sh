@@ -158,7 +158,8 @@ exit
 
 ##########
 
-==> curl Caveats
+==> Pouring curl-7.62.0.mojave.bottle.tar.gz
+==> Caveats
 curl is keg-only, which means it was not symlinked into /usr/local,
 because macOS already provides this software and installing another version in
 parallel can cause all kinds of trouble.
@@ -172,7 +173,7 @@ For compilers to find curl you may need to set:
 
 ##########
 
-==> BREW_PACKAGES Caveats
+==> Caveats
 ==> zsh-syntax-highlighting
 To activate the syntax highlighting, add the following at the end of your .zshrc:
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -224,6 +225,9 @@ For compilers to find icu4c you may need to set:
   export LDFLAGS="-L/usr/local/opt/icu4c/lib"
   export CPPFLAGS="-I/usr/local/opt/icu4c/include"
 
+For pkg-config to find icu4c you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
+
 ==> node
 Bash completion has been installed to:
   /usr/local/etc/bash_completion.d
@@ -246,6 +250,9 @@ For compilers to find openssl you may need to set:
   export LDFLAGS="-L/usr/local/opt/openssl/lib"
   export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
+For pkg-config to find openssl you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+
 ==> readline
 readline is keg-only, which means it was not symlinked into /usr/local,
 because macOS provides the BSD libedit library, which shadows libreadline.
@@ -257,8 +264,28 @@ For compilers to find readline you may need to set:
   export CPPFLAGS="-I/usr/local/opt/readline/include"
 
 ==> ruby
+By default, binaries installed by gem will be placed into:
+  /usr/local/lib/ruby/gems/2.5.0/bin
+
+You may want to add this to your PATH.
+
+ruby is keg-only, which means it was not symlinked into /usr/local,
+because macOS already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+
+If you need to have ruby first in your PATH run:
+  echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find ruby you may need to set:
+  export LDFLAGS="-L/usr/local/opt/ruby/lib"
+  export CPPFLAGS="-I/usr/local/opt/ruby/include"
+
+For pkg-config to find ruby you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+
+==> autoconf
 Emacs Lisp files have been installed to:
-  /usr/local/share/emacs/site-lisp/ruby
+  /usr/local/share/emacs/site-lisp/autoconf
 ==> go
 A valid GOPATH is required to use the `go get` command.
 If $GOPATH is not specified, $HOME/go will be used by default:
@@ -266,6 +293,31 @@ If $GOPATH is not specified, $HOME/go will be used by default:
 
 You may wish to add the GOROOT-based install location to your PATH:
   export PATH=$PATH:/usr/local/opt/go/libexec/bin
+==> sqlite
+sqlite is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides an older sqlite3.
+
+If you need to have sqlite first in your PATH run:
+  echo 'export PATH="/usr/local/opt/sqlite/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find sqlite you may need to set:
+  export LDFLAGS="-L/usr/local/opt/sqlite/lib"
+  export CPPFLAGS="-I/usr/local/opt/sqlite/include"
+
+For pkg-config to find sqlite you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
+
+==> python@2
+Pip and setuptools have been installed. To update them
+  pip install --upgrade pip setuptools
+
+You can install Python packages with
+  pip install <package>
+
+They will install into the site-package directory
+  /usr/local/lib/python2.7/site-packages
+
+See: https://docs.brew.sh/Homebrew-and-Python
 ==> tmux
 Example configuration has been installed to:
   /usr/local/opt/tmux/share/tmux
@@ -290,39 +342,3 @@ Bash completion has been installed to:
 ==> iftop
 iftop requires root privileges so you will need to run `sudo iftop`.
 You should be certain that you trust any software you grant root privileges.
-==> sqlite
-sqlite is keg-only, which means it was not symlinked into /usr/local,
-because macOS provides an older sqlite3.
-
-If you need to have sqlite first in your PATH run:
-  echo 'export PATH="/usr/local/opt/sqlite/bin:$PATH"' >> ~/.bash_profile
-
-For compilers to find sqlite you may need to set:
-  export LDFLAGS="-L/usr/local/opt/sqlite/lib"
-  export CPPFLAGS="-I/usr/local/opt/sqlite/include"
-
-==> python@2
-Pip and setuptools have been installed. To update them
-  pip install --upgrade pip setuptools
-
-You can install Python packages with
-  pip install <package>
-
-They will install into the site-package directory
-  /usr/local/lib/python2.7/site-packages
-
-See: https://docs.brew.sh/Homebrew-and-Python
-==> autoconf
-Emacs Lisp files have been installed to:
-  /usr/local/share/emacs/site-lisp/autoconf
-
-##########
-
-==> CASK_PACKAGES Caveats
-To install and/or use virtualbox you may need to enable their kernel extension in
-
-  System Preferences → Security & Privacy → General
-
-For more information refer to vendor documentation or the Apple Technical Note:
-
-  https://developer.apple.com/library/content/technotes/tn2459/_index.html
