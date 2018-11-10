@@ -113,6 +113,20 @@ POWERLEVEL9K_TIME_FORMAT='%D{%Y-%m-%d %H:%M:%S %Z%z}'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+alias say="say -v Karen"
+alias wattba="say What a time to be alive."
+alias gs="say Great success."
+alias ltd="say Living the dream."
+alias lmgtfy="say Let me Google that, for you."
+alias docs="say Where\'s the documentation\?"
+alias tp="say Top priority."
+alias approve="say Hey, can somebody approve my PR\?"
+alias broken="say Oh dear. My build appears to be broken."
+alias squash="say You have to squash those commits."
+alias rebase="say Looks like you have to rebase on origin/master."
+alias ttc1="say Attention passengers on Line 1 southbound. You will experience longer than normal travel times due to an earlier delay. We apologize for the inconvenience."
+alias ttc2="say Attention passengers on Line 1 southbound. We are currently experiencing a delay at College Station due to a Passenger Safety Alarm. Response personnel have been dispatched. We will update you with more information as it becomes available. We apologize for the inconvenience."
+alias ttc3="say Please stand clear of the doors."
 
 # Set BEAKER_debug to true if you need to debug (default unset)
 # export BEAKER_debug=true
