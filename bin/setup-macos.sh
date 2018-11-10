@@ -65,6 +65,7 @@ func_brew_pkgs() {
     google-chrome
     firefox
     docker
+    aerial
     fugu
     keka
     spotify
