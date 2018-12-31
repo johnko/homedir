@@ -8,7 +8,7 @@
   # Show the diff between the latest commit and the current state
   d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
   # 'git di $number' shows the diff between the state $number revisions ago and the current state
-  di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+  di = !"d() { git diff -w --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
   # Pull in remote changes for the current repository and all its submodules
   p = !"git pull; git submodule foreach git pull origin master"
   # Clone a repository including all submodules
@@ -29,6 +29,7 @@
   # Interactive rebase with the given number of latest commits
   reb = "!r() { git rebase -i HEAD~$1; }; r"
   amend = !"git commit --amend --date=\"$(date -R)\""
+  fm = !"git fetch; git checkout origin/master"
 
 [apply]
   # Detect whitespace errors when applying a patch
