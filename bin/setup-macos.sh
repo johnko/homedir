@@ -64,6 +64,7 @@ func_brew_pkgs() {
     visual-studio-code
     google-chrome
     firefox
+    google-cloud-sdk
     docker
     aerial
     fugu
