@@ -129,6 +129,8 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 #gcloud info
 #gcloud auth login
 #gcloud config set project foobar
+#gcloud services list
+#gcloud services disable sql-component.googleapis.com
 
 # For rbenv (ruby env)
 eval "$(rbenv init -)"
