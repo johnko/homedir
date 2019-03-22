@@ -23,6 +23,7 @@
 .docker/
 .docker/.buildNodeID
 .DS_Store
+.gem/
 .gem/specs/
 .kube/config
 .lesshst
@@ -41,6 +42,7 @@
 .pylint.d/
 .rbenv/
 .rnd
+.ruby-version
 .serverauth.*
 .sqlcl/
 .sqldeveloper/
