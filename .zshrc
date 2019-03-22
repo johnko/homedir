@@ -131,6 +131,16 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 #gcloud config set project foobar
 #gcloud services list
 #gcloud services disable sql-component.googleapis.com
+#gcloud services disable cloudapis.googleapis.com bigquery-json.googleapis.com datastore.googleapis.com sql-component.googleapis.com storage-api.googleapis.com storage-component.googleapis.com
+
+#gcloud services list
+#NAME                              TITLE
+#clouddebugger.googleapis.com      Stackdriver Debugger API
+#cloudtrace.googleapis.com         Stackdriver Trace API
+#logging.googleapis.com            Stackdriver Logging API
+#monitoring.googleapis.com         Stackdriver Monitoring API
+#servicemanagement.googleapis.com  Service Management API
+#serviceusage.googleapis.com       Service Usage API
 
 # For rbenv (ruby env)
 eval "$(rbenv init -)"
