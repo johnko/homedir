@@ -144,8 +144,14 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 # For rbenv (ruby env)
 eval "$(rbenv init -)"
 #export PATH="${HOME}/.rbenv/shims:${PATH}"
+
 # Install ruby 2.4
+#rbenv install -l
 #rbenv install 2.4.5
+#rbenv version
+#rbenv local 2.4.5
+#gem env home
+#curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
 # This should stay at THE END
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
