@@ -138,9 +138,15 @@ export GOPATH="${HOME}/go"
 DEFAULT_USER="$(whoami)"
 prompt_context(){}
 
+# For gcloud
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
 # For rbenv (ruby env)
 eval "$(rbenv init -)"
 #export PATH="${HOME}/.rbenv/shims:${PATH}"
+# Install ruby 2.4
+#rbenv install 2.4.5
 
 # This should stay at THE END
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
