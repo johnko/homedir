@@ -71,7 +71,6 @@ plugins=(
   zsh-completions
   osx
   ruby
-  rbenv
   bundler
   rake
   colored-man-pages
