@@ -41,6 +41,7 @@ func_brew_pkgs() {
     rbenv
     go
     python@2
+    python@3
     jq
     wget
     tmux
