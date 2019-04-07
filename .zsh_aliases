@@ -1,0 +1,7 @@
+alias list_projects="gcloud projects list --format=\"value(PROJECT_ID,PROJECT_NUMBER)\""
+alias list_orgs="gcloud organizations list --format=\"value(DISPLAY_NAME,ID,DIRECTORY_CUSTOMER_ID)\""
+alias list_org_policies="gcloud beta resource-manager org-policies list --organization \"$(gcloud organizations list --format="value(ID)")\""
+alias list_service_apis="gcloud services list --format=\"value(NAME)\""
+generate_project_id() {
+  echo "${1}-$( echo -n "${1}" | md5 | cut -c1-3 )"
+}
