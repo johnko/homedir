@@ -134,22 +134,23 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 #gcloud services disable cloudapis.googleapis.com bigquery-json.googleapis.com datastore.googleapis.com sql-component.googleapis.com storage-api.googleapis.com storage-component.googleapis.com
 
 #gcloud services list
-# NAME                               TITLE
-# bigquery-json.googleapis.com       BigQuery API
-# compute.googleapis.com             Compute Engine API
-# container.googleapis.com           Kubernetes Engine API
-# containerregistry.googleapis.com   Container Registry API
-# deploymentmanager.googleapis.com   Cloud Deployment Manager V2 API
-# iam.googleapis.com                 Identity and Access Management (IAM) API
-# iamcredentials.googleapis.com      IAM Service Account Credentials API
-# logging.googleapis.com             Stackdriver Logging API
-# monitoring.googleapis.com          Stackdriver Monitoring API
-# oslogin.googleapis.com             Cloud OS Login API
-# pubsub.googleapis.com              Cloud Pub/Sub API
-# replicapool.googleapis.com         Compute Engine Instance Group Manager API
-# replicapoolupdater.googleapis.com  Compute Engine Instance Group Updater API
-# resourceviews.googleapis.com       Compute Engine Instance Groups API
-# storage-api.googleapis.com         Google Cloud Storage JSON API
+# NAME                                 TITLE
+# bigquery-json.googleapis.com         BigQuery API
+# cloudresourcemanager.googleapis.com  Cloud Resource Manager API
+# compute.googleapis.com               Compute Engine API
+# container.googleapis.com             Kubernetes Engine API
+# containerregistry.googleapis.com     Container Registry API
+# deploymentmanager.googleapis.com     Cloud Deployment Manager V2 API
+# iam.googleapis.com                   Identity and Access Management (IAM) API
+# iamcredentials.googleapis.com        IAM Service Account Credentials API
+# logging.googleapis.com               Stackdriver Logging API
+# monitoring.googleapis.com            Stackdriver Monitoring API
+# oslogin.googleapis.com               Cloud OS Login API
+# pubsub.googleapis.com                Cloud Pub/Sub API
+# replicapool.googleapis.com           Compute Engine Instance Group Manager API
+# replicapoolupdater.googleapis.com    Compute Engine Instance Group Updater API
+# resourceviews.googleapis.com         Compute Engine Instance Groups API
+# storage-api.googleapis.com           Google Cloud Storage JSON API
 
 # For rbenv (ruby env)
 eval "$(rbenv init -)"
