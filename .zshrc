@@ -112,6 +112,7 @@ POWERLEVEL9K_TIME_FORMAT='%D{%Y-%m-%d %H:%M:%S %Z%z}'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+source ${HOME}/.zsh_aliases
 
 # Set BEAKER_debug to true if you need to debug (default unset)
 # export BEAKER_debug=true
