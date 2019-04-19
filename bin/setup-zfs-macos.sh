@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-set -e
-set -x
-set -u
+set -eux
 
 create_default_zpool() {
   ## See https://openzfsonosx.org/wiki/Zpool#Creating_a_pool

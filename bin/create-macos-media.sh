@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-set -e
+set -eu
 set +x
-set -u
 
 ##########
 

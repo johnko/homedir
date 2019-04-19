@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-set -e
-set -x
-set -u
+set -eux
 
 MY_DOCKER_IMAGE=git-ubuntu:16.04
 MY_TMP_CONTEXT="${HOME}/docker-files/ubuntu/16.04"

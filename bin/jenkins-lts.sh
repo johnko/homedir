@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-set -e
-set -x
-set -u
+set -eux
 
 MY_TMP_CONTEXT="${HOME}/docker-files/jenkins-lts"
 
