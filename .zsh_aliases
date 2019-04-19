@@ -6,3 +6,9 @@ alias list_deployments="gcloud deployment-manager deployments list"
 generate_project_id() {
   echo "${1}-$( echo -n "${1}" | md5 | cut -c1-3 )"
 }
+get-ip() {
+  ifconfig |
+  grep -v '127\.0\.0\.' |
+  sed -e 's;broadcast.*;;' -e 's;Bcast.*;;' -e 's;netmask.*;;' -e 's;Mask.*;;' |
+  grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
+}
