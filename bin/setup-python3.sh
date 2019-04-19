@@ -39,7 +39,7 @@ if ! command -v virtualenv >/dev/null 2>&1 ; then
 fi
 
 # Install dev tools in a virtualenv
-VENV_FOLDER="virtualenv-ansible"
+VENV_FOLDER="virtualenv-py3"
 virtualenv "${VENV_FOLDER}" | awk '{print "    "$0}'
 source "${VENV_FOLDER}/bin/activate"
 
@@ -50,11 +50,13 @@ echo "=>  Installing python development tools..."
 ${PIP_BIN} install --upgrade \
   yamllint \
   yq \
+  flake8 \
+  nose \
+  jinjalint \
   ansible \
 2>&1 | awk '{print "    "$0}'
 echo "=>  Installion complete!"
 
 echo "    To activate, run:"
 echo "        source ${VENV_FOLDER}/bin/activate"
-echo "        ansible-playbook ..."
 echo "=>  Setup is complete!"
