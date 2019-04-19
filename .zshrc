@@ -112,7 +112,7 @@ POWERLEVEL9K_TIME_FORMAT='%D{%Y-%m-%d %H:%M:%S %Z%z}'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
-source ${HOME}/.zsh_aliases
+[ -e "${HOME}/.zsh_aliases" ] && source ${HOME}/.zsh_aliases
 
 # Set BEAKER_debug to true if you need to debug (default unset)
 # export BEAKER_debug=true
@@ -164,6 +164,8 @@ eval "$(rbenv init -)"
 #rbenv local 2.4.5
 #gem env home
 #curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+
+[ -e "${HOME}/virtualenv-py3/bin/activate" ] && source ${HOME}/virtualenv-py3/bin/activate
 
 # This should stay at THE END
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
