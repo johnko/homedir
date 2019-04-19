@@ -39,7 +39,7 @@ if ! command -v virtualenv >/dev/null 2>&1 ; then
 fi
 
 # Install dev tools in a virtualenv
-VENV_FOLDER="venv-ansible"
+VENV_FOLDER="virtualenv-ansible"
 virtualenv "${VENV_FOLDER}" | awk '{print "    "$0}'
 source "${VENV_FOLDER}/bin/activate"
 
