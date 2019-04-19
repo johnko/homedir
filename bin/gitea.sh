@@ -9,7 +9,7 @@ cd ${MY_TMP_CONTEXT}
 set +u
 case ${1} in
 open)
-  open -a Firefox http://127.0.0.1:3000
+  open http://127.0.0.1:3000
   ;;
 down)
   ## Destroy the stack but keep the data
