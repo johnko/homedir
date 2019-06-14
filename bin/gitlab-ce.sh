@@ -12,6 +12,12 @@ open)
   open http://127.0.0.1
   open http://localhost
   ;;
+runner-exec)
+  docker-compose exec gitlab-runner bash
+  ;;
+runner-register)
+  docker-compose exec gitlab-runner gitlab-runner register
+  ;;
 down)
   ## Destroy the stack but keep the data
   docker-compose down
