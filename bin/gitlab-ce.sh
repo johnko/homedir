@@ -21,6 +21,9 @@ runner-register)
 runner-exec)
   docker-compose exec gitlab-runner bash
   ;;
+exec)
+  docker-compose exec gitlab-ce bash
+  ;;
 down)
   ## Destroy the stack but keep the data
   docker-compose down
@@ -39,6 +42,9 @@ top)
   docker-compose top
   ;;
 up | *)
+  if ! [ -e ./certificate.key ] && ! [ -e ./certificate.pem ]; then
+    openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout ./certificate.key -out ./certificate.pem
+  fi
   docker-compose pull
   ## Create and run the stack interactively
   # docker-compose up

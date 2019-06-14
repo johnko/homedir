@@ -2,12 +2,11 @@
 version: "3.5"
 
 services:
-    gitlab.local:
+    gitlab-ce:
         container_name: gitlab-ce
         image: gitlab/gitlab-ce:11.11.3-ce.0
-        # hostname: localhost
+        hostname: gitlab.local
         extra_hosts:
-            gitlab.local: 127.0.0.1
             registry.local: 127.0.0.1
             pages.local: 127.0.0.1
             mattermost.local: 127.0.0.1
@@ -32,10 +31,10 @@ services:
                 # nginx['redirect_http_to_https_port'] = 80
                 registry_external_url 'http://registry.local'
                 gitlab_rails['registry_port'] = 5005
-                # registry_nginx['ssl_certificate'] = '/etc/gitlab/ssl/certificate.pem'
-                # registry_nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/certificate.key'
-                # registry_nginx['listen_port'] = 80
-                # registry_nginx['listen_https'] = false
+                registry_nginx['ssl_certificate'] = '/etc/gitlab/ssl/certificate.pem'
+                registry_nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/certificate.key'
+                registry_nginx['listen_port'] = 5005
+                registry_nginx['listen_https'] = true
                 pages_external_url 'http://pages.local'
                 gitlab_pages['artifacts_server'] = false
                 gitlab_pages['inplace_chroot'] = true
@@ -66,6 +65,8 @@ services:
             - config:/etc/gitlab
             - data:/var/opt/gitlab
             - logs:/var/log/gitlab
+            - $HOME/docker-files/gitlab-ce/certificate.pem:/etc/gitlab/ssl/certificate.pem
+            - $HOME/docker-files/gitlab-ce/certificate.key:/etc/gitlab/ssl/certificate.key
 
     gitlab-runner:
         container_name: gitlab-runner
@@ -79,6 +80,8 @@ services:
             DOCKER_IMAGE: alpine:latest
             DOCKER_DISABLE_CACHE: 'true'
             DOCKER_NETWORK_MODE: gitlab-ce_default
+        links:
+            - gitlab-ce:registry.local
         restart: unless-stopped
         volumes:
             - runnerconf:/etc/gitlab-runner
