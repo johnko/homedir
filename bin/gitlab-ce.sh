@@ -9,14 +9,17 @@ cd ${MY_TMP_CONTEXT}
 set +u
 case ${1} in
 open)
-  open http://127.0.0.1
-  open http://localhost
-  ;;
-runner-exec)
-  docker-compose exec gitlab-runner bash
+Gitlab:
+  echo 'Manually disable sign-up http://gitlab.local/admin/application_settings'
+  echo 'Manually disable gravatar http://gitlab.local/admin/application_settings'
+  echo '127.0.0.1       gitlab.local    registry.local    pages.local    root.pages.local    mattermost.local' | sudo tee -a /etc/hosts
+  open http://gitlab.local
   ;;
 runner-register)
   docker-compose exec gitlab-runner gitlab-runner register
+  ;;
+runner-exec)
+  docker-compose exec gitlab-runner bash
   ;;
 down)
   ## Destroy the stack but keep the data
