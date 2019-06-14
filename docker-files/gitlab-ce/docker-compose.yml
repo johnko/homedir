@@ -65,8 +65,8 @@ services:
             - config:/etc/gitlab
             - data:/var/opt/gitlab
             - logs:/var/log/gitlab
-            - $HOME/docker-files/gitlab-ce/certificate.pem:/etc/gitlab/ssl/certificate.pem
-            - $HOME/docker-files/gitlab-ce/certificate.key:/etc/gitlab/ssl/certificate.key
+            - ./certificate.pem:/etc/gitlab/ssl/certificate.pem:ro
+            - ./certificate.key:/etc/gitlab/ssl/certificate.key:ro
 
     gitlab-runner:
         container_name: gitlab-runner
