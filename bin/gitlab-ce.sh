@@ -16,6 +16,7 @@ Gitlab:
   open http://gitlab.local
   ;;
 runner-register)
+  docker-compose exec gitlab-runner update-ca-certificates
   docker-compose exec gitlab-runner gitlab-runner register
   ;;
 runner-exec)
@@ -43,7 +44,8 @@ top)
   ;;
 up | *)
   if ! [ -e ./certificate.key ] && ! [ -e ./certificate.pem ]; then
-    openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout ./certificate.key -out ./certificate.pem
+    openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout ./certificate.key -out ./certificate.pem -config ./csr.conf -extensions 'v3_req'
+    openssl x509 -in ./certificate.pem -noout -text
   fi
   docker-compose pull
   ## Create and run the stack interactively
