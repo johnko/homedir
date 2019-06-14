@@ -31,13 +31,12 @@ services:
                 # nginx['redirect_http_to_https'] = false
                 # nginx['redirect_http_to_https_port'] = 80
                 registry_external_url 'http://registry.local'
-                gitlab_rails['registry_port'] = '5005'
+                gitlab_rails['registry_port'] = 5005
                 # registry_nginx['ssl_certificate'] = '/etc/gitlab/ssl/certificate.pem'
                 # registry_nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/certificate.key'
                 # registry_nginx['listen_port'] = 80
                 # registry_nginx['listen_https'] = false
                 pages_external_url 'http://pages.local'
-                pages_nginx['enabled'] = true
                 gitlab_pages['artifacts_server'] = false
                 gitlab_pages['inplace_chroot'] = true
                 # pages_nginx['ssl_certificate'] = '/etc/gitlab/ssl/certificate.pem'
@@ -78,10 +77,12 @@ services:
             CI_SERVER_URL: http://gitlab.local/
             RUNNER_EXECUTOR: docker
             DOCKER_IMAGE: alpine:latest
+            DOCKER_DISABLE_CACHE: 'true'
             DOCKER_NETWORK_MODE: gitlab-ce_default
         restart: unless-stopped
         volumes:
             - runnerconf:/etc/gitlab-runner
+            - runnerhome:/home/gitlab-runner
             - /var/run/docker.sock:/var/run/docker.sock
 
 volumes:
@@ -89,3 +90,4 @@ volumes:
     data:
     logs:
     runnerconf:
+    runnerhome:
