@@ -38,10 +38,6 @@ open)
 ps)
   docker-compose ps
   ;;
-runner-build)
-  generate_selfsigned_cert
-  docker-compose --file runner-images.yml build --force-rm --no-cache --pull
-  ;;
 runner-exec)
   docker-compose exec gitlab-runner bash
   ;;
