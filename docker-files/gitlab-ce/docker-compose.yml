@@ -5,14 +5,9 @@ services:
     gitlab-ce:
         container_name: gitlab-ce
         image: gitlab/gitlab-ce:11.11.3-ce.0
-        hostname: gitlab.local
-        extra_hosts:
-            registry.local: 127.0.0.1
-            pages.local: 127.0.0.1
-            mattermost.local: 127.0.0.1
         environment:
             GITLAB_OMNIBUS_CONFIG: |
-                external_url 'http://gitlab.local'
+                external_url 'https://gitlab.local'
                 gitlab_rails['gitlab_shell_ssh_port'] = 9022
                 gitlab_rails['time_zone'] = 'America/Toronto'
                 gitlab_rails['gitlab_email_enabled'] = false
@@ -23,25 +18,25 @@ services:
                 gitlab_rails['gravatar_ssl_url'] = 'http://127.0.0.1:79'
                 gitlab_rails['incoming_email_enabled'] = false
                 gitlab_rails['lfs_enabled'] = false
-                # nginx['ssl_certificate'] = '/etc/gitlab/ssl/certificate.pem'
-                # nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/certificate.key'
-                # nginx['listen_port'] = 80
-                # nginx['listen_https'] = true
-                # nginx['redirect_http_to_https'] = false
-                # nginx['redirect_http_to_https_port'] = 80
-                registry_external_url 'http://registry.local'
+                nginx['ssl_certificate'] = '/etc/gitlab/ssl/certificate.pem'
+                nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/certificate.key'
+                nginx['listen_port'] = 443
+                nginx['listen_https'] = true
+                nginx['redirect_http_to_https'] = true
+                nginx['redirect_http_to_https_port'] = 80
+                registry_external_url 'https://registry.local'
                 gitlab_rails['registry_port'] = 5005
                 registry_nginx['ssl_certificate'] = '/etc/gitlab/ssl/certificate.pem'
                 registry_nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/certificate.key'
                 registry_nginx['listen_port'] = 5005
                 registry_nginx['listen_https'] = true
-                pages_external_url 'http://pages.local'
+                pages_external_url 'https://pages.local'
                 gitlab_pages['artifacts_server'] = false
                 gitlab_pages['inplace_chroot'] = true
-                # pages_nginx['ssl_certificate'] = '/etc/gitlab/ssl/certificate.pem'
-                # pages_nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/certificate.key'
-                # pages_nginx['listen_port'] = 80
-                # pages_nginx['listen_https'] = false
+                pages_nginx['ssl_certificate'] = '/etc/gitlab/ssl/certificate.pem'
+                pages_nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/certificate.key'
+                pages_nginx['listen_port'] = 443
+                pages_nginx['listen_https'] = true
                 # mattermost_external_url 'http://mattermost.local'
                 # mattermost['env'] = {
                 #   'MM_TEAMSETTINGS_ENABLEUSERCREATION' => true,
@@ -55,6 +50,13 @@ services:
                 #   'MM_DATARETENTIONSETTINGS_MESSAGERETENTIONDAYS' => 30,
                 #   'MM_DATARETENTIONSETTINGS_FILERETENTIONDAYS' => 30,
                 # }
+        networks:
+            default:
+                aliases:
+                    - gitlab.local
+                    - registry.local
+                    - pages.local
+                    - mattermost.local
         ports:
             - 127.0.0.1:80:80
             - 127.0.0.1:443:443
@@ -65,6 +67,7 @@ services:
             - config:/etc/gitlab
             - data:/var/opt/gitlab
             - logs:/var/log/gitlab
+            - ./certificate.pem:/etc/gitlab/trusted-certs/ca.crt
             - ./certificate.pem:/etc/gitlab/ssl/certificate.pem:ro
             - ./certificate.key:/etc/gitlab/ssl/certificate.key:ro
 
@@ -75,18 +78,19 @@ services:
             RUNNER_TAG_LIST: docker,alpine
             REGISTER_RUN_UNTAGGED: 'true'
             RUNNER_NAME: docker-runner
-            CI_SERVER_URL: http://gitlab.local/
+            CI_SERVER_TLS_CA_FILE: /etc/gitlab-runner/certs/ca.crt
+            CI_SERVER_URL: https://gitlab.local/
             RUNNER_EXECUTOR: docker
             DOCKER_IMAGE: alpine:latest
             DOCKER_DISABLE_CACHE: 'true'
             DOCKER_NETWORK_MODE: gitlab-ce_default
-        links:
-            - gitlab-ce:registry.local
+            DOCKER_VOLUMES: /var/run/docker.sock:/var/run/docker.sock
         restart: unless-stopped
         volumes:
             - runnerconf:/etc/gitlab-runner
             - runnerhome:/home/gitlab-runner
             - /var/run/docker.sock:/var/run/docker.sock
+            - ./certificate.pem:/etc/gitlab-runner/certs/ca.crt:ro
 
 volumes:
     config:
