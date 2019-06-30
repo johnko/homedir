@@ -4,7 +4,7 @@ version: "3.5"
 services:
     gitlab-ce:
         container_name: gitlab-ce
-        image: gitlab/gitlab-ce:11.11.3-ce.0
+        image: gitlab/gitlab-ce:12.0.0-ce.0
         environment:
             GITLAB_OMNIBUS_CONFIG: |
                 external_url 'https://gitlab.local'
@@ -73,7 +73,7 @@ services:
 
     gitlab-runner:
         container_name: gitlab-runner
-        image: gitlab/gitlab-runner:latest
+        image: gitlab/gitlab-runner:v12.0.0
         environment:
             RUNNER_TAG_LIST: docker,alpine
             REGISTER_RUN_UNTAGGED: 'true'
