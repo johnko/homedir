@@ -2,6 +2,7 @@
   core:
     telemetryConsent: "no"
   editor:
+    fontSize: 21
     showIndentGuide: true
     showInvisibles: true
     tabType: "soft"
