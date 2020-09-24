@@ -53,19 +53,17 @@ func_brew_pkgs() {
     iftop
     pv
     terminal-notifier
+    kind
     "
   # brew remove ${BREW_PACKAGES} || true
   brew upgrade ${BREW_PACKAGES} || brew install ${BREW_PACKAGES}
   CASK_PACKAGES="
     shiftit
-    iterm2
-    atom
     visual-studio-code
     google-chrome
     firefox
     google-cloud-sdk
     docker
-    aerial
     fugu
     keka
     spotify
@@ -153,7 +151,7 @@ func_brew_pkgs
 func_zsh_install
 func_npm_pkgs
 func_gem_pkgs
-func_atom_pkgs
+# func_atom_pkgs
 
 exit
 
