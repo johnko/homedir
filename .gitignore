@@ -83,3 +83,8 @@ Pictures/
 Public/
 VirtualBox VMs/
 virtualenv-*/
+.vs-kubernetes/tools/draft
+.vs-kubernetes/tools/minikube
+.vs-kubernetes/tools/helm
+.vscode/extensions
+.vscode/argv.json
