@@ -1,69 +1,71 @@
 [alias]
-  # View the SHA, description, and history graph of the latest 20 commits
-  ll = log --pretty=oneline -n 20 --graph
-  # View latest 20 with short hash and tags
-  l = log --graph --oneline --decorate --branches --tags
-  # View the current working tree status using the short format
-  s = status -s
-  # Show the diff between the latest commit and the current state
-  d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
-  # 'git di $number' shows the diff between the state $number revisions ago and the current state
-  di = !"d() { git diff -w --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-  # Pull in remote changes for the current repository and all its submodules
-  p = !"git pull; git submodule foreach git pull origin master"
-  # Clone a repository including all submodules
-  c = clone --recursive
-  # Commit all changes
-  ca = !git add -A && git commit -av
-  # Switch to a branch, creating it if necessary
-  go = checkout -B
-  co = checkout
-  # Show verbose output about tags, branches or remotes
-  tags = tag -l
-  branches = branch -a
-  remotes = remote -v
-  # Set branch master to follow upstream
-  mm = branch --set-upstream-to=origin/master master
-  pm = !"set -x; git fetch; git branch -d master; git checkout origin/master; git checkout -b master; git branch --set-upstream-to=origin/master master; git pull"
-  # Credit an author on the latest commit
-  credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
-  # Interactive rebase with the given number of latest commits
-  reb = "!r() { git rebase -i HEAD~$1; }; r"
-  amend = !"git commit --amend --date=\"$(date -R)\""
-  fm = !"git fetch; git checkout origin/master"
+	# View the SHA, description, and history graph of the latest 20 commits
+	ll = log --pretty=oneline -n 20 --graph
+	# View latest 20 with short hash and tags
+	l = log --graph --oneline --decorate --branches --tags
+	# View the current working tree status using the short format
+	s = status -s
+	# Show the diff between the latest commit and the current state
+	d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
+	# 'git di $number' shows the diff between the state $number revisions ago and the current state
+	di = !"d() { git diff -w --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+	# Pull in remote changes for the current repository and all its submodules
+	p = !"git pull; git submodule foreach git pull origin master"
+	# Clone a repository including all submodules
+	c = clone --recursive
+	# Commit all changes
+	ca = !git add -A && git commit -av
+	# Switch to a branch, creating it if necessary
+	go = checkout -B
+	co = checkout
+	# Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+	# Set branch master to follow upstream
+	mm = branch --set-upstream-to=origin/master master
+	pm = !"set -x; git fetch; git branch -d master; git checkout origin/master; git checkout -b master; git branch --set-upstream-to=origin/master master; git pull"
+	# Credit an author on the latest commit
+	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+	# Interactive rebase with the given number of latest commits
+	reb = "!r() { git rebase -i HEAD~$1; }; r"
+	amend = !"git commit --amend --date=\"$(date -R)\""
+	fm = !"git fetch; git checkout origin/master"
 
 [apply]
-  # Detect whitespace errors when applying a patch
-  whitespace = fix
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
 
 [core]
-  # Use custom .gitignore and .gitattributes
-  excludesfile = ~/.gitignore
-  attributesfile = ~/.gitattributes
-  # Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
-  whitespace = space-before-tab,indent-with-non-tab,trailing-space
-  editor = code --wait
+	# Use custom .gitignore and .gitattributes
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
+	whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	editor = code --wait
 
 [color]
-  # Use colors in Git commands that are capable of colored output when outputting to the terminal
-  ui = auto
+	# Use colors in Git commands that are capable of colored output when outputting to the terminal
+	ui = auto
 [color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
+	current = yellow reverse
+	local = yellow
+	remote = green
 [color "diff"]
-  meta = yellow
-  frag = magenta
-  old = red
-  new = green
+	meta = yellow
+	frag = magenta
+	old = red
+	new = green
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 [merge]
-  # Include summaries of merged commits in newly created merge commit messages
-  log = true
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
 [transfer]
-  fsckObjects = true
+	fsckObjects = true
 [push]
-  default = simple
+	default = simple
+[pull]
+	ff = only
