@@ -152,3 +152,37 @@ v-psa() {
 v-ssh() {
   vagrant ssh "${@}"
 }
+
+repos-gitbranches() {
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      local branch=$(git branch | grep '^*' | awk '{print $NF}')
+      echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch}${__RESET}"
+      popd >/dev/null
+    fi
+  done
+}
+repos-fetchorigin() {
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      local branch=$(git branch | grep '^*' | awk '{print $NF}')
+      local remoteorigin=$(git remote | head -n1)
+      local remotebranch=$(git branch -va | grep "remotes/${remoteorigin}/HEAD" | awk '{print $NF}' | sed "s;${remoteorigin}/;;")
+      if [ -z "${remoteorigin}" ]; then
+        echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__RED}* No remotes.${__RESET}"
+      else
+        local cmdfetch="git fetch ${remoteorigin} ${remotebranch}"
+        echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__GREEN}* Running: ${__PURPLE}${cmdfetch}${__RESET}"
+        ${cmdfetch} 2>&1 | awk "{print \"        \"\$0}"
+        if [ "${remotebranch}" == "${branch}" ]; then
+          local cmdmerge="git merge --ff-only ${remoteorigin}/${remotebranch}"
+          echo "    ${__GREEN}* Running: ${__PURPLE}${cmdmerge}${__RESET}"
+          ${cmdmerge} 2>&1 | awk "{print \"        \"\$0}"
+        fi
+      fi
+      popd >/dev/null
+    fi
+  done
+}
