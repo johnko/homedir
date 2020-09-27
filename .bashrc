@@ -35,8 +35,16 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 [ ! -e ~/.ssh ] && install -d -m 700 ~/.ssh
+if [ -e ~/.ssh/config ]; then
+  grep -q "HashKnownHosts" ~/.ssh/config || printf -- "HashKnownHosts no\n" >> ~/.ssh/config
+else
+  printf -- "HashKnownHosts no\n" >> ~/.ssh/config
+fi
 [ -e ~/.ssh ] && chmod 700 ~/.ssh
-grep -q "HashKnownHosts" ~/.ssh/config || printf -- "HashKnownHosts no\n" >> ~/.ssh/config
+[ -e ~/.ssh/config ] && chmod 600 ~/.ssh/config
+[ -e ~/.ssh/id_rsa ] && chmod 600 ~/.ssh/id_rsa
+[ -e ~/.ssh/id_rsa.pub ] && chmod 600 ~/.ssh/id_rsa.pub
+[ -e ~/.ssh/known_hosts ] && chmod 600 ~/.ssh/known_hosts
 
 for i in ~/.vim/backups ~/.vim/swaps ~/.vim/undo; do
     [ ! -d $i ] && mkdir -p $i
