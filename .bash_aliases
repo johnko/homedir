@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 alias g=git
 alias grep='grep --color=auto'
 alias fgrep='grep -F --color=auto'
@@ -52,7 +50,7 @@ alias rsyncc="rsync -virchlmP --exclude-from=${HOME}/.rsync_exclude"
 alias rsynct="rsync -virthlmP --exclude-from=${HOME}/.rsync_exclude"
 
 # Linux 'which' doesn't have -s so we redirect output to /dev/null
-if which git >/dev/null 2>/dev/null; then
+if which git >/dev/null 2>&1; then
   # Use Git’s colored diff when available
   diff() {
     if [ -z "${1}" ]; then
@@ -95,75 +93,58 @@ ppgrep() {
   pgrep "$@" | xargs --no-run-if-empty ps fp
 }
 
-d() {
-  case "${1}" in
-  i)
-    # docker image list
-    set -- docker images
-    ;;
-  p)
-    # docker container list -a
-    set -- docker ps -a
-    ;;
-  v)
-    set -- docker volume ls
-    ;;
-  n)
-    set -- docker network ls
-    ;;
-  e)
-    shift
-    set -- docker exec -it "${@}"
-    ;;
-  gca)
-    # remove exited containers
-    docker container prune -f
-    # for i in $(docker ps -q -f status=exited); do
-    #     docker rm "${i}"
-    # done
-    # remove untagged docker images
-    docker image prune -f
-    # for i in $(docker images -q -f dangling=true); do
-    #     docker rmi "${i}"
-    # done
-    set --
-    ;;
-  gc)
-    # remove untagged docker images
-    docker image prune -f
-    # for i in $(docker images -q -f dangling=true); do
-    #     docker rmi "${i}"
-    # done
-    set --
-    ;;
-  *)
-    set -- docker "${@}"
-    ;;
-  esac
-  "${@}"
+alias d=docker
+d-exec() {
+  docker exec -it "${@}"
+}
+d-img() {
+  docker image "${@}"
+}
+d-gc() {
+  # remove untagged docker images
+  docker image prune -f
+  # for i in $(docker images -q -f dangling=true); do
+  #     docker rmi "${i}"
+  # done
+}
+d-gca() {
+  # remove exited containers
+  docker container prune -f
+  # for i in $(docker ps -q -f status=exited); do
+  #     docker rm "${i}"
+  # done
+  # remove untagged docker images
+  docker image prune -f
+  # for i in $(docker images -q -f dangling=true); do
+  #     docker rmi "${i}"
+  # done
+}
+d-net() {
+  docker network "${@}"
+}
+d-psa() {
+  docker ps -a "${@}"
+}
+d-runtmp() {
+  docker run -it --rm "${@}"
+}
+d-vol() {
+  docker volume "${@}"
 }
 
-v() {
-  case "${1}" in
-  i)
-    set -- vagrant box list
-    ;;
-  p)
-    set -- vagrant status
-    ;;
-  e)
-    shift
-    set -- vagrant ssh -c "${@}"
-    ;;
-  s)
-    set -- vagrant ssh
-    ;;
-  gc)
-    set -- vagrant destroy -f
-    ;;
-  *)
-    set -- vagrant "${@}"
-    ;;
-  esac
-  "${@}"
+alias v=vagrant
+v-exec() {
+  vagrant ssh -c "${@}"
+}
+v-img() {
+  vagrant box list "${@}"
+}
+v-gc() {
+  vagrant destroy -f "${@}"
+}
+v-psa() {
+  vagrant status "${@}"
+}
+v-ssh() {
+  vagrant ssh "${@}"
 }
