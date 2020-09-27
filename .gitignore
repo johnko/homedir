@@ -88,3 +88,6 @@ virtualenv-*/
 .vs-kubernetes/tools/helm
 .vscode/extensions
 .vscode/argv.json
+.kube/config
+.kube/cache
+.kube/http-cache
