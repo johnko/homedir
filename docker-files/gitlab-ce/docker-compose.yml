@@ -67,9 +67,9 @@ services:
             - config:/etc/gitlab
             - data:/var/opt/gitlab
             - logs:/var/log/gitlab
-            - ./certificate.pem:/etc/gitlab/trusted-certs/ca.crt
-            - ./certificate.pem:/etc/gitlab/ssl/certificate.pem:ro
-            - ./certificate.key:/etc/gitlab/ssl/certificate.key:ro
+            - ./gitlab-ce.pem:/etc/gitlab/trusted-certs/ca.crt
+            - ./gitlab-ce.pem:/etc/gitlab/ssl/certificate.pem:ro
+            - ./gitlab-ce.key:/etc/gitlab/ssl/certificate.key:ro
 
     gitlab-runner:
         container_name: gitlab-runner
@@ -90,7 +90,7 @@ services:
             - runnerconf:/etc/gitlab-runner
             - runnerhome:/home/gitlab-runner
             - /var/run/docker.sock:/var/run/docker.sock
-            - ./certificate.pem:/etc/gitlab-runner/certs/ca.crt:ro
+            - ./gitlab-ce.pem:/etc/gitlab-runner/certs/ca.crt:ro
 
 volumes:
     config:
