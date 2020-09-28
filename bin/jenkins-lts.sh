@@ -35,6 +35,8 @@ k8sagents)
   echo "==> Kubernetes server certificate key"
   grep certificate-authority-data ${HOME}/.kube/config | awk '{print $NF}' | base64 -d >kind-ca.crt
   cat kind-ca.crt
+  echo "==> Kubernetes Namespace:"
+  echo "jenkinsagent"
   echo "==> Credentials:"
   grep client-certificate-data ${HOME}/.kube/config | awk '{print $NF}' | base64 -d >kind-client.crt
   grep client-key-data ${HOME}/.kube/config | awk '{print $NF}' | base64 -d >kind-client.key
