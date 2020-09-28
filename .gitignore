@@ -95,3 +95,5 @@ kind-cert.pfx
 kind-client.key
 kind-client.crt
 kind-ca.crt
+gitlab-ce.key
+gitlab-ce.pem
