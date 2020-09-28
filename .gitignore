@@ -97,3 +97,4 @@ kind-client.crt
 kind-ca.crt
 gitlab-ce.key
 gitlab-ce.pem
+.vscode/ansible-credentials.yml
