@@ -24,12 +24,13 @@ pipeline {
           }
           steps {
             sh "apt update -y"
-            sh "apt install -y make gcc libx11-dev"
+            sh "apt install -y make gcc libx11-dev libxinerama-dev"
             dir("build") {
               git changelog: false, poll: false, url: 'https://github.com/johnko/dwm.git'
               sh "cat Makefile | sed 's;nonexistant.mk;config.mk.freebsd;' >Makefile2"
               sh "mv Makefile2 Makefile"
               sh "make clean all"
+              archiveArtifacts artifacts: 'dwm', fingerprint: true
             }
           }
         }
