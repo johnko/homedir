@@ -15,23 +15,35 @@ pipeline {
           agent {
             kubernetes {
               cloud 'kubernetes'
+              inheritFrom 'root'
               namespace 'jenkinsagent'
             }
           }
           steps {
-            sh "echo 1a"
-            sh "sleep 300"
+            sh "apt update -y"
+            sh "apt install -y make gcc"
+            dir("build") {
+              git changelog: false, poll: false, url: 'https://github.com/johnko/dwm.git'
+              sh "make clean all"
+            }
+            sh "sleep 150"
           }
         }
         stage('1b') {
           agent {
             kubernetes {
               cloud 'kubernetes'
+              inheritFrom 'root'
               namespace 'jenkinsagent'
             }
           }
           steps {
-            sh "echo 1b"
+            sh "apt update -y"
+            sh "apt install -y make gcc"
+            dir("build") {
+              git changelog: false, poll: false, url: 'https://github.com/johnko/dwmsd.git'
+              sh "make clean all"
+            }
             sh "sleep 150"
           }
         }
@@ -41,12 +53,18 @@ pipeline {
       agent {
         kubernetes {
           cloud 'kubernetes'
+          inheritFrom 'root'
           namespace 'jenkinsagent'
         }
       }
       steps {
-        sh "date"
-        sh "sleep 300"
+        sh "apt update -y"
+        sh "apt install -y make gcc"
+        dir("build") {
+          git changelog: false, poll: false, url: 'https://github.com/johnko/dmenu.git'
+          sh "make clean all"
+        }
+        sh "sleep 150"
       }
     }
   }
