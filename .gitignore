@@ -91,3 +91,7 @@ virtualenv-*/
 .kube/config
 .kube/cache
 .kube/http-cache
+kind-cert.pfx
+kind-client.key
+kind-client.crt
+kind-ca.crt
