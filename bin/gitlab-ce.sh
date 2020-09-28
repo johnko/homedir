@@ -8,7 +8,7 @@ cd ${MY_TMP_CONTEXT}
 
 generate_selfsigned_cert() {
   if ! [ -e ./certificate.key ] && ! [ -e ./certificate.pem ]; then
-    openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout ./certificate.key -out ./certificate.pem -config ./csr.conf -extensions 'v3_req'
+    openssl req -x509 -nodes -days 182 -newkey rsa:2048 -keyout ./certificate.key -out ./certificate.pem -config ./csr.conf -extensions 'v3_req'
     openssl x509 -in ./certificate.pem -noout -text
   fi
 }
