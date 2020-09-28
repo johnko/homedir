@@ -53,6 +53,8 @@ test-new)
 test-ssl)
   docker-compose exec gitlab-runner curl -v https://gitlab.local/
   docker-compose exec gitlab-ce curl -v https://gitlab.local/
+  docker build -f alpine.Dockerfile -t runner-alpine:latest .
+  docker build -f ubuntu.Dockerfile -t runner-ubuntu:latest .
   docker run --rm --interactive --tty --network gitlab-ce_default runner-alpine:latest curl -v https://gitlab.local/
   docker run --rm --interactive --tty --network gitlab-ce_default runner-ubuntu:latest curl -v https://gitlab.local/
   ;;
