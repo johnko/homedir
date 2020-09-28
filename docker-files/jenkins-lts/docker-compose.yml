@@ -5,6 +5,8 @@ services:
     jenkins:
         container_name: jenkins-2.249.1
         image: jenkins/jenkins:2.249.1
+        networks:
+            kind: {}
         ports:
             - 127.0.0.1:8080:8080
             - 127.0.0.1:50000:50000
@@ -14,3 +16,8 @@ services:
 
 volumes:
     data:
+
+networks:
+    kind:
+        external: true
+        name: kind
