@@ -44,13 +44,12 @@ pipeline {
           }
           steps {
             sh "apt update -y"
-            sh "apt install -y make gcc libx11-dev"
+            sh "apt install -y make gcc libx11-dev libxinerama-dev"
             dir("build") {
               git changelog: false, poll: false, url: 'https://github.com/johnko/dwmsd.git'
-              sh "grep -v include Makefile >Makefile2"
-              sh "cat Makefile2 | sed 's;nonexistant.mk;;' >Makefile"
-              sh "rm Makefile2"
-              sh "make LDFLAGS=-lX11 clean all"
+              sh "cat Makefile | sed 's;nonexistant.mk;config.mk.freebsd;' >Makefile2"
+              sh "mv Makefile2 Makefile"
+              sh "make clean all"
               archiveArtifacts artifacts: 'dwmsd,dwmsc', fingerprint: true
             }
           }
