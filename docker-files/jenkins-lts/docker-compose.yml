@@ -3,8 +3,8 @@ version: "3.5"
 
 services:
     jenkins:
-        container_name: jenkins-2.107.1
-        image: jenkins/jenkins:2.107.1
+        container_name: jenkins-2.249.1
+        image: jenkins/jenkins:2.249.1
         ports:
             - 127.0.0.1:8080:8080
             - 127.0.0.1:50000:50000
