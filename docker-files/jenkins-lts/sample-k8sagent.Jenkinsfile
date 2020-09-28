@@ -19,11 +19,13 @@ pipeline {
         stage('1a') {
           steps {
             sh "echo 1a"
+            sh "sleep 300"
           }
         }
         stage('1b') {
           steps {
             sh "echo 1b"
+            sh "sleep 150"
           }
         }
       }
@@ -31,6 +33,7 @@ pipeline {
     stage('2') {
       steps {
         sh "date"
+        sh "sleep 300"
       }
     }
   }
