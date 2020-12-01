@@ -23,8 +23,11 @@ command -v python3.7 >/dev/null 2>&1 && PY_BIN="python3.7"
 
 echo "=>  Installing virtualenv..."
 if ! command -v virtualenv >/dev/null 2>&1 ; then
-  [ -n "${PIP_BIN}" ] && \
+  if [ -n "${PIP_BIN}" ] ; then
+    ${PIP_BIN} config set global.index-url https://pypi.org/simple 2>&1 | awk '{print "    "$0}'
+    ${PIP_BIN} config list 2>&1 | awk '{print "    "$0}'
     ${PIP_BIN} install virtualenv 2>&1 | awk '{print "    "$0}'
+  fi
 fi
 if ! command -v virtualenv >/dev/null 2>&1 ; then
   command -v easy_install >/dev/null 2>&1 && \
