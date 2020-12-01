@@ -54,28 +54,28 @@ done
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
 
 # Custom exports
-[ -f ~/.bash_exports ] && . ~/.bash_exports
+[ -f ~/.bash_exports ] && source ~/.bash_exports
 
 # Custom PS1 PS2 prompt
-[ -f ~/.bash_prompt ] && . ~/.bash_prompt
+[ -f ~/.bash_prompt ] && source ~/.bash_prompt
 
 # Custom PATH
-[ -f ~/.bash_path ] && . ~/.bash_path
+[ -f ~/.bash_path ] && source ~/.bash_path
 
 # Custom completion
-[ -f ~/.bash_completion ] && . ~/.bash_completion
+[ -f ~/.bash_completion ] && source ~/.bash_completion
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
-        . /usr/share/bash-completion/bash_completion
+        source /usr/share/bash-completion/bash_completion
     elif [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
+        source /etc/bash_completion
     fi
-    [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+    [ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
 fi
