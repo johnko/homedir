@@ -55,7 +55,7 @@ ${PIP_BIN} install --upgrade \
   jinjalint \
   ansible \
 2>&1 | awk '{print "    "$0}'
-echo "=>  Installion complete!"
+echo "=>  Installation complete!"
 
 echo "    To activate, run:"
 echo "        source ${VENV_FOLDER}/bin/activate"
