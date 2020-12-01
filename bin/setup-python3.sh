@@ -15,12 +15,9 @@ fi
 echo "=>  Detecting pip3, pip2 or pip..."
 # Last one wins
 command -v pip  >/dev/null 2>&1 && PIP_BIN="pip"
-command -v pip2 >/dev/null 2>&1 && PIP_BIN="pip2"
 command -v pip3 >/dev/null 2>&1 && PIP_BIN="pip3"
 # Last one wins
 command -v python    >/dev/null 2>&1 && PY_BIN="python"
-command -v python2   >/dev/null 2>&1 && PY_BIN="python2"
-command -v python2.7 >/dev/null 2>&1 && PY_BIN="python2.7"
 command -v python3   >/dev/null 2>&1 && PY_BIN="python3"
 command -v python3.7 >/dev/null 2>&1 && PY_BIN="python3.7"
 
