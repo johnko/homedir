@@ -38,7 +38,6 @@ func_brew_pkgs() {
     ruby
     rbenv
     go
-    python@2
     python@3
     jq
     wget
@@ -149,8 +148,8 @@ func_homebrew_install
 func_curl_install
 func_brew_pkgs
 func_zsh_install
-func_npm_pkgs
-func_gem_pkgs
+# func_npm_pkgs
+# func_gem_pkgs
 # func_atom_pkgs
 
 exit
@@ -306,17 +305,6 @@ For compilers to find sqlite you may need to set:
 For pkg-config to find sqlite you may need to set:
   export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
 
-==> python@2
-Pip and setuptools have been installed. To update them
-  pip install --upgrade pip setuptools
-
-You can install Python packages with
-  pip install <package>
-
-They will install into the site-package directory
-  /usr/local/lib/python2.7/site-packages
-
-See: https://docs.brew.sh/Homebrew-and-Python
 ==> tmux
 Example configuration has been installed to:
   /usr/local/opt/tmux/share/tmux
