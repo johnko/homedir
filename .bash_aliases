@@ -1,4 +1,6 @@
 alias g=git
+alias k=kubectl
+alias ka="kubectl -o wide"
 alias grep='grep --color=auto'
 alias fgrep='grep -F --color=auto'
 alias egrep='grep -E --color=auto'
