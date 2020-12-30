@@ -48,6 +48,7 @@ k8sagents)
     [ -e ./kind-client.pfx ] || openssl pkcs12 -export -out ./kind-client.pfx -inkey ./kind-client.key -in ./kind-client.crt -certfile ./kind-ca.crt
   fi
   kubectl apply -f ./k8s-role.yaml
+  kubectl apply -f ./k8s-rolebinding.yaml
   echo "==> Automation END"
   echo
   echo "==> Please open Jenkins > Manage Jenkins > Manage Nodes > Configure Clouds"
