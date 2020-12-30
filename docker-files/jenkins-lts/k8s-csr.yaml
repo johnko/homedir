@@ -5,10 +5,10 @@ metadata:
   name: jenkinsagent
 spec:
   groups:
-  - system:authenticated
+    - system:authenticated
   request: ${BASE64_CSR}
   usages:
-  - digital signature
-  - key encipherment
-  - server auth
-  - client auth
+    - digital signature
+    - key encipherment
+    - server auth
+    - client auth

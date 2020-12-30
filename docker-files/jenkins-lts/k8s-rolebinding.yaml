@@ -1,0 +1,14 @@
+# This file modified from https://medium.com/better-programming/k8s-tips-give-access-to-your-clusterwith-a-client-certificate-dfb3b71a76fe
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: jenkinsagent-rb
+  namespace: jenkinsagent
+subjects:
+  - kind: Group # Match Organization (O) in CSR
+    name: jenkinsagent-o
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: jenkinsagent-role
+  apiGroup: rbac.authorization.k8s.io

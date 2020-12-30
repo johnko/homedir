@@ -1,0 +1,13 @@
+# This file modified from https://medium.com/better-programming/k8s-tips-give-access-to-your-clusterwith-a-client-certificate-dfb3b71a76fe
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: jenkinsagent
+  name: jenkinsagent-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "services"]
+    verbs: ["create", "get", "update", "list", "delete"]
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["create", "get", "update", "list", "delete"]
