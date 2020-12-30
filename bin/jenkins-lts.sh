@@ -54,7 +54,7 @@ k8sagents)
   echo "==> Please open Jenkins > Manage Jenkins > Manage Nodes > Configure Clouds"
   echo
   echo "==> Kubernetes URL:"
-  echo "https://kindlocal-control-plane:6443"
+  echo "https://local-control-plane:6443"
   echo
   echo "==> Kubernetes server certificate key"
   cat ./kind-ca.crt
