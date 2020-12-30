@@ -67,6 +67,15 @@ k8sagents)
   echo
   echo "==> Jenkins URL:"
   echo "http://jenkins-2.249.1:8080"
+  echo
+  echo "==> Pod Template > Name:"
+  echo "root"
+  echo
+  echo "==> Pod Template > Run As User ID:"
+  echo "0"
+  echo
+  echo "==> Pod Template > Run As Group ID:"
+  echo "0"
 
   rm ./kind-client.key ./kind-client.crt ./kind-ca.crt ./kind-client.csr
   ;;
