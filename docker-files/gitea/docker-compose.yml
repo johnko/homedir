@@ -3,8 +3,8 @@ version: "3.5"
 
 services:
     postgres:
-        container_name: gitea-postgres-12.4
-        image: postgres:12.4
+        container_name: gitea-postgres-12.6
+        image: postgres:12.6
         environment:
             - POSTGRES_USER=gitea
             - POSTGRES_PASSWORD=gitea
@@ -13,8 +13,8 @@ services:
         volumes:
             - postgres:/var/lib/postgresql/data
     gitea:
-        container_name: gitea-app-1.12.4
-        image: gitea/gitea:1.12.4
+        container_name: gitea-app-1.13.6
+        image: gitea/gitea:1.13.6
         depends_on:
             - postgres
         environment:
