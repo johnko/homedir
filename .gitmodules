@@ -4,3 +4,6 @@
 [submodule "docker-files/dockprom"]
 	path = docker-files/dockprom
 	url = https://github.com/johnko/dockprom.git
+[submodule ".hammerspoon-shiftit"]
+	path = .hammerspoon-shiftit
+	url = https://github.com/johnko/hammerspoon-shiftit.git
