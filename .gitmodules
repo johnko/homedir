@@ -4,9 +4,3 @@
 [submodule "docker-files/dockprom"]
 	path = docker-files/dockprom
 	url = https://github.com/johnko/dockprom.git
-[submodule "fonts"]
-	path = fonts
-	url = https://github.com/johnko/fonts.git
-[submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = https://github.com/johnko/oh-my-zsh.git
