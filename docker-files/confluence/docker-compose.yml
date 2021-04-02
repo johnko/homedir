@@ -3,8 +3,8 @@ version: "3.5"
 
 services:
     confluence:
-        container_name: confluence-7.7.4
-        image: atlassian/confluence-server:7.7.4
+        container_name: confluence-7.11.2
+        image: atlassian/confluence-server:7.11.2
         ports:
             - 127.0.0.1:8090:8090
             - 127.0.0.1:8091:8091
