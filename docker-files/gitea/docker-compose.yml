@@ -5,6 +5,10 @@ services:
     postgres:
         container_name: gitea-postgres-12.6
         image: postgres:12.6
+        command: >
+            -c ssl=on
+            -c ssl_cert_file=/var/lib/postgresql/server.crt
+            -c ssl_key_file=/var/lib/postgresql/server.key
         environment:
             - POSTGRES_USER=gitea
             - POSTGRES_PASSWORD=gitea
@@ -12,6 +16,8 @@ services:
         restart: unless-stopped
         volumes:
             - postgres:/var/lib/postgresql/data
+            - ./pgsql-server.pem:/var/lib/postgresql/server.crt:ro
+            - ./pgsql-server.key:/var/lib/postgresql/server.key:ro
     gitea:
         container_name: gitea-app-1.13.6
         image: gitea/gitea:1.13.6
