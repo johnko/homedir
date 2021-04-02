@@ -7,3 +7,6 @@
 [submodule ".hammerspoon-shiftit"]
 	path = .hammerspoon-shiftit
 	url = https://github.com/johnko/hammerspoon-shiftit.git
+[submodule ".bash-git-prompt"]
+	path = .bash-git-prompt
+	url = https://github.com/johnko/bash-git-prompt.git
