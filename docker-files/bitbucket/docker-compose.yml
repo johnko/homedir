@@ -3,8 +3,8 @@ version: "3.5"
 
 services:
     bitbucket:
-        container_name: bitbucket-7.6.4
-        image: atlassian/bitbucket-server:7.6.4
+        container_name: bitbucket-7.11.2
+        image: atlassian/bitbucket-server:7.11.2
         ports:
             - 127.0.0.1:7990:7990
             - 127.0.0.1:7999:7999
