@@ -15,7 +15,7 @@ func_homebrew_install() {
   ## Homebrew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   # brew tap caskroom/cask
-  brew tap homebrew/cask
+  # brew tap homebrew/cask
 }
 
 ##########
@@ -66,7 +66,9 @@ func_cask_pkgs() {
     gimp
     google-chrome
     hammerspoon
+    signal
     spotify
+    steam
     vagrant
     virtualbox
     visual-studio-code
@@ -315,3 +317,7 @@ If the installation fails, retry after you enable it in:
 
 For more information, refer to vendor documentation or this Apple Technical Note:
   https://developer.apple.com/library/content/technotes/tn2459/_index.html
+
+##########
+
+sudo chown -R `whoami` /usr/local/Cellar /usr/local/Frameworks /usr/local/Homebrew /usr/local/bin /usr/local/etc /usr/local/etc/bash_completion.d /usr/local/include /usr/local/lib /usr/local/opt /usr/local/sbin /usr/local/share /usr/local/share/doc /usr/local/share/man /usr/local/share/man/man1 /usr/local/share/zsh /usr/local/share/zsh/site-functions /usr/local/var/homebrew/linked /usr/local/var/homebrew/locks /usr/local/Caskroom
