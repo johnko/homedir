@@ -69,6 +69,7 @@
 .Xauthority*
 .zcompdump-*
 .zoomus/
+.zsh_sessions/
 Applications/
 code/
 Desktop/
