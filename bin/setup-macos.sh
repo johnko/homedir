@@ -11,6 +11,13 @@ func_xcode_install() {
 
 ##########
 
+func_git_submodules() {
+  git submodule init
+  git submodule update
+}
+
+##########
+
 func_homebrew_install() {
   ## Homebrew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -150,6 +157,7 @@ func_cask_pkgs() {
 ##########
 
 func_xcode_install
+func_git_submodules
 func_homebrew_install
 func_curl_install
 func_brew_pkgs
