@@ -22,6 +22,7 @@ ms-toolsai.jupyter
 redhat.vscode-xml
 oderwat.indent-rainbow
 tomoyukim.vscode-mermaid-editor
+ms-vscode-remote.remote-containers
 "
 
 for ext in $EXTENSIONS; do
