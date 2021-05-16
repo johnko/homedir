@@ -73,6 +73,7 @@ func_cask_pkgs() {
     gimp
     google-chrome
     hammerspoon
+    kui
     signal
     spotify
     steam
