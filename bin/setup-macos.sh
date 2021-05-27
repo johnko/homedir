@@ -71,6 +71,7 @@ func_cask_pkgs() {
     docker
     firefox
     gimp
+    google-backup-and-sync
     google-chrome
     hammerspoon
     kui
