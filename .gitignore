@@ -19,6 +19,7 @@
 .docker/config.json
 .docker/contexts/
 .docker/daemon.json
+.docker/devenvironments
 .docker/run/
 .docker/scan/
 .DS_Store
@@ -77,7 +78,7 @@ Docs Authoring/
 Documents/
 Downloads/
 go/
-Google*Drive/
+Google*Drive*
 Library/
 Movies/
 Music/

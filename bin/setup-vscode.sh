@@ -2,9 +2,11 @@
 set -euo pipefail
 
 # MacOS
-brew install --cask visual-studio-code
+#brew install --cask visual-studio-code
 
-if [ ! -e /usr/local/bin/code ] ; then
+export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
+
+if ! which code ; then
   echo "!!  Failed to install visual-studio-code"
   exit 1
 fi
@@ -23,11 +25,12 @@ redhat.vscode-xml
 oderwat.indent-rainbow
 tomoyukim.vscode-mermaid-editor
 ms-vscode-remote.remote-containers
+hashicorp.terraform
 "
 
 for ext in $EXTENSIONS; do
   echo "=>  Installing extension: $ext"
-  /usr/local/bin/code --install-extension $ext
+  code --install-extension $ext
 done
 
 echo "=>  Installation complete!"
