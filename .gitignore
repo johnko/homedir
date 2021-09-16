@@ -29,7 +29,7 @@
 .kube/config
 .kube/http-cache/
 .lesshst
-.local/share/recently-used.xbel
+.local/share/
 .localized
 .npm/anonymous-cli-metrics.json
 .npm/index-v5/
