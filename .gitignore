@@ -12,6 +12,7 @@
 .config/configstore/
 .config/gcloud/
 .config/gtk*/
+.config/pip/
 .cups/lpoptions
 .docker/.buildNodeID
 .docker/.token_seed*
