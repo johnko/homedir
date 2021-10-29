@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [ -e "$HOME/Library" ]; then
+  export PATH=$PATH:$HOME/Library/Python/3.8/bin
+fi
+
 # Debian / Ubuntu
 if command -v apt-get >/dev/null 2>&1 ; then
   echo "=>  Detected apt-get..."

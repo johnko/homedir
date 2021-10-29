@@ -2,5 +2,9 @@ export PATH="/usr/local/bin:${PATH}"
 export PATH="/usr/local/opt/curl/bin:${PATH}"
 export PATH="/usr/local/opt/openssl/bin:${PATH}"
 
+if [ -e "$HOME/Library" ]; then
+  export PATH=$PATH:$HOME/Library/Python/3.8/bin
+fi
+
 export GOPATH="${HOME}/go"
 # "${GOROOT}/bin:${GOPATH}/bin:/usr/local/go/bin"
