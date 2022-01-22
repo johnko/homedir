@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [ -e "$HOME/Library" ]; then
+if [            -e "$HOME/Library/Python/3.8/bin" ]; then
   export PATH=$PATH:$HOME/Library/Python/3.8/bin
 fi
 
