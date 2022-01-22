@@ -6,4 +6,4 @@ set -eux
 #   ssh-keygen -b 4096 -t rsa -N '' -f "${OUTFILE}"
 # fi
 
-ssh-keygen -b 4096 -t rsa
+ssh-keygen -b 4096 -t rsa -C "$( whoami )@$( date +%y%m%dT%H%M%S)"
