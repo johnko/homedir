@@ -38,7 +38,6 @@ func_brew_pkgs() {
   ## Brew packages
   BREW_PACKAGES="
     bash-completion
-    bash-git-prompt
     docker-compose-completion
     docker-credential-helper
     git
@@ -57,6 +56,7 @@ func_brew_pkgs() {
     wget
     zsh-syntax-highlighting
     "
+    # bash-git-prompt
     # docker
     # npm
     # rbenv
