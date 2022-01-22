@@ -47,6 +47,8 @@ fi
 [ -e ~/.ssh/config ] && chmod 600 ~/.ssh/config
 [ -e ~/.ssh/id_rsa ] && chmod 600 ~/.ssh/id_rsa
 [ -e ~/.ssh/id_rsa.pub ] && chmod 600 ~/.ssh/id_rsa.pub
+[ -e ~/.ssh/id_ed25519 ] && chmod 600 ~/.ssh/id_ed25519
+[ -e ~/.ssh/id_ed25519.pub ] && chmod 600 ~/.ssh/id_ed25519.pub
 [ -e ~/.ssh/known_hosts ] && chmod 600 ~/.ssh/known_hosts
 
 for i in ~/.vim/backups ~/.vim/swaps ~/.vim/undo; do
@@ -57,6 +59,7 @@ done
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 
 # Custom exports
