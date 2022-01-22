@@ -1,8 +1,11 @@
 export PATH="/usr/local/bin:${PATH}"
-export PATH="/usr/local/opt/curl/bin:${PATH}"
-export PATH="/usr/local/opt/openssl/bin:${PATH}"
-
-if [ -e "$HOME/Library" ]; then
+if [ -e "/usr/local/opt/curl/bin" ]; then
+  export PATH="/usr/local/opt/curl/bin:${PATH}"
+fi
+if [ -e "/usr/local/opt/openssl/bin" ]; then
+  export PATH="/usr/local/opt/openssl/bin:${PATH}"
+fi
+if [ -e "$HOME/Library/Python/3.8/bin" ]; then
   export PATH=$PATH:$HOME/Library/Python/3.8/bin
 fi
 
