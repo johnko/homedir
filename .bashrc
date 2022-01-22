@@ -8,6 +8,9 @@ case $- in
     *) return ;;
 esac
 
+# set umask in case .profile didn't
+umask 0077
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
