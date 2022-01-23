@@ -16,8 +16,6 @@ if [ -e /Users ]; then
   alias zpl="zpool list -oname,size,alloc,free,cap,dedup,health,frag,ashift,freeing,expandsz,expand,replace,readonly,altroot"
   alias zs="zpool status"
   alias zio="zpool iostat"
-  
-  alias code='open -a "Visual Studio Code"'
 else
   alias ls='ls --color=auto'
   # Add an "alert" alias for long running commands.  Use like so:
