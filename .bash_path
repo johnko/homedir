@@ -6,7 +6,7 @@ fi
 if [       -e "/usr/local/opt/openssl/bin" ]; then
   export PATH="/usr/local/opt/openssl/bin:${PATH}"
 fi
-if [.           -e "$HOME/Library/Python/3.8/bin" ]; then
+if [            -e "$HOME/Library/Python/3.8/bin" ]; then
   export PATH=$PATH:$HOME/Library/Python/3.8/bin
 fi
 
