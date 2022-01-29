@@ -18,4 +18,7 @@ PROMPT='$(kube_ps1)'$PROMPT
 ##########
 source $HOME/.zsh/zsh-colored-man-pages/colored-man-pages.plugin.zsh
 ##########
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
+[ -f ~/.bash_exports ] && source ~/.bash_exports
+[ -f ~/.bash_path ] && source ~/.bash_path
 
