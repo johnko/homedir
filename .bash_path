@@ -20,4 +20,5 @@ if [             -e "/opt/homebrew/bin" ]; then
 fi
 
 export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 # "$GOROOT/bin:$GOPATH/bin:/usr/local/go/bin"
