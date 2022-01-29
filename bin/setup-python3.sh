@@ -51,6 +51,7 @@ ${PIP_BIN} install --upgrade \
   yamllint \
   yq \
   flake8 \
+  autopep8 \
   nose \
   jinjalint \
   ansible \
