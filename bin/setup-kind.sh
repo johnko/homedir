@@ -11,11 +11,11 @@ if ! which docker ; then
   exit 1
 fi
 
-
 export GOPATH="$HOME/go"
-go get sigs.k8s.io/kind
-
 export PATH="$PATH:$GOPATH/bin"
+
+go get sigs.k8s.io/kind
+go get helm.sh/helm/v3
 
 kind create cluster
 
