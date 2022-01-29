@@ -6,11 +6,17 @@ fi
 if [       -e "/usr/local/opt/openssl/bin" ]; then
   export PATH="/usr/local/opt/openssl/bin:${PATH}"
 fi
-if [            -e "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin" ]; then
-  export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
+if [             -e "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]; then
+  export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 fi
-if [            -e "$HOME/Library/Python/3.8/bin" ]; then
-  export PATH=$PATH:$HOME/Library/Python/3.8/bin
+if [             -e "$HOME/Library/Python/3.8/bin" ]; then
+  export PATH="$PATH:$HOME/Library/Python/3.8/bin"
+fi
+if [             -e "$HOME/bin" ]; then
+  export PATH="$PATH:$HOME/bin"
+fi
+if [             -e "/opt/homebrew/bin" ]; then
+  export PATH="$PATH:/opt/homebrew/bin"
 fi
 
 export GOPATH="${HOME}/go"
