@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # MacOS
-#brew install --cask visual-studio-code
+# brew install --cask visual-studio-code
 
 export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
 
@@ -20,13 +20,13 @@ redhat.vscode-yaml
 ms-azuretools.vscode-docker
 golang.go
 ms-python.python
-ms-toolsai.jupyter
 redhat.vscode-xml
-oderwat.indent-rainbow
-tomoyukim.vscode-mermaid-editor
 ms-vscode-remote.remote-containers
 hashicorp.terraform
+oderwat.indent-rainbow
 "
+# ms-toolsai.jupyter
+# tomoyukim.vscode-mermaid-editor
 
 for ext in $EXTENSIONS; do
   echo "=>  Installing extension: $ext"
