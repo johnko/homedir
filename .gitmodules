@@ -4,3 +4,6 @@
 [submodule ".zsh/pure"]
 	path = .zsh/pure
 	url = https://github.com/johnko/pure.git
+[submodule ".zsh/zsh-colored-man-pages"]
+	path = .zsh/zsh-colored-man-pages
+	url = https://github.com/johnko/zsh-colored-man-pages.git
