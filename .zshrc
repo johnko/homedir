@@ -1,4 +1,6 @@
 ##########
+umask 0077
+##########
 # use zsh pure theme
 fpath+=/Users/jon/.zsh/pure
 autoload -U promptinit; promptinit
