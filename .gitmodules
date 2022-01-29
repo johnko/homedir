@@ -7,3 +7,6 @@
 [submodule ".zsh/zsh-colored-man-pages"]
 	path = .zsh/zsh-colored-man-pages
 	url = https://github.com/johnko/zsh-colored-man-pages.git
+[submodule ".zsh/zsh-command-time"]
+	path = .zsh/zsh-command-time
+	url = https://github.com/johnko/zsh-command-time.git

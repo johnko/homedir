@@ -7,4 +7,5 @@ zstyle :prompt:pure:prompt:success color green
 prompt pure
 
 source $HOME/.zsh/zsh-colored-man-pages/colored-man-pages.plugin.zsh
+source $HOME/.zsh/zsh-command-time/command-time.plugin.zsh
 
