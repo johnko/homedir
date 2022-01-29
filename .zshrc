@@ -20,6 +20,7 @@ for i in ~/.vim/backups ~/.vim/swaps ~/.vim/undo; do
 done
 ##########
 # use zsh pure theme
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 fpath+=/Users/jon/.zsh/pure
 autoload -U promptinit; promptinit
 zstyle :prompt:pure:prompt:success color green
