@@ -10,12 +10,10 @@ if [ -e /Users ]; then
   alias ls="ls -G"
   alias free="top -l 1 -s 0 | grep PhysMem | sed 's, (.*),,'"
   alias iftop="sudo /usr/local/sbin/iftop -nBP"
-  alias zl="zfs list -oname,lused,usedds,usedchild,usedsnap,used,avail,refer,encryption,mountpoint,mounted,canmount"
-  alias zll="zfs list -oname,dedup,compress,compressratio,checksum,sync,quota,copies,atime,devices,exec,rdonly,setuid,xattr,aclinherit,casesensitivity,normalization"
-  alias zls="zfs list -t snap -oname,used,avail,refer"
-  alias zpl="zpool list -oname,size,alloc,free,cap,dedup,health,frag,ashift,freeing,expandsz,expand,replace,readonly,altroot"
-  alias zs="zpool status"
-  alias zio="zpool iostat"
+  ppgrep() {
+    # Usage: ppgrep bash
+    pgrep "$@" | xargs --no-run-if-empty ps fp
+  }
 else
   alias ls='ls --color=auto'
   # Add an "alert" alias for long running commands.  Use like so:
@@ -39,6 +37,10 @@ else
     for i in ~/.ssh/id_*.pub; do
       [ -e "${i}" ] && cat "${i}" | xsel --clipboard
     done
+  }
+  ppgrep() {
+    # Usage: ppgrep bash
+    pgrep "$@" | xargs --no-run-if-empty ps fp
   }
 fi
 
@@ -87,16 +89,11 @@ firstlastline() {
 json() {
   if [ -t 0 ]; then
     # has argument
-    python -mjson.tool <<<"$*" | pygmentize -l javascript
+    python -m json.tool <<<"$*" | pygmentize -l javascript
   else
     # is piped
-    python -mjson.tool | pygmentize -l javascript
+    python -m json.tool | pygmentize -l javascript
   fi
-}
-
-# Usage: ppgrep bash
-ppgrep() {
-  pgrep "$@" | xargs --no-run-if-empty ps fp
 }
 
 alias d=docker
