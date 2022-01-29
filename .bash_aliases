@@ -12,7 +12,7 @@ if [ -e /Users ]; then
   alias iftop="sudo /usr/local/sbin/iftop -nBP"
   ppgrep() {
     # Usage: ppgrep bash
-    pgrep "$@" | xargs --no-run-if-empty ps fp
+    pgrep "$@" | xargs ps
   }
 else
   alias ls='ls --color=auto'
