@@ -11,6 +11,9 @@ ZSH_COMMAND_TIME_MSG="took %s"
 ZSH_COMMAND_TIME_COLOR="cyan"
 source $HOME/.zsh/zsh-command-time/command-time.plugin.zsh
 ##########
+source $HOME/.zsh/kube-ps1/kube-ps1.sh
+PROMPT='$(kube_ps1)'$PROMPT
+##########
 source $HOME/.zsh/zsh-colored-man-pages/colored-man-pages.plugin.zsh
 ##########
 

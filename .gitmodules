@@ -10,3 +10,6 @@
 [submodule ".zsh/zsh-command-time"]
 	path = .zsh/zsh-command-time
 	url = https://github.com/johnko/zsh-command-time.git
+[submodule ".zsh/kube-ps1"]
+	path = .zsh/kube-ps1
+	url = https://github.com/johnko/kube-ps1.git
