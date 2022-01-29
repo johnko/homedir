@@ -1,10 +1,10 @@
-export PATH="/usr/local/bin:${PATH}"
+export PATH="/usr/local/bin:$PATH"
 
 if [       -e "/usr/local/opt/curl/bin" ]; then
-  export PATH="/usr/local/opt/curl/bin:${PATH}"
+  export PATH="/usr/local/opt/curl/bin:$PATH"
 fi
 if [       -e "/usr/local/opt/openssl/bin" ]; then
-  export PATH="/usr/local/opt/openssl/bin:${PATH}"
+  export PATH="/usr/local/opt/openssl/bin:$PATH"
 fi
 if [             -e "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]; then
   export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -19,5 +19,5 @@ if [             -e "/opt/homebrew/bin" ]; then
   export PATH="$PATH:/opt/homebrew/bin"
 fi
 
-export GOPATH="${HOME}/go"
-# "${GOROOT}/bin:${GOPATH}/bin:/usr/local/go/bin"
+export GOPATH="$HOME/go"
+# "$GOROOT/bin:$GOPATH/bin:/usr/local/go/bin"
