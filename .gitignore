@@ -52,7 +52,6 @@
 .sqlcl/
 .sqldeveloper/
 .ssh/id_*
-.ssh/id_rsa
 .ssh/known_hosts*
 .subversion/auth/
 .subversion/config
