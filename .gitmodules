@@ -1,12 +1,3 @@
-[submodule "docker-files/dockelk"]
-	path = docker-files/dockelk
-	url = https://github.com/johnko/dockelk.git
-[submodule "docker-files/dockprom"]
-	path = docker-files/dockprom
-	url = https://github.com/johnko/dockprom.git
-[submodule ".hammerspoon-shiftit"]
-	path = .hammerspoon-shiftit
-	url = https://github.com/johnko/hammerspoon-shiftit.git
 [submodule ".bash-git-prompt"]
 	path = .bash-git-prompt
 	url = https://github.com/johnko/bash-git-prompt.git
