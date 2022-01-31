@@ -21,7 +21,7 @@ done
 ##########
 # use zsh pure theme
 export VIRTUAL_ENV_DISABLE_PROMPT=12
-fpath+=/Users/jon/.zsh/pure
+fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 zstyle :prompt:pure:prompt:success color green
 prompt pure
