@@ -57,6 +57,7 @@
 .subversion/config
 .subversion/README.txt
 .subversion/servers
+.terraform.d/
 .Trash/
 .vagrant.d/boxes/
 .vagrant.d/data/
@@ -89,5 +90,7 @@ Music/
 Pictures/
 Public/
 Sites/
+terraform
+terragrunt
 venv*/
 VirtualBox VMs/
