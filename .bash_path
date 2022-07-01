@@ -13,6 +13,13 @@
 # add Homebrew openssl early in PATH
 [             -e "/usr/local/opt/openssl/bin" ] \
   && export PATH="/usr/local/opt/openssl/bin:$PATH"
+[             -e "/opt/homebrew/opt/openssl@3/bin" ] \
+  && export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+
+
+# add rbenv shims early in PATH
+[             -e "${HOME}/.rbenv/shims" ] \
+  && export PATH="${HOME}/.rbenv/shims:$PATH"
 
 
 # add VS `code` CLI late in PATH
