@@ -175,14 +175,39 @@ repos-fetchorigin() {
       else
         local cmdfetch="git fetch ${remoteorigin} ${remotebranch}"
         echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__GREEN}* Running: ${__PURPLE}${cmdfetch}${__RESET}"
-        ${cmdfetch} 2>&1 | awk "{print \"        \"\$0}"
-        if [ "${remotebranch}" == "${branch}" ]; then
+        eval ${cmdfetch} 2>&1 | awk "{print \"        \"\$0}"
+        if [ "${remotebranch}" = "${branch}" ]; then
           local cmdmerge="git merge --ff-only ${remoteorigin}/${remotebranch}"
           echo "    ${__GREEN}* Running: ${__PURPLE}${cmdmerge}${__RESET}"
-          ${cmdmerge} 2>&1 | awk "{print \"        \"\$0}"
+          eval ${cmdmerge} 2>&1 | awk "{print \"        \"\$0}"
         fi
       fi
       popd >/dev/null
     fi
   done
+}
+
+aws-ssm() {
+  ec2name="$1"
+  aws ssm start-session --target $(aws ec2 describe-instances --filters '[{"Name":"tag:Name","Values":["'$ec2name'"]},{"Name":"instance-state-name","Values":["running"]}]' --query "Reservations[0].Instances[0].InstanceId" --output text)
+}
+
+helmtemplate() {
+  helm template -f $1 -f ~/test-secrets-template.yaml -n$2 $3 .
+}
+helmvalidate() {
+  helm template -f $1 -f ~/test-secrets-template.yaml -n$2 $3 . | kubectl apply --dry-run=client -f -
+}
+helmdryrun() {
+  helm upgrade --atomic --dry-run -f $1 -n$2 $3 .
+}
+kubectldryrun() {
+  kubectl apply --dry-run=client -f -
+}
+
+monitordual() {
+  displayplacer "id:53DE945A-17B7-4AD0-ACDA-F82E148A9643 res:3840x2160 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:1C5F8DFC-A0BB-48EE-803B-72D74FCF9DB4 res:3840x2160 hz:30 color_depth:8 scaling:off origin:(-3840,0) degree:0"
+}
+monitortriple() {
+  displayplacer "id:53DE945A-17B7-4AD0-ACDA-F82E148A9643 res:3840x2160 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:1C5F8DFC-A0BB-48EE-803B-72D74FCF9DB4 res:3840x2160 hz:30 color_depth:8 scaling:off origin:(-3840,0) degree:0" "id:37D8832A-2D66-02CA-B9F7-8F30A301B230 res:1800x1169 hz:120 color_depth:8 scaling:on origin:(-5640,0) degree:0"
 }
