@@ -1,4 +1,4 @@
-alias g=git
+alias g="git --no-pager"
 alias k=kubectl
 alias ka="kubectl -o wide"
 alias grep='grep --color=auto'
@@ -56,13 +56,13 @@ alias rsynct="rsync -virthlmP --exclude-from=${HOME}/.rsync_exclude"
 # Linux 'which' doesn't have -s so we redirect output to /dev/null
 if which git >/dev/null 2>&1; then
   # Use Git’s colored diff when available
-  diff() {
+  difff() {
     if [ -z "${1}" ]; then
-      git diff --ignore-space-change
+      git --no-pager diff --ignore-space-change
     elif [ -z "${2}" ]; then
-      git diff --ignore-space-change "$@"
+      git --no-pager diff --ignore-space-change "$@"
     else
-      git diff --no-index --ignore-space-change "$@"
+      git --no-pager diff --no-index --ignore-space-change "$@"
     fi
   }
 fi

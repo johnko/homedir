@@ -11,8 +11,6 @@ if ! which docker ; then
   exit 1
 fi
 
-docker ps
-
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
