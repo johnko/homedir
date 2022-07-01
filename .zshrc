@@ -40,3 +40,8 @@ source $HOME/.zsh/zsh-colored-man-pages/colored-man-pages.plugin.zsh
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_exports ] && source ~/.bash_exports
 [ -f ~/.bash_path ] && source ~/.bash_path
+##########
+export NVM_DIR="$HOME/.nvm"
+[ -e $NVM_DIR ] || mkdir -p $NVM_DIR
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
