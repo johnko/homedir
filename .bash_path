@@ -33,8 +33,9 @@
 
 
 # add Homebrew for M1 late in path
-[                   -e "/opt/homebrew/bin" ] \
-  && export PATH="$PATH:/opt/homebrew/bin"
+# Set PATH, MANPATH, etc., for Homebrew.
+[        -e "/opt/homebrew/bin/brew" ] \
+  && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 # add go bin late in PATH
