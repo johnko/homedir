@@ -1,6 +1,7 @@
 [alias]
 	# View the SHA, description, and history graph of the latest 20 commits
-	ll = log --pretty=oneline -n 20 --graph
+	lll = log --pretty=oneline -n 20 --graph
+	ll = log -n 20 --graph --oneline --decorate --branches --tags
 	# View latest 20 with short hash and tags
 	l = log --graph --oneline --decorate --branches --tags
 	# View the current working tree status using the short format
@@ -18,6 +19,10 @@
 	# Switch to a branch, creating it if necessary
 	go = checkout -B
 	co = checkout
+	# prune remote
+	rpo = remote prune origin
+	# delete branch
+	bd = branch -D
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
 	branches = branch -a
@@ -79,4 +84,13 @@
 
 [init]
 	defaultBranch = main
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
