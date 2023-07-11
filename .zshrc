@@ -1,6 +1,9 @@
 ##########
 umask 0077
 ##########
+# enable Ctrl+A, Ctrl+E, Ctrl+R, etc, shortcuts again in zsh sub shells https://unix.stackexchange.com/a/574740
+bindkey -e
+##########
 [ ! -e ~/.ssh ] && install -d -m 700 ~/.ssh
 if [ -e ~/.ssh/config ]; then
   grep -q "HashKnownHosts" ~/.ssh/config || printf -- "HashKnownHosts no\n" >> ~/.ssh/config
@@ -45,3 +48,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -e $NVM_DIR ] || mkdir -p $NVM_DIR
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+##########
+export GPG_TTY=$(tty)
+##########
+# kubectl completion
+source <(kubectl completion zsh)
