@@ -12,18 +12,41 @@ if ! which code ; then
 fi
 
 EXTENSIONS="
-ms-vsliveshare.vsliveshare-pack
+docsmsft.docs-article-templates
 docsmsft.docs-authoring-pack
+docsmsft.docs-build
+docsmsft.docs-images
+docsmsft.docs-linting
+docsmsft.docs-markdown
+docsmsft.docs-metadata
+docsmsft.docs-preview
+docsmsft.docs-scaffolding
+docsmsft.docs-yaml
+golang.go
+Gruntfuggly.todo-tree
+hashicorp.hcl
+hashicorp.sentinel
+hashicorp.terraform
+IBM.output-colorizer
+johnpapa.vscode-peacock
+ms-azuretools.vscode-docker
 ms-kubernetes-tools.kind-vscode
 ms-kubernetes-tools.vscode-kubernetes-tools
-redhat.vscode-yaml
-ms-azuretools.vscode-docker
-golang.go
+ms-ossdata.vscode-postgresql
+ms-python.black-formatter
+ms-python.isort
 ms-python.python
-redhat.vscode-xml
+ms-python.vscode-pylance
 ms-vscode-remote.remote-containers
-hashicorp.terraform
+ms-vscode.hexeditor
+ms-vscode.makefile-tools
+ms-vsliveshare.vsliveshare
+ms-vsliveshare.vsliveshare-pack
+msjsdiag.vscode-react-native
 oderwat.indent-rainbow
+redhat.ansible
+redhat.vscode-xml
+redhat.vscode-yaml
 "
 # ms-toolsai.jupyter
 # tomoyukim.vscode-mermaid-editor
