@@ -50,11 +50,13 @@ export __RESET
 export __ROOT
 
 export __USER="\[${__GREEN}\]\u"
+export __USER=""
 if [ "$(whoami)" = "root" ]; then
   export __USER="\[${__ROOT}\]\u"
 fi
 export __HOST="\[${__BLUE}\]@\[${__CYAN}\]\h"
-export __DIR="\[${__BLUE}\]:\[${__YELLOW}\]\w\[${__RESET}\]"
+export __HOST="\[${__CYAN}\]$(kubectl config current-context 2> /dev/null)\[${__WHITE}\]:"
+export __DIR="\[${__YELLOW}\]\w\[${__RESET}\]"
 export __DATE="\[${__PURPLE}\]\D{%Y-%m-%d %H:%M:%S %Z%z}"
 export __DEFAULT1="\[${__PURPLE}\]"
 export __DEFAULT2="\[${__YELLOW}\]"
