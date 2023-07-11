@@ -51,6 +51,12 @@ export NVM_DIR="$HOME/.nvm"
 ##########
 export GPG_TTY=$(tty)
 ##########
+RPROMPT='%D{%F %T}'
+TMOUT=1
+TRAPALRM() {
+  zle reset-prompt
+}
+##########
 # kubectl completion
 autoload -U +X compinit && compinit
 source <(kubectl completion zsh)
