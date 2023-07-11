@@ -5,6 +5,7 @@ alias tf=terraform
 alias grep='grep --color=auto'
 alias fgrep='grep -F --color=auto'
 alias egrep='grep -E --color=auto'
+alias history='history -i'
 
 # MacOs aliases
 if [ -e /Users ]; then
@@ -193,10 +194,10 @@ aws-ssm() {
 }
 
 helmtemplate() {
-  helm template -f $1 -f ~/test-secrets-template.yaml -n$2 $3 .
+  helm template --atomic -f $1 -f ~/test-secrets-template.yaml -n$2 $3 .
 }
 helmvalidate() {
-  helm template -f $1 -f ~/test-secrets-template.yaml -n$2 $3 . | kubectl apply --dry-run=client -f -
+  helm template --atomic -f $1 -f ~/test-secrets-template.yaml -n$2 $3 . | kubectl apply --dry-run=client -f -
 }
 helmdryrun() {
   helm upgrade --atomic --dry-run -f $1 -n$2 $3 .
@@ -204,10 +205,17 @@ helmdryrun() {
 kubectldryrun() {
   kubectl apply --dry-run=client -f -
 }
-
-monitordual() {
-  displayplacer "id:53DE945A-17B7-4AD0-ACDA-F82E148A9643 res:3840x2160 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:1C5F8DFC-A0BB-48EE-803B-72D74FCF9DB4 res:3840x2160 hz:30 color_depth:8 scaling:off origin:(-3840,0) degree:0"
+kubectlpermissions() {
+  kubectl auth can-i --list --namespace $1
 }
-monitortriple() {
-  displayplacer "id:53DE945A-17B7-4AD0-ACDA-F82E148A9643 res:3840x2160 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:1C5F8DFC-A0BB-48EE-803B-72D74FCF9DB4 res:3840x2160 hz:30 color_depth:8 scaling:off origin:(-3840,0) degree:0" "id:37D8832A-2D66-02CA-B9F7-8F30A301B230 res:1800x1169 hz:120 color_depth:8 scaling:on origin:(-5640,0) degree:0"
+kubectlnodeupgradestuckpods() {
+  for i in $( kubectl get node | grep SchedulingDisabled | awk -F. '{print $1}' ); do kubectl get pod -A -o wide | grep $i | grep -v Completed ; done
+}
+kubectlnodeupgraderollstrategy() {
+  kubectl get deployment -A -o yaml | grep -E '(^    name:|maxUnavailable:|maxSurge:|nodes.k8s|replicas:)'
+  kubectl get pdb -A -o yaml | grep -E '(^    name:|minAvailable:|expectedPods:|currentHealthy:|desiredHealthy:|disruptionsAllowed:)'
+  kubectl get hpa -A -o yaml | grep -E '(^    name:|minReplicas:|maxReplicas:|^      name:    currentReplicas:|    desiredReplicas:)'
+}
+kubectlnodezone() {
+  kubectl get node -o yaml | grep -E '^    name:|topology.kubernetes.io/zone:|labels:|^  metadata:'
 }
