@@ -12,7 +12,6 @@ if ! which code ; then
 fi
 
 EXTENSIONS="
-docsmsft.docs-article-templates
 docsmsft.docs-authoring-pack
 docsmsft.docs-build
 docsmsft.docs-images
@@ -36,12 +35,9 @@ ms-ossdata.vscode-postgresql
 ms-python.black-formatter
 ms-python.isort
 ms-python.python
-ms-python.vscode-pylance
 ms-vscode-remote.remote-containers
 ms-vscode.hexeditor
 ms-vscode.makefile-tools
-ms-vsliveshare.vsliveshare
-ms-vsliveshare.vsliveshare-pack
 msjsdiag.vscode-react-native
 oderwat.indent-rainbow
 redhat.ansible
