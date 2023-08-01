@@ -2,11 +2,13 @@
 
 # macOS Apps
 cask "1password"
-cask "brave-browser"
 cask "cloudflare-warp"
+cask "rectangle"
+
+# Web Browsers
+cask "brave-browser"
 cask "firefox"
 cask "google-chrome"
-cask "rectangle"
 
 # Cloud / AWS
 brew "aws-vault"
