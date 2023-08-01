@@ -1,6 +1,14 @@
 # brew bundle
 
-# Cloud / AWS / GCP
+# macOS Apps
+cask "1password"
+cask "brave-browser"
+cask "cloudflare-warp"
+cask "firefox"
+cask "google-chrome"
+cask "rectangle"
+
+# Cloud / AWS
 brew "aws-vault"
 brew "awscli"
 brew "terraform"
