@@ -12,16 +12,18 @@ brew "jq"
 brew "tmux"
 brew "wget"
 brew "xz"
+brew "ykman"
 brew "yq"
 
 # Docker / k8s
-brew "docker-compose"
+cask "docker"
 brew "helm"
 brew "k9s"
 brew "kind"
-brew "kubernetes-cli"
+brew "kubernetes-cli", args: ["overwrite"]
 
 # Dev
+cask "visual-studio-code"
 brew "go"
 brew "node"
 brew "nvm"
@@ -30,7 +32,6 @@ brew "ruby-build"
 brew "ruby"
 brew "sqlfluff"
 brew "watchman"
-brew "ykman"
 
 # VS Code extensions
 vscode "docsmsft.docs-authoring-pack"
