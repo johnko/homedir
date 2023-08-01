@@ -80,4 +80,4 @@ vscode "redhat.vscode-yaml"
 cask "via"
 
 # Lab / Virtualization
-cask "virtualbox"
+cask "virtualbox" if Hardware::CPU.intel?
