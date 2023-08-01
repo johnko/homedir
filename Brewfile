@@ -78,3 +78,6 @@ vscode "redhat.vscode-yaml"
 
 # Keyboard / QMK / VIA
 cask "via"
+
+# Lab / Virtualization
+cask "virtualbox"
