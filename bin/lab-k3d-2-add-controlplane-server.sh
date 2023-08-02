@@ -12,6 +12,5 @@ k3d node create newserver \
   --role server \
   --k3s-arg "--advertise-address=$IP_ADDRESS@server:1" \
   --k3s-arg "--tls-san=$IP_ADDRESS@server:1" \
-  --port "6443:6443@server:1:direct" \
   --token $TOKEN \
   --wait
