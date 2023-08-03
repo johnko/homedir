@@ -24,7 +24,7 @@ else
       netplan apply
     elif [ "reboot" = "$ACTION" ]; then
       echo "[healthcheck] starting reboot..."
-      # reboot
+      reboot
     fi
   fi
 fi
