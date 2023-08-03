@@ -1,6 +1,5 @@
 # set up ssh user name and path to python3
 [ubuntu:vars]
-ansible_become=yes
 ansible_become_method=sudo
 ansible_python_interpreter='/usr/bin/env python3'
 ansible_user=lab

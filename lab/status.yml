@@ -1,0 +1,25 @@
+# https://iam-j.github.io/iac/ansible-machine-uptime/
+# https://stackoverflow.com/questions/74318579/how-to-calculate-ansible-uptime-seconds-and-output-this-in-os-csv
+
+- hosts: all
+  become: false
+  gather_facts: false
+  tasks:
+    - name: Show hostname for sanity check (or just use -v flag for verbose)
+      command: hostname
+      register: hostname
+
+    # - debug: var=hostname.stdout
+
+    - name: Check uptime seconds
+      shell: cut -d ' ' -f1 /proc/uptime
+      register: UPTIME_SECONDS
+
+    - name: Set fact for number of days
+      set_fact:
+        uptime_days: "{{ ( UPTIME_SECONDS.stdout | int / 86400 ) | round(0) }}"
+
+    - name: Report hosts not rebooted in 30+ days
+      debug:
+        msg: "Host `{{inventory_hostname}}` (aka `{{hostname.stdout}}`) has been up for {{uptime_days}} days"
+      when: (uptime_days | int) >= 30
