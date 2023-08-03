@@ -49,13 +49,12 @@ echo "=>  Installing python development tools..."
 ${PIP_BIN} install --upgrade \
   pygments \
   yamllint \
-  yq \
   flake8 \
   autopep8 \
+  black \
   nose \
   jinjalint \
   ansible \
-  awscli \
 2>&1 | awk '{print "    "$0}'
 echo "=>  Installation complete!"
 
