@@ -9,4 +9,6 @@ For Wi-Fi to work, may need to [reload the kernel module](https://ubuntuforums.o
 ```bash
 sudo modprobe r8723bs
 sudo netplan apply
+# check ip
+sudo netplan ip leases wlan0
 ```
