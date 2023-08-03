@@ -12,3 +12,12 @@ sudo netplan apply
 # check ip
 sudo netplan ip leases wlan0
 ```
+
+You can add aliases by adding this under the `wlan0` property in `/etc/netplan/00-installer-config-wifi.yaml`:
+
+```yml
+      addresses:
+        - 192.168.2.231/24:
+            lifetime: 0
+            label: "wlan0:0"
+```
