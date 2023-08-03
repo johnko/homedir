@@ -26,7 +26,7 @@
 
     - debug: var=DMESG.stdout_lines
 
-    - name: Report hosts not rebooted in 30+ days
+    - name: Summary
       debug:
         msg: "Host `{{inventory_hostname}}` (aka `{{hostname.stdout}}`) has been up for {{uptime_days}} days"
-      when: (uptime_days | int) >= 30
+      # when: (uptime_days | int) >= 30
