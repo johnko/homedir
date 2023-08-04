@@ -11,8 +11,10 @@ services:
       server --tls-san=labcluster
     environment:
       - K3S_TOKEN=lab.local
-      - K3S_DATASTORE_ENDPOINT=postgres://
+      - K3S_DATASTORE_ENDPOINT=postgres://database:5432/kubernetes
       - K3S_DATASTORE_CAFILE=/var/lib/rancher/k3s/ca.crt
+    extra_hosts:
+      - "database:192.168.2.232"
     network_mode: host
     privileged: true
     restart: unless-stopped
