@@ -1,0 +1,7 @@
+#!/bin/bash
+set -eu
+set +x
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+set -x
+
+openssl x509 -in $1 -noout -text

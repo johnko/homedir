@@ -1,0 +1,10 @@
+#!/bin/bash
+set -eu
+set +x
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+set -x
+
+if ! [ -e $1.key ] && ! [ -e $1.pem ]; then
+  openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout $1.key -out $1.pem -config ./csr.conf -extensions 'v3_req'
+  cert_info $1.pem
+fi

@@ -1,12 +1,8 @@
-#!/usr/bin/env bash
-set -eux
+#!/bin/bash
+set -eu
 
-generate_selfsigned_cert() {
-  if ! [ -e ./pgsql-server.key ] && ! [ -e ./pgsql-server.pem ]; then
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./pgsql-server.key -out ./pgsql-server.pem -config ./csr.conf -extensions 'v3_req'
-    openssl x509 -in ./pgsql-server.pem -noout -text
-  fi
-}
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+set -x
 
 case $1 in
   down)
@@ -25,7 +21,7 @@ case $1 in
     ;;
   test-new)
     docker-compose down --volumes
-    generate_selfsignedcert
+    cert_generateselfsigned ./pgsql-server
     docker-compose pull
     docker-compose up --detach
     ;;
@@ -33,7 +29,7 @@ case $1 in
     docker-compose top
     ;;
   up | *)
-    generate_selfsignedcert
+    cert_generateselfsigned ./pgsql-server
     docker-compose pull
     ## Create and run the stack interactively
     # docker-compose up

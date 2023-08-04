@@ -92,6 +92,13 @@
     #   loop:
     #     - { name: docker }
     #     - { name: wmdocker }
+    # - name: Delete unused scripts
+    #   file:
+    #     path: '{{ item.name }}'
+    #     force: true
+    #     state: absent
+    #   loop:
+    #     - { name: '/bin/generate_selfsignedcert' }
 
     - name: Copy bin scripts
       copy:
@@ -100,7 +107,8 @@
         force: true
         mode: '755'
       loop:
-        - { name: generate_selfsignedcert }
+        - { name: cert_generateselfsigned }
+        - { name: cert_info }
     - name: Copy postgres scripts
       copy:
         src: './{{ item.name }}/'
