@@ -1,5 +1,3 @@
-# https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
-
 - hosts: sticks
   become: true
   become_user: root
@@ -69,6 +67,7 @@
     #     - { name: wmdocker }
 
     - name: Upgrade all packages on servers
+      # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
       apt:
         force_apt_get: true
         upgrade: dist

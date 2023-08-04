@@ -1,11 +1,10 @@
-# https://iam-j.github.io/iac/ansible-machine-uptime/
-# https://stackoverflow.com/questions/74318579/how-to-calculate-ansible-uptime-seconds-and-output-this-in-os-csv
-
 - hosts: ubuntu
   become: true
   become_user: root
   tasks:
     - name: Set fact for uptime_days
+      # https://iam-j.github.io/iac/ansible-machine-uptime/
+      # https://stackoverflow.com/questions/74318579/how-to-calculate-ansible-uptime-seconds-and-output-this-in-os-csv
       set_fact:
         uptime_days: "{{ (ansible_facts['uptime_seconds'] | int / 86400) | round(1) }}"
     - name: Set fact for uptime_hours
