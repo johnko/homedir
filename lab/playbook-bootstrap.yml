@@ -32,7 +32,7 @@
         force: true
         mode: '755'
     - name: Add ipv4 to /etc/issue on if-down
-      copy:
+      file:
         src: /etc/network/if-up.d/update-issue
         dest: /etc/network/if-down.d/update-issue
         force: true
