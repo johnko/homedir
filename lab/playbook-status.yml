@@ -17,6 +17,10 @@
       shell: uptime | grep -o 'load.*'
       register: LOAD
 
+    - name: Get diskspace info
+      shell: df -h /
+      register: DF
+
     - name: dmesg about r8723bs wlan0 device
       shell: dmesg | grep 8723
       register: DMESG
@@ -35,4 +39,6 @@
           - "       uptime_days: {{ uptime_days }} days"
           - "      uptime_hours: {{ uptime_hours }} hours"
           - "         date time: {{ ansible_facts['date_time']['iso8601'] }}"
+          - "{{ DF.stdout_lines[0] }}"
+          - "{{ DF.stdout_lines[1] }}"
       # when: (uptime_days | int) >= 30
