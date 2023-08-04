@@ -30,11 +30,16 @@
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
 
-    - name: Refresh /etc/issue version from base-files if OS display mismatched
-      shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}" || apt-get install --reinstall -y base-files
-      register: OS_VERSION
+    - name: Check /etc/issue version
+      shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}"
+      register: ISSUE
+    - name: Refresh base-files if OS version mismatched
+      shell: apt-get install --reinstall -y base-files
+      register: BASEFILES
+      when: ISSUE.rc > 0
     - debug:
-        var: OS_VERSION.stdout_lines
+        var: BASEFILES.stdout_lines
+      when: ISSUE.rc > 0
 
     - name: Upgrade all packages on servers
       apt:
