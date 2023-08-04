@@ -31,15 +31,16 @@
       shell: touch /etc/cron.d
 
     - name: Check /etc/issue version
-      shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}"
+      shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}" && echo "0" || echo "1"
       register: ISSUE
     - name: Refresh base-files if OS version mismatched
-      shell: apt-get install --reinstall -y base-files
+      # found that /etc/issue is installed by base-files: dpkg -S /etc/issue
+      shell: rm -v /etc/issue ; apt-get install --reinstall -y -o Dpkg::Options::="--force-confmiss" base-files
       register: BASEFILES
-      when: ISSUE.rc > 0
+      when: (ISSUE.stdout | int) > 0
     - debug:
         var: BASEFILES.stdout_lines
-      when: ISSUE.rc > 0
+      when: (ISSUE.stdout | int) > 0
 
     - name: Upgrade all packages on servers
       apt:
