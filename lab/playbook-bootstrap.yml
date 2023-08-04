@@ -1,15 +1,9 @@
 # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
 
-- hosts: ubuntu
+- hosts: sticks
   become: true
   become_user: root
   tasks:
-    - name: Update apt repo and cache on all Debian/Ubuntu boxes
-      apt:
-        force_apt_get: true
-        update_cache: true
-        cache_valid_time: 3600
-
     - name: Copy healthcheck scripts
       copy:
         src: "./healthcheck/{{ item.src }}"
@@ -21,6 +15,16 @@
         - { src: healthcheck_cron, dest: '/etc/cron.d/healthcheck_cron', mode: '644' } # required no dot in filename
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
+
+- hosts: ubuntu
+  become: true
+  become_user: root
+  tasks:
+    - name: Update apt repo and cache on all Debian/Ubuntu boxes
+      apt:
+        force_apt_get: true
+        update_cache: true
+        cache_valid_time: 3600
 
     - name: Copy network scripts
       copy:
@@ -53,16 +57,16 @@
         var: BASEFILES.stdout_lines
       when: (ISSUE.stdout | int) > 0
 
-    - name: Remove unused packages
-      apt:
-        force_apt_get: true
-        name: "{{ item.name }}"
-        state: absent
-        purge: true
-      loop:
-        - { name: docker.io }
-        - { name: docker }
-        - { name: wmdocker }
+    # - name: Remove unused packages
+    #   apt:
+    #     force_apt_get: true
+    #     name: "{{ item.name }}"
+    #     state: absent
+    #     purge: true
+    #   loop:
+    #     - { name: docker.io }
+    #     - { name: docker }
+    #     - { name: wmdocker }
 
     - name: Upgrade all packages on servers
       apt:

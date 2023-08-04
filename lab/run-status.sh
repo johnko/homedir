@@ -7,4 +7,4 @@ if [ "x" = "x$ANSIBLE_PASSWORD" ]; then
 fi
 set -ux
 
-ansible-playbook -i hosts playbook-status.yml
+ansible-playbook -i hosts.yml playbook-status.yml
