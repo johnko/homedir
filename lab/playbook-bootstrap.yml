@@ -6,14 +6,28 @@
   tasks:
     - name: Update apt repo and cache on all Debian/Ubuntu boxes
       apt:
-        update_cache: true
         force_apt_get: true
+        update_cache: true
         cache_valid_time: 3600
 
-    - name: Install docker
+    - name: Remove docker.io
       apt:
-        name: docker
         force_apt_get: true
+        name: docker.io
+        state: absent
+        purge: true
+    - name: Remove docker
+      apt:
+        force_apt_get: true
+        name: docker
+        state: absent
+        purge: true
+    - name: Remove wmdocker
+      apt:
+        force_apt_get: true
+        name: wmdocker
+        state: absent
+        purge: true
 
     - name: Copy healthcheck scripts
       copy:
@@ -50,12 +64,12 @@
 
     - name: Upgrade all packages on servers
       apt:
-        upgrade: dist
         force_apt_get: true
+        upgrade: dist
     - name: Cleanup apt on servers
       apt:
-        clean: true
         force_apt_get: true
+        clean: true
 
     - name: Check if a reboot is needed on all servers
       register: reboot_required_file
