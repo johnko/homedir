@@ -25,7 +25,8 @@
       shell: dmesg | grep 8723
       register: DMESG
 
-    - debug: var=DMESG.stdout_lines
+    - debug:
+        var: DMESG.stdout_lines
 
     - name: Summary
       debug:

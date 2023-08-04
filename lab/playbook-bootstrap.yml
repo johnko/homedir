@@ -5,16 +5,30 @@
   become_user: root
   tasks:
     - name: Update apt repo and cache on all Debian/Ubuntu boxes
-      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+      apt:
+        update_cache: true
+        force_apt_get: true
+        cache_valid_time: 3600
+
+    - name: Refresh /etc/issue version from base-files
+      apt:
+        name: base-files
+        force_apt_get: true
 
     - name: Install docker
-      apt: name=docker force_apt_get=yes
+      apt:
+        name: docker
+        force_apt_get: true
 
     - name: Upgrade all packages on servers
-      apt: upgrade=dist force_apt_get=yes
+      apt:
+        upgrade: dist
+        force_apt_get: true
 
     - name: Cleanup apt on servers
-      apt: clean=true force_apt_get=yes
+      apt:
+        clean: true
+        force_apt_get: true
 
     - name: Copy healthcheck scripts
       copy:
@@ -35,7 +49,9 @@
 
     - name: Check if a reboot is needed on all servers
       register: reboot_required_file
-      stat: path=/var/run/reboot-required get_md5=no
+      stat:
+        path: /var/run/reboot-required
+        get_md5: false
 
     - name: Reboot the box if kernel updated
       reboot:
