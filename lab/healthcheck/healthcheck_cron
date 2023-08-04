@@ -1,8 +1,8 @@
 # ping every minute
 * * * * * root /bin/bash /sbin/healthcheck-diff.sh ping 192.168.2.1
 
-# netplan apply if stale for 5 min
-*/5 * * * * root /bin/bash /sbin/healthcheck-diff.sh netplan 300
+# netplan apply if stale for 2 min
+*/2 * * * * root /bin/bash /sbin/healthcheck-diff.sh netplan 120
 
-# reboot if stale for 30 min
-*/30 * * * * root /bin/bash /sbin/healthcheck-diff.sh reboot 1800
+# reboot if stale for 10 min
+*/5 * * * * root /bin/bash /sbin/healthcheck-diff.sh reboot 600
