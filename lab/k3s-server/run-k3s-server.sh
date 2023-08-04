@@ -6,7 +6,7 @@ set -x
 
 case $1 in
   cert)
-    cp -a /var/lib/docker/pgsql-server.pem ./pgsql-server.pem
+    cp -a /etc/ssl/pgsql-server.pem ./pgsql-server.pem
     ;;
   destroy)
     ## Destroy the stack and data

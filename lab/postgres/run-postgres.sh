@@ -8,6 +8,7 @@ case $1 in
   cert)
     cert_generateselfsigned ./pgsql-server
     chown 999:999 ./pgsql-server.key
+    cp ./pgsql-server.pem /etc/ssl/pgsql-server.pem
     ;;
   destroy)
     ## Destroy the stack and data
