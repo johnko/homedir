@@ -30,6 +30,12 @@
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
 
+    - name: Add ipv4 to /etc/issue
+      copy:
+        src: ./network/update-issue
+        dest: /etc/network/if-up.d/update-issue
+        force: true
+        mode: '755'
     - name: Check /etc/issue version
       shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}" && echo "0" || echo "1"
       register: ISSUE
