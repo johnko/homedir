@@ -4,25 +4,18 @@
 - hosts: all
   become: true
   become_user: root
-  gather_facts: false
   tasks:
-    - name: Show hostname for sanity check (or just use -v flag for verbose)
-      command: hostname
-      register: hostname
-
-    # - debug: var=hostname.stdout
-
-    - name: Check uptime seconds
-      shell: cut -d ' ' -f1 /proc/uptime
-      register: UPTIME_SECONDS
-
     - name: Set fact for number of days
       set_fact:
-        uptime_days: "{{ ( UPTIME_SECONDS.stdout | int / 86400 ) | round(0) }}"
+        uptime_days: "{{ (ansible_facts['uptime_seconds'] | int / 86400) | round(1) }}"
 
     - name: Set fact for number of hours
       set_fact:
-        uptime_hours: "{{ ( UPTIME_SECONDS.stdout | int / 3600 ) | round(0) }}"
+        uptime_hours: "{{ (ansible_facts['uptime_seconds'] | int / 3600) | round(1) }}"
+
+    - name: Get load average
+      shell: uptime | grep -o 'load.*'
+      register: LOAD
 
     - name: dmesg about r8723bs wlan0 device
       shell: dmesg | grep 8723
@@ -32,5 +25,14 @@
 
     - name: Summary
       debug:
-        msg: "Host {{inventory_hostname}} (hostname: {{hostname.stdout}}) has been up for {{uptime_days | int}} days (or {{uptime_hours | int}} hours)"
+        msg:
+          - "          hostname: {{ ansible_facts['hostname'] }}"
+          - "              ipv4: {{ ansible_facts['all_ipv4_addresses'] | join(' , ') }}"
+          - "                os: {{ ansible_facts['lsb']['description'] }}"
+          - "            kernel: {{ ansible_facts['kernel'] }}"
+          - "               cpu: {{ LOAD.stdout }}"
+          - "ram free/use/total: {{ (ansible_facts['memfree_mb'] / 1000) | round(1) }} / {{ ((ansible_facts['memtotal_mb'] - ansible_facts['memfree_mb']) / 1000) | round(1) }} / {{ (ansible_facts['memtotal_mb'] / 1000) | round(1) }} GB"
+          - "       uptime_days: {{ uptime_days }} days"
+          - "      uptime_hours: {{ uptime_hours }} hours"
+          - "         date time: {{ ansible_facts['date_time']['iso8601'] }}"
       # when: (uptime_days | int) >= 30
