@@ -109,15 +109,6 @@
       loop:
         - { name: cert_generateselfsigned }
         - { name: cert_info }
-    - name: Copy postgres scripts
-      copy:
-        src: './{{ item.name }}/'
-        dest: '/root/{{ item.name }}/'
-        force: true
-        directory_mode: '700'
-        mode: '644'
-      loop:
-        - { name: postgres }
 
     - name: Upgrade all packages on servers
       # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
@@ -148,7 +139,19 @@
   become: true
   become_user: root
   tasks:
+    - name: Copy app scripts
+      copy:
+        src: './{{ item.name }}/'
+        dest: '/root/{{ item.name }}/'
+        force: true
+        directory_mode: '700'
+        mode: '644'
+      loop:
+        - { name: postgres }
+        - { name: k3s-server }
     - name: Pre-load docker images
       shell: cd /root/{{ item.name }} && bash run-{{ item.name }}.sh pull
       loop:
         - { name: postgres }
+        - { name: k3s-server }
+        # - { name: k3s-agent }
