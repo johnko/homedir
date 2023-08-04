@@ -7,7 +7,4 @@ if [ "x" = "x$ANSIBLE_PASSWORD" ]; then
 fi
 set -ux
 
-ansible-playbook -i hosts.yml playbook-k3s-postgres.yml
-mkdir -p ./tmp
-scp stick2:/etc/ssl/pgsql-server.pem ./tmp/pgsql-server.pem
-ansible-playbook -i hosts.yml playbook-k3s-servers.yml
+ansible-playbook -i hosts.yml playbook-k3s.yml
