@@ -143,3 +143,12 @@
         post_reboot_delay: 30
         test_command: uptime
       when: reboot_required_file.stat.exists
+
+- hosts: ubuntu
+  become: true
+  become_user: root
+  tasks:
+    - name: Pre-load docker images
+      shell: cd /root/{{ item.name }} && bash run-{{ item.name }}.sh pull
+      loop:
+        - { name: postgres }
