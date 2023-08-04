@@ -12,7 +12,7 @@
         uptime_hours: "{{ (ansible_facts['uptime_seconds'] | int / 3600) | round(1) }}"
 
     - name: Get diskspace info
-      shell: df -h /
+      shell: df -h | grep -v tmpfs
       register: DF
     - name: Get landscape info
       shell: landscape-sysinfo
@@ -34,7 +34,6 @@
           - "     date time: {{ ansible_facts['date_time']['iso8601'] }}"
           - "   uptime_days: {{ uptime_days }} days"
           - "  uptime_hours: {{ uptime_hours }} hours"
-          - "{{ DF.stdout_lines[0] }}"
-          - "{{ DF.stdout_lines[1] }}"
+          - "{{ DF.stdout_lines }}"
           - "{{ LANDSCAPE.stdout_lines }}"
       # when: (uptime_days | int) >= 30

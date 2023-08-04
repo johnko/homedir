@@ -14,6 +14,23 @@
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
 
+    - name: Create a docker volume
+      community.general.lvol:
+        vg: ubuntu-vg
+        lv: docker
+        size: 12g
+    - name: Create a ext4 filesystem
+      community.general.filesystem:
+        dev: /dev/mapper/ubuntu--vg-docker
+        fstype: ext4
+    - name: Mount docker volume
+      ansible.posix.mount:
+        src: /dev/mapper/ubuntu--vg-docker
+        path: /var/lib/docker
+        fstype: ext4
+        passno: '2'
+        state: mounted
+
 - hosts: ubuntu
   become: true
   become_user: root
