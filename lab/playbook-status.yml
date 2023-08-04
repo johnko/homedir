@@ -11,6 +11,9 @@
       set_fact:
         uptime_hours: "{{ (ansible_facts['uptime_seconds'] | int / 3600) | round(1) }}"
 
+    - name: Get ipv4 info
+      shell: get-ip || ip a | grep 'inet ' | awk '{print $2}'
+      register: NETWORK
     - name: Get diskspace info
       shell: df -h | grep -v tmpfs
       register: DF
@@ -28,7 +31,7 @@
       debug:
         msg:
           - "      hostname: {{ ansible_facts['hostname'] }}"
-          - "          ipv4: {{ ansible_facts['all_ipv4_addresses'] | join(' , ') }}"
+          - "          ipv4: {{ NETWORK.stdout_lines | join('   ') }}"
           - "            os: {{ ansible_facts['lsb']['description'] }}"
           - "        kernel: {{ ansible_facts['kernel'] }}"
           - "     date time: {{ ansible_facts['date_time']['iso8601'] }}"
