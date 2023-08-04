@@ -8,7 +8,6 @@
     - name: Set fact for number of days
       set_fact:
         uptime_days: "{{ (ansible_facts['uptime_seconds'] | int / 86400) | round(1) }}"
-
     - name: Set fact for number of hours
       set_fact:
         uptime_hours: "{{ (ansible_facts['uptime_seconds'] | int / 3600) | round(1) }}"
@@ -16,7 +15,6 @@
     - name: Get load average
       shell: uptime | grep -o 'load.*'
       register: LOAD
-
     - name: Get diskspace info
       shell: df -h /
       register: DF
@@ -24,7 +22,6 @@
     - name: dmesg about r8723bs wlan0 device
       shell: dmesg | grep 8723
       register: DMESG
-
     - debug:
         var: DMESG.stdout_lines
 

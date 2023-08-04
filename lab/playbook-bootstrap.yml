@@ -15,46 +15,41 @@
         name: docker
         force_apt_get: true
 
-    - name: Upgrade all packages on servers
-      apt:
-        upgrade: dist
-        force_apt_get: true
-
-    - name: Cleanup apt on servers
-      apt:
-        clean: true
-        force_apt_get: true
-
     - name: Copy healthcheck scripts
       copy:
         src: ./healthcheck/healthcheck-diff.sh
         dest: /sbin/healthcheck-diff.sh
         force: true
         mode: '755'
-
     - name: Copy healthcheck crontab
       copy:
         src: ./healthcheck/healthcheck_cron
         dest: /etc/cron.d/healthcheck_cron # required no dot in filename
         force: true
         mode: '644'
-
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
 
     - name: Refresh /etc/issue version from base-files if OS display mismatched
       shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}" || apt-get install --reinstall -y base-files
       register: OS_VERSION
-
     - debug:
         var: OS_VERSION.stdout_lines
+
+    - name: Upgrade all packages on servers
+      apt:
+        upgrade: dist
+        force_apt_get: true
+    - name: Cleanup apt on servers
+      apt:
+        clean: true
+        force_apt_get: true
 
     - name: Check if a reboot is needed on all servers
       register: reboot_required_file
       stat:
         path: /var/run/reboot-required
         get_md5: false
-
     - name: Reboot the box if kernel updated
       reboot:
         msg: "Reboot initiated by Ansible for kernel updates"
