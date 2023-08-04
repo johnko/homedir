@@ -72,6 +72,13 @@
         var: BASEFILES.stdout_lines
       when: (ISSUE.stdout | int) > 0
 
+    - name: Install packages
+      apt:
+        force_apt_get: true
+        name: "{{ item.name }}"
+      loop:
+        - { name: docker.io }
+
     # - name: Remove unused packages
     #   apt:
     #     force_apt_get: true
@@ -79,7 +86,6 @@
     #     state: absent
     #     purge: true
     #   loop:
-    #     - { name: docker.io }
     #     - { name: docker }
     #     - { name: wmdocker }
 
