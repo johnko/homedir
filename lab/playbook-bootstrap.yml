@@ -31,28 +31,41 @@
         dest: /sbin/update-issue
         force: true
         mode: '755'
-    - name: Add ipv4 to /etc/issue on networkd-dispatcher
+    - name: Add ipv4 to /etc/issue on networkd-dispatcher carrier
       file:
         src: /sbin/update-issue
         dest: /etc/networkd-dispatcher/carrier.d/update-issue
         force: true
         mode: '755'
         state: link
-    - name: Remove from NetworkManager
+    - name: Add ipv4 to /etc/issue on networkd-dispatcher no-carrier
       file:
-        dest: /etc/NetworkManager/dispatcher.d/update-issue
+        src: /sbin/update-issue
+        dest: /etc/networkd-dispatcher/no-carrier.d/update-issue
         force: true
-        state: absent
-    - name: Remove from if-up
+        mode: '755'
+        state: link
+    - name: Add ipv4 to /etc/issue on networkd-dispatcher dormant
       file:
-        dest: /etc/network/if-up.d/update-issue
+        src: /sbin/update-issue
+        dest: /etc/networkd-dispatcher/dormant.d/update-issue
         force: true
-        state: absent
-    - name: Remove from if-down
+        mode: '755'
+        state: link
+    - name: Add ipv4 to /etc/issue on networkd-dispatcher off
       file:
-        dest: /etc/network/if-down.d/update-issue
+        src: /sbin/update-issue
+        dest: /etc/networkd-dispatcher/off.d/update-issue
         force: true
-        state: absent
+        mode: '755'
+        state: link
+    - name: Add ipv4 to /etc/issue on networkd-dispatcher routable
+      file:
+        src: /sbin/update-issue
+        dest: /etc/networkd-dispatcher/routable.d/update-issue
+        force: true
+        mode: '755'
+        state: link
     - name: Check /etc/issue version
       shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}" && echo "0" || echo "1"
       register: ISSUE
