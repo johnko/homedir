@@ -35,7 +35,7 @@
   become: true
   become_user: root
   tasks:
-    - name: Update apt repo and cache on all Debian/Ubuntu boxes
+    - name: Update apt repo and cache
       apt:
         force_apt_get: true
         update_cache: true
@@ -110,22 +110,22 @@
         - { name: cert_generateselfsigned }
         - { name: cert_info }
 
-    - name: Upgrade all packages on servers
+    - name: Upgrade all packages
       # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
       apt:
         force_apt_get: true
         upgrade: dist
-    - name: Cleanup apt on servers
+    - name: Cleanup apt
       apt:
         force_apt_get: true
         clean: true
 
-    - name: Check if a reboot is needed on all servers
+    - name: Check if a reboot is needed
       register: reboot_required_file
       stat:
         path: /var/run/reboot-required
         get_md5: false
-    - name: Reboot the box if kernel updated
+    - name: Reboot if kernel updated
       reboot:
         msg: 'Reboot initiated by Ansible for kernel updates'
         connect_timeout: 5
