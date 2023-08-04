@@ -1,8 +1,5 @@
 #!/bin/bash
-set -eu
-set +x
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-set -x
+set -eux
 
 case $1 in
   uninstall)
