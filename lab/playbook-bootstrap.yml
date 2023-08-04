@@ -78,6 +78,7 @@
         name: "{{ item.name }}"
       loop:
         - { name: docker.io }
+        - { name: docker-compose }
 
     # - name: Remove unused packages
     #   apt:
