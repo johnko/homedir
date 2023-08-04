@@ -10,7 +10,7 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: Copy healthcheck scripts
+    - name: Copy healthcheck script
       copy:
         src: ./healthcheck/healthcheck-diff.sh
         dest: /sbin/healthcheck-diff.sh
@@ -25,19 +25,34 @@
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
 
-    - name: Add ipv4 to /etc/issue on if-up
+    - name: Copy update-issue script
       copy:
         src: ./network/update-issue
-        dest: /etc/network/if-up.d/update-issue
+        dest: /sbin/update-issue
         force: true
         mode: '755'
-    - name: Add ipv4 to /etc/issue on if-down
+    - name: Add ipv4 to /etc/issue on networkd-dispatcher
       file:
-        src: /etc/network/if-up.d/update-issue
-        dest: /etc/network/if-down.d/update-issue
+        src: /sbin/update-issue
+        dest: /etc/networkd-dispatcher/carrier.d/update-issue
         force: true
         mode: '755'
         state: link
+    - name: Remove from NetworkManager
+      file:
+        dest: /etc/NetworkManager/dispatcher.d/update-issue
+        force: true
+        state: absent
+    - name: Remove from if-up
+      file:
+        dest: /etc/network/if-up.d/update-issue
+        force: true
+        state: absent
+    - name: Remove from if-down
+      file:
+        dest: /etc/network/if-down.d/update-issue
+        force: true
+        state: absent
     - name: Check /etc/issue version
       shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}" && echo "0" || echo "1"
       register: ISSUE
