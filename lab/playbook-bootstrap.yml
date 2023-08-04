@@ -10,62 +10,37 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: Copy healthcheck script
+    - name: Copy healthcheck scripts
       copy:
-        src: ./healthcheck/healthcheck-diff.sh
-        dest: /sbin/healthcheck-diff.sh
+        src: "./healthcheck/{{ item.src }}"
+        dest: "{{ item.dest }}"
         force: true
-        mode: '755'
-    - name: Copy healthcheck crontab
-      copy:
-        src: ./healthcheck/healthcheck_cron
-        dest: /etc/cron.d/healthcheck_cron # required no dot in filename
-        force: true
-        mode: '644'
+        mode: "{{ item.mode }}"
+      loop:
+        - { src: healthcheck-diff.sh, dest: '/sbin/healthcheck-diff.sh', mode: '755' }
+        - { src: healthcheck_cron, dest: '/etc/cron.d/healthcheck_cron', mode: '644' } # required no dot in filename
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
 
-    - name: Copy update-issue script
+    - name: Copy network scripts
       copy:
         src: ./network/update-issue
         dest: /sbin/update-issue
         force: true
         mode: '755'
-    - name: Add ipv4 to /etc/issue on networkd-dispatcher carrier
+    - name: Setup trigger on networkd-dispatcher
       file:
         src: /sbin/update-issue
-        dest: /etc/networkd-dispatcher/carrier.d/update-issue
+        dest: "/etc/networkd-dispatcher/{{ item.dest }}.d/update-issue"
         force: true
         mode: '755'
         state: link
-    - name: Add ipv4 to /etc/issue on networkd-dispatcher no-carrier
-      file:
-        src: /sbin/update-issue
-        dest: /etc/networkd-dispatcher/no-carrier.d/update-issue
-        force: true
-        mode: '755'
-        state: link
-    - name: Add ipv4 to /etc/issue on networkd-dispatcher dormant
-      file:
-        src: /sbin/update-issue
-        dest: /etc/networkd-dispatcher/dormant.d/update-issue
-        force: true
-        mode: '755'
-        state: link
-    - name: Add ipv4 to /etc/issue on networkd-dispatcher off
-      file:
-        src: /sbin/update-issue
-        dest: /etc/networkd-dispatcher/off.d/update-issue
-        force: true
-        mode: '755'
-        state: link
-    - name: Add ipv4 to /etc/issue on networkd-dispatcher routable
-      file:
-        src: /sbin/update-issue
-        dest: /etc/networkd-dispatcher/routable.d/update-issue
-        force: true
-        mode: '755'
-        state: link
+      loop:
+        - { dest: 'carrier' }
+        - { dest: 'no-carrier' }
+        - { dest: 'dormant' }
+        - { dest: 'off' }
+        - { dest: 'routable' }
     - name: Check /etc/issue version
       shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}" && echo "0" || echo "1"
       register: ISSUE
@@ -78,24 +53,16 @@
         var: BASEFILES.stdout_lines
       when: (ISSUE.stdout | int) > 0
 
-    - name: Remove docker.io
+    - name: Remove unused packages
       apt:
         force_apt_get: true
-        name: docker.io
+        name: "{{ item.name }}"
         state: absent
         purge: true
-    - name: Remove docker
-      apt:
-        force_apt_get: true
-        name: docker
-        state: absent
-        purge: true
-    - name: Remove wmdocker
-      apt:
-        force_apt_get: true
-        name: wmdocker
-        state: absent
-        purge: true
+      loop:
+        - { name: docker.io }
+        - { name: docker }
+        - { name: wmdocker }
 
     - name: Upgrade all packages on servers
       apt:
