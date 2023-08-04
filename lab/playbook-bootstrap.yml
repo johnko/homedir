@@ -10,7 +10,7 @@
         mode: "{{ item.mode }}"
       loop:
         - { src: healthcheck-diff.sh, dest: '/sbin/healthcheck-diff.sh', mode: '755' }
-        - { src: healthcheck_cron, dest: '/etc/cron.d/healthcheck_cron', mode: '644' } # required no dot in filename
+        - { src: healthcheck_cron, dest: '/etc/cron.d/healthcheck_cron', mode: '644' } # required no dot in cron.d filenames
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
 
