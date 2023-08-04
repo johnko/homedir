@@ -19,6 +19,7 @@
       fetch:
         src: /etc/ssl/pgsql-server.pem
         dest: ./tmp/pgsql-server.pem
+        flat: true
 
 - hosts: sticks
   become: true
