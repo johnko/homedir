@@ -4,13 +4,13 @@
   tasks:
     - name: Copy healthcheck scripts
       copy:
-        src: './healthcheck/{{ item.src }}'
-        dest: '{{ item.dest }}'
+        src: './healthcheck/{{ item.name }}'
+        dest: '{{ item.dest }}/{{ item.name }}'
         force: true
         mode: '{{ item.mode }}'
       loop:
-        - { src: healthcheck-diff.sh, dest: '/sbin/healthcheck-diff.sh', mode: '755' }
-        - { src: healthcheck_cron, dest: '/etc/cron.d/healthcheck_cron', mode: '644' } # required no dot in cron.d filenames
+        - { name: healthcheck-diff.sh, dest: '/sbin', mode: '755' }
+        - { name: healthcheck_cron, dest: '/etc/cron.d', mode: '644' } # required no dot in cron.d filenames
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
 
@@ -44,12 +44,12 @@
     - name: Copy network scripts
       copy:
         src: './network/{{ item.name }}'
-        dest: '/sbin/{{ item.name }}'
+        dest: '{{ item.dest }}/{{ item.name }}'
         force: true
         mode: '755'
       loop:
-        - { name: get-ip }
-        - { name: update-issue }
+        - { name: get-ip, dest: '/bin' }
+        - { name: update-issue, dest: '/sbin' }
     - name: Setup trigger on networkd-dispatcher
       file:
         src: /sbin/update-issue
@@ -92,6 +92,24 @@
     #   loop:
     #     - { name: docker }
     #     - { name: wmdocker }
+
+    - name: Copy bin scripts
+      copy:
+        src: './bin/{{ item.name }}'
+        dest: '/bin/{{ item.name }}'
+        force: true
+        mode: '755'
+      loop:
+        - { name: generate_selfsignedcert }
+    - name: Copy postgres scripts
+      copy:
+        src: './{{ item.name }}/'
+        dest: '/root/{{ item.name }}/'
+        force: true
+        directory_mode: '700'
+        mode: '644'
+      loop:
+        - { name: postgres }
 
     - name: Upgrade all packages on servers
       # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
