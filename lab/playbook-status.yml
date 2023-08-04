@@ -1,23 +1,23 @@
 # https://iam-j.github.io/iac/ansible-machine-uptime/
 # https://stackoverflow.com/questions/74318579/how-to-calculate-ansible-uptime-seconds-and-output-this-in-os-csv
 
-- hosts: all
+- hosts: ubuntu
   become: true
   become_user: root
   tasks:
-    - name: Set fact for number of days
+    - name: Set fact for uptime_days
       set_fact:
         uptime_days: "{{ (ansible_facts['uptime_seconds'] | int / 86400) | round(1) }}"
-    - name: Set fact for number of hours
+    - name: Set fact for uptime_hours
       set_fact:
         uptime_hours: "{{ (ansible_facts['uptime_seconds'] | int / 3600) | round(1) }}"
 
-    - name: Get load average
-      shell: uptime | grep -o 'load.*'
-      register: LOAD
     - name: Get diskspace info
       shell: df -h /
       register: DF
+    - name: Get landscape info
+      shell: landscape-sysinfo
+      register: LANDSCAPE
 
     - name: dmesg about r8723bs wlan0 device
       shell: dmesg | grep 8723
@@ -28,15 +28,14 @@
     - name: Summary
       debug:
         msg:
-          - "          hostname: {{ ansible_facts['hostname'] }}"
-          - "              ipv4: {{ ansible_facts['all_ipv4_addresses'] | join(' , ') }}"
-          - "                os: {{ ansible_facts['lsb']['description'] }}"
-          - "               cpu: {{ LOAD.stdout }}"
-          - "            kernel: {{ ansible_facts['kernel'] }}"
-          - "         date time: {{ ansible_facts['date_time']['iso8601'] }}"
-          - "       uptime_days: {{ uptime_days }} days"
-          - "      uptime_hours: {{ uptime_hours }} hours"
-          - "ram free/use/total: {{ (ansible_facts['memfree_mb'] / 1000) | round(1) }} / {{ ((ansible_facts['memtotal_mb'] - ansible_facts['memfree_mb']) / 1000) | round(1) }} / {{ (ansible_facts['memtotal_mb'] / 1000) | round(1) }} GB"
+          - "      hostname: {{ ansible_facts['hostname'] }}"
+          - "          ipv4: {{ ansible_facts['all_ipv4_addresses'] | join(' , ') }}"
+          - "            os: {{ ansible_facts['lsb']['description'] }}"
+          - "        kernel: {{ ansible_facts['kernel'] }}"
+          - "     date time: {{ ansible_facts['date_time']['iso8601'] }}"
+          - "   uptime_days: {{ uptime_days }} days"
+          - "  uptime_hours: {{ uptime_hours }} hours"
           - "{{ DF.stdout_lines[0] }}"
           - "{{ DF.stdout_lines[1] }}"
+          - "{{ LANDSCAPE.stdout_lines }}"
       # when: (uptime_days | int) >= 30
