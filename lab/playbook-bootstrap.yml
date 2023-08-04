@@ -10,11 +10,6 @@
         force_apt_get: true
         cache_valid_time: 3600
 
-    - name: Refresh /etc/issue version from base-files
-      apt:
-        name: base-files
-        force_apt_get: true
-
     - name: Install docker
       apt:
         name: docker
@@ -46,6 +41,13 @@
 
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
+
+    - name: Refresh /etc/issue version from base-files if OS display mismatched
+      shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}" || apt-get install --reinstall -y base-files
+      register: OS_VERSION
+
+    - debug:
+        var: OS_VERSION.stdout_lines
 
     - name: Check if a reboot is needed on all servers
       register: reboot_required_file
