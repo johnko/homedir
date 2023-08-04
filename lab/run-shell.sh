@@ -1,9 +1,11 @@
 #!/bin/bash
 set -eux
 
+IMAGE_NAME="shell:local"
+
 sed -i '' 's/127.0.0.1/labcluster/' ./tmp/k3s.yaml
 
-IMAGE_NAME="shell:local"
+cp ./argocd/run-argocd.sh ./shell/
 docker build \
   --platform linux/amd64 \
   -t $IMAGE_NAME ./shell
