@@ -10,7 +10,7 @@ For Wi-Fi to work, may need to [reload the kernel module](https://ubuntuforums.o
 sudo modprobe r8723bs
 sudo netplan apply
 # check ip
-sudo netplan ip leases wlan0
+ip a
 ```
 
 You can add aliases by adding this under the `wlan0` property in `/etc/netplan/00-installer-config-wifi.yaml`:
