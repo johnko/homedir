@@ -32,8 +32,8 @@
           - "            os: {{ ansible_facts['lsb']['description'] }}"
           - "        kernel: {{ ansible_facts['kernel'] }}"
           - "     date time: {{ ansible_facts['date_time']['iso8601'] }}"
-          - "   uptime_days: {{ uptime_days }} days"
-          - "  uptime_hours: {{ uptime_hours }} hours"
-          - "{{ LANDSCAPE.stdout_lines }}"
-          - "{{ DF.stdout_lines }}"
+          - '   uptime_days: {{ uptime_days }} days'
+          - '  uptime_hours: {{ uptime_hours }} hours'
+          - '{{ LANDSCAPE.stdout_lines }}'
+          - '{{ DF.stdout_lines }}'
       # when: (uptime_days | int) >= 30

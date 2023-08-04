@@ -4,10 +4,10 @@
   tasks:
     - name: Copy healthcheck scripts
       copy:
-        src: "./healthcheck/{{ item.src }}"
-        dest: "{{ item.dest }}"
+        src: './healthcheck/{{ item.src }}'
+        dest: '{{ item.dest }}'
         force: true
-        mode: "{{ item.mode }}"
+        mode: '{{ item.mode }}'
       loop:
         - { src: healthcheck-diff.sh, dest: '/sbin/healthcheck-diff.sh', mode: '755' }
         - { src: healthcheck_cron, dest: '/etc/cron.d/healthcheck_cron', mode: '644' } # required no dot in cron.d filenames
@@ -43,14 +43,17 @@
 
     - name: Copy network scripts
       copy:
-        src: ./network/update-issue
-        dest: /sbin/update-issue
+        src: './network/{{ item.name }}'
+        dest: '/sbin/{{ item.name }}'
         force: true
         mode: '755'
+      loop:
+        - { name: get-ip }
+        - { name: update-issue }
     - name: Setup trigger on networkd-dispatcher
       file:
         src: /sbin/update-issue
-        dest: "/etc/networkd-dispatcher/{{ item.dest }}.d/update-issue"
+        dest: '/etc/networkd-dispatcher/{{ item.dest }}.d/update-issue'
         force: true
         mode: '755'
         state: link
@@ -61,7 +64,7 @@
         - { dest: 'off' }
         - { dest: 'routable' }
     - name: Check /etc/issue version
-      shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}" && echo "0" || echo "1"
+      shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}" && echo '0' || echo '1'
       register: ISSUE
     - name: Refresh base-files if OS version mismatched
       # found that /etc/issue is installed by base-files: dpkg -S /etc/issue
@@ -75,7 +78,7 @@
     - name: Install packages
       apt:
         force_apt_get: true
-        name: "{{ item.name }}"
+        name: '{{ item.name }}'
       loop:
         - { name: docker.io }
         - { name: docker-compose }
@@ -83,7 +86,7 @@
     # - name: Remove unused packages
     #   apt:
     #     force_apt_get: true
-    #     name: "{{ item.name }}"
+    #     name: '{{ item.name }}'
     #     state: absent
     #     purge: true
     #   loop:
@@ -107,7 +110,7 @@
         get_md5: false
     - name: Reboot the box if kernel updated
       reboot:
-        msg: "Reboot initiated by Ansible for kernel updates"
+        msg: 'Reboot initiated by Ansible for kernel updates'
         connect_timeout: 5
         reboot_timeout: 300
         pre_reboot_delay: 0

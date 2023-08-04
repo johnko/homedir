@@ -3,12 +3,5 @@
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 MSG=$(cat /etc/issue | grep -v ipv4)
-OMIT=""
-for iface in docker0 lo ; do
-  if ip addr show  >/dev/null 2>&1 ; then
-    OMIT="$OMIT"$(ip addr show $iface | grep 'inet ' | awk '{ print $2 }' | tr "\n" '|')
-  fi
-done
-OMIT="$OMIT"255.255.255.255
-IP=$(ip addr | grep 'inet ' | awk '{ print $2 }' | grep -v -E "$OMIT" | tr "\n" '_' | sed 's,_,   ,g')
+IP=$(get-ip | tr "\n" '_' | sed 's,_,   ,g')
 printf "%s\n\n%s\n\n" "$MSG" "ipv4: $IP" > /etc/issue
