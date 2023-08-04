@@ -40,3 +40,17 @@
           - '{{ LANDSCAPE.stdout_lines }}'
           - '{{ DF.stdout_lines }}'
       # when: (uptime_days | int) >= 30
+
+    - name: k3s status
+      shell: cd /root/k3s-server && bash run-k3s-server.sh ps
+      register: APP
+    - debug:
+        var: APP.stdout_lines
+
+    - name: Extract kubeconfig
+      shell: docker cp k3s:/etc/rancher/k3s/k3s.yaml /var/tmp/k3s.yaml
+    - name: Fetch kubeconfig
+      fetch:
+        src: /var/tmp/k3s.yaml
+        dest: ./tmp/k3s.yaml
+        flat: true
