@@ -1,17 +1,17 @@
 #!/bin/bash
 set -eu
-
+set +x
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 set -x
 
 case $1 in
-  down)
-    ## Destroy the stack but keep the data
-    docker-compose down
-    ;;
   destroy)
     ## Destroy the stack and data
     docker-compose down --volumes
+    ;;
+  down)
+    ## Destroy the stack but keep the data
+    docker-compose down
     ;;
   logs)
     docker-compose logs
@@ -19,9 +19,13 @@ case $1 in
   ps)
     docker-compose ps
     ;;
+  pull)
+    docker-compose pull
+    ;;
   test-new)
     docker-compose down --volumes
     cert_generateselfsigned ./pgsql-server
+    chown 999:999 ./pgsql-server.key
     docker-compose pull
     docker-compose up --detach
     ;;
@@ -30,6 +34,7 @@ case $1 in
     ;;
   up | *)
     cert_generateselfsigned ./pgsql-server
+    chown 999:999 ./pgsql-server.key
     docker-compose pull
     ## Create and run the stack interactively
     # docker-compose up
