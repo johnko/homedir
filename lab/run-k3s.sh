@@ -7,4 +7,5 @@ if [ "x" = "x$ANSIBLE_PASSWORD" ]; then
 fi
 set -ux
 
+mkdir -p ./tmp
 ansible-playbook -i hosts.yml playbook-k3s.yml
