@@ -10,25 +10,6 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: Remove docker.io
-      apt:
-        force_apt_get: true
-        name: docker.io
-        state: absent
-        purge: true
-    - name: Remove docker
-      apt:
-        force_apt_get: true
-        name: docker
-        state: absent
-        purge: true
-    - name: Remove wmdocker
-      apt:
-        force_apt_get: true
-        name: wmdocker
-        state: absent
-        purge: true
-
     - name: Copy healthcheck scripts
       copy:
         src: ./healthcheck/healthcheck-diff.sh
@@ -61,6 +42,25 @@
     - debug:
         var: BASEFILES.stdout_lines
       when: (ISSUE.stdout | int) > 0
+
+    - name: Remove docker.io
+      apt:
+        force_apt_get: true
+        name: docker.io
+        state: absent
+        purge: true
+    - name: Remove docker
+      apt:
+        force_apt_get: true
+        name: docker
+        state: absent
+        purge: true
+    - name: Remove wmdocker
+      apt:
+        force_apt_get: true
+        name: wmdocker
+        state: absent
+        purge: true
 
     - name: Upgrade all packages on servers
       apt:
