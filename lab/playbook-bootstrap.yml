@@ -104,7 +104,7 @@
         force: true
         mode: '{{ item.mode }}'
       loop:
-        - { file: ucarp.service, dest: '/usr/lib/systemd/system', mode: '644' }
+        - { file: ucarp@.service, dest: '/usr/lib/systemd/system', mode: '644' }
         - { file: vip-common.conf, dest: '/etc/ucarp', mode: '644' }
     - name: Template ucarp scripts
       template:
@@ -130,13 +130,13 @@
     #   loop:
     #     - { name: docker }
     #     - { name: wmdocker }
-    # - name: Delete unused scripts
-    #   file:
-    #     path: '{{ item.file }}'
-    #     force: true
-    #     state: absent
-    #   loop:
-    #     - { file: '/bin/generate_selfsignedcert' }
+    - name: Delete unused scripts
+      file:
+        path: '{{ item.file }}'
+        force: true
+        state: absent
+      loop:
+        - { file: '/usr/lib/systemd/system/ucarp.service' }
 
     - name: Copy bin scripts
       copy:
