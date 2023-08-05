@@ -140,13 +140,13 @@
     #   loop:
     #     - { name: docker }
     #     - { name: wmdocker }
-    # - name: Delete unused scripts
-    #   file:
-    #     path: '{{ item.file }}'
-    #     force: true
-    #     state: absent
-    #   loop:
-    #     - { file: '/usr/lib/systemd/system/ucarp.service' }
+    - name: Delete unused scripts
+      file:
+        path: '{{ item.file }}'
+        force: true
+        state: absent
+      loop:
+        - { file: '/etc/ucarp/vip-001.password' }
 
     - name: Upgrade all packages
       # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
