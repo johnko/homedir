@@ -5,7 +5,7 @@ Description=UCARP virtual interface %I
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 EnvironmentFile=-/etc/ucarp/vip-common.conf
 EnvironmentFile=-/etc/ucarp/vip-%I.conf
 ExecStart=/usr/sbin/ucarp -i $BIND_INTERFACE -p $PASSWORD -v %I -a $VIP_ADDRESS -s $SOURCE_ADDRESS $OPTIONS -u $UPSCRIPT -d $DOWNSCRIPT -z
