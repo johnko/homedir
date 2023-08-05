@@ -9,7 +9,7 @@ IP=$2
 
 if [ "ping" = "$ACTION" ]; then
   echo "[healthcheck] starting ping..."
-  ping -c 1 -W 30 $IP \
+  ping -c 1 -W 10 $IP \
     && touch $FILE
 else
   NOW=$(date "+%s")
@@ -24,7 +24,7 @@ else
       netplan apply
     elif [ "reboot" = "$ACTION" ]; then
       echo "[healthcheck] starting reboot..."
-      reboot
+      reboot --force
     fi
   fi
 fi
