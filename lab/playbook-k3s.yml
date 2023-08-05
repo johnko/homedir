@@ -1,4 +1,4 @@
-- hosts: stick2
+- hosts: database
   become: true
   become_user: root
   tasks:
