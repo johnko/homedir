@@ -118,8 +118,8 @@
       systemd_service:
         daemon_reload: true
         name: ucarp@001
-        state: stopped
-        enabled: false
+        state: started
+        enabled: true
 
     # - name: Remove unused packages
     #   apt:
@@ -130,13 +130,13 @@
     #   loop:
     #     - { name: docker }
     #     - { name: wmdocker }
-    - name: Delete unused scripts
-      file:
-        path: '{{ item.file }}'
-        force: true
-        state: absent
-      loop:
-        - { file: '/usr/lib/systemd/system/ucarp.service' }
+    # - name: Delete unused scripts
+    #   file:
+    #     path: '{{ item.file }}'
+    #     force: true
+    #     state: absent
+    #   loop:
+    #     - { file: '/usr/lib/systemd/system/ucarp.service' }
 
     - name: Copy bin scripts
       copy:
