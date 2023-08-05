@@ -8,7 +8,7 @@ After=network.target
 Type=forking
 EnvironmentFile=-/etc/ucarp/vip-common.conf
 EnvironmentFile=-/etc/ucarp/vip-%I.conf
-ExecStart=/usr/sbin/ucarp -i $BIND_INTERFACE -o $PASSWORD_FILE -v %I -a $VIP_ADDRESS -s $SOURCE_ADDRESS $OPTIONS -u $UPSCRIPT -d $DOWNSCRIPT -z
+ExecStart=/usr/sbin/ucarp -i $BIND_INTERFACE -p $PASSWORD -v %I -a $VIP_ADDRESS -s $SOURCE_ADDRESS $OPTIONS -u $UPSCRIPT -d $DOWNSCRIPT -z
 KillMode=control-group
 
 [Install]

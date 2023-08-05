@@ -1,6 +1,5 @@
-PASSWORD="{{ labcluster_ip | b64encode }}"
 BIND_INTERFACE={{ ansible_facts['default_ipv4']['interface'] }}
-PASSWORD_FILE={{ template_destpath }}
+PASSWORD="{{ labcluster_ip | b64encode }}"
 VIP_ADDRESS={{ labcluster_ip }}
 SOURCE_ADDRESS={{ ansible_facts['default_ipv4']['address'] }}
 OPTIONS="{{ vars['vars']['ucarp_options'] }}"
