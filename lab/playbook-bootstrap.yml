@@ -124,7 +124,7 @@
         mode: '{{ item.mode }}'
       loop:
         - { file: vip-001.conf, dest: '/etc/ucarp', mode: '644' }
-    - name: Enable ucarp service
+    - name: Configure ucarp service
       systemd_service:
         daemon_reload: true
         name: ucarp@001
