@@ -10,6 +10,13 @@
         mode: '{{ item.mode }}'
       loop:
         - { name: healthcheck-diff.sh, dest: '/sbin', mode: '755' }
+    - name: Template healthcheck scripts
+      template:
+        src: './healthcheck/{{ item.name }}.j2'
+        dest: '{{ item.dest }}/{{ item.name }}'
+        force: true
+        mode: '{{ item.mode }}'
+      loop:
         - { name: healthcheck_cron, dest: '/etc/cron.d', mode: '644' } # required no dot in cron.d filenames
     - name: Force cron.d to reload
       shell: touch /etc/cron.d

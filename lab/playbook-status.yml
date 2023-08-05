@@ -32,6 +32,7 @@
         msg:
           - "      hostname: {{ ansible_facts['hostname'] }}"
           - "          ipv4: {{ NETWORK.stdout_lines | join('   ') }}"
+          # - "       gateway: {{ ansible_facts['default_ipv4']['gateway'] }}"
           - "            os: {{ ansible_facts['lsb']['description'] }}"
           - "        kernel: {{ ansible_facts['kernel'] }}"
           - "     date time: {{ ansible_facts['date_time']['iso8601'] }}"
