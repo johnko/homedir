@@ -89,6 +89,7 @@
       loop:
         - { name: docker.io }
         - { name: docker-compose }
+        - { name: ucarp }
 
     # - name: Remove unused packages
     #   apt:
