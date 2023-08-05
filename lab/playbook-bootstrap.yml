@@ -48,6 +48,16 @@
         update_cache: true
         cache_valid_time: 3600
 
+    - name: Copy bin scripts
+      copy:
+        src: './bin/{{ item.file }}'
+        dest: '/bin/{{ item.file }}'
+        force: true
+        mode: '755'
+      loop:
+        - { file: cert_generateselfsigned }
+        - { file: cert_info }
+
     - name: Copy network scripts
       copy:
         src: './network/{{ item.file }}'
@@ -137,16 +147,6 @@
     #     state: absent
     #   loop:
     #     - { file: '/usr/lib/systemd/system/ucarp.service' }
-
-    - name: Copy bin scripts
-      copy:
-        src: './bin/{{ item.file }}'
-        dest: '/bin/{{ item.file }}'
-        force: true
-        mode: '755'
-      loop:
-        - { file: cert_generateselfsigned }
-        - { file: cert_info }
 
     - name: Upgrade all packages
       # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
