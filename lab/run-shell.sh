@@ -1,5 +1,11 @@
 #!/bin/bash
-set -eux
+set -e
+set +x
+if [ "x" = "x$LABCLUSTER_IP" ]; then
+  echo "ERROR: Missing export LABCLUSTER_IP=..."
+  exit 1
+fi
+set -ux
 
 IMAGE_NAME="shell:local"
 
@@ -13,5 +19,5 @@ docker build \
 docker run -it --rm \
   --platform linux/amd64 \
   -v ./tmp/k3s.yaml:/root/.kube/config \
-  --add-host labcluster:192.168.2.232 \
+  --add-host labcluster:$LABCLUSTER_IP \
   $IMAGE_NAME
