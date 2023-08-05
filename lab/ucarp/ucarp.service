@@ -1,0 +1,15 @@
+[Unit]
+# https://blog.oddbit.com/post/2013-02-21-ucarp-unit-for-systemd/
+# https://manpages.ubuntu.com/manpages/xenial/man8/ucarp.8.html
+Description=UCARP virtual interface %I
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/ucarp/vip-common.conf
+EnvironmentFile=-/etc/ucarp/vip-%I.conf
+ExecStart=/usr/sbin/ucarp -i $BIND_INTERFACE -o $PASSWORD_FILE -v %I -a $VIP_ADDRESS -s $SOURCE_ADDRESS $OPTIONS -u $UPSCRIPT -d $DOWNSCRIPT -z
+KillMode=control-group
+
+[Install]
+WantedBy=multiuser.target

@@ -53,10 +53,10 @@
         src: './network/{{ item.file }}'
         dest: '{{ item.dest }}/{{ item.file }}'
         force: true
-        mode: '755'
+        mode: '{{ item.mode }}'
       loop:
-        - { file: get-ip, dest: '/bin' }
-        - { file: update-issue, dest: '/sbin' }
+        - { file: get-ip, dest: '/bin', mode: '755' }
+        - { file: update-issue, dest: '/sbin', mode: '755' }
     - name: Setup trigger on networkd-dispatcher
       file:
         src: /sbin/update-issue
@@ -90,6 +90,36 @@
         - { name: docker.io }
         - { name: docker-compose }
         - { name: ucarp }
+
+    - name: Create ucarp directory if it does not exist
+      file:
+        path: /etc/ucarp
+        state: directory
+        force: true
+        mode: '755'
+    - name: Copy ucarp scripts
+      copy:
+        src: './ucarp/{{ item.file }}'
+        dest: '{{ item.dest }}/{{ item.file }}'
+        force: true
+        mode: '{{ item.mode }}'
+      loop:
+        - { file: ucarp.service, dest: '/usr/lib/systemd/system', mode: '644' }
+        - { file: vip-common.conf, dest: '/etc/ucarp', mode: '644' }
+    - name: Template ucarp scripts
+      template:
+        src: './ucarp/{{ item.file }}.j2'
+        dest: '{{ item.dest }}/{{ item.file }}'
+        force: true
+        mode: '{{ item.mode }}'
+      loop:
+        - { file: vip-001.conf, dest: '/etc/ucarp', mode: '644' }
+    - name: Enable ucarp service
+      systemd_service:
+        daemon_reload: true
+        name: ucarp@001
+        state: stopped
+        enabled: false
 
     # - name: Remove unused packages
     #   apt:
