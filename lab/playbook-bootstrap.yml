@@ -128,8 +128,8 @@
       systemd_service:
         daemon_reload: true
         name: ucarp@001
-        state: started
-        enabled: true
+        state: "{% if vars['vars']['ucarp_service_enabled'] %}started{% else %}stopped{% endif %}"
+        enabled: "{{ vars['vars']['ucarp_service_enabled'] }}"
 
     # - name: Remove unused packages
     #   apt:
@@ -140,13 +140,13 @@
     #   loop:
     #     - { name: docker }
     #     - { name: wmdocker }
-    - name: Delete unused scripts
-      file:
-        path: '{{ item.file }}'
-        force: true
-        state: absent
-      loop:
-        - { file: '/etc/ucarp/vip-001.password' }
+    # - name: Delete unused scripts
+    #   file:
+    #     path: '{{ item.file }}'
+    #     force: true
+    #     state: absent
+    #   loop:
+    #     - { file: '/etc/ucarp/vip-001.password' }
 
     - name: Upgrade all packages
       # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
