@@ -4,20 +4,20 @@
   tasks:
     - name: Copy healthcheck scripts
       copy:
-        src: './healthcheck/{{ item.name }}'
-        dest: '{{ item.dest }}/{{ item.name }}'
+        src: './healthcheck/{{ item.file }}'
+        dest: '{{ item.dest }}/{{ item.file }}'
         force: true
         mode: '{{ item.mode }}'
       loop:
-        - { name: healthcheck-diff.sh, dest: '/sbin', mode: '755' }
+        - { file: healthcheck-diff.sh, dest: '/sbin', mode: '755' }
     - name: Template healthcheck scripts
       template:
-        src: './healthcheck/{{ item.name }}.j2'
-        dest: '{{ item.dest }}/{{ item.name }}'
+        src: './healthcheck/{{ item.file }}.j2'
+        dest: '{{ item.dest }}/{{ item.file }}'
         force: true
         mode: '{{ item.mode }}'
       loop:
-        - { name: healthcheck_cron, dest: '/etc/cron.d', mode: '644' } # required no dot in cron.d filenames
+        - { file: healthcheck_cron, dest: '/etc/cron.d', mode: '644' } # required no dot in cron.d filenames
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
 
@@ -50,13 +50,13 @@
 
     - name: Copy network scripts
       copy:
-        src: './network/{{ item.name }}'
-        dest: '{{ item.dest }}/{{ item.name }}'
+        src: './network/{{ item.file }}'
+        dest: '{{ item.dest }}/{{ item.file }}'
         force: true
         mode: '755'
       loop:
-        - { name: get-ip, dest: '/bin' }
-        - { name: update-issue, dest: '/sbin' }
+        - { file: get-ip, dest: '/bin' }
+        - { file: update-issue, dest: '/sbin' }
     - name: Setup trigger on networkd-dispatcher
       file:
         src: /sbin/update-issue
@@ -101,21 +101,21 @@
     #     - { name: wmdocker }
     # - name: Delete unused scripts
     #   file:
-    #     path: '{{ item.name }}'
+    #     path: '{{ item.file }}'
     #     force: true
     #     state: absent
     #   loop:
-    #     - { name: '/bin/generate_selfsignedcert' }
+    #     - { file: '/bin/generate_selfsignedcert' }
 
     - name: Copy bin scripts
       copy:
-        src: './bin/{{ item.name }}'
-        dest: '/bin/{{ item.name }}'
+        src: './bin/{{ item.file }}'
+        dest: '/bin/{{ item.file }}'
         force: true
         mode: '755'
       loop:
-        - { name: cert_generateselfsigned }
-        - { name: cert_info }
+        - { file: cert_generateselfsigned }
+        - { file: cert_info }
 
     - name: Upgrade all packages
       # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
@@ -141,24 +141,3 @@
         post_reboot_delay: 30
         test_command: uptime
       when: reboot_required_file.stat.exists
-
-- hosts: ubuntu
-  become: true
-  become_user: root
-  tasks:
-    - name: Copy app scripts
-      copy:
-        src: './{{ item.name }}/'
-        dest: '/root/{{ item.name }}/'
-        force: true
-        directory_mode: '700'
-        mode: '644'
-      loop:
-        - { name: postgres }
-        - { name: k3s-server }
-    - name: Pre-load docker images
-      shell: cd /root/{{ item.name }} && bash run-{{ item.name }}.sh pull
-      loop:
-        - { name: postgres }
-        - { name: k3s-server }
-        # - { name: k3s-agent }

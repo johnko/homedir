@@ -14,7 +14,7 @@ services:
       - K3S_DATASTORE_ENDPOINT=postgres://postgres:postgres@database:5432/kubernetes
       - K3S_DATASTORE_CAFILE=/var/lib/rancher/k3s/ca.crt
     extra_hosts:
-      - "database:192.168.2.232"
+      - "database:{% for host in groups['database'] %}{{ hostvars[host]['ansible_default_ipv4']['address'] }}{% endfor %}"
     network_mode: host
     privileged: true
     restart: unless-stopped

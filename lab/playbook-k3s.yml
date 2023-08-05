@@ -4,17 +4,17 @@
   tasks:
     - name: Copy app scripts
       copy:
-        src: './{{ item.name }}/'
-        dest: '/root/{{ item.name }}/'
+        src: './{{ item.app }}/'
+        dest: '/root/{{ item.app }}/'
         force: true
         directory_mode: '700'
         mode: '644'
       loop:
-        - { name: postgres }
+        - { app: postgres }
     - name: Run app
-      shell: cd /root/{{ item.name }} && bash run-{{ item.name }}.sh up
+      shell: cd /root/{{ item.app }} && bash run-{{ item.app }}.sh up
       loop:
-        - { name: postgres }
+        - { app: postgres }
     - name: Fetch cert
       fetch:
         src: /etc/ssl/pgsql-server.pem
@@ -33,14 +33,22 @@
         mode: '644'
     - name: Copy app scripts
       copy:
-        src: './{{ item.name }}/'
-        dest: '/root/{{ item.name }}/'
+        src: './{{ item.app }}/'
+        dest: '/root/{{ item.app }}/'
         force: true
         directory_mode: '700'
         mode: '644'
       loop:
-        - { name: k3s-server }
-    - name: Run app
-      shell: cd /root/{{ item.name }} && bash run-{{ item.name }}.sh up
+        - { app: k3s-server }
+    - name: Template k3s files
+      template:
+        src: './{{ item.app }}/{{ item.file }}.j2'
+        dest: '/root/{{ item.app }}/{{ item.file }}'
+        force: true
+        mode: '{{ item.mode }}'
       loop:
-        - { name: k3s-server }
+        - { app: k3s-server, file: docker-compose.yml, mode: '644' }
+    - name: Run app
+      shell: cd /root/{{ item.app }} && bash run-{{ item.app }}.sh up
+      loop:
+        - { app: k3s-server }
