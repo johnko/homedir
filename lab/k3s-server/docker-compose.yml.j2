@@ -6,7 +6,7 @@ version: "3.8"
 services:
   k3s:
     container_name: k3s
-    image: rancher/k3s:v1.26.4-k3s1
+    build: ./
     command: >
       server --tls-san=labcluster
     environment:
@@ -21,7 +21,6 @@ services:
     volumes:
       - k3sserver:/var/lib/rancher/k3s/server
       - k3snode:/etc/rancher/node
-      - ./pgsql-server.pem:/var/lib/rancher/k3s/ca.crt:ro
 
 volumes:
   k3sserver:

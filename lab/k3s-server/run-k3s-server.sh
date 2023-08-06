@@ -5,6 +5,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 set -x
 
 case $1 in
+  build)
+    docker-compose build
+    ;;
   cert)
     cp -a /etc/ssl/pgsql-server.pem ./pgsql-server.pem
     ;;
@@ -34,7 +37,7 @@ case $1 in
     ;;
   up | *)
     bash $0 cert
-    bash $0 pull
+    bash $0 build
     ## Create and run the stack interactively
     # docker-compose up
     ## Create and run the stack in the background
