@@ -13,7 +13,6 @@ case $1 in
     ;;
   up | *)
     bash $0 pull
-    kubectl get ns argocd || kubectl create ns argocd
-    helm upgrade --install --atomic -n argocd argo-cd argo/argo-cd
+    helm upgrade --install --atomic --create-namespace -n argocd argo-cd argo/argo-cd
     ;;
 esac
