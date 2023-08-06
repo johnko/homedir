@@ -8,11 +8,12 @@ services:
     container_name: k3s
     build: ./
     command: >
-      server --tls-san=labcluster
+      server --tls-san=labcluster --advertise-address={{ ansible_facts['default_ipv4']['address'] }}
     environment:
       - K3S_TOKEN=lab.local
       - K3S_DATASTORE_ENDPOINT=postgres://postgres:postgres@database:5432/kubernetes
       - K3S_DATASTORE_CAFILE=/var/lib/rancher/k3s/ca.crt
+      - K3S_NODE_NAME={{ ansible_facts['hostname'] }}
     extra_hosts:
       - "database:{% for host in groups['database'] %}{{ hostvars[host]['ansible_default_ipv4']['address'] }}{% endfor %}"
     network_mode: host
