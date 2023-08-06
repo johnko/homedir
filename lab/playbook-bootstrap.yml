@@ -1,3 +1,28 @@
+- hosts: all
+  become: true
+  become_user: root
+  tasks:
+    - name: Copy bin scripts
+      copy:
+        src: './bin/{{ item.file }}'
+        dest: '/usr/local/bin/{{ item.file }}'
+        force: true
+        mode: '755'
+      loop:
+        - { file: cert_generateselfsigned }
+        - { file: cert_info }
+    - name: Copy network scripts
+      copy:
+        src: './network/{{ item.file }}'
+        dest: '{{ item.dest }}/{{ item.file }}'
+        force: true
+        mode: '{{ item.mode }}'
+      loop:
+        - { file: get-ip, dest: '/usr/local/bin', mode: '755' }
+        - { file: update-issue, dest: '/usr/local/sbin', mode: '755' }
+
+
+
 - hosts: sticks
   become: true
   become_user: root
@@ -9,7 +34,7 @@
         force: true
         mode: '{{ item.mode }}'
       loop:
-        - { file: healthcheck-diff.sh, dest: '/sbin', mode: '755' }
+        - { file: healthcheck-diff.sh, dest: '/usr/local/sbin', mode: '755' }
     - name: Template healthcheck scripts
       template:
         src: './healthcheck/{{ item.file }}.j2'
@@ -38,6 +63,8 @@
         passno: '2'
         state: mounted
 
+
+
 - hosts: ubuntu
   become: true
   become_user: root
@@ -48,28 +75,9 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: Copy bin scripts
-      copy:
-        src: './bin/{{ item.file }}'
-        dest: '/bin/{{ item.file }}'
-        force: true
-        mode: '755'
-      loop:
-        - { file: cert_generateselfsigned }
-        - { file: cert_info }
-
-    - name: Copy network scripts
-      copy:
-        src: './network/{{ item.file }}'
-        dest: '{{ item.dest }}/{{ item.file }}'
-        force: true
-        mode: '{{ item.mode }}'
-      loop:
-        - { file: get-ip, dest: '/bin', mode: '755' }
-        - { file: update-issue, dest: '/sbin', mode: '755' }
     - name: Setup trigger on networkd-dispatcher
       file:
-        src: /sbin/update-issue
+        src: /usr/local/sbin/update-issue
         dest: '/etc/networkd-dispatcher/{{ item.dest }}.d/update-issue'
         force: true
         mode: '755'
@@ -140,13 +148,17 @@
     #   loop:
     #     - { name: docker }
     #     - { name: wmdocker }
-    # - name: Delete unused scripts
-    #   file:
-    #     path: '{{ item.file }}'
-    #     force: true
-    #     state: absent
-    #   loop:
-    #     - { file: '/etc/ucarp/vip-001.password' }
+    - name: Delete unused scripts
+      file:
+        path: '{{ item.file }}'
+        force: true
+        state: absent
+      loop:
+        - { file: '/bin/cert_generateselfsigned' }
+        - { file: '/bin/cert_info' }
+        - { file: '/bin/get-ip' }
+        - { file: '/sbin/update-issue' }
+        - { file: '/sbin/healthcheck-diff.sh' }
 
     - name: Upgrade all packages
       # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/

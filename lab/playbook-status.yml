@@ -1,4 +1,4 @@
-- hosts: ubuntu
+- hosts: all
   become: true
   become_user: root
   tasks:
@@ -12,48 +12,53 @@
         uptime_hours: "{{ (ansible_facts['uptime_seconds'] | int / 3600) | round(1) }}"
 
     - name: Get ipv4 info
-      shell: get-ip || ip a | grep 'inet ' | awk '{print $2}'
+      shell: /usr/local/bin/get-ip || ip a | grep 'inet ' | awk '{print $2}'
       register: NETWORK
     - name: Get diskspace info
-      shell: df -h | grep -v tmpfs
+      shell: df -h | grep -v tmpfs | grep -v devfs
       register: DF
     - name: Get landscape info
       shell: landscape-sysinfo
       register: LANDSCAPE
+      when: inventory_hostname in groups['ubuntu']
 
     - name: dmesg about r8723bs wlan0 device
       shell: dmesg | grep 8723
       register: DMESG
+      when: inventory_hostname in groups['ubuntu']
     - debug:
         var: DMESG.stdout_lines
+      when: inventory_hostname in groups['ubuntu']
 
     - name: Summary
       debug:
         msg:
           - "      hostname: {{ ansible_facts['hostname'] }}"
-          - "          ipv4: {{ NETWORK.stdout_lines | join('   ') }}"
+          - "          ipv4: {{ NETWORK.stdout_lines | default(ansible_facts['default_ipv4']['address']) | join('   ') }}"
           # - "       gateway: {{ ansible_facts['default_ipv4']['gateway'] }}"
-          - "            os: {{ ansible_facts['lsb']['description'] }}"
+          - "            os: {{ ansible_facts['lsb']['description'] | default(ansible_facts['distribution'] + ' ' + ansible_facts['distribution_version']) }}"
           - "        kernel: {{ ansible_facts['kernel'] }}"
           - "     date time: {{ ansible_facts['date_time']['iso8601'] }}"
           - '   uptime_days: {{ uptime_days }} days'
           - '  uptime_hours: {{ uptime_hours }} hours'
-          - '{{ LANDSCAPE.stdout_lines }}'
+          - '{{ LANDSCAPE.stdout_lines | default([]) }}'
           - '{{ DF.stdout_lines }}'
       # when: (uptime_days | int) >= 30
 
     - name: k3s status
-      shell: cd /root/k3s-server && bash run-k3s-server.sh ps
+      shell: cd {{ ansible_user_dir }}/k3s-server && bash run-k3s-server.sh ps
       register: APP
+      when: inventory_hostname in groups['ubuntu']
     - debug:
         var: APP.stdout_lines
+      when: inventory_hostname in groups['ubuntu']
 
     - name: Extract kubeconfig
       shell: docker cp k3s:/etc/rancher/k3s/k3s.yaml /var/tmp/k3s.yaml
-      when: lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []
+      when: (lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []) and (inventory_hostname in groups['ubuntu'])
     - name: Fetch kubeconfig
       fetch:
         src: /var/tmp/k3s.yaml
         dest: ./tmp/k3s.yaml
         flat: true
-      when: lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []
+      when: (lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []) and (inventory_hostname in groups['ubuntu'])

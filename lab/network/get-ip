@@ -2,10 +2,20 @@
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 OMIT=""
-for iface in flannel.1 cni0 docker0 lo ; do
-  if ip addr show  >/dev/null 2>&1 ; then
-    OMIT="$OMIT"$(ip addr show $iface | grep 'inet ' | awk '{ print $2 }' | tr "\n" '|')
+for iface in flannel.1 cni0 docker0 lo0 lo ; do
+  if which ip >/dev/null 2>&1 ; then
+    if ip addr show $iface >/dev/null 2>&1 ; then
+      OMIT="$OMIT"$(ip addr show $iface | grep 'inet ' | awk '{ print $2 }' | tr "\n" '|')
+    fi
+  elif which ifconfig >/dev/null 2>&1 ; then
+    if ifconfig $iface >/dev/null 2>&1 ; then
+      OMIT="$OMIT"$(ifconfig $iface | grep 'inet ' | awk '{ print $2 }' | tr "\n" '|')
+    fi
   fi
 done
 OMIT="$OMIT"255.255.255.255
-ip addr | grep 'inet ' | awk '{ print $2 }' | grep -v -E "$OMIT"
+if which ip >/dev/null 2>&1 ; then
+  ip addr | grep 'inet ' | awk '{ print $2 }' | grep -v -E "$OMIT"
+elif which ifconfig >/dev/null 2>&1 ; then
+  ifconfig | grep 'inet ' | awk '{ print $2 }' | grep -v -E "$OMIT"
+fi
