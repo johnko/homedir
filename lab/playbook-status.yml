@@ -20,15 +20,21 @@
     - name: Get landscape info
       shell: landscape-sysinfo
       register: LANDSCAPE
-      when: inventory_hostname in groups['ubuntu']
+      when:
+        - ansible_facts['distribution'] is defined
+        - ansible_facts['distribution'] in ['Ubuntu']
 
     - name: dmesg about r8723bs wlan0 device
       shell: dmesg | grep 8723
       register: DMESG
-      when: inventory_hostname in groups['ubuntu']
+      when:
+        - ansible_facts['board_name'] is defined
+        - ansible_facts['board_name'] in ['STCK1A32WFC']
     - debug:
         var: DMESG.stdout_lines
-      when: inventory_hostname in groups['ubuntu']
+      when:
+        - ansible_facts['board_name'] is defined
+        - ansible_facts['board_name'] in ['STCK1A32WFC']
 
     - name: Summary
       debug:
@@ -48,17 +54,23 @@
     - name: k3s status
       shell: cd {{ ansible_user_dir }}/k3s-server && bash run-k3s-server.sh ps
       register: APP
-      when: inventory_hostname in groups['ubuntu']
+      when: inventory_hostname in groups['k3sservers']
     - debug:
         var: APP.stdout_lines
-      when: inventory_hostname in groups['ubuntu']
+      when: inventory_hostname in groups['k3sservers']
 
     - name: Extract kubeconfig
       shell: docker cp k3s:/etc/rancher/k3s/k3s.yaml /var/tmp/k3s.yaml
-      when: (lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []) and (inventory_hostname in groups['ubuntu'])
+      when:
+        - lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []
+        - inventory_hostname in groups['k3s-servers']
+        - ansible_facts['distribution'] in ['Ubuntu']
     - name: Fetch kubeconfig
       fetch:
         src: /var/tmp/k3s.yaml
         dest: ./tmp/k3s.yaml
         flat: true
-      when: (lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []) and (inventory_hostname in groups['ubuntu'])
+      when:
+        - lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []
+        - inventory_hostname in groups['k3s-servers']
+        - ansible_facts['distribution'] in ['Ubuntu']

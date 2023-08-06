@@ -21,7 +21,7 @@
         dest: ./tmp/pgsql-server.pem
         flat: true
 
-- hosts: sticks
+- hosts: k3sservers
   become: true
   become_user: root
   tasks:

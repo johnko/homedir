@@ -65,6 +65,20 @@
 
 
 
+- hosts: macs
+  become: true
+  become_user: root
+  tasks:
+    - name: Link docker.sock in mac
+      file:
+        src: '/Users/{{ ansible_user }}/.docker/run/docker.sock'
+        dest: /var/run/docker.sock
+        force: true
+        mode: '755'
+        state: link
+
+
+
 - hosts: ubuntu
   become: true
   become_user: root
@@ -148,17 +162,17 @@
     #   loop:
     #     - { name: docker }
     #     - { name: wmdocker }
-    - name: Delete unused scripts
-      file:
-        path: '{{ item.file }}'
-        force: true
-        state: absent
-      loop:
-        - { file: '/bin/cert_generateselfsigned' }
-        - { file: '/bin/cert_info' }
-        - { file: '/bin/get-ip' }
-        - { file: '/sbin/update-issue' }
-        - { file: '/sbin/healthcheck-diff.sh' }
+    # - name: Delete unused scripts
+    #   file:
+    #     path: '{{ item.file }}'
+    #     force: true
+    #     state: absent
+    #   loop:
+    #     - { file: '/bin/cert_generateselfsigned' }
+    #     - { file: '/bin/cert_info' }
+    #     - { file: '/bin/get-ip' }
+    #     - { file: '/sbin/update-issue' }
+    #     - { file: '/sbin/healthcheck-diff.sh' }
 
     - name: Upgrade all packages
       # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
