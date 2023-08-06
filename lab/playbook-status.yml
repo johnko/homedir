@@ -63,7 +63,7 @@
       shell: docker cp k3s:/etc/rancher/k3s/k3s.yaml /var/tmp/k3s.yaml
       when:
         - lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []
-        - inventory_hostname in groups['k3s-servers']
+        - inventory_hostname in groups['k3sservers']
         - ansible_facts['distribution'] in ['Ubuntu']
     - name: Fetch kubeconfig
       fetch:
@@ -72,5 +72,5 @@
         flat: true
       when:
         - lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []
-        - inventory_hostname in groups['k3s-servers']
+        - inventory_hostname in groups['k3sservers']
         - ansible_facts['distribution'] in ['Ubuntu']
