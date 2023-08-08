@@ -89,6 +89,15 @@
         update_cache: true
         cache_valid_time: 3600
 
+    - name: Copy luks scripts
+      copy:
+        src: './luks-autounlock/{{ item.file }}'
+        dest: '{{ item.dest }}/{{ item.file }}'
+        force: true
+        mode: '{{ item.mode }}'
+      loop:
+        - { file: setup-luks-autounlock.sh, dest: '/usr/local/sbin', mode: '755' }
+
     - name: Setup trigger on networkd-dispatcher
       file:
         src: /usr/local/sbin/update-issue
