@@ -52,3 +52,19 @@
       shell: cd {{ ansible_user_dir }}/{{ item.app }} && bash run-{{ item.app }}.sh up
       loop:
         - { app: k3s-server }
+
+    - name: Extract kubeconfig
+      shell: docker cp k3s:/etc/rancher/k3s/k3s.yaml /var/tmp/k3s.yaml
+      when:
+        - lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []
+        - inventory_hostname not in groups['k3sprimary']
+        - ansible_facts['distribution'] in ['Ubuntu']
+    - name: Fetch kubeconfig
+      fetch:
+        src: /var/tmp/k3s.yaml
+        dest: ./tmp/k3s.yaml
+        flat: true
+      when:
+        - lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []
+        - inventory_hostname not in groups['k3sprimary']
+        - ansible_facts['distribution'] in ['Ubuntu']

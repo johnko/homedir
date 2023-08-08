@@ -58,19 +58,3 @@
     - debug:
         var: APP.stdout_lines
       when: inventory_hostname in groups['k3sservers']
-
-    - name: Extract kubeconfig
-      shell: docker cp k3s:/etc/rancher/k3s/k3s.yaml /var/tmp/k3s.yaml
-      when:
-        - lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []
-        - inventory_hostname in groups['k3sservers']
-        - ansible_facts['distribution'] in ['Ubuntu']
-    - name: Fetch kubeconfig
-      fetch:
-        src: /var/tmp/k3s.yaml
-        dest: ./tmp/k3s.yaml
-        flat: true
-      when:
-        - lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []
-        - inventory_hostname in groups['k3sservers']
-        - ansible_facts['distribution'] in ['Ubuntu']
