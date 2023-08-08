@@ -54,7 +54,7 @@
         - { app: k3s-server }
 
     - name: Extract kubeconfig
-      shell: docker cp k3s:/etc/rancher/k3s/k3s.yaml /var/tmp/k3s.yaml
+      shell: docker cp k3s:/etc/rancher/k3s/k3s.yaml /var/tmp/k3s.yaml || touch /var/tmp/k3s.yaml
       when:
         - lookup('ansible.builtin.fileglob', './tmp/k3s.yaml') == []
         - inventory_hostname not in groups['k3sprimary']
