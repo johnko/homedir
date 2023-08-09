@@ -9,12 +9,13 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: lab/argocd/namespaces
+    path: lab/charts/namespaces
     repoURL: https://github.com/johnko/homedir.git
     targetRevision: HEAD
     helm:
       values: |
         namespaces:
+          - argocd
           - rook-ceph
           - pihole
   syncPolicy:
