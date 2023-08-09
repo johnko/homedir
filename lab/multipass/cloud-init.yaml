@@ -1,7 +1,6 @@
 #cloud-config
 users:
   - name: lab
-    plain_text_passwd: 'lab'
     home: /home/lab
     shell: /bin/bash
     lock_passwd: True
@@ -10,8 +9,11 @@ users:
     primary_group: lab
     ssh_import_id:
       - gh:johnko
+    sudo: ALL=(ALL) NOPASSWD:ALL
 
 package_update: true
 package_upgrade: true
 packages:
   - openssh-server
+
+ssh_pwauth: false

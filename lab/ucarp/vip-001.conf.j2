@@ -1,4 +1,4 @@
-BIND_INTERFACE={{ ansible_facts['default_ipv4']['interface'] }}
+BIND_INTERFACE={{ vars['vars']['ucarp_nic'] }}
 PASSWORD={{ labcluster_ip | reverse | b64encode | replace('=','') }}
 VIP_ADDRESS={{ labcluster_ip }}
 SOURCE_ADDRESS={{ ansible_facts['default_ipv4']['address'] }}

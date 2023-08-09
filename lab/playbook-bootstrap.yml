@@ -97,6 +97,23 @@
   become: true
   become_user: root
   tasks:
+    - name: Remove default ubuntu user
+      user:
+        user: ubuntu
+        state: absent
+        remove: true
+        force: true
+    - name: Allow ansible_user to sudo NOPASSWD
+      lineinfile:
+        path: /etc/sudoers.d/90-cloud-init-users
+        state: present
+        create: true
+        regexp: '^{{ ansible_user }}'
+        line: '{{ ansible_user }} ALL=(ALL) NOPASSWD:ALL'
+        validate: /usr/sbin/visudo -cf %s
+    - name: Reset lab password
+      shell: '(echo lab;echo lab;)| passwd lab'
+
     - name: Update apt repo and cache
       apt:
         force_apt_get: true
