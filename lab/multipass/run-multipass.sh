@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eux
 
-IMAGE=lts
+IMAGE=22.04
 NIC=en2
 
 multipass set local.bridged-network=$NIC
