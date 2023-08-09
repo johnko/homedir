@@ -10,6 +10,8 @@ case $1 in
     ;;
   pull)
     helm repo add argo https://argoproj.github.io/argo-helm
+    # fetch the tar.gz so you can stash it
+    helm pull argo/argo-cd
     ;;
   up | *)
     bash $0 pull
