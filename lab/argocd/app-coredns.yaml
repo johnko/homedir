@@ -12,6 +12,9 @@ spec:
     path: lab/charts/coredns
     repoURL: https://github.com/johnko/homedir.git
     targetRevision: HEAD
+    helm:
+      values: |
+        replicaCount: 2
   syncPolicy:
     automated:
       prune: true
