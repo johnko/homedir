@@ -76,13 +76,20 @@
   become: true
   become_user: root
   tasks:
-    - name: Link docker.sock in mac
+    # - name: Link docker.sock in mac
+    #   file:
+    #     src: '/Users/{{ ansible_user }}/.docker/run/docker.sock'
+    #     dest: /var/run/docker.sock
+    #     force: true
+    #     mode: '755'
+    #     state: link
+    - name: Delete unused scripts
       file:
-        src: '/Users/{{ ansible_user }}/.docker/run/docker.sock'
-        dest: /var/run/docker.sock
+        path: '{{ item.file }}'
         force: true
-        mode: '755'
-        state: link
+        state: absent
+      loop:
+        - { file: '/var/run/docker.sock' }
 
 
 
