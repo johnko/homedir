@@ -137,37 +137,6 @@
       loop:
         - { name: docker.io }
         - { name: docker-compose }
-        - { name: ucarp }
-
-    - name: Create ucarp directory if it does not exist
-      file:
-        path: /etc/ucarp
-        state: directory
-        force: true
-        mode: '755'
-    - name: Copy ucarp scripts
-      copy:
-        src: './ucarp/{{ item.file }}'
-        dest: '{{ item.dest }}/{{ item.file }}'
-        force: true
-        mode: '{{ item.mode }}'
-      loop:
-        - { file: ucarp@.service, dest: '/usr/lib/systemd/system', mode: '644' }
-        - { file: vip-common.conf, dest: '/etc/ucarp', mode: '644' }
-    - name: Template ucarp scripts
-      template:
-        src: './ucarp/{{ item.file }}.j2'
-        dest: '{{ item.dest }}/{{ item.file }}'
-        force: true
-        mode: '{{ item.mode }}'
-      loop:
-        - { file: vip-001.conf, dest: '/etc/ucarp', mode: '644' }
-    - name: Configure ucarp service
-      systemd_service:
-        daemon_reload: true
-        name: ucarp@001
-        state: "{% if vars['vars']['ucarp_service_enabled'] %}started{% else %}stopped{% endif %}"
-        enabled: "{{ vars['vars']['ucarp_service_enabled'] }}"
 
     # - name: Remove unused packages
     #   apt:
@@ -214,3 +183,45 @@
         post_reboot_delay: 30
         test_command: uptime
       when: reboot_required_file.stat.exists
+
+
+
+- hosts: ucarpservers
+  become: true
+  become_user: root
+  tasks:
+    - name: Install packages
+      apt:
+        force_apt_get: true
+        name: '{{ item.name }}'
+      loop:
+        - { name: ucarp }
+    - name: Create ucarp directory if it does not exist
+      file:
+        path: /etc/ucarp
+        state: directory
+        force: true
+        mode: '755'
+    - name: Copy ucarp scripts
+      copy:
+        src: './ucarp/{{ item.file }}'
+        dest: '{{ item.dest }}/{{ item.file }}'
+        force: true
+        mode: '{{ item.mode }}'
+      loop:
+        - { file: ucarp@.service, dest: '/usr/lib/systemd/system', mode: '644' }
+        - { file: vip-common.conf, dest: '/etc/ucarp', mode: '644' }
+    - name: Template ucarp scripts
+      template:
+        src: './ucarp/{{ item.file }}.j2'
+        dest: '{{ item.dest }}/{{ item.file }}'
+        force: true
+        mode: '{{ item.mode }}'
+      loop:
+        - { file: vip-001.conf, dest: '/etc/ucarp', mode: '644' }
+    - name: Configure ucarp service
+      systemd_service:
+        daemon_reload: true
+        name: ucarp@001
+        state: "{% if vars['vars']['ucarp_service_enabled'] %}started{% else %}stopped{% endif %}"
+        enabled: "{{ vars['vars']['ucarp_service_enabled'] }}"
