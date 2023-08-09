@@ -27,14 +27,14 @@
   become: true
   become_user: root
   tasks:
-    # - name: Copy healthcheck scripts
-    #   copy:
-    #     src: './healthcheck/{{ item.file }}'
-    #     dest: '{{ item.dest }}/{{ item.file }}'
-    #     force: true
-    #     mode: '{{ item.mode }}'
-    #   loop:
-    #     - { file: healthcheck-diff.sh, dest: '/usr/local/sbin', mode: '755' }
+    - name: Copy healthcheck scripts
+      copy:
+        src: './healthcheck/{{ item.file }}'
+        dest: '{{ item.dest }}/{{ item.file }}'
+        force: true
+        mode: '{{ item.mode }}'
+      loop:
+        - { file: healthcheck-diff.sh, dest: '/usr/local/sbin', mode: '755' }
     # - name: Template healthcheck scripts
     #   template:
     #     src: './healthcheck/{{ item.file }}.j2'
@@ -43,8 +43,15 @@
     #     mode: '{{ item.mode }}'
     #   loop:
     #     - { file: healthcheck_cron, dest: '/etc/cron.d', mode: '644' } # required no dot in cron.d filenames
-    # - name: Force cron.d to reload
-    #   shell: touch /etc/cron.d
+    - name: Delete unused scripts
+      file:
+        path: '{{ item.file }}'
+        force: true
+        state: absent
+      loop:
+        - { file: '/etc/cron.d/healthcheck_cron' }
+    - name: Force cron.d to reload
+      shell: touch /etc/cron.d
 
     - name: Create a docker volume
       community.general.lvol:
