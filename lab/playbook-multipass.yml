@@ -8,6 +8,7 @@
         force: true
         directory_mode: '700'
         mode: '644'
+    # # Doesn't work, have to ssh into mac
     # - name: Start multipass
     #   shell:
     #     chdir: '/Users/{{ ansible_user }}/multipass'
