@@ -56,7 +56,9 @@
   become_user: root
   tasks:
     - name: k3s status
-      shell: cd {{ ansible_user_dir }}/k3s-server && bash run-k3s-server.sh ps
+      shell:
+        chdir: '{{ ansible_user_dir }}/k3s-server'
+        cmd: bash run-k3s-server.sh ps
       register: APP
     - debug:
         var: APP.stdout_lines

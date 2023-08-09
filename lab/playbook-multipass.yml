@@ -1,0 +1,14 @@
+- hosts: mac
+  become: false
+  tasks:
+    - name: Copy multipass scripts
+      copy:
+        src: './multipass/'
+        dest: '/Users/{{ ansible_user }}/multipass/'
+        force: true
+        directory_mode: '700'
+        mode: '644'
+    # - name: Start multipass
+    #   shell:
+    #     chdir: '/Users/{{ ansible_user }}/multipass'
+    #     cmd: 'bash run-vm1.sh up'
