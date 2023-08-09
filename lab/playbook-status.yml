@@ -24,17 +24,17 @@
         - ansible_facts['distribution'] is defined
         - ansible_facts['distribution'] in ['Ubuntu']
 
-    - name: dmesg about r8723bs wlan0 device
-      shell: dmesg | grep 8723
-      register: DMESG
-      when:
-        - ansible_facts['board_name'] is defined
-        - ansible_facts['board_name'] in ['STCK1A32WFC']
-    - debug:
-        var: DMESG.stdout_lines
-      when:
-        - ansible_facts['board_name'] is defined
-        - ansible_facts['board_name'] in ['STCK1A32WFC']
+    # - name: dmesg about r8723bs wlan0 device
+    #   shell: dmesg | grep 8723
+    #   register: DMESG
+    #   when:
+    #     - ansible_facts['board_name'] is defined
+    #     - ansible_facts['board_name'] in ['STCK1A32WFC']
+    # - debug:
+    #     var: DMESG.stdout_lines
+    #   when:
+    #     - ansible_facts['board_name'] is defined
+    #     - ansible_facts['board_name'] in ['STCK1A32WFC']
 
     - name: Summary
       debug:
