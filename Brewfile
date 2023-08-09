@@ -2,7 +2,7 @@
 
 # macOS Apps
 cask "1password"
-cask "cloudflare-warp"
+# cask "cloudflare-warp"
 cask "rectangle"
 
 # Web Browsers
@@ -28,7 +28,7 @@ brew "yq"
 # Docker / k8s
 cask "docker"
 brew "helm"
-brew "k3d"
+# brew "k3d"
 brew "k9s"
 brew "kind"
 brew "kubernetes-cli", args: ["overwrite"]
