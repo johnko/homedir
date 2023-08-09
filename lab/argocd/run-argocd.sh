@@ -14,7 +14,10 @@ case $1 in
     helm uninstall -n argocd argo-cd
     ;;
   web)
-    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+    set +x
+    echo Password: $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
+    echo
+    set -x
     kubectl port-forward service/argo-cd-argocd-server -n argocd 8080:443 &
     open http://localhost:8080
     ;;
