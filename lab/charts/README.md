@@ -13,3 +13,15 @@ git add argco-cd
 git commit -m "track chart $SOURCE"
 ```
 
+## metrics-server
+
+```bash
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+helm pull metrics-server/metrics-server
+rm -fr metrics-server
+tar xvf metrics-server-*.tgz
+SOURCE=$(ls -1 metrics-server-*.tgz)
+rm metrics-server-*.tgz
+git add metrics-server
+git commit -m "track chart $SOURCE"
+```
