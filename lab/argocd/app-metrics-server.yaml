@@ -12,6 +12,10 @@ spec:
     path: lab/charts/metrics-server
     repoURL: https://github.com/johnko/homedir.git
     targetRevision: HEAD
+    helm:
+      values: |
+        args:
+          - --kubelet-insecure-tls
   syncPolicy:
     automated:
       prune: true
