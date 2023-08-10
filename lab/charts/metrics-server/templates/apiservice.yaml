@@ -19,7 +19,7 @@ spec:
   service:
     name: {{ include "metrics-server.fullname" . }}
     namespace: {{ .Release.Namespace }}
-    port: {{ .Values.service.port }}
+    # port: {{ .Values.service.port }} # omit from k3s
   version: v1beta1
   versionPriority: 100
 {{- end -}}
