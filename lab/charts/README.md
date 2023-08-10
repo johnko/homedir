@@ -38,3 +38,16 @@ rm argo-cd-*.tgz
 git add argco-cd
 git commit -m "track chart $SOURCE"
 ```
+
+## nginx ingress controller
+
+```bash
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm pull ingress-nginx/ingress-nginx
+rm -fr ingress-nginx
+tar xvf ingress-nginx-*.tgz
+SOURCE=$(ls -1 ingress-nginx-*.tgz)
+rm ingress-nginx-*.tgz
+git add ingress-nginx
+git commit -m "track chart $SOURCE"
+```
