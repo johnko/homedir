@@ -72,8 +72,10 @@
     - name: Restart microk8s
       shell: snap restart microk8s
 
-    # - name: Refresh certs
-    #   shell: microk8s refresh-certs -e server.crt
+    - name: Refresh certs
+      shell: microk8s refresh-certs -e server.crt
+      when:
+        - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
     - name: Wait
       shell: microk8s status --wait-ready
 
