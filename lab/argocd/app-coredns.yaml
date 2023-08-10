@@ -17,6 +17,18 @@ spec:
         replicaCount: 2
         service:
           name: kube-dns
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: k8s-app
+                  operator: In
+                  values:
+                  - coredns
+              topologyKey: "kubernetes.io/hostname"
+        deployment:
+          name: coredns
   syncPolicy:
     automated:
       prune: true
