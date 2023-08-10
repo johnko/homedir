@@ -50,15 +50,3 @@
           - '{{ LANDSCAPE.stdout_lines | default([]) }}'
           - '{{ DF.stdout_lines }}'
       # when: (uptime_days | int) >= 30
-
-- hosts: k3sservers
-  become: true
-  become_user: root
-  tasks:
-    - name: k3s status
-      shell:
-        chdir: '{{ ansible_user_dir }}/k3s-server'
-        cmd: bash run-k3s-server.sh ps
-      register: APP
-    - debug:
-        var: APP.stdout_lines

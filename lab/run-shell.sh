@@ -9,7 +9,7 @@ set -ux
 
 IMAGE_NAME="shell:local"
 
-sed -i '' 's/127.0.0.1/labcluster/' ./tmp/k3s.yaml
+sed -i '' 's/127.0.0.1/labcluster/' ./tmp/kubeconfig.yaml
 
 cp ./argocd/run-argocd.sh ./shell/
 docker build \
@@ -18,6 +18,6 @@ docker build \
 
 docker run -it --rm \
   --platform linux/amd64 \
-  -v ./tmp/k3s.yaml:/root/.kube/config \
+  -v ./tmp/kubeconfig.yaml:/root/.kube/config \
   --add-host labcluster:$LABCLUSTER_IP \
   $IMAGE_NAME

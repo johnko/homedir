@@ -1,31 +1,5 @@
 # Helm Charts
 
-## tigera-operator / calico
-
-```bash
-helm repo add projectcalico https://docs.tigera.io/calico/charts
-helm pull projectcalico/tigera-operator
-rm -fr tigera-operator
-tar xvf tigera-operator-*.tgz
-SOURCE=$(ls -1 tigera-operator-*.tgz)
-rm tigera-operator-*.tgz
-git add tigera-operator
-git commit -m "track chart $SOURCE"
-```
-
-## coredns
-
-```bash
-helm repo add coredns https://coredns.github.io/helm
-helm pull coredns/coredns
-rm -fr coredns
-tar xvf coredns-*.tgz
-SOURCE=$(ls -1 coredns-*.tgz)
-rm coredns-*.tgz
-git add coredns
-git commit -m "track chart $SOURCE"
-```
-
 ## metrics-server
 
 ```bash
