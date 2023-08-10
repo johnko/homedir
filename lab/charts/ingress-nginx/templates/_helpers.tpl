@@ -138,8 +138,9 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "ingress-nginx.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "ingress-nginx.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+name: {{ .Release.Name }}
+# app.kubernetes.io/name: {{ include "ingress-nginx.name" . }} # omit from microk8s
+# app.kubernetes.io/instance: {{ .Release.Name }} # omit from microk8s
 {{- end -}}
 
 {{/*
