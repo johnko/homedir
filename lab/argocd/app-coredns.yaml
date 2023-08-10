@@ -30,6 +30,8 @@ spec:
           minAvailable: 1
         priorityClassName: system-cluster-critical
         replicaCount: 2
+        rollingUpdate:
+          maxUnavailable: 0
         servers:
           - zones:
               - zone: .
@@ -67,4 +69,7 @@ spec:
         serviceAccount:
           create: true
           name: coredns
+        tolerations:
+          - key: CriticalAddonsOnly
+            operator: Exists
   syncPolicy: {}
