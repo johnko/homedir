@@ -131,3 +131,4 @@
       shell: microk8s enable {{ item.name }}
       loop:
         - { name: dns }
+        - { name: metrics-server }
