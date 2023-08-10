@@ -14,13 +14,16 @@ spec:
     targetRevision: HEAD
     helm:
       values: |
-        defaultArgs:
-          - --cert-dir=/tmp
-          - --kubelet-preferred-address-types=ExternalIP,InternalIP,Hostname
-          - --kubelet-use-node-status-port
-          - --metric-resolution=15s
         args:
           - --secure-port=10250
+          - --kubelet-certificate-authority=/ca/ca.crt
+        extraVolumeMounts:
+          - mountPath: /ca
+            name: ca-dir
+        extraVolumes:
+          - name: ca-dir
+            configMap:
+              name: kube-root-ca.crt
   syncPolicy:
     automated:
       prune: true

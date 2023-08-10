@@ -1,5 +1,18 @@
 # Helm Charts
 
+## coredns
+
+```bash
+helm repo add coredns https://coredns.github.io/helm
+helm pull coredns/coredns
+rm -fr coredns
+tar xvf coredns-*.tgz
+SOURCE=$(ls -1 coredns-*.tgz)
+rm coredns-*.tgz
+git add coredns
+git commit -m "track chart $SOURCE"
+```
+
 ## metrics-server
 
 ```bash
