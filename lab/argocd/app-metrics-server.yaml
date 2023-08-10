@@ -24,7 +24,4 @@ spec:
           - name: ca-dir
             configMap:
               name: kube-root-ca.crt
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  syncPolicy: {}
