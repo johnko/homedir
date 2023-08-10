@@ -93,3 +93,19 @@
     #   when:
     #     - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
     #     - inventory_hostname not in groups['microk8sprimary']
+
+- hosts: microk8sprimary
+  become: true
+  become_user: root
+  tasks:
+    - name: Extract kubeconfig
+      shell: "microk8s config > /var/tmp/kubeconfig.yaml"
+      when:
+        - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
+    - name: Fetch kubeconfig
+      fetch:
+        src: /var/tmp/kubeconfig.yaml
+        dest: ./tmp/kubeconfig.yaml
+        flat: true
+      when:
+        - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
