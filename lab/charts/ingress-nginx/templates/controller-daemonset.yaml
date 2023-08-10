@@ -18,7 +18,7 @@ spec:
   selector:
     matchLabels:
       {{- include "ingress-nginx.selectorLabels" . | nindent 6 }}
-      app.kubernetes.io/component: controller
+      # app.kubernetes.io/component: controller # omit from microk8s
   revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
   {{- if .Values.controller.updateStrategy }}
   updateStrategy: {{ toYaml .Values.controller.updateStrategy | nindent 4 }}
