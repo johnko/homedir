@@ -1,13 +1,70 @@
-- hosts: microk8sprimary
+- hosts: microk8sservers
   become: true
   become_user: root
   tasks:
+    - name: Generate /etc/hosts for microk8s
+      lineinfile:
+        path: /etc/hosts
+        state: present
+        create: true
+        regexp: '.*{{ item }} #microk8s$'
+        line: "{{ hostvars[item]['vars']['advertise_ip'] }} {{ hostvars[item]['ansible_facts']['hostname'] }} #microk8s"
+      when: vars['vars']['advertise_ip'] is defined
+      with_items: "{{ groups['microk8sservers'] }}"
+
     - name: Install microk8s
       community.general.snap:
         name:
           - microk8s
         classic: true
         channel: 1.27
+
+    - name: Set advertise-address
+      lineinfile:
+        path: /var/snap/microk8s/current/args/kube-apiserver
+        state: present
+        create: true
+        regexp: '^--advertise-address='
+        line: "--advertise-address={{ vars['vars']['advertise_ip'] }}"
+    - name: Set bind-address
+      lineinfile:
+        path: '{{ item.file }}'
+        state: present
+        create: true
+        regexp: '^--bind-address='
+        line: '--bind-address=0.0.0.0'
+      loop:
+        - { file: /var/snap/microk8s/current/args/kube-apiserver }
+        - { file: /var/snap/microk8s/current/args/kube-controller-manager }
+        - { file: /var/snap/microk8s/current/args/kube-scheduler }
+    - name: Set secure-port
+      lineinfile:
+        path: '{{ item.file }}'
+        state: present
+        create: true
+        regexp: '^--secure-port='
+        line: '--secure-port={{ item.port }}'
+      loop:
+        - { file: /var/snap/microk8s/current/args/kube-apiserver, port: 16443 }
+        - { file: /var/snap/microk8s/current/args/kube-controller-manager, port: 10257 }
+        - { file: /var/snap/microk8s/current/args/kube-scheduler, port: 10259 }
+    - name: Set node-ip
+      lineinfile:
+        path: /var/snap/microk8s/current/args/kubelet
+        state: present
+        create: true
+        regexp: '^--node-ip='
+        line: "--node-ip={{ vars['vars']['advertise_ip'] }}"
+
+    - name: Restart microk8s
+      shell: snap restart microk8s
+    - name: Wait
+      shell: microk8s status --wait-ready
+
+- hosts: microk8sprimary
+  become: true
+  become_user: root
+  tasks:
     - name: Get instructions to add node
       shell: "microk8s add-node | grep {{ vars['vars']['advertise_ip'] }} | head -n1"
       register: JOINCMD
@@ -15,23 +72,18 @@
         msg: '{{ JOINCMD.stdout }}'
     # - debug:
     #     msg: "{{ vars['vars']['advertise_ip'] }}"
+
 - hosts: microk8sservers
   become: true
   become_user: root
   tasks:
-    - name: Install microk8s
-      community.general.snap:
-        name:
-          - microk8s
-        classic: true
-        channel: 1.27
     - debug:
-        msg: "{% for host in groups['microk8sprimary'] %}{{ hostvars[host]['JOINCMD'].stdout }}{% endfor %}"
+        msg: "{% for host in groups['microk8sprimary'] %}{{ hostvars[host]['JOINCMD'].stdout }}{% endfor %} --skip-verify"
       when:
         - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
         - inventory_hostname not in groups['microk8sprimary']
     - name: Run join command
-      shell: "{% for host in groups['microk8sprimary'] %}{{ hostvars[host]['JOINCMD'].stdout }}{% endfor %}"
+      shell: "{% for host in groups['microk8sprimary'] %}{{ hostvars[host]['JOINCMD'].stdout }}{% endfor %} --skip-verify"
       when:
         - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
         - inventory_hostname not in groups['microk8sprimary']
