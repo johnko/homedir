@@ -8,7 +8,7 @@ services:
     container_name: k3s
     build: ./
     command: >
-      server --tls-san=labcluster --advertise-address={{ vars['vars']['k3s_advertise_ip'] }} --node-external-ip={{ vars['vars']['k3s_advertise_ip'] }} --flannel-backend=wireguard-native --flannel-external-ip
+      server --tls-san=labcluster --advertise-address={{ vars['vars']['k3s_advertise_ip'] }} --node-external-ip={{ vars['vars']['k3s_advertise_ip'] }} --flannel-backend=none --disable-network-policy
     environment:
       - K3S_TOKEN=lab.local
       - K3S_DATASTORE_ENDPOINT=postgres://postgres:postgres@database:5432/kubernetes
