@@ -15,13 +15,9 @@ spec:
     helm:
       values: |
         controller:
-          extraArgs:
-            publish-status-address: 127.0.0.1
           kind: DaemonSet
           metrics:
             enabled: true
-          service:
-            enabled: false
         serviceAccount:
           name: nginx-ingress-microk8s-serviceaccount
         fullnameOverride: nginx-ingress-microk8s
