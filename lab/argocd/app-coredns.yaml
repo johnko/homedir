@@ -33,8 +33,6 @@ spec:
         podDisruptionBudget:
           minAvailable: 1
         k8sAppLabelOverride: kube-dns
-        deployment:
-          name: coredns
   syncPolicy:
     automated:
       prune: true
