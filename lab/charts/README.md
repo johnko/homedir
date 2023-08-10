@@ -1,5 +1,18 @@
 # Helm Charts
 
+## tigera-operator / calico
+
+```bash
+helm repo add projectcalico https://docs.tigera.io/calico/charts
+helm pull projectcalico/tigera-operator
+rm -fr tigera-operator
+tar xvf tigera-operator-*.tgz
+SOURCE=$(ls -1 tigera-operator-*.tgz)
+rm tigera-operator-*.tgz
+git add tigera-operator
+git commit -m "track chart $SOURCE"
+```
+
 ## coredns
 
 ```bash
