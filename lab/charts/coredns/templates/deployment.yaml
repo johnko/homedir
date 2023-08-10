@@ -29,11 +29,11 @@ spec:
       maxSurge: {{ .Values.rollingUpdate.maxSurge }}
   selector:
     matchLabels:
-      app.kubernetes.io/instance: {{ .Release.Name | quote }}
+      # app.kubernetes.io/instance: {{ .Release.Name | quote }} # omit from microk8s
       {{- if .Values.isClusterService }}
       k8s-app: {{ template "coredns.k8sapplabel" . }}
       {{- end }}
-      app.kubernetes.io/name: {{ template "coredns.name" . }}
+      # app.kubernetes.io/name: {{ template "coredns.name" . }} # omit from microk8s
   template:
     metadata:
       labels:

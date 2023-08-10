@@ -24,6 +24,8 @@ spec:
                       values:
                         - coredns
                 topologyKey: "kubernetes.io/hostname"
+        fullnameOverride: coredns
+        k8sAppLabelOverride: kube-dns
         podDisruptionBudget:
           minAvailable: 1
         priorityClassName: system-cluster-critical
@@ -33,10 +35,13 @@ spec:
               - zone: .
             port: 53
             plugins:
-              - name: log
               - name: errors
               - name: health
               - name: ready
+              - name: log
+                parameters: .
+                configBlock: |-
+                  class error
               - name: kubernetes
                 parameters: cluster.local in-addr.arpa ip6.arpa
                 configBlock: |-
