@@ -27,6 +27,7 @@ spec:
                   values:
                   - coredns
               topologyKey: "kubernetes.io/hostname"
+        k8sAppLabelOverride: kube-dns
         deployment:
           name: coredns
   syncPolicy:
