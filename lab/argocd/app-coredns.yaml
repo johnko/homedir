@@ -14,25 +14,25 @@ spec:
     targetRevision: HEAD
     helm:
       values: |
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: k8s-app
+                      operator: In
+                      values:
+                        - coredns
+                topologyKey: "kubernetes.io/hostname"
+        podDisruptionBudget:
+          minAvailable: 1
+        priorityClassName: system-cluster-critical
         replicaCount: 2
         service:
           name: kube-dns
         serviceAccount:
           create: true
           name: coredns
-        affinity:
-          podAntiAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                - key: k8s-app
-                  operator: In
-                  values:
-                  - coredns
-              topologyKey: "kubernetes.io/hostname"
-        podDisruptionBudget:
-          minAvailable: 1
-        k8sAppLabelOverride: kube-dns
   syncPolicy:
     automated:
       prune: true
