@@ -20,5 +20,7 @@ spec:
           kind: DaemonSet
           metrics:
             enabled: true
+        serviceAccount:
+          name: nginx-ingress-microk8s-serviceaccount
         fullnameOverride: nginx-ingress-microk8s
   syncPolicy: {}
