@@ -2,15 +2,41 @@
   become: true
   become_user: root
   tasks:
+    - name: Install microk8s
+      community.general.snap:
+        name:
+          - microk8s
+        classic: true
+        channel: 1.27
+    - name: Get instructions to add node
+      shell: "microk8s add-node | grep {{ vars['vars']['advertise_ip'] }} | head -n1"
+      register: JOINCMD
     - debug:
-        msg: "{{ vars['vars']['advertise_ip'] }}"
-
+        msg: '{{ JOINCMD.stdout }}'
+    # - debug:
+    #     msg: "{{ vars['vars']['advertise_ip'] }}"
 - hosts: microk8sservers
   become: true
   become_user: root
   tasks:
+    - name: Install microk8s
+      community.general.snap:
+        name:
+          - microk8s
+        classic: true
+        channel: 1.27
     - debug:
-        msg: "{{ vars['vars']['advertise_ip'] }}"
+        msg: "{% for host in groups['microk8sprimary'] %}{{ hostvars[host]['JOINCMD'].stdout }}{% endfor %}"
       when:
         - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
         - inventory_hostname not in groups['microk8sprimary']
+    - name: Run join command
+      shell: "{% for host in groups['microk8sprimary'] %}{{ hostvars[host]['JOINCMD'].stdout }}{% endfor %}"
+      when:
+        - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
+        - inventory_hostname not in groups['microk8sprimary']
+    # - debug:
+    #     msg: "{{ vars['vars']['advertise_ip'] }}"
+    #   when:
+    #     - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
+    #     - inventory_hostname not in groups['microk8sprimary']
