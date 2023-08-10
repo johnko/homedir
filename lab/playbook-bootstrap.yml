@@ -154,23 +154,25 @@
         var: BASEFILES.stdout_lines
       when: (ISSUE.stdout | int) > 0
 
-    - name: Install packages
-      apt:
-        force_apt_get: true
-        name: '{{ item.name }}'
-      loop:
-        - { name: docker.io }
-        - { name: docker-compose }
-
-    # - name: Remove unused packages
+    # - name: Install packages
     #   apt:
     #     force_apt_get: true
     #     name: '{{ item.name }}'
-    #     state: absent
-    #     purge: true
     #   loop:
-    #     - { name: docker }
-    #     - { name: wmdocker }
+    #     - { name: docker.io }
+    #     - { name: docker-compose }
+
+    - name: Remove unused packages
+      apt:
+        force_apt_get: true
+        name: '{{ item.name }}'
+        state: absent
+        purge: true
+      loop:
+        - { name: docker }
+        - { name: wmdocker }
+        - { name: docker.io }
+        - { name: docker-compose }
     # - name: Delete unused scripts
     #   file:
     #     path: '{{ item.file }}'
