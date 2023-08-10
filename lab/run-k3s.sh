@@ -18,3 +18,9 @@ ansible-playbook -i hosts.yml --limit=k3sprimary playbook-k3s.yml
 sleep 120
 # bootstrap the rest of the servers
 ansible-playbook -i hosts.yml playbook-k3s.yml
+
+cat <<EOF
+Flannel is disabled, so need to install Calico for CNI with:
+
+bash charts/run-tigera-operator.sh up
+EOF
