@@ -106,6 +106,7 @@ servers:
   # nodePort: 30053
   # hostPort: 53
   plugins:
+  - name: log # debug
   - name: errors
   # Serves a /health endpoint on :8080, required for livenessProbe
   - name: health

@@ -14,9 +14,6 @@ metadata:
 {{- end }}
 data:
   Corefile: |-
-    . {
-      log
-    }
     {{- range $name, $conf := .Values.extraConfig }}
     {{ $name }}{{ if $conf.parameters }} {{ $conf.parameters }}{{ end }}
     {{- end }}
