@@ -15,13 +15,15 @@ spec:
     helm:
       values: |
         args:
-          - --secure-port=10250
-          - --kubelet-certificate-authority=/ca/ca.crt
-        extraVolumeMounts:
-          - mountPath: /ca
-            name: ca-dir
-        extraVolumes:
-          - name: ca-dir
-            configMap:
-              name: kube-root-ca.crt
+          - --secure-port=4443
+          - --kubelet-insecure-tls
+        containerPort: 4443
+        nodeSelector:
+          kubernetes.io/arch: amd64
+          kubernetes.io/os: linux
+        updateStrategy:
+          type: RollingUpdate
+          rollingUpdate:
+            maxSurge: 25%
+            maxUnavailable: 0
   syncPolicy: {}

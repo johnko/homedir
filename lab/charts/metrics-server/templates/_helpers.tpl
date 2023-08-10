@@ -49,8 +49,9 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "metrics-server.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "metrics-server.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+k8s-app: {{ include "metrics-server.name" . }}
+# app.kubernetes.io/name: {{ include "metrics-server.name" . }} # omit from microk8s
+# app.kubernetes.io/instance: {{ .Release.Name }} # omit from microk8s
 {{- end }}
 
 {{/*
