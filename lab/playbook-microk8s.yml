@@ -126,3 +126,8 @@
         flat: true
       when:
         - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
+
+    - name: Enable microk8s addons
+      shell: microk8s enable {{ item.name }}
+      loop:
+        - { name: dns }
