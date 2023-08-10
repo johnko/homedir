@@ -19,6 +19,7 @@
         classic: true
         channel: 1.27
 
+    # https://microk8s.io/docs/configure-host-interfaces
     - name: Set advertise-address
       lineinfile:
         path: /var/snap/microk8s/current/args/kube-apiserver
