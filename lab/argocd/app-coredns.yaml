@@ -17,6 +17,9 @@ spec:
         replicaCount: 2
         service:
           name: kube-dns
+        serviceAccount:
+          create: true
+          name: coredns
         affinity:
           podAntiAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:
@@ -27,6 +30,8 @@ spec:
                   values:
                   - coredns
               topologyKey: "kubernetes.io/hostname"
+        podDisruptionBudget:
+          minAvailable: 1
         k8sAppLabelOverride: kube-dns
         deployment:
           name: coredns
