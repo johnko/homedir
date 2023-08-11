@@ -100,10 +100,10 @@
       loop:
         - { name: dns }
         - { name: community }
-        - { name: metrics-server }
+        # - { name: metrics-server } # use newer chart instead
         # - { name: argocd } # omit because microk8s has old version, use newer chart instead
         - { name: cert-manager }
-        - { name: traefik } # replaced ingress
+        # - { name: traefik } # replaced ingress, use newer chart instead
         - { name: knative }
         - { name: istio }
         - { name: openebs } # then minio
