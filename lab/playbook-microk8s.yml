@@ -103,7 +103,7 @@
         - { name: metrics-server } # will be replace when argocd starts
         - { name: cert-manager } # will be replace when argocd starts
         - { name: traefik } # will be replace when argocd starts
-        - { name: istio }
-        # - { name: knative } # can be installed after istio
+        # - { name: istio } # will be replace when argocd starts
+        # - { name: knative } # will be replace when argocd starts
+        # - { name: openfaas } # will be replace when argocd starts
         - { name: openebs } # then minio
-        - { name: openfaas } # will be replace when argocd starts
