@@ -2,6 +2,8 @@
 
 ## coredns
 
+via https://github.com/coredns/helm
+
 ```bash
 helm repo add coredns https://coredns.github.io/helm
 helm pull coredns/coredns
@@ -14,6 +16,8 @@ git commit -m "track chart $SOURCE"
 ```
 
 ## metrics-server
+
+via https://github.com/kubernetes-sigs/metrics-server/tree/master/charts/metrics-server
 
 ```bash
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
@@ -28,6 +32,8 @@ git commit -m "track chart $SOURCE"
 
 ## argo-cd
 
+via https://github.com/argoproj/argo-helm/
+
 ```bash
 helm repo add argo https://argoproj.github.io/argo-helm
 helm pull argo/argo-cd
@@ -40,6 +46,8 @@ git commit -m "track chart $SOURCE"
 ```
 
 ## nginx ingress controller
+
+via https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
 
 ```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -54,6 +62,8 @@ git commit -m "track chart $SOURCE"
 
 ## traefik
 
+via https://github.com/traefik/traefik-helm-chart
+
 ```bash
 helm repo add traefik https://traefik.github.io/charts
 helm pull traefik/traefik
@@ -66,6 +76,8 @@ git commit -m "track chart $SOURCE"
 ```
 
 ## openfaas
+
+via https://github.com/openfaas/faas-netes/tree/master/chart/openfaas
 
 ```bash
 helm repo add openfaas https://openfaas.github.io/faas-netes/
