@@ -39,6 +39,8 @@ spec:
             plugins:
               - name: errors
               - name: health
+                configBlock: |-
+                  lameduck 5s
               - name: ready
               - name: log
                 parameters: .
@@ -50,10 +52,11 @@ spec:
                   pods insecure
                   fallthrough in-addr.arpa ip6.arpa
               - name: hosts
-                parameters: /etc/coredns/NodeHosts
+                parameters: custom.hosts labcluster
                 configBlock: |-
                   ttl 60
                   reload 15s
+                  192.168.2.9 labcluster
                   fallthrough
               - name: prometheus
                 parameters: :9153
