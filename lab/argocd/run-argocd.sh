@@ -2,6 +2,13 @@
 set -eux
 
 case $1 in
+  apps)
+    pushd $(dirname $0)
+    for i in app-*.yaml; do
+      kubectl apply -f $i
+    done
+    popd
+    ;;
   list)
     helm list -n argocd
     ;;
