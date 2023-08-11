@@ -51,3 +51,16 @@ rm ingress-nginx-*.tgz
 git add ingress-nginx
 git commit -m "track chart $SOURCE"
 ```
+
+## traefik
+
+```bash
+helm repo add traefik https://traefik.github.io/charts
+helm pull traefik/traefik
+rm -fr traefik
+tar xvf traefik-*.tgz
+SOURCE=$(ls -1 traefik-*.tgz)
+rm traefik-*.tgz
+git add traefik
+git commit -m "track chart $SOURCE"
+```
