@@ -23,6 +23,8 @@ extraSANs:
 {% for host in groups['microk8sservers'] %}
   - {{ hostvars[host]['vars']['advertise_ip'] }}
 {% endfor %}
+  - labcluster
+  - {{ labcluster_ip }}
 
 extraKubeAPIServerArgs:
   --advertise-address: {{ vars['vars']['advertise_ip'] }}

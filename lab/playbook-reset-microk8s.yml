@@ -2,7 +2,14 @@
   become: true
   become_user: root
   tasks:
-    - name: Run commands
+    - name: Run commands on others
+      shell: if which microk8s ; then microk8s {{ item.param }} ; fi
+      when: inventory_hostname not in groups['microk8sprimary']
+      loop:
+        - { param: leave }
+        - { param: reset }
+        - { param: stop }
+    - name: Run commands on primary
       shell: if which microk8s ; then microk8s {{ item.param }} ; fi
       loop:
         - { param: leave }
