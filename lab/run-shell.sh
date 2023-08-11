@@ -9,7 +9,7 @@ set -ux
 
 IMAGE_NAME="shell:local"
 
-sed -i '' 's/127.0.0.1/labcluster/' ./tmp/kubeconfig.yaml
+sed -i '' 's,server: https://192.168.64.11:16443,server: https://labcluster:16443,' ./tmp/kubeconfig.yaml
 
 cp ./argocd/run-argocd.sh ./shell/
 docker build \
