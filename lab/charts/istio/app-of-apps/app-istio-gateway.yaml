@@ -27,4 +27,7 @@ spec:
           TRUST_DOMAIN: cluster.local
           ISTIO_META_UNPRIVILEGED_POD: 'true'
           ISTIO_META_CLUSTER_ID: Kubernetes
-  syncPolicy: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
