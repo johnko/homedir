@@ -25,4 +25,7 @@ spec:
           rollingUpdate:
             maxSurge: 25%
             maxUnavailable: 0
-  syncPolicy: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

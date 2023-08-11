@@ -19,4 +19,7 @@ spec:
         service:
           externalIPs:
             - 192.168.2.9  # LABCLUSTER_IP
-  syncPolicy: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
