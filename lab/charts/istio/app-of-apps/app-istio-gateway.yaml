@@ -30,4 +30,4 @@ spec:
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
+      selfHeal: false # because the svc is stuck in Progressing

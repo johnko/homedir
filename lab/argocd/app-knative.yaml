@@ -12,4 +12,7 @@ spec:
     path: lab/charts/knative
     repoURL: https://github.com/johnko/homedir.git
     targetRevision: HEAD
-  syncPolicy: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false # because the ClusterRole flipflops
