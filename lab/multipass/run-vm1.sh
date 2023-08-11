@@ -22,6 +22,10 @@ case $1 in
   ps)
     multipass info $NAME
     ;;
+  restart)
+    launchctl unload /Library/LaunchDaemons/com.canonical.multipassd.plist
+    launchctl load -w /Library/LaunchDaemons/com.canonical.multipassd.plist
+    ;;
   up | *)
     multipass start $NAME \
     || multipass launch \
