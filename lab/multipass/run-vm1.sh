@@ -33,7 +33,7 @@ case $1 in
       --name=$NAME \
       --cpus=4 \
       --memory=16G \
-      --disk=250G \
+      --disk=50G \
       --network="name=$NIC,mode=auto" \
       --cloud-init=./cloud-init.yaml \
       $IMAGE
