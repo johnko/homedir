@@ -36,15 +36,12 @@
   tasks:
     - name: Restart microk8s with new config
       shell: snap set microk8s config="$(cat {{ ansible_user_dir }}/microk8s-config.yaml)"
-
     - name: Wait
       shell: sleep 60 && microk8s status --wait-ready
-
     - name: Refresh certs
       shell: microk8s refresh-certs -e server.crt
       when:
         - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
-
     - name: Wait
       shell: sleep 60 && microk8s status --wait-ready
 
@@ -64,18 +61,21 @@
   tasks:
     - name: Restart microk8s with new config
       shell: snap set microk8s config="$(cat {{ ansible_user_dir }}/microk8s-config.yaml)"
-      when: inventory_hostname not in groups['microk8sprimary']
-
+      when:
+        - inventory_hostname not in groups['microk8sprimary']
     - name: Wait
       shell: sleep 60 && microk8s status --wait-ready
-
+      when:
+        - inventory_hostname not in groups['microk8sprimary']
     - name: Refresh certs
       shell: microk8s refresh-certs -e server.crt
       when:
+        - inventory_hostname not in groups['microk8sprimary']
         - lookup('ansible.builtin.fileglob', './tmp/kubeconfig.yaml') == []
-
     - name: Wait
       shell: sleep 60 && microk8s status --wait-ready
+      when:
+        - inventory_hostname not in groups['microk8sprimary']
 
 
 
