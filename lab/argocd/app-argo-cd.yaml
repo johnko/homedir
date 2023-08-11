@@ -12,19 +12,4 @@ spec:
     path: lab/charts/argo-cd
     repoURL: https://github.com/johnko/homedir.git
     targetRevision: HEAD
-    helm:
-      values: |
-        redis-ha:
-          enabled: true
-          hardAntiAffinity: false
-          haproxy:
-            hardAntiAffinity: false
-        controller:
-          replicas: 1
-        server:
-          replicas: 1
-        repoServer:
-          replicas: 1
-        applicationSet:
-          replicaCount: 1
   syncPolicy: {}
