@@ -14,4 +14,17 @@ spec:
     path: lab/charts/istio/gateway
     repoURL: https://github.com/johnko/homedir.git
     targetRevision: HEAD
+    helm:
+      values: |
+        env:
+          JWT_POLICY: third-party-jwt
+          PILOT_CERT_PROVIDER: istiod
+          CA_ADDR: 'istiod.istio-system.svc:15012'
+          ISTIO_META_WORKLOAD_NAME: istio-ingressgateway
+          ISTIO_META_OWNER: >-
+              kubernetes://apis/apps/v1/namespaces/istio-system/deployments/istio-ingressgateway
+          ISTIO_META_MESH_ID: cluster.local
+          TRUST_DOMAIN: cluster.local
+          ISTIO_META_UNPRIVILEGED_POD: 'true'
+          ISTIO_META_CLUSTER_ID: Kubernetes
   syncPolicy: {}
