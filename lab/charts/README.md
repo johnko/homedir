@@ -89,3 +89,18 @@ rm openfaas-*.tgz
 git add openfaas
 git commit -m "track chart $SOURCE"
 ```
+
+## cert-manager
+
+via https://cert-manager.io/docs/installation/helm/
+
+```bash
+helm repo add jetstack https://charts.jetstack.io
+helm pull jetstack/cert-manager
+rm -fr cert-manager
+tar xvf cert-manager-*.tgz
+SOURCE=$(ls -1 cert-manager-*.tgz)
+rm cert-manager-*.tgz
+git add cert-manager
+git commit -m "track chart $SOURCE"
+```

@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  destination:
+    namespace: cert-manager
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: lab/charts/cert-manager
+    repoURL: https://github.com/johnko/homedir.git
+    targetRevision: HEAD
+    helm:
+      values: |
+        installCRDs: true
+  syncPolicy: {}
