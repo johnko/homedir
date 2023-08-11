@@ -17,19 +17,32 @@ spec:
         configs:
           cm:
             # https://codefresh.io/blog/argo-cd-application-dependencies/
-            resource.customizations.health.argoproj.io_Application: |
-              hs = {}
-              hs.status = "Progressing"
-              hs.message = ""
-              if obj.status ~= nil then
-                if obj.status.health ~= nil then
-                  hs.status = obj.status.health.status
-                  if obj.status.health.message ~= nil then
-                    hs.message = obj.status.health.message
+            # https://argo-cd.readthedocs.io/en/stable/operator-manual/health/
+            resource.customizations: |
+              argoproj.io/Application:
+                health.lua:
+                  hs = {}
+                  hs.status = "Progressing"
+                  hs.message = ""
+                  if obj.status ~= nil then
+                    if obj.status.health ~= nil then
+                      hs.status = obj.status.health.status
+                      if obj.status.health.message ~= nil then
+                        hs.message = obj.status.health.message
+                      end
+                    end
                   end
-                end
-              end
-              return hs
+                  return hs
+              Service:
+                health.lua:
+                  hs = {}
+                  hs.status = "Progressing"
+                  if obj.status ~= nil then
+                    if obj.status.loadBalancer ~= nil then
+                      hs.status = "Healthy"
+                    end
+                  end
+                  return hs
   syncPolicy:
     automated:
       prune: true
