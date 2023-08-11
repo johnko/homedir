@@ -8,13 +8,14 @@ IMAGE=22.04
 NIC=en2
 NAME=vm1
 
-multipass set local.driver=qemu
 
 case $1 in
   destroy)
-    multipass stop $NAME
-    multipass delete $NAME
-    multipass purge
+    # multipass stop $NAME
+    # multipass delete $NAME
+    # multipass purge
+    sudo rm -fr "/Library/Application Support/multipassd/qemu"
+    brew reinstall multipass
     ;;
   down)
     multipass stop $NAME
@@ -27,6 +28,7 @@ case $1 in
     launchctl load -w /Library/LaunchDaemons/com.canonical.multipassd.plist
     ;;
   up | *)
+    multipass set local.driver=qemu
     multipass start $NAME \
     || multipass launch \
       -vvv \
