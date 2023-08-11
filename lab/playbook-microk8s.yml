@@ -106,4 +106,3 @@
         # - { name: istio } # will be replace when argocd starts
         # - { name: knative } # will be replace when argocd starts
         # - { name: openfaas } # will be replace when argocd starts
-        - { name: openebs } # then minio
