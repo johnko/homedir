@@ -26,5 +26,5 @@ spec:
           - traefik
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
