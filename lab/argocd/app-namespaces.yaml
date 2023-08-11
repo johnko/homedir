@@ -16,8 +16,14 @@ spec:
       values: |
         namespaces:
           - argocd
-          - rook-ceph
+          - cert-manager
+          - istio-system
+          - knative-serving
+          - openfaas
+          - openfaas-fn
           - pihole
+          - rook-ceph
+          - traefik
   syncPolicy:
     automated:
       prune: true
