@@ -11,23 +11,25 @@ NAME=vm1
 
 case $1 in
   destroy)
-    # multipass stop $NAME
-    # multipass delete $NAME
-    # multipass purge
-    sudo rm -fr "/Library/Application Support/multipassd/qemu"
-    brew reinstall multipass
+    set +e
+    while multipass list | grep vm1 ; do
+      sleep 1
+      multipass stop $NAME
+      multipass delete $NAME
+      multipass purge
+    done
     ;;
-  down)
+  stop)
     multipass stop $NAME
     ;;
-  ps)
+  info)
     multipass info $NAME
     ;;
   restart)
     launchctl unload /Library/LaunchDaemons/com.canonical.multipassd.plist
     launchctl load -w /Library/LaunchDaemons/com.canonical.multipassd.plist
     ;;
-  up | *)
+  start | *)
     multipass set local.driver=qemu
     multipass start $NAME \
     || multipass launch \
