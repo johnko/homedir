@@ -88,6 +88,8 @@
       register: JOINCMD
     - debug:
         msg: '{{ JOINCMD.stdout }}'
+    - shell: exit 1
+      when: (JOINCMD.stdout | length) < 1
     # - debug:
     #     msg: "{{ vars['vars']['advertise_ip'] }}"
 
@@ -131,4 +133,12 @@
       shell: microk8s enable {{ item.name }}
       loop:
         - { name: dns }
+        - { name: community }
         - { name: metrics-server }
+        - { name: argocd }
+        - { name: cert-manager }
+        - { name: traefik } # replaced ingress
+        - { name: knative }
+        - { name: istio }
+        - { name: openebs } # then minio
+        - { name: openfaas }
