@@ -16,10 +16,9 @@ spec:
       values: |
         redis-ha:
           enabled: true
-          replicas: 1
           hardAntiAffinity: false
           haproxy:
-            replicas: 1
+            hardAntiAffinity: false
         controller:
           replicas: 1
         server:
