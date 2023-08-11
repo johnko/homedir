@@ -19,15 +19,18 @@ case $1 in
       multipass purge
     done
     ;;
-  stop)
-    multipass stop $NAME
-    ;;
   info)
     multipass info $NAME
+    ;;
+  ps)
+    ps aux | grep qemu
     ;;
   restart)
     launchctl unload /Library/LaunchDaemons/com.canonical.multipassd.plist
     launchctl load -w /Library/LaunchDaemons/com.canonical.multipassd.plist
+    ;;
+  stop)
+    multipass stop $NAME
     ;;
   start | *)
     multipass set local.driver=qemu
