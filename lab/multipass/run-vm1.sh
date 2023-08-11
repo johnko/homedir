@@ -33,7 +33,7 @@ case $1 in
     multipass stop $NAME
     ;;
   start | *)
-    multipass set local.driver=qemu
+    multipass get local.driver | grep qemu || multipass set local.driver=qemu
     multipass start $NAME \
     || multipass launch \
       -vvv \
