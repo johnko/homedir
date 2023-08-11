@@ -15,7 +15,6 @@ spec:
     helm:
       values: |
         args:
-          - --secure-port=4443
           - --kubelet-insecure-tls
         containerPort: 4443
         nodeSelector:
