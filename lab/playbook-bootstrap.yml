@@ -56,16 +56,16 @@
     - name: Create a docker volume
       community.general.lvol:
         vg: ubuntu-vg
-        lv: docker
+        lv: userdata
         size: 12g
     - name: Create a ext4 filesystem
       community.general.filesystem:
-        dev: /dev/mapper/ubuntu--vg-docker
+        dev: /dev/mapper/ubuntu--vg-userdata
         fstype: ext4
-    - name: Mount docker volume
+    - name: Mount userdata volume
       ansible.posix.mount:
-        src: /dev/mapper/ubuntu--vg-docker
-        path: /var/lib/docker
+        src: /dev/mapper/ubuntu--vg-userdata
+        path: /userdata
         fstype: ext4
         passno: '2'
         state: mounted
