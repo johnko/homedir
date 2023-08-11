@@ -45,21 +45,6 @@ git add argco-cd
 git commit -m "track chart $SOURCE"
 ```
 
-## nginx ingress controller
-
-via https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
-
-```bash
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-helm pull ingress-nginx/ingress-nginx
-rm -fr ingress-nginx
-tar xvf ingress-nginx-*.tgz
-SOURCE=$(ls -1 ingress-nginx-*.tgz)
-rm ingress-nginx-*.tgz
-git add ingress-nginx
-git commit -m "track chart $SOURCE"
-```
-
 ## traefik
 
 via https://github.com/traefik/traefik-helm-chart
@@ -72,6 +57,21 @@ tar xvf traefik-*.tgz
 SOURCE=$(ls -1 traefik-*.tgz)
 rm traefik-*.tgz
 git add traefik
+git commit -m "track chart $SOURCE"
+```
+
+## cert-manager
+
+via https://cert-manager.io/docs/installation/helm/
+
+```bash
+helm repo add jetstack https://charts.jetstack.io
+helm pull jetstack/cert-manager
+rm -fr cert-manager
+tar xvf cert-manager-*.tgz
+SOURCE=$(ls -1 cert-manager-*.tgz)
+rm cert-manager-*.tgz
+git add cert-manager
 git commit -m "track chart $SOURCE"
 ```
 
@@ -90,19 +90,24 @@ git add openfaas
 git commit -m "track chart $SOURCE"
 ```
 
-## cert-manager
+## istio
 
-via https://cert-manager.io/docs/installation/helm/
+via https://istio.io/latest/docs/setup/install/helm/
 
 ```bash
-helm repo add jetstack https://charts.jetstack.io
-helm pull jetstack/cert-manager
-rm -fr cert-manager
-tar xvf cert-manager-*.tgz
-SOURCE=$(ls -1 cert-manager-*.tgz)
-rm cert-manager-*.tgz
-git add cert-manager
-git commit -m "track chart $SOURCE"
+helm repo add istio https://istio-release.storage.googleapis.com/charts
+mkdir -p istio
+pushd istio
+for i in base istiod gateway ; do
+  helm pull istio/$i
+  rm -fr $i
+  tar xvf $i-*.tgz
+  SOURCE=$(ls -1 $i-*.tgz)
+  rm $i-*.tgz
+  git add $i
+  git commit -m "track chart $SOURCE"
+done
+popd
 ```
 
 ## knative
