@@ -64,3 +64,16 @@ rm traefik-*.tgz
 git add traefik
 git commit -m "track chart $SOURCE"
 ```
+
+## openfaas
+
+```bash
+helm repo add openfaas https://openfaas.github.io/faas-netes/
+helm pull openfaas/openfaas
+rm -fr openfaas
+tar xvf openfaas-*.tgz
+SOURCE=$(ls -1 openfaas-*.tgz)
+rm openfaas-*.tgz
+git add openfaas
+git commit -m "track chart $SOURCE"
+```
