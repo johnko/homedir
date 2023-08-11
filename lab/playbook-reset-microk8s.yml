@@ -1,0 +1,9 @@
+- hosts: microk8sservers
+  become: true
+  become_user: root
+  tasks:
+    - name: Run leave command
+      shell: microk8s leave
+
+    - name: Run reset command
+      shell: microk8s reset
