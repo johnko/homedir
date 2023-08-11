@@ -30,4 +30,7 @@ spec:
                 end
               end
               return hs
-  syncPolicy: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
