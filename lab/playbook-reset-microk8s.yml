@@ -2,8 +2,15 @@
   become: true
   become_user: root
   tasks:
-    - name: Run leave command
-      shell: microk8s leave
+    - name: Run commands
+      shell: if which microk8s ; then microk8s {{ item.param }} ; fi
+      loop:
+        - { param: leave }
+        - { param: reset }
+        - { param: stop }
 
-    - name: Run reset command
-      shell: microk8s reset
+    - name: Remove microk8s
+      community.general.snap:
+        name:
+          - microk8s
+        state: absent
