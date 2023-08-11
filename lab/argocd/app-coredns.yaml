@@ -52,7 +52,7 @@ spec:
                   pods insecure
                   fallthrough in-addr.arpa ip6.arpa
               - name: hosts
-                parameters: custom.hosts labcluster
+                parameters: /etc/coredns/NodeHosts labcluster
                 configBlock: |-
                   ttl 60
                   reload 15s
@@ -61,7 +61,7 @@ spec:
               - name: prometheus
                 parameters: :9153
               - name: forward
-                parameters: . /etc/resolv.conf
+                parameters: . 8.8.8.8 8.8.4.4
               - name: cache
                 parameters: 30
               - name: loop
