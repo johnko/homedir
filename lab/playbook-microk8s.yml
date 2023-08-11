@@ -107,4 +107,4 @@
         - { name: knative }
         - { name: istio }
         - { name: openebs } # then minio
-        - { name: openfaas }
+        # - { name: openfaas } # use newer chart instead
