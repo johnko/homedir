@@ -15,7 +15,7 @@
       shell: /usr/local/bin/get-ip || ip a | grep 'inet ' | awk '{print $2}'
       register: NETWORK
     - name: Get diskspace info
-      shell: df -h | grep -v tmpfs | grep -v devfs
+      shell: df -h | grep -v -E '^(tmpfs|devfs|shm|overlay|map)'
       register: DF
     - name: Get landscape info
       shell: landscape-sysinfo

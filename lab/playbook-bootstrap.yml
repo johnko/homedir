@@ -53,22 +53,29 @@
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
 
-    - name: Create a docker volume
+    - name: Extend the logical volume to consume all remaining space in the volume group
       community.general.lvol:
         vg: ubuntu-vg
-        lv: userdata
-        size: 12g
-    - name: Create a ext4 filesystem
-      community.general.filesystem:
-        dev: /dev/mapper/ubuntu--vg-userdata
-        fstype: ext4
-    - name: Mount userdata volume
-      ansible.posix.mount:
-        src: /dev/mapper/ubuntu--vg-userdata
-        path: /userdata
-        fstype: ext4
-        passno: '2'
-        state: mounted
+        lv: ubuntu-lv
+        size: +100%FREE
+        resizefs: true
+
+    # - name: Create a userdata volume
+    #   community.general.lvol:
+    #     vg: ubuntu-vg
+    #     lv: userdata
+    #     size: 12g
+    # - name: Create a ext4 filesystem
+    #   community.general.filesystem:
+    #     dev: /dev/mapper/ubuntu--vg-userdata
+    #     fstype: ext4
+    # - name: Mount userdata volume
+    #   ansible.posix.mount:
+    #     src: /dev/mapper/ubuntu--vg-userdata
+    #     path: /userdata
+    #     fstype: ext4
+    #     passno: '2'
+    #     state: mounted
 
 
 
