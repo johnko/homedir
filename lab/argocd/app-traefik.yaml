@@ -20,6 +20,17 @@ spec:
           type: ClusterIP
           externalIPs:
             - 192.168.2.9  # LABCLUSTER_IP
+        ports:
+          dnstcp:
+            port: 53
+            expose: true
+            exposedPort: 53
+            protocol: TCP
+          dnsudp:
+            port: 53
+            expose: true
+            exposedPort: 53
+            protocol: UDP
   syncPolicy:
     automated:
       prune: true

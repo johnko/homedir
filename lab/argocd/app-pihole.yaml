@@ -41,7 +41,7 @@ spec:
         extraEnvVars: {
           DNSMASQ_USER: "root"
         }
-  syncPolicy: {}
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

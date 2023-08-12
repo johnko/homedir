@@ -251,19 +251,3 @@
         name: ucarp@001
         state: "{% if vars['vars']['ucarp_service_enabled'] %}started{% else %}stopped{% endif %}"
         enabled: "{{ vars['vars']['ucarp_service_enabled'] }}"
-
-
-
-- hosts: microk8sservers
-  become: true
-  become_user: root
-  tasks:
-    - name: Create hostpath data directories if it does not exist
-      file:
-        path: '{{ item }}'
-        state: directory
-        force: true
-        mode: '755'
-      loop:
-        - /data/pihole/etc
-        - /data/pihole/dnsmasq.d
