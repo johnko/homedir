@@ -11,6 +11,7 @@ metadata:
 {{- if .Values.serviceDns.annotations }}
   annotations:
 {{ toYaml .Values.serviceDns.annotations | indent 4 }}
+    traefik.ingress.kubernetes.io/router.entrypoints: dnstcp
 {{- end }}
 spec:
   type: {{ .Values.serviceDns.type }}
