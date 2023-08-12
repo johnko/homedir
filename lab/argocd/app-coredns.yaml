@@ -29,7 +29,7 @@ spec:
         podDisruptionBudget:
           minAvailable: 1
         priorityClassName: system-cluster-critical
-        replicaCount: 2
+        replicaCount: 1
         rollingUpdate:
           maxUnavailable: 0
         servers:
