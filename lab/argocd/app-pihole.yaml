@@ -28,6 +28,9 @@ spec:
           loadBalancerIP: 192.168.2.9
           type: ClusterIP
 
+        serviceDhcp:
+          enabled: false
+
         podDnsConfig:
           enabled: true
           policy: "None"
