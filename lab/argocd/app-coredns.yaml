@@ -74,7 +74,4 @@ spec:
         tolerations:
           - key: CriticalAddonsOnly
             operator: Exists
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: false # because the port name flipflops
+  syncPolicy: {} # disable autosync to avoid port name flipflops
