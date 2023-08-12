@@ -33,16 +33,24 @@ spec:
                     end
                   end
                   return hs
-              # Service:
-              #   health.lua:
-              #     hs = {}
-              #     hs.status = "Progressing"
-              #     if obj.status ~= nil then
-              #       if obj.status.loadBalancer ~= nil then
-              #         hs.status = "Healthy"
-              #       end
-              #     end
-              #     return hs
+              networking.k8s.io/Ingress:
+                health.lua:
+                  hs = {}
+                  hs.status = "Progressing"
+                  if obj.status ~= nil then
+                    if obj.status.loadBalancer ~= nil then
+                      hs.status = "Healthy"
+                    end
+                  end
+                  return hs
+        server:
+          ingress:
+            enabled: true
+            annotations:
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+            hosts:
+              - argocd.labcluster.local
+            https: true
   syncPolicy:
     automated:
       prune: true
