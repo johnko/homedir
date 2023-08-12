@@ -38,6 +38,9 @@ spec:
         podSecurityContext: # danger but needed if listening on port 53
           runAsNonRoot: false
           runAsUser: 0
+        logs:
+          general:
+            level: DEBUG
   syncPolicy:
     automated:
       prune: true

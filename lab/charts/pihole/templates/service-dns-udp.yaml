@@ -10,7 +10,6 @@ metadata:
     heritage: {{ .Release.Service }}
 {{- if .Values.serviceDns.annotations }}
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: dnsudp
 {{ toYaml .Values.serviceDns.annotations | indent 4 }}
 {{- end }}
 spec:
