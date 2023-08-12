@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pihole
+  namespace: argocd
+spec:
+  destination:
+    namespace: pihole
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: lab/charts/pihole
+    repoURL: https://github.com/johnko/homedir.git
+    targetRevision: HEAD
+    helm:
+      values: |
+        dnsmasq:
+          customDnsEntries:
+            - address=/labcluster/192.168.2.9
+            - address=/argocd.labcluster.local/192.168.2.9
+            - address=/pihole.labcluster.local/192.168.2.9
+
+        serviceWeb:
+          loadBalancerIP: 192.168.2.9
+          type: ClusterIP
+
+        serviceDns:
+          loadBalancerIP: 192.168.2.9
+          type: ClusterIP
+
+        podDnsConfig:
+          enabled: true
+          policy: "None"
+          nameservers:
+          - 1.1.1.1
+          - 8.8.8.8
+
+        extraEnvVars: {
+          DNSMASQ_USER: "root"
+        }
+  syncPolicy: {}
+    # automated:
+    #   prune: true
+    #   selfHeal: true
