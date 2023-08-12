@@ -43,6 +43,8 @@ spec:
                     end
                   end
                   return hs
+          params:
+            server.insecure: true
         server:
           ingress:
             enabled: true
@@ -50,7 +52,6 @@ spec:
               traefik.ingress.kubernetes.io/router.entrypoints: websecure
             hosts:
               - argocd.labcluster.local
-            https: true
   syncPolicy:
     automated:
       prune: true

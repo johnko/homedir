@@ -23,8 +23,12 @@ case $1 in
     echo Password: $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
     echo
     set -x
-    kubectl port-forward service/argo-cd-argocd-server -n argocd 8080:443 &
-    open http://localhost:8080
+    if ! curl -L -k https://argocd.labcluster.local/ ; then
+      kubectl port-forward service/argo-cd-argocd-server -n argocd 8080:443 &
+      open http://localhost:8080
+    else
+      open https://argocd.labcluster.local
+    fi
     ;;
   up | *)
     bash $0 pull
