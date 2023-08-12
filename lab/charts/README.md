@@ -123,3 +123,18 @@ curl -o knative/${VERSION} -L $SOURCE
 git add knative
 git commit -m "track $VERSION"
 ```
+
+## pi-hole
+
+via https://github.com/MoJo2600/pihole-kubernetes/blob/master/charts/pihole/README.md
+
+```bash
+helm repo add mojo2600 https://mojo2600.github.io/pihole-kubernetes/
+helm pull mojo2600/pihole
+rm -fr pihole
+tar xvf pihole-*.tgz
+SOURCE=$(ls -1 pihole-*.tgz)
+rm pihole-*.tgz
+git add pihole
+git commit -m "track chart $SOURCE"
+```

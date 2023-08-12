@@ -4,13 +4,13 @@
   tasks:
     - name: Copy bin scripts
       copy:
-        src: './bin/{{ item.file }}'
-        dest: '/usr/local/bin/{{ item.file }}'
+        src: './bin/{{ item }}'
+        dest: '/usr/local/bin/{{ item }}'
         force: true
         mode: '755'
       loop:
-        - { file: cert_generateselfsigned }
-        - { file: cert_info }
+        - cert_generateselfsigned
+        - cert_info
     - name: Copy network scripts
       copy:
         src: './network/{{ item.file }}'
@@ -45,11 +45,11 @@
     #     - { file: healthcheck_cron, dest: '/etc/cron.d', mode: '644' } # required no dot in cron.d filenames
     - name: Delete unused scripts
       file:
-        path: '{{ item.file }}'
+        path: '{{ item }}'
         force: true
         state: absent
       loop:
-        - { file: '/etc/cron.d/healthcheck_cron' }
+        - /etc/cron.d/healthcheck_cron
     - name: Force cron.d to reload
       shell: touch /etc/cron.d
 
@@ -85,11 +85,11 @@
     #     state: link
     - name: Delete unused scripts
       file:
-        path: '{{ item.file }}'
+        path: '{{ item }}'
         force: true
         state: absent
       loop:
-        - { file: '/var/run/docker.sock' }
+        - /var/run/docker.sock
 
 
 
@@ -132,16 +132,16 @@
     - name: Setup trigger on networkd-dispatcher
       file:
         src: /usr/local/sbin/update-issue
-        dest: '/etc/networkd-dispatcher/{{ item.dest }}.d/update-issue'
+        dest: '/etc/networkd-dispatcher/{{ item }}.d/update-issue'
         force: true
         mode: '755'
         state: link
       loop:
-        - { dest: 'carrier' }
-        - { dest: 'no-carrier' }
-        - { dest: 'dormant' }
-        - { dest: 'off' }
-        - { dest: 'routable' }
+        - 'carrier'
+        - 'no-carrier'
+        - 'dormant'
+        - 'off'
+        - 'routable'
     - name: Check /etc/issue version
       shell: cat /etc/issue | grep -q "{{ ansible_facts['lsb']['description'] }}" && echo '0' || echo '1'
       register: ISSUE
@@ -157,33 +157,33 @@
     # - name: Install packages
     #   apt:
     #     force_apt_get: true
-    #     name: '{{ item.name }}'
+    #     name: '{{ item }}'
     #   loop:
-    #     - { name: docker.io }
-    #     - { name: docker-compose }
+    #     - docker.io
+    #     - docker-compose
 
     - name: Remove unused packages
       apt:
         force_apt_get: true
-        name: '{{ item.name }}'
+        name: '{{ item }}'
         state: absent
         purge: true
       loop:
-        - { name: docker }
-        - { name: wmdocker }
-        - { name: docker.io }
-        - { name: docker-compose }
+        - docker
+        - wmdocker
+        - docker.io
+        - docker-compose
     # - name: Delete unused scripts
     #   file:
-    #     path: '{{ item.file }}'
+    #     path: '{{ item }}'
     #     force: true
     #     state: absent
     #   loop:
-    #     - { file: '/bin/cert_generateselfsigned' }
-    #     - { file: '/bin/cert_info' }
-    #     - { file: '/bin/get-ip' }
-    #     - { file: '/sbin/update-issue' }
-    #     - { file: '/sbin/healthcheck-diff.sh' }
+    #     - /bin/cert_generateselfsigned
+    #     - /bin/cert_info
+    #     - /bin/get-ip
+    #     - /sbin/update-issue
+    #     - /sbin/healthcheck-diff.sh
 
     - name: Upgrade all packages
       # https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
@@ -219,9 +219,9 @@
     - name: Install packages
       apt:
         force_apt_get: true
-        name: '{{ item.name }}'
+        name: '{{ item }}'
       loop:
-        - { name: ucarp }
+        - ucarp
     - name: Create ucarp directory if it does not exist
       file:
         path: /etc/ucarp
@@ -251,3 +251,19 @@
         name: ucarp@001
         state: "{% if vars['vars']['ucarp_service_enabled'] %}started{% else %}stopped{% endif %}"
         enabled: "{{ vars['vars']['ucarp_service_enabled'] }}"
+
+
+
+- hosts: microk8sservers
+  become: true
+  become_user: root
+  tasks:
+    - name: Create hostpath data directories if it does not exist
+      file:
+        path: '{{ item }}'
+        state: directory
+        force: true
+        mode: '755'
+      loop:
+        - /data/pihole/etc
+        - /data/pihole/dnsmasq.d
