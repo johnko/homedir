@@ -52,10 +52,10 @@ cluster:
                 enabled: true
                 hosts:
                 - argocd.labcluster.local
-      syncPolicy: {}
-        # automated:
-        #   prune: true
-        #   selfHeal: true
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
 
 
     cert-manager:
@@ -69,10 +69,10 @@ cluster:
         helm:
           values:
             installCRDs: true
-      syncPolicy: {}
-        # automated:
-        #   prune: true
-        #   selfHeal: true
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
 
 
     coredns:
@@ -169,10 +169,10 @@ cluster:
                 maxSurge: 25%
                 maxUnavailable: 0
               type: RollingUpdate
-      syncPolicy: {}
-        # automated:
-        #   prune: true
-        #   selfHeal: true
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
 
 
     namespaces:
@@ -195,10 +195,10 @@ cluster:
             - pihole
             - rook-ceph
             - traefik
-      syncPolicy: {}
-        # automated:
-        #   prune: false
-        #   selfHeal: true
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
 
 
     pihole:
@@ -232,10 +232,10 @@ cluster:
             serviceWeb:
               loadBalancerIP: 192.168.2.9
               type: ClusterIP
-      syncPolicy: {}
-        # automated:
-        #   prune: true
-        #   selfHeal: true
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
 
 
     traefik:
@@ -275,7 +275,7 @@ cluster:
               externalIPs:
               - 192.168.2.9  # LABCLUSTER_IP
               type: ClusterIP
-      syncPolicy: {}
-        # automated:
-        #   prune: true
-        #   selfHeal: true
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
