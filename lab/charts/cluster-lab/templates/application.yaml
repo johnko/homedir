@@ -17,12 +17,14 @@ spec:
     path: {{ .source.path }}
     repoURL: {{ .source.repoURL }}
     targetRevision: {{ .source.targetRevision | default "HEAD" }}
+  {{- if .source.helm }}
     helm:
     {{- if .source.helm.values }}
       values: |{{ .source.helm.values | toYaml | nindent 8 }}
     {{- else }}
       values: {}
     {{- end }}
+  {{- end }}
   {{- if .syncPolicy }}
   syncPolicy: {{ .syncPolicy | toYaml | nindent 4 }}
   {{- else }}
