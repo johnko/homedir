@@ -27,8 +27,8 @@ brew "yq"
 
 # Docker / k8s
 cask "docker"
+brew "docker-compose"
 brew "helm"
-# brew "k3d"
 brew "k9s"
 brew "kind"
 brew "kubernetes-cli", args: ["overwrite"]
