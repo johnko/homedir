@@ -148,6 +148,20 @@ cluster:
       syncPolicy: {} # disable autosync to avoid port name flipflops
 
 
+    ingressroutes:
+      annotations:
+        argocd.argoproj.io/sync-wave: "3"
+      destination:
+        namespace: pihole
+      source:
+        path: lab/charts/ingressroutes
+        repoURL: *myrepo
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+
+
     metrics-server:
       annotations:
         argocd.argoproj.io/sync-wave: "1"
