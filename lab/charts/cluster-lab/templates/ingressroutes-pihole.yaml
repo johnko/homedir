@@ -3,6 +3,9 @@ kind: IngressRouteTCP
 metadata:
   name: pihole-dnstcp
   namespace: {{ .Values.cluster.apps.pihole.destination.namespace }}
+  {{- if .Values.cluster.apps.pihole.annotations }}
+  annotations: {{ .Values.cluster.apps.pihole.annotations | toYaml | nindent 4 }}
+  {{- end }}
 spec:
   entryPoints:
     - dnstcp
@@ -17,6 +20,9 @@ kind: IngressRouteUDP
 metadata:
   name: pihole-dnsudp
   namespace: {{ .Values.cluster.apps.pihole.destination.namespace }}
+  {{- if .Values.cluster.apps.pihole.annotations }}
+  annotations: {{ .Values.cluster.apps.pihole.annotations | toYaml | nindent 4 }}
+  {{- end }}
 spec:
   entryPoints:
     - dnsudp

@@ -99,7 +99,7 @@
       shell: microk8s enable {{ item.name }}
       loop:
         - { name: dns }
-        - { name: community }
+        # - { name: community }
         # - { name: metrics-server } # will be replace when argocd starts
         # - { name: cert-manager } # will be replace when argocd starts
         # - { name: traefik } # microk8s installs deplyoment, but we want daemonset, will be replace when argocd starts
