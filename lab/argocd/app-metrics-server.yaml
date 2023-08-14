@@ -15,16 +15,16 @@ spec:
     helm:
       values: |
         args:
-          - --kubelet-insecure-tls
+        - --kubelet-insecure-tls
         containerPort: 4443
         nodeSelector:
           kubernetes.io/arch: amd64
           kubernetes.io/os: linux
         updateStrategy:
-          type: RollingUpdate
           rollingUpdate:
             maxSurge: 25%
             maxUnavailable: 0
+          type: RollingUpdate
   syncPolicy:
     automated:
       prune: true

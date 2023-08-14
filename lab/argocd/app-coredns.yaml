@@ -17,13 +17,13 @@ spec:
         affinity:
           podAntiAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:
-              - labelSelector:
-                  matchExpressions:
-                    - key: k8s-app
-                      operator: In
-                      values:
-                        - coredns
-                topologyKey: "kubernetes.io/hostname"
+            - labelSelector:
+                matchExpressions:
+                - key: k8s-app
+                  operator: In
+                  values:
+                  - coredns
+              topologyKey: kubernetes.io/hostname
         fullnameOverride: coredns
         k8sAppLabelOverride: kube-dns
         podDisruptionBudget:
@@ -33,45 +33,45 @@ spec:
         rollingUpdate:
           maxUnavailable: 0
         servers:
-          - zones:
-              - zone: .
-            port: 53
-            plugins:
-              - name: errors
-              - name: health
-                configBlock: |-
-                  lameduck 5s
-              - name: ready
-              - name: log
-                parameters: .
-                configBlock: |-
-                  class error
-              - name: kubernetes
-                parameters: cluster.local in-addr.arpa ip6.arpa
-                configBlock: |-
-                  pods insecure
-                  fallthrough in-addr.arpa ip6.arpa
-              - name: hosts
-                parameters: /etc/coredns/NodeHosts
-                configBlock: |-
-                  ttl 60
-                  reload 15s
-                  fallthrough
-              - name: prometheus
-                parameters: :9153
-              - name: forward
-                parameters: . 1.1.1.1 8.8.8.8
-              - name: cache
-                parameters: 30
-              - name: loop
-              - name: reload
-              - name: loadbalance
+        - plugins:
+          - name: errors
+          - configBlock: |-
+              lameduck 5s
+            name: health
+          - name: ready
+          - configBlock: |-
+              class error
+            name: log
+            parameters: .
+          - configBlock: |-
+              pods insecure
+              fallthrough in-addr.arpa ip6.arpa
+            name: kubernetes
+            parameters: cluster.local in-addr.arpa ip6.arpa
+          - configBlock: |-
+              ttl 60
+              reload 15s
+              fallthrough
+            name: hosts
+            parameters: /etc/coredns/NodeHosts
+          - name: prometheus
+            parameters: :9153
+          - name: forward
+            parameters: . 1.1.1.1 8.8.8.8
+          - name: cache
+            parameters: 30
+          - name: loop
+          - name: reload
+          - name: loadbalance
+          port: 53
+          zones:
+          - zone: .
         service:
           name: kube-dns
         serviceAccount:
           create: true
           name: coredns
         tolerations:
-          - key: CriticalAddonsOnly
-            operator: Exists
+        - key: CriticalAddonsOnly
+          operator: Exists
   syncPolicy: {} # disable autosync to avoid port name flipflops

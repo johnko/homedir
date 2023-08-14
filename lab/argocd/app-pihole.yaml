@@ -16,31 +16,25 @@ spec:
       values: |
         dnsmasq:
           customDnsEntries:
-            - address=/labcluster/192.168.2.9
-            - address=/argocd.labcluster.local/192.168.2.9
-            - address=/pihole.labcluster.local/192.168.2.9
-
-        serviceWeb:
-          loadBalancerIP: 192.168.2.9
-          type: ClusterIP
-
-        serviceDns:
-          loadBalancerIP: 192.168.2.9
-          type: ClusterIP
-
-        serviceDhcp:
-          enabled: false
-
+          - address=/labcluster/192.168.2.9
+          - address=/argocd.labcluster.local/192.168.2.9
+          - address=/pihole.labcluster.local/192.168.2.9
+        extraEnvVars:
+          DNSMASQ_USER: root
         podDnsConfig:
           enabled: true
-          policy: "None"
           nameservers:
           - 1.1.1.1
           - 8.8.8.8
-
-        extraEnvVars: {
-          DNSMASQ_USER: "root"
-        }
+          policy: None
+        serviceDhcp:
+          enabled: false
+        serviceDns:
+          loadBalancerIP: 192.168.2.9
+          type: ClusterIP
+        serviceWeb:
+          loadBalancerIP: 192.168.2.9
+          type: ClusterIP
   syncPolicy:
     automated:
       prune: true

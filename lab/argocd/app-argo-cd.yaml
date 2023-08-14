@@ -47,11 +47,11 @@ spec:
             server.insecure: true
         server:
           ingress:
-            enabled: true
             annotations:
               traefik.ingress.kubernetes.io/router.entrypoints: websecure
+            enabled: true
             hosts:
-              - argocd.labcluster.local
+            - argocd.labcluster.local
   syncPolicy:
     automated:
       prune: true

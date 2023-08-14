@@ -2,7 +2,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRouteTCP
 metadata:
   name: pihole-dnstcp
-  namespace: pihole
+  namespace: {{ .Values.cluster.apps.pihole.destination.namespace }}
 spec:
   entryPoints:
     - dnstcp
@@ -16,7 +16,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRouteUDP
 metadata:
   name: pihole-dnsudp
-  namespace: pihole
+  namespace: {{ .Values.cluster.apps.pihole.destination.namespace }}
 spec:
   entryPoints:
     - dnsudp
