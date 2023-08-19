@@ -12,4 +12,4 @@ ExecStart=/usr/sbin/ucarp -i $BIND_INTERFACE -p $PASSWORD -v %I -a $VIP_ADDRESS 
 KillMode=control-group
 
 [Install]
-WantedBy=multiuser.target
+WantedBy=multi-user.target
