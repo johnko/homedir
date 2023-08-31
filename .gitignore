@@ -71,6 +71,7 @@
 .subversion/servers
 .swiftpm/
 .terraform.d/
+.tflint.d/
 .vagrant.d/boxes/
 .vagrant.d/data/
 .vagrant.d/gems/
