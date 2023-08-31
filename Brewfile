@@ -14,6 +14,8 @@ cask "google-chrome"
 brew "aws-vault"
 brew "awscli"
 brew "terraform"
+brew "tflint"
+brew "sentinel"
 
 # Shell / CLI Tools
 brew "curl"
