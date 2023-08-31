@@ -15,7 +15,7 @@ brew "aws-vault"
 brew "awscli"
 brew "terraform"
 brew "tflint"
-brew "sentinel"
+cask "sentinel"
 
 # Shell / CLI Tools
 brew "curl"
