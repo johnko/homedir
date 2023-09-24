@@ -78,6 +78,8 @@ vscode "oderwat.indent-rainbow"
 vscode "redhat.ansible"
 vscode "redhat.vscode-xml"
 vscode "redhat.vscode-yaml"
+vscode "GitHub.vscode-pull-request-github"
+vscode "gitHub.vscode-github-actions"
 
 # Keyboard / QMK / VIA
 cask "via"
