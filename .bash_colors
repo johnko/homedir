@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+  export TERM=gnome-256color
+elif infocmp xterm-256color >/dev/null 2>&1; then
+  export TERM=xterm-256color
+fi
+
+if tput setaf 1 &>/dev/null; then
+  tput sgr0
+  #  if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
+  #  else
+  #BLACK=$(tput setaf 0)
+  __RED=$(tput setaf 1)
+  __GREEN=$(tput setaf 2)
+  __YELLOW=$(tput setaf 3)
+  __BLUE=$(tput setaf 4)
+  __PURPLE=$(tput setaf 5)
+  __CYAN=$(tput setaf 6)
+  __WHITE=$(tput setaf 7)
+  #  fi
+  __BOLD=$(tput bold)
+  __RESET=$(tput sgr0)
+  __ROOT=$(tput setab 1)$(tput setaf 7)
+else
+  __RED="\033[0;31m"
+  __GREEN="\033[0;32m"
+  __YELLOW="\033[0;33m"
+  __BLUE="\033[0;34m"
+  __PURPLE="\033[0;35m"
+  __CYAN="\033[0;36m"
+  __WHITE="\033[0;37m"
+  __BOLD=""
+  __RESET="\033[m"
+  __ROOT="\033[30;41m"
+fi
+
+export __RED
+export __GREEN
+export __YELLOW
+export __BLUE
+export __PURPLE
+export __CYAN
+export __WHITE
+export __BOLD
+export __RESET
+export __ROOT
