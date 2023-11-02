@@ -22,6 +22,14 @@ for i in ~/.vim/backups ~/.vim/swaps ~/.vim/undo; do
     [ ! -d $i ] && mkdir -p $i
 done
 ##########
+# color for zsh auto complete suggestion output https://stackoverflow.com/questions/23152157/how-does-the-zsh-list-colors-syntax-work
+zstyle ':completion:*:commands' list-colors '=*=31'
+zstyle ':completion:*:options' list-colors '=^(-- *)=36'
+zstyle ':completion:*:parameters'  list-colors '=*=36'
+zstyle ':completion:*:builtins' list-colors '=*=35'
+zstyle ':completion:*:aliases' list-colors '=*=35'
+##########
+PURE_PROMPT_SYMBOL=$'🚀\n⚑'
 # use zsh pure theme
 export VIRTUAL_ENV_DISABLE_PROMPT=12
 fpath+=$HOME/.zsh/pure
@@ -41,8 +49,12 @@ PROMPT='$(kube_ps1)'$PROMPT
 source $HOME/.zsh/zsh-colored-man-pages/colored-man-pages.plugin.zsh
 ##########
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
+[ -f ~/.bash_colors ] && source ~/.bash_colors
 [ -f ~/.bash_exports ] && source ~/.bash_exports
 [ -f ~/.bash_path ] && source ~/.bash_path
+
+[ -f ~/.devops-tools ] && source ~/.devops-tools
+PROMPT='[$(arch)]'$PROMPT
 ##########
 export NVM_DIR="$HOME/.nvm"
 [ -e $NVM_DIR ] || mkdir -p $NVM_DIR
