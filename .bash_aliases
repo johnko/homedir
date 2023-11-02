@@ -127,6 +127,9 @@ d-gca() {
 d-net() {
   docker network "${@}"
 }
+d-prune() {
+  docker system prune -a --volumes
+}
 d-psa() {
   docker ps -a "${@}"
 }
@@ -183,6 +186,56 @@ repos-fetchorigin() {
           eval ${cmdmerge} 2>&1 | awk "{print \"        \"\$0}"
         fi
       fi
+      popd >/dev/null
+    fi
+  done
+}
+repos-updatemaster() {
+  TMP_BRANCH=tmp/tmp$(date +%s)
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      echo "==> ${__YELLOW}${i}${__RESET}"
+      DEFAULT_BRANCH=master
+      if git branch -a | grep -q 'remotes/origin/main'; then
+        DEFAULT_BRANCH=main
+      fi
+      git checkout -b $TMP_BRANCH
+      git fetch origin $DEFAULT_BRANCH
+      git branch -D $DEFAULT_BRANCH || true
+      git checkout -b $DEFAULT_BRANCH --track origin/$DEFAULT_BRANCH
+      git branch -D $TMP_BRANCH
+      popd >/dev/null
+    fi
+  done
+}
+repos-status() {
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      echo "==> ${__YELLOW}${i}${__RESET}"
+      git status -s
+      popd >/dev/null
+    fi
+  done
+}
+repos-renovate() {
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      echo "==> ${__YELLOW}${i}${__RESET}"
+      git remote prune origin
+      git branch -a | grep renovate || true
+      popd >/dev/null
+    fi
+  done
+}
+repos-tmptmp() {
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      echo "==> ${__YELLOW}${i}${__RESET}"
+      git branch -a | grep tmp/tmp || true
       popd >/dev/null
     fi
   done
