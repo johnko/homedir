@@ -222,7 +222,7 @@ kubectlnodezone() {
 
 brew-prune() {
   if [ -e Brewfile ]; then
-    for i in $(brew list | grep -v -E $(cat Brewfile | grep -v '^#' | grep -v '^$' | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,')) ; do brew uninstall $i ; done
+    for i in $(brew list | grep -v -E $(cat Brewfile | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,')) ; do brew uninstall $i ; done
     brew bundle
   fi
 }
