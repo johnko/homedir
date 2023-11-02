@@ -18,6 +18,7 @@
 .cocoapods/repos/
 .config/configstore/
 .config/gcloud/
+.config/gh/
 .config/gtk*/
 .config/pip/
 .cups/lpoptions
@@ -42,6 +43,7 @@
 .lemminx/cache/
 .lesshst
 .local/share/
+.local/state/gh/
 .localized
 .minikube/
 .npm/
