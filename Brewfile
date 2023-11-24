@@ -13,7 +13,8 @@ cask "google-chrome"
 # Cloud / AWS
 brew "aws-vault"
 brew "awscli"
-brew "terraform"
+tap "hashicorp/tap"
+brew "hashicorp/tap/terraform"
 brew "tflint"
 cask "sentinel"
 
