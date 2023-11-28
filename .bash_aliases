@@ -161,7 +161,7 @@ repos-gitbranches() {
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
     if [ -e "${i}/.git" ]; then
       pushd "${i}" >/dev/null
-      local branch=$(git branch | grep '^*' | awk '{print $NF}')
+      local branch=$(git branch --show-current)
       echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch}${__RESET}"
       popd >/dev/null
     fi
@@ -171,8 +171,8 @@ repos-fetchorigin() {
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
     if [ -e "${i}/.git" ]; then
       pushd "${i}" >/dev/null
-      local branch=$(git branch | grep '^*' | awk '{print $NF}')
-      local remoteorigin=$(git remote | head -n1)
+      local branch=$(git branch --show-current)
+      local remoteorigin=$(git remote | grep origin | head -n1)
       local remotebranch=$(git branch -va | grep "remotes/${remoteorigin}/HEAD" | awk '{print $NF}' | sed "s;${remoteorigin}/;;")
       if [ -z "${remoteorigin}" ]; then
         echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__RED}* No remotes.${__RESET}"
@@ -278,4 +278,62 @@ brew-prune() {
     for i in $(brew list | grep -v -E $(cat Brewfile | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,')) ; do brew uninstall $i ; done
     brew bundle
   fi
+}
+
+gg() {
+  MY_LABEL='devops :test_tube:'
+  gh label create "$MY_LABEL" --color '#0E8A16' --force || true
+
+  MY_MILESTONE='v1'
+  MY_PROJECT='18'
+  MY_ORG='johnko'
+  TMP_LOG=$(mktemp)
+  case "$1" in
+    pr)
+      git push
+      set -x
+      gh pr create --assignee '@me' --draft --fill-first --label $MY_LABEL --milestone $MY_MILESTONE 2>&1 | tee $TMP_LOG
+      set +x
+      NEW_PR=$(grep "https://github\.com/$MY_ORG/.*/pull/.*" $TMP_LOG | tail -n1)
+      gh project item-add $MY_PROJECT --owner $MY_ORG --url $NEW_PR
+      test -e $TMP_LOG && rm $TMP_LOG
+      gh pr view --web
+      ;;
+    label)
+      gh project item-add $MY_PROJECT --owner $MY_ORG --url $2
+      if echo $2 | grep -q '/pull/' ; then
+        set -x
+        gh pr edit $2 --add-assignee "@me" --add-label $MY_LABEL --milestone $MY_MILESTONE
+        gh pr view $2 --web
+        set +x
+      elif echo $2 | grep -q '/issues/' ; then
+        set -x
+        gh issue edit $2 --add-assignee "@me" --add-label $MY_LABEL --milestone $MY_MILESTONE
+        gh issue view $2 --web
+        set +x
+      fi
+      ;;
+    clean)
+      OLD_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+      DEFAULT_BRANCH=master
+      if git branch -a | grep -q 'remotes/origin/main'; then
+        DEFAULT_BRANCH=main
+      fi
+      set -x
+      git checkout $DEFAULT_BRANCH
+      if [ "$OLD_BRANCH" != "$DEFAULT_BRANCH" ]; then
+        git branch -D $OLD_BRANCH
+      fi
+      git pull --ff-only
+      set +x
+      ;;
+    *)
+      cat <<EOF
+Usage:
+  $0 pr                  Push with 'git' and open PR with 'gh' from current HEAD branch
+  $0 label github_url    Tags PR/Issue with my label, milestone and add to GH Project
+  $0 clean               Deletes current branch, checkout main/master branch and pull
+EOF
+      ;;
+  esac
 }
