@@ -2,6 +2,7 @@
 *.pem
 *.pfx
 .*_history
+.*secret*
 .CFUserTextEncoding
 .DS_Store
 .Trash/
