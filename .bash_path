@@ -36,6 +36,8 @@
 # Set PATH, MANPATH, etc., for Homebrew.
 [        -e "/opt/homebrew/bin/brew" ] \
   && eval "$(/opt/homebrew/bin/brew shellenv)"
+[        -e "/usr/local/bin/brew" ] \
+  && eval "$(/usr/local/bin/brew shellenv)"
 
 
 # add go bin late in PATH
