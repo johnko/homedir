@@ -1,5 +1,4 @@
-" Solarized darkbg
-set background=dark
+set background=light
 
 " Make Vim more useful
 set nocompatible
