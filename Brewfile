@@ -1,9 +1,17 @@
 # brew bundle
 
 # macOS Apps
+brew "mas"
 cask "1password"
 # cask "cloudflare-warp"
 cask "rectangle"
+cask "signal"
+mas "Keynote", id: 409183694
+mas "LINE", id: 539883307
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Slack", id: 803453959
+mas "WhatsApp", id: 1147396723
 
 # Web Browsers
 cask "brave-browser"
@@ -30,7 +38,7 @@ brew "yq"
 
 # Docker / k8s
 cask "docker"
-brew "docker-compose"
+brew "docker-compose", args: ["overwrite"]
 brew "helm"
 brew "k9s"
 brew "kind"
@@ -86,5 +94,5 @@ vscode "gitHub.vscode-github-actions"
 cask "via"
 
 # Lab / Virtualization
-cask "multipass" if Hardware::CPU.intel?
-cask "virtualbox" if Hardware::CPU.intel?
+# cask "multipass" if Hardware::CPU.intel?
+# cask "virtualbox" if Hardware::CPU.intel?
