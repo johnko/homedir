@@ -1,4 +1,6 @@
 alias g="git --no-pager"
+alias gs="git s"
+alias gd="git d"
 alias k=kubectl
 alias kk="kubectl -n kube-system"
 alias ka="kubectl -o wide"
@@ -136,6 +138,11 @@ d-psa() {
 }
 d-runtmp() {
   docker run -it --rm "${@}"
+}
+d-s() {
+  docker image ls
+  docker volume ls
+  docker ps -a
 }
 d-vol() {
   docker volume "${@}"
