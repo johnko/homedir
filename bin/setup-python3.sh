@@ -53,7 +53,6 @@ ${PIP_BIN} install --upgrade \
   autopep8 \
   black \
   nose \
-  jinjalint \
   ansible \
 2>&1 | awk '{print "    "$0}'
 echo "=>  Installation complete!"
