@@ -1,0 +1,9 @@
+# Add my GitHub authentication key
+[[ssh-keys]]
+item = "SSH Key github"
+vault = "Private"
+
+## Uncomment to add all keys from my Private vault
+# [[ssh-keys]]
+# vault = "Employee"
+# account = "Work"
