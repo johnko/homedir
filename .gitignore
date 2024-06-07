@@ -21,6 +21,8 @@
 .config/gcloud/
 .config/gh/
 .config/gtk*/
+.config/op/config
+.config/op/op-daemon.sock
 .config/pip/
 .cups/lpoptions
 .default-browser.tmp
@@ -53,6 +55,7 @@
 .npm/_logs/
 .npm/anonymous-cli-metrics.json
 .npm/index-v5/
+.npmrc
 .nvm/
 .oh-my-zsh/
 .oracle_jre_usage/
@@ -94,7 +97,6 @@
 .zcompdump-*
 .zoomus/
 .zsh_sessions/
-Applications/
 Desktop/
 Docs Authoring/
 Documents/
@@ -104,7 +106,6 @@ Library/
 Movies/
 Music/
 Pictures/
-Public/
 Sites/
 VirtualBox VMs/
 bin/kubectl-versions/
