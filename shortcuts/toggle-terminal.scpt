@@ -1,3 +1,5 @@
+-- https://gist.github.com/timpulver/4753750
+
 global frontApp, frontAppName, windowTitle
 set windowTitle to ""
 tell application "System Events"
