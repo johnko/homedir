@@ -17,11 +17,11 @@ if frontAppName is "Terminal" then
 	end tell
 	set actionTaken to "Terminal hidden"
 else
-	tell application "System Events"
-		set visible of application process "Terminal" to true
-	end tell
 	tell application "Terminal"
 		activate
+	end tell
+	tell application "System Events"
+		set visible of application process "Terminal" to true
 	end tell
 	set actionTaken to "Terminal visible"
 end if
