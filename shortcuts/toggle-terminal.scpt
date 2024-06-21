@@ -20,7 +20,7 @@ if frontAppName is "Terminal" then
 	tell application "System Events"
 		set visible of application process "Terminal" to false
 	end tell
-	set actionTaken to "Terminal hidden"
+	set actionTaken to "hidden: " & frontAppName
 else
 	tell application "Terminal"
 		activate
@@ -43,6 +43,6 @@ else
 			end try
 		end tell
 	end tell
-	set actionTaken to "Terminal visible"
+	set actionTaken to "visible: " & frontAppName
 end if
 return actionTaken
