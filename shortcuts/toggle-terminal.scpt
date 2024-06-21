@@ -37,7 +37,7 @@ else
 			on error errMsg
 				if frontAppName is "Terminal" then
 					tell application "System Events" to tell process "Terminal"
-						click menu item 1 of it's menu of menu item "New Window" of it's menu of menu bar item "Shell" of menu bar 1
+						click menu item 1 of its menu of menu item "New Window" of its menu of menu bar item "Shell" of menu bar 1
 					end tell
 				end if
 			end try
