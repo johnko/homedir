@@ -94,3 +94,7 @@
 [gpg "ssh"]
 	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
+[user]
+	name = johnko
+	email = 279736+johnko@users.noreply.github.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHfl5IX2a1XRBI1cGmeUUgHiT8C1Xa3sYwaFfMOhKuBy
