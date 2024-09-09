@@ -139,5 +139,9 @@
   {
     "command": "-workbench.action.openEditorAtIndex9",
     "key": "ctrl+9"
+  },
+  {
+    "key": "f15",
+    "command": "workbench.action.terminal.newWithCwd"
   }
 ]
