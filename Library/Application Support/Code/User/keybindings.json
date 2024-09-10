@@ -141,7 +141,7 @@
     "key": "ctrl+9"
   },
   {
-    "key": "f15",
+    "key": "f16",
     "command": "workbench.action.terminal.newWithCwd"
   }
 ]
