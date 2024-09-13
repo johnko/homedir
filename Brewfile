@@ -11,7 +11,6 @@ mas "LINE", id: 539883307
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Slack", id: 803453959
-mas "WhatsApp", id: 1147396723
 
 # Web Browsers
 cask "brave-browser"
