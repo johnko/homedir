@@ -41,11 +41,11 @@ cask "1password-cli"
 
 # Docker / k8s
 cask "docker"
-brew "docker-compose", args: ["overwrite"]
 brew "helm"
 brew "k9s"
 brew "kind"
 brew "kubernetes-cli", args: ["overwrite"]
+cask "kui"
 
 # Dev
 cask "visual-studio-code"
@@ -60,14 +60,6 @@ brew "watchman"
 
 # VS Code extensions
 vscode "docsmsft.docs-authoring-pack"
-vscode "docsmsft.docs-build"
-vscode "docsmsft.docs-images"
-vscode "docsmsft.docs-linting"
-vscode "docsmsft.docs-markdown"
-vscode "docsmsft.docs-metadata"
-vscode "docsmsft.docs-preview"
-vscode "docsmsft.docs-scaffolding"
-vscode "docsmsft.docs-yaml"
 vscode "eamodio.gitlens"
 vscode "GitHub.copilot"
 vscode "gitHub.vscode-github-actions"
