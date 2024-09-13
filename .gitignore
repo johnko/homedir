@@ -114,7 +114,6 @@ code/
 dev/
 go/
 kubeconfig/
-terraform
 terragrunt
 tmp/
 venv*/
