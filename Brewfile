@@ -4,6 +4,7 @@
 brew "mas"
 cask "1password"
 # cask "cloudflare-warp"
+cask "gimp"
 cask "rectangle"
 cask "signal"
 mas "Keynote", id: 409183694
