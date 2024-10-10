@@ -10,10 +10,10 @@ ctrl + alt + cmd - w : yabai -m space --balance
 
 # rotate tree
 ctrl + alt + cmd - r : yabai -m space --rotate 270
-shift + ctrl + alt + cmd - r : bash ~/bin/yabai_cycle_clockwise.sh
+ctrl + alt + cmd - e : bash ~/bin/yabai_cycle_clockwise.sh
 
 # float 2 fourths / unfloat window and restore position
-shift + ctrl + alt + cmd - d : yabai -m window --toggle float --grid 1:8:2:0:4:1
+ctrl + alt + cmd - s : yabai -m window --toggle float --grid 1:8:2:0:4:1
 # float 2 thirds / unfloat window and restore position
 ctrl + alt + cmd - d : yabai -m window --toggle float --grid 1:6:1:0:4:1
 # float fullscreen / unfloat window and restore position
