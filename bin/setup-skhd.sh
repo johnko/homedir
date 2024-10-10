@@ -17,6 +17,5 @@ fi
 
 echo "=>  Installation complete!"
 echo "    To activate, run:"
-echo "        skhd --install-service"
 echo "        skhd --start-service"
 echo "=>  Setup is complete!"
