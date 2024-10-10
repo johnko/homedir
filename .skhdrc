@@ -5,6 +5,9 @@ ctrl + alt + cmd - v : open -a "Visual Studio Code"
 ctrl + alt + cmd - b : open -a "Slack"
 ctrl + alt + cmd - c : open -a "Spotify"
 
+# restart yabai
+shift + ctrl + alt + cmd - q : yabai --restart-service
+
 # balance size of windows
 ctrl + alt + cmd - w : yabai -m space --balance
 
