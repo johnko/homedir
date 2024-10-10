@@ -39,6 +39,7 @@
 .fastlane/.did_show_opt_info
 .gem/ruby/
 .gem/specs/
+.gk
 .gnupg/
 .kube/cache/
 .kube/config

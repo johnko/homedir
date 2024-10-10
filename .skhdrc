@@ -1,0 +1,20 @@
+# open apps
+ctrl + alt + cmd - t : osascript ~/shortcuts/open-terminal.scpt
+ctrl + alt + cmd - g : open -a "Google Chrome"
+ctrl + alt + cmd - v : open -a "Visual Studio Code"
+ctrl + alt + cmd - b : open -a "Slack"
+ctrl + alt + cmd - c : open -a "Spotify"
+
+# balance size of windows
+ctrl + alt + cmd - w : yabai -m space --balance
+
+# rotate tree
+ctrl + alt + cmd - r : yabai -m space --rotate 270
+shift + ctrl + alt + cmd - r : bash ~/bin/yabai_cycle_clockwise.sh
+
+# float 2 fourths / unfloat window and restore position
+shift + ctrl + alt + cmd - d : yabai -m window --toggle float --grid 1:8:2:0:4:1
+# float 2 thirds / unfloat window and restore position
+ctrl + alt + cmd - d : yabai -m window --toggle float --grid 1:6:1:0:4:1
+# float fullscreen / unfloat window and restore position
+ctrl + alt + cmd - f : yabai -m window --toggle float --grid 1:1:0:0:1:1
