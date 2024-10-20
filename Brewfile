@@ -88,7 +88,7 @@ vscode "redhat.vscode-xml"
 vscode "redhat.vscode-yaml"
 
 # Keyboard / QMK / VIA
-cask "via"
+# cask "via"
 
 # Lab / Virtualization
 # cask "multipass" if Hardware::CPU.intel?
