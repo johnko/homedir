@@ -98,23 +98,8 @@
 .zcompdump-*
 .zoomus/
 .zsh_sessions/
-Desktop/
-Docs Authoring/
-Documents/
-Downloads/
 Google*Drive*
-Library/
-Movies/
-Music/
-Pictures/
-Sites/
 VirtualBox VMs/
-bin/kubectl-versions/
-bin/terraform-versions/
-code/
-dev/
-go/
 kubeconfig/
-terragrunt
-tmp/
+tmptmp/
 venv*/
