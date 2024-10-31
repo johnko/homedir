@@ -4,7 +4,7 @@
 yabai -m config layout bsp
 
 # large window for visual media
-yabai -m rule --add app="^(Crunchyroll.*|GIMP|Netflix|Photos|TV)$" manage=off grid=1:6:1:0:4:1
+yabai -m rule --add app="^(Crunchyroll.*|GIMP|Google Chrome|Netflix|Photos|TV)$" manage=off grid=1:6:1:0:4:1
 
 # for vertical screen
 yabai -m rule --add app="^(Gmail.*|Google Calendar)$" manage=off grid=3:1:0:0:1:1
