@@ -41,6 +41,7 @@ cask "1password-cli"
 
 # Docker / k8s
 cask "docker"
+brew "docker-compose", args: ["overwrite"]
 brew "helm"
 brew "k9s"
 brew "kind"
