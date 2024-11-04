@@ -1,9 +1,8 @@
 [alias]
-	# View the SHA, description, and history graph of the latest 20 commits
-	lll = log --pretty=oneline -n 20 --graph
-	ll = log -n 20 --graph --oneline --decorate --branches --tags
+	# View the SHA, description, and history graph of the latest 40 commits
+	ll = "log -n 40 --graph --decorate --branches --tags --date=relative --date-order --format='%C(yellow)%h%C(auto)%d %C(reset)%s %C(blue)%aN %C(cyan)%cd'"
 	# View latest 20 with short hash and tags
-	l = log --graph --oneline --decorate --branches --tags
+	l = "log --graph --decorate --branches --tags --date=relative --date-order --format='%C(yellow)%h%C(auto)%d %C(reset)%s %C(blue)%aN %C(cyan)%cd'"
 	# View the current working tree status using the short format
 	s = status -s
 	# Show the diff between the latest commit and the current state
