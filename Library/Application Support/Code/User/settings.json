@@ -12,13 +12,15 @@
   "git.enableCommitSigning": true,
   "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
-    "*": false,
-    "ini": false,
-    "markdown": false,
     "plaintext": false,
+    "markdown": false,
     "scminput": false,
+    "ini": false,
     "terraform": true,
-    "yaml": false
+    "yaml": false,
+    "typescript": true,
+    "javascript": true,
+    "*": false
   },
   "githubPullRequests.defaultCreateOption": "createDraft",
   "githubPullRequests.defaultMergeMethod": "squash",
