@@ -334,6 +334,8 @@ gg() {
         git branch -D $OLD_BRANCH
       fi
       git pull --ff-only
+      # finally, prune old remote branches
+      git fetch origin --prune
       set +x
       ;;
     *)
