@@ -23,7 +23,7 @@
 	# delete branch
 	bd = branch -D
 	# Show verbose output about tags, branches or remotes
-	tags = tag -l
+	tags = "log --tags --simplify-by-decoration --pretty='format:%ci %d'"
 	branches = branch -a
 	remotes = remote -v
 	# Set branch master to follow upstream
