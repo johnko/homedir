@@ -7,6 +7,7 @@ ctrl + alt + cmd - c : open -a "Spotify"
 
 # restart yabai
 shift + ctrl + alt + cmd - q : yabai --restart-service
+shift + ctrl + alt + cmd - a : osascript ~/shortcuts/sound-reset-left-right-balance.scpt
 
 # balance size of windows
 ctrl + alt + cmd - w : yabai -m space --balance
