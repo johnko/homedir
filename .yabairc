@@ -11,7 +11,7 @@ yabai -m rule --add app="^(Terminal)$" manage=off grid=12:12:2:1:8:10
 # tall 10/12 of screen for visual media
 yabai -m rule --add app="^(Crunchyroll.*|GIMP|Netflix|Photos|TV|Code)$" manage=off grid=12:12:1:2:10:10
 # half 6/12 of screen bottom left for audio media
-yabai -m rule --add app="^(Music|Spotify)$" manage=off grid=2:2:0:1:1:1
+yabai -m rule --add app="^(1Password|Music|Spotify)$" manage=off grid=2:2:0:1:1:1
 
 # for vertical screen
 yabai -m rule --add app="^(Gmail|Google Calendar)$" manage=off grid=3:1:0:0:1:1
