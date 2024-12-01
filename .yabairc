@@ -5,7 +5,7 @@ yabai -m config layout bsp
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 # tall 6/12 of screen for web
-yabai -m rule --add app="^(Brave Browser|Firefox|Google Chrome)$" manage=off grid=1:12:3:0:6:1
+yabai -m rule --add app="^(Brave Browser|Firefox|Google Chrome|Safari)$" manage=off grid=1:12:3:0:6:1
 # wide 8/12 of screen for Terminal
 yabai -m rule --add app="^(Terminal)$" manage=off grid=12:12:2:1:8:10
 # tall 10/12 of screen for visual media
