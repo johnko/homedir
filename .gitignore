@@ -94,6 +94,7 @@
 .webex/
 .wget-hsts
 .yarnrc
+.zcompcache
 .zcompdump
 .zcompdump-*
 .zoomus/
