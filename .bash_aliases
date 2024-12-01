@@ -350,9 +350,16 @@ EOF
 }
 
 lint() {
+  # Usage:
+  #     lint "$(git diff --name-only)"
+  #     git diff --name-only | lint
+  FILES=$@
   if [ -z "$1" ]; then
-    echo "ERROR: Missing filenames to lint."
-    return
+    FILES=$(cat < /dev/stdin)
+    if [ -z "$FILES" ]; then
+      echo "ERROR: Missing filenames to lint."
+      return
+    fi
   fi
   if [ -e .nvmrc ] && nvm current >/dev/null 2>&1; then
     MY_NVM=$(nvm current | tr -d '\s')
@@ -363,20 +370,20 @@ lint() {
       return
     fi
   fi
-  for i in $@ ; do
+  while IFS= read -r i ; do
     echo "==> $i"
     if echo $i | grep -q -E '\.(js|ts)$' ; then
       set -x
-      npx eslint --config .eslintrc.js --fix $i
+      npx eslint --config .eslintrc.js --fix "$i"
       set +x
     elif echo $i | grep -q -E '\.(py)$' ; then
       set -x
-      black $i
+      black "$i"
       set +x
     elif echo $i | grep -q -E '\.(tf)$' ; then
       set -x
-      terraform fmt $i
+      terraform fmt "$i"
       set +x
     fi
-  done
+  done <<< $(echo $FILES)
 }
