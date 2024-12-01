@@ -12,7 +12,7 @@ alias history='history -i'
 
 # MacOs aliases
 if [ -e /Users ]; then
-  alias ls="ls -G"
+  alias ls="ls -1G"
   alias free="top -l 1 -s 0 | grep PhysMem | sed 's, (.*),,'"
   alias iftop="sudo /usr/local/sbin/iftop -nBP"
   ppgrep() {
@@ -20,7 +20,7 @@ if [ -e /Users ]; then
     pgrep "$@" | xargs ps
   }
 else
-  alias ls='ls --color=auto'
+  alias ls='ls --color=auto -1'
   # Add an "alert" alias for long running commands.  Use like so:
   #   sleep 10; alert
   alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -347,4 +347,36 @@ Usage:
 EOF
       ;;
   esac
+}
+
+lint() {
+  if [ -z "$1" ]; then
+    echo "ERROR: Missing filenames to lint."
+    return
+  fi
+  if [ -e .nvmrc ] && nvm current >/dev/null 2>&1; then
+    MY_NVM=$(nvm current | tr -d '\s')
+    MY_NVMRC=$(cat .nvmrc | tr -d '\s')
+    if [ "$MY_NVM" != "$MY_NVMRC" ]; then
+      echo "ERROR: Mismatch node version. Have $MY_NVM want $MY_NVMRC"
+      echo "Try:   nvm use"
+      return
+    fi
+  fi
+  for i in $@ ; do
+    echo "==> $i"
+    if echo $i | grep -q -E '\.(js|ts)$' ; then
+      set -x
+      npx eslint --config .eslintrc.js --fix $i
+      set +x
+    elif echo $i | grep -q -E '\.(py)$' ; then
+      set -x
+      black $i
+      set +x
+    elif echo $i | grep -q -E '\.(tf)$' ; then
+      set -x
+      terraform fmt $i
+      set +x
+    fi
+  done
 }
