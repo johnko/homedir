@@ -22,22 +22,22 @@ cask "google-chrome"
 # Cloud / AWS
 brew "aws-vault"
 brew "awscli"
-# tap "hashicorp/tap"
-# brew "hashicorp/tap/terraform"
-# brew "tflint"
-# cask "sentinel"
+tap "hashicorp/tap"
+brew "hashicorp/tap/terraform"
+brew "tflint"
+cask "sentinel"
 
 # Shell / CLI Tools
 # brew "curl"
 # brew "direnv"
 # brew "gh"
 # brew "gnupg"
-# brew "jq"
+brew "jq"
 # brew "tmux"
 # brew "wget"
 # brew "xz"
 brew "ykman"
-# brew "yq"
+brew "yq"
 cask "1password-cli"
 
 # Docker / k8s
