@@ -37,7 +37,7 @@ zstyle ':completion:*:aliases' list-colors '=*=35'
 # use zsh pure theme
 PURE_PROMPT_SYMBOL=$'🚀\n⚑'
 export VIRTUAL_ENV_DISABLE_PROMPT=12
-fpath+=$HOME/.zsh/pure
+fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 zstyle :prompt:pure:prompt:success color green
 prompt pure
