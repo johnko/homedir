@@ -41,8 +41,8 @@ brew "yq"
 cask "1password-cli"
 
 # Docker / k8s
-# brew "podman"
-# cask "podman-desktop"
+brew "podman"
+cask "podman-desktop"
 # brew "docker-compose"
 brew "helm"
 brew "k9s"
