@@ -48,7 +48,7 @@ brew "helm"
 brew "k9s"
 # brew "kind"
 brew "kubernetes-cli"
-cask "kui"
+# cask "kui"
 
 # Dev
 cask "visual-studio-code"
