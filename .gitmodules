@@ -13,3 +13,12 @@
 [submodule ".zsh/kube-ps1"]
 	path = .zsh/kube-ps1
 	url = https://github.com/johnko/kube-ps1.git
+[submodule "docker-files/squid-cache/ref/squid-in-a-can"]
+	path = docker-files/squid-cache/ref/squid-in-a-can
+	url = https://github.com/johnko/squid-in-a-can.git
+[submodule "docker-files/squid-cache/ref/squid-npm"]
+	path = docker-files/squid-cache/ref/squid-npm
+	url = https://github.com/johnko/squid-npm.git
+[submodule "docker-files/squid-cache/ref/docker-squid-cache-all"]
+	path = docker-files/squid-cache/ref/docker-squid-cache-all
+	url = https://github.com/johnko/docker-squid-cache-all.git
