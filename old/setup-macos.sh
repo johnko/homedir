@@ -27,39 +27,20 @@ func_homebrew_install() {
 
 ##########
 
-func_curl_install() {
-  ## Update curl
-  brew install curl
-}
-
-##########
-
 func_brew_pkgs() {
   ## Brew packages
   BREW_PACKAGES="
     bash-completion
     docker-compose-completion
-    docker-credential-helper
-    git
-    go
     iftop
-    jq
-    kind
     pv
-    python3
     shellcheck
     shfmt
     terminal-notifier
-    tmux
     vagrant-completion
     watch
-    wget
     zsh-syntax-highlighting
     "
-    # bash-git-prompt
-    # docker
-    # npm
-    # rbenv
   # brew remove ${BREW_PACKAGES} || true
   brew install ${BREW_PACKAGES}
 }
@@ -68,19 +49,8 @@ func_brew_pkgs() {
 
 func_cask_pkgs() {
   CASK_PACKAGES="
-    docker
-    firefox
-    gimp
-    google-backup-and-sync
-    google-chrome
-    hammerspoon
-    kui
-    signal
-    spotify
     steam
     vagrant
-    virtualbox
-    visual-studio-code
     "
     # google-cloud-sdk
     # fugu
@@ -161,7 +131,6 @@ func_cask_pkgs() {
 func_xcode_install
 func_git_submodules
 func_homebrew_install
-func_curl_install
 func_brew_pkgs
 func_cask_pkgs
 # # func_zsh_install
