@@ -1,0 +1,15 @@
+services:
+  squid:
+    container_name: squid
+    build: .
+    ports:
+      - 127.0.0.1:3128:3128
+      - 127.0.0.1:3129:3129
+    environment:
+      - CN=squid.local
+      - O=squid
+      - OU=squid
+      - C=CA
+    volumes:
+      - ./cache_dir:/var/spool/squid3
+    restart: unless-stopped
