@@ -6,48 +6,44 @@ MY_TMP_CONTEXT="${HOME}/docker-files/squid"
 [ ! -d ${MY_TMP_CONTEXT} ] && exit 1
 cd ${MY_TMP_CONTEXT}
 
-generate_selfsigned_cert() {
-  if ! [ -e ./pgsql-server.key ] && ! [ -e ./pgsql-server.pem ]; then
-    openssl req -x509 -nodes -days 182 -newkey rsa:2048 -keyout ./pgsql-server.key -out ./pgsql-server.pem -config ./csr.conf -extensions 'v3_req'
-    openssl x509 -in ./pgsql-server.pem -noout -text
+if which docker >/dev/null 2>&1 ; then
+  DOCKER_BIN=docker
+else
+  if which podman >/dev/null 2>&1 ; then
+    DOCKER_BIN=podman
   fi
-}
+fi
 
 set +u
 case ${1} in
-open)
-  open http://127.0.0.1:3000
-  ;;
 down)
   ## Destroy the stack but keep the data
-  docker-compose down
+  $DOCKER_BIN compose down
   ;;
 destroy)
   ## Destroy the stack and data
-  docker-compose down --volumes
+  $DOCKER_BIN compose down --volumes
   ;;
 logs)
-  docker-compose logs
+  $DOCKER_BIN compose logs
   ;;
 ps)
-  docker-compose ps
+  $DOCKER_BIN compose ps
   ;;
 test-new)
-  docker-compose down --volumes
-  generate_selfsigned_cert
-  docker-compose pull
-  docker-compose up --detach
+  $DOCKER_BIN compose down --volumes
+  $DOCKER_BIN compose build
+  $DOCKER_BIN compose up --detach
   ;;
 top)
-  docker-compose top
+  $DOCKER_BIN compose top
   ;;
 up | *)
-  generate_selfsigned_cert
-  docker-compose pull
+  $DOCKER_BIN compose build
   ## Create and run the stack interactively
-  # docker-compose up
+  # $DOCKER_BIN compose up
   ## Create and run the stack in the background
-  docker-compose up --detach
+  $DOCKER_BIN compose up --detach
   ;;
 esac
 

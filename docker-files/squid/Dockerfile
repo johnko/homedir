@@ -6,10 +6,10 @@ LABEL maintainer="nickgrealy@gmail.com"
 ENV CN=squid.local \
     O=squid \
     OU=squid \
-    C=US
+    C=CA
 
 #set proxies for alpine apk package manager
-ARG all_proxy 
+ARG all_proxy
 
 ENV http_proxy=$all_proxy \
     https_proxy=$all_proxy
@@ -30,7 +30,9 @@ RUN cat /etc/ssl/openssl.cnf.add >> /etc/ssl/openssl.cnf
 
 RUN chmod +x /usr/local/bin/start.sh
 
+COPY squid.conf /squid/squid.conf
+
 EXPOSE 3128
-EXPOSE 4128
+EXPOSE 3129
 
 ENTRYPOINT ["/usr/local/bin/start.sh"]
