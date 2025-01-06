@@ -99,6 +99,7 @@
 .zcompdump-*
 .zoomus/
 .zsh_sessions/
+Brewfile.lock.json
 Google*Drive*
 VirtualBox VMs/
 kubeconfig/
