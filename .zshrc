@@ -53,7 +53,7 @@ source $HOME/.zsh/zsh-colored-man-pages/colored-man-pages.plugin.zsh
 
 ##########
 # More env/aliases
-for i in ~/.bash_aliases ~/.bash_colors ~/.bash_exports ~/.bash_secrets ~/.bash_path ~/.devops-tools; do
+for i in ~/.bash_path ~/.bash_exports ~/.bash_aliases ~/.bash_colors ~/.bash_secrets ~/.devops-tools; do
     [ -f $i ] && source $i
 done
 
