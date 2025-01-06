@@ -16,6 +16,10 @@ fi
 
 set +u
 case ${1} in
+get-ca)
+  ## Extract the CA.pem so it can be used in client containers
+  $DOCKER_BIN cp squid:/squid/certs/CA.pem ./
+  ;;
 down)
   ## Destroy the stack but keep the data
   $DOCKER_BIN compose down

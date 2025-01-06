@@ -1,6 +1,7 @@
 services:
   squid:
     container_name: squid
+    image: squid:local
     build: .
     ports:
       - 127.0.0.1:3128:3128
