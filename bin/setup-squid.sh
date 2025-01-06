@@ -29,7 +29,7 @@ destroy)
   $DOCKER_BIN compose down --volumes
   ;;
 logs)
-  $DOCKER_BIN compose logs
+  $DOCKER_BIN compose logs --follow
   ;;
 ps)
   $DOCKER_BIN compose ps
