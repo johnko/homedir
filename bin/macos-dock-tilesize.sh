@@ -21,6 +21,21 @@ EOF
 }
 
 
+DOMAIN='"Apple Global Domain"'
+KEYVAL="
+        AppleMiniaturizeOnDoubleClick = 0;
+        AppleScrollerPagingBehavior = 1;
+        AppleShowScrollBars = Always;
+        InitialKeyRepeat = 15;
+        KeyRepeat = 2;
+        NSAutomaticCapitalizationEnabled = 0;
+        NSAutomaticDashSubstitutionEnabled = 0;
+        NSAutomaticPeriodSubstitutionEnabled = 0;
+        NSAutomaticQuoteSubstitutionEnabled = 0;
+        com.apple.sound.beep.feedback = 1;
+"
+print_cmd
+
 DOMAIN="com.apple.WindowManager"
 KEYVAL="
         AppWindowGroupingBehavior = 0;
