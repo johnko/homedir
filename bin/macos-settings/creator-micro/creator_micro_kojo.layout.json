@@ -1,0 +1,93 @@
+{
+  "name": "Creator Micro",
+  "vendorProductId": 1464657635,
+  "macros": [],
+  "layers": [
+    [
+      "KC_MPLY",
+      "LCAG(KC_GRV)",
+      "KC_LSFT",
+      "KC_MUTE",
+      "LCAG(KC_Q)",
+      "LCAG(KC_W)",
+      "LCAG(KC_E)",
+      "LCAG(KC_R)",
+      "LCAG(KC_A)",
+      "LCAG(KC_S)",
+      "LCAG(KC_D)",
+      "LCAG(KC_F)",
+      "G(KC_BSLS)",
+      "KC_MPLY",
+      "KC_MNXT",
+      "TO(1)"
+    ],
+    [
+      "KC_TRNS",
+      "KC_TRNS",
+      "KC_TRNS",
+      "KC_TRNS",
+      "LCAG(KC_1)",
+      "LCAG(KC_2)",
+      "LCAG(KC_3)",
+      "LCAG(KC_4)",
+      "LCAG(KC_5)",
+      "LCAG(KC_6)",
+      "LCAG(KC_7)",
+      "LCAG(KC_8)",
+      "KC_TRNS",
+      "KC_TRNS",
+      "KC_TRNS",
+      "TO(2)"
+    ],
+    [
+      "KC_TRNS",
+      "KC_TRNS",
+      "KC_TRNS",
+      "KC_TRNS",
+      "C(KC_UP)",
+      "KC_F4",
+      "KC_F5",
+      "KC_F6",
+      "LCAG(KC_F14)",
+      "LCAG(KC_F15)",
+      "LCAG(KC_F16)",
+      "LCAG(KC_F17)",
+      "KC_TRNS",
+      "KC_TRNS",
+      "KC_TRNS",
+      "TO(3)"
+    ],
+    [
+      "KC_TRNS",
+      "KC_TRNS",
+      "KC_TRNS",
+      "KC_TRNS",
+      "C(G(KC_P))",
+      "G(KC_D)",
+      "G(KC_E)",
+      "C(G(KC_C))",
+      "LSG(KC_Y)",
+      "LSG(KC_SPC)",
+      "G(KC_0)",
+      "G(KC_EQL)",
+      "KC_TRNS",
+      "KC_TRNS",
+      "KC_TRNS",
+      "TO(0)"
+    ]
+  ],
+  "encoders": [
+    [
+      ["KC_MNXT", "KC_MPRV"],
+      ["KC_MNXT", "KC_MPRV"],
+      ["KC_MNXT", "KC_MPRV"],
+      ["KC_MNXT", "KC_MPRV"]
+    ],
+    [
+      ["KC_VOLD", "KC_VOLU"],
+      ["KC_VOLD", "KC_VOLU"],
+      ["KC_VOLD", "KC_VOLU"],
+      ["KC_VOLD", "KC_VOLU"]
+    ]
+  ]
+}
