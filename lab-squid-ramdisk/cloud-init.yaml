@@ -1,0 +1,20 @@
+#cloud-config
+users:
+  - name: lab
+    home: /home/lab
+    shell: /bin/bash
+    lock_passwd: True
+    gecos: lab
+    groups: [adm, cdrom, dip, lxd, plugdev, sudo]
+    primary_group: lab
+    ssh_import_id:
+      - gh:johnko
+    sudo: ALL=(ALL) NOPASSWD:ALL
+
+package_update: true
+package_upgrade: true
+packages:
+  - openssh-server
+  - docker
+
+ssh_pwauth: false
