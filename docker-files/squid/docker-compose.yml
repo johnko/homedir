@@ -13,5 +13,5 @@ services:
       - C=CA
     network_mode: host
     volumes:
-      - ./cache_dir:/var/spool/squid3
+      - ./cache_dir:/squid/cache
     restart: unless-stopped
