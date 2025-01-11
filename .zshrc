@@ -22,7 +22,7 @@ fi
 
 ##########
 for i in ~/.vim/backups ~/.vim/swaps ~/.vim/undo; do
-    [ ! -d $i ] && mkdir -p $i
+  [ ! -d $i ] && mkdir -p $i
 done
 
 ##########
@@ -54,7 +54,7 @@ source $HOME/.zsh/zsh-colored-man-pages/colored-man-pages.plugin.zsh
 ##########
 # More env/aliases
 for i in ~/.bash_path ~/.bash_exports ~/.bash_aliases ~/.bash_colors ~/.bash_secrets ~/.devops-tools; do
-    [ -f $i ] && source $i
+  [ -f $i ] && source $i
 done
 
 PROMPT='[$(arch)]'$PROMPT

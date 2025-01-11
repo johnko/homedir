@@ -5,10 +5,18 @@ alias k=kubectl
 alias kk="kubectl -n kube-system"
 alias ka="kubectl -o wide"
 alias tf=terraform
-alias grep='grep --color=auto'
-alias fgrep='grep -F --color=auto'
-alias egrep='grep -E --color=auto'
 alias history='history -i'
+
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  #alias dir='dir --color=auto'
+  #alias vdir='vdir --color=auto'
+
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
 
 # MacOs aliases
 if [ -e /Users ]; then
@@ -20,10 +28,10 @@ if [ -e /Users ]; then
     pgrep "$@" | xargs ps
   }
 else
-  alias ls='ls --color=auto -1'
   # Add an "alert" alias for long running commands.  Use like so:
   #   sleep 10; alert
   alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
   alias iftop="sudo /usr/sbin/iftop -nBP"
   alias dd="sudo /bin/dd status=progress"
   alias zl="sudo zfs list -oname,lused,usedds,usedchild,usedsnap,used,avail,refer,mountpoint,mounted,canmount"
