@@ -9,6 +9,7 @@ NIC=en1
 NAME=vm2
 
 
+set +u
 case $1 in
   destroy)
     set +e
