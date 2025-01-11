@@ -44,6 +44,8 @@ top)
   ;;
 up | *)
   $DOCKER_BIN compose build
+  mkdir -p ./cache_dir
+  chmod a+w ./cache_dir
   ## Create and run the stack interactively
   # $DOCKER_BIN compose up
   ## Create and run the stack in the background
