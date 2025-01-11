@@ -5,7 +5,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 set -x
 
 IMAGE=24.04
-NIC=en2
+NIC=en1
 NAME=vm2
 
 
