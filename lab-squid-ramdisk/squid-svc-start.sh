@@ -14,7 +14,7 @@ SQUIDCONF=/etc/squid/squid.conf
 prepare_folders() {
 	echo "Preparing folders..."
 	mkdir -p /squid/certs /squid/cache /squid/logs /squid/coredump
-	"$CHOWN" -R squid:squid /squid
+	"$CHOWN" -R proxy:proxy /squid
 }
 
 initialize_cache() {
@@ -49,7 +49,7 @@ clear_certs_db() {
 	echo "Clearing generated certificate db..."
 	rm -rfv /squid/ssl_db/
 	/usr/lib/squid/security_file_certgen -d -c -s /squid/ssl_db/ -M 4MB
-	"$CHOWN" -R squid.squid /squid/ssl_db
+	"$CHOWN" -R proxy:proxy /squid/ssl_db
 }
 
 run() {
