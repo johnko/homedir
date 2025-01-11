@@ -12,7 +12,7 @@ NAME=vm2
 case $1 in
   destroy)
     set +e
-    while multipass list | grep vm1 ; do
+    while multipass list | grep $NAME ; do
       sleep 1
       multipass stop $NAME
       multipass delete $NAME
