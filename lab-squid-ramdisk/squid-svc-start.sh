@@ -19,6 +19,7 @@ prepare_folders() {
 
 initialize_cache() {
 	echo "Creating cache folder..."
+	service squid stop
 	rm /var/run/squid.pid || true
 	"$SQUID" -f ${SQUIDCONF} --foreground -z
 	# /var/run/squid.pid
@@ -57,7 +58,7 @@ run() {
 	create_cert
 	clear_certs_db
 	initialize_cache
-	exec "$SQUID" -f ${SQUIDCONF} -NYCd 1
+	service squid restart
 }
 
 run
