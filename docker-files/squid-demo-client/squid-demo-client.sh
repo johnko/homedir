@@ -16,7 +16,7 @@ fi
 
 get_ca() {
   ## Extract the CA.pem from squid so it can be used in client containers
-  $DOCKER_BIN cp squid:/squid/certs/CA.pem ./
+  $DOCKER_BIN cp squid:/squid/certs/CA.pem $PWD/
 }
 
 set +u
