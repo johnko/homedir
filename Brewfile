@@ -4,6 +4,7 @@
 brew "mas"
 cask "1password"
 # cask "cloudflare-warp"
+cask "discord"
 cask "gimp"
 cask "lulu"
 cask "rectangle"
