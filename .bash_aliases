@@ -66,8 +66,7 @@ alias rsynca="rsync -viaP --exclude-from=${HOME}/.rsync_exclude"
 alias rsyncc="rsync -virchlmP --exclude-from=${HOME}/.rsync_exclude"
 alias rsynct="rsync -virthlmP --exclude-from=${HOME}/.rsync_exclude"
 
-# Linux 'which' doesn't have -s so we redirect output to /dev/null
-if which git >/dev/null 2>&1 ; then
+if which -s git ; then
   # Use Git’s colored diff when available
   difff() {
     if [ -z "${1}" ]; then
@@ -109,10 +108,10 @@ json() {
   fi
 }
 
-if which docker >/dev/null 2>&1 ; then
-  unalias docker
+if which -s docker ; then
+  unalias docker >/dev/null 2>&1
 else
-  if which podman >/dev/null 2>&1 ; then
+  if which -s podman ; then
     alias docker=podman
   fi
 fi
