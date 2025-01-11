@@ -15,6 +15,6 @@ package_update: true
 package_upgrade: true
 packages:
   - openssh-server
-  - docker
+  - squid
 
 ssh_pwauth: false
