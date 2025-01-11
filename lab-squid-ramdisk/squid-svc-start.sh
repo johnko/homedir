@@ -9,7 +9,7 @@ export C=CA
 
 CHOWN=$(/usr/bin/which chown)
 SQUID=$(/usr/bin/which squid)
-SQUIDCONF=/squid/squid.conf
+SQUIDCONF=/etc/squid/squid.conf
 
 prepare_folders() {
 	echo "Preparing folders..."
