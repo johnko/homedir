@@ -22,7 +22,7 @@ get_ca() {
 set +u
 case ${1} in
 up | *)
-  get_ca
+  [ ! -f CA.pem ] && get_ca
   $DOCKER_BIN build . --tag demo:squid-client
   set +x
   echo "Try something like:"
