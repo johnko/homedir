@@ -52,6 +52,7 @@ run() {
 	create_cert
 	clear_certs_db
 	initialize_cache
+	tail -vn 0 -F /var/log/squid/access.log /var/log/squid/cache.log &
 	exec "$SQUID" -f ${SQUIDCONF} -NYCd 1
 }
 
