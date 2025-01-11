@@ -6,7 +6,7 @@ set -x
 
 IMAGE=24.04
 NIC=en1
-NAME=vm2
+NAME=vm3
 
 
 case $1 in
