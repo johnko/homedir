@@ -32,6 +32,9 @@ RUN chmod +x /usr/local/bin/start.sh
 
 COPY squid.conf /squid/squid.conf
 
+# https://github.com/scbunn/docker-squid/issues/5
+RUN usermod -a -G tty proxy
+
 EXPOSE 3128
 EXPOSE 3129
 
