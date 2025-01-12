@@ -4,14 +4,13 @@ services:
     image: squid:local
     build: .
     ports:
-      - 127.0.0.1:3128:3128
-      - 127.0.0.1:3129:3129
+      - 3128:3128
+      - 3129:3129
     environment:
       - CN=squid.local
       - O=squid
       - OU=squid
       - C=CA
-    network_mode: host
     volumes:
       - ./cache_dir:/squid/cache
     restart: unless-stopped
