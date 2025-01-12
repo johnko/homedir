@@ -15,5 +15,7 @@ package_update: true
 package_upgrade: true
 packages:
   - openssh-server
+  - docker.io
+  - docker-compose
 
 ssh_pwauth: false

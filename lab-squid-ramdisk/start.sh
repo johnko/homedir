@@ -2,24 +2,18 @@
 
 set -e
 
-export CN=squid.local
-export O=squid
-export OU=squid
-export C=CA
-
 CHOWN=$(/usr/bin/which chown)
 SQUID=$(/usr/bin/which squid)
-SQUIDCONF=/etc/squid/squid.conf
+SQUIDCONF=/squid/squid.conf
 
 prepare_folders() {
 	echo "Preparing folders..."
 	mkdir -p /squid/certs /squid/cache /squid/logs /squid/coredump
-	"$CHOWN" -R proxy:proxy /squid
+	"$CHOWN" -R squid:squid /squid
 }
 
 initialize_cache() {
 	echo "Creating cache folder..."
-	service squid stop
 	rm /var/run/squid.pid || true
 	"$SQUID" -f ${SQUIDCONF} --foreground -z
 	# /var/run/squid.pid
@@ -49,7 +43,7 @@ clear_certs_db() {
 	echo "Clearing generated certificate db..."
 	rm -rfv /squid/ssl_db/
 	/usr/lib/squid/security_file_certgen -d -c -s /squid/ssl_db/ -M 4MB
-	"$CHOWN" -R proxy:proxy /squid/ssl_db
+	"$CHOWN" -R squid.squid /squid/ssl_db
 }
 
 run() {
@@ -58,7 +52,8 @@ run() {
 	create_cert
 	clear_certs_db
 	initialize_cache
-	service squid restart
+	tail -vn 0 -F /squid/logs/access.log /squid/logs/cache.log &
+	exec "$SQUID" -f ${SQUIDCONF} -NYCd 1
 }
 
 run
