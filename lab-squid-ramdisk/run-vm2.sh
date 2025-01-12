@@ -36,10 +36,18 @@ case $1 in
   start | *)
     ls -l /Volumes/RAMDisk
     if test -h /var/root/Library/Application\ Support/multipassd ; then
-      ls -l /var/root/Library/Application\ Support/multipassd
+      if ! ls -l /var/root/Library/Application\ Support/multipassd/ ; then
+        if test -d /var/root/Library/Application\ Support/multipassd.bkp ; then
+          launchctl unload /Library/LaunchDaemons/com.canonical.multipassd.plist
+          install -d -v -g wheel -m 755 -o root /Volumes/RAMDisk/vm
+          cp -a /var/root/Library/Application\ Support/multipassd.bkp /Volumes/RAMDisk/vm/multipassd
+          launchctl load -w /Library/LaunchDaemons/com.canonical.multipassd.plist
+        fi
+      fi
     elif test -d /var/root/Library/Application\ Support/multipassd ; then
       launchctl unload /Library/LaunchDaemons/com.canonical.multipassd.plist
       install -d -v -g wheel -m 755 -o root /Volumes/RAMDisk/vm
+      cp -a /var/root/Library/Application\ Support/multipassd /var/root/Library/Application\ Support/multipassd.bkp
       mv /var/root/Library/Application\ Support/multipassd /Volumes/RAMDisk/vm/multipassd
       ln -s /Volumes/RAMDisk/vm/multipassd /var/root/Library/Application\ Support/multipassd
       launchctl load -w /Library/LaunchDaemons/com.canonical.multipassd.plist
