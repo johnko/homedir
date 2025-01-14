@@ -7,7 +7,7 @@ if [ -e ~/bin/skhd ]; then
   echo "=>  An older version already installed at ~/bin/skhd"
   exit 1
 else
-  git clone https://github.com/johnko/skhd /tmp/skhd.git
+  git clone https://github.com/johnko/skhd.git /tmp/skhd.git
   pushd /tmp/skhd.git
     make install
     cp -a bin/skhd ~/bin/skhd

@@ -8,7 +8,11 @@ if [ -e ~/bin/yabai ]; then
   exit 1
 else
   mkdir -p ~/.local/man
-  curl -L https://raw.githubusercontent.com/koekeishiya/yabai/master/scripts/install.sh | sh /dev/stdin ~/bin ~/.local/man
+  git clone --depth=1 https://github.com/johnko/yabai.git /tmp/yabai.git
+  pushd /tmp/yabai.git
+    cat scripts/install.sh | sh /dev/stdin ~/bin ~/.local/man
+  popd
+  rm -fr /tmp/yabai.git
 fi
 
 echo "=>  Installation complete!"
