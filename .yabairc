@@ -7,7 +7,7 @@ yabai -m config layout bsp
 # tall 6/12 of screen for web
 yabai -m rule --add app="^(Google Chrome|System Preferences|System Settings)$" manage=off grid=1:12:3:0:6:1
 # left half
-yabai -m rule --add app="^(Brave Browser|Firefox)$" manage=off grid=12:12:0:4:6:8
+yabai -m rule --add app="^(Brave Browser)$" manage=off grid=12:12:0:4:6:8
 # right half
 yabai -m rule --add app="^(Console|GitHub|Google Drive|Preview|Safari)$" manage=off grid=1:12:6:0:6:1
 # wide 8/12 of screen for Terminal
@@ -19,7 +19,7 @@ yabai -m rule --add app="^(Discord|Music|Podcasts|Spotify)$" manage=off grid=2:2
 # middle center quarter
 yabai -m rule --add app="^(1Password|FaceTime|Finder|Photo Booth|QuickTime.*|TextEdit)$" manage=off grid=12:12:3:3:6:6
 # middle left quarter
-yabai -m rule --add app="^(LINE|Reminders|Signal)$" manage=off grid=12:12:0:4:6:6
+yabai -m rule --add app="^(Firefox|LINE|Reminders|Signal)$" manage=off grid=12:12:0:4:6:6
 # middle right quarter
 yabai -m rule --add app="^(Messages|Notes|WhatsApp.*)$" manage=off grid=12:12:6:4:6:6
 # bottom center quarter
