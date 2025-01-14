@@ -5,22 +5,34 @@ yabai -m config layout bsp
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 # tall 6/12 of screen for web
-yabai -m rule --add app="^(Brave Browser|Google Chrome|Safari)$" manage=off grid=1:12:3:0:6:1
+yabai -m rule --add app="^(Google Chrome|System Preferences|System Settings)$" manage=off grid=1:12:3:0:6:1
+# left half
+yabai -m rule --add app="^(Brave Browser|Firefox)$" manage=off grid=12:12:0:4:6:8
+# right half
+yabai -m rule --add app="^(Console|GitHub|Google Drive|Preview|Safari)$" manage=off grid=1:12:6:0:6:1
 # wide 8/12 of screen for Terminal
 yabai -m rule --add app="^(Terminal)$" manage=off grid=12:12:2:1:8:10
-# tall 10/12 of screen for visual media
-yabai -m rule --add app="^(Crunchyroll.*|GIMP|Netflix|Photos|TV|Code)$" manage=off grid=12:12:1:2:10:10
-# half 6/12 of screen bottom left for audio media
-yabai -m rule --add app="^(Firefox|Music|Spotify)$" manage=off grid=2:2:0:1:1:1
-# half 6/12 of screen center middle
-yabai -m rule --add app="^(1Password|Activity Monitor|Finder)$" manage=off grid=12:12:3:3:6:6
+# tall wide 10/12 of screen for visual media
+yabai -m rule --add app="^(Books|Crunchyroll.*|GarageBand|GIMP|iMovie|Netflix|Photos|TV|Code)$" manage=off grid=12:12:1:2:10:10
+# bottom left quarter screen for audio media
+yabai -m rule --add app="^(Discord|Music|Podcasts|Spotify)$" manage=off grid=2:2:0:1:1:1
+# middle center quarter
+yabai -m rule --add app="^(1Password|App Store|Dictionary|FaceTime|Finder|Photo Booth|QuickTime.*|TextEdit|Voice Memos)$" manage=off grid=12:12:3:3:6:6
+# middle left quarter
+yabai -m rule --add app="^(LINE|Reminders|Signal)$" manage=off grid=12:12:0:3:6:6
+# middle right quarter
+yabai -m rule --add app="^(Messages|Notes|WhatsApp.*)$" manage=off grid=12:12:6:3:6:6
+# bottom center quarter
+yabai -m rule --add app="^(Activity Monitor|Contacts)$" manage=off grid=12:12:3:6:6:6
+# bottom center 2/3
+yabai -m rule --add app="^(Clock|Disk Utility|Find My|Home|LuLu|Maps|News|Podman.*|System Information|Weather|Stocks)$" manage=off grid=12:12:3:4:6:8
 
 # for vertical screen
 yabai -m rule --add app="^(Gmail|Google Calendar)$" manage=off grid=3:1:0:0:1:1
 yabai -m rule --add app="^(Slack)$" manage=off grid=3:1:0:1:1:2
 
 # float some non-resizable apps
-yabai -m rule --add app="^(Archive Utility|Calculator|System Preferences|System Settings)$" manage=off
+yabai -m rule --add app="^(Archive Utility|Calculator)$" manage=off
 
 # apply rules on restart
 yabai -m rule --apply

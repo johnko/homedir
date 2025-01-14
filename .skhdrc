@@ -6,8 +6,12 @@ shift + ctrl + alt + cmd - a : osascript ~/shortcuts/sound-reset-left-right-bala
 ctrl + alt + cmd - q : skhd --restart-service
 # balance size of windows
 ctrl + alt + cmd - w : yabai -m space --balance
+# float top left
+shift + ctrl + alt + cmd - w : yabai -m window --toggle float --grid 2:2:0:0:1:1
 # rotate tree
 ctrl + alt + cmd - e : bash ~/bin/yabai_cycle_clockwise.sh
+# float top right
+shift + ctrl + alt + cmd - e : yabai -m window --toggle float --grid 2:2:1:0:1:1
 ctrl + alt + cmd - r : yabai -m space --rotate 270
 ctrl + alt + cmd - t : osascript ~/shortcuts/open-terminal.scpt
 
@@ -21,10 +25,13 @@ ctrl + alt + cmd - f : open -a "Firefox"
 ctrl + alt + cmd - g : open -a "Google Chrome"
 
 
-# float fullscreen / unfloat window and restore position
+# float bottom left
 ctrl + alt + cmd - z : yabai -m window --toggle float --grid 2:2:0:1:1:1
+shift + ctrl + alt + cmd - z : yabai -m window --toggle float --grid 2:2:0:1:1:1
 # float fullscreen / unfloat window and restore position
 ctrl + alt + cmd - x : yabai -m window --toggle float --grid 12:12:1:2:10:10
+# float bottom right
+shift + ctrl + alt + cmd - x : yabai -m window --toggle float --grid 2:2:1:1:1:1
 ctrl + alt + cmd - c : open -a "Slack"
 ctrl + alt + cmd - v : open -a "Visual Studio Code"
 ctrl + alt + cmd - b : open -a "Brave Browser"
