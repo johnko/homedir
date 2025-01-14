@@ -19,8 +19,12 @@ ctrl + alt + cmd - t : osascript ~/shortcuts/open-terminal.scpt
 # ctrl + alt + cmd - a : siri
 # float 2 fourths / unfloat window and restore position
 ctrl + alt + cmd - s : yabai -m window --toggle float --grid 1:8:2:0:4:1
+# float middle left
+shift + ctrl + alt + cmd - s : yabai -m window --toggle float --grid 12:12:0:4:6:6
 # float 2 thirds / unfloat window and restore position
 ctrl + alt + cmd - d : yabai -m window --toggle float --grid 12:12:2:1:8:10
+# float middle right
+shift + ctrl + alt + cmd - d : yabai -m window --toggle float --grid 12:12:6:4:6:6
 ctrl + alt + cmd - f : open -a "Firefox"
 ctrl + alt + cmd - g : open -a "Google Chrome"
 
