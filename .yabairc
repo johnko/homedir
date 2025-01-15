@@ -25,7 +25,7 @@ yabai -m rule --add app="^(Messages|Notes|WhatsApp.*)$" manage=off grid=12:12:6:
 # bottom center quarter
 yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice Memos)$" manage=off grid=12:12:3:6:6:6
 # bottom center 2/3
-yabai -m rule --add app="^(Clock|Disk Utility|Find My|Home|LuLu|Maps|News|Podman.*|System Information|Weather|Stocks)$" manage=off grid=12:12:3:4:6:8
+yabai -m rule --add app="^(Calendar|Clock|Disk Utility|Find My|Home|LuLu|Maps|News|Podman.*|System Information|Weather|Stocks)$" manage=off grid=12:12:3:4:6:8
 
 # for vertical screen
 yabai -m rule --add app="^(Gmail|Google Calendar)$" manage=off grid=3:1:0:0:1:1
