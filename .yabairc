@@ -15,7 +15,7 @@ yabai -m rule --add app="^(Terminal)$" manage=off grid=12:12:2:1:8:10
 # tall wide 10/12 of screen for visual media
 yabai -m rule --add app="^(Books|Crunchyroll.*|GarageBand|GIMP|iMovie|Netflix|Photos|TV|Code)$" manage=off grid=12:12:1:2:10:10
 # bottom left quarter screen for audio media
-yabai -m rule --add app="^(Discord|Music|Podcasts|Spotify)$" manage=off grid=2:2:0:1:1:1
+yabai -m rule --add app="^(Music|Podcasts|Spotify)$" manage=off grid=2:2:0:1:1:1
 # middle center quarter
 yabai -m rule --add app="^(1Password|FaceTime|Finder|Photo Booth|QuickTime.*|TextEdit)$" manage=off grid=12:12:3:3:6:6
 # middle left quarter
@@ -27,7 +27,7 @@ yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice 
 # bottom center 2/3
 yabai -m rule --add app="^(Calendar|Clock|Disk Utility|Find My|Home|LuLu|Maps|News|System Information|Weather|Stocks)$" manage=off grid=12:12:3:4:6:8
 # bottom right 2/3
-yabai -m rule --add app="^(Podman.*)$" manage=off grid=12:12:6:4:6:8
+yabai -m rule --add app="^(Discord|Podman.*)$" manage=off grid=12:12:6:4:6:8
 
 # for vertical screen
 yabai -m rule --add app="^(Gmail|Google Calendar)$" manage=off grid=3:1:0:0:1:1
