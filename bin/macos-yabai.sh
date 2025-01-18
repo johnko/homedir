@@ -3,7 +3,7 @@ set -euo pipefail
 
 echo "=>  Installing latest yabai..."
 
-if [ -e ~/bin/yabai ]; then
+if [[ -e ~/bin/yabai ]] ; then
   echo "=>  An older version already installed at ~/bin/yabai"
   exit 1
 else

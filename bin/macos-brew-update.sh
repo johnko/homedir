@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if which brew >/dev/null 2>&1 ; then
-  if [ -e Brewfile ]; then
+  if [[ -e Brewfile ]] ; then
     set -x
     brew bundle
     set +x

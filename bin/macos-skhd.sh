@@ -3,7 +3,7 @@ set -euo pipefail
 
 echo "=>  Installing latest skhd..."
 
-if [ -e ~/bin/skhd ]; then
+if [[ -e ~/bin/skhd ]] ; then
   echo "=>  An older version already installed at ~/bin/skhd"
   exit 1
 else

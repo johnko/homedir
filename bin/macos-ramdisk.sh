@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eux
 
-if [[ ! -e /Volumes/RAMDisk/.metadata_never_index ]]; then
+if [[ ! -e /Volumes/RAMDisk/.metadata_never_index ]] ; then
   set +x
   echo "=> Creating $1 GB /Volumes/RAMDisk..."
   set -x

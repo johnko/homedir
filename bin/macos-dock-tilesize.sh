@@ -4,7 +4,7 @@ set -eu
 print_cmd(){
 
   while read LINE ; do
-    if [[ -n "$LINE" ]]; then
+    if [[ -n "$LINE" ]] ; then
       KEY=$( echo "$LINE" | tr -d ' ' | awk -F= '{print $1}' )
       VAL=$( echo "$LINE" | tr -d ' ' | awk -F= '{print $2}' | tr -d ';' )
       if echo "$VAL" | grep -q -E '^[0-9]+$' ; then
