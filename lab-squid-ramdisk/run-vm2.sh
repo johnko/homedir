@@ -35,7 +35,7 @@ case $1 in
     ;;
   start | *)
     ls -l /Volumes/RAMDisk
-    if test -h /var/root/Library/Application\ Support/multipassd ; then
+    if test -L /var/root/Library/Application\ Support/multipassd ; then
       if ! ls -l /var/root/Library/Application\ Support/multipassd/ ; then
         if test -d /var/root/Library/Application\ Support/multipassd.bkp ; then
           launchctl unload /Library/LaunchDaemons/com.canonical.multipassd.plist
