@@ -18,6 +18,7 @@ Usage:
 
 Example:
   ${0##*/} create -n test -i ubuntu-22 -c 1 -m 4 -s 40
+  ${0##*/} start -n test
   ${0##*/} unmount-boot-iso -n test
   ${0##*/} start -n test
   ${0##*/} destroy -n test
@@ -84,12 +85,14 @@ CLOUD_INIT_ISO=$( find ${HOME}/iso -name 'cloudinit.iso' )
 [[ -z "$CPUS" ]] && CPUS=1
 [[ -z "$MEMS" ]] && MEMS=1
 [[ -z "$STOR" ]] && STOR=10
+[[ -z "$NIC" ]] && NIC=$(ifconfig | grep -v '127.0.0.1' | grep -E "(^en|inet )" | grep -B1 'inet ' | grep '^en' | cut -d: -f1)
 echo "ACTN=$ACTN"
 echo "NAME=$NAME"
 echo "ISO =$ISO"
 echo "CPUS=$CPUS"
 echo "MEMS=$MEMS"
 echo "STOR=$STOR"
+echo "NIC =$NIC"
 
 mkdir_ramdisk_vm() {
   test -d /Volumes/RAMDisk/vm || install -d -v -m 755 /Volumes/RAMDisk/vm
@@ -124,7 +127,7 @@ tell application "UTM"
   set iso to POSIX file "'$ISO'"
   set cloudinit to POSIX file "'$CLOUD_INIT_ISO'"
   set vm to virtual machine named "Linux"
-  duplicate vm with properties {backend:qemu, configuration:{name:"'$NAME'", architecture:"aarch64", machine:"virt", cpu cores:'$CPUS', memory:'$(($MEMS*1000))', drives:{{removable:true, source:iso}, {removable:true, source:cloudinit}, {guest size:'$(($STOR*1000))'}}}}
+  duplicate vm with properties {backend:qemu, configuration:{name:"'$NAME'", architecture:"aarch64", machine:"virt", cpu cores:'$CPUS', memory:'$(($MEMS*1000))', network interfaces:{{index:0, mode:bridged, host interface:"'$NIC'"}}, drives:{{removable:true, source:iso}, {removable:true, source:cloudinit}, {guest size:'$(($STOR*1000))'}}}}
   --- note the default options for a new VM is no display, one PTTY serial port, and one shared network
   --- so we used duplicate above
 end tell
