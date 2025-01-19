@@ -3,6 +3,9 @@ autoinstall:
   version: 1
   identity:
     hostname: vm
+    username: ubuntu
+    password: "$6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0"
+    # ubuntu
   ssh:
     install-server: true
     allow-pw: false
@@ -23,6 +26,14 @@ autoinstall:
         ssh_import_id:
           - gh:johnko
         sudo: ALL=(ALL) NOPASSWD:ALL
+      - name: ubuntu
+        homedir: /home/ubuntu
+        shell: /bin/bash
+        lock_passwd: true
+        gecos: ubuntu
+        groups: ubuntu
+        primary_group: ubuntu
+        sudo: false
     package_update: true
     package_upgrade: true
     packages:
