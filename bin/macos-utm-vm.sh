@@ -14,10 +14,13 @@ fi
 usage() {
   cat <<EOS
 Usage:
-  ${0##*/}  [create|destroy|info|list|ps|restart|stop|start]  -n NAME  -i iso-name  -c [1-4]  -m [1-8]  -s [10-60]
+  ${0##*/}  [create|destroy|info|list|ps|restart|start|stop|unmount-boot-iso]  -n NAME  [-i iso-name]  [-c 1-4]  [-m 1-8]  [-s 10-60]
 
 Example:
-  ${0##*/} create -n test -i ubuntu-22 -c 4 -m 4 -s 40
+  ${0##*/} create -n test -i ubuntu-22 -c 1 -m 4 -s 40
+  ${0##*/} unmount-boot-iso -n test
+  ${0##*/} start -n test
+  ${0##*/} destroy -n test
 EOS
   exit 1
 }
@@ -170,13 +173,13 @@ end tell
     utmctl stop $NAME
     utmctl start $NAME
     ;;
-  stop)
-    utmctl stop $NAME
-    ;;
   start)
     utmctl start $NAME
     set +x
     echo "REMINDER: add 'autoinstall' on the 'linux' boot line"
+    ;;
+  stop)
+    utmctl stop $NAME
     ;;
   unmount-boot-iso)
     set +e
@@ -185,7 +188,6 @@ end tell
 tell application "UTM"
   set vm to virtual machine named "'$NAME'"
   set config to configuration of vm
-  set iso to POSIX file "'$ISO'"
   set cloudinit to POSIX file "'$CLOUD_INIT_ISO'"
   set i to id of item 1 of drives of config
   set item 1 of drives of config to {id:i, source:cloudinit}
