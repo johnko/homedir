@@ -1,19 +1,17 @@
 #cloud-config
 users:
   - name: lab
-    home: /home/lab
+    homedir: /home/lab
     shell: /bin/bash
-    lock_passwd: True
+    lock_passwd: true
     gecos: lab
-    groups: [adm, cdrom, dip, lxd, plugdev, sudo]
+    groups: adm, cdrom, dip, lxd, plugdev, sudo
     primary_group: lab
     ssh_import_id:
       - gh:johnko
     sudo: ALL=(ALL) NOPASSWD:ALL
-
 package_update: true
 package_upgrade: true
 packages:
   - openssh-server
-
 ssh_pwauth: false

@@ -15,6 +15,9 @@ usage() {
   cat <<EOS
 Usage:
   ${0##*/}  [create|destroy|info|list|ps|restart|stop|start]  -n NAME  -i iso-name  -c [1-4]  -m [1-8]  -s [10-60]
+
+Example:
+  ${0##*/} create -n test -i ubuntu-22 -c 4 -m 4 -s 40
 EOS
   exit 1
 }
@@ -142,6 +145,8 @@ end tell
 #   make new virtual machine with properties {backend:apple, configuration:{name:"'$NAME'", drives:{{removable:true, source:iso}, {guest size:'$(($STOR*1024))'}}}}
 # end tell
 # '
+    set +x
+    echo "REMINDER: find the vm in UTM app and right click and 'Move...' it to /Volumes/RAMDisk/vm"
     ;;
   destroy)
     set +e
@@ -170,6 +175,8 @@ end tell
     ;;
   start)
     utmctl start $NAME
+    set +x
+    echo "REMINDER: add 'autoinstall' on the 'linux' boot line"
     ;;
   unmount-boot-iso)
     set +e
@@ -187,6 +194,8 @@ tell application "UTM"
   update configuration of vm with config
 end tell
 '
+    set +x
+    echo "REMINDER: find the vm in UTM app and right click and 'Move...' it to /Volumes/RAMDisk/vm"
     ;;
   *)
     usage

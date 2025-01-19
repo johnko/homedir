@@ -1,29 +1,30 @@
 #cloud-config
 autoinstall:
   version: 1
-  identity:
-    hostname: ubuntu-server
-    # ubuntu
-    password: "$6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0"
-    username: ubuntu
-
-users:
-  - name: lab
-    home: /home/lab
-    shell: /bin/bash
-    lock_passwd: True
-    gecos: lab
-    groups: [adm, cdrom, dip, lxd, plugdev, sudo]
-    primary_group: lab
-    ssh_import_id:
-      - gh:johnko
-    sudo: ALL=(ALL) NOPASSWD:ALL
-
-package_update: true
-package_upgrade: true
-packages:
-  - openssh-server
-  - docker.io
-  - docker-compose
-
-ssh_pwauth: false
+  ssh:
+    install-server: true
+    allow-pw: false
+  packages:
+    - openssh-server
+  timezone: "Etc/UTC"
+  updates: all
+  shutdown: poweroff
+  user-data:
+    users:
+      - name: lab
+        homedir: /home/lab
+        shell: /bin/bash
+        lock_passwd: true
+        gecos: lab
+        groups: adm, cdrom, dip, lxd, plugdev, sudo
+        primary_group: lab
+        ssh_import_id:
+          - gh:johnko
+        sudo: ALL=(ALL) NOPASSWD:ALL
+    package_update: true
+    package_upgrade: true
+    packages:
+      - openssh-server
+      - docker.io
+      - docker-compose
+    ssh_pwauth: false
