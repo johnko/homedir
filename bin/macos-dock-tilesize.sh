@@ -14,9 +14,9 @@ print_cmd(){
       fi
       echo "defaults write $DOMAIN $KEY $TYPE $VAL"
     fi
-  done <<EOF
+  done <<EOS
 $KEYVAL
-EOF
+EOS
 
 }
 
@@ -77,7 +77,7 @@ print_cmd
 
 # https://apple.stackexchange.com/questions/87619/where-are-keyboard-shortcuts-stored-for-backup-and-sync-purposes
 # printf "defaults write NSGlobalDomain NSUserKeyEquivalents '$(defaults read NSGlobalDomain NSUserKeyEquivalents)'"
-cat <<EOF
+cat <<EOS
 defaults write NSGlobalDomain NSUserKeyEquivalents '{
     "Emoji & Symbols" = "\Uf714";
     "Enter Full Screen" = "@^f";
@@ -85,6 +85,6 @@ defaults write NSGlobalDomain NSUserKeyEquivalents '{
     "Secure Keyboard Entry" = "@~^\Uf714";
     "Toggle Full Screen" = "@^f";
 }'
-EOF
+EOS
 
 echo "killall Dock"

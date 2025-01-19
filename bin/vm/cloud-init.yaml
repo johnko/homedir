@@ -1,0 +1,59 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: vm
+    username: ubuntu
+    password: "$6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0"
+    # ubuntu
+  ssh:
+    install-server: true
+    allow-pw: false
+  packages:
+    - openssh-server
+  timezone: "Etc/UTC"
+  updates: all
+  shutdown: poweroff
+  late-commands:
+    # add ip address to TTY login screen
+    #   crete base64 with:
+    #   cat bin/ubuntu-tty-update.sh | gzip -c - | base64
+    - echo 'H4sIAB+qjGcAA2WQTU8CMRCG7/0VL8XgqRSNHsCP6M2bJsoJMFl2u2wTtl06Uz4SfrzdVQkJhzaZ9nlnnky/pyMFvbROG7fFMqNKkGEoE/dC9FExNzTRmkzYmlBmcc3D3Nd6Ew2x9Y707Wh8Px7ryu8Ue5WysVGGc2WJEtO9dX+VUbZRWVEEQ6RKHxJVjYQw+8YHxsfr19uT/JeZXLW1bA0K764ZITpYhzrL3z+FLTGboZckoafJjLBYYDDArvJZbXHEKpgGMnjPEg9Io50ATqkSOgnqYWc49MGu2vyJA/Lml+iACzghpU1XN0RtIOfz+Z08TxyPIFNABUjS39NldBx1S0Hhr5J4vLR4PmuSBtCB2NQ5r5FWxlla0sowH17SuRFJ4Qd44V9QvAEAAA==' | base64 -d | zcat > /target/sbin/ubuntu-tty-update.sh
+    - curtin in-target -- chmod 755 /sbin/ubuntu-tty-update.sh
+    #   cat bin/ubuntu-tty-update.service | gzip -c - | base64
+    - echo 'H4sIACWwjGcAA3WOMRKCMBBF+5yCCwROkEJHClvRsWAoAqyyY9hgdqPk9mZkLK3/vPdfeyGUTh2Ah4CLoCcT+0gSC5FUxGW0AuoEz4gB2BDI24eH9uSQoBQb7iBqdxMIfzbVNhBeOECnzmkB4wl48pKVs0X6kvWKYhKwqlcYmsyJqbhHqrYQnUP0FlLylIVHYrHOdepqSWDcJzNHJ6gjQ/jdfgAt+l2E1wAAAA==' | base64 -d | zcat > /target/etc/systemd/system/ubuntu-tty-update.service
+    - curtin in-target -- chmod 644 /etc/systemd/system/ubuntu-tty-update.service
+    - curtin in-target -- systemctl enable ubuntu-tty-update.service
+    # # temp cronjob to update TTY login screen
+    # - echo '* * * * * root /sbin/ubuntu-tty-update.sh' > /target/etc/cron.d/update_issue
+    # - curtin in-target -- chmod 644 /etc/cron.d/update_issue
+    # extend logical volume
+    - curtin in-target -- lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+    - curtin in-target -- resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+  user-data:
+    users:
+      - name: lab
+        homedir: /home/lab
+        shell: /bin/bash
+        lock_passwd: true
+        gecos: lab
+        groups: adm, cdrom, dip, lxd, plugdev, sudo
+        primary_group: lab
+        ssh_import_id:
+          - gh:johnko
+        sudo: ALL=(ALL) NOPASSWD:ALL
+      - name: ubuntu
+        homedir: /home/ubuntu
+        shell: /bin/bash
+        lock_passwd: true
+        gecos: ubuntu
+        groups: adm, cdrom, dip, lxd, plugdev, sudo
+        primary_group: ubuntu
+        sudo: ALL=(ALL) NOPASSWD:ALL
+    package_update: true
+    package_upgrade: true
+    packages:
+      - openssh-server
+      - docker.io
+      - docker-compose
+    ssh_pwauth: false

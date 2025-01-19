@@ -1,0 +1,12 @@
+[Unit]
+Description=ubuntu tty update
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/sbin/ubuntu-tty-update.sh
+
+[Install]
+WantedBy=multi-user.target
