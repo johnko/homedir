@@ -1,0 +1,13 @@
+f38596c2573e3ad8036bfef2c0e3832458ec2e2b04d55f6276f3272b7b732bfa *ubuntu-22.04.5-live-server-arm64+largemem.iso
+eafec62cfe760c30cac43f446463e628fada468c2de2f14e0e2bc27295187505 *ubuntu-22.04.5-live-server-arm64.iso
+1f1006cbcbf2799e463469e3a4b0e76a848857c3f5394cd038d5a96c80899807 *ubuntu-22.04.5-live-server-ppc64el.iso
+baf5c4b4e4c4c6d8c10a3ccd426c778801580eb1c9200e3cbfdad67b780f64c3 *ubuntu-22.04.5-live-server-riscv64.img.gz
+82f06df7b6aae5664ea26645568fa5d3f575dce8d81653096e734c7d6b634b3e *ubuntu-22.04.5-live-server-s390x.iso
+74764944dd4a96bdddd30cf1ffc133ecbe5ebb1d1f2eaa34cd5f8fbb57211c86 *ubuntu-22.04.5-preinstalled-desktop-arm64+raspi.img.xz
+fd7687c5c9422a6c7ba4717c227bf6473fe4e0c954d5a9f664201dcecc63e822 *ubuntu-22.04.5-preinstalled-server-arm64+raspi.img.xz
+37002f7878411c1a9359b2734ab257459ac5785c7dfdd42ac4d8c1060ddd0a76 *ubuntu-22.04.5-preinstalled-server-armhf+raspi.img.xz
+95792688cb1ffa47368c42b6188dbcae40acb5b6f75d9be67f6b06f846f0ec62 *ubuntu-22.04.5-preinstalled-server-riscv64+icicle.img.xz
+eee53cb8df81636bb25f53598c0f79b604d1caeb727108b23c1cedae6014ad4a *ubuntu-22.04.5-preinstalled-server-riscv64+licheerv.img.xz
+f6eea55bf72d56721295ac6cdd1a9b47974cc3ca36ffd48535e75006060b1e8c *ubuntu-22.04.5-preinstalled-server-riscv64+nezha.img.xz
+4281edf7bff64d7ac4f8bae5b1ded7b66937ec51dd62ddfdbc7851e5c8c68ecb *ubuntu-22.04.5-preinstalled-server-riscv64+unmatched.img.xz
+d83e1ff0109445aeb82eb37be60780d4dc5a8740f61e6b1c3e62edae5729c96e *ubuntu-22.04.5-preinstalled-server-riscv64+visionfive.img.xz

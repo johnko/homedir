@@ -95,5 +95,6 @@ cask "visual-studio-code"
 # cask "via"
 
 # Lab / Virtualization
+cask "utm" if Hardware::CPU.intel?
 # cask "multipass" if Hardware::CPU.intel?
 # cask "virtualbox" if Hardware::CPU.intel?

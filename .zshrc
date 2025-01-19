@@ -27,7 +27,7 @@ done
 
 ##########
 # color for zsh auto complete suggestion output https://stackoverflow.com/questions/23152157/how-does-the-zsh-list-colors-syntax-work
-zstyle ':completion:*:commands' ignored-patterns '.DS_Store|.gitignore|macos-homebrew.sh|macos-mouse-shortcuts.sh|macos-settings|macos-skhd.sh|macos-yabai.sh|yabai_cycle_clockwise.sh'
+zstyle ':completion:*:commands' ignored-patterns '.DS_Store|.gitignore|macos-homebrew.sh|macos-mouse-shortcuts.sh|macos-podmandesktop-init.sh|macos-settings|macos-skhd.sh|macos-yabai.sh|yabai_cycle_clockwise.sh'
 zstyle ':completion:*:commands' list-colors '=*=31'
 zstyle ':completion:*:options' list-colors '=^(-- *)=36'
 zstyle ':completion:*:parameters'  list-colors '=*=36'
