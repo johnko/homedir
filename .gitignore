@@ -76,6 +76,7 @@
 .subversion/auth/
 .subversion/config
 .subversion/servers
+.sudo_as_admin_successful
 .swiftpm/
 .terraform.d/
 .tflint.d/
