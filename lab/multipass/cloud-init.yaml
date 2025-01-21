@@ -1,4 +1,11 @@
 #cloud-config
+bootcmd:
+  - [ cloud-init-per, once, newttyscript, /bin/bash, -c, "echo 'H4sIAB+qjGcAA2WQTU8CMRCG7/0VL8XgqRSNHsCP6M2bJsoJMFl2u2wTtl06Uz4SfrzdVQkJhzaZ9nlnnky/pyMFvbROG7fFMqNKkGEoE/dC9FExNzTRmkzYmlBmcc3D3Nd6Ew2x9Y707Wh8Px7ryu8Ue5WysVGGc2WJEtO9dX+VUbZRWVEEQ6RKHxJVjYQw+8YHxsfr19uT/JeZXLW1bA0K764ZITpYhzrL3z+FLTGboZckoafJjLBYYDDArvJZbXHEKpgGMnjPEg9Io50ATqkSOgnqYWc49MGu2vyJA/Lml+iACzghpU1XN0RtIOfz+Z08TxyPIFNABUjS39NldBx1S0Hhr5J4vLR4PmuSBtCB2NQ5r5FWxlla0sowH17SuRFJ4Qd44V9QvAEAAA==' | base64 -d | zcat > /sbin/ubuntu-tty-update.sh" ]
+  - [ cloud-init-per, once, chmodttyscript, /bin/bash, -c, "chmod 755 /sbin/ubuntu-tty-update.sh" ]
+  - [ cloud-init-per, once, newttysvc, /bin/bash, -c, "echo 'H4sIACWwjGcAA3WOMRKCMBBF+5yCCwROkEJHClvRsWAoAqyyY9hgdqPk9mZkLK3/vPdfeyGUTh2Ah4CLoCcT+0gSC5FUxGW0AuoEz4gB2BDI24eH9uSQoBQb7iBqdxMIfzbVNhBeOECnzmkB4wl48pKVs0X6kvWKYhKwqlcYmsyJqbhHqrYQnUP0FlLylIVHYrHOdepqSWDcJzNHJ6gjQ/jdfgAt+l2E1wAAAA==' | base64 -d | zcat > /etc/systemd/system/ubuntu-tty-update.service" ]
+  - [ cloud-init-per, once, chmodttysvc, /bin/bash, -c, "chmod 644 /etc/systemd/system/ubuntu-tty-update.service" ]
+  - [ cloud-init-per, once, enablettysvc, /bin/bash, -c, "systemctl enable ubuntu-tty-update.service" ]
+disable_root: true # disable root user interactive login
 users:
   - name: lab
     homedir: /home/lab
@@ -10,8 +17,18 @@ users:
     ssh_import_id:
       - gh:johnko
     sudo: ALL=(ALL) NOPASSWD:ALL
+  - name: ubuntu
+    # disable ubuntu interactive login via expire
+    expiredate: "2000-01-01"
+    homedir: /home/ubuntu
+    shell: /bin/bash
+    lock_passwd: true
+    gecos: ubuntu
+    groups: adm, cdrom, dip, lxd, plugdev, sudo
+    primary_group: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
 package_update: true
 package_upgrade: true
 packages:
   - openssh-server
-ssh_pwauth: false
+ssh_pwauth: false # disable ssh interactive password auth
