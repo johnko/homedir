@@ -121,7 +121,7 @@ case $ACTN in
       --memory=${MEMS}G \
       --disk=${STOR}G \
       --network="name=$NIC,mode=auto" \
-      --cloud-init=$(dirname $0)/cloud-init.yaml \
+      --cloud-init=$(dirname $0)/../lab-squid-ramdisk/cloud-init.yaml \
       $ISO
     ;;
   destroy)
