@@ -65,7 +65,7 @@ fi
 [[ -z "$CPUS" ]] && CPUS=1
 [[ -z "$MEMS" ]] && MEMS=1
 [[ -z "$STOR" ]] && STOR=10
-[[ -z "$NIC" ]] && NIC=$(ifconfig | grep -v '127.0.0.1' | grep -E "(^en|inet )" | grep -B1 'inet ' | grep '^en' | cut -d: -f1)
+[[ -z "$NIC" ]] && NIC=$(ifconfig | grep -v '127.0.0.1' | grep -E "(^en|inet )" | grep -B1 'inet ' | grep '^en' | tail -n 1 | cut -d: -f1)
 echo "ACTN=$ACTN"
 echo "NAME=$NAME"
 echo "ISO =$ISO"

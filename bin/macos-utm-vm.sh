@@ -17,11 +17,17 @@ Usage:
   ${0##*/}  [create|destroy|info|list|ps|restart|start|stop|unmount-boot-iso]  -n NAME  [-i iso-name]  [-c 1-4]  [-m 1-8]  [-s 10-60]
 
 Example:
-  ${0##*/} create -n test -i ubuntu-22 -c 1 -m 4 -s 40
+  ubuntu-container.sh
+  ubuntu-create-cloudinit-iso.sh
+
+  ${0##*/} create -n test -i ubuntu-22.04 -c 1 -m 4 -s 20
   ${0##*/} start -n test
-  ${0##*/} unmount-boot-iso -n test
-  ${0##*/} start -n test
+
+  bash bin/vm/ubuntu-create-autoinstall-iso.sh
   ${0##*/} destroy -n test
+
+  ${0##*/} create -n vm01 -i autoinstall-22.04 -c 1 -m 4 -s 20
+  ${0##*/} start -n vm01
 EOS
   exit 1
 }
@@ -85,7 +91,7 @@ CLOUD_INIT_ISO=$( find ${HOME}/iso -name 'cloudinit.iso' )
 [[ -z "$CPUS" ]] && CPUS=1
 [[ -z "$MEMS" ]] && MEMS=1
 [[ -z "$STOR" ]] && STOR=10
-[[ -z "$NIC" ]] && NIC=$(ifconfig | grep -v '127.0.0.1' | grep -E "(^en|inet )" | grep -B1 'inet ' | grep '^en' | cut -d: -f1)
+[[ -z "$NIC" ]] && NIC=$(ifconfig | grep -v '127.0.0.1' | grep -E "(^en|inet )" | grep -B1 'inet ' | grep '^en' | tail -n 1 | cut -d: -f1)
 echo "ACTN=$ACTN"
 echo "NAME=$NAME"
 echo "ISO =$ISO"
@@ -164,7 +170,7 @@ end tell
     ;;
   info)
     utmctl status $NAME
-    utmctl ip-address $NAME
+    # utmctl ip-address $NAME
     ;;
   list)
     utmctl list
@@ -179,7 +185,26 @@ end tell
   start)
     utmctl start $NAME
     set +x
-    echo "REMINDER: add 'autoinstall' on the 'linux' boot line"
+    INSTALLED=false
+    osascript -e '
+tell application "UTM"
+  set vm to virtual machine named "'$NAME'"
+  set config to configuration of vm
+  log config
+end tell
+' 2>&1 | grep -q "notes:installed" && INSTALLED=true
+    [[ "false" == "$INSTALLED" ]] && echo "REMINDER: add 'autoinstall' on the 'linux' boot line"
+    STOPPED=false
+    for i in {1..30} ; do
+      [[ "true" == "$STOPPED" ]] && continue
+      [[ "true" == "$INSTALLED" ]] && continue
+      sleep 60
+      utmctl status $NAME | grep -q stopped && STOPPED=true
+    done
+    if [[ "true" == "$STOPPED" ]] && [[ "false" == "$INSTALLED" ]] ; then
+      ${0##*/} unmount-boot-iso -n $NAME
+      ${0##*/} start -n $NAME
+    fi
     ;;
   stop)
     utmctl stop $NAME
@@ -191,6 +216,7 @@ end tell
 tell application "UTM"
   set vm to virtual machine named "'$NAME'"
   set config to configuration of vm
+  set notes of config to "installed"
   set cloudinit to POSIX file "'$CLOUD_INIT_ISO'"
   set i to id of item 1 of drives of config
   set item 1 of drives of config to {id:i, source:cloudinit}

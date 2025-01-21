@@ -15,6 +15,8 @@ autoinstall:
   updates: all
   shutdown: poweroff
   late-commands:
+    # set random hostname
+    - echo vm-$(openssl rand -hex 2) > /target/etc/hostname
     # add ip address to TTY login screen
     #   crete base64 with:
     #   cat bin/ubuntu-tty-update.sh | gzip -c - | base64
@@ -24,13 +26,11 @@ autoinstall:
     - echo 'H4sIACWwjGcAA3WOMRKCMBBF+5yCCwROkEJHClvRsWAoAqyyY9hgdqPk9mZkLK3/vPdfeyGUTh2Ah4CLoCcT+0gSC5FUxGW0AuoEz4gB2BDI24eH9uSQoBQb7iBqdxMIfzbVNhBeOECnzmkB4wl48pKVs0X6kvWKYhKwqlcYmsyJqbhHqrYQnUP0FlLylIVHYrHOdepqSWDcJzNHJ6gjQ/jdfgAt+l2E1wAAAA==' | base64 -d | zcat > /target/etc/systemd/system/ubuntu-tty-update.service
     - curtin in-target -- chmod 644 /etc/systemd/system/ubuntu-tty-update.service
     - curtin in-target -- systemctl enable ubuntu-tty-update.service
-    # # temp cronjob to update TTY login screen
-    # - echo '* * * * * root /sbin/ubuntu-tty-update.sh' > /target/etc/cron.d/update_issue
-    # - curtin in-target -- chmod 644 /etc/cron.d/update_issue
     # extend logical volume
     - curtin in-target -- lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
     - curtin in-target -- resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
   user-data:
+    disable_root: true # disable root user interactive login
     users:
       - name: lab
         homedir: /home/lab
@@ -43,6 +43,8 @@ autoinstall:
           - gh:johnko
         sudo: ALL=(ALL) NOPASSWD:ALL
       - name: ubuntu
+        # disable ubuntu interactive login via expire
+        expiredate: "2000-01-01"
         homedir: /home/ubuntu
         shell: /bin/bash
         lock_passwd: true
@@ -54,6 +56,4 @@ autoinstall:
     package_upgrade: true
     packages:
       - openssh-server
-      - docker.io
-      - docker-compose
-    ssh_pwauth: false
+    ssh_pwauth: false # disable ssh interactive password auth
