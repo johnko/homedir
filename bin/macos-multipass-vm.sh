@@ -100,7 +100,7 @@ case $ACTN in
         if sudo test -d /var/root/Library/Application\ Support/multipassd.bkp ; then
           stop_multipass_svc
           mkdir_ramdisk_vm
-          cp -a /var/root/Library/Application\ Support/multipassd.bkp /Volumes/RAMDisk/vm/multipassd
+          sudo cp -a /var/root/Library/Application\ Support/multipassd.bkp /Volumes/RAMDisk/vm/multipassd
           start_multipass_svc
         fi
       fi
