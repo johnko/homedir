@@ -11,6 +11,10 @@ usage() {
   cat <<EOS
 Usage:
   ${0##*/}  [create|destroy|info|list|ps|restart|stop|start]  -n NAME  -c [1-4]  -m [1-8]  -s [10-60]
+
+Example:
+  ${0##*/} create -n test -i 24.04 -c 1 -m 4 -s 20
+  ${0##*/} start -n test
 EOS
   exit 1
 }
@@ -146,11 +150,11 @@ case $ACTN in
     sudo multipass stop $NAME
     sudo multipass start $NAME
     ;;
-  stop)
-    sudo multipass stop $NAME
-    ;;
   start)
     sudo multipass start $NAME
+    ;;
+  stop)
+    sudo multipass stop $NAME
     ;;
   *)
     usage
