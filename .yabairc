@@ -5,7 +5,7 @@ yabai -m config layout bsp
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 # tall 6/12 of screen for web
-yabai -m rule --add app="^(Google Chrome|System Preferences|System Settings)$" manage=off grid=1:12:3:0:6:1
+yabai -m rule --add app="^(Clock|Google Chrome|System Preferences|System Settings)$" manage=off grid=1:12:3:0:6:1
 # left half
 yabai -m rule --add app="^(Brave Browser|UTM)$" manage=off grid=12:12:0:4:6:8
 # right half
@@ -27,7 +27,7 @@ yabai -m rule --add app="^(Messages|Notes|WhatsApp.*)$" manage=off grid=12:12:6:
 # bottom center quarter
 yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice Memos)$" manage=off grid=12:12:3:6:6:6
 # bottom center 2/3
-yabai -m rule --add app="^(Calendar|Clock|Disk Utility|Find My|Home|LuLu|Maps|News|System Information|Weather|Stocks)$" manage=off grid=12:12:3:4:6:8
+yabai -m rule --add app="^(Calendar|Disk Utility|Find My|Home|LuLu|Maps|News|System Information|Weather|Stocks)$" manage=off grid=12:12:3:4:6:8
 # bottom right 2/3
 yabai -m rule --add app="^(Discord|Podman.*)$" manage=off grid=12:12:6:4:6:8
 
