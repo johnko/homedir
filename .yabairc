@@ -23,7 +23,7 @@ yabai -m rule --add app="^(1Password|FaceTime|Finder|Photo Booth|QuickTime.*|Tex
 # middle left quarter
 yabai -m rule --add app="^(Firefox|LINE|Reminders|Signal)$" manage=off grid=12:12:0:4:6:6
 # middle right quarter
-yabai -m rule --add app="^(Messages|Notes|WhatsApp.*)$" manage=off grid=12:12:6:4:6:6
+yabai -m rule --add app="^(Messages|WhatsApp.*)$" manage=off grid=12:12:6:4:6:6
 # bottom center quarter
 yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice Memos)$" manage=off grid=12:12:3:6:6:6
 # bottom center 2/3
@@ -32,7 +32,7 @@ yabai -m rule --add app="^(Calendar|Disk Utility|Find My|Home|LuLu|Maps|News|Sto
 yabai -m rule --add app="^(Discord|Podman.*)$" manage=off grid=12:12:6:4:6:8
 
 # for vertical screen
-yabai -m rule --add app="^(Gmail|Google Calendar)$" manage=off grid=3:1:0:0:1:1
+yabai -m rule --add app="^(Gmail|Google Calendar|Notes)$" manage=off grid=3:1:0:0:1:1
 yabai -m rule --add app="^(Slack)$" manage=off grid=3:1:0:1:1:2
 
 # float some non-resizable apps
