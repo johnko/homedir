@@ -8,6 +8,8 @@ mv homedir/.git ./
 rm -fr homedir
 
 git checkout .
+git submodule init
+git submodule update
 
 cat <<EOS
 # maybe disallow ubuntu from logging in
