@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if which ifconfig 2>&1 >/dev/null ; then
+  ifconfig | grep -v -E '(^lo0|lo0 | ::1 | 127\.0\.0\.1 )' | grep -E '(^[a-z]|inet )' | grep -B1 'inet' | sed 's/flags=.*UP,/UP,/' | sed 's/UP,.*//' | sed "s, netmask,\n	netmask," | sed "s, broadcast,\n	broadcast,"
+elif which networkctl 2>&1 >/dev/null ; then
+  networkctl status 2>&1 | grep -v -E '(docker|carrier|Link)'
+fi

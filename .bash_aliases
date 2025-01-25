@@ -91,10 +91,6 @@ fetch_cert() {
   echo | openssl s_client -servername $1 -connect $1:443 2>/dev/null | openssl x509 -text
 }
 
-get-ip() {
-  ifconfig | grep -v '127\.0\.0\.' | sed -e 's;broadcast.*;;' -e 's;Bcast.*;;' -e 's;netmast.*;;' -e 's;Mask.*;;' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
-}
-
 firstlastline() {
   head -n1 "${1}"
   tail -n1 "${1}"
