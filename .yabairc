@@ -13,7 +13,7 @@ yabai -m rule --add app="^(Console|GitHub|Google Drive|Preview|Safari)$" manage=
 # wide 8/12 of screen for Terminal
 yabai -m rule --add app="^(Terminal)$" manage=off grid=12:12:2:1:8:10
 # tall wide 10/12 of screen for focus
-yabai -m rule --add app="^(Books|GarageBand|GIMP|iMovie|Photos|Code)$" manage=off grid=12:12:1:2:10:10
+yabai -m rule --add app="^(Books|Code|GarageBand|GIMP|iMovie|Photos)$" manage=off grid=12:12:1:2:10:10
 # tall wide 10/12 of screen for video
 yabai -m rule --add app="^(Crunchyroll.*|Netflix|TV)$" manage=off grid=12:12:1:1:10:10
 # bottom left quarter screen for audio media
