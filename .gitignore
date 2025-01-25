@@ -18,6 +18,7 @@
 .cisco/
 .cocoapods/repos/
 .config/configstore/
+.config/containers/
 .config/gcloud/
 .config/gh/
 .config/gtk*/
