@@ -31,6 +31,7 @@ cask "sentinel"
 # Shell / CLI Tools
 # brew "curl"
 # brew "direnv"
+brew "fx"
 # brew "gh"
 # brew "gnupg"
 brew "jless"

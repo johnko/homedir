@@ -41,6 +41,8 @@ export LESS="-erX"
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+export FX_NO_MOUSE=true
+
 # MacOSX
 # export SSL_CERT_FILE="/etc/ssl/certs/cacert.pem"
 # export REQUESTS_CA_BUNDLE=$SSL_CERT_FILE
