@@ -77,10 +77,14 @@ TRAPALRM() {
 
 ##########
 # zsh completion
-if type brew &>/dev/null
-then
+if type brew &>/dev/null ; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 # kubectl completion
 autoload -U +X compinit && compinit
-source <(kubectl completion zsh)
+if type kubectl &>/dev/null ; then
+  source <(kubectl completion zsh)
+fi
+if type fx &>/dev/null ; then
+  source <(fx --comp zsh)
+fi

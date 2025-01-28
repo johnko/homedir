@@ -7,17 +7,17 @@ export EDITOR="vim"
 export HISTSIZE=1000000000
 export HISTFILESIZE=$HISTSIZE
 # Immediate append
-which setopt >/dev/null 2>&1 && setopt INC_APPEND_HISTORY
+type setopt &>/dev/null && setopt INC_APPEND_HISTORY
 export HISTTIMEFORMAT="[%F %T] "
 # Timestamp history
-which setopt >/dev/null 2>&1 && setopt EXTENDED_HISTORY
+type setopt &>/dev/null && setopt EXTENDED_HISTORY
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 export HISTCONTROL=ignoreboth:erasedups
 # skip duplicates in reverse step
-which setopt >/dev/null 2>&1 && setopt HIST_FIND_NO_DUPS
+type setopt &>/dev/null && setopt HIST_FIND_NO_DUPS
 # ignore dupes
-which setopt >/dev/null 2>&1 && setopt HIST_IGNORE_ALL_DUPS
+type setopt &>/dev/null && setopt HIST_IGNORE_ALL_DUPS
 
 # Make some commands not show up in history
 export HISTIGNORE="cd -:pwd:exit:date"
