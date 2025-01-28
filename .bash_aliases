@@ -1,11 +1,12 @@
 alias g="git --no-pager"
 alias gs="git s"
 alias gd="git d"
+alias history='history -i'
 alias k=kubectl
 alias kk="kubectl -n kube-system"
 alias ka="kubectl -o wide"
 alias tf=terraform
-alias history='history -i'
+alias yless="jless --yaml"
 
 if [ -x /usr/bin/dircolors -o -e /Users ]; then
   if [ -x /usr/bin/dircolors ]; then
@@ -101,10 +102,10 @@ firstlastline() {
 json() {
   if [ -t 0 ]; then
     # has argument
-    python -m json.tool <<<"$*" | pygmentize -l javascript
+    python3 -m json.tool <<<"$*" | pygmentize -l javascript
   else
     # is piped
-    python -m json.tool | pygmentize -l javascript
+    python3 -m json.tool | pygmentize -l javascript
   fi
 }
 
