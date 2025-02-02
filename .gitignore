@@ -25,6 +25,7 @@
 .config/op/config
 .config/op/op-daemon.sock
 .config/pip/
+.continue/
 .cups/lpoptions
 .default-browser.tmp
 .docker/
