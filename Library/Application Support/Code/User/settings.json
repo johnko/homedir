@@ -111,7 +111,7 @@
   "update.showReleaseNotes": false,
   "window.autoDetectColorScheme": true,
   "workbench.editor.empty.hint": "hidden",
-  "workbench.preferredDarkColorTheme": "Visual Studio Dark",
+  "workbench.preferredDarkColorTheme": "Monokai Dimmed",
   "workbench.preferredLightColorTheme": "Visual Studio Light",
   "workbench.startupEditor": "none",
   "yaml.schemas": {
