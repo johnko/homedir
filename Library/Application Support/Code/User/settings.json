@@ -1,4 +1,5 @@
 {
+  "chat.editor.fontSize": 14,
   "debug.console.fontSize": 14,
   "docsYaml.telemetry.enableTelemetry": false,
   "editor.fontSize": 14,
@@ -12,15 +13,15 @@
   "git.enableCommitSigning": true,
   "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false,
+    "*": false,
     "ini": false,
-    "terraform": true,
-    "yaml": false,
-    "typescript": true,
     "javascript": true,
-    "*": false
+    "markdown": false,
+    "plaintext": false,
+    "scminput": false,
+    "terraform": true,
+    "typescript": true,
+    "yaml": false
   },
   "githubPullRequests.defaultCreateOption": "createDraft",
   "githubPullRequests.defaultMergeMethod": "squash",
@@ -38,66 +39,9 @@
   },
   "gitlens.codeLens.enabled": false,
   "go.survey.prompt": false,
-  "markdownlint.config": {
-    "MD025": {
-      "front_matter_title": ""
-    },
-    "MD028": false
-  },
   "markdownlint.customRules": [
     "{docsmsft.docs-linting}/markdownlint-custom-rules/rules.js"
   ],
-  "peacock.favoriteColors": [
-    {
-      "name": "Angular Red",
-      "value": "#dd0531"
-    },
-    {
-      "name": "Azure Blue",
-      "value": "#007fff"
-    },
-    {
-      "name": "JavaScript Yellow",
-      "value": "#f9e64f"
-    },
-    {
-      "name": "Mandalorian Blue",
-      "value": "#1857a4"
-    },
-    {
-      "name": "Node Green",
-      "value": "#215732"
-    },
-    {
-      "name": "React Blue",
-      "value": "#61dafb"
-    },
-    {
-      "name": "Something Different",
-      "value": "#832561"
-    },
-    {
-      "name": "Svelte Orange",
-      "value": "#ff3d00"
-    },
-    {
-      "name": "Vue Green",
-      "value": "#42b883"
-    },
-    {
-      "name": "Purple",
-      "value": "#893de9"
-    },
-    {
-      "name": "Yellow",
-      "value": "#e7d202"
-    },
-    {
-      "name": "Green",
-      "value": "#65c846"
-    }
-  ],
-  "peacock.surpriseMeOnStartup": true,
   "pgsql.resultsFontSize": 14,
   "redhat.telemetry.enabled": false,
   "scm.inputFontSize": 14,
@@ -116,6 +60,5 @@
   "workbench.startupEditor": "none",
   "yaml.schemas": {
     "file://~/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
-  },
-  "chat.editor.fontSize": 14
+  }
 }
