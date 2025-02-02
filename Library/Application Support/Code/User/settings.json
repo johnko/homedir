@@ -116,5 +116,6 @@
   "workbench.startupEditor": "none",
   "yaml.schemas": {
     "file://~/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
-  }
+  },
+  "chat.editor.fontSize": 14
 }
