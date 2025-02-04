@@ -64,6 +64,9 @@ cask "visual-studio-code"
 # brew "sqlfluff"
 # brew "watchman"
 
+# AI
+brew "ollama"
+
 # VS Code extensions
 vscode "continue.continue"
 vscode "davidanson.vscode-markdownlint" # from "docsmsft.docs-authoring-pack"
