@@ -65,7 +65,6 @@ cask "visual-studio-code"
 # brew "watchman"
 
 # AI
-brew "ollama"
 cask "ollama"
 
 # VS Code extensions
