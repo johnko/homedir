@@ -1,48 +1,11 @@
 {
-  "models": [
-    {
-      "title": "codellama:13b-instruct-q8_0",
-      "provider": "ollama",
-      "model": "codellama:13b-instruct-q8_0"
-    },
-    {
-      "title": "tab codellama:13b-code-q8_0",
-      "provider": "ollama",
-      "model": "codellama:13b-code-q8_0"
-    },
-    {
-      "title": "qwen2.5-coder:32b-instruct-q8_0",
-      "provider": "ollama",
-      "model": "qwen2.5-coder:32b-instruct-q8_0"
-    },
-    {
-      "title": "tab qwen2.5-coder:32b-base-q8_0",
-      "provider": "ollama",
-      "model": "qwen2.5-coder:32b-base-q8_0"
-    },
-    {
-      "title": "starcoder2:15b-instruct-v0.1-q8_0",
-      "provider": "ollama",
-      "model": "starcoder2:15b-instruct-v0.1-q8_0"
-    },
-    {
-      "title": "tab starcoder2:15b-q8_0",
-      "provider": "ollama",
-      "model": "starcoder2:15b-q8_0"
-    }
-  ],
-  "tabAutocompleteModel": {
-    "title": "tab qwen2.5-coder:32b-base-q8_0",
-    "provider": "ollama",
-    "model": "qwen2.5-coder:32b-base-q8_0"
-  },
   "contextProviders": [
     {
       "name": "code",
       "params": {}
     },
     {
-      "name": "docs",
+      "name": "codebase",
       "params": {}
     },
     {
@@ -50,11 +13,7 @@
       "params": {}
     },
     {
-      "name": "terminal",
-      "params": {}
-    },
-    {
-      "name": "problems",
+      "name": "docs",
       "params": {}
     },
     {
@@ -62,22 +21,67 @@
       "params": {}
     },
     {
-      "name": "codebase",
+      "name": "problems",
       "params": {}
+    },
+    {
+      "name": "terminal",
+      "params": {}
+    }
+  ],
+  "embeddingsProvider": {
+    "model": "nomic-embed-text",
+    "provider": "ollama"
+  },
+  "models": [
+    {
+      "model": "codellama:13b-instruct-q8_0",
+      "provider": "ollama",
+      "title": "codellama:13b-instruct-q8_0"
+    },
+    {
+      "model": "codellama:13b-code-q8_0",
+      "provider": "ollama",
+      "title": "tab codellama:13b-code-q8_0"
+    },
+    {
+      "model": "qwen2.5-coder:32b-instruct-q8_0",
+      "provider": "ollama",
+      "title": "qwen2.5-coder:32b-instruct-q8_0"
+    },
+    {
+      "model": "qwen2.5-coder:32b-base-q8_0",
+      "provider": "ollama",
+      "title": "tab qwen2.5-coder:32b-base-q8_0"
+    },
+    {
+      "model": "starcoder2:15b-instruct-v0.1-q8_0",
+      "provider": "ollama",
+      "title": "starcoder2:15b-instruct-v0.1-q8_0"
+    },
+    {
+      "model": "starcoder2:15b-q8_0",
+      "provider": "ollama",
+      "title": "tab starcoder2:15b-q8_0"
     }
   ],
   "slashCommands": [
     {
-      "name": "share",
-      "description": "Export the current chat session to markdown"
+      "description": "Export the current chat session to markdown",
+      "name": "share"
     },
     {
-      "name": "cmd",
-      "description": "Generate a shell command"
+      "description": "Generate a shell command",
+      "name": "cmd"
     },
     {
-      "name": "commit",
-      "description": "Generate a git commit message"
+      "description": "Generate a git commit message",
+      "name": "commit"
     }
-  ]
+  ],
+  "tabAutocompleteModel": {
+    "model": "qwen2.5-coder:32b-base-q8_0",
+    "provider": "ollama",
+    "title": "tab qwen2.5-coder:32b-base-q8_0"
+  }
 }
