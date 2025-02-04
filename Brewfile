@@ -66,6 +66,7 @@ cask "visual-studio-code"
 
 # AI
 brew "ollama"
+cask "ollama"
 
 # VS Code extensions
 vscode "continue.continue"
