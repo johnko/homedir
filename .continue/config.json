@@ -1,0 +1,83 @@
+{
+  "models": [
+    {
+      "title": "codellama:13b-instruct-q8_0",
+      "provider": "ollama",
+      "model": "codellama:13b-instruct-q8_0"
+    },
+    {
+      "title": "tab codellama:13b-code-q8_0",
+      "provider": "ollama",
+      "model": "codellama:13b-code-q8_0"
+    },
+    {
+      "title": "qwen2.5-coder:32b-instruct-q8_0",
+      "provider": "ollama",
+      "model": "qwen2.5-coder:32b-instruct-q8_0"
+    },
+    {
+      "title": "tab qwen2.5-coder:32b-base-q8_0",
+      "provider": "ollama",
+      "model": "qwen2.5-coder:32b-base-q8_0"
+    },
+    {
+      "title": "starcoder2:15b-instruct-v0.1-q8_0",
+      "provider": "ollama",
+      "model": "starcoder2:15b-instruct-v0.1-q8_0"
+    },
+    {
+      "title": "tab starcoder2:15b-q8_0",
+      "provider": "ollama",
+      "model": "starcoder2:15b-q8_0"
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "tab qwen2.5-coder:32b-base-q8_0",
+    "provider": "ollama",
+    "model": "qwen2.5-coder:32b-base-q8_0"
+  },
+  "contextProviders": [
+    {
+      "name": "code",
+      "params": {}
+    },
+    {
+      "name": "docs",
+      "params": {}
+    },
+    {
+      "name": "diff",
+      "params": {}
+    },
+    {
+      "name": "terminal",
+      "params": {}
+    },
+    {
+      "name": "problems",
+      "params": {}
+    },
+    {
+      "name": "folder",
+      "params": {}
+    },
+    {
+      "name": "codebase",
+      "params": {}
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "share",
+      "description": "Export the current chat session to markdown"
+    },
+    {
+      "name": "cmd",
+      "description": "Generate a shell command"
+    },
+    {
+      "name": "commit",
+      "description": "Generate a git commit message"
+    }
+  ]
+}
