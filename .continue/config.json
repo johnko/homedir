@@ -35,6 +35,12 @@
   },
   "models": [
     {
+      "apiBase": "http://192.168.2.74:11434",
+      "model": "qwen2.5-coder:32b-instruct-q8_0",
+      "provider": "ollama",
+      "title": "local network"
+    },
+    {
       "model": "codellama:13b-instruct-q8_0",
       "provider": "ollama",
       "title": "codellama:13b-instruct-q8_0"
