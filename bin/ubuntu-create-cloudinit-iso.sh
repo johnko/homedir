@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -eux
 
-if which docker >/dev/null 2>&1 ; then
+if type docker &>/dev/null ; then
   DOCKER_BIN=docker
 else
-  if which podman >/dev/null 2>&1 ; then
+  if type podman &>/dev/null ; then
     DOCKER_BIN=podman
   fi
 fi

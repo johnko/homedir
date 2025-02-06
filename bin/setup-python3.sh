@@ -11,7 +11,7 @@ if command -v apt-get >/dev/null 2>&1 ; then
   export DEBIAN_FRONTEND=noninteractive
   # Dependency for virtualenv
   sudo apt-get install --yes build-essential python-dev libffi-dev
-  which virtualenv || sudo apt-get install --yes python-virtualenv
+  type virtualenv &>/dev/null || sudo apt-get install --yes python-virtualenv
   # Dependency for ansible
   sudo apt-get install --yes libssl-dev
 fi
@@ -32,7 +32,7 @@ echo "=>  Detecting pip3, pip2 or pip..."
 command -v pip  >/dev/null 2>&1 && PIP_BIN="pip"
 command -v pip3 >/dev/null 2>&1 && PIP_BIN="pip3"
 
-if ! which python | grep -q ${VENV_FOLDER} ; then
+if ! type python | grep -q ${VENV_FOLDER} ; then
   echo "!!  Failed to use venv"
   exit 1
 fi

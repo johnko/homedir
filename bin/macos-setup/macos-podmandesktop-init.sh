@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if which podman >/dev/null 2>&1 ; then
+if type podman &>/dev/null ; then
   set -x
   podman machine init
   podman machine start

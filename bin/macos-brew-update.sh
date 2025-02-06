@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if which brew >/dev/null 2>&1 ; then
+if type brew &>/dev/null ; then
   if [[ -e Brewfile ]] ; then
     set -x
     brew bundle || true
