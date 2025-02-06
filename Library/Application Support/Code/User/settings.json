@@ -14,6 +14,7 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
     "*": false,
+    "helm": true,
     "ini": false,
     "javascript": true,
     "markdown": false,
