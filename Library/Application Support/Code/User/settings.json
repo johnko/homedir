@@ -2,6 +2,7 @@
   "chat.commandCenter.enabled": false,
   "chat.editor.fontSize": 14,
   "continue.enableTabAutocomplete": true,
+  "continue.telemetryEnabled": false,
   "debug.console.fontSize": 14,
   "docsYaml.telemetry.enableTelemetry": false,
   "editor.fontSize": 14,
@@ -41,6 +42,7 @@
     "merged": false
   },
   "gitlens.codeLens.enabled": false,
+  "gitlens.telemetry.enabled": false,
   "go.survey.prompt": false,
   "markdownlint.customRules": [
     "{docsmsft.docs-linting}/markdownlint-custom-rules/rules.js"
