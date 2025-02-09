@@ -1,5 +1,7 @@
 {
+  "chat.commandCenter.enabled": false,
   "chat.editor.fontSize": 14,
+  "continue.enableTabAutocomplete": true,
   "debug.console.fontSize": 14,
   "docsYaml.telemetry.enableTelemetry": false,
   "editor.fontSize": 14,
