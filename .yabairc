@@ -8,32 +8,39 @@ yabai -m config layout bsp
 yabai -m rule --add app="^(Google Chrome)$" manage=off grid=1:12:3:0:6:1
 # tall
 yabai -m rule --add app="^(Clock|System Preferences|System Settings)$" manage=off grid=24:24:5:1:14:22
-# left half
-yabai -m rule --add app="^(Brave Browser|UTM)$" manage=off grid=12:12:0:4:6:8
-# right half
-yabai -m rule --add app="^(Console|GitHub|Google Drive|Preview|Safari)$" manage=off grid=1:12:6:0:6:1
-# wide 16/24 of screen for Terminal
+# tall wide 16/24 of screen for Terminal
 yabai -m rule --add app="^(Terminal)$" manage=off grid=24:24:4:2:16:20
-# tall wide 18/24 of screen for video
+# tall wide 18/24 of screen for editing
 yabai -m rule --add app="^(Books|GarageBand|GIMP|iMovie|Photos)$" manage=off grid=24:24:3:3:18:18
 # tall wide 20/24 of screen for focus
 yabai -m rule --add app="^(Code)$" manage=off grid=24:24:2:4:20:20
-# wide 22/24 of screen for video
+# tall wide 22/24 of screen for video
 yabai -m rule --add app="^(Crunchyroll.*|Netflix|TV)$" manage=off grid=24:24:1:5:22:19
-# bottom left quarter screen for audio media
-yabai -m rule --add app="^(Music|Podcasts|Spotify)$" manage=off grid=2:2:0:1:1:1
+
 # middle center quarter
 yabai -m rule --add app="^(1Password|FaceTime|Finder|Photo Booth|QuickTime.*|TextEdit)$" manage=off grid=12:12:3:3:6:6
-# middle left quarter
-yabai -m rule --add app="^(Firefox|LINE|Reminders|Signal)$" manage=off grid=12:12:0:4:6:6
-# middle right quarter
-yabai -m rule --add app="^(Messages|WhatsApp.*)$" manage=off grid=12:12:6:4:6:6
 # bottom center quarter
 yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice Memos)$" manage=off grid=12:12:3:6:6:6
 # bottom center 2/3
-yabai -m rule --add app="^(Calendar|Disk Utility|Find My|Home|LuLu|Maps|News|Stocks|System Information|Weather)$" manage=off grid=12:12:3:4:6:8
-# bottom right 2/3
-yabai -m rule --add app="^(Discord|Podman.*)$" manage=off grid=12:12:6:4:6:8
+yabai -m rule --add app="^(Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather)$" manage=off grid=12:12:3:4:6:8
+
+# left 2/3
+yabai -m rule --add app="^(Brave Browser|UTM)$" manage=off grid=12:12:0:4:6:8
+# right 2/3
+yabai -m rule --add app="^(Podman.*|Reminders)$" manage=off grid=12:12:6:4:6:8
+# right half tall
+yabai -m rule --add app="^(Console|GitHub|Google Drive|Preview|Safari)$" manage=off grid=1:12:6:0:6:1
+
+# middle left quarter
+yabai -m rule --add app="^(Discord|Instagram|Messages|Signal|WhatsApp.*)$" manage=off grid=12:12:0:4:6:6
+# middle right quarter
+yabai -m rule --add app="^(LINE)$" manage=off grid=12:12:6:4:6:6
+
+# top right quarter screen
+yabai -m rule --add app="^(LuLu)$" manage=off grid=2:2:1:0:1:1
+
+# bottom right quarter screen for audio media
+yabai -m rule --add app="^(Firefox|Music|Netiquette|Podcasts|Spotify)$" manage=off grid=2:2:1:1:1:1
 
 # for vertical screen
 yabai -m rule --add app="^(Gmail|Google Calendar|Notes)$" manage=off grid=3:1:0:0:1:1
