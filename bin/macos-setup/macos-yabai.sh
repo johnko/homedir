@@ -18,4 +18,3 @@ fi
 echo "=>  Installation complete!"
 echo "    To activate, run:"
 echo "        yabai --start-service"
-echo "=>  Setup is complete!"
