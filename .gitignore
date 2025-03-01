@@ -91,13 +91,12 @@
 .vim/
 .viminfo
 .vs-kubernetes/
-.vscode-react-native/VSCodeTelemetrySettings.json
 .vscode/ansible-credentials.yml
 .vscode/argv.json
 .vscode/extensions/
+.vscode/settings.json
 .webex/
 .wget-hsts
-.yarnrc
 .zcompcache
 .zcompdump
 .zcompdump-*
