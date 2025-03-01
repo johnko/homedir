@@ -45,5 +45,6 @@ ctrl + alt + cmd - b : open -a "Brave Browser"
 
 
 ctrl + alt + cmd - space : osascript ~/shortcuts/hide-current-window.scpt
+f15 : osascript ~/shortcuts/hide-current-window.scpt
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>

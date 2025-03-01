@@ -11,13 +11,17 @@ set -eux
 
 # fn_keys=(0 0x70000003a 0x70000003b 0x70000003c 0x70000003d 0x70000003e 0x70000003f 0x700000040 0x700000041 0x700000042 0x700000043 0x700000044 0x700000045 0x700000068 0x700000069 0x70000006a 0x70000006b 0x70000006c 0x70000006d 0x70000006e)
 
-# fn_spotl=0xff0100000001   # or 0xc00000221
-# fn_launchp=0xff0100000004
+# fn_spotl=0xFF0100000001   # or 0xC00000221
+# fn_launchp=0xFF0100000004
 # f4=0x70000003D
 
-# fn_dict=0xc000000cf
+# fn_dict=0xC000000CF
 # f5=0x70000003E
-# f16=0x70000006b
+# f16=0x70000006B
+
+# fn_dnd=0x10000009B
+# f6=0x70000003F
+# f15=0x70000006A
 
 # eject=0xC000000B8
 # f13=0x700000068
@@ -30,8 +34,11 @@ MAPPING='
     {"HIDKeyboardModifierMappingSrc": 0xFF0100000004,"HIDKeyboardModifierMappingDst": 0x70000003D},
     {"HIDKeyboardModifierMappingSrc": 0x70000003D,"HIDKeyboardModifierMappingDst": 0x70000003D},
 
-    {"HIDKeyboardModifierMappingSrc": 0xC000000CF,"HIDKeyboardModifierMappingDst": 0x70000006b},
-    {"HIDKeyboardModifierMappingSrc": 0x70000003E,"HIDKeyboardModifierMappingDst": 0x70000006b},
+    {"HIDKeyboardModifierMappingSrc": 0xC000000CF,"HIDKeyboardModifierMappingDst": 0x70000006B},
+    {"HIDKeyboardModifierMappingSrc": 0x70000003E,"HIDKeyboardModifierMappingDst": 0x70000006B},
+
+    {"HIDKeyboardModifierMappingSrc": 0x10000009B,"HIDKeyboardModifierMappingDst": 0x70000006A},
+    {"HIDKeyboardModifierMappingSrc": 0x70000003F,"HIDKeyboardModifierMappingDst": 0x70000006A},
 
     {"HIDKeyboardModifierMappingSrc": 0xC000000B8,"HIDKeyboardModifierMappingDst": 0x700000068}
   ]
