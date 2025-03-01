@@ -48,6 +48,7 @@
 .kube/http-cache/
 .lemminx/cache/
 .lesshst
+.local/man/yabai.1
 .local/share/
 .local/state/gh/
 .localized
@@ -67,6 +68,7 @@
 .rbenv/
 .rbenv/shims/
 .rbenv/versions/
+.redhat/anonymousId
 .rnd
 .ruby-version
 .sqlcl/
@@ -102,8 +104,15 @@
 .zoomus/
 .zsh_sessions/
 Brewfile.lock.json
-Google*Drive*
+Docs Authoring/
+Google*Drive/
 VirtualBox VMs/
+bin/skhd
+bin/utmctl
+bin/yabai
+iso/*.iso
+iso/*/*.gpg
+iso/*/*.iso
 kubeconfig/
 tmptmp/
 venv*/
