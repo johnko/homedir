@@ -55,6 +55,7 @@ DOMAIN="com.apple.dock"
 KEYVAL="
         enterMissionControlByTopWindowDrag = 0;
         mineffect = scale;
+        "minimize-to-application" = 1;
         tilesize = 64;
 "
 print_cmd
