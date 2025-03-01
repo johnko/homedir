@@ -58,7 +58,6 @@
 .npm/_logs/
 .npm/anonymous-cli-metrics.json
 .npm/index-v5/
-.npmrc
 .nvm/
 .oh-my-zsh/
 .ollama/
