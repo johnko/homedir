@@ -5,7 +5,7 @@ echo "=>  Installing suduoer.d..."
 
 pushd $(dirname $0)
 
-ansible-playbook --connection=local -i localhost, ./playbook-bootstrap.yml
+ansible-playbook -i localhost, ./playbook-bootstrap.yml
 
 popd
 
