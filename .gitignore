@@ -64,6 +64,7 @@
 .ollama/
 .oracle_jre_usage/
 .packer.d/
+.podman/
 .pylint.d/
 .rbenv/
 .rbenv/shims/
