@@ -1,5 +1,4 @@
 {
-  "chat.commandCenter.enabled": false,
   "chat.editor.fontSize": 14,
   "continue.enableTabAutocomplete": true,
   "continue.telemetryEnabled": false,
@@ -14,7 +13,7 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "git.enableCommitSigning": true,
-  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.editor.enableAutoCompletions": false,
   "github.copilot.enable": {
     "*": false,
     "helm": true,
