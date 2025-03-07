@@ -19,5 +19,5 @@ set actionTaken to ""
 tell application "System Events"
 	set visible of application process frontAppName to false
 end tell
-set actionTaken to "visible: " & frontAppName
+set actionTaken to "hide: " & frontAppName
 return actionTaken
