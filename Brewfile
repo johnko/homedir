@@ -14,7 +14,6 @@ mas "LINE", id: 539883307
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 # mas "Slack", id: 803453959
-mas "Xcode", id: 497799835
 
 # Web Browsers
 cask "brave-browser"
@@ -115,3 +114,5 @@ vscode "redhat.vscode-yaml"
 cask "utm" if Hardware::CPU.intel?
 # cask "multipass" if Hardware::CPU.intel?
 # cask "virtualbox" if Hardware::CPU.intel?
+cask "android-studio"
+mas "Xcode", id: 497799835
