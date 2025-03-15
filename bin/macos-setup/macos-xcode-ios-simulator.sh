@@ -9,6 +9,8 @@ if type xcodebuild &>/dev/null ; then
   xcodebuild -runFirstLaunch
 
   xcodebuild -downloadPlatform iOS
+
+  xcrun simctl runtime list
 else
   echo "ERROR: missing 'xcodebuild'"
   exit 1
