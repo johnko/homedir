@@ -39,6 +39,7 @@
 .docker/devenvironments
 .docker/run/
 .docker/scan/
+.emulator_console_auth_token
 .fastlane/.did_show_opt_info
 .gem/ruby/
 .gem/specs/
