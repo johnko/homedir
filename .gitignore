@@ -8,6 +8,7 @@
 .Trash/
 .Xauthority*
 .account
+.android/
 .ansible_galaxy
 .anyconnect
 .aws/
