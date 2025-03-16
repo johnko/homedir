@@ -48,3 +48,6 @@ export FX_NO_MOUSE=true
 # export REQUESTS_CA_BUNDLE=$SSL_CERT_FILE
 # export     CURL_CA_BUNDLE=$SSL_CERT_FILE
 # export      AWS_CA_BUNDLE=$SSL_CERT_FILE
+
+# java/openjdk headers
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"

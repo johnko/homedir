@@ -10,6 +10,15 @@
   && export PATH="${HOME}/.rbenv/shims:$PATH"
 
 
+# add java/openjdk early in PATH
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+
+# add android early in PATH
+export ANDROID_SDK="$HOME/Library/Android/sdk"
+export PATH="$ANDROID_SDK/emulator:$ANDROID_SDK/tools:${ANDROID_SDK}/tools/bin:${ANDROID_SDK}/platform-tools:$PATH"
+
+
 # add HOME bin for my scripts late in PATH
 [                   -e "$HOME/bin" ] \
   && export PATH="$PATH:$HOME/bin"
