@@ -114,5 +114,7 @@ vscode "redhat.vscode-yaml"
 cask "utm" if Hardware::CPU.intel?
 # cask "multipass" if Hardware::CPU.intel?
 # cask "virtualbox" if Hardware::CPU.intel?
-cask "android-studio"
+# cask "android-studio"
+cask "android-commandlinetools"
+cask "android-platform-tools"
 mas "Xcode", id: 497799835
