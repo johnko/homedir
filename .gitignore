@@ -52,7 +52,7 @@
 .lesshst
 .local/man/yabai.1
 .local/share/
-.local/state/gh/
+.local/state/
 .localized
 .minikube/
 .npm/
