@@ -51,3 +51,5 @@ export FX_NO_MOUSE=true
 
 # java/openjdk headers
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+
+export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
