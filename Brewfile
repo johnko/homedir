@@ -56,11 +56,9 @@ brew "kubernetes-cli"
 # Dev
 cask "visual-studio-code"
 # brew "go"
-# brew "node"
 # brew "nvm"
 # brew "rbenv"
 # brew "ruby-build"
-# brew "ruby"
 # brew "sqlfluff"
 # brew "watchman"
 
