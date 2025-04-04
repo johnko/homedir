@@ -13,10 +13,6 @@
     format console
   }
 
-  header / {
-    -Server
-  }
-
   @denied not client_ip $CLOUDFLARE_IP_RANGES
   abort @denied
 
