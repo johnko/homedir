@@ -1,0 +1,10 @@
+services:
+  caddy:
+    build: .
+    container_name: caddy
+    entrypoint: [ "caddy", "run", "--config", "/etc/caddy/Caddyfile" ]
+    # entrypoint: [ "sleep", "3600" ]
+    image: caddy:local
+    ports:
+      - 8080:8080
+    restart: unless-stopped

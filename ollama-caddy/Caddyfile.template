@@ -1,0 +1,33 @@
+# modified from https://gist.github.com/sirodoht/69d88db69679b4cddbc022af1378c642
+
+{
+	servers {
+    trusted_proxies static $CLOUDFLARE_IP_RANGES
+    trusted_proxies_strict
+	}
+}
+
+:8080 {
+  log {
+    output stderr
+    format console
+  }
+
+  @denied not client_ip $CLOUDFLARE_IP_RANGES
+  abort @denied
+
+  route {
+    @options method OPTIONS
+    handle @options {
+      respond "" 204
+    }
+
+    basic_auth {
+      $CADDY_OLLAMA_API_USER1 $CADDY_OLLAMA_API_PASSWORD1
+      $CADDY_OLLAMA_API_USER2 $CADDY_OLLAMA_API_PASSWORD2
+      $CADDY_OLLAMA_API_USER3 $CADDY_OLLAMA_API_PASSWORD3
+      $CADDY_OLLAMA_API_USER4 $CADDY_OLLAMA_API_PASSWORD4
+    }
+    reverse_proxy $OLLAMA_HOST
+  }
+}
