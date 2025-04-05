@@ -9,7 +9,7 @@
   servers {
     trusted_proxies static $CLOUDFLARE_IP_RANGES
     trusted_proxies_strict
-	}
+  }
 }
 
 :8080 {
@@ -17,25 +17,36 @@
     output stderr
     format json
   }
-  route {
-    # only works if caddy can see the client_ip, not from docker port forward
-    # @deniedip not client_ip $CLOUDFLARE_IP_RANGES
-    # abort @deniedip
 
-    @denieddomain not host $CADDY_OLLAMA_API_DOMAIN
-    abort @denieddomain
+  @apidomain host $CADDY_OLLAMA_API_DOMAIN
+  handle @apidomain {
+    route {
 
-    @options method OPTIONS
-    handle @options {
-      respond "" 204
+      # this section only works if caddy can see the client_ip, not from docker port forward
+      # @deniedip not client_ip $CLOUDFLARE_IP_RANGES
+      # log_skip @deniedip
+      # abort @deniedip
+
+      @options method OPTIONS
+      log_skip @options
+      handle @options {
+        respond "" 204
+      }
+
+      basic_auth {
+        $CADDY_OLLAMA_API_USER1 $CADDY_OLLAMA_API_PASSWORD1
+        $CADDY_OLLAMA_API_USER2 $CADDY_OLLAMA_API_PASSWORD2
+        $CADDY_OLLAMA_API_USER3 $CADDY_OLLAMA_API_PASSWORD3
+        $CADDY_OLLAMA_API_USER4 $CADDY_OLLAMA_API_PASSWORD4
+      }
+      reverse_proxy $OLLAMA_HOST
     }
+  }
 
-    basic_auth {
-      $CADDY_OLLAMA_API_USER1 $CADDY_OLLAMA_API_PASSWORD1
-      $CADDY_OLLAMA_API_USER2 $CADDY_OLLAMA_API_PASSWORD2
-      $CADDY_OLLAMA_API_USER3 $CADDY_OLLAMA_API_PASSWORD3
-      $CADDY_OLLAMA_API_USER4 $CADDY_OLLAMA_API_PASSWORD4
-    }
-    reverse_proxy $OLLAMA_HOST
+  handle {
+    # Unhandled domains fall through to here,
+    # but we don't want to accept their requests
+    log_skip
+    abort
   }
 }
