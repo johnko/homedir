@@ -7,7 +7,9 @@
   }
   admin off
   servers {
-    trusted_proxies static $CLOUDFLARE_IP_RANGES
+    # this section only works if caddy can see the client_ip, not from docker port forward
+    # trusted_proxies static $CLOUDFLARE_IP_RANGES
+    trusted_proxies static private_ranges
     trusted_proxies_strict
   }
 }
