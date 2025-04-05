@@ -30,9 +30,9 @@ case $1 in
         export CADDY_OLLAMA_API_USER1=$(op read op://Private/1pcli-caddyollama-api-user1/username)
         export CADDY_OLLAMA_API_TEMP_PASSWORD1=$(op read op://Private/1pcli-caddyollama-api-user1/password)
 
-        export CLOUDFLARE_IPV4=$(curl 'https://www.cloudflare.com/ips-v4/#' | tr "\n" ' ')
-        export CLOUDFLARE_IPV6=$(curl 'https://www.cloudflare.com/ips-v6/#' | tr "\n" ' ')
-        export CLOUDFLARE_IP_RANGES="127.0.0.1 192.168.2.0/24 $CLOUDFLARE_IPV4 $CLOUDFLARE_IPV6"
+        # export CLOUDFLARE_IPV4=$(curl 'https://www.cloudflare.com/ips-v4/#' | tr "\n" ' ')
+        # export CLOUDFLARE_IPV6=$(curl 'https://www.cloudflare.com/ips-v6/#' | tr "\n" ' ')
+        # export CLOUDFLARE_IP_RANGES="127.0.0.1 192.168.2.0/24 $CLOUDFLARE_IPV4 $CLOUDFLARE_IPV6"
 
         # build temp container image
         touch Caddyfile

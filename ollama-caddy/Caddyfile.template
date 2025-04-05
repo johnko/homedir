@@ -1,7 +1,12 @@
 # modified from https://gist.github.com/sirodoht/69d88db69679b4cddbc022af1378c642
 
 {
-	servers {
+  log {
+    output stderr
+    format json
+  }
+  admin off
+  servers {
     trusted_proxies static $CLOUDFLARE_IP_RANGES
     trusted_proxies_strict
 	}
@@ -10,13 +15,16 @@
 :8080 {
   log {
     output stderr
-    format console
+    format json
   }
-
-  @denied not client_ip $CLOUDFLARE_IP_RANGES
-  abort @denied
-
   route {
+    # only works if caddy can see the client_ip, not from docker port forward
+    # @deniedip not client_ip $CLOUDFLARE_IP_RANGES
+    # abort @deniedip
+
+    @denieddomain not host $CADDY_OLLAMA_API_DOMAIN
+    abort @denieddomain
+
     @options method OPTIONS
     handle @options {
       respond "" 204
