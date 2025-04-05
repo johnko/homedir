@@ -16,8 +16,10 @@ else
   fi
 fi
 
-# last one wins
 case $1 in
+  logs)
+    $DOCKER_BIN logs -f caddy 2>&1 | sed "s,^{,\n{,"
+    ;;
   public)
     export OLLAMA_HOST=`get-ip | head -n1`:11434
     set -u
