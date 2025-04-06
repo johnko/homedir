@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if type lsof &>/dev/null ; then
+  lsof -i -nP | grep LISTEN
+fi

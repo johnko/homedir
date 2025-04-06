@@ -21,7 +21,7 @@ case $1 in
     $DOCKER_BIN logs -f caddy 2>&1 | sed "s,^{,\n{,"
     ;;
   public)
-    export OLLAMA_HOST=`get-ip | head -n1`:11434
+    export OLLAMA_HOST=`get-ip | tail -n1`:11434
     set -u
 
     # run caddy container so we can have some kind of authentication
@@ -61,7 +61,7 @@ case $1 in
     fi
     ;;
   lan)
-    export OLLAMA_HOST=`get-ip | head -n1`:11434
+    export OLLAMA_HOST=`get-ip | tail -n1`:11434
     set -u
     ;;
   *)
