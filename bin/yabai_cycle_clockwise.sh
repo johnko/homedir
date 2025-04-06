@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
 win=$(yabai -m query --windows --window last | jq '.id')
 

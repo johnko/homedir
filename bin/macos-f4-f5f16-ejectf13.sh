@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-set -eux
+set -euo pipefail
+
+set -x
 
 # replaces (spotlight/apps button) F4 to F4,
 # (dictation button) F5 to F16,

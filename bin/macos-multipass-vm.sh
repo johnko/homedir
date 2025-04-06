@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-set -eux
+set -euo pipefail
+
+set -x
 
 if [[ ! -e /Volumes/RAMDisk/.metadata_never_index ]] ; then
   set +x

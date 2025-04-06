@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-set -eux
+set -euo pipefail
+
+set -x
 
 sw_vers
 softwareupdate --list

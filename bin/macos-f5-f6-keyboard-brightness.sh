@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-set -eux
+set -euo pipefail
+
+set -x
 
 # replaces (dictation button) F5 and (focus button) F6 with keyboard brightness and eject to play/pause
 

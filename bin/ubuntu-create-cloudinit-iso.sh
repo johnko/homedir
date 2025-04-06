@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eux
+set -euo pipefail
 
 if type docker &>/dev/null ; then
   DOCKER_BIN=docker
@@ -10,6 +10,8 @@ else
 fi
 
 UBUNTU_CONTAINER_ID=$($DOCKER_BIN ps | grep ubuntu:24.04 | cut -d' ' -f1)
+
+set -x
 
 # https://canonical-subiquity.readthedocs-hosted.com/en/latest/howto/autoinstall-quickstart.html
 
