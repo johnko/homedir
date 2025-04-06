@@ -1,5 +1,7 @@
-#!/bin/bash
-set -ex
+#!/usr/bin/env bash
+set -euo pipefail
+
+set -x
 
 for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Containers/com.apple.Desktop-Settings.extension/Data/Library/Preferences/com.apple.symbolichotkeys.plist ; do
   # READ

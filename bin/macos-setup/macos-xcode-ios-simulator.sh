@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-set -x
-
 if type xcodebuild &>/dev/null ; then
+  set -x
+
   xcodebuild -showsdks
 
   xcodebuild -runFirstLaunch
