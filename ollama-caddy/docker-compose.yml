@@ -8,3 +8,11 @@ services:
     ports:
       - 8080:8080
     restart: unless-stopped
+  ssh:
+    build: ./ssh/
+    container_name: ssh
+    entrypoint: [ "/usr/sbin/sshd", "-D", "-e" ]
+    image: ssh:local
+    ports:
+      - 2222:2222
+    restart: unless-stopped
