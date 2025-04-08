@@ -6,6 +6,9 @@ export CADDY_OLLAMA_API_ZONEID=$(op read op://Private/1pcli-caddyollama-api-doma
 export CADDY_OLLAMA_API_RECORDID=$(op read op://Private/1pcli-caddyollama-api-domain/recordid)
 export CADDY_OLLAMA_API_CFTOKEN=$(op read op://Private/1pcli-caddyollama-api-domain/credential)
 
+export CADDY_OLLAMA_API_DOMAIN2=$(op read op://Private/1pcli-caddyollama-api-domain/host2)
+export CADDY_OLLAMA_API_RECORDID2=$(op read op://Private/1pcli-caddyollama-api-domain/recordid2)
+
 export CADDY_OLLAMA_API_USER1=$(op read op://Private/1pcli-caddyollama-api-user1/username)
 export CADDY_OLLAMA_API_TEMP_PASSWORD1=$(op read op://Private/1pcli-caddyollama-api-user1/password)
 

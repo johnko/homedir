@@ -2,8 +2,17 @@
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+curl https://checkip.amazonaws.com | tr -d "\n" >/tmp/myip.txt
+
 # Update DNS record
 curl -X PUT "https://api.cloudflare.com/client/v4/zones/$CADDY_OLLAMA_API_ZONEID/dns_records/$CADDY_OLLAMA_API_RECORDID" \
      -H "Authorization: Bearer $CADDY_OLLAMA_API_CFTOKEN" \
      -H "Content-Type: application/json" \
-     --data '{"type":"A","name":"'$CADDY_OLLAMA_API_DOMAIN'","content":"'$(curl https://checkip.amazonaws.com)'","ttl":1,"proxied":true}'
+     --data '{"type":"A","name":"'$CADDY_OLLAMA_API_DOMAIN'","content":"'`cat /tmp/myip.txt`'","ttl":1,"proxied":true}'
+
+curl -X PUT "https://api.cloudflare.com/client/v4/zones/$CADDY_OLLAMA_API_ZONEID/dns_records/$CADDY_OLLAMA_API_RECORDID2" \
+     -H "Authorization: Bearer $CADDY_OLLAMA_API_CFTOKEN" \
+     -H "Content-Type: application/json" \
+     --data '{"type":"A","name":"'$CADDY_OLLAMA_API_DOMAIN2'","content":"'`cat /tmp/myip.txt`'","ttl":1,"proxied":false}'
+
+date
