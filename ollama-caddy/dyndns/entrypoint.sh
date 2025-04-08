@@ -7,4 +7,4 @@ echo >$LOG_FILE
 
 tail -f $LOG_FILE &
 
-cron -f &>$LOG_FILE
+cron -f &>>$LOG_FILE
