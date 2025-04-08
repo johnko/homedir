@@ -4,6 +4,7 @@ set -eo pipefail
 export CADDY_OLLAMA_API_DOMAIN=$(op read op://Private/1pcli-caddyollama-api-domain/host)
 export CADDY_OLLAMA_API_ZONEID=$(op read op://Private/1pcli-caddyollama-api-domain/zoneid)
 export CADDY_OLLAMA_API_RECORDID=$(op read op://Private/1pcli-caddyollama-api-domain/recordid)
+export CADDY_OLLAMA_API_CFTOKEN=$(op read op://Private/1pcli-caddyollama-api-domain/credential)
 
 export CADDY_OLLAMA_API_USER1=$(op read op://Private/1pcli-caddyollama-api-user1/username)
 export CADDY_OLLAMA_API_TEMP_PASSWORD1=$(op read op://Private/1pcli-caddyollama-api-user1/password)
@@ -11,7 +12,6 @@ export CADDY_OLLAMA_API_TEMP_PASSWORD1=$(op read op://Private/1pcli-caddyollama-
 export CADDY_OLLAMA_API_PUBKEY1=$(op read "op://Private/1pcli-caddyollama-api-pubkey1/public key")
 export CADDY_OLLAMA_API_PUBKEY2=$(op read "op://Private/1pcli-caddyollama-api-pubkey2/public key")
 
-# export CADDY_OLLAMA_API_CFTOKEN=$(op read "op://Private/1pcli-caddyollama-api-cftoken/token")
 
 if type docker-compose &>/dev/null ; then
   DOCKERCOMPOSE_BIN="docker-compose"
