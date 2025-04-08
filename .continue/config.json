@@ -30,22 +30,22 @@
     }
   ],
   "embeddingsProvider": {
-    "apiBase": "https://YOUR_DOMAIN",
+    "apiBase": "http://127.0.0.1:11434",
     "model": "nomic-embed-text:137m-v1.5-fp16",
     "provider": "ollama",
     "title": "ai embed",
     "requestOptions": {
-      "headers": { "Authorization": "Basic " }
+      "headers": { "Authorization": "Basic" }
     }
   },
   "models": [
     {
-      "apiBase": "https://YOUR_DOMAIN",
+      "apiBase": "http://127.0.0.1:11434",
       "model": "qwen2.5-coder:32b-instruct-q8_0",
       "provider": "ollama",
       "title": "ai",
       "requestOptions": {
-        "headers": { "Authorization": "Basic " }
+        "headers": { "Authorization": "Basic" }
       }
     },
     {
@@ -94,12 +94,12 @@
     }
   ],
   "tabAutocompleteModel": {
-    "apiBase": "https://YOUR_DOMAIN",
+    "apiBase": "http://127.0.0.1:11434",
     "model": "qwen2.5-coder:32b-base-q8_0",
     "provider": "ollama",
     "title": "ai autocomplete",
     "requestOptions": {
-      "headers": { "Authorization": "Basic " }
+      "headers": { "Authorization": "Basic" }
     }
   }
 }
