@@ -20,6 +20,6 @@ services:
   dyndns:
     build: ./dyndns/
     container_name: dyndns
-    entrypoint: [ "cron", "-f" ]
+    entrypoint: [ "/entrypoint.sh" ]
     image: dyndns:local
     restart: unless-stopped

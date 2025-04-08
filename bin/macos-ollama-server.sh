@@ -4,8 +4,11 @@ set -eo pipefail
 export CADDY_OLLAMA_API_DOMAIN=$(op read op://Private/1pcli-caddyollama-api-domain/host)
 export CADDY_OLLAMA_API_USER1=$(op read op://Private/1pcli-caddyollama-api-user1/username)
 export CADDY_OLLAMA_API_TEMP_PASSWORD1=$(op read op://Private/1pcli-caddyollama-api-user1/password)
+
 export CADDY_OLLAMA_API_PUBKEY1=$(op read "op://Private/1pcli-caddyollama-api-pubkey1/public key")
 export CADDY_OLLAMA_API_PUBKEY2=$(op read "op://Private/1pcli-caddyollama-api-pubkey2/public key")
+
+# export CADDY_OLLAMA_API_CFTOKEN=$(op read "op://Private/1pcli-caddyollama-api-cftoken/token")
 
 if type docker-compose &>/dev/null ; then
   DOCKERCOMPOSE_BIN="docker-compose"
@@ -57,6 +60,7 @@ relaunch_ollama() {
           # rebuild final container image
           $DOCKERCOMPOSE_BIN build caddy
           $DOCKERCOMPOSE_BIN build ssh
+          $DOCKERCOMPOSE_BIN build dyndns
           # run container
           $DOCKERCOMPOSE_BIN down
           $DOCKERCOMPOSE_BIN up -d

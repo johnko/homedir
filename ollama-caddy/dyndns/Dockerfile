@@ -6,3 +6,7 @@ RUN apt update ;\
 COPY crontab /etc/crontab
 
 COPY entrypoint.sh /entrypoint.sh
+
+COPY update-dns.sh /update-dns.sh
+
+RUN chmod +x /entrypoint.sh /update-dns.sh
