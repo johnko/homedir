@@ -35,6 +35,17 @@ relaunch_ollama() {
   case $1 in
     logs)
       $DOCKER_BIN logs -f caddy 2>&1 | sed "s,^{,\n{,"
+      exit 0
+      ;;
+    pull)
+      CONTINUE_CONFIG="$HOME/.continue/config.json"
+      if type ollama &>/dev/null ; then
+        grep 'model"' $CONTINUE_CONFIG | awk '{print $2}' | sort -u | tr -d '"' | tr -d ',' | xargs -I{} bash -c "echo {}; ollama pull {}"
+        exit 0
+      else
+        echo "ERROR: missing 'ollama'"
+        exit 1
+      fi
       ;;
     public)
       set +e
