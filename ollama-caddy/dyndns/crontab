@@ -17,5 +17,5 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # |  |  |  |  |
 # *  *  *  *  * user-name command to be executed
 30 * * * * root /bin/bash /update-dns.sh &>>/var/log/my.log
-0 0 * * * root /bin/echo >/var/log/my.log
+0 0 * * * root /usr/bin/echo >/var/log/my.log
 #
