@@ -2,6 +2,9 @@
 set -eo pipefail
 
 export CADDY_OLLAMA_API_DOMAIN=$(op read op://Private/1pcli-caddyollama-api-domain/host)
+export CADDY_OLLAMA_API_ZONEID=$(op read op://Private/1pcli-caddyollama-api-domain/zoneid)
+export CADDY_OLLAMA_API_RECORDID=$(op read op://Private/1pcli-caddyollama-api-domain/recordid)
+
 export CADDY_OLLAMA_API_USER1=$(op read op://Private/1pcli-caddyollama-api-user1/username)
 export CADDY_OLLAMA_API_TEMP_PASSWORD1=$(op read op://Private/1pcli-caddyollama-api-user1/password)
 
@@ -56,6 +59,7 @@ relaunch_ollama() {
           # replace env vars and generate config files
           envsubst < ./Caddyfile.template > ./Caddyfile
           envsubst < ./ssh/authorized_keys.template > ./ssh/authorized_keys
+          envsubst < ./dyndns/update-dns.sh.template > ./dyndns/update-dns.sh
 
           # rebuild final container image
           $DOCKERCOMPOSE_BIN build caddy
