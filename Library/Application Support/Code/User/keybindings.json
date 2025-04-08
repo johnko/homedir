@@ -143,5 +143,10 @@
   {
     "key": "f16",
     "command": "workbench.action.terminal.newWithCwd"
+  },
+  {
+    "key": "cmd+l",
+    "command": "-expandLineSelection",
+    "when": "textInputFocus"
   }
 ]
