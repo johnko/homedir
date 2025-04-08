@@ -41,9 +41,9 @@
   "models": [
     {
       "apiBase": "http://127.0.0.1:11434",
-      "model": "qwen2.5-coder:32b-instruct",
+      "model": "qwen2.5-coder:32b-instruct-q4_K_M",
       "provider": "ollama",
-      "title": "qwen2.5-coder:32b-instruct",
+      "title": "qwen2.5-coder:32b-instruct-q4_K_M",
       "requestOptions": {
         "headers": { "Authorization": "Basic" }
       }
@@ -59,9 +59,9 @@
       "title": "codellama:13b-code autocomplete"
     },
     {
-      "model": "qwen2.5-coder:32b-instruct",
+      "model": "qwen2.5-coder:32b-instruct-q4_K_M",
       "provider": "ollama",
-      "title": "qwen2.5-coder:32b-instruct"
+      "title": "qwen2.5-coder:32b-instruct-q4_K_M"
     },
     {
       "model": "qwen2.5-coder:32b-base",
