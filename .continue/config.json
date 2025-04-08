@@ -69,11 +69,6 @@
       "title": "qwen2.5-coder:32b-base autocomplete"
     },
     {
-      "model": "starcoder2:15b-instruct-v0.1",
-      "provider": "ollama",
-      "title": "starcoder2:15b-instruct-v0.1"
-    },
-    {
       "model": "starcoder2:15b",
       "provider": "ollama",
       "title": "starcoder2:15b autocomplete"
