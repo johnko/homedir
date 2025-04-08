@@ -16,3 +16,10 @@ services:
     ports:
       - 2222:2222
     restart: unless-stopped
+
+  dyndns:
+    build: ./dyndns/
+    container_name: dyndns
+    entrypoint: [ "cron", "-f" ]
+    image: dyndns:local
+    restart: unless-stopped
