@@ -33,7 +33,7 @@
     "apiBase": "http://127.0.0.1:11434",
     "model": "nomic-embed-text:137m-v1.5-fp16",
     "provider": "ollama",
-    "title": "ai embed",
+    "title": "nomic-embed-text:137m-v1.5-fp16",
     "requestOptions": {
       "headers": { "Authorization": "Basic" }
     }
@@ -41,42 +41,42 @@
   "models": [
     {
       "apiBase": "http://127.0.0.1:11434",
-      "model": "qwen2.5-coder:32b-instruct-q8_0",
+      "model": "qwen2.5-coder:32b-instruct",
       "provider": "ollama",
-      "title": "ai",
+      "title": "qwen2.5-coder:32b-instruct",
       "requestOptions": {
         "headers": { "Authorization": "Basic" }
       }
     },
     {
-      "model": "codellama:13b-instruct-q8_0",
+      "model": "codellama:13b-instruct",
       "provider": "ollama",
-      "title": "codellama:13b-instruct-q8_0"
+      "title": "codellama:13b-instruct"
     },
     {
-      "model": "codellama:13b-code-q8_0",
+      "model": "codellama:13b-code",
       "provider": "ollama",
-      "title": "autocomplete codellama:13b-code-q8_0"
+      "title": "codellama:13b-code autocomplete"
     },
     {
-      "model": "qwen2.5-coder:32b-instruct-q8_0",
+      "model": "qwen2.5-coder:32b-instruct",
       "provider": "ollama",
-      "title": "qwen2.5-coder:32b-instruct-q8_0"
+      "title": "qwen2.5-coder:32b-instruct"
     },
     {
-      "model": "qwen2.5-coder:32b-base-q8_0",
+      "model": "qwen2.5-coder:32b-base",
       "provider": "ollama",
-      "title": "autocomplete qwen2.5-coder:32b-base-q8_0"
+      "title": "qwen2.5-coder:32b-base autocomplete"
     },
     {
-      "model": "starcoder2:15b-instruct-v0.1-q8_0",
+      "model": "starcoder2:15b-instruct-v0.1",
       "provider": "ollama",
-      "title": "starcoder2:15b-instruct-v0.1-q8_0"
+      "title": "starcoder2:15b-instruct-v0.1"
     },
     {
-      "model": "starcoder2:15b-q8_0",
+      "model": "starcoder2:15b",
       "provider": "ollama",
-      "title": "autocomplete starcoder2:15b-q8_0"
+      "title": "starcoder2:15b autocomplete"
     }
   ],
   "slashCommands": [
@@ -95,9 +95,9 @@
   ],
   "tabAutocompleteModel": {
     "apiBase": "http://127.0.0.1:11434",
-    "model": "qwen2.5-coder:32b-base-q8_0",
+    "model": "qwen2.5-coder:32b-base",
     "provider": "ollama",
-    "title": "ai autocomplete",
+    "title": "qwen2.5-coder:32b-base autocomplete",
     "requestOptions": {
       "headers": { "Authorization": "Basic" }
     }
