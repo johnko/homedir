@@ -24,6 +24,7 @@ ctrl + alt + cmd - w : yabai -m space --balance
 ctrl + alt + cmd - e : yabai -m window --toggle float --grid 12:12:3:3:6:6
 ctrl + alt + cmd - r : yabai -m space --rotate 270
 ctrl + alt + cmd - t : osascript ~/shortcuts/open-terminal.scpt
+f15 : osascript ~/shortcuts/open-terminal.scpt
 
 # float middle left quarter
 ctrl + alt + cmd - a : yabai -m window --toggle float --grid 12:12:0:4:6:6
@@ -45,6 +46,5 @@ ctrl + alt + cmd - b : open -a "Brave Browser"
 
 
 ctrl + alt + cmd - space : osascript ~/shortcuts/hide-current-window.scpt
-f15 : osascript ~/shortcuts/hide-current-window.scpt
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
