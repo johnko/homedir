@@ -21,7 +21,7 @@ end tell
 set actionTaken to ""
 if frontAppName is appNameToToggle then
 	tell application "System Events"
-		set visible of application process frontAppName to false
+		set visible of application process appNameToToggle to false
 	end tell
 	set actionTaken to "hidden: " & frontAppName
 else

@@ -1,6 +1,9 @@
 -- https://gist.github.com/timpulver/4753750
 
+set appNameToToggle to "Code"
+
 global frontApp, frontAppName, windowTitle
+
 set windowTitle to ""
 tell application "System Events"
 	set frontApp to first application process whose frontmost is true
@@ -18,15 +21,15 @@ end tell
 set actionTaken to ""
 if frontAppName is "Electron" then
 	tell application "System Events"
-		set visible of application process "Code" to false
+		set visible of application process appNameToToggle to false
 	end tell
 	set actionTaken to "hidden: " & frontAppName
 else
-	tell application "Visual Studio Code"
+	tell application appNameToToggle
 		activate
 	end tell
 	tell application "System Events"
-		set visible of application process "Code" to true
+		set visible of application process appNameToToggle to true
 		set frontApp to first application process whose frontmost is true
 		set frontAppName to name of frontApp
 		tell process frontAppName
@@ -40,4 +43,5 @@ else
 	end tell
 	set actionTaken to "visible: " & frontAppName
 end if
+
 return actionTaken
