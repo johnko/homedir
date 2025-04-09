@@ -23,8 +23,8 @@ ctrl + alt + cmd - w : yabai -m space --balance
 # float middle center quarter
 ctrl + alt + cmd - e : yabai -m window --toggle float --grid 12:12:3:3:6:6
 ctrl + alt + cmd - r : yabai -m space --rotate 270
-ctrl + alt + cmd - t : osascript ~/shortcuts/open-terminal.scpt
-f15 : osascript ~/shortcuts/open-terminal.scpt
+ctrl + alt + cmd - t : osascript ~/shortcuts/toggle-terminal.scpt
+f15 : osascript ~/shortcuts/toggle-terminal.scpt
 
 # float middle left quarter
 ctrl + alt + cmd - a : yabai -m window --toggle float --grid 12:12:0:4:6:6
