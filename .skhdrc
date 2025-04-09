@@ -33,7 +33,7 @@ ctrl + alt + cmd - s : yabai -m window --toggle float --grid 1:8:2:0:4:1
 # float wide 8/12 of screen for Terminal
 ctrl + alt + cmd - d : yabai -m window --toggle float --grid 12:12:2:1:8:10
 ctrl + alt + cmd - f : osascript ~/shortcuts/toggle-firefox.scpt
-ctrl + alt + cmd - g : open -a "Google Chrome"
+ctrl + alt + cmd - g : osascript ~/shortcuts/toggle-googlechrome.scpt
 
 
 # float tall wide 10/12 of screen for focus
