@@ -1,5 +1,5 @@
 shift + ctrl + alt + cmd - q : yabai --restart-service
-shift + ctrl + alt + cmd - a : osascript ~/shortcuts/sound-reset-left-right-balance.scpt
+shift + ctrl + alt + cmd - a : osascript ~/.osascripts/sound-reset-left-right-balance.scpt
 shift + ctrl + alt + cmd - r : bash ~/bin/yabai_cycle_clockwise.sh
 
 
@@ -23,8 +23,8 @@ ctrl + alt + cmd - w : yabai -m space --balance
 # float middle center quarter
 ctrl + alt + cmd - e : yabai -m window --toggle float --grid 12:12:3:3:6:6
 ctrl + alt + cmd - r : yabai -m space --rotate 270
-ctrl + alt + cmd - t : osascript ~/shortcuts/toggle-terminal.scpt
-f15 : osascript ~/shortcuts/toggle-terminal.scpt
+ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
+f15 : osascript ~/.osascripts/toggle-terminal.scpt
 
 # float middle left quarter
 ctrl + alt + cmd - a : yabai -m window --toggle float --grid 12:12:0:4:6:6
@@ -32,8 +32,8 @@ ctrl + alt + cmd - a : yabai -m window --toggle float --grid 12:12:0:4:6:6
 ctrl + alt + cmd - s : yabai -m window --toggle float --grid 1:8:2:0:4:1
 # float wide 8/12 of screen for Terminal
 ctrl + alt + cmd - d : yabai -m window --toggle float --grid 12:12:2:1:8:10
-ctrl + alt + cmd - f : osascript ~/shortcuts/toggle-firefox.scpt
-ctrl + alt + cmd - g : osascript ~/shortcuts/toggle-googlechrome.scpt
+ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
+ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 
 
 # float tall wide 10/12 of screen for focus
@@ -41,10 +41,10 @@ ctrl + alt + cmd - z : yabai -m window --toggle float --grid 12:12:1:2:10:10
 # float tall wide 18/24 of screen for video
 ctrl + alt + cmd - x : yabai -m window --toggle float --grid 24:24:3:3:18:18
 ctrl + alt + cmd - c : open -a "Slack"
-ctrl + alt + cmd - v : osascript ~/shortcuts/toggle-vscode.scpt
+ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 ctrl + alt + cmd - b : open -a "Brave Browser"
 
 
-ctrl + alt + cmd - space : osascript ~/shortcuts/hide-current-window.scpt
+ctrl + alt + cmd - space : osascript ~/.osascripts/hide-current-window.scpt
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
