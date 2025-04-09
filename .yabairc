@@ -8,8 +8,6 @@ yabai -m config layout bsp
 yabai -m rule --add app="^(Google Chrome)$" manage=off grid=1:12:3:0:6:1
 # tall
 yabai -m rule --add app="^(Clock|System Preferences|System Settings)$" manage=off grid=24:24:5:1:14:22
-# tall wide 16/24 of screen for Terminal
-yabai -m rule --add app="^(Terminal)$" manage=off grid=24:24:4:2:16:20
 # tall wide 18/24 of screen for editing
 yabai -m rule --add app="^(Books|GarageBand|GIMP|iMovie|Photos)$" manage=off grid=24:24:3:3:18:18
 # tall wide 20/24 of screen for focus
@@ -23,6 +21,8 @@ yabai -m rule --add app="^(1Password|FaceTime|Finder|Photo Booth|QuickTime.*|Tex
 yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice Memos)$" manage=off grid=12:12:3:6:6:6
 # bottom center 2/3
 yabai -m rule --add app="^(Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather)$" manage=off grid=12:12:3:4:6:8
+# bottom half wide for Terminal
+yabai -m rule --add app="^(Terminal)$" manage=off grid=24:24:0:9:24:15
 
 # left 2/3
 yabai -m rule --add app="^(Brave Browser|UTM)$" manage=off grid=12:12:0:4:6:8
