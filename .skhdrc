@@ -40,7 +40,7 @@ ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 ctrl + alt + cmd - z : yabai -m window --toggle float --grid 12:12:1:2:10:10
 # float tall wide 18/24 of screen for video
 ctrl + alt + cmd - x : yabai -m window --toggle float --grid 24:24:3:3:18:18
-ctrl + alt + cmd - c : open -a "Slack"
+ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
 ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 ctrl + alt + cmd - b : open -a "Brave Browser"
 
