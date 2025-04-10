@@ -11,7 +11,7 @@ yabai -m rule --add app="^(Clock|System Preferences|System Settings)$" manage=of
 # tall wide 18/24 of screen for editing
 yabai -m rule --add app="^(Books|GarageBand|GIMP|iMovie|Photos)$" manage=off grid=24:24:3:3:18:18
 # tall wide 20/24 of screen for focus
-yabai -m rule --add app="^(Code)$" manage=off grid=24:24:2:4:20:20
+yabai -m rule --add app="^(Code)$" manage=off grid=24:48:5:4:34:20
 # tall wide 22/24 of screen for video
 yabai -m rule --add app="^(Crunchyroll.*|Netflix|TV)$" manage=off grid=24:24:1:5:22:19
 
