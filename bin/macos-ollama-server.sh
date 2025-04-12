@@ -50,7 +50,8 @@ relaunch_ollama() {
     public)
       set +e
       set -u
-      export OLLAMA_HOST=`get-ip | tail -n1`:11434
+      export OLLAMA_HOST=0.0.0.0:11434
+      export OLLAMA_HOST_LAN=`get-ip | tail -n1`:11434
 
       # run caddy container so we can have some kind of authentication
       export CADDY_COMPOSE_FOLDER="$(dirname $0)/../ollama-caddy"

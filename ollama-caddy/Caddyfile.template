@@ -41,7 +41,7 @@
         $CADDY_OLLAMA_API_USER3 $CADDY_OLLAMA_API_PASSWORD3
         $CADDY_OLLAMA_API_USER4 $CADDY_OLLAMA_API_PASSWORD4
       }
-      reverse_proxy $OLLAMA_HOST
+      reverse_proxy $OLLAMA_HOST_LAN
     }
   }
 
