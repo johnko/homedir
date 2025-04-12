@@ -225,7 +225,7 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     "enabled":1,
     "value":{
       "parameters":[
-      65535,
+        65535,
         124,
         8650752
       ],
@@ -324,7 +324,7 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     "enabled":1,
     "value":{
       "parameters":[
-      56,
+        56,
         28,
         1835008
       ],
@@ -365,14 +365,13 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     }
   },
   "164":{
-    "enabled":0,
+    "enabled":1,
     "value":{
       "parameters":[
-        65535,
-        65535,
-        0
+        262144,
+        18446744073709289471
       ],
-      "type":"standard"
+      "type":"modifier"
     }
   },
   "175":{
