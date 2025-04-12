@@ -30,6 +30,9 @@ if [ -e /Users ]; then
     # Usage: ppgrep bash
     pgrep "$@" | xargs ps
   }
+  dff() {
+    df -h | grep -v -E '(devfs|auto_home)' | tr -d '%' | sort -r -k5 | awk '$5 > 24 {print $1,$5"%","=",$3,"/",$2,$9,$4}' | column -t
+  }
 else
   # Add an "alert" alias for long running commands.  Use like so:
   #   sleep 10; alert
