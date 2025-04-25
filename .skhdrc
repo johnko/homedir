@@ -5,17 +5,19 @@ shift + ctrl + alt + cmd - r : bash ~/bin/yabai_cycle_clockwise.sh
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 # float top left
-shift + ctrl + alt + cmd - w : yabai -m window --toggle float --grid 2:2:0:0:1:1
+shift + ctrl + alt + cmd - w : yabai -m window --grid 2:2:0:0:1:1
 # float top right
-shift + ctrl + alt + cmd - e : yabai -m window --toggle float --grid 2:2:1:0:1:1
+shift + ctrl + alt + cmd - e : yabai -m window --grid 2:2:1:0:1:1
 # float left
-shift + ctrl + alt + cmd - s : yabai -m window --toggle float --grid 12:12:0:0:6:12
+shift + ctrl + alt + cmd - s : yabai -m window --grid 12:12:0:0:6:12
 # float right
-shift + ctrl + alt + cmd - d : yabai -m window --toggle float --grid 1:12:6:0:6:1
+shift + ctrl + alt + cmd - d : yabai -m window --grid 1:12:6:0:6:1
+# float tall wide 10/12 of screen for focus
+shift + ctrl + alt + cmd - z : yabai -m window --toggle float --grid 12:12:1:2:10:10
 # float bottom left
-shift + ctrl + alt + cmd - z : yabai -m window --toggle float --grid 2:2:0:1:1:1
+shift + ctrl + alt + cmd - x : yabai -m window --grid 2:2:0:1:1:1
 # float bottom right
-shift + ctrl + alt + cmd - x : yabai -m window --toggle float --grid 2:2:1:1:1:1
+shift + ctrl + alt + cmd - c : yabai -m window --grid 2:2:1:1:1:1
 
 
 ctrl + alt + cmd - q : skhd --restart-service
@@ -35,16 +37,19 @@ ctrl + alt + cmd - d : yabai -m window --toggle float --grid 12:12:2:1:8:10
 ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
 ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 
-
-# float tall wide 10/12 of screen for focus
-ctrl + alt + cmd - z : yabai -m window --toggle float --grid 12:12:1:2:10:10
+# almost fullscreen
+ctrl + alt + cmd - z : yabai -m window --grid 400:400:1:1:398:398
 # float tall wide 18/24 of screen for video
 ctrl + alt + cmd - x : yabai -m window --toggle float --grid 24:24:3:3:18:18
 ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
 ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
 
-
 ctrl + alt + cmd - space : osascript ~/.osascripts/hide-current-window.scpt
+
+ctrl + alt + cmd - up : yabai -m window --grid 12:12:0:0:12:6
+ctrl + alt + cmd - down : yabai -m window --grid 12:12:0:6:12:6
+ctrl + alt + cmd - left : yabai -m window --grid 12:12:0:0:6:12
+ctrl + alt + cmd - right : yabai -m window --grid 1:12:6:0:6:1
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
