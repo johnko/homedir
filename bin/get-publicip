@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if type curl &>/dev/null ; then
+  curl --silent --location https://checkip.amazonaws.com
+elif type wget &>/dev/null ; then
+  wget --quiet -O - https://checkip.amazonaws.com
+fi
