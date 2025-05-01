@@ -8,8 +8,8 @@ yabai -m config layout bsp
 yabai -m rule --add app="^(Google Chrome)$" manage=off grid=1:4:1:0:2:1
 # float tall
 yabai -m rule --add app="^(Clock|System Preferences|System Settings)$" manage=off grid=24:24:5:1:14:22
-# float tall wide 18/24 of screen for editing
-yabai -m rule --add app="^(Books|GarageBand|GIMP|iMovie|Photos)$" manage=off grid=24:24:3:3:18:18
+# float tall wide 16/24 of screen for editing
+yabai -m rule --add app="^(Books|GarageBand|GIMP|iMovie|Photos)$" manage=off grid=24:24:4:2:16:20
 # float tall wide 20/24 of screen for focus
 yabai -m rule --add app="^(Code)$" manage=off grid=24:48:5:4:34:20
 # float tall wide 22/24 of screen for video
@@ -40,8 +40,9 @@ yabai -m rule --add app="^(LuLu)$" manage=off grid=2:2:1:0:1:1
 # bottom right quarter screen for audio media
 yabai -m rule --add app="^(Firefox|Music|Netiquette|Podcasts|Spotify)$" manage=off grid=2:2:1:1:1:1
 
-# for vertical screen
+# float 1/3 tall vertical screen
 yabai -m rule --add app="^(Gmail|Google Calendar|Notes)$" manage=off grid=3:1:0:0:1:1
+# float 2/3 tall vertical screen
 yabai -m rule --add app="^(Slack)$" manage=off grid=3:1:0:1:1:2
 
 # float some non-resizable apps
