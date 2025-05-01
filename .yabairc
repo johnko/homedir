@@ -21,8 +21,6 @@ yabai -m rule --add app="^(1Password|FaceTime|Finder|Photo Booth|QuickTime.*|Tex
 yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice Memos)$" manage=off grid=4:4:1:2:2:2
 # float bottom center 2/3
 yabai -m rule --add app="^(Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather)$" manage=off grid=12:12:3:4:6:8
-# float bottom half wide for Terminal
-yabai -m rule --add app="^(Terminal)$" manage=off # grid=24:24:0:9:24:15
 
 # left 2/3
 yabai -m rule --add app="^(Brave Browser|UTM)$" manage=off grid=6:6:0:2:3:4
@@ -47,7 +45,7 @@ yabai -m rule --add app="^(Gmail|Google Calendar|Notes)$" manage=off grid=3:1:0:
 yabai -m rule --add app="^(Slack)$" manage=off grid=3:1:0:1:1:2
 
 # float some non-resizable apps
-yabai -m rule --add app="^(Archive Utility|Calculator)$" manage=off
+yabai -m rule --add app="^(Archive Utility|Calculator|Terminal)$" manage=off
 
 # apply rules on restart
 yabai -m rule --apply
