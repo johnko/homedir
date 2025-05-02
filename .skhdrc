@@ -53,8 +53,8 @@ ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
 
 ctrl + alt + cmd - up : yabai -m window --grid 2:1:0:0:1:1
 ctrl + alt + cmd - down : yabai -m window --grid 2:1:0:1:1:1
-ctrl + alt + cmd - left : yabai -m window --grid 1:2:0:0:1:1
-ctrl + alt + cmd - right : yabai -m window --grid 1:2:1:0:1:1
+ctrl + alt + cmd - left : yabai -m window --grid 3:1:0:0:1:1
+ctrl + alt + cmd - right : yabai -m window --grid 3:1:0:1:1:2
 
 ctrl + alt + cmd - space : osascript ~/.osascripts/hide-current-window.scpt
 
