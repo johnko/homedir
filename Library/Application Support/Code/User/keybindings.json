@@ -141,12 +141,18 @@
     "key": "ctrl+9"
   },
   {
-    "key": "f16",
-    "command": "workbench.action.terminal.newWithCwd"
-  },
-  {
     "key": "cmd+l",
     "command": "-expandLineSelection",
     "when": "textInputFocus"
+  },
+  {
+    "key": "f16",
+    "command": "workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
   }
 ]
