@@ -368,10 +368,11 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     "enabled":1,
     "value":{
       "parameters":[
-        262144,
-        18446744073709289471
+        32,
+        49,
+        1966080
       ],
-      "type":"modifier"
+      "type":"standard"
     }
   },
   "175":{
