@@ -11,7 +11,7 @@ yabai -m rule --add app="^(Clock|System Preferences|System Settings)$" manage=of
 # float tall wide 16/24 of screen for editing
 yabai -m rule --add app="^(Books|GarageBand|GIMP|iMovie|Photos)$" manage=off grid=24:24:4:2:16:20
 # float tall wide 18/24 of screen for focus
-yabai -m rule --add app="^(Code)$" manage=off grid=24:24:3:3:18:21
+yabai -m rule --add app="^(Code|Xcode)$" manage=off grid=24:24:3:3:18:21
 # float tall wide 20/24 of screen for video
 yabai -m rule --add app="^(Crunchyroll.*|Netflix|TV)$" manage=off grid=24:24:2:4:20:19
 
@@ -25,7 +25,7 @@ yabai -m rule --add app="^(Calendar|Disk Utility|Find My|Home|Maps|News|Shortcut
 # left 2/3
 yabai -m rule --add app="^(Brave Browser|UTM)$" manage=off grid=6:6:0:2:3:4
 # right 2/3
-yabai -m rule --add app="^(Podman.*|Reminders)$" manage=off grid=6:6:3:2:3:4
+yabai -m rule --add app="^(Docker.*|Podman.*|Reminders)$" manage=off grid=6:6:3:2:3:4
 # right half tall
 yabai -m rule --add app="^(Console|GitHub|Google Drive|Preview|Safari)$" manage=off grid=1:12:6:0:6:1
 
