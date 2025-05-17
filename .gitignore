@@ -1,12 +1,5 @@
-*.key
-*.pem
-*.pfx
 .*_history
 .*secret*
-.CFUserTextEncoding
-.DS_Store
-.Trash/
-.Xauthority*
 .account
 .android/
 .ansible_galaxy
@@ -16,6 +9,7 @@
 .bash_sessions/
 .bundle/cache/
 .cache/
+.CFUserTextEncoding
 .cisco/
 .cocoapods/repos/
 .config/configstore/
@@ -39,6 +33,7 @@
 .docker/devenvironments
 .docker/run/
 .docker/scan/
+.DS_Store
 .emulator_console_auth_token
 .fastlane/.did_show_opt_info
 .gem/ruby/
@@ -79,14 +74,15 @@
 .ssh/
 .ssh/id_*
 .ssh/known_hosts*
-.subversion/README.txt
 .subversion/auth/
 .subversion/config
+.subversion/README.txt
 .subversion/servers
 .sudo_as_admin_successful
 .swiftpm/
 .terraform.d/
 .tflint.d/
+.Trash/
 .vagrant.d/boxes/
 .vagrant.d/data/
 .vagrant.d/gems/
@@ -101,21 +97,25 @@
 .vscode/settings.json
 .webex/
 .wget-hsts
+.Xauthority*
 .zcompcache
 .zcompdump
 .zcompdump-*
 .zoomus/
 .zsh_sessions/
-Brewfile.lock.json
-Docs Authoring/
-Google*Drive/
-VirtualBox VMs/
+*.key
+*.pem
+*.pfx
 bin/skhd
 bin/utmctl
 bin/yabai
+Brewfile.lock.json
+Docs Authoring/
+Google*Drive/
 iso/*.iso
 iso/*/*.gpg
 iso/*/*.iso
 kubeconfig/
 tmptmp/
 venv*/
+VirtualBox VMs/
