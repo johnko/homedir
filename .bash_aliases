@@ -33,6 +33,19 @@ if [ -e /Users ]; then
   dff() {
     df -h | grep -v -E '(devfs|auto_home)' | tr -d '%' | sort -r -k5 | awk '$5 > 24 {print $1,$5"%","=",$3,"/",$2,$9,$4}' | column -t
   }
+  brew-prune() {
+    if [ -e Brewfile ]; then
+      for i in $(
+           brew list | \
+           grep -v -E "1password|docker|mise|terraform|"$(
+             cat Brewfile | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
+           )
+       ); do
+         brew uninstall $i
+       done
+       brew bundle
+    fi
+  }
 else
   # Add an "alert" alias for long running commands.  Use like so:
   #   sleep 10; alert
@@ -296,13 +309,6 @@ kubectlnodeupgraderollstrategy() {
 }
 kubectlnodezone() {
   kubectl get node -o yaml | grep -E '^    name:|topology.kubernetes.io/zone:|labels:|^  metadata:'
-}
-
-brew-prune() {
-  if [ -e Brewfile ]; then
-    for i in $(brew list | grep -v -E $(cat Brewfile | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,')) ; do brew uninstall $i ; done
-    brew bundle
-  fi
 }
 
 gg() {
