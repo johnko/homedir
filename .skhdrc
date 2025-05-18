@@ -57,6 +57,7 @@ ctrl + alt + cmd - left : yabai -m window --grid 3:1:0:0:1:1
 ctrl + alt + cmd - right : yabai -m window --grid 3:1:0:1:1:2
 
 ctrl + alt + cmd - space : osascript ~/.osascripts/hide-current-window.scpt
+ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 60:60:1:1:58:58
 
 f13 : yabai -m window --toggle float --grid 60:60:1:1:58:58
 f14 : yabai -m window --grid 24:24:3:3:18:21
