@@ -24,7 +24,6 @@ test-secrets-template.yaml
 NOEXISTSEPERATOR
 .Brewfile
 .gitconfig
-.gitignore
 config
 config.json
 known_hosts
