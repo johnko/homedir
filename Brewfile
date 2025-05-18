@@ -43,6 +43,8 @@ cask "kui"
 
 # Dev
 cask "visual-studio-code"
+tap "wix/brew"
+brew "wix/brew/applesimutils"
 brew "mise"
 brew "openjdk"
 brew "watchman"

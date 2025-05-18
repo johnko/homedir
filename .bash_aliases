@@ -37,7 +37,7 @@ if [ -e /Users ]; then
     if [ -e Brewfile ]; then
       for i in $(
            brew list | \
-           grep -v -E "1password|docker|mise|terraform|"$(
+           grep -v -E "1password|applesimutils|docker|terraform|"$(
              cat Brewfile .Brewfile | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
            )
        ); do
