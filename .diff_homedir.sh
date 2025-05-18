@@ -2,6 +2,8 @@
 set -e
 
 EXCLUDE_PATHS="
+.aws
+.devops-tools
 .DS_Store
 .git
 .gitmodules
@@ -19,13 +21,12 @@ Preferences
 squid
 squid-demo-client
 test-secrets-template.yaml
-.aws
-.devops-tools
 NOEXISTSEPERATOR
 .gitconfig
+.gitignore
 config
-known_hosts
 config.json
+known_hosts
 "
 
 EXCLUDE_ARG=""
