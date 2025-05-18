@@ -2,7 +2,6 @@
 
 # macOS Apps
 brew "mas"
-cask "1password"
 # cask "cloudflare-warp"
 cask "discord"
 cask "gimp"
@@ -119,3 +118,5 @@ vscode "redhat.vscode-yaml"
 cask "utm" if Hardware::CPU.intel?
 # cask "multipass" if Hardware::CPU.intel?
 # cask "virtualbox" if Hardware::CPU.intel?
+
+instance_eval(File.read(".Brewfile"))

@@ -38,7 +38,7 @@ if [ -e /Users ]; then
       for i in $(
            brew list | \
            grep -v -E "1password|docker|mise|terraform|"$(
-             cat Brewfile | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
+             cat Brewfile .Brewfile | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
            )
        ); do
          brew uninstall $i
