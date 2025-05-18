@@ -21,3 +21,13 @@ mas "LINE", id: 539883307
 # brew "rbenv"
 # brew "ruby-build"
 # brew "sqlfluff"
+
+# VS Code extensions
+# vscode "mongodb.mongodb-vscode"
+
+# Keyboard / QMK / VIA
+# cask "via"
+
+# Lab / Virtualization
+# cask "multipass" if Hardware::CPU.intel?
+# cask "virtualbox" if Hardware::CPU.intel?

@@ -72,7 +72,6 @@ vscode "hashicorp.hcl"
 vscode "hashicorp.sentinel"
 vscode "hashicorp.terraform"
 vscode "ibm.output-colorizer"
-# vscode "mongodb.mongodb-vscode"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-kubernetes-tools.kind-vscode"
 vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
@@ -96,12 +95,7 @@ vscode "redhat.ansible"
 vscode "redhat.vscode-xml"
 vscode "redhat.vscode-yaml"
 
-# Keyboard / QMK / VIA
-# cask "via"
-
 # Lab / Virtualization
 cask "utm" if Hardware::CPU.intel?
-# cask "multipass" if Hardware::CPU.intel?
-# cask "virtualbox" if Hardware::CPU.intel?
 
 instance_eval(File.read(".Brewfile"))

@@ -27,7 +27,7 @@ NOEXISTSEPERATOR
 config
 config.json
 known_hosts
-.Brewfile.custom
+.Brewfile
 "
 
 EXCLUDE_ARG=""
