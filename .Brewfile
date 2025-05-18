@@ -23,6 +23,7 @@ mas "LINE", id: 539883307
 # brew "sqlfluff"
 
 # VS Code extensions
+# vscode "linhmtran168.mac-ca-vscode"
 # vscode "mongodb.mongodb-vscode"
 
 # Keyboard / QMK / VIA
