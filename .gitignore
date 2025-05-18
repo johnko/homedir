@@ -26,6 +26,7 @@
 .docker/*
 .DS_Store
 .emulator_console_auth_token
+.expo/*
 .fastlane/.did_show_opt_info
 .gem/*
 .gk
@@ -69,6 +70,7 @@
 .webex/*
 .wget-hsts
 .Xauthority*
+.yarnrc
 .zcompcache
 .zcompdump
 .zcompdump-*
