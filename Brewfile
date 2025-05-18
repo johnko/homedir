@@ -2,17 +2,11 @@
 
 # macOS Apps
 brew "mas"
-# cask "cloudflare-warp"
-cask "discord"
 cask "gimp"
-cask "lulu"
 cask "rectangle"
-cask "signal"
 mas "Keynote", id: 409183694
-mas "LINE", id: 539883307
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-# mas "Slack", id: 803453959
 
 # Web Browsers
 cask "brave-browser"
@@ -28,15 +22,11 @@ brew "tflint"
 cask "sentinel"
 
 # Shell / CLI Tools
-# brew "direnv"
 brew "fx"
-# brew "gh"
 brew "gnupg"
 brew "jless"
 brew "jq"
 brew "tmux"
-# brew "wget"
-# brew "xz"
 brew "ykman"
 brew "yq"
 cask "1password-cli"
@@ -53,13 +43,8 @@ cask "kui"
 
 # Dev
 cask "visual-studio-code"
-# brew "go"
-# brew "nvm"
 brew "mise"
 brew "openjdk"
-# brew "rbenv"
-# brew "ruby-build"
-# brew "sqlfluff"
 brew "watchman"
 cask "android-studio"
 cask "android-commandlinetools"
