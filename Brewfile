@@ -57,10 +57,15 @@ cask "visual-studio-code"
 # brew "go"
 # brew "nvm"
 brew "mise"
+brew "openjdk"
 # brew "rbenv"
 # brew "ruby-build"
 # brew "sqlfluff"
-# brew "watchman"
+brew "watchman"
+cask "android-studio"
+cask "android-commandlinetools"
+cask "android-platform-tools"
+mas "Xcode", id: 497799835
 
 # AI
 cask "ollama"
@@ -114,8 +119,3 @@ vscode "redhat.vscode-yaml"
 cask "utm" if Hardware::CPU.intel?
 # cask "multipass" if Hardware::CPU.intel?
 # cask "virtualbox" if Hardware::CPU.intel?
-brew "openjdk"
-cask "android-studio"
-cask "android-commandlinetools"
-cask "android-platform-tools"
-mas "Xcode", id: 497799835
