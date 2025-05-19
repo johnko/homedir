@@ -1,18 +1,15 @@
-alias g="git --no-pager"
-alias gs="git s"
-alias gd="git d"
+#!/usr/bin/env bash
+
 alias history='history -i'
-alias k=kubectl
-alias kk="kubectl -n kube-system"
-alias ka="kubectl -o wide"
-alias tf=terraform
+alias tf="terraform"
 alias yless="jless --yaml"
+
+########################################
 
 if [ -x /usr/bin/dircolors -o -e /Users ]; then
   if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
   fi
-  alias ls='ls --color=auto'
   #alias dir='dir --color=auto'
   #alias vdir='vdir --color=auto'
 
@@ -21,18 +18,16 @@ if [ -x /usr/bin/dircolors -o -e /Users ]; then
   alias egrep='egrep --color=auto'
 fi
 
-# MacOs aliases
+########################################
+# macOS aliases
 if [ -e /Users ]; then
-  alias ls="ls -1G"
+  alias cdoe="code"
   alias free="top -l 1 -s 0 | grep PhysMem | sed 's, (.*),,'"
   alias iftop="sudo /usr/local/sbin/iftop -nBP"
-  ppgrep() {
-    # Usage: ppgrep bash
-    pgrep "$@" | xargs ps
-  }
-  dff() {
-    df -h | grep -v -E '(devfs|auto_home)' | tr -d '%' | sort -r -k5 | awk '$5 > 24 {print $1,$5"%","=",$3,"/",$2,$9,$4}' | column -t
-  }
+  alias ls="ls -1G"
+
+  ########################################
+  # macOS functions
   brew-prune() {
     if [ -e Brewfile ]; then
       for i in $(
@@ -46,26 +41,34 @@ if [ -e /Users ]; then
        brew bundle
     fi
   }
+  dff() {
+    df -h | grep -v -E '(devfs|auto_home)' | tr -d '%' | sort -r -k5 | awk '$5 > 24 {print $1,$5"%","=",$3,"/",$2,$9,$4}' | column -t
+  }
+  ppgrep() {
+    # Usage: ppgrep bash
+    pgrep "$@" | xargs ps
+  }
 else
+########################################
+# Linux aliases
   # Add an "alert" alias for long running commands.  Use like so:
   #   sleep 10; alert
   alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-  alias rehash='hash -r'
-  alias iftop="sudo /usr/sbin/iftop -nBP"
   alias dd="sudo /bin/dd status=progress"
+  alias iftop="sudo /usr/sbin/iftop -nBP"
+  alias ls='ls --color=auto'
+  alias rehash='hash -r'
+  alias zio="sudo zpool iostat"
   alias zl="sudo zfs list -oname,lused,usedds,usedchild,usedsnap,used,avail,refer,mountpoint,mounted,canmount"
   alias zll="sudo zfs list -oname,dedup,compress,compressratio,checksum,sync,quota,copies,atime,devices,exec,rdonly,setuid,xattr,acltype,aclinherit"
   alias zls="sudo zfs list -t snap -oname,used,avail,refer"
   alias zpl="sudo zpool list -oname,size,alloc,free,cap,dedup,health,frag,ashift,freeing,expandsz,expand,replace,readonly,altroot"
   alias zs="sudo zpool status"
-  alias zio="sudo zpool iostat"
-  whatismydhcpserver() {
-    for i in $(ps aux | grep -o '[/]var/lib/NetworkManager/\S*.lease') \
-      $(ps aux | grep -o '[/]var/lib/dhcp/dhclient\S*.leases'); do
-      [ -f "${i}" ] && grep "dhcp-server-identifier" "${i}"
-    done
-  }
+
+
+  ########################################
+  # Linux functions
   copypubkey2clipboard() {
     for i in ~/.ssh/id_*.pub; do
       [ -e "${i}" ] && cat "${i}" | xsel --clipboard
@@ -75,17 +78,31 @@ else
     # Usage: ppgrep bash
     pgrep "$@" | xargs --no-run-if-empty ps fp
   }
+  whatismydhcpserver() {
+    for i in $(ps aux | grep -o '[/]var/lib/NetworkManager/\S*.lease') \
+      $(ps aux | grep -o '[/]var/lib/dhcp/dhclient\S*.leases'); do
+      [ -f "${i}" ] && grep "dhcp-server-identifier" "${i}"
+    done
+  }
 fi
 
+########################################
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
 alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
 
+########################################
+# rsync aliases
 alias rsynca="rsync -viaP --exclude-from=${HOME}/.rsync_exclude"
 alias rsyncc="rsync -virchlmP --exclude-from=${HOME}/.rsync_exclude"
 alias rsynct="rsync -virthlmP --exclude-from=${HOME}/.rsync_exclude"
 
+########################################
+# git aliases
+alias g="git --no-pager"
+alias gd="git d"
+alias gs="git s"
 if type git &>/dev/null ; then
   # Use Git’s colored diff when available
   difff() {
@@ -99,19 +116,19 @@ if type git &>/dev/null ; then
   }
 fi
 
-t() {
-  tmux attach || tmux
-}
+########################################
 
+aws-ssm() {
+  ec2name="$1"
+  aws ssm start-session --target $(aws ec2 describe-instances --filters '[{"Name":"tag:Name","Values":["'$ec2name'"]},{"Name":"instance-state-name","Values":["running"]}]' --query "Reservations[0].Instances[0].InstanceId" --output text)
+}
 fetch_cert() {
   echo | openssl s_client -servername $1 -connect $1:443 2>/dev/null | openssl x509 -text
 }
-
 firstlastline() {
   head -n1 "${1}"
   tail -n1 "${1}"
 }
-
 # Usage: json '{"foo":42}' or echo '{"foo":42}' | json
 # Syntax-highlight JSON strings or files
 json() {
@@ -123,7 +140,12 @@ json() {
     python3 -m json.tool | pygmentize -l javascript
   fi
 }
+t() {
+  tmux attach || tmux
+}
 
+########################################
+# docker aliases
 if type docker &>/dev/null ; then
   unalias docker >/dev/null 2>&1
 else
@@ -178,138 +200,7 @@ d-vol() {
   docker volume "${@}"
 }
 
-alias v=vagrant
-v-exec() {
-  vagrant ssh -c "${@}"
-}
-v-img() {
-  vagrant box list "${@}"
-}
-v-gc() {
-  vagrant destroy -f "${@}"
-}
-v-psa() {
-  vagrant status "${@}"
-}
-v-ssh() {
-  vagrant ssh "${@}"
-}
-
-repos-gitbranches() {
-  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
-      pushd "${i}" >/dev/null
-      local branch=$(git branch --show-current)
-      echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch}${__RESET}"
-      popd >/dev/null
-    fi
-  done
-}
-repos-fetchorigin() {
-  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
-      pushd "${i}" >/dev/null
-      local branch=$(git branch --show-current)
-      local remoteorigin=$(git remote | grep origin | head -n1)
-      local remotebranch=$(git branch -va | grep "remotes/${remoteorigin}/HEAD" | awk '{print $NF}' | sed "s;${remoteorigin}/;;")
-      if [ -z "${remoteorigin}" ]; then
-        echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__RED}* No remotes.${__RESET}"
-      else
-        local cmdfetch="git fetch ${remoteorigin} ${remotebranch}"
-        echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__GREEN}* Running: ${__PURPLE}${cmdfetch}${__RESET}"
-        eval ${cmdfetch} 2>&1 | awk "{print \"        \"\$0}"
-        if [ "${remotebranch}" = "${branch}" ]; then
-          local cmdmerge="git merge --ff-only ${remoteorigin}/${remotebranch}"
-          echo "    ${__GREEN}* Running: ${__PURPLE}${cmdmerge}${__RESET}"
-          eval ${cmdmerge} 2>&1 | awk "{print \"        \"\$0}"
-        fi
-      fi
-      popd >/dev/null
-    fi
-  done
-}
-repos-updatemaster() {
-  TMP_BRANCH=tmp/tmp$(date +%s)
-  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
-      pushd "${i}" >/dev/null
-      echo "==> ${__YELLOW}${i}${__RESET}"
-      DEFAULT_BRANCH=master
-      if git branch -a | grep -q 'remotes/origin/main'; then
-        DEFAULT_BRANCH=main
-      fi
-      git checkout -b $TMP_BRANCH
-      git fetch origin $DEFAULT_BRANCH
-      git branch -D $DEFAULT_BRANCH || true
-      git checkout -b $DEFAULT_BRANCH --track origin/$DEFAULT_BRANCH
-      git branch -D $TMP_BRANCH
-      popd >/dev/null
-    fi
-  done
-}
-repos-status() {
-  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
-      pushd "${i}" >/dev/null
-      echo "==> ${__YELLOW}${i}${__RESET}"
-      git status -s
-      popd >/dev/null
-    fi
-  done
-}
-repos-renovate() {
-  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
-      pushd "${i}" >/dev/null
-      echo "==> ${__YELLOW}${i}${__RESET}"
-      git remote prune origin
-      git branch -a | grep renovate || true
-      popd >/dev/null
-    fi
-  done
-}
-repos-tmptmp() {
-  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
-      pushd "${i}" >/dev/null
-      echo "==> ${__YELLOW}${i}${__RESET}"
-      git branch -a | grep tmp/tmp || true
-      popd >/dev/null
-    fi
-  done
-}
-
-aws-ssm() {
-  ec2name="$1"
-  aws ssm start-session --target $(aws ec2 describe-instances --filters '[{"Name":"tag:Name","Values":["'$ec2name'"]},{"Name":"instance-state-name","Values":["running"]}]' --query "Reservations[0].Instances[0].InstanceId" --output text)
-}
-
-helmtemplate() {
-  helm template --atomic -f $1 -f ~/test-secrets-template.yaml -n$2 $3 .
-}
-helmvalidate() {
-  helm template --atomic -f $1 -f ~/test-secrets-template.yaml -n$2 $3 . | kubectl apply --dry-run=client -f -
-}
-helmdryrun() {
-  helm upgrade --atomic --dry-run -f $1 -n$2 $3 .
-}
-kubectldryrun() {
-  kubectl apply --dry-run=client -f -
-}
-kubectlpermissions() {
-  kubectl auth can-i --list --namespace $1
-}
-kubectlnodeupgradestuckpods() {
-  for i in $( kubectl get node | grep SchedulingDisabled | awk -F. '{print $1}' ); do kubectl get pod -A -o wide | grep $i | grep -v Completed ; done
-}
-kubectlnodeupgraderollstrategy() {
-  kubectl get deployment -A -o yaml | grep -E '(^    name:|maxUnavailable:|maxSurge:|nodes.k8s|replicas:)'
-  kubectl get pdb -A -o yaml | grep -E '(^    name:|minAvailable:|expectedPods:|currentHealthy:|desiredHealthy:|disruptionsAllowed:)'
-  kubectl get hpa -A -o yaml | grep -E '(^    name:|minReplicas:|maxReplicas:|^      name:    currentReplicas:|    desiredReplicas:)'
-}
-kubectlnodezone() {
-  kubectl get node -o yaml | grep -E '^    name:|topology.kubernetes.io/zone:|labels:|^  metadata:'
-}
+########################################
 
 gg() {
   # GG_GITHUB_MILESTONE=
@@ -372,6 +263,40 @@ EOF
   esac
 }
 
+########################################
+# k8s/helm aliases
+alias k="kubectl"
+alias ka="kubectl -o wide"
+alias kk="kubectl -n kube-system"
+kubectldryrun() {
+  kubectl apply --dry-run=client -f -
+}
+kubectlnodeupgraderollstrategy() {
+  kubectl get deployment -A -o yaml | grep -E '(^    name:|maxUnavailable:|maxSurge:|nodes.k8s|replicas:)'
+  kubectl get pdb -A -o yaml | grep -E '(^    name:|minAvailable:|expectedPods:|currentHealthy:|desiredHealthy:|disruptionsAllowed:)'
+  kubectl get hpa -A -o yaml | grep -E '(^    name:|minReplicas:|maxReplicas:|^      name:    currentReplicas:|    desiredReplicas:)'
+}
+kubectlnodeupgradestuckpods() {
+  for i in $( kubectl get node | grep SchedulingDisabled | awk -F. '{print $1}' ); do kubectl get pod -A -o wide | grep $i | grep -v Completed ; done
+}
+kubectlpermissions() {
+  kubectl auth can-i --list --namespace $1
+}
+kubectlnodezone() {
+  kubectl get node -o yaml | grep -E '^    name:|topology.kubernetes.io/zone:|labels:|^  metadata:'
+}
+helmdryrun() {
+  helm upgrade --atomic --dry-run -f $1 -n$2 $3 .
+}
+helmtemplate() {
+  helm template --atomic -f $1 -f ~/test-secrets-template.yaml -n$2 $3 .
+}
+helmvalidate() {
+  helm template --atomic -f $1 -f ~/test-secrets-template.yaml -n$2 $3 . | kubectl apply --dry-run=client -f -
+}
+
+########################################
+
 lint() {
   # Usage:
   #     lint "$(git diff --name-only)"
@@ -409,4 +334,109 @@ lint() {
       set +x
     fi
   done <<< $(echo $FILES)
+}
+
+########################################
+# repos aliases
+repos-fetchorigin() {
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      local branch=$(git branch --show-current)
+      local remoteorigin=$(git remote | grep origin | head -n1)
+      local remotebranch=$(git branch -va | grep "remotes/${remoteorigin}/HEAD" | awk '{print $NF}' | sed "s;${remoteorigin}/;;")
+      if [ -z "${remoteorigin}" ]; then
+        echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__RED}* No remotes.${__RESET}"
+      else
+        local cmdfetch="git fetch ${remoteorigin} ${remotebranch}"
+        echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__GREEN}* Running: ${__PURPLE}${cmdfetch}${__RESET}"
+        eval ${cmdfetch} 2>&1 | awk "{print \"        \"\$0}"
+        if [ "${remotebranch}" = "${branch}" ]; then
+          local cmdmerge="git merge --ff-only ${remoteorigin}/${remotebranch}"
+          echo "    ${__GREEN}* Running: ${__PURPLE}${cmdmerge}${__RESET}"
+          eval ${cmdmerge} 2>&1 | awk "{print \"        \"\$0}"
+        fi
+      fi
+      popd >/dev/null
+    fi
+  done
+}
+repos-gitbranches() {
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      local branch=$(git branch --show-current)
+      echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch}${__RESET}"
+      popd >/dev/null
+    fi
+  done
+}
+repos-renovate() {
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      echo "==> ${__YELLOW}${i}${__RESET}"
+      git remote prune origin
+      git branch -a | grep renovate || true
+      popd >/dev/null
+    fi
+  done
+}
+repos-status() {
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      echo "==> ${__YELLOW}${i}${__RESET}"
+      git status -s
+      popd >/dev/null
+    fi
+  done
+}
+repos-tmptmp() {
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      echo "==> ${__YELLOW}${i}${__RESET}"
+      git branch -a | grep tmp/tmp || true
+      popd >/dev/null
+    fi
+  done
+}
+repos-updatemaster() {
+  TMP_BRANCH=tmp/tmp$(date +%s)
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [ -e "${i}/.git" ]; then
+      pushd "${i}" >/dev/null
+      echo "==> ${__YELLOW}${i}${__RESET}"
+      DEFAULT_BRANCH=master
+      if git branch -a | grep -q 'remotes/origin/main'; then
+        DEFAULT_BRANCH=main
+      fi
+      git checkout -b $TMP_BRANCH
+      git fetch origin $DEFAULT_BRANCH
+      git branch -D $DEFAULT_BRANCH || true
+      git checkout -b $DEFAULT_BRANCH --track origin/$DEFAULT_BRANCH
+      git branch -D $TMP_BRANCH
+      popd >/dev/null
+    fi
+  done
+}
+
+########################################
+# vagrant aliases
+alias v=vagrant
+v-exec() {
+  vagrant ssh -c "${@}"
+}
+v-img() {
+  vagrant box list "${@}"
+}
+v-gc() {
+  vagrant destroy -f "${@}"
+}
+v-psa() {
+  vagrant status "${@}"
+}
+v-ssh() {
+  vagrant ssh "${@}"
 }
