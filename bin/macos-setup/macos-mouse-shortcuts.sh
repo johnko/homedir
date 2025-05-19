@@ -243,6 +243,17 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
       "type":"standard"
     }
   },
+  "98":{
+    "enabled":1,
+    "value":{
+      "parameters":[
+        47,
+        44,
+        1179648
+      ],
+      "type":"standard"
+    }
+  },
   "118":{
     "enabled":1,
     "value":{
