@@ -103,6 +103,7 @@ alias rsynct="rsync -virthlmP --exclude-from=${HOME}/.rsync_exclude"
 alias g="git --no-pager"
 alias gd="git d"
 alias gs="git s"
+alias gpush="git push"
 if type git &>/dev/null ; then
   # Use Git’s colored diff when available
   difff() {
