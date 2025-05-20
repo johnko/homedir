@@ -51,7 +51,7 @@ export __ROOT
 
 export __USER="\[${__GREEN}\]\u"
 export __USER=""
-if [ "$(whoami)" = "root" ]; then
+if [[ "$(whoami)" == "root" ]]; then
   export __USER="\[${__ROOT}\]\u"
 fi
 export __HOST="\[${__BLUE}\]@\[${__CYAN}\]\h"
@@ -61,7 +61,7 @@ export __DATE="\[${__PURPLE}\]\D{%Y-%m-%d %H:%M:%S %Z%z}"
 export __DEFAULT1="\[${__PURPLE}\]"
 export __DEFAULT2="\[${__YELLOW}\]"
 export __SIGN="%"
-if [ "$(whoami)" = "root" ]; then
+if [[ "$(whoami)" == "root" ]]; then
   export __SIGN="#"
 fi
 export __NEWLINE="\[$__RESET\]\n"
@@ -77,9 +77,9 @@ GIT_PROMPT_START="_LAST_COMMAND_INDICATOR_ ${__USER}${__HOST}${__DIR} ${__DATE}\
 GIT_PROMPT_END="${__NEWLINE}${__DEFAULT1}${__SIGN} \[${__RESET}\]"                             # for custom prompt end sequence
 
 ## Attempt to use bash-git-prompt https://github.com/magicmonty/bash-git-prompt
-if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+if [[ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]]; then
   source "$HOME/.bash-git-prompt/gitprompt.sh"
-elif [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+elif [[ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]]; then
   __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
   source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
 fi
