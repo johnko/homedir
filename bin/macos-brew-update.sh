@@ -3,9 +3,13 @@ set -euo pipefail
 
 if type brew &>/dev/null ; then
   if [[ -e Brewfile ]] ; then
+    EXTRA_BREWFILE=""
+    if [[ -e .Brewfile ]] ; then
+      EXTRA_BREWFILE=".Brewfile"
+    fi
     set -x
     brew bundle || true
-    for i in $(cat Brewfile | grep cask | grep -v '^#' | cut -d' ' -f2 | tr -d '"') ; do
+    for i in $(cat Brewfile $EXTRA_BREWFILE | grep cask | grep -v '^#' | cut -d' ' -f2 | tr -d '"') ; do
       set -x
       brew install --cask $i || brew install --force --cask $i || true
       set +x
