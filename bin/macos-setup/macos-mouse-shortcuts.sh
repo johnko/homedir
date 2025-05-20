@@ -116,8 +116,8 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     "enabled":1,
     "value":{
       "parameters":[
-        16,
-        16,
+        8,
+        8,
         0
       ],
       "type":"button"
@@ -130,8 +130,8 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     "enabled":1,
     "value":{
       "parameters":[
-        16,
-        16,
+        8,
+        8,
         131072
       ],
       "type":"button"
@@ -144,8 +144,8 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     "enabled":1,
     "value":{
       "parameters":[
-        8,
-        8,
+        16,
+        16,
         0
       ],
       "type":"button"
@@ -155,8 +155,8 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     "enabled":1,
     "value":{
       "parameters":[
-        8,
-        8,
+        16,
+        16,
         131072
       ],
       "type":"button"
