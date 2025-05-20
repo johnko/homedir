@@ -6,8 +6,8 @@ alias yless="jless --yaml"
 
 ########################################
 
-if [ -x /usr/bin/dircolors -o -e /Users ]; then
-  if [ -x /usr/bin/dircolors ]; then
+if [ -x /usr/bin/dircolors -o -e /Users ] ; then
+  if [ -x /usr/bin/dircolors ] ; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
   fi
   #alias dir='dir --color=auto'
@@ -20,7 +20,7 @@ fi
 
 ########################################
 # macOS aliases
-if [ -e /Users ]; then
+if [[ -e /Users ]] ; then
   alias cdoe="code"
   alias free="top -l 1 -s 0 | grep PhysMem | sed 's, (.*),,'"
   alias iftop="sudo /usr/local/sbin/iftop -nBP"
@@ -29,11 +29,15 @@ if [ -e /Users ]; then
   ########################################
   # macOS functions
   brew-prune() {
-    if [ -e Brewfile ]; then
+    if [[ -e Brewfile ]] ; then
+      EXTRA_BREWFILE=""
+      if [[ -e .Brewfile ]] ; then
+        EXTRA_BREWFILE=".Brewfile"
+      fi
       for i in $(
            brew list | \
            grep -v -E "1password|applesimutils|docker|terraform|"$(
-             cat Brewfile .Brewfile | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
+             cat Brewfile $EXTRA_BREWFILE | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
            )
        ); do
          brew uninstall $i
@@ -71,7 +75,7 @@ else
   # Linux functions
   copypubkey2clipboard() {
     for i in ~/.ssh/id_*.pub; do
-      [ -e "${i}" ] && cat "${i}" | xsel --clipboard
+      test -e "${i}" && cat "${i}" | xsel --clipboard
     done
   }
   ppgrep() {
@@ -81,7 +85,7 @@ else
   whatismydhcpserver() {
     for i in $(ps aux | grep -o '[/]var/lib/NetworkManager/\S*.lease') \
       $(ps aux | grep -o '[/]var/lib/dhcp/dhclient\S*.leases'); do
-      [ -f "${i}" ] && grep "dhcp-server-identifier" "${i}"
+      test -f "${i}" && grep "dhcp-server-identifier" "${i}"
     done
   }
 fi
@@ -107,9 +111,9 @@ alias gpush="git push"
 if type git &>/dev/null ; then
   # Use Git’s colored diff when available
   difff() {
-    if [ -z "${1}" ]; then
+    if [[ -z "${1}" ]] ; then
       git --no-pager diff --ignore-space-change
-    elif [ -z "${2}" ]; then
+    elif [[ -z "${2}" ]] ; then
       git --no-pager diff --ignore-space-change "$@"
     else
       git --no-pager diff --no-index --ignore-space-change "$@"
@@ -133,7 +137,7 @@ firstlastline() {
 # Usage: json '{"foo":42}' or echo '{"foo":42}' | json
 # Syntax-highlight JSON strings or files
 json() {
-  if [ -t 0 ]; then
+  if [[ -t 0 ]] ; then
     # has argument
     python3 -m json.tool <<<"$*" | pygmentize -l javascript
   else
@@ -245,7 +249,7 @@ gg() {
       fi
       set -x
       git checkout $DEFAULT_BRANCH
-      if [ "$OLD_BRANCH" != "$DEFAULT_BRANCH" ]; then
+      if [[ "$OLD_BRANCH" != "$DEFAULT_BRANCH" ]] ; then
         git branch -D $OLD_BRANCH
       fi
       git pull --ff-only
@@ -303,17 +307,17 @@ lint() {
   #     lint "$(git diff --name-only)"
   #     git diff --name-only | lint
   FILES=$@
-  if [ -z "$1" ]; then
+  if [[ -z "$1" ]] ; then
     FILES=$(cat < /dev/stdin)
-    if [ -z "$FILES" ]; then
+    if [[ -z "$FILES" ]] ; then
       echo "ERROR: Missing filenames to lint."
       return
     fi
   fi
-  if [ -e .nvmrc ] && nvm current >/dev/null 2>&1; then
+  if [[ -e .nvmrc ]] && nvm current >/dev/null 2>&1; then
     MY_NVM=$(nvm current | tr -d '\s')
     MY_NVMRC=$(cat .nvmrc | tr -d '\s')
-    if [ "$MY_NVM" != "$MY_NVMRC" ]; then
+    if [[ "$MY_NVM" != "$MY_NVMRC" ]] ; then
       echo "ERROR: Mismatch node version. Have $MY_NVM want $MY_NVMRC"
       echo "Try:   nvm use"
       return
@@ -341,18 +345,18 @@ lint() {
 # repos aliases
 repos-fetchorigin() {
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
+    if [[ -e "${i}/.git" ]] ; then
       pushd "${i}" >/dev/null
       local branch=$(git branch --show-current)
       local remoteorigin=$(git remote | grep origin | head -n1)
       local remotebranch=$(git branch -va | grep "remotes/${remoteorigin}/HEAD" | awk '{print $NF}' | sed "s;${remoteorigin}/;;")
-      if [ -z "${remoteorigin}" ]; then
+      if [[ -z "${remoteorigin}" ]] ; then
         echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__RED}* No remotes.${__RESET}"
       else
         local cmdfetch="git fetch ${remoteorigin} ${remotebranch}"
         echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__GREEN}* Running: ${__PURPLE}${cmdfetch}${__RESET}"
         eval ${cmdfetch} 2>&1 | awk "{print \"        \"\$0}"
-        if [ "${remotebranch}" = "${branch}" ]; then
+        if [[ "${remotebranch}" == "${branch}" ]] ; then
           local cmdmerge="git merge --ff-only ${remoteorigin}/${remotebranch}"
           echo "    ${__GREEN}* Running: ${__PURPLE}${cmdmerge}${__RESET}"
           eval ${cmdmerge} 2>&1 | awk "{print \"        \"\$0}"
@@ -364,7 +368,7 @@ repos-fetchorigin() {
 }
 repos-gitbranches() {
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
+    if [[ -e "${i}/.git" ]] ; then
       pushd "${i}" >/dev/null
       local branch=$(git branch --show-current)
       echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch}${__RESET}"
@@ -374,7 +378,7 @@ repos-gitbranches() {
 }
 repos-renovate() {
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
+    if [[ -e "${i}/.git" ]] ; then
       pushd "${i}" >/dev/null
       echo "==> ${__YELLOW}${i}${__RESET}"
       git remote prune origin
@@ -385,7 +389,7 @@ repos-renovate() {
 }
 repos-status() {
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
+    if [[ -e "${i}/.git" ]] ; then
       pushd "${i}" >/dev/null
       echo "==> ${__YELLOW}${i}${__RESET}"
       git status -s
@@ -395,7 +399,7 @@ repos-status() {
 }
 repos-tmptmp() {
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
+    if [[ -e "${i}/.git" ]] ; then
       pushd "${i}" >/dev/null
       echo "==> ${__YELLOW}${i}${__RESET}"
       git branch -a | grep tmp/tmp || true
@@ -406,7 +410,7 @@ repos-tmptmp() {
 repos-updatemaster() {
   TMP_BRANCH=tmp/tmp$(date +%s)
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [ -e "${i}/.git" ]; then
+    if [[ -e "${i}/.git" ]] ; then
       pushd "${i}" >/dev/null
       echo "==> ${__YELLOW}${i}${__RESET}"
       DEFAULT_BRANCH=master
