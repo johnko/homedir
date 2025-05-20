@@ -152,7 +152,7 @@ t() {
 ########################################
 # docker aliases
 if type docker &>/dev/null ; then
-  unalias docker >/dev/null 2>&1
+  unalias docker >/dev/null 2>&1 || true
 else
   if type podman &>/dev/null ; then
     alias docker=podman
