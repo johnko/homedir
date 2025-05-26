@@ -381,7 +381,7 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
       "parameters":[
         32,
         49,
-        1966080
+        1835008
       ],
       "type":"standard"
     }
@@ -395,6 +395,17 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
         8388608
       ],
       "type":"standard"
+    }
+  },
+  "176":{
+    "enabled":1,
+    "value":{
+      "parameters":[
+        32,
+        49,
+        1966080
+      ],
+      "type":"SAE1.0"
     }
   }
 }' $i
