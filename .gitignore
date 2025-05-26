@@ -31,6 +31,7 @@
 .gem/*
 .gk
 .gnupg/*
+.gradle/*
 .kube/*
 .lemminx/*
 .lesshst
