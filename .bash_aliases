@@ -40,7 +40,8 @@ if [[ -e /Users ]] ; then
              cat Brewfile $EXTRA_BREWFILE | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
            )
        ); do
-         brew uninstall $i
+         echo "+ brew uninstall $i"
+                 brew uninstall $i
        done
        brew bundle
     fi
