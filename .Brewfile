@@ -16,7 +16,9 @@ mas "LINE", id: 539883307
 # brew "xz"
 
 # Dev
+# brew "cocoapods"
 # brew "go"
+# brew "libyaml"
 # brew "nvm"
 # brew "rbenv"
 # brew "ruby-build"
