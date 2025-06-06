@@ -277,7 +277,7 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     }
   },
   "120":{
-    "enabled":1,
+    "enabled":0,
     "value":{
       "parameters":[
         51,
@@ -288,7 +288,7 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     }
   },
   "121":{
-    "enabled":1,
+    "enabled":0,
     "value":{
       "parameters":[
         52,
@@ -299,7 +299,7 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     }
   },
   "122":{
-    "enabled":1,
+    "enabled":0,
     "value":{
       "parameters":[
         53,
@@ -310,7 +310,7 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     }
   },
   "123":{
-    "enabled":1,
+    "enabled":0,
     "value":{
       "parameters":[
         54,
@@ -321,7 +321,7 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     }
   },
   "124":{
-    "enabled":1,
+    "enabled":0,
     "value":{
       "parameters":[
         55,
@@ -332,7 +332,7 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     }
   },
   "125":{
-    "enabled":1,
+    "enabled":0,
     "value":{
       "parameters":[
         56,
@@ -343,7 +343,7 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     }
   },
   "126":{
-    "enabled":1,
+    "enabled":0,
     "value":{
       "parameters":[
         57,
@@ -354,12 +354,34 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
     }
   },
   "127":{
-    "enabled":1,
+    "enabled":0,
     "value":{
       "parameters":[
         48,
         29,
         1835008
+      ],
+      "type":"standard"
+    }
+  },
+  "128":{
+    "enabled":0,
+    "value":{
+      "parameters":[
+        65535,
+        18,
+        786432
+      ],
+      "type":"standard"
+    }
+  },
+  "129":{
+    "enabled":0,
+    "value":{
+      "parameters":[
+        65535,
+        19,
+        786432
       ],
       "type":"standard"
     }
