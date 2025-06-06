@@ -1,3 +1,8 @@
+shift + ctrl + alt + cmd - 3 : echo
+shift + ctrl + alt + cmd - 4 : echo
+shift + ctrl + alt + cmd - 5 : echo
+shift + ctrl + alt + cmd - 6 : echo
+
 shift + ctrl + alt + cmd - q : yabai --restart-service
 shift + ctrl + alt + cmd - w : yabai -m space --balance
 shift + ctrl + alt + cmd - e : osascript ~/.osascripts/sound-reset-left-right-balance.scpt
@@ -25,6 +30,11 @@ shift + ctrl + alt + cmd - v : echo
 shift + ctrl + alt + cmd - b : yabai -m window --grid 3:1:0:1:1:2
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+
+ctrl + alt + cmd - 3 : echo
+ctrl + alt + cmd - 4 : echo
+ctrl + alt + cmd - 5 : echo
+ctrl + alt + cmd - 6 : echo
 
 ctrl + alt + cmd - q : skhd --restart-service
 # float top left
