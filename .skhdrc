@@ -31,8 +31,8 @@ shift + ctrl + alt + cmd - b : yabai -m window --grid 3:1:0:1:1:2
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 
-ctrl + alt + cmd - 3 : echo
-ctrl + alt + cmd - 4 : echo
+ctrl + alt + cmd - 3 : open -a "Mission Control"
+ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
 ctrl + alt + cmd - 5 : echo
 ctrl + alt + cmd - 6 : echo
 
