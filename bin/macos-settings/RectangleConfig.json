@@ -241,10 +241,14 @@
       "keyCode" : 45,
       "modifierFlags" : 1835008
     },
+    "reflowTodo" : {
+      "keyCode" : 45,
+      "modifierFlags" : 786432
+    },
     "toggleTodo" : {
       "keyCode" : 11,
       "modifierFlags" : 786432
     }
   },
-  "version" : "91"
+  "version" : "93"
 }
