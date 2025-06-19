@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -exo pipefail
+set -eo pipefail
 
 OS=$(uname | tr '[:upper:]' '[:lower:]')
 PROFILE_NUM="$1"
@@ -12,9 +12,9 @@ fi
 
 case $OS in
   darwin)
-    GOOGLE_CHROME_APP=$(find /Applications -name "Google Chrome.app" | head -n1)
+    GOOGLE_CHROME_APP=$(find /Applications -type d -maxdepth 1 -name "Google Chrome.app" | head -n1)
     if [ -n "$GOOGLE_CHROME_APP" ]; then
-      GOOGLE_CHROME_BIN=$(find "$GOOGLE_CHROME_APP" -type f -name "Google Chrome")
+      GOOGLE_CHROME_BIN=$(find "$GOOGLE_CHROME_APP" -type f -maxdepth 3 -name "Google Chrome" | head -n1)
     fi
     ;;
   linux)
