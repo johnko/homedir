@@ -9,6 +9,10 @@ cask "signal"
 mas "LINE", id: 539883307
 # mas "Slack", id: 803453959
 
+# Web Browsers
+cask "brave-browser"
+cask "firefox"
+
 # Shell / CLI Tools
 # brew "direnv"
 # brew "gh"
