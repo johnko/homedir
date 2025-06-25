@@ -6,16 +6,16 @@ shift + ctrl + alt + cmd - 5 : yabai -m window --grid 24:24:5:1:14:22
 shift + ctrl + alt + cmd - 6 : yabai -m window --grid 24:24:4:2:16:20
 
 shift + ctrl + alt + cmd - q : yabai -m space --balance
-shift + ctrl + alt + cmd - w : echo # arrow up
+# shift + ctrl + alt + cmd - w : echo # arrow up
 shift + ctrl + alt + cmd - e : osascript ~/.osascripts/sound-reset-left-right-balance.scpt
 # float middle center quarter
 shift + ctrl + alt + cmd - r : yabai -m window --grid 4:4:1:1:2:2
 shift + ctrl + alt + cmd - t : echo
 shift + ctrl + alt + cmd - y : yabai --restart-service
 
-shift + ctrl + alt + cmd - a : echo # arrow left
-shift + ctrl + alt + cmd - s : echo # arrow down
-shift + ctrl + alt + cmd - d : echo # arrow right
+# shift + ctrl + alt + cmd - a : echo # arrow left
+# shift + ctrl + alt + cmd - s : echo # arrow down
+# shift + ctrl + alt + cmd - d : echo # arrow right
 # almost fullscreen
 shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 60:60:1:1:58:58
 # float 1/3 tall vertical screen
@@ -42,7 +42,7 @@ ctrl + alt + cmd - 6 : yabai -m window --grid 1:2:1:0:1:1
 
 # float top left
 ctrl + alt + cmd - q : yabai -m window --grid 2:2:0:0:1:1
-ctrl + alt + cmd - w : echo # arrow up
+# ctrl + alt + cmd - w : echo # arrow up
 # float top right
 ctrl + alt + cmd - e : yabai -m window --grid 2:2:1:0:1:1
 # float tall 1/2 of screen for web
@@ -50,9 +50,9 @@ ctrl + alt + cmd - r : yabai -m window --grid 1:4:1:0:2:1
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - y : skhd --restart-service
 
-ctrl + alt + cmd - a : echo # arrow left
-ctrl + alt + cmd - s : echo # arrow down
-ctrl + alt + cmd - d : echo # arrow right
+# ctrl + alt + cmd - a : echo # arrow left
+# ctrl + alt + cmd - s : echo # arrow down
+# ctrl + alt + cmd - d : echo # arrow right
 ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
 ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 ctrl + alt + cmd - h : yabai -m space --rotate 270
