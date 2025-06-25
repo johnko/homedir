@@ -5,9 +5,11 @@ shift + ctrl + alt + cmd - 5 : yabai -m window --grid 24:24:5:1:14:22
 # float tall wide 16/24 of screen for editing
 shift + ctrl + alt + cmd - 6 : yabai -m window --grid 24:24:4:2:16:20
 
-shift + ctrl + alt + cmd - q : echo
+# float top left
+shift + ctrl + alt + cmd - q : yabai -m window --grid 2:2:0:0:1:1
 # shift + ctrl + alt + cmd - w : echo # arrow up
-shift + ctrl + alt + cmd - e : echo
+# float top right
+shift + ctrl + alt + cmd - e : yabai -m window --grid 2:2:1:0:1:1
 # float middle center quarter
 shift + ctrl + alt + cmd - r : yabai -m window --grid 4:4:1:1:2:2
 shift + ctrl + alt + cmd - t : osascript ~/.osascripts/sound-reset-left-right-balance.scpt
@@ -35,16 +37,14 @@ shift + ctrl + alt + cmd - b : yabai -m window --grid 3:1:0:1:1:2
 
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
-# float left
-ctrl + alt + cmd - 5 : yabai -m window --grid 1:2:0:0:1:1
-# float right
-ctrl + alt + cmd - 6 : yabai -m window --grid 1:2:1:0:1:1
+ctrl + alt + cmd - 5 : echo
+ctrl + alt + cmd - 6 : echo
 
-# float top left
-ctrl + alt + cmd - q : yabai -m window --grid 2:2:0:0:1:1
+# float left
+ctrl + alt + cmd - q : yabai -m window --grid 1:2:0:0:1:1
 # ctrl + alt + cmd - w : echo # arrow up
-# float top right
-ctrl + alt + cmd - e : yabai -m window --grid 2:2:1:0:1:1
+# float right
+ctrl + alt + cmd - e : yabai -m window --grid 1:2:1:0:1:1
 # float tall 1/2 of screen for web
 ctrl + alt + cmd - r : yabai -m window --grid 1:4:1:0:2:1
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
