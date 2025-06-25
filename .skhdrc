@@ -5,12 +5,12 @@ shift + ctrl + alt + cmd - 5 : yabai -m window --grid 24:24:5:1:14:22
 # float tall wide 16/24 of screen for editing
 shift + ctrl + alt + cmd - 6 : yabai -m window --grid 24:24:4:2:16:20
 
-shift + ctrl + alt + cmd - q : yabai -m space --balance
+shift + ctrl + alt + cmd - q : echo
 # shift + ctrl + alt + cmd - w : echo # arrow up
-shift + ctrl + alt + cmd - e : osascript ~/.osascripts/sound-reset-left-right-balance.scpt
+shift + ctrl + alt + cmd - e : echo
 # float middle center quarter
 shift + ctrl + alt + cmd - r : yabai -m window --grid 4:4:1:1:2:2
-shift + ctrl + alt + cmd - t : echo
+shift + ctrl + alt + cmd - t : osascript ~/.osascripts/sound-reset-left-right-balance.scpt
 shift + ctrl + alt + cmd - y : yabai --restart-service
 
 # shift + ctrl + alt + cmd - a : echo # arrow left
@@ -27,7 +27,7 @@ shift + ctrl + alt + cmd - z : yabai -m window --grid 24:24:3:3:18:21
 # float tall wide 20/24 of screen for video
 shift + ctrl + alt + cmd - x : yabai -m window --grid 24:24:2:4:20:19
 shift + ctrl + alt + cmd - c : echo
-shift + ctrl + alt + cmd - v : echo
+shift + ctrl + alt + cmd - v : yabai -m space --balance
 # float 2/3 tall vertical screen
 shift + ctrl + alt + cmd - b : yabai -m window --grid 3:1:0:1:1:2
 
