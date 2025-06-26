@@ -3,13 +3,13 @@
 ## Modified from from https://github.com/gf3/dotfiles
 ## http://stackoverflow.com/questions/16715103/bash-prompt-with-last-exit-code
 
-if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color &>/dev/null ; then
   export TERM=gnome-256color
-elif infocmp xterm-256color >/dev/null 2>&1; then
+elif infocmp xterm-256color &>/dev/null ; then
   export TERM=xterm-256color
 fi
 
-if tput setaf 1 &>/dev/null; then
+if tput setaf 1 &>/dev/null ; then
   tput sgr0
   #  if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
   #  else

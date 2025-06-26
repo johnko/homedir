@@ -40,7 +40,7 @@ if [[ -e /Users ]] ; then
           cat Brewfile $EXTRA_BREWFILE | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
         )
       ); do
-        brew uninstall $i >/dev/null 2>&1 && (echo ; echo "brew uninstall $i") || echo -n "."
+        brew uninstall $i &>/dev/null && (echo ; echo "brew uninstall $i") || echo -n "."
       done
       echo
       brew bundle
@@ -153,7 +153,7 @@ t() {
 ########################################
 # docker aliases
 if type docker &>/dev/null ; then
-  unalias docker >/dev/null 2>&1 || true
+  unalias docker &>/dev/null || true
 else
   if type podman &>/dev/null ; then
     alias docker=podman
@@ -315,7 +315,7 @@ lint() {
       return
     fi
   fi
-  if [[ -e .nvmrc ]] && nvm current >/dev/null 2>&1; then
+  if [[ -e .nvmrc ]] && nvm current &>/dev/null ; then
     MY_NVM=$(nvm current | tr -d '\s')
     MY_NVMRC=$(cat .nvmrc | tr -d '\s')
     if [[ "$MY_NVM" != "$MY_NVMRC" ]] ; then
