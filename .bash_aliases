@@ -35,15 +35,15 @@ if [[ -e /Users ]] ; then
         EXTRA_BREWFILE=".Brewfile"
       fi
       for i in $(
-           brew list | \
-           grep -v -E "1password|applesimutils|docker|terraform|"$(
-             cat Brewfile $EXTRA_BREWFILE | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
-           )
-       ); do
-         echo "+ brew uninstall $i"
-                 brew uninstall $i
-       done
-       brew bundle
+        brew list | \
+        grep -v -E "1password|applesimutils|docker|terraform|"$(
+          cat Brewfile $EXTRA_BREWFILE | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
+        )
+      ); do
+        brew uninstall $i >/dev/null 2>&1 && (echo ; echo "brew uninstall $i") || echo -n "."
+      done
+      echo
+      brew bundle
     fi
   }
   dff() {
