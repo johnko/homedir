@@ -58,7 +58,7 @@ KEYVAL="
         magnification = 1;
         mineffect = scale;
         "minimize-to-application" = 1;
-        orientation = right;
+        orientation = left;
         showAppExposeGestureEnabled = 0;
         tilesize = 42;
 "
