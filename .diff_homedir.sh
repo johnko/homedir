@@ -15,6 +15,7 @@ iso
 keychron
 lab
 lab-squid-ramdisk
+nuphy
 old
 ollama-caddy
 Preferences
