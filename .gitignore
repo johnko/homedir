@@ -64,6 +64,7 @@
 .swiftpm/*
 .terraform.d/*
 .tflint.d/*
+.Trash/
 .Trash/*
 .vagrant.d/*
 .vim/*
