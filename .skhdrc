@@ -1,9 +1,7 @@
 shift + ctrl + alt + cmd - 3 : echo
 shift + ctrl + alt + cmd - 4 : echo
-# float tall
-shift + ctrl + alt + cmd - 5 : yabai -m window --grid 24:24:5:1:14:22
-# float tall wide 16/24 of screen for editing
-shift + ctrl + alt + cmd - 6 : yabai -m window --grid 24:24:4:2:16:20
+shift + ctrl + alt + cmd - 5 : echo
+shift + ctrl + alt + cmd - 6 : yabai -m space --balance
 
 # float top left
 shift + ctrl + alt + cmd - q : yabai -m window --grid 2:60:1:0:29:1
@@ -24,12 +22,14 @@ shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 60:60:1:1:5
 shift + ctrl + alt + cmd - g : yabai -m window --grid 3:1:0:0:1:1
 shift + ctrl + alt + cmd - h : bash ~/bin/yabai_cycle_clockwise.sh
 
-# float tall wide 18/24 of screen for focus
-shift + ctrl + alt + cmd - z : yabai -m window --grid 24:24:3:3:18:21
 # float tall wide 20/24 of screen for video
-shift + ctrl + alt + cmd - x : yabai -m window --grid 24:24:2:4:20:19
-shift + ctrl + alt + cmd - c : echo
-shift + ctrl + alt + cmd - v : yabai -m space --balance
+shift + ctrl + alt + cmd - z : yabai -m window --grid 24:24:2:4:20:19
+# float tall wide 18/24 of screen for focus
+shift + ctrl + alt + cmd - x : yabai -m window --grid 24:24:3:3:18:21
+# float tall wide 16/24 of screen for editing
+shift + ctrl + alt + cmd - c : yabai -m window --grid 24:24:4:2:16:20
+# float tall
+shift + ctrl + alt + cmd - v : yabai -m window --grid 24:24:5:1:14:22
 # float 2/3 tall vertical screen
 shift + ctrl + alt + cmd - b : yabai -m window --grid 3:1:0:1:1:2
 
