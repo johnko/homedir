@@ -19,6 +19,9 @@ cask "firefox"
 # brew "wget"
 # brew "xz"
 
+# Docker / k8s
+# cask "docker-desktop"
+
 # Dev
 # brew "cocoapods"
 # brew "go"
