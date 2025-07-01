@@ -52,7 +52,7 @@ cask "android-platform-tools"
 mas "Xcode", id: 497799835
 
 # AI
-cask "ollama"
+cask "ollama-app"
 
 # VS Code extensions
 vscode "continue.continue"
