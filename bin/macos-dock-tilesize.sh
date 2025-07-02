@@ -60,7 +60,7 @@ KEYVAL="
         "minimize-to-application" = 1;
         orientation = left;
         showAppExposeGestureEnabled = 0;
-        tilesize = 32;
+        tilesize = 24;
 "
 print_cmd
 
