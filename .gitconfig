@@ -16,6 +16,10 @@
 	c = clone --recursive
 	# Commit all changes
 	ca = !git add -A && git commit -av
+	comimmt = commit
+	comimt = commit
+	comit = commit
+	commmit = commit
 	# Switch to a branch, creating it if necessary
 	go = checkout -B
 	co = checkout
