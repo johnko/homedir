@@ -28,24 +28,6 @@ if [[ -e /Users ]] ; then
 
   ########################################
   # macOS functions
-  brew-prune() {
-    if [[ -e Brewfile ]] ; then
-      EXTRA_BREWFILE=""
-      if [[ -e .Brewfile ]] ; then
-        EXTRA_BREWFILE=".Brewfile"
-      fi
-      for i in $(
-        brew list | \
-        grep -v -E "1password|applesimutils|docker|terraform|"$(
-          cat Brewfile $EXTRA_BREWFILE | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
-        )
-      ); do
-        brew uninstall $i &>/dev/null && (echo ; echo "brew uninstall $i") || echo -n "."
-      done
-      echo
-      brew bundle
-    fi
-  }
   dff() {
     df -h | grep -v -E '(devfs|auto_home)' | tr -d '%' | sort -r -k5 | awk '$5 > 24 {print $1,$5"%","=",$3,"/",$2,$9,$4}' | column -t
   }

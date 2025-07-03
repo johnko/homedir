@@ -14,6 +14,7 @@ if type brew &>/dev/null ; then
       brew install --cask $i || brew install --force --cask $i || true
       set +x
     done
+    set -x
     brew cleanup
   else
     echo "ERROR: missing 'Brewfile'"
