@@ -1,6 +1,9 @@
--- https://stackoverflow.com/questions/17964660/how-to-detect-if-user-is-away-in-os-x
+-- original: https://stackoverflow.com/questions/17964660/how-to-detect-if-user-is-away-in-os-x
+
+-- Open in Apple "Script Editor"
 -- Save as "Application"
 -- Tick "Stay open after run handler"
+-- "Run Application"
 
 global timeBeforeComputerIsNotInUse, computerIsInUse, previousIdleTime
 
@@ -9,6 +12,7 @@ on run
 	set computerIsInUse to true
 	set previousIdleTime to 0
 	display notification "Started" with title "macos-detect-idle"
+	say "Started"
 end run
 
 on idle
@@ -22,6 +26,7 @@ on idle
 	else if idleTime is greater than or equal to timeBeforeComputerIsNotInUse then
 		set computerIsInUse to false
 		display notification "User has left the computer" with title "macos-detect-idle"
+		say "Ten"
 	end if
 
 	set previousIdleTime to idleTime
