@@ -15,6 +15,7 @@ if type brew &>/dev/null ; then
       set +x
     done
     set -x
+    brew upgrade
     brew cleanup
   else
     echo "ERROR: missing 'Brewfile'"
