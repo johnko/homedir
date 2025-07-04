@@ -26,7 +26,7 @@ on idle
 	else if idleTime is greater than or equal to timeBeforeComputerIsNotInUse then
 		set computerIsInUse to false
 		display notification "User has left the computer" with title "macos-detect-idle"
-		say "Ten"
+		say "Idle"
 	end if
 
 	set previousIdleTime to idleTime
