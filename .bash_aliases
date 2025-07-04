@@ -25,6 +25,7 @@ if [[ -e /Users ]] ; then
   alias free="top -l 1 -s 0 | grep PhysMem | sed 's, (.*),,'"
   alias iftop="sudo /usr/local/sbin/iftop -nBP"
   alias ls="ls -1G"
+  alias pmgetprevent="pmset -g | grep prevent"
 
   ########################################
   # macOS functions
