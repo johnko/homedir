@@ -25,8 +25,11 @@ on idle
 		end if
 	else if idleTime is greater than or equal to timeBeforeComputerIsNotInUse then
 		set computerIsInUse to false
-		display notification "User has left the computer" with title "macos-detect-idle"
-		say "Idle"
+		set displaySleepPrevented to (do shell script "pmset -g | awk '/display sleep prevented by/' | wc -l | tr -d ' '") as number
+		if displaySleepPrevented is equal to 0 then
+			display notification "User has left the computer" with title "macos-detect-idle"
+			say "Idle"
+		end if
 	end if
 
 	set previousIdleTime to idleTime
