@@ -28,7 +28,10 @@ on idle
 		set displaySleepPrevented to (do shell script "pmset -g | awk '/display sleep prevented by/' | wc -l | tr -d ' '") as number
 		if displaySleepPrevented is equal to 0 then
 			display notification "User has left the computer" with title "macos-detect-idle"
-			say "Idle"
+			set firefoxAudioPlaying to (do shell script "pmset -g | awk '/firefox/' | awk '/coreaudio/' | wc -l | tr -d ' '") as number
+			if firefoxAudioPlaying is equal to 0 then
+				say "Idle"
+			end if
 		end if
 	end if
 
