@@ -326,6 +326,12 @@ lint() {
 }
 
 ########################################
+
+nosleep() {
+  open -a "Brave Browser" ~/.nosleep/index.html
+}
+
+########################################
 # repos aliases
 repos-fetchorigin() {
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
