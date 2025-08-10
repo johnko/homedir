@@ -40,6 +40,7 @@
 .local/state/
 .localized
 .minikube/*
+.n8n-docker-data/*
 .npm/*
 .nvm/*
 .oh-my-zsh/*
