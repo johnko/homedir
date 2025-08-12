@@ -9,7 +9,7 @@ if type brew &>/dev/null ; then
     fi
     set -x
     brew bundle || true
-    sudo chown `whoami` /usr/local/bin/kubectl
+    sudo chown `whoami` /usr/local/bin/kubectl || true
     for i in $(cat Brewfile $EXTRA_BREWFILE | grep cask | grep -v '^#' | cut -d' ' -f2 | tr -d '"') ; do
       set -x
       brew install --cask $i || brew install --force --cask $i || true
