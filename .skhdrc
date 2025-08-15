@@ -33,6 +33,12 @@ shift + ctrl + alt + cmd - v : yabai -m window --grid 24:24:5:1:14:22
 # float 2/3 tall vertical screen
 shift + ctrl + alt + cmd - b : yabai -m window --grid 3:1:0:1:1:2
 
+shift + ctrl + alt + cmd - i : echo
+shift + ctrl + alt + cmd - o : echo
+shift + ctrl + alt + cmd - p : echo
+shift + ctrl + alt + cmd - k : echo
+shift + ctrl + alt + cmd - l : echo
+
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 
 ctrl + alt + cmd - 3 : open -a "Mission Control"
@@ -64,6 +70,12 @@ ctrl + alt + cmd - x : yabai -m window --grid 2:2:1:1:1:1
 ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
 ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
+
+ctrl + alt + cmd - i : open -a "iPhone Mirroring"
+ctrl + alt + cmd - o : echo
+ctrl + alt + cmd - p : echo
+ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
+ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
 
 ctrl + alt + cmd - up : yabai -m window --grid 2:1:0:0:1:1
 ctrl + alt + cmd - down : yabai -m window --grid 2:1:0:1:1:1
