@@ -72,8 +72,8 @@ ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
 
 ctrl + alt + cmd - i : open -a "iPhone Mirroring"
-ctrl + alt + cmd - o : echo
-ctrl + alt + cmd - p : echo
+ctrl + alt + cmd - o : open -a "System Settings"
+ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
 ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
 ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
 
