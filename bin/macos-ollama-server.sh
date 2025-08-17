@@ -76,12 +76,16 @@ relaunch_ollama() {
           envsubst < ./ssh/authorized_keys.template > ./ssh/authorized_keys
           envsubst < ./dyndns/update-dns.sh.template > ./dyndns/update-dns.sh
 
+          set -e
           # rebuild final container image
           $DOCKERCOMPOSE_BIN build caddy
           $DOCKERCOMPOSE_BIN build ssh
           $DOCKERCOMPOSE_BIN build dyndns
-          # run container
+          set +e
+          # clean previous containers
           $DOCKERCOMPOSE_BIN down
+          set -e
+          # run container
           $DOCKERCOMPOSE_BIN up -d
         popd
       else
