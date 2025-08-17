@@ -63,7 +63,7 @@ relaunch_ollama() {
 
           # build temp container image
           touch Caddyfile
-          $DOCKERCOMPOSE_BIN build caddy
+          $DOCKERCOMPOSE_BIN build --no-cache caddy
 
           export CADDY_OLLAMA_API_PASSWORD1=$((echo $CADDY_OLLAMA_API_TEMP_PASSWORD1 ; echo $CADDY_OLLAMA_API_TEMP_PASSWORD1 ) | $DOCKER_BIN run --rm -it --entrypoint caddy caddy:local hash-password | tail -n 1)
 
@@ -76,15 +76,12 @@ relaunch_ollama() {
           envsubst < ./ssh/authorized_keys.template > ./ssh/authorized_keys
           envsubst < ./dyndns/update-dns.sh.template > ./dyndns/update-dns.sh
 
-          set -e
           # rebuild final container image
           $DOCKERCOMPOSE_BIN build --no-cache caddy
           $DOCKERCOMPOSE_BIN build --no-cache ssh
           $DOCKERCOMPOSE_BIN build --no-cache dyndns
-          set +e
           # clean previous containers
           $DOCKERCOMPOSE_BIN down
-          set -e
           # run container
           $DOCKERCOMPOSE_BIN up -d
         popd
