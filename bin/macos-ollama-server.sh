@@ -40,7 +40,7 @@ relaunch_ollama() {
     pull)
       CONTINUE_CONFIG="$HOME/.continue/config.json"
       if type ollama &>/dev/null ; then
-        grep 'model"' $CONTINUE_CONFIG | awk '{print $2}' | sort -u | tr -d '"' | tr -d ',' | xargs -I{} bash -c "echo {}; ollama pull {}"
+        grep 'model"' $CONTINUE_CONFIG | jq -r '.. | .model? // empty' awk '{print $2}' | sort -u | xargs -I{} bash -c "echo '==> {}'; ollama pull {}"
         exit 0
       else
         echo "ERROR: missing 'ollama'"
