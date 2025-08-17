@@ -33,7 +33,7 @@
     "apiBase": "http://127.0.0.1:11434",
     "model": "nomic-embed-text:137m-v1.5-fp16",
     "provider": "ollama",
-    "title": "nomic-embed-text:137m-v1.5-fp16",
+    "title": "nomic-embed-text:137m-v1.5-fp16 api",
     "requestOptions": {
       "headers": { "Authorization": "Basic" }
     }
@@ -41,9 +41,9 @@
   "models": [
     {
       "apiBase": "http://127.0.0.1:11434",
-      "model": "qwen2.5-coder:32b-instruct-q4_K_M",
+      "model": "qwen3-coder:30b-a3b-q4_K_M",
       "provider": "ollama",
-      "title": "qwen2.5-coder:32b-instruct-q4_K_M",
+      "title": "qwen3-coder:30b-a3b-q4_K_M api",
       "requestOptions": {
         "headers": { "Authorization": "Basic" }
       }
@@ -59,6 +59,11 @@
       "title": "codellama:13b-code autocomplete"
     },
     {
+      "model": "gpt-oss:20b",
+      "provider": "ollama",
+      "title": "gpt-oss:20b"
+    },
+    {
       "model": "qwen2.5-coder:32b-instruct-q4_K_M",
       "provider": "ollama",
       "title": "qwen2.5-coder:32b-instruct-q4_K_M"
@@ -67,6 +72,11 @@
       "model": "qwen2.5-coder:32b-base",
       "provider": "ollama",
       "title": "qwen2.5-coder:32b-base autocomplete"
+    },
+    {
+      "model": "qwen3-coder:30b-a3b-q4_K_M",
+      "provider": "ollama",
+      "title": "qwen3-coder:30b-a3b-q4_K_M"
     },
     {
       "model": "starcoder2:15b",
@@ -90,9 +100,9 @@
   ],
   "tabAutocompleteModel": {
     "apiBase": "http://127.0.0.1:11434",
-    "model": "qwen2.5-coder:32b-base",
+    "model": "qwen3-coder:30b-a3b-q4_K_M",
     "provider": "ollama",
-    "title": "qwen2.5-coder:32b-base autocomplete",
+    "title": "qwen3-coder:30b-a3b-q4_K_M api",
     "requestOptions": {
       "headers": { "Authorization": "Basic" }
     }
