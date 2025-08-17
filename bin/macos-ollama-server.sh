@@ -78,9 +78,9 @@ relaunch_ollama() {
 
           set -e
           # rebuild final container image
-          $DOCKERCOMPOSE_BIN build caddy
-          $DOCKERCOMPOSE_BIN build ssh
-          $DOCKERCOMPOSE_BIN build dyndns
+          $DOCKERCOMPOSE_BIN build --no-cache caddy
+          $DOCKERCOMPOSE_BIN build --no-cache ssh
+          $DOCKERCOMPOSE_BIN build --no-cache dyndns
           set +e
           # clean previous containers
           $DOCKERCOMPOSE_BIN down
