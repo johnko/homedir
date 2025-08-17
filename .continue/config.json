@@ -1,4 +1,5 @@
 {
+  "allowAnonymousTelemetry": false,
   "contextProviders": [
     {
       "name": "code",
