@@ -6,9 +6,7 @@ EXCLUDE_PATHS="
 .devops-tools
 .DS_Store
 .git
-.gitmodules
 agent.sock
-agent.toml
 Containers
 creator-micro
 iso
@@ -25,8 +23,9 @@ test-secrets-template.yaml
 NOEXISTSEPERATOR
 .Brewfile
 .gitconfig
+.gitmodules
+agent.toml
 config
-config.json
 known_hosts
 "
 
