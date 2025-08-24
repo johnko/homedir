@@ -12,13 +12,13 @@ if [[ -e ~/.ssh/config ]]; then
 else
   printf -- "HashKnownHosts no\n" >> ~/.ssh/config
 fi
-[ -e ~/.ssh ] && chmod 700 ~/.ssh
-[ -e ~/.ssh/config ] && chmod 600 ~/.ssh/config
-[ -e ~/.ssh/id_rsa ] && chmod 600 ~/.ssh/id_rsa
-[ -e ~/.ssh/id_rsa.pub ] && chmod 600 ~/.ssh/id_rsa.pub
-[ -e ~/.ssh/id_ed25519 ] && chmod 600 ~/.ssh/id_ed25519
-[ -e ~/.ssh/id_ed25519.pub ] && chmod 600 ~/.ssh/id_ed25519.pub
-[ -e ~/.ssh/known_hosts ] && chmod 600 ~/.ssh/known_hosts
+[[ -e ~/.ssh ]] && chmod 700 ~/.ssh
+[[ -e ~/.ssh/config ]] && chmod 600 ~/.ssh/config
+[[ -e ~/.ssh/id_rsa ]] && chmod 600 ~/.ssh/id_rsa
+[[ -e ~/.ssh/id_rsa.pub ]] && chmod 600 ~/.ssh/id_rsa.pub
+[[ -e ~/.ssh/id_ed25519 ]] && chmod 600 ~/.ssh/id_ed25519
+[[ -e ~/.ssh/id_ed25519.pub ]] && chmod 600 ~/.ssh/id_ed25519.pub
+[[ -e ~/.ssh/known_hosts ]] && chmod 600 ~/.ssh/known_hosts
 
 ##########
 for i in ~/.vim/backups ~/.vim/swaps ~/.vim/undo; do
@@ -62,9 +62,9 @@ PROMPT='[$(arch)]'$PROMPT
 
 export npm_config_cache="$HOME/.npm/$(arch)"
 export NVM_DIR="$HOME/.nvm/$(arch)"
-[ -e $NVM_DIR ] || mkdir -p $NVM_DIR
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[[ -e $NVM_DIR ]] || mkdir -p $NVM_DIR
+[[ -s "/opt/homebrew/opt/nvm/nvm.sh" ]] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ]] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export GPG_TTY=$(tty)
 
