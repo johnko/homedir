@@ -22,7 +22,7 @@ fi
 
 ##########
 for i in ~/.vim/backups ~/.vim/swaps ~/.vim/undo; do
-  [ ! -d $i ] && mkdir -p $i
+  [[ ! -d $i ]] && mkdir -p $i
 done
 
 ##########
