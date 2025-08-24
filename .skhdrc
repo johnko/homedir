@@ -44,7 +44,7 @@ shift + ctrl + alt + cmd - l : echo
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
 ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
-ctrl + alt + cmd - 6 : echo
+ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 
 # float left
 ctrl + alt + cmd - q : yabai -m window --grid 1:60:1:0:29:1
