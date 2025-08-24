@@ -6,8 +6,8 @@ umask 0077
 bindkey -e
 
 ##########
-[ ! -e ~/.ssh ] && install -d -m 700 ~/.ssh
-if [ -e ~/.ssh/config ]; then
+[[ ! -e ~/.ssh ]] && install -d -m 700 ~/.ssh
+if [[ -e ~/.ssh/config ]]; then
   grep -q "HashKnownHosts" ~/.ssh/config || printf -- "HashKnownHosts no\n" >> ~/.ssh/config
 else
   printf -- "HashKnownHosts no\n" >> ~/.ssh/config
