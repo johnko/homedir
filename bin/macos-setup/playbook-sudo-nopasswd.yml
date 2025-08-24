@@ -1,6 +1,6 @@
 - hosts: localhost
   connection: local
-  become: true
+  become: '{{ lookup("env", "ANSIBLE_BECOME") }}'
   become_user: root
   gather_facts: false
   tasks:
@@ -12,6 +12,13 @@
         regexp: '^{{ lookup("env", "USER") }} .* ALL$'
         line: '{{ lookup("env", "USER") }} ALL = (ALL) ALL'
         validate: /usr/sbin/visudo -cf %s
+    - name: allow all read
+      ansible.builtin.file:
+        path: /etc/sudoers.d/50-local-user
+        state: file
+        mode: '0644'
+        owner: root
+        group: wheel
     - name: Allow mac local user to sudo NOPASSWD
       lineinfile:
         path: /etc/sudoers.d/50-local-user
