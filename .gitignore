@@ -3,6 +3,7 @@
 .account
 .android/*
 .ansible_galaxy
+.ansible/*
 .anyconnect
 .aws/*
 .babel.json
