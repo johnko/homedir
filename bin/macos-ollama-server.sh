@@ -77,7 +77,7 @@ relaunch_ollama() {
           envsubst < ./dyndns/update-dns.sh.template > ./dyndns/update-dns.sh
 
           # rebuild final container image
-          $DOCKERCOMPOSE_BIN build --no-cache caddy
+          $DOCKERCOMPOSE_BIN build caddy
           $DOCKERCOMPOSE_BIN build --no-cache ssh
           $DOCKERCOMPOSE_BIN build --no-cache dyndns
           # clean previous containers
