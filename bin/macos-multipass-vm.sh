@@ -59,12 +59,12 @@ while getopts ":n:i:c:m:s:" o; do
   esac
 done
 shift $((OPTIND-1))
-if  [ "create" = "$ACTN" -o \
-      "destroy" = "$ACTN" -o \
-      "info" = "$ACTN" -o \
-      "restart" = "$ACTN" -o \
-      "stop" = "$ACTN" -o \
-      "start" = "$ACTN" ] && [[ -z "$n" ]] ; then
+if  [[ "create" = "$ACTN" || \
+      "destroy" = "$ACTN" || \
+      "info" = "$ACTN" || \
+      "restart" = "$ACTN" || \
+      "stop" = "$ACTN" || \
+      "start" = "$ACTN" ]] && [[ -z "$n" ]] ; then
     usage
 fi
 [[ -z "$ISO" ]] && ISO=24.04
