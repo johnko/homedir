@@ -6,8 +6,8 @@ ANDROID_API_VERSION='android-35'
 ANDROID_ARCH='arm64'
 EXCLUDE_DEVICE_TYPE='ext14|ps16k|tablet'
 
-if [ -e /opt/homebrew/opt/openjdk/libexec/openjdk.jdk ]; then
-  if [ ! -e /Library/Java/JavaVirtualMachines/openjdk.jdk ]; then
+if [[ -e /opt/homebrew/opt/openjdk/libexec/openjdk.jdk ]]; then
+  if [[ ! -e /Library/Java/JavaVirtualMachines/openjdk.jdk ]]; then
     sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
   fi
 fi
@@ -23,7 +23,7 @@ if type sdkmanager &>/dev/null ; then
 
   export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
   # export ANDROID_SDK_ROOT="/opt/homebrew/share/android-commandlinetools"
-  if [ ! -e "${ANDROID_SDK_ROOT}/system-images" ]; then
+  if [[ ! -e "${ANDROID_SDK_ROOT}/system-images" ]]; then
     SRC=$(find /opt/homebrew/share/android-commandlinetools -type d -name system-images | sort -u | tail -n 1)
     ln -sfn "$SRC" "${ANDROID_SDK_ROOT}/system-images"
   fi
