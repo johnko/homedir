@@ -6,8 +6,8 @@ alias yless="jless --yaml"
 
 ########################################
 
-if [ -x /usr/bin/dircolors -o -e /Users ] ; then
-  if [ -x /usr/bin/dircolors ] ; then
+if [[ -x /usr/bin/dircolors || -e /Users ]] ; then
+  if [[ -x /usr/bin/dircolors ]] ; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
   fi
   #alias dir='dir --color=auto'
