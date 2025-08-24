@@ -55,7 +55,7 @@ relaunch_ollama() {
 
       # run caddy container so we can have some kind of authentication
       export CADDY_COMPOSE_FOLDER="$(dirname $0)/../ollama-caddy"
-      if [ -d "$CADDY_COMPOSE_FOLDER" ]; then
+      if [[ -d "$CADDY_COMPOSE_FOLDER" ]]; then
         pushd "$CADDY_COMPOSE_FOLDER"
           # export CLOUDFLARE_IPV4=$(curl 'https://www.cloudflare.com/ips-v4/#' | tr "\n" ' ')
           # export CLOUDFLARE_IPV6=$(curl 'https://www.cloudflare.com/ips-v6/#' | tr "\n" ' ')
@@ -67,7 +67,7 @@ relaunch_ollama() {
 
           export CADDY_OLLAMA_API_PASSWORD1=$((echo $CADDY_OLLAMA_API_TEMP_PASSWORD1 ; echo $CADDY_OLLAMA_API_TEMP_PASSWORD1 ) | $DOCKER_BIN run --rm -it --entrypoint caddy caddy:local hash-password | tail -n 1)
 
-          if [ -z "$CADDY_OLLAMA_API_PASSWORD1" ]; then
+          if [[ -z "$CADDY_OLLAMA_API_PASSWORD1" ]]; then
             exit 1
           fi
 
