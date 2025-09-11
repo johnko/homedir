@@ -31,7 +31,7 @@ shift + ctrl + alt + cmd - c : yabai -m window --grid 24:24:4:2:16:20
 # float tall
 shift + ctrl + alt + cmd - v : yabai -m window --grid 24:24:5:1:14:22
 # float 2/3 tall vertical screen
-shift + ctrl + alt + cmd - b : yabai -m window --grid 3:1:0:1:1:2
+shift + ctrl + alt + cmd - b : yabai -m window --grid 99:1:0:33:1:65
 
 shift + ctrl + alt + cmd - i : echo
 shift + ctrl + alt + cmd - o : echo
@@ -80,7 +80,7 @@ ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
 ctrl + alt + cmd - up : yabai -m window --grid 2:1:0:0:1:1
 ctrl + alt + cmd - down : yabai -m window --grid 2:1:0:1:1:1
 ctrl + alt + cmd - left : yabai -m window --grid 3:1:0:0:1:1
-ctrl + alt + cmd - right : yabai -m window --grid 3:1:0:1:1:2
+ctrl + alt + cmd - right : yabai -m window --grid 99:1:0:33:1:65
 
 shift + ctrl + alt + cmd - tab : echo
 # shift + ctrl + alt + cmd - space : echo # siri
