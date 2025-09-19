@@ -10,424 +10,424 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ~/Library/Contain
   # WRITE
   plutil -replace AppleSymbolicHotKeys -json '
 {
-  "118":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "118": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         49,
         18,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "119":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "119": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         50,
         19,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "120":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "120": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         51,
         20,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "121":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "121": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         52,
         21,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "122":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "122": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         53,
         23,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "123":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "123": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         54,
         22,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "124":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "124": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         55,
         26,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "125":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "125": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         56,
         28,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "126":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "126": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         57,
         25,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "127":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "127": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         48,
         29,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "128":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "128": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         65535,
         18,
         786432
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "129":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "129": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         65535,
         19,
         786432
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "15":{
-    "enabled":0
+  "15": {
+    "enabled": 0
   },
-  "16":{
-    "enabled":0
+  "16": {
+    "enabled": 0
   },
-  "163":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "163": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         96,
         50,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "164":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "164": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         32,
         49,
         1835008
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "17":{
-    "enabled":0
+  "17": {
+    "enabled": 0
   },
-  "175":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "175": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         65535,
         97,
         8388608
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "176":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "176": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         32,
         49,
         1966080
       ],
-      "type":"SAE1.0"
+      "type": "SAE1.0"
     }
   },
-  "18":{
-    "enabled":0
+  "18": {
+    "enabled": 0
   },
-  "19":{
-    "enabled":0
+  "19": {
+    "enabled": 0
   },
-  "20":{
-    "enabled":0
+  "20": {
+    "enabled": 0
   },
-  "21":{
-    "enabled":0
+  "21": {
+    "enabled": 0
   },
-  "22":{
-    "enabled":0
+  "22": {
+    "enabled": 0
   },
-  "23":{
-    "enabled":0
+  "23": {
+    "enabled": 0
   },
-  "24":{
-    "enabled":0
+  "24": {
+    "enabled": 0
   },
-  "25":{
-    "enabled":0
+  "25": {
+    "enabled": 0
   },
-  "26":{
-    "enabled":0
+  "26": {
+    "enabled": 0
   },
-  "32":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "32": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         65535,
         126,
         262144
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "33":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "33": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         65535,
         120,
         0
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "34":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "34": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         65535,
         126,
         393216
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "35":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "35": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         65535,
         120,
         8519680
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "36":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "36": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         65535,
         118,
         0
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "37":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "37": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         65535,
         118,
         131072
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "38":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "38": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         8,
         8,
         0
       ],
-      "type":"button"
+      "type": "button"
     }
   },
-  "39":{
-    "enabled":0
+  "39": {
+    "enabled": 0
   },
-  "40":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "40": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         8,
         8,
         131072
       ],
-      "type":"button"
+      "type": "button"
     }
   },
-  "41":{
-    "enabled":0
+  "41": {
+    "enabled": 0
   },
-  "42":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "42": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         16,
         16,
         0
       ],
-      "type":"button"
+      "type": "button"
     }
   },
-  "43":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "43": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         16,
         16,
         131072
       ],
-      "type":"button"
+      "type": "button"
     }
   },
-  "44":{
-    "enabled":0
+  "44": {
+    "enabled": 0
   },
-  "45":{
-    "enabled":0
+  "45": {
+    "enabled": 0
   },
-  "46":{
-    "enabled":0
+  "46": {
+    "enabled": 0
   },
-  "48":{
-    "enabled":0
+  "48": {
+    "enabled": 0
   },
-  "49":{
-    "enabled":0
+  "49": {
+    "enabled": 0
   },
-  "60":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "60": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         32,
         49,
         262144
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "61":{
-    "enabled":0,
-    "value":{
-      "parameters":[
+  "61": {
+    "enabled": 0,
+    "value": {
+      "parameters": [
         32,
         49,
         786432
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "79":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "79": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         65535,
         123,
         8650752
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "80":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "80": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         65535,
         123,
         8781824
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "81":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "81": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         65535,
         124,
         8650752
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "82":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "82": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         65535,
         124,
         8781824
       ],
-      "type":"standard"
+      "type": "standard"
     }
   },
-  "98":{
-    "enabled":1,
-    "value":{
-      "parameters":[
+  "98": {
+    "enabled": 1,
+    "value": {
+      "parameters": [
         47,
         44,
         1179648
       ],
-      "type":"standard"
+      "type": "standard"
     }
   }
 }' $i
