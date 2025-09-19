@@ -63,7 +63,7 @@
   "workbench.preferredLightColorTheme": "Visual Studio Light",
   "workbench.startupEditor": "none",
   "yaml.schemas": {
-    "file://~/.vscode/extensions/continue.continue-1.2.0-darwin-arm64/config-yaml-schema.json": [
+    "file://~/.vscode/extensions/continue.continue-1.2.4-darwin-arm64/config-yaml-schema.json": [
       ".continue/**/*.yaml"
     ]
   },
