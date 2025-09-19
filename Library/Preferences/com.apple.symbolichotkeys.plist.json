@@ -1,16 +1,3 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-set -x
-
-for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ; do
-  # READ
-  # plutil -p $i
-  # not sure if needed anymore in macOS Tahoe ~/Library/Containers/com.apple.Desktop-Settings.extension/Data/Library/Preferences/com.apple.symbolichotkeys.plist
-  # plutil -convert json -o ./tmp_symbolichotkeys.json Library/Preferences/com.apple.symbolichotkeys.plist ; cat ./tmp_symbolichotkeys.json | jq '.AppleSymbolicHotKeys' --sort-keys ; rm ./tmp_symbolichotkeys.json
-
-  # WRITE
-  plutil -replace AppleSymbolicHotKeys -json '
 {
   "118": {
     "enabled": false,
@@ -126,8 +113,8 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ; do
     "enabled": true,
     "value": {
       "parameters": [
-        16,
-        16,
+        8,
+        8,
         0
       ],
       "type": "button"
@@ -137,8 +124,8 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ; do
     "enabled": true,
     "value": {
       "parameters": [
-        16,
-        16,
+        8,
+        8,
         131072
       ],
       "type": "button"
@@ -148,8 +135,8 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ; do
     "enabled": true,
     "value": {
       "parameters": [
-        8,
-        8,
+        16,
+        16,
         0
       ],
       "type": "button"
@@ -159,8 +146,8 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ; do
     "enabled": true,
     "value": {
       "parameters": [
-        8,
-        8,
+        16,
+        16,
         131072
       ],
       "type": "button"
@@ -265,5 +252,4 @@ for i in ~/Library/Preferences/com.apple.symbolichotkeys.plist ; do
       "type": "standard"
     }
   }
-}' $i
-done
+}
