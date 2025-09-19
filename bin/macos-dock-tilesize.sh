@@ -33,6 +33,8 @@ KEYVAL="
         NSAutomaticPeriodSubstitutionEnabled = 0;
         NSAutomaticQuoteSubstitutionEnabled = 0;
         com.apple.sound.beep.feedback = 1;
+        com.apple.sound.beep.flash = 0;
+        com.apple.sound.beep.volume = 1;
 "
 print_cmd
 
@@ -68,7 +70,11 @@ DOMAIN="com.apple.finder"
 KEYVAL="
         ShowExternalHardDrivesOnDesktop = 1;
         ShowHardDrivesOnDesktop = 0;
+        ShowPathbar = 1;
+        ShowRecentTags = 0;
         ShowRemovableMediaOnDesktop = 1;
+        ShowSidebar = 1;
+        ShowStatusBar = 1;
 "
 print_cmd
 
@@ -80,16 +86,5 @@ KEYVAL="
 "
 print_cmd
 
-# https://apple.stackexchange.com/questions/87619/where-are-keyboard-shortcuts-stored-for-backup-and-sync-purposes
-# printf "defaults write NSGlobalDomain NSUserKeyEquivalents '$(defaults read NSGlobalDomain NSUserKeyEquivalents)'"
-cat <<EOS
-defaults write NSGlobalDomain NSUserKeyEquivalents '{
-    "Emoji & Symbols" = "\Uf714";
-    "Enter Full Screen" = "@^f";
-    "Exit Full Screen" = "@^f";
-    "Secure Keyboard Entry" = "@~^\Uf714";
-    "Toggle Full Screen" = "@^f";
-}'
-EOS
 
 echo "killall Dock"
