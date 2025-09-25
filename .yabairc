@@ -23,11 +23,11 @@ yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice 
 yabai -m rule --add app="^(Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather)$" manage=off grid=12:12:3:4:6:8
 
 # left 2/3
-yabai -m rule --add app="^(Brave Browser|UTM)$" manage=off grid=6:6:0:2:3:4
+yabai -m rule --add app="^(UTM)$" manage=off grid=6:6:0:2:3:4
 # right 2/3
 yabai -m rule --add app="^(Docker.*|Podman.*|Reminders)$" manage=off grid=6:6:3:2:3:4
 # right half tall
-yabai -m rule --add app="^(Console|GitHub|Google Drive|Preview|Safari)$" manage=off grid=1:12:6:0:6:1
+yabai -m rule --add app="^(Brave Browser|Console|GitHub|Google Drive|Preview|Safari)$" manage=off grid=1:60:30:0:29:1
 
 # middle left quarter
 yabai -m rule --add app="^(Discord|Instagram|Messages|Signal|WhatsApp.*)$" manage=off grid=6:6:0:2:3:3
