@@ -49,8 +49,8 @@ yabai -m rule --add app="^(Slack)$" manage=off grid=99:1:0:33:1:65
 yabai -m rule --add app="^(Archive Utility|Calculator|iPhone Mirroring|Terminal)$" manage=off
 
 # default to float almost centered
-# cat .yabairc| grep app= | cut -d= -f2 | sed 's,manage,,' | grep -v noexist | tr -d '"^$)(' | tr "\n" '|' | sed 's, |,|,g'
-yabai -m rule --add app!="^(Google Chrome|Keychain Access|Clock|Gmail|System Preferences|System Settings|Books|GarageBand|GIMP|iMovie|Photos|Code|Xcode|Crunchyroll.*|Netflix|TV|1Password|FaceTime|Finder|Photo Booth|QuickTime.*|TextEdit|Activity Monitor|App Store|Contacts|Dictionary|Voice Memos|Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather|Brave Browser|UTM|Docker.*|Podman.*|Reminders|Console|GitHub|Google Drive|Preview|Safari|Discord|Instagram|Messages|Signal|WhatsApp.*|LINE|LuLu|Firefox|Music|Netiquette|Podcasts|Spotify|Google Calendar|Notes|Slack|Archive Utility|Calculator|iPhone Mirroring|Terminal)$" manage=off grid=24:24:4:2:16:20
+# cat .yabairc | grep -v grep | grep app= | cut -d= -f2 | sed 's,manage,,' | grep -v noexist | tr -d '"^$)(' | tr "\n" '|' | sed 's, |,|,g'
+yabai -m rule --add app!="^(Google Chrome|Keychain Access|Clock|Gmail|System Preferences|System Settings|Books|GarageBand|GIMP|iMovie|Photos|Code|Xcode|Crunchyroll.*|Netflix|TV|1Password|FaceTime|Finder|Photo Booth|QuickTime.*|TextEdit|Activity Monitor|App Store|Contacts|Dictionary|Voice Memos|Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather|UTM|Docker.*|Podman.*|Reminders|Console|GitHub|Google Drive|Preview|Safari|Discord|Instagram|Messages|Signal|WhatsApp.*|Brave Browser|LINE|LuLu|Firefox|Music|Netiquette|Podcasts|Spotify|Google Calendar|Notes|Slack|Archive Utility|Calculator|iPhone Mirroring|Terminal)$" manage=off grid=24:24:4:2:16:20
 
 # apply rules on restart
 yabai -m rule --apply
