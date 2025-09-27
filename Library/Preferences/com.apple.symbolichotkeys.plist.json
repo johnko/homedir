@@ -54,6 +54,17 @@
       "type": "standard"
     }
   },
+  "164": {
+    "enabled": true,
+    "value": {
+      "parameters": [
+        32,
+        49,
+        1966080
+      ],
+      "type": "standard"
+    }
+  },
   "175": {
     "enabled": true,
     "value": {
@@ -63,6 +74,17 @@
         8388608
       ],
       "type": "standard"
+    }
+  },
+  "176": {
+    "enabled": true,
+    "value": {
+      "parameters": [
+        32,
+        49,
+        1835008
+      ],
+      "type": "SAE1.0"
     }
   },
   "223": {
