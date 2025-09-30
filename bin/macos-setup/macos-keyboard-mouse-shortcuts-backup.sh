@@ -16,7 +16,6 @@ Library/Containers/com.apple.Desktop-Settings.extension/Data/Library/Preferences
   if [[ -e "$i" ]] ; then
     plutil -convert json -o ./tmp_symbolichotkeys.json $i
     cat ./tmp_symbolichotkeys.json | jq '.AppleSymbolicHotKeys' --sort-keys > ${i}.json
-    git add -f ${i}.json
     rm ./tmp_symbolichotkeys.json
   fi
 
