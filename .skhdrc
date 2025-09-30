@@ -1,6 +1,6 @@
 
-# shift + ctrl + alt + cmd - 1 : echo # space left
-# shift + ctrl + alt + cmd - 2 : echo # space right
+shift + ctrl + alt + cmd - 1 : echo
+shift + ctrl + alt + cmd - 2 : echo
 shift + ctrl + alt + cmd - 3 : echo
 shift + ctrl + alt + cmd - 4 : echo
 shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-prune.scpt
@@ -44,8 +44,10 @@ shift + ctrl + alt + cmd - l : echo
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 
-# ctrl + alt + cmd - 1 : echo # space left
-# ctrl + alt + cmd - 2 : echo # space right
+# float top left
+ctrl + alt + cmd - 1 : yabai -m window --grid 2:60:1:0:29:1
+# float top right
+ctrl + alt + cmd - 2 : yabai -m window --grid 2:60:30:0:29:1
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
 ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
