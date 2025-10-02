@@ -15,6 +15,7 @@ lab-squid-ramdisk
 nuphy
 old
 ollama-caddy
+Preferences
 squid
 squid-demo-client
 test-secrets-template.yaml
