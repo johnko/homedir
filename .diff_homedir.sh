@@ -20,7 +20,6 @@ squid-demo-client
 test-secrets-template.yaml
 NOEXISTSEPERATOR
 .Brewfile
-.gitconfig
 .gitmodules
 agent.toml
 config
