@@ -1,4 +1,18 @@
 {
+  "[dockercompose]": {
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "comments": false,
+      "other": true,
+      "strings": true
+    },
+    "editor.tabSize": 2
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
   "chat.commandCenter.enabled": false,
   "chat.editor.fontSize": 14,
   "continue.enableTabAutocomplete": true,
@@ -61,6 +75,7 @@
   "typescript.surveys.enabled": false,
   "update.showReleaseNotes": false,
   "window.autoDetectColorScheme": true,
+  "window.confirmSaveUntitledWorkspace": false,
   "workbench.editor.empty.hint": "hidden",
   "workbench.preferredDarkColorTheme": "Visual Studio Dark",
   "workbench.preferredLightColorTheme": "Visual Studio Light",
