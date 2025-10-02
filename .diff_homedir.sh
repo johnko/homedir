@@ -18,6 +18,7 @@ ollama-caddy
 squid
 squid-demo-client
 test-secrets-template.yaml
+terminal-kctxt-qa-k9s.scpt
 NOEXISTSEPERATOR
 .Brewfile
 .gitmodules
