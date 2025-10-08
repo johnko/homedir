@@ -20,6 +20,7 @@ shift + ctrl + alt + cmd - y : yabai --restart-service
 # shift + ctrl + alt + cmd - s : echo # arrow down
 # shift + ctrl + alt + cmd - d : echo # arrow right
 # almost fullscreen
+f13 : yabai -m window --toggle float --grid 60:60:1:1:58:58
 ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 60:60:1:1:58:58
 shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 60:60:1:1:58:58
 # float 1/3 tall vertical screen
@@ -30,6 +31,7 @@ shift + ctrl + alt + cmd - h : bash ~/bin/yabai_cycle_clockwise.sh
 # float tall wide 20/24 of screen for video
 shift + ctrl + alt + cmd - z : yabai -m window --grid 24:24:2:4:20:19
 # float tall wide 18/24 of screen for focus
+f14 : yabai -m window --grid 24:24:3:3:18:21
 shift + ctrl + alt + cmd - x : yabai -m window --grid 24:24:3:3:18:21
 # float tall wide 16/24 of screen for editing
 shift + ctrl + alt + cmd - c : yabai -m window --grid 24:24:4:2:16:20
@@ -59,6 +61,7 @@ ctrl + alt + cmd - q : yabai -m window --grid 99:60:1:0:29:98
 ctrl + alt + cmd - e : yabai -m window --grid 99:60:30:0:29:98
 # float tall 1/2 of screen for web
 ctrl + alt + cmd - r : yabai -m window --grid 99:4:1:0:2:98
+f15 : osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - y : skhd --restart-service
 
@@ -89,12 +92,7 @@ ctrl + alt + cmd - up : yabai -m window --grid 99:60:1:0:58:49
 ctrl + alt + cmd - down : yabai -m window --grid 99:60:1:49:58:49
 
 # shift + ctrl + alt + cmd - tab : echo
-# shift + ctrl + alt + cmd - space : echo # siri
-
-# ctrl + alt + cmd - space : echo # dictation
-
-f13 : yabai -m window --toggle float --grid 60:60:1:1:58:58
-f14 : yabai -m window --grid 24:24:3:3:18:21
-f15 : osascript ~/.osascripts/toggle-terminal.scpt
+# shift + ctrl + alt + cmd - space : echo # dictation
+# ctrl + alt + cmd - space : echo # siri
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
