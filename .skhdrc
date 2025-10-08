@@ -7,9 +7,11 @@ shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-prune.scpt
 shift + ctrl + alt + cmd - 6 : yabai -m space --balance
 
 # float top left
+ctrl + alt + cmd - 1 :         yabai -m window --grid 99:60:1:0:29:49
 shift + ctrl + alt + cmd - q : yabai -m window --grid 99:60:1:0:29:49
 # shift + ctrl + alt + cmd - w : echo # arrow up
 # float top right
+ctrl + alt + cmd - 2 :         yabai -m window --grid 99:60:30:0:29:49
 shift + ctrl + alt + cmd - e : yabai -m window --grid 99:60:30:0:29:49
 # float middle center quarter
 shift + ctrl + alt + cmd - r : yabai -m window --grid 4:4:1:1:2:2
@@ -20,25 +22,25 @@ shift + ctrl + alt + cmd - y : yabai --restart-service
 # shift + ctrl + alt + cmd - s : echo # arrow down
 # shift + ctrl + alt + cmd - d : echo # arrow right
 # almost fullscreen
-f13 : yabai -m window --toggle float --grid 60:60:1:1:58:58
-ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 60:60:1:1:58:58
+f13 :                          yabai -m window --toggle float --grid 60:60:1:1:58:58
+ctrl + alt + cmd - tab :       yabai -m window --toggle float --grid 60:60:1:1:58:58
 shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 60:60:1:1:58:58
 # float 1/3 tall vertical screen
-ctrl + alt + cmd - left : yabai -m window --grid 99:60:1:0:58:25
+ctrl + alt + cmd - left :      yabai -m window --grid 99:60:1:0:58:25
 shift + ctrl + alt + cmd - g : yabai -m window --grid 99:60:1:0:58:25
 shift + ctrl + alt + cmd - h : bash ~/bin/yabai_cycle_clockwise.sh
 
 # float tall wide 20/24 of screen for video
 shift + ctrl + alt + cmd - z : yabai -m window --grid 24:24:2:4:20:19
 # float tall wide 18/24 of screen for focus
-f14 : yabai -m window --grid 24:24:3:3:18:21
+f14 :                          yabai -m window --grid 24:24:3:3:18:21
 shift + ctrl + alt + cmd - x : yabai -m window --grid 24:24:3:3:18:21
 # float tall wide 16/24 of screen for editing
 shift + ctrl + alt + cmd - c : yabai -m window --grid 24:24:4:2:16:20
 # float tall
 shift + ctrl + alt + cmd - v : yabai -m window --grid 24:24:5:1:14:22
 # float 2/3 tall vertical screen
-ctrl + alt + cmd - right : yabai -m window --grid 99:1:0:25:1:73
+ctrl + alt + cmd - right :     yabai -m window --grid 99:1:0:25:1:73
 shift + ctrl + alt + cmd - b : yabai -m window --grid 99:1:0:25:1:73
 
 # shift + ctrl + alt + cmd - i : echo
@@ -61,7 +63,7 @@ ctrl + alt + cmd - q : yabai -m window --grid 99:60:1:0:29:98
 ctrl + alt + cmd - e : yabai -m window --grid 99:60:30:0:29:98
 # float tall 1/2 of screen for web
 ctrl + alt + cmd - r : yabai -m window --grid 1:4:1:0:2:1
-f15 : osascript ~/.osascripts/toggle-terminal.scpt
+f15 :                  osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - y : skhd --restart-service
 
@@ -73,10 +75,8 @@ ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 ctrl + alt + cmd - h : yabai -m space --rotate 270
 
 # float bottom left
-ctrl + alt + cmd - 1 : yabai -m window --grid 99:60:1:0:29:49
 ctrl + alt + cmd - z : yabai -m window --grid 99:60:1:49:29:49
 # float bottom right
-ctrl + alt + cmd - 2 : yabai -m window --grid 99:60:30:0:29:49
 ctrl + alt + cmd - x : yabai -m window --grid 99:60:30:49:29:49
 ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
 ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
