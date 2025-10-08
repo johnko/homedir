@@ -22,7 +22,7 @@ shift + ctrl + alt + cmd - y : yabai --restart-service
 # almost fullscreen
 shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 60:60:1:1:58:58
 # float 1/3 tall vertical screen
-shift + ctrl + alt + cmd - g : yabai -m window --grid 3:1:0:0:1:1
+shift + ctrl + alt + cmd - g : yabai -m window --grid 99:60:1:0:58:25
 shift + ctrl + alt + cmd - h : bash ~/bin/yabai_cycle_clockwise.sh
 
 # float tall wide 20/24 of screen for video
@@ -34,7 +34,7 @@ shift + ctrl + alt + cmd - c : yabai -m window --grid 24:24:4:2:16:20
 # float tall
 shift + ctrl + alt + cmd - v : yabai -m window --grid 24:24:5:1:14:22
 # float 2/3 tall vertical screen
-shift + ctrl + alt + cmd - b : yabai -m window --grid 99:1:0:33:1:65
+shift + ctrl + alt + cmd - b : yabai -m window --grid 99:1:0:25:1:73
 
 shift + ctrl + alt + cmd - i : echo
 shift + ctrl + alt + cmd - o : echo
@@ -84,10 +84,10 @@ ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
 ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
 ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
 
-ctrl + alt + cmd - up : yabai -m window --grid 2:1:0:0:1:1
-ctrl + alt + cmd - down : yabai -m window --grid 2:1:0:1:1:1
-ctrl + alt + cmd - left : yabai -m window --grid 3:1:0:0:1:1
-ctrl + alt + cmd - right : yabai -m window --grid 99:1:0:33:1:65
+ctrl + alt + cmd - up : yabai -m window --grid 99:60:1:0:58:49
+ctrl + alt + cmd - down : yabai -m window --grid 99:60:1:49:58:49
+ctrl + alt + cmd - left : yabai -m window --grid 99:60:1:0:58:25
+ctrl + alt + cmd - right : yabai -m window --grid 99:1:0:25:1:73
 
 shift + ctrl + alt + cmd - tab : echo
 # shift + ctrl + alt + cmd - space : echo # siri

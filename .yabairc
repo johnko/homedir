@@ -43,7 +43,7 @@ yabai -m rule --add app="^(Firefox|Music|Netiquette|Podcasts|Spotify)$" manage=o
 # float 1/3 tall vertical screen
 yabai -m rule --add app="^(Google Calendar|Notes)$" manage=off grid=3:1:0:0:1:1
 # float 2/3 tall vertical screen
-yabai -m rule --add app="^(Slack)$" manage=off grid=99:1:0:33:1:65
+yabai -m rule --add app="^(Slack)$" manage=off grid=99:1:0:25:1:73
 
 # float some non-resizable apps
 yabai -m rule --add app="^(Archive Utility|Calculator|iPhone Mirroring|Terminal)$" manage=off
