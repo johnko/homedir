@@ -7,10 +7,10 @@ shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-prune.scpt
 shift + ctrl + alt + cmd - 6 : yabai -m space --balance
 
 # float top left
-shift + ctrl + alt + cmd - q : yabai -m window --grid 2:60:1:0:29:1
+shift + ctrl + alt + cmd - q : yabai -m window --grid 99:60:1:0:29:49
 # shift + ctrl + alt + cmd - w : echo # arrow up
 # float top right
-shift + ctrl + alt + cmd - e : yabai -m window --grid 2:60:30:0:29:1
+shift + ctrl + alt + cmd - e : yabai -m window --grid 99:60:30:0:29:49
 # float middle center quarter
 shift + ctrl + alt + cmd - r : yabai -m window --grid 4:4:1:1:2:2
 shift + ctrl + alt + cmd - t : osascript ~/.osascripts/sound-reset-left-right-balance.scpt
