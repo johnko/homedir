@@ -1,8 +1,8 @@
 
-shift + ctrl + alt + cmd - 1 : echo
-shift + ctrl + alt + cmd - 2 : echo
-shift + ctrl + alt + cmd - 3 : echo
-shift + ctrl + alt + cmd - 4 : echo
+# shift + ctrl + alt + cmd - 1 : echo
+# shift + ctrl + alt + cmd - 2 : echo
+# shift + ctrl + alt + cmd - 3 : echo
+# shift + ctrl + alt + cmd - 4 : echo
 shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-prune.scpt
 shift + ctrl + alt + cmd - 6 : yabai -m space --balance
 
@@ -36,28 +36,28 @@ shift + ctrl + alt + cmd - v : yabai -m window --grid 24:24:5:1:14:22
 # float 2/3 tall vertical screen
 shift + ctrl + alt + cmd - b : yabai -m window --grid 99:1:0:25:1:73
 
-shift + ctrl + alt + cmd - i : echo
-shift + ctrl + alt + cmd - o : echo
-shift + ctrl + alt + cmd - p : echo
-shift + ctrl + alt + cmd - k : echo
-shift + ctrl + alt + cmd - l : echo
+# shift + ctrl + alt + cmd - i : echo
+# shift + ctrl + alt + cmd - o : echo
+# shift + ctrl + alt + cmd - p : echo
+# shift + ctrl + alt + cmd - k : echo
+# shift + ctrl + alt + cmd - l : echo
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 
 # float top left
-ctrl + alt + cmd - 1 : yabai -m window --grid 2:60:1:0:29:1
+ctrl + alt + cmd - 1 : yabai -m window --grid 99:60:1:0:29:49
 # float top right
-ctrl + alt + cmd - 2 : yabai -m window --grid 2:60:30:0:29:1
+ctrl + alt + cmd - 2 : yabai -m window --grid 99:60:30:0:29:49
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
 ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
 ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 
 # float left
-ctrl + alt + cmd - q : yabai -m window --grid 1:60:1:0:29:1
+ctrl + alt + cmd - q : yabai -m window --grid 99:60:1:0:29:98
 # ctrl + alt + cmd - w : echo # arrow up
 # float right
-ctrl + alt + cmd - e : yabai -m window --grid 1:60:30:0:29:1
+ctrl + alt + cmd - e : yabai -m window --grid 99:60:30:0:29:98
 # float tall 1/2 of screen for web
 ctrl + alt + cmd - r : yabai -m window --grid 1:4:1:0:2:1
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
@@ -71,9 +71,9 @@ ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 ctrl + alt + cmd - h : yabai -m space --rotate 270
 
 # float bottom left
-ctrl + alt + cmd - z : yabai -m window --grid 2:2:0:1:1:1
+ctrl + alt + cmd - z : yabai -m window --grid 99:60:1:49:29:49
 # float bottom right
-ctrl + alt + cmd - x : yabai -m window --grid 2:2:1:1:1:1
+ctrl + alt + cmd - x : yabai -m window --grid 99:60:30:49:29:49
 ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
 ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
@@ -89,7 +89,7 @@ ctrl + alt + cmd - down : yabai -m window --grid 99:60:1:49:58:49
 ctrl + alt + cmd - left : yabai -m window --grid 99:60:1:0:58:25
 ctrl + alt + cmd - right : yabai -m window --grid 99:1:0:25:1:73
 
-shift + ctrl + alt + cmd - tab : echo
+# shift + ctrl + alt + cmd - tab : echo
 # shift + ctrl + alt + cmd - space : echo # siri
 
 ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 60:60:1:1:58:58
