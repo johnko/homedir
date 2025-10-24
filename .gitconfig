@@ -37,6 +37,7 @@
 	tags = !"git log --tags --simplify-by-decoration --pretty='format:%ci %d' | grep 'tag:'"
 	branches = branch -a
 	remotes = remote -v
+	stahs = stash
 	# Set branch master to follow upstream
 	mm = branch --set-upstream-to=origin/master master
 	pm = !"set -x; git fetch; git branch -d master; git checkout origin/master; git checkout -b master; git branch --set-upstream-to=origin/master master; git pull"
