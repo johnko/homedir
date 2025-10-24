@@ -12,7 +12,7 @@ on run
 	set computerIsInUse to true
 	set previousIdleTime to 0
 	display notification "Started" with title "macos-detect-idle"
-	say "Started"
+	-- say "Started"
 end run
 
 on idle
@@ -21,7 +21,7 @@ on idle
 	if not computerIsInUse then
 		if idleTime is less than previousIdleTime then
 			set computerIsInUse to true
-			display notification "User is using the computer again" with title "macos-detect-idle"
+			-- display notification "User is using the computer again" with title "macos-detect-idle"
 		end if
 	else if idleTime is greater than or equal to timeBeforeComputerIsNotInUse then
 		set computerIsInUse to false
