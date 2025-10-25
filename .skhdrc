@@ -23,8 +23,9 @@ shift + ctrl + alt + cmd - y : yabai --restart-service
 f13 :                          yabai -m window --toggle float --grid 60:60:1:1:58:58
 ctrl + alt + cmd - tab :       yabai -m window --toggle float --grid 60:60:1:1:58:58
 shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 60:60:1:1:58:58
-# float 1/3 tall vertical screen
+# float 1st slot down on vertical screen
 ctrl + alt + cmd - left :      yabai -m window --grid 101:60:1:0:58:25
+shift + ctrl + alt + cmd - q : yabai -m window --grid 101:60:1:0:58:25
 shift + ctrl + alt + cmd - h : bash ~/bin/yabai_cycle_clockwise.sh
 
 # float tall wide 20/24 of screen for video
@@ -36,7 +37,7 @@ shift + ctrl + alt + cmd - x : yabai -m window --grid 24:24:3:3:18:21
 shift + ctrl + alt + cmd - c : yabai -m window --grid 24:24:4:2:16:20
 # float tall
 shift + ctrl + alt + cmd - v : yabai -m window --grid 24:24:5:1:14:22
-# float 2/3 tall vertical screen
+# float 3/4 vertical screen
 ctrl + alt + cmd - right :     yabai -m window --grid 101:60:1:25:58:75
 
 # shift + ctrl + alt + cmd - i : echo
@@ -93,7 +94,6 @@ ctrl + alt + cmd - down : yabai -m window --grid 99:60:1:49:58:49
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 
-shift + ctrl + alt + cmd - q : yabai -m window --grid 101:60:1:0:58:25
 shift + ctrl + alt + cmd - e : yabai -m window --grid 101:60:1:25:58:25
 shift + ctrl + alt + cmd - g : yabai -m window --grid 101:60:1:50:58:25
 shift + ctrl + alt + cmd - b : yabai -m window --grid 101:60:1:75:58:25
