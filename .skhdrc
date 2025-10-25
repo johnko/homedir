@@ -93,7 +93,7 @@ ctrl + alt + cmd - down : yabai -m window --grid 99:60:1:49:58:49
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 
-shift + ctrl + alt + cmd - q : yabai -m window --grid 99:60:1:0:29:49
-shift + ctrl + alt + cmd - e : yabai -m window --grid 99:60:30:0:29:49
-shift + ctrl + alt + cmd - g : yabai -m window --grid 99:60:1:0:58:25
-shift + ctrl + alt + cmd - b : yabai -m window --grid 99:1:0:25:1:73
+shift + ctrl + alt + cmd - q : yabai -m window --grid 101:60:1:0:58:25
+shift + ctrl + alt + cmd - e : yabai -m window --grid 101:60:1:25:58:25
+shift + ctrl + alt + cmd - g : yabai -m window --grid 101:60:1:50:58:25
+shift + ctrl + alt + cmd - b : yabai -m window --grid 101:60:1:75:58:25

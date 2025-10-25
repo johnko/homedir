@@ -30,27 +30,33 @@ yabai -m rule --add app="^(Docker.*|Podman.*|Reminders)$" manage=off grid=6:6:3:
 yabai -m rule --add app="^(Console|GitHub|Google Drive|Preview|Safari)$" manage=off grid=99:60:30:0:29:98
 
 # middle left quarter
-yabai -m rule --add app="^(Discord|Instagram|Messages|Signal|WhatsApp.*)$" manage=off grid=6:6:0:2:3:3
+yabai -m rule --add app="^(Discord|Instagram|Messages|WhatsApp.*)$" manage=off grid=6:6:0:2:3:3
 # middle right quarter
-yabai -m rule --add app="^(Brave Browser|LINE)$" manage=off grid=6:6:3:2:3:3
+yabai -m rule --add app="^(LINE)$" manage=off grid=6:6:3:2:3:3
 
 # top right quarter screen
 yabai -m rule --add app="^(LuLu)$" manage=off grid=99:60:30:0:29:49
 
 # bottom right quarter screen for audio media
-yabai -m rule --add app="^(Firefox|Music|Netiquette|Podcasts|Spotify)$" manage=off grid=2:2:1:1:1:1
+yabai -m rule --add app="^(Netiquette|Podcasts)$" manage=off grid=2:2:1:1:1:1
 
-# float 1/3 tall vertical screen
+# float 1st slot down on tall vertical screen
 yabai -m rule --add app="^(Google Calendar|Notes)$" manage=off grid=101:60:1:0:58:25
-# float 2/3 tall vertical screen
+# float 2nd slot down on tall vertical screen
+yabai -m rule --add app="^(Signal)$" manage=off grid=101:60:1:25:58:25
+# float 3/4 tall vertical screen
 yabai -m rule --add app="^(Slack)$" manage=off grid=101:60:1:25:58:75
+# float 3rd slot down on tall vertical screen
+yabai -m rule --add app="^(Firefox|Music|Spotify)$" manage=off grid=101:60:1:50:58:25
+# float 4th slot down on tall vertical screen
+yabai -m rule --add app="^(Brave Browser)$" manage=off grid=101:60:1:75:58:25
 
 # float some non-resizable apps
 yabai -m rule --add app="^(Archive Utility|Calculator|iPhone Mirroring|Terminal)$" manage=off
 
 # default to float almost centered
 # cat .yabairc | grep -v grep | grep app= | cut -d= -f2 | sed 's,manage,,' | grep -v noexist | tr -d '"^$)(' | tr "\n" '|' | sed 's, |,|,g'
-yabai -m rule --add app!="^(Google Chrome|Keychain Access|Clock|Gmail|System Preferences|System Settings|Books|GarageBand|GIMP|iMovie|Photos|Code|Xcode|Crunchyroll.*|Netflix|TV|1Password|FaceTime|Finder|Photo Booth|QuickTime.*|TextEdit|Activity Monitor|App Store|Contacts|Dictionary|Voice Memos|Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather|UTM|Docker.*|Podman.*|Reminders|Console|GitHub|Google Drive|Preview|Safari|Discord|Instagram|Messages|Signal|WhatsApp.*|Brave Browser|LINE|LuLu|Firefox|Music|Netiquette|Podcasts|Spotify|Google Calendar|Notes|Slack|Archive Utility|Calculator|iPhone Mirroring|Terminal)$" manage=off grid=24:24:4:2:16:20
+yabai -m rule --add app!="^(Google Chrome|Keychain Access|Clock|Gmail|System Preferences|System Settings|Books|GarageBand|GIMP|iMovie|Photos|Code|Xcode|Crunchyroll.*|Netflix|TV|1Password|FaceTime|Finder|Photo Booth|QuickTime.*|TextEdit|Activity Monitor|App Store|Contacts|Dictionary|Voice Memos|Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather|UTM|Docker.*|Podman.*|Reminders|Console|GitHub|Google Drive|Preview|Safari|Discord|Instagram|Messages|WhatsApp.*|LINE|LuLu|Netiquette|Podcasts|Google Calendar|Notes|Signal|Slack|Firefox|Music|Spotify|Brave Browser|Archive Utility|Calculator|iPhone Mirroring|Terminal)$" manage=off grid=24:24:4:2:16:20
 
 # apply rules on restart
 yabai -m rule --apply
