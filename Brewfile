@@ -56,7 +56,6 @@ cask "ollama-app"
 
 # VS Code extensions
 vscode "continue.continue"
-vscode "davidanson.vscode-markdownlint"
 vscode "dbaeumer.vscode-eslint"
 vscode "docsmsft.docs-article-templates"
 vscode "docsmsft.docs-scaffolding"
