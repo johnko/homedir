@@ -4,7 +4,7 @@ version: "3.5"
 services:
     postgres:
         container_name: gitea-postgres-12.6
-        image: postgres:12.6
+        image: postgres:12.6@sha256:26ce5e265fbbf120b4a89a9b26770bad757a7dfa4f329038d93770edbe5aae00
         command: >
             -c ssl=on
             -c ssl_cert_file=/var/lib/postgresql/server.crt
@@ -20,7 +20,7 @@ services:
             - ./pgsql-server.key:/var/lib/postgresql/server.key:ro
     gitea:
         container_name: gitea-app-1.13.6
-        image: gitea/gitea:1.13.6
+        image: gitea/gitea:1.13.6@sha256:1d90f984ed1b8730ca5e269ae45f1c16a81162ce21c44d6f29c91c8cdbce8754
         depends_on:
             - postgres
         environment:

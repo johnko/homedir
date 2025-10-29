@@ -4,7 +4,7 @@ version: "3.5"
 services:
     jenkins:
         container_name: jenkins-2.249.1
-        image: jenkins/jenkins:2.249.1
+        image: jenkins/jenkins:2.249.1@sha256:a3e7b2b6efbc2c252608b028bb844e419d44ad5e3974770c4543ab7ae6e8eb27
         networks:
             kind: {}
         ports:

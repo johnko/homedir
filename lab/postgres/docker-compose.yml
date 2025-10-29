@@ -3,7 +3,7 @@ version: "3.8"
 services:
   postgres:
     container_name: postgres
-    image: postgres:14.2
+    image: postgres:14.2@sha256:2c954f8c5d03da58f8b82645b783b56c1135df17e650b186b296fa1bb71f9cfd
     command: >
       -c ssl=on
       -c ssl_cert_file=/var/lib/postgresql/server.crt
