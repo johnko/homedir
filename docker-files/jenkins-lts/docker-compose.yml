@@ -3,7 +3,7 @@ version: "3.5"
 
 services:
     jenkins:
-        container_name: jenkins-2.249.1
+        container_name: jenkins
         image: jenkins/jenkins:2.249.1
         networks:
             kind: {}

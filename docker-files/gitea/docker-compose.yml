@@ -3,7 +3,7 @@ version: "3.5"
 
 services:
     postgres:
-        container_name: gitea-postgres-12.6
+        container_name: gitea-postgres
         image: postgres:12.6
         command: >
             -c ssl=on
@@ -19,7 +19,7 @@ services:
             - ./pgsql-server.pem:/var/lib/postgresql/server.crt:ro
             - ./pgsql-server.key:/var/lib/postgresql/server.key:ro
     gitea:
-        container_name: gitea-app-1.13.6
+        container_name: gitea-app
         image: gitea/gitea:1.13.6
         depends_on:
             - postgres
