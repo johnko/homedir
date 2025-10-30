@@ -1,5 +1,9 @@
 # Helm Charts
 
+```bash
+helm dep update
+```
+
 ## coredns
 
 via https://github.com/coredns/helm
@@ -119,7 +123,7 @@ SOURCE=https://github.com/knative/operator/releases/download/knative-v1.11.2/ope
 VERSION=$(echo ${SOURCE##*download/} | tr / -)
 rm -fr knative
 mkdir -p knative
-curl -o knative/${VERSION} -L $SOURCE
+curl -o knative/templates/${VERSION} -L $SOURCE
 git add knative
 git commit -m "track $VERSION"
 ```

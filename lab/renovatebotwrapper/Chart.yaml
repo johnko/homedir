@@ -1,0 +1,59 @@
+apiVersion: v2
+name: renovatebotwrapper
+description: A wrapper Helm chart representing the upstream charts tracked in this repo. Use with RenovateBot to automate upgrades.
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: library
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.1.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "0.1.0"
+
+dependencies:
+  - name: argo-cd
+    repository: https://argoproj.github.io/argo-helm
+    version: 5.42.2
+  - name: cert-manager
+    repository: https://charts.jetstack.io
+    version: v1.11.0
+  - name: coredns
+    repository: https://coredns.github.io/helm
+    version: 1.24.4
+  - name: base
+    # istio
+    repository: https://istio-release.storage.googleapis.com/charts
+    version: 1.18.2
+  - name: istiod
+    # istio
+    repository: https://istio-release.storage.googleapis.com/charts
+    version: 1.18.2
+  - name: gateway
+    # istio
+    repository: https://istio-release.storage.googleapis.com/charts
+    version: 1.18.2
+  - name: metrics-server
+    repository: https://kubernetes-sigs.github.io/metrics-server/
+    version: 3.11.0
+  - name: openfaas
+    repository: https://openfaas.github.io/faas-netes/
+    version: 14.0.9
+  - name: pihole
+    repository: https://mojo2600.github.io/pihole-kubernetes/
+    version: 2.18.0
+  - name: traefik
+    repository: https://traefik.github.io/charts
+    version: 24.0.0

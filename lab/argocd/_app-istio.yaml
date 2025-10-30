@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: lab/charts/istio/app-of-apps
+    path: lab/charts/istio-app-of-apps
     repoURL: https://github.com/johnko/homedir.git
     targetRevision: HEAD
   syncPolicy:
