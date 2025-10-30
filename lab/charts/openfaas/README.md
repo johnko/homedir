@@ -71,13 +71,13 @@ helm repo add openfaas https://openfaas.github.io/faas-netes/
 Now decide how you want to expose the services and edit the `helm upgrade` command as required.
 
 * To use NodePorts/ClusterIP - (the default and best for development, with port-forwarding)
-* To use an IngressController add `--set ingress.enabled=true` (recommended for production, for use with TLS)
+* To use an IngressController add `--set ingress.enabled=true` (recommended for production, for use with TLS) - [follow the full guide](https://docs.openfaas.com/reference/tls-openfaas/)
 * To use a LoadBalancer add `--set serviceType=LoadBalancer` (not recommended, since it will expose plain HTTP)
 
 #### Deploy OpenFaaS Community Edition (CE)
 
 > OpenFaaS Community Edition is meant exploration and development.
-> 
+>
 > OpenFaaS Pro has been tuned for production use including flexible auto-scaling, high-available deployments, durability, add-on features, and more.
 
 Deploy CE from the helm chart repo directly:
@@ -98,9 +98,17 @@ PASSWORD=$(kubectl -n openfaas get secret basic-auth -o jsonpath="{.data.basic-a
 echo "OpenFaaS admin password: $PASSWORD"
 ```
 
-#### Deploy OpenFaaS Pro
+#### Deploy OpenFaaS Pro - OpenFaaS Standard / OpenFaaS For Enterprises
 
-* Create the required secret with your [OpenFaaS Pro license](https://www.openfaas.com/pricing/):
+You should have landed here from the following page: [Install OpenFaaS Pro](https://docs.openfaas.com/deployment/pro/), if you did not, please go there now and read the instructions before continuing.
+
+It's recommended to install OpenFaaS Pro with a ClusterRole so that:
+
+* Prometheus can scrape node metrics for CPU-based autoscaling, and report CPU/RAM consumption usage of functions via the API.
+* The Operator can obtain accurate namespace information for the installation
+* The Operator can manage functions across multiple namespaces
+
+Create the required secret with your [OpenFaaS Pro license](https://www.openfaas.com/pricing/):
 
 ```bash
 kubectl create secret generic \
@@ -111,21 +119,9 @@ kubectl create secret generic \
 
 If you wish to use the OpenFaaS Pro dashboard, [you must run the steps to "Create a signing key"](https://docs.openfaas.com/openfaas-pro/dashboard/#installation) before installing the Helm chart.
 
+Review the recommended Pro values in [values-pro.yaml](values-pro.yaml). These are overlaid on top of the default values in [values.yaml](values.yaml), which is used as a base for all installations.
+
 Now deploy OpenFaaS from the helm chart repo:
-
-```sh
-helm repo update \
- && helm upgrade openfaas \
-  --install openfaas/openfaas \
-  --namespace openfaas  \
-  --set openfaasPro=true
-```
-
-The main change here is to add: `--set openfaasPro=true`
-
-For production, we recommend creating your own values.yaml file, but make sure you do not copy any more settings into it than strictly necessary. This way the file can be maintained easily over time.
-
-Example installation with a values.yaml file instead of using `--set`:
 
 ```sh
 helm repo update \
@@ -136,19 +132,27 @@ helm repo update \
   -f values-pro.yaml
 ```
 
-You can also review recommended Pro values in [values-pro.yaml](values-pro.yaml)
+For production, you should take a copy of the `values-pro.yaml` file, and keep any of your own custom settings and overrides there. We do not recommend copying the base `values.yaml` files as it is rather large, and contains settings that are updated by our team on a regular basis such as image versions.
+
+#### OpenFaaS OEM
+
+OpenFaaS OEM is available subject to contract for local development and requires a secret to be created with your separate OpenFaaS OEM license key:
+
+```bash
+kubectl create secret generic \
+  -n openfaas \
+  openfaas-license \
+  --from-file license=$HOME/.openfaas/LICENSE-OEM
+```
+
+Then, pass the `--set oem=true` flag to `helm`, or set `oem: true` in your values.yaml file.
 
 #### Installing OpenFaaS Pro without Cluster Admin access
 
-In order to install OpenFaaS Pro, you need to create at least one namespace, a Cluster Admin role and Custom Resource Definitions (CRDs), however some DevOps teams prevent business teams from getting access to Cluster Admin.
+There are two potential issues when installing OpenFaaS without Cluster Admin access:
 
-This option is reserved for OpenFaaS Pro customers, see the installation steps here: [Split installation instructions](https://github.com/openfaas/openfaas-pro/blob/master/split-installation.md)
-
-See also:
-
-* Scale-down to zero (in this document)
-* [OpenFaaS Pro SSO/OIDC](https://docs.openfaas.com/openfaas-pro/sso/)
-* [OpenFaaS Pro Kafka Event Connector](https://docs.openfaas.com/openfaas-pro/kafka-events/)
+1. You cannot create a ClusterRole. In this case, your admin team can install OpenFaaS and create the required resources, you can then perform updates with limited permissions. Pass the `--set rbac=false` flag to the `helm` command to prevent your account from tying to update or change resources. Alternatively, you can also use a Role instead of a ClusterRole however this may result in more limited functionality for OpenFaaS, set `--set clusterRole=false`
+2. You cannot install CRDs. If you do not have a Cluster Admin account, you won't be able to create CRDs, see the notes in [crds/README.md](crds/README.md) for how to perform a "split installation" of CRDs with a privileged account.
 
 ## Test changes for the helm chart
 
@@ -187,7 +191,9 @@ echo "OpenFaaS admin password: $PASSWORD"
 
 #### Tuning function cold-starts
 
-The concept of a cold-start in OpenFaaS only applies if you A) use faas-idler and B) set a specific function to [scale to zero](https://docs.openfaas.com/openfaas-pro/scale-to-zero/). Otherwise there is not a cold-start, because at least one replica of your function remains available.
+The concept of a cold-start in OpenFaaS only applies if you enable it for a specific function, using [scale to zero](https://docs.openfaas.com/openfaas-pro/scale-to-zero/). Otherwise there is not a cold-start, because at least one replica of your function remains available.
+
+See also: [Fine-tuning the cold-start in OpenFaaS](https://www.openfaas.com/blog/fine-tuning-the-cold-start/)
 
 There are two ways to reduce the Kubernetes cold-start for a pre-pulled image, which is around 1-2 seconds.
 
@@ -195,24 +201,23 @@ There are two ways to reduce the Kubernetes cold-start for a pre-pulled image, w
 2) Use async invocations via the `/async-function/<name>` route on the gateway, so that the latency is hidden from the caller
 3) Tune the readinessProbes to be aggressively low values. This will reduce the cold-start at the cost of more `kubelet` CPU usage
 
-To achieve around 1s coldstart, set `values.yaml`:
+To achieve a coldstart of between 0.7 and 1.9s, set the following in `values.yaml`:
 
 ```yaml
-faasnetes:
-
-# redacted
+functions:
+  imagePullPolicy: "IfNotPresent"
+...
   readinessProbe:
     initialDelaySeconds: 0
     timeoutSeconds: 1
     periodSeconds: 1
+    successThreshold: 1
+    failureThreshold: 3
   livenessProbe:
     initialDelaySeconds: 0
     timeoutSeconds: 1
     periodSeconds: 1
-
-# redacted
-functions:
-  imagePullPolicy: "IfNotPresent"    # Image pull policy for deployed functions
+    failureThreshold: 3
 ```
 
 In addition:
@@ -225,8 +230,8 @@ In addition:
 For OpenFaaS CE, both liveness and readiness probes are set to, and the `PullPolicy` for functions is set to `Always`:
 
 * `initialDelaySeconds: 2`
-* `timeoutSeconds: 1`
 * `periodSeconds: 2`
+* `timeoutSeconds: 1`
 
 ### Verify the installation
 
@@ -253,19 +258,17 @@ echo -n $PASSWORD | faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 faas-cli version
 ```
 
-## OpenFaaS Operator and Function CRD
+### faas-netes (controller) vs OpenFaaS Operator
 
-If you would like to work with Function CRDs there is an alternative controller to faas-netes named [OpenFaaS Operator](https://github.com/openfaas-incubator/openfaas-operator) which can be swapped in at deployment time.
-The OpenFaaS Operator is suitable for development and testing and may replace the faas-netes controller in the future.
-The Operator is compatible with Kubernetes 1.9 or later.
+OpenFaaS CE uses the old "controller" mode of OpenFaaS, where Kubernetes objects are directly modified by the HTTP API call. If the HTTP call fails, the objects may not be updated or create successfully.
 
-To use it, add the flag: `--set operator.create=true` when installing with Helm.
+OpenFaaS Pro uses a more idiomatic Kubernetes integration through the use of [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/). The operator pattern used with the CRD means that you can interact with a "Function" Custom Resource along with the HTTP REST API.
 
-### faas-netes vs OpenFaaS Operator
+The HTTP REST endpoints all interact with the Function CRD, then the operator watches for changes and updates the Kubernetes objects accordingly, retrying, backing off, and reporting the progress via the .Status field.
 
-The faas-netes controller is the most tested, stable and supported version of the OpenFaaS integration with Kubernetes. In contrast the OpenFaaS Operator is based upon the codebase and features from `faas-netes`, but offers a tighter integration with Kubernetes through [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/). This means you can type in `kubectl get functions` for instance.
+Some long-time OpenFaaS Pro users still use the controller mode, for backwards compatibility. It should be considered deprecated and will be removed in the future. No no users should adopt it for this reason.
 
-See also: [Introducing the OpenFaaS Operator](https://www.openfaas.com/blog/kubernetes-operator-crd/)
+See also: [How and why you should upgrade to the Function Custom Resource Definition (CRD)](https://www.openfaas.com/blog/upgrade-to-the-function-crd/)
 
 ## Deployment with `helm template`
 
@@ -299,33 +302,31 @@ Now [verify your installation](#verify-the-installation).
 
 ## Exposing services
 
-### NodePorts
-
-By default a NodePort will be created for the API Gateway.
-
-### Metrics
-
-You temporarily access the Prometheus metrics by using `port-forward`
-
-```sh
-kubectl --namespace openfaas port-forward deployment/prometheus 31119:9090
-```
-
-Then open `http://localhost:31119` to directly query the OpenFaaS metrics scraped by Prometheus.
-
-### LB
-
-If you're running on a cloud such as AKS or GKE you will need to pass an additional flag of `--set serviceType=LoadBalancer` to tell `helm` to create LoadBalancer objects instead. An alternative to using multiple LoadBalancers is to install an Ingress controller.
 
 ### Deploy with an IngressController
 
-In order to make use of automatic ingress settings you will need an IngressController in your cluster such as Traefik or Nginx.
+Use the following guide to setup TLS for the [Gateway and Dashboard](https://docs.openfaas.com/reference/tls-openfaas/).
 
-Add `--set ingress.enabled` to enable ingress pass `--set ingress.enabled=true` when running the installation via `helm`.
+If you are using Ingress locally, for testing, then you can access the gateway by adding:
 
-By default services will be exposed with following hostnames (can be changed, see values.yaml for details):
+```yaml
+ingress:
+  enabled: true
+```
 
-* `gateway.openfaas.local`
+Update the fields for the `ingress` section of values.yaml
+
+By default, the name `gateway.openfaas.local` will be used with HTTP access only, without TLS.
+
+### NodePorts
+
+By default a NodePort will be created for the OpenFaaS Gateway on port 31112, you can prevent this by setting `exposeServices` to `false`, or `serviceType` to `ClusterIP`.
+
+### LoadBalancer (not recommended)
+
+There is no reason to use a LoadBalancer for OpenFaaS, because it will expose the gateway using plain-text HTTP, and you will have no encryption.
+
+This flag is controlled by `--set serviceType=LoadBalancer`, which creates a new gateway service of type LoadBalancer.
 
 ### Endpoint load-balancing
 
@@ -341,18 +342,29 @@ Some configurations in combination with client-side KeepAlive settings may becau
 
     In this mode, all invocations will pass through the gateway to faas-netes, which will look up endpoint IPs directly from Kubernetes, the additional hop may add some latency, but will do fair load-balancing, even with KeepAlive.
 
-### SSL / TLS
 
-If you require TLS/SSL then please make use of an IngressController. A full guide is provided to [enable TLS for the OpenFaaS Gateway using cert-manager and Let's Encrypt](https://docs.openfaas.com/reference/ssl/kubernetes-with-cert-manager/).
+### Viewing the Prometheus metrics
+
+It's better to view the metrics from OpenFaaS via [the official Grafana dashboards](https://docs.openfaas.com/openfaas-pro/grafana-dashboards/), than by running direct queries, however, it can be useful to view the metrics directly for exploration and debugging.
+
+You temporarily access the Prometheus metrics by using `port-forward`
+
+```sh
+kubectl -n openfaas \
+  port-forward deployment/prometheus 9090:9090
+```
+
+Then open `http://127.0.0.1:9090` to directly query the OpenFaaS metrics scraped by Prometheus.
 
 ### Service meshes
+
 If you use a service mesh like Linkerd or Istio in your cluster, then you should enable the `directFunctions` mode using:
 
 ```sh
 --set gateway.directFunctions=true
 ```
 
-### Istio mTLS
+#### Istio mTLS
 
 Istio requires OpenFaaS Pro to function correctly.
 
@@ -365,7 +377,8 @@ helm upgrade openfaas --install chart/openfaas \
     --set exposeServices=false \
     --set gateway.directFunctions=true \
     --set gateway.probeFunctions=true \
-    --set istio.mtls=true
+    --set istio.mtls=true \
+    -f values-pro.yaml
 ```
 
 The above command will enable mTLS for the openfaas control plane services and functions excluding NATS.
@@ -374,7 +387,7 @@ The above command will enable mTLS for the openfaas control plane services and f
 
 ### Scale-up from zero (on by default)
 
-Scaling up from zero replicas is enabled by default, to turn it off set `scaleFromZero` to `false` in the helm chart options for the `gateway` component.
+Scaling up from zero replicas is enabled by default, to turn it off set `scaleFromZero` to `false` in the helm chart options for the `gateway` component. There is very little reason to turn this setting off.
 
 ```sh
 --set gateway.scaleFromZero=true/false
@@ -382,19 +395,38 @@ Scaling up from zero replicas is enabled by default, to turn it off set `scaleFr
 
 ### Scale-down to zero (off by default)
 
-Scaling down to zero replicas can be achieved either through the REST API and your own controller, or by using the faas-idler component. This is an OpenFaaS Pro feature and an effective way to save costs on your infrastructure costs.
+Scaling to zero is managed by the OpenFaaS Standard autoscaler, which:
 
-OpenFaaS Pro will only scale down functions which have marked themselves as eligible for this behaviour through the use of a label: `com.openfaas.scale.zero=true`.
+* can save on infrastructure costs
+* helps to reduce the attack surface of your application
+* mitigates against functions which use high CPU or memory at idle, or which contain leaks
+
+OpenFaaS Pro will only scale down functions which have marked themselves as eligible for this behaviour through the use of a label: `com.openfaas.scale.zero=true`. The time to wait until scaling a specific function to zero is controlled by: `com.openfaas.scale.zero-duration` which is a Go duration set in minutes i.e. `15m`.
 
 See also: [Scale to Zero docs](https://docs.openfaas.com/openfaas-pro/scale-to-zero/).
 
-Check the logs with:
+## Custom autoscaling rules
 
-```bash
-kubectl logs -n openfaas deploy/faas-idler
+In order to build custom autoscaling rules, an additional recording rule is required for Prometheus for each type of scaling you want to add.
+
+To add latency-based scaling with the metrics recorded at the gateway, you could add the following to values.yaml:
+
+```yaml
+prometheus:
+  recordingRules:
+    - record: job:function_current_load:sum
+      expr: |
+        sum by (function_name) (rate(gateway_functions_seconds_sum{}[30s])) / sum by (function_name)  (rate( gateway_functions_seconds_count{}[30s]))
+        and on (function_name) avg by(function_name) (gateway_service_target_load{scaling_type="latency"}) > bool 1
+      labels:
+        scaling_type: latency
 ```
 
-## Removing the OpenFaaS
+To check the configuration of current recording rules use the Prometheus UI or run `kubectl edit -n openfaas configmap/prometheus-config`.
+
+See also: [How to scale OpenFaaS Functions with Custom Metrics](https://www.openfaas.com/blog/custom-metrics-scaling/).
+
+## Removing OpenFaaS
 
 All control plane components can be cleaned up with helm:
 
@@ -408,11 +440,17 @@ Follow this by the following to remove all other associated objects:
 kubectl delete namespace openfaas openfaas-fn
 ```
 
-In some cases your additional functions may need to be either deleted before deleting the chart with `faas-cli` or manually deleted using `kubectl delete`.
+Then delete the CRDs:
+
+```bash
+kubectl delete crd -l app.kubernetes.io/name=openfaas
+```
+
+If you have created additional namespaces for functions, delete those too, with `kubectl delete namespace <namespace>`.
 
 ## Kubernetes versioning
 
-This Helm chart currently supports version 1.16+
+This Helm chart currently supports version 1.19+
 
 Note that OpenFaaS itself may support a wider range of versions, [see here](../../README.md#kubernetes-versions)
 
@@ -435,30 +473,31 @@ See [values.yaml](./values.yaml) for detailed configuration.
 | Parameter               | Description                           | Default                                                    |
 | ----------------------- | ----------------------------------    | ---------------------------------------------------------- |
 | `affinity`| Global [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) rules assigned to deployments | `{}` |
-yaml) |
 | `async` | Enables asynchronous function invocations. If `.nats.external.enabled` is `false`, also deploys NATS | `true` |
-| `queueMode` | Set to `jetstream` to run the async system backed by NATS JetStream. By default the async system uses NATS Streaming|
 | `basic_auth` | Enable basic authentication on the gateway and Prometheus. Warning: do not disable. | `true` |
-| `generateBasicAuth` | Generate admin password for basic authentication | `true` |
 | `basicAuthPlugin.image` | Container image used for basic-auth-plugin | See [values.yaml](./values.yaml) |
 | `basicAuthPlugin.replicas` | Replicas of the basic-auth-plugin | `1` |
 | `basicAuthPlugin.resources` | Resource limits and requests for basic-auth-plugin containers | See [values.yaml](./values.yaml) |
+| `caBundleSecretName` | Name of the Kubernetes secret that contains the CA bundle for making HTTP requests for IAM (optional) | `""` |
 | `clusterRole` | Use a `ClusterRole` for the Operator or faas-netes. Set to `true` for multiple namespace, pro scaler and CPU/RAM metrics in OpenFaaS REST API | `false` |
-| `createCRDs` | Create the CRDs for OpenFaaS Functions and Profiles | `true` |
 | `exposeServices` | Expose `NodePorts/LoadBalancer`  | `true` |
 | `functionNamespace` | Functions namespace, preferred `openfaas-fn` | `openfaas-fn` |
 | `gatewayExternal.annotations` | Annotation for getaway-external service | `{}` |
+| `generateBasicAuth` | Generate admin password for basic authentication | `true` |
 | `httpProbe` | Setting to true will use HTTP for readiness and liveness probe on the OpenFaaS system Pods (compatible with Istio >= 1.1.5) | `true` |
+| `imagePullSecrets` | Image pull secrets to be attached to all Deployments within chart, given as an array such as `- name: SECRET_NAME` | `[]` |
 | `ingress.enabled` | Create ingress resources | `false` |
 | `istio.mtls` | Create Istio policies and destination rules to enforce mTLS for OpenFaaS components and functions | `false` |
+| `k8sVersionOverride` | Override kubeVersion for the ingress creation, this should be left blank. | `""` |
 | `kubernetesDNSDomain` | Domain name of the Kubernetes cluster | `cluster.local` |
-| `k8sVersionOverride` | Override kubeVersion for the ingress creation | `""` |
 | `nodeSelector` | Global [NodeSelector](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) | `{}` |
+| `oem` | Deploy OpenFaaS oem | `false` |
 | `openfaasImagePullPolicy` | Image pull policy for openfaas components, can change to `IfNotPresent` in offline env | `Always` |
 | `openfaasPro` | Deploy OpenFaaS Pro | `false` |
 | `psp` | Enable [Pod Security Policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) for OpenFaaS accounts | `false` |
 | `rbac` | Enable RBAC | `true` |
-| `securityContext` | Deploy with a `securityContext` set, this can be disabled for use with Istio sidecar injection | `true` |
+| `registryPrefix` | Adds a prefix or replaces the server prefix for all images in chart i.e. `nats:2.11.6` becomes `registryPrefix/nats:2.11.6` | `""` |
+| `securityContext` | Give a `securityContext` template to be applied to each of the various containers in this chart, set to `{}` to disable, if required for Istio side-car injection.  | See values.yaml |
 | `serviceType` | Type of external service to use `NodePort/LoadBalancer` | `NodePort` |
 | `tolerations` | Global [Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) | `[]` |
 
@@ -490,10 +529,19 @@ yaml) |
 | `faasnetes.resources` | Resource limits and requests for faas-netes container | See [values.yaml](./values.yaml) |
 | `faasnetes.writeTimeout` | Write timeout for the faas-netes API | `""` (defaults to gateway.writeTimeout) |
 | `faasnetesPro.image` | Container image used for faas-netes when `openfaasPro=true` | See [values.yaml](./values.yaml) |
+| `faasnetesOem.image` | Container image used for faas-netes when `oem=true` | See [values.yaml](./values.yaml) |
+| `faasnetesPro.logs.format` | Set the log format, supports `console` or `json` | `console` |
+| `faasnetesPro.logs.debug` | Print debug logs | `false` |
 | `operator.create` | Use the OpenFaaS operator CRD controller, default uses faas-netes as the Kubernetes controller | `false` |
 | `operator.image` | Container image used for the openfaas-operator | See [values.yaml](./values.yaml) |
 | `operator.resources` | Resource limits and requests for openfaas-operator containers | See [values.yaml](./values.yaml) |
 | `operator.image` | Container image used for the openfaas-operator | See [values.yaml](./values.yaml) |
+| `operator.kubeClientQPS` | QPS rate-limit for the Kubernetes client, (OpenFaaS for Enterprises) | `""` (defaults to 100) |
+| `operator.kubeClientBurst` | Burst rate-limit for the Kubernetes client (OpenFaaS for Enterprises) | `""` (defaults to 250) |
+| `operator.reconcileWorkers` | Number of reconciliation workers to run to convert Function CRs into Deployments | `1` |
+| `operator.logs.format` | Set the log format, supports `console` or `json` | `console` |
+| `operator.logs.debug`           | Print debug logs    | `false`                        |
+| `operator.leaderElection.enabled`| When set to true, only one replica of the operator within the gateway pod will perform reconciliation | `false` |
 
 ### Functions
 
@@ -526,20 +574,19 @@ yaml) |
 
 | Parameter               | Description                           | Default                                                    |
 | ----------------------- | ----------------------------------    | ---------------------------------------------------------- |
-| `jetstreamQueueWorker.durableName` | Durable name used by JetStream consumers | `faas-workers` |
+| `jetstreamQueueWorker.mode` | Queue operation mode: `static` or `function` | `static` |
+| `jetstreamQueueWorker.durableName` | Deprecated: Durable name used by JetStream consumers | `faas-workers` |
 | `jetstreamQueueWorker.image` | Container image used for the queue-worker when the `queueMode` is `jetstream` | See [values.yaml](./values.yaml) |
-| `jetstreamQueueWorker.maxWaiting` | Configure the max waiting pulls for the queue-worker JetStream consumer. The value should be at least max_inflight * queue_worker.replicas. Note that this value can not be updated once the consumer is created. | `512` |
+| `jetstreamQueueWorker.consumer.inactiveThreshold` | If a function is inactive (has no invocations) for longer than this threshold its consumer will be removed to save resources | `30s` |
+| `jetstreamQueueWorker.consumer.pullMaxMessages` | PullMaxMessages limits the number of messages to be buffered per consumer. Leave empty to use optimized default for the selected queue mode | `` |
 | `jetstreamQueueWorker.logs.debug` | Log debug messages | `false` |
 | `jetstreamQueueWorker.logs.format` | Set the log format, supports `console` or `json` | `console` |
 | `nats.channel` | The name of the NATS Streaming channel or NATS JetStream stream to use for asynchronous function invocations | `faas-request` |
-| `nats.enableMonitoring` | Enable the NATS monitoring endpoints on port `8222` for NATS Streaming deployments managed by this chart | `false` |
 | `nats.external.clusterName` | The name of the externally-managed NATS Streaming server | `""` |
 | `nats.external.enabled` | Whether to use an externally-managed NATS Streaming server | `false` |
 | `nats.external.host` | The host at which the externally-managed NATS Streaming server can be reached | `""` |
 | `nats.external.port` | The port at which the externally-managed NATS Streaming server can be reached | `""` |
 | `nats.image` | Container image used for NATS | See [values.yaml](./values.yaml) |
-| `nats.metrics.enabled` | Export Prometheus metrics for NATS, no multi-arch support  | `false` |
-| `nats.metrics.image` | Container image used for the NATS Prometheus exporter | See [values.yaml](./values.yaml) |
 | `nats.resources` | Resource limits and requests for the nats pods | See [values.yaml](./values.yaml) |
 | `nats.streamReplication` | JetStream stream replication factor. For production a value of at least 3 is recommended. | `1` |
 | `queueWorker.ackWait` | Max duration of any async task/request | `60s` |
@@ -548,8 +595,8 @@ yaml) |
 | `queueWorker.replicas` | Replicas of the queue-worker, pick more than `1` for HA | `1` |
 | `queueWorker.resources` | Resource limits and requests for the queue-worker pods | See [values.yaml](./values.yaml) |
 | `queueWorker.queueGroup` | The name of the queue group used to process asynchronous function invocations | `faas` |
+| `queueWorkerPro.backoff` | The backoff algorithm used for retries. Must be one off `exponential`, `full` or `equal`| `exponential` |
 | `queueWorkerPro.httpRetryCodes` | Comma-separated list of HTTP status codes the queue-worker should retry | `408,429,500,502,503,504` |
-| `queueWorkerPro.image` | Container image used for the Pro version of the queue-worker | See [values.yaml](./values.yaml) |
 | `queueWorkerPro.initialRetryWait` | Time to wait for the first retry | `10s` |
 | `queueWorkerPro.insecureTLS` | Enable insecure TLS for callback invocations | `false` |
 | `queueWorkerPro.maxRetryAttempts` | Amount of times to try sending a message to a function before discarding it | `10` |
@@ -569,7 +616,7 @@ yaml) |
 | `iam.dashboardIssuer.clientSecret` | Name of the Kubernetes secret that contains the OAuth client secret for the dashboard | `""` |
 | `iam.dashboardIssuer.scopes` | OpenID Connect (OIDC) scopes for the dashboard | `[openid, email, profile]` |
 | `iam.kubernetesIssuer.create` | Create a JwtIssuer object for the kubernetes service account issuer | `true` |
-| `iam.kubernetesIssuer.tokenExpiry` | Expiry time of OpenFaaS access tokens exchanged for tokens issued by the Kubernetes issuer. | `2h` | 
+| `iam.kubernetesIssuer.tokenExpiry` | Expiry time of OpenFaaS access tokens exchanged for tokens issued by the Kubernetes issuer. | `2h` |
 | `iam.kubernetesIssuer.url` | URL for the Kubernetes service account issuer. | `https://kubernetes.default.svc.cluster.local` |
 
 ### Dashboard (OpenFaaS Pro)
@@ -592,24 +639,26 @@ yaml) |
 | `oidcAuthPlugin.image` | Container image used for the oidc-auth-plugin | See [values.yaml](./values.yaml) |
 | `oidcAuthPlugin.insecureTLS` | Enable insecure TLS | `false` |
 | `oidcAuthPlugin.replicas` | Replicas of the oidc-auth-plugin | `1` |
+| `oidcAuthPlugin.logs.debug` | Log debug messages | `false` |
+| `oidcAuthPlugin.logs.format` | Set the log format, supports `console` or `json` | `console` |
 | `oidcAuthPlugin.resources` | Resource limits and requests for the oidc-auth-plugin containers | See [values.yaml](./values.yaml) |
-| `oidcAuthPlugin.verbose` | Enable verbose logging | `false` |
 
-### faas-idler (OpenFaaS Pro)
+### Event subscriptions
 
-Deprecated and replaced by the new autoscaler, which supports scale to zero.
-
-| Parameter               | Description                           | Default                                                    |
-| ----------------------- | ----------------------------------    | ---------------------------------------------------------- |
-| `faasIdler.enabled` | Create the faasIdler component | `false` |
-| `faasIdler.image` | Container image used for the faas-idler | See [values.yaml](./values.yaml) |
-| `faasIdler.inactivityDuration` | Duration after which faas-idler will scale function down to 0 | `3m` |
-| `faasIdler.readOnly` | When set to true, no functions are scaled to zero | `false` |
-| `faasIdler.reconcileInterval` | The interval between each attempt to scale functions to zero | `2m` |
-| `faasIdler.replicas` | Replicas of the faas-idler | `1` |
-| `faasIdler.resources` | Resource limits and requests for the faas-idler pods | See [values.yaml](./values.yaml) |
-| `faasIdler.writeDebug` | Write additional debug information | `false` |
-
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `eventSubscription.endpoint` | The webhook endpoint to receive events. | `""`|
+| `eventSubscription.endpointSecret` | Name of the Kubernetes secret that contains the secret key for signing webhook requests. | `""` |
+| `eventSubscription.insecureTLS` | Enable insecure TLS for webhook invocations | `false` |
+| `eventSubscription.metering.enabled` | Enable metering events. | `false` |
+| `eventSubscription.metering.defaultRAM` | Default memory value used in function_usage events for metering when no memory limit is set on the function.  | `512Mi` |
+| `eventSubscription.metering.excludedNamespaces` | Comma-separated list of namespaces to exclude from metering for when functions are used to handle the metering webhook events | `""` |
+| `eventSubscription.auditing.enabled` | Enable auditing events | `false` |
+| `eventSubscription.auditing.httpVerbs` | Comma-separated list of HTTP methods to audit | `"PUT,POST,DELETE"`|
+| `eventWorker.image` | Container image used for the events-worker | See [values.yaml](./values.yaml) |
+| `eventWorker.resources` |  Resource limits and requests for the event-worker container | See [values.yaml](./values.yaml) |
+| `eventWorker.logs.format` | Set the log format, supports `console` or `json` | `console` |
+| `eventWorker.logs.debug` | Print debug logs    | `false` |
 
 ### ingressOperator
 
@@ -628,8 +677,7 @@ For legacy scaling in OpenFaaS Community Edition.
 | ----------------------- | ----------------------------------    | ---------------------------------------------------------- |
 | `alertmanager.create` | Create the AlertManager component | `true` |
 | `alertmanager.image` | Container image used for alertmanager | See [values.yaml](./values.yaml) |
-| `alertmanager.resources` | Resource limits and requests for alertmanager pods | See [values.yaml](./values.
-
+| `alertmanager.resources` | Resource limits and requests for alertmanager pods | See [values.yaml](./values.yaml) |
 
 ### Prometheus (built-in, for autoscaling and metrics)
 
@@ -637,4 +685,14 @@ For legacy scaling in OpenFaaS Community Edition.
 | ----------------------- | ----------------------------------    | ---------------------------------------------------------- |
 | `prometheus.create` | Create the Prometheus component | `true` |
 | `prometheus.image` | Container image used for prometheus | See [values.yaml](./values.yaml) |
+| `prometheus.retention.time` | When to remove old data from the prometheus db. | `15d` |
+| `prometheus.retention.size` | The maximum number of bytes of storage blocks to retain. Units supported: B, KB, MB, GB, TB, PB, EB. 0 meaning disabled. See: [Prometheus storage](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects)| `0` |
 | `prometheus.resources` | Resource limits and requests for prometheus containers | See [values.yaml](./values.yaml) |
+| `prometheus.recordingRules` | Custom recording rules for autoscaling. | `[]` |
+| `prometheus.pvc` | Persistent volume claim for Prometheus used so that metrics survive restarts of the Pod and upgrades of the chart | `{}` |
+| `prometheus.pvc.enabled` | Enable persistent volume claim for Prometheus | `false` |
+| `prometheus.pvc.storageClassName` | Storage class for Prometheus PVC, set to `""` for the default/standard class to be picked | `""` |
+| `prometheus.pvc.size` | Size of the Prometheus PVC, 60-100Gi may be a better fit for a busy production environment | `10Gi` |
+| `prometheus.pvc.name` | Name of the Prometheus PVC, required for multiple installations within the same cluster | `""` |
+| `prometheus.fsGroup` | Simplified way to set fsGroup for persistent volume access. Set to 65534 (nobody) for proper volume permissions | `""` |
+| `prometheus.securityContext` | Simplified container-level security context for Prometheus. Takes precedence over global `securityContext` when set. Falls back to global `securityContext` when not set for backward compatibility | `{}` |

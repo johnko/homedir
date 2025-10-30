@@ -24,6 +24,10 @@ spec:
       labels:
         app: oidc-plugin
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       serviceAccountName: oidc-plugin
       volumes:
       - name: oidc-plugin-temp-volume
@@ -31,6 +35,11 @@ spec:
       - name: issuer-key
         secret:
           secretName: issuer-key
+      {{- if .Values.caBundleSecretName }}
+      - name: ca-bundle
+        secret:
+          secretName: {{ .Values.caBundleSecretName }}
+      {{- end }}
       {{- if .Values.basic_auth }}
       - name: auth
         secret:
@@ -43,13 +52,13 @@ spec:
       - name:  oidc-plugin
         resources:
           {{- .Values.oidcAuthPlugin.resources | toYaml | nindent 12 }}
-        image: {{ .Values.oidcAuthPlugin.image }}
+        image: {{ include "openfaas.image" (dict "image" .Values.oidcAuthPlugin.image "registryPrefix" .Values.registryPrefix) }}
         imagePullPolicy: Always
         {{- if .Values.securityContext }}
         securityContext:
-          readOnlyRootFilesystem: true
-          runAsUser: 10001
+          {{- toYaml .Values.securityContext | nindent 10 }}
         {{- end }}
+
         livenessProbe:
           {{- if .Values.httpProbe }}
           httpGet:
@@ -84,9 +93,6 @@ spec:
           timeoutSeconds: 5
         args:
         - "-license-file=/var/secrets/license/license"
-        {{- if .Values.oidcAuthPlugin.verbose }}
-        - "-verbose=true"
-        {{- end }}
         env:
         - name: base_host
           value: "{{- .Values.iam.systemIssuer.url}}"
@@ -96,6 +102,14 @@ spec:
           value: "{{- .Values.oidcAuthPlugin.insecureTLS}}"
         - name: issuer_key_path
           value: "/var/secrets/issuer-key/issuer.key"
+        - name: "debug"
+          value: "{{ .Values.oidcAuthPlugin.logs.debug }}"
+        - name: "log_encoding"
+          value: "{{ .Values.oidcAuthPlugin.logs.format }}"
+        {{ if .Values.caBundleSecretName }}
+        - name: ca_bundle_path
+          value: /var/secrets/ca-bundle/ca.crt
+        {{- end }}
         {{- if .Values.basic_auth }}
         - name: secret_mount_path
           value: "/var/secrets/gateway"
@@ -114,6 +128,13 @@ spec:
         - name: license
           readOnly: true
           mountPath: "/var/secrets/license"
+
+        {{- if .Values.caBundleSecretName }}
+        - name: ca-bundle
+          readOnly: true
+          mountPath: "/var/secrets/ca-bundle"
+        {{- end }}
+
         ports:
         - name: http
           containerPort: 8080
