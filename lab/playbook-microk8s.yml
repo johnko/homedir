@@ -100,9 +100,9 @@
       loop:
         - { name: dns }
         # - { name: community }
-        # - { name: metrics-server } # will be replace when argocd starts
-        # - { name: cert-manager } # will be replace when argocd starts
-        # - { name: traefik } # microk8s installs deplyoment, but we want daemonset, will be replace when argocd starts
-        # - { name: istio } # will be replace when argocd starts
-        # - { name: knative } # will be replace when argocd starts
-        # - { name: openfaas } # will be replace when argocd starts
+        # - { name: metrics-server } # will be replaced when argocd starts
+        # - { name: cert-manager } # will be replaced when argocd starts
+        # - { name: traefik } # microk8s installs deplyoment, but we want daemonset, will be replaced when argocd starts
+        # - { name: istio } # will be replaced when argocd starts
+        # - { name: knative } # will be replaced when argocd starts
+        # - { name: openfaas } # will be replaced when argocd starts

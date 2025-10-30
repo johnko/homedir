@@ -203,6 +203,7 @@ cluster:
             - argocd
             - cert-manager
             - istio-system
+            - knative-operator
             - knative-serving
             - openfaas
             - openfaas-fn
