@@ -1,11 +1,11 @@
-{{- if .Values.global.networkPolicy.create }}
+{{- if or .Values.server.networkPolicy.create .Values.global.networkPolicy.create }}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   labels:
     {{- include "argo-cd.labels" (dict "context" . "component" .Values.server.name "name" .Values.server.name) | nindent 4 }}
   name: {{ template "argo-cd.server.fullname" . }}
-  namespace: {{ .Release.Namespace | quote }}
+  namespace: {{ include  "argo-cd.namespace" . }}
 spec:
   ingress:
   - {}
