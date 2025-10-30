@@ -11,7 +11,7 @@ to 63 chars and it includes 10 chars of hash and a separating '-'.
 {{/*
 Create the name of the controller service account to use
 */}}
-{{- define "argo-cd.controllerServiceAccountName" -}}
+{{- define "argo-cd.controller.serviceAccountName" -}}
 {{- if .Values.controller.serviceAccount.create -}}
     {{ default (include "argo-cd.controller.fullname" .) .Values.controller.serviceAccount.name }}
 {{- else -}}
@@ -40,7 +40,7 @@ Create Dex server endpoint
 {{/*
 Create the name of the dex service account to use
 */}}
-{{- define "argo-cd.dexServiceAccountName" -}}
+{{- define "argo-cd.dex.serviceAccountName" -}}
 {{- if .Values.dex.serviceAccount.create -}}
     {{ default (include "argo-cd.dex.fullname" .) .Values.dex.serviceAccount.name }}
 {{- else -}}
@@ -78,11 +78,30 @@ Return Redis server endpoint
 {{/*
 Create the name of the redis service account to use
 */}}
-{{- define "argo-cd.redisServiceAccountName" -}}
+{{- define "argo-cd.redis.serviceAccountName" -}}
 {{- if .Values.redis.serviceAccount.create -}}
     {{ default (include "argo-cd.redis.fullname" .) .Values.redis.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.redis.serviceAccount.name }}
+{{- end -}}
+{{- end -}}
+
+
+{{/*
+Create Redis secret-init name
+*/}}
+{{- define "argo-cd.redisSecretInit.fullname" -}}
+{{- printf "%s-%s" (include "argo-cd.fullname" .) .Values.redisSecretInit.name | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{/*
+Create the name of the Redis secret-init service account to use
+*/}}
+{{- define "argo-cd.redisSecretInit.serviceAccountName" -}}
+{{- if .Values.redisSecretInit.serviceAccount.create -}}
+    {{ default (include "argo-cd.redisSecretInit.fullname" .) .Values.redisSecretInit.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.redisSecretInit.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
 
@@ -96,7 +115,7 @@ Create argocd server name and version as used by the chart label.
 {{/*
 Create the name of the Argo CD server service account to use
 */}}
-{{- define "argo-cd.serverServiceAccountName" -}}
+{{- define "argo-cd.server.serviceAccountName" -}}
 {{- if .Values.server.serviceAccount.create -}}
     {{ default (include "argo-cd.server.fullname" .) .Values.server.serviceAccount.name }}
 {{- else -}}
@@ -114,7 +133,7 @@ Create argocd repo-server name and version as used by the chart label.
 {{/*
 Create the name of the repo-server service account to use
 */}}
-{{- define "argo-cd.repoServerServiceAccountName" -}}
+{{- define "argo-cd.repoServer.serviceAccountName" -}}
 {{- if .Values.repoServer.serviceAccount.create -}}
     {{ default (include "argo-cd.repoServer.fullname" .) .Values.repoServer.serviceAccount.name }}
 {{- else -}}
@@ -132,7 +151,7 @@ Create argocd application set name and version as used by the chart label.
 {{/*
 Create the name of the application set service account to use
 */}}
-{{- define "argo-cd.applicationSetServiceAccountName" -}}
+{{- define "argo-cd.applicationSet.serviceAccountName" -}}
 {{- if .Values.applicationSet.serviceAccount.create -}}
     {{ default (include "argo-cd.applicationSet.fullname" .) .Values.applicationSet.serviceAccount.name }}
 {{- else -}}
@@ -150,7 +169,7 @@ Create argocd notifications name and version as used by the chart label.
 {{/*
 Create the name of the notifications service account to use
 */}}
-{{- define "argo-cd.notificationsServiceAccountName" -}}
+{{- define "argo-cd.notifications.serviceAccountName" -}}
 {{- if .Values.notifications.serviceAccount.create -}}
     {{ default (include "argo-cd.notifications.fullname" .) .Values.notifications.serviceAccount.name }}
 {{- else -}}
@@ -159,10 +178,32 @@ Create the name of the notifications service account to use
 {{- end -}}
 
 {{/*
-Argo Configuration Preset Values (Incluenced by Values configuration)
+Create argocd commit-server name and version as used by the chart label.
+*/}}
+{{- define "argo-cd.commitServer.fullname" -}}
+{{- printf "%s-%s" (include "argo-cd.fullname" .) .Values.commitServer.name | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{/*
+Create the name of the commit-server service account to use
+*/}}
+{{- define "argo-cd.commitServer.serviceAccountName" -}}
+{{- if .Values.commitServer.serviceAccount.create -}}
+    {{ default (include "argo-cd.commitServer.fullname" .) .Values.commitServer.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.commitServer.serviceAccount.name }}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Argo Configuration Preset Values (Influenced by Values configuration)
 */}}
 {{- define "argo-cd.config.cm.presets" -}}
 {{- $presets := dict -}}
+{{- $_ := set $presets "url" (printf "https://%s" .Values.global.domain) -}}
+{{- if eq (toString (index .Values.configs.cm "statusbadge.enabled")) "true" -}}
+{{- $_ := set $presets "statusbadge.url" (printf "https://%s/" .Values.global.domain) -}}
+{{- end -}}
 {{- if .Values.configs.styles -}}
 {{- $_ := set $presets "ui.cssurl" "./custom/custom.styles.css" -}}
 {{- end -}}
@@ -173,7 +214,7 @@ Argo Configuration Preset Values (Incluenced by Values configuration)
 Merge Argo Configuration with Preset Configuration
 */}}
 {{- define "argo-cd.config.cm" -}}
-{{- $config := (mergeOverwrite (deepCopy (omit .Values.configs.cm "create" "annotations")) (.Values.server.config | default dict))  -}}
+{{- $config := omit .Values.configs.cm "create" "annotations" -}}
 {{- $preset := include "argo-cd.config.cm.presets" . | fromYaml | default dict -}}
 {{- range $key, $value := mergeOverwrite $preset $config }}
 {{- $fmted := $value | toString }}
@@ -192,16 +233,14 @@ NOTE: Configuration keys must be stored as dict because YAML treats dot as separ
 {{- $_ := set $presets "repo.server" (printf "%s:%s" (include "argo-cd.repoServer.fullname" .) (.Values.repoServer.service.port | toString)) -}}
 {{- $_ := set $presets "server.repo.server.strict.tls" (.Values.repoServer.certificateSecret.enabled | toString ) -}}
 {{- $_ := set $presets "redis.server" (include "argo-cd.redis.server" .) -}}
+{{- $_ := set $presets "applicationsetcontroller.enable.leader.election" (gt ((.Values.applicationSet.replicas | default .Values.applicationSet.replicaCount) | int64) 1) -}}
 {{- if .Values.dex.enabled -}}
 {{- $_ := set $presets "server.dex.server" (include "argo-cd.dex.server" .) -}}
 {{- $_ := set $presets "server.dex.server.strict.tls" .Values.dex.certificateSecret.enabled -}}
 {{- end -}}
-{{- range $component := tuple "applicationsetcontroller" "controller" "server" "reposerver" -}}
+{{- range $component := tuple "applicationsetcontroller" "controller" "server" "reposerver" "notificationscontroller" "dexserver" -}}
 {{- $_ := set $presets (printf "%s.log.format" $component) $.Values.global.logging.format -}}
-{{- $_ := set $presets (printf "%s.log.format" $component) $.Values.global.logging.format -}}
-{{- end -}}
-{{- if .Values.applicationSet.enabled -}}
-{{- $_ := set $presets "applicationsetcontroller.enable.leader.election" (gt (.Values.applicationSet.replicaCount | int64) 1) -}}
+{{- $_ := set $presets (printf "%s.log.level" $component) $.Values.global.logging.level -}}
 {{- end -}}
 {{- toYaml $presets }}
 {{- end -}}
@@ -215,4 +254,64 @@ Merge Argo Params Configuration with Preset Configuration
 {{- range $key, $value := mergeOverwrite $preset $config }}
 {{ $key }}: {{ toString $value | toYaml }}
 {{- end }}
+{{- end -}}
+
+{{/*
+Expand the namespace of the release.
+Allows overriding it for multi-namespace deployments in combined charts.
+*/}}
+{{- define "argo-cd.namespace" -}}
+{{- default .Release.Namespace .Values.namespaceOverride | trunc 63 | trimSuffix "-" -}}
+{{- end }}
+
+{{/*
+Dual stack definition
+*/}}
+{{- define "argo-cd.dualStack" -}}
+{{- with .Values.global.dualStack.ipFamilyPolicy }}
+ipFamilyPolicy: {{ . }}
+{{- end }}
+{{- with .Values.global.dualStack.ipFamilies }}
+ipFamilies: {{ toYaml . | nindent 4 }}
+{{- end }}
+{{- end }}
+
+{{/*
+secretKeyRef of env variable REDIS_USERNAME
+*/}}
+{{- define "argo-cd.redisUsernameSecretRef" -}}
+    {{- if and .Values.externalRedis.host -}}
+name: {{ default (include "argo-cd.redis.fullname" .) .Values.externalRedis.existingSecret }}
+key: redis-username
+optional: true
+    {{- else -}}
+name: {{ include "argo-cd.redis.fullname" . }}
+key: redis-username
+optional: true
+    {{- end -}}
+{{- end -}}
+
+{{/*
+secretKeyRef of env variable REDIS_PASSWORD
+*/}}
+{{- define "argo-cd.redisPasswordSecretRef" -}}
+    {{- if .Values.externalRedis.host -}}
+    {{- /* External Redis use case */ -}}
+    {{- /* Secret is required when specifying existingSecret or a password, otherwise it is optional */ -}}
+name: {{ default "argocd-redis" .Values.externalRedis.existingSecret }}
+key: redis-password
+optional: {{ if or .Values.externalRedis.existingSecret .Values.externalRedis.password }}false{{ else }}true{{ end }}
+
+    {{- else if and .Values.redisSecretInit.enabled -}}
+    {{- /* Default case where Secret is generated by the Job with Helm pre-install hooks */ -}}
+name: "argocd-redis" # hard-coded in Job command and embedded Redis deployments (standalone and redis-ha)
+key: auth
+optional: false # Secret is not optional in this case !
+
+    {{- else -}}
+    {{- /* All other use cases (e.g. disabled pre-install Job) */ -}}
+name: "argocd-redis"
+key: auth
+optional: true
+    {{- end -}}
 {{- end -}}
