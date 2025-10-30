@@ -8,35 +8,39 @@ metadata:
     {{- include "traefik.labels" $ | nindent 4 }}
     {{- with $config.labels }}
     {{- toYaml . | nindent 4 }}
-    {{- end }}    
+    {{- end }}
 spec:
   {{- with $config.alpnProtocols }}
   alpnProtocols:
-  {{- toYaml . | nindent 4 }}
+    {{- toYaml . | nindent 4 }}
   {{- end }}
   {{- with $config.cipherSuites }}
   cipherSuites:
-  {{- toYaml . | nindent 4 }}
+    {{- toYaml . | nindent 4 }}
   {{- end }}
   {{- with $config.clientAuth }}
   clientAuth:
-  {{- toYaml . | nindent 4 }}
+    {{- toYaml . | nindent 4 }}
   {{- end }}
   {{- with $config.curvePreferences }}
   curvePreferences:
-  {{- toYaml . | nindent 4 }}
-  {{- end }}  
-  {{- if $config.maxVersion }}
-  maxVersion: {{ $config.maxVersion }}
+    {{- toYaml . | nindent 4 }}
   {{- end }}
-  {{- if $config.minVersion }}
-  minVersion: {{ $config.minVersion }}
+  {{- with $config.disableSessionTickets }}
+    {{- $version := include "traefik.proxyVersion" $ }}
+    {{- if semverCompare "<v3.4.0-0" $version }}
+      {{- fail "ERROR: disableSessionTickets is a feature only available for traefik >= v3.4.0." }}
+    {{- end }}
+  disableSessionTickets: {{ . }}
   {{- end }}
-  {{- if $config.preferServerCipherSuites }}
-  preferServerCipherSuites: {{ $config.preferServerCipherSuites }}
+  {{- with $config.maxVersion }}
+  maxVersion: {{ . }}
   {{- end }}
-  {{- if $config.sniStrict }}
-  sniStrict: {{ $config.sniStrict }}
+  {{- with $config.minVersion }}
+  minVersion: {{ . }}
+  {{- end }}
+  {{- with $config.sniStrict }}
+  sniStrict: {{ . }}
   {{- end }}
 ---
 {{- end -}}

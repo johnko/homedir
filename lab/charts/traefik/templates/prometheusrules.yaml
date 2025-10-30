@@ -1,17 +1,15 @@
 {{- if .Values.metrics.prometheus }}
-{{- if .Values.metrics.prometheus.prometheusRule }}
+{{- if (.Values.metrics.prometheus.prometheusRule).enabled }}
   {{- if (not (.Capabilities.APIVersions.Has "monitoring.coreos.com/v1")) }}
     {{- if (not (.Values.metrics.prometheus.disableAPICheck)) }}
       {{- fail "ERROR: You have to deploy monitoring.coreos.com/v1 first" }}
     {{- end }}
   {{- end }}
-apiVersion: monitoring.coreos.com/v1
+apiVersion: {{ .Values.metrics.prometheus.prometheusRule.apiVersion | default "monitoring.coreos.com/v1" }}
 kind: PrometheusRule
 metadata:
   name: {{ template "traefik.fullname" . }}
-  {{- if .Values.metrics.prometheus.prometheusRule.namespace }}
-  namespace: {{ .Values.metrics.prometheus.prometheusRule.namespace }}
-  {{- end }}
+  namespace: {{ .Values.metrics.prometheus.prometheusRule.namespace | default (include "traefik.namespace" .) }}
   labels:
     {{- include "traefik.labels" . | nindent 4 }}
     {{- with .Values.metrics.prometheus.prometheusRule.additionalLabels }}

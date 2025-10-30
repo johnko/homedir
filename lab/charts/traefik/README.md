@@ -1,135 +1,207 @@
 # Traefik
 
-[Traefik](https://traefik.io/) is a modern HTTP reverse proxy and load balancer made to deploy
-microservices with ease.
+[Traefik](https://traefik.io/) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease.
 
 ## Introduction
 
-This chart bootstraps Traefik version 2 as a Kubernetes ingress controller,
-using Custom Resources `IngressRoute`: <https://docs.traefik.io/providers/kubernetes-crd/>.
-
-It's now possible to use this chart with Traefik v3 (current tested with beta3).
-Helm will auto detect which version is used based on image.tag. Set image.tag to a semver higher than 3.0, e.g. "v3.0.0-beta3".
-See [Migration guide from v2 to v3](https://doc.traefik.io/traefik/v3.0/migration/v2-to-v3/) and upgrading section of this chart on CRDs.
-
 ### Philosophy
 
-The Traefik HelmChart is focused on Traefik deployment configuration.
+The Traefik Helm chart is focused on Traefik deployment configuration.
 
-To keep this HelmChart as generic as possible we tend
-to avoid integrating any third party solutions nor any specific use cases.
+To keep this Helm chart as generic as possible, we avoid integrating third-party solutions or targeting specific use cases.
 
-Accordingly, the encouraged approach to fulfill your needs:
+If you want to customize the chart for your needs, you can:
 
-1. Override the default Traefik configuration values ([yaml file or cli](https://helm.sh/docs/chart_template_guide/values_files/))
-2. Append your own configurations (`kubectl apply -f myconf.yaml`)
+1. Override the default Traefik configuration values (see [yaml file or CLI](https://helm.sh/docs/chart_template_guide/values_files/)).
+2. Append your own configurations (for example, by running `kubectl apply -f myconf.yaml`).
 
-If needed, one may use [extraObjects](./traefik/tests/values/extra.yaml) or extend this HelmChart [as a Subchart](https://helm.sh/docs/chart_template_guide/subcharts_and_globals/)
+[Examples](https://github.com/traefik/traefik-helm-chart/blob/master/EXAMPLES.md) of common usage are provided.
+
+If you need to include additional Kubernetes objects or extend functionality, use [`extraObjects`](./traefik/tests/values/extra.yaml) or add this chart as a [subchart](https://helm.sh/docs/chart_template_guide/subcharts_and_globals/).
+
+### Major Changes
+
+Starting with v28.x, this chart bootstraps Traefik Proxy version 3 as a Kubernetes ingress controller, using the [`IngressRoute`](https://doc.traefik.io/traefik/v3.0/routing/providers/kubernetes-crd/) Custom Resource.
+
+To upgrade from chart versions prior to v28.x (which use Traefik Proxy version 2), see:
+
+- [Migration guide from v2 to v3](https://doc.traefik.io/traefik/v3.0/migration/v2-to-v3/)
+- Upgrade notes in the [`README` on the v27 branch](https://github.com/traefik/traefik-helm-chart/tree/v27)
+
+Starting with v34.x, to work around [Helm caveats](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#some-caveats-and-explanations), you can use an additional chart dedicated to CRDs: **traefik-crds**.
+
+To deploy with this setup, see the [instructions below](#with-additional-crds-chart).
+
+### Support for Traefik Proxy v2
+
+If you need to use this chart with Traefik Proxy v2, use chart version v27.x.
+
+This chart's support policy aligns with the [upstream support policy](https://doc.traefik.io/traefik/deprecation/releases/) of Traefik Proxy.
+
+For compatibility details, installation instructions, or previous upgrade notes, check the [`README` on the v27 branch](https://github.com/traefik/traefik-helm-chart/tree/v27).
 
 ## Installing
 
 ### Prerequisites
 
-1. [x] Helm **v3 > 3.9.0** [installed](https://helm.sh/docs/using_helm/#installing-helm): `helm version`
-2. [x] Traefik's chart repository: `helm repo add traefik https://traefik.github.io/charts`
+1. Kubernetes (server) version **v1.22.0 or higher**: `kubectl version`
+1. Helm **v3.9.0 or higher** [installed](https://helm.sh/docs/using_helm/#installing-helm): `helm version`
+1. Traefik's chart repository: `helm repo add traefik https://traefik.github.io/charts`
 
-### Kubernetes Version Support
+### Deploying
 
-Due to changes in CRD version support, the following versions of the chart are usable and supported on the following Kubernetes versions:
+#### Standard Installation
 
-|                         |  Kubernetes v1.15 and below | Kubernetes v1.16-v1.21 | Kubernetes v1.22 and above |
-|-------------------------|-----------------------------|------------------------|----------------------------|
-| Chart v9.20.2 and below | [x]                         | [x]                    |                            |
-| Chart v10.0.0 and above |                             | [x]                    | [x]                        |
-| Chart v22.0.0 and above |                             |                        | [x]                        |
-
-### Deploying Traefik
+To install the chart with default values:
 
 ```bash
 helm install traefik traefik/traefik
 ```
 
-You can customize the install with a `values` file. There are some [EXAMPLES](./EXAMPLES.md) provided.
-Complete documentation on all available parameters is in the [default file](./traefik/values.yaml).
+or, to install from the OCI registry:
+
+```bash
+helm install traefik oci://ghcr.io/traefik/helm/traefik
+```
+
+To customize the installation, provide a custom `values` file:
 
 ```bash
 helm install -f myvalues.yaml traefik traefik/traefik
 ```
 
-🛂 **Warning**: Helm v2 support was removed in the chart version 10.0.0.
+To see example values files, refer to the provided [EXAMPLES](./EXAMPLES.md).
+
+For complete documentation on all available parameters, check the [default values file](./traefik/values.yaml).
+
+#### With Additional CRDs Chart
+
+To manage CRDs separately, use the optional CRDs chart. When using it, the CRDs from the regular Traefik chart are not required.
+For more details, see [here](./CONTRIBUTING.md#about-crds).
+
+To install with the CRDs chart:
+
+```bash
+helm install traefik-crds traefik/traefik-crds
+helm install traefik traefik/traefik --skip-crds
+helm list # should display two charts installed
+```
+
+## Verification
+
+Starting with v37.0.0, chart releases are signed using *provenance files*.
+
+To verify the chart, follow these steps:
+
+### 1. Download the Public Signing Key
+
+To download the official Traefik Helm chart signing key, run:
+
+```shell
+gpg --receive-keys --keyserver hkps://keys.openpgp.org 'B0FBA7678F685E9B7024B79FFD92BB57C5A71A99'
+```
+
+Example output:
+
+```shell
+gpg: key FD92BB57C5A71A99: public key "TraefikLabs Chart Signing Key <noreply@traefik.io>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+```
+
+### 2. Export the Signing Key
+
+By default, GnuPG v2 stores keyrings in a format that is not compatible with Helm chart provenance verification. Before you can verify a Helm chart, you must convert your keyrings to the legacy format:
+
+```shell
+gpg --export --output $HOME/.gnupg/pubring.gpg 'B0FBA7678F685E9B7024B79FFD92BB57C5A71A99'
+```
+
+### 3. Verify the Chart
+
+To verify the chart, use the appropriate command for your registry:
+
+- OCI Registry
+
+  ```shell
+  helm fetch --verify --keyring $HOME/.gnupg/traefik.pubring.gpg oci://ghcr.io/traefik/helm/traefik:<VERSION>
+  ```
+
+- Helm Registry (GitHub Pages)
+
+  ```shell
+  helm fetch --verify --keyring $HOME/.gnupg/traefik.pubring.gpg traefik/traefik --version <VERSION>
+  ```
 
 ## Upgrading
 
-One can check what has changed in the [Changelog](./traefik/Changelog.md).
+To see what has changed in each release, check the [Changelog](./traefik/Changelog.md).
+
+A new major version indicates that there is an incompatible breaking change.
+
+> [!WARNING]
+> To avoid issues, **always read the release notes for this chart before upgrading**.
+
+### Upgrade the Standalone Traefik Chart
+
+If you use Helm's native CRD management, you **MUST** upgrade CRDs before running `helm upgrade`, since Helm does **not** update CRDs automatically. See [HIP-0011](https://github.com/helm/community/blob/main/hips/hip-0011.md) for details.
+
+To upgrade the Traefik chart and its CRDs:
 
 ```bash
-# Update repository
+# Update the chart repository
 helm repo update
-# See current Chart & Traefik version
+# Check current chart & Traefik version
 helm search repo traefik/traefik
-# Upgrade Traefik
+# Update CRDs
+helm show crds traefik/traefik | kubectl apply --server-side --force-conflicts -f -
+# Upgrade Traefik release
 helm upgrade traefik traefik/traefik
 ```
 
-New major version indicates that there is an incompatible breaking change.
+### Upgrade from the Standard Traefik Chart to Traefik + Opt-In CRDs Chart
 
-### Upgrading CRDs
+> [!WARNING]
+> To avoid conflicts, **you must change the ownership of CRDs before installing the CRDs chart**.
 
-🛂 **Warning**: Traefik v3 totally removes the crd support for traefik.containo.us CRDs. By default this helm installs the CRDs compatible with v2 also, but Traefik v3 will no longer monitor them. There is no support for deprecation errors, so your existing resources may silently fail to work after upgrade to Traefik v3. See [Migration guide from v2 to v3](https://doc.traefik.io/traefik/v3.0/migration/v2-to-v3/) for more details.
-
-With Helm v3, CRDs created by this chart can not be updated, cf the [Helm Documentation on CRDs](https://helm.sh/docs/chart_best_practices/custom_resource_definitions). Please read carefully release notes of this chart before upgrading CRDs.
+To migrate to the setup with the additional CRDs chart:
 
 ```bash
-kubectl apply --server-side --force-conflicts -k https://github.com/traefik/traefik-helm-chart/traefik/crds/
+# Update the chart repository
+helm repo update
+# Update CRD ownership
+kubectl get customresourcedefinitions.apiextensions.k8s.io -o name | grep traefik.io | \
+  xargs kubectl patch --type='json' -p='[{"op": "add", "path": "/metadata/labels", "value": {"app.kubernetes.io/managed-by":"Helm"}},{"op": "add", "path": "/metadata/annotations/meta.helm.sh~1release-name", "value":"traefik-crds"},{"op": "add", "path": "/metadata/annotations/meta.helm.sh~1release-namespace", "value":"default"}]'
+# If you use gateway API, also change Gateway API ownership
+kubectl get customresourcedefinitions.apiextensions.k8s.io -o name | grep gateway.networking.k8s.io | \
+  xargs kubectl patch --type='json' -p='[{"op": "add", "path": "/metadata/labels", "value": {"app.kubernetes.io/managed-by":"Helm"}},{"op": "add", "path": "/metadata/annotations/meta.helm.sh~1release-name", "value":"traefik-crds"},{"op": "add", "path": "/metadata/annotations/meta.helm.sh~1release-namespace", "value":"default"}]'
+# Deploy the optional CRDs chart
+helm install traefik-crds traefik/traefik-crds
+# Upgrade Traefik release
+helm upgrade traefik traefik/traefik
 ```
 
-### Upgrading after 18.X+
+### Upgrade When Using Both Traefik and Opt-In CRDs Chart
 
-It's detailed in [release notes](https://github.com/traefik/traefik-helm-chart/releases).
+To upgrade both Traefik and CRDs charts:
 
-### Upgrading from 17.x to 18.x
-
-Since v18.x, this chart by default merges TCP and UDP ports into a single (LoadBalancer) `Service`.
-Load balancers with mixed protocols are available since v1.20 and in
-[beta as of Kubernetes v1.24](https://kubernetes.io/docs/concepts/services-networking/service/#load-balancers-with-mixed-protocol-types).
-Availability may depend on your Kubernetes provider.
-
-To retain the old default behavior, set `service.single` to `false` in your values.
-
-When using TCP and UDP with a single service, you may encounter
-[this issue](https://github.com/kubernetes/kubernetes/issues/47249#issuecomment-587960741)
-from Kubernetes.
-
-On HTTP/3, if you want to avoid this issue, you can set
-`ports.websecure.http3.advertisedPort` to an other value than `443`
-
-If you were previously using HTTP/3, you should update your values as follows:
-  - Replace the old value (`true`) of `ports.websecure.http3` with a key `enabled: true`
-  - Remove `experimental.http3.enabled=true` entry
-
-### Upgrading from 16.x to 17.x
-
-Since v17.x, this chart provides unified labels following
-[Kubernetes recommendation](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/).
-
-This version needs to change an immutable field, which is not supported by
-Kubernetes and Helm, see [this issue](https://github.com/helm/helm/issues/7350)
-for more details.
-So you will have to delete your `Service`,  `Deployment` or `DaemonSet` in
-order to be able to upgrade.
-
-You may also upgrade by deploying another Traefik to a different namespace and
-removing after your first Traefik.
-
-Alternatively, since version 20.3.0 of this chart, you may set `instanceLabelOverride` to the previous value of that label.
-This will override the new `Release.Name-Release.Namespace` pattern to avoid any (longer) downtime.
+```bash
+# Update the chart repository
+helm repo update
+# Check the current chart & Traefik version
+helm search repo traefik/traefik
+# Upgrade CRDs (Traefik Proxy v3 CRDs)
+helm upgrade traefik-crds traefik/traefik
+# Upgrade Traefik release
+helm upgrade traefik traefik/traefik
+```
 
 ## Contributing
 
-If you want to contribute to this chart, please read the [Contributing Guide](./CONTRIBUTING.md).
+To contribute to this chart, please read the [Contributing Guide](./CONTRIBUTING.md).
 
-Thanks to all the people who have already contributed!
+Thank you to everyone who has already contributed!
 
 <a href="https://github.com/traefik/traefik-helm-chart/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=traefik/traefik-helm-chart" />
+  <img src="https://contributors-img.web.app/image?repo=traefik/traefik-helm-chart" alt="Contributors"/>
 </a>
