@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: lab/charts/istio-istiod
+    path: lab/charts/istiod
     repoURL: https://github.com/johnko/homedir.git
     targetRevision: HEAD
   syncPolicy:

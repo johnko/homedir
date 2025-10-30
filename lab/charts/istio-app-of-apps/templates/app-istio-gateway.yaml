@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: lab/charts/istio-gateway
+    path: lab/charts/gateway
     repoURL: https://github.com/johnko/homedir.git
     targetRevision: HEAD
     helm:
