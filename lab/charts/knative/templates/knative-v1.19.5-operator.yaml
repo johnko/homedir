@@ -1,3 +1,26 @@
+# Copyright 2024 The Knative Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: knative-operator
+  labels:
+    app.kubernetes.io/name: knative-operator
+    app.kubernetes.io/version: "1.19.5"
+
+---
 # Copyright 2022 The Knative Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,10 +39,10 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: operator-webhook-certs
-  namespace: default
+  namespace: knative-operator
   labels:
     app.kubernetes.io/component: operator-webhook
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 # The data is populated at install time.
 
@@ -42,10 +65,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: operator-webhook
-  namespace: default
+  namespace: knative-operator
   labels:
     app.kubernetes.io/component: operator-webhook
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 spec:
   selector:
@@ -54,14 +77,13 @@ spec:
       role: operator-webhook
   template:
     metadata:
-      annotations:
-        sidecar.istio.io/inject: "false"
       labels:
         app: operator-webhook
         role: operator-webhook
         app.kubernetes.io/component: operator-webhook
-        app.kubernetes.io/version: "1.11.2"
+        app.kubernetes.io/version: "1.19.5"
         app.kubernetes.io/name: knative-operator
+        sidecar.istio.io/inject: "false"
     spec:
       # To avoid node becoming SPOF, spread our replicas to different nodes.
       affinity:
@@ -78,7 +100,7 @@ spec:
         - name: operator-webhook
           # This is the Go import path for the binary that is containerized
           # and substituted here.
-          image: gcr.io/knative-releases/knative.dev/operator/cmd/webhook@sha256:a6645aab3bb59ba1247a6b97972d48eb3bb81af2426cfd24f1d12baaf2388a3c
+          image: gcr.io/knative-releases/knative.dev/operator/cmd/webhook@sha256:03e27cfc47c8ce320c2bae83b3a9540d26de82e785aa34f923deedded0f303ca
           resources:
             requests:
               cpu: 100m
@@ -115,7 +137,7 @@ spec:
             runAsNonRoot: true
             capabilities:
               drop:
-                - all
+                - ALL
           ports:
             - name: metrics
               containerPort: 9090
@@ -166,10 +188,10 @@ metadata:
   labels:
     role: operator-webhook
     app.kubernetes.io/component: operator-webhook
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
   name: operator-webhook
-  namespace: default
+  namespace: knative-operator
 spec:
   ports:
     # Define metrics and profiling for them to be accessible within service meshes.
@@ -205,7 +227,7 @@ kind: CustomResourceDefinition
 metadata:
   name: knativeeventings.operator.knative.dev
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 spec:
   group: operator.knative.dev
@@ -925,6 +947,20 @@ spec:
                               type: object
                           type: object
                         type: array
+                namespace:
+                  description: A field of namespace name to override the labels and annotations
+                  type: object
+                  properties:
+                    labels:
+                      additionalProperties:
+                        type: string
+                      description: Labels overrides labels for the namespace and its template.
+                      type: object
+                    annotations:
+                      additionalProperties:
+                        type: string
+                      description: Annotations overrides labels for the namespace and its template.
+                      type: object
                 deployments:
                   description: A mapping of deployment name to override
                   type: array
@@ -1601,6 +1637,12 @@ spec:
                           - type: string
                         description: An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
                         x-kubernetes-int-or-string: true
+                      maxUnavailable:
+                        anyOf:
+                          - type: integer
+                          - type: string
+                        description: An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".
+                        x-kubernetes-int-or-string: true
                 source:
                   description: The source configuration for Knative Eventing
                   properties:
@@ -1743,7 +1785,7 @@ spec:
       clientConfig:
         service:
           name: operator-webhook
-          namespace: default
+          namespace: knative-operator
           path: /resource-conversion
 
 ---
@@ -1766,7 +1808,7 @@ kind: CustomResourceDefinition
 metadata:
   name: knativeservings.operator.knative.dev
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 spec:
   group: operator.knative.dev
@@ -2497,6 +2539,20 @@ spec:
                               type: object
                           type: object
                         type: array
+                namespace:
+                  description: A field of namespace name to override the labels and annotations
+                  type: object
+                  properties:
+                    labels:
+                      additionalProperties:
+                        type: string
+                      description: Labels overrides labels for the namespace and its template.
+                      type: object
+                    annotations:
+                      additionalProperties:
+                        type: string
+                      description: Annotations overrides labels for the namespace and its template.
+                      type: object
                 deployments:
                   description: A mapping of deployment name to override
                   type: array
@@ -3173,6 +3229,12 @@ spec:
                           - type: string
                         description: An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
                         x-kubernetes-int-or-string: true
+                      maxUnavailable:
+                        anyOf:
+                          - type: integer
+                          - type: string
+                        description: An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".
+                        x-kubernetes-int-or-string: true
                 ingress:
                   description: The ingress configuration for Knative Serving
                   properties:
@@ -3222,6 +3284,27 @@ spec:
                                         format: string
                                         type: string
                                     type: object
+                                  tls:
+                                    nullable: true
+                                    oneOf:
+                                      - required:
+                                          - mode
+                                          - credentialName
+                                      - required:
+                                          - httpsRedirect
+                                    properties:
+                                      mode:
+                                        description: TLS mode can be SIMPLE, MUTUAL, ISTIO_MUTUAL.
+                                        format: string
+                                        type: string
+                                      credentialName:
+                                        description: TLS certificate name.
+                                        format: string
+                                        type: string
+                                      httpsRedirect:
+                                        description: If set to true, the load balancer will send a 301 redirect to HTTPS for all HTTP requests. Should be used only for HTTP listener, is mutually exclusive with all other TLS options.
+                                        type: boolean
+                                    type: object
                                 type: object
                               type: array
                           type: object
@@ -3260,6 +3343,27 @@ spec:
                                         format: string
                                         type: string
                                     type: object
+                                  tls:
+                                    nullable: true
+                                    oneOf:
+                                      - required:
+                                          - mode
+                                          - credentialName
+                                      - required:
+                                          - httpsRedirect
+                                    properties:
+                                      mode:
+                                        description: TLS mode can be SIMPLE, MUTUAL, ISTIO_MUTUAL.
+                                        format: string
+                                        type: string
+                                      credentialName:
+                                        description: TLS certificate name.
+                                        format: string
+                                        type: string
+                                      httpsRedirect:
+                                        description: If set to true, the load balancer will send a 301 redirect to HTTPS for all HTTP requests. Should be used only for HTTP listener, is mutually exclusive with all other TLS options.
+                                        type: boolean
+                                    type: object
                                 type: object
                               type: array
                           type: object
@@ -3271,8 +3375,14 @@ spec:
                           type: boolean
                         service-type:
                           type: string
+                        service-load-balancer-ip:
+                          type: string
                         bootstrap-configmap:
                           type: string
+                        http-port:
+                          type: integer
+                        https-port:
+                          type: integer
                       type: object
                   type: object
                 security:
@@ -3385,7 +3495,7 @@ spec:
       clientConfig:
         service:
           name: operator-webhook
-          namespace: default
+          namespace: knative-operator
           path: /resource-conversion
 
 ---
@@ -3408,7 +3518,7 @@ kind: ClusterRole
 metadata:
   name: knative-serving-operator-aggregated
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 aggregationRule:
   clusterRoleSelectors:
@@ -3424,7 +3534,7 @@ kind: ClusterRole
 metadata:
   name: knative-serving-operator-aggregated-stable
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 aggregationRule:
   clusterRoleSelectors:
@@ -3440,7 +3550,7 @@ kind: ClusterRole
 metadata:
   name: knative-eventing-operator-aggregated
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 aggregationRule:
   clusterRoleSelectors:
@@ -3456,7 +3566,7 @@ kind: ClusterRole
 metadata:
   name: knative-eventing-operator-aggregated-stable
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 aggregationRule:
   clusterRoleSelectors:
@@ -3487,7 +3597,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: knative-serving-operator
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 rules:
   - apiGroups:
@@ -3727,7 +3837,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: knative-eventing-operator
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 rules:
   - apiGroups:
@@ -3961,6 +4071,8 @@ rules:
       - watch
       - update
       - patch
+      - create
+      - delete
   - apiGroups:
       - rbac.authorization.k8s.io
     resources:
@@ -4083,6 +4195,31 @@ rules:
       - deployments
     verbs:
       - deletecollection
+  # Eventing TLS
+  - apiGroups:
+      - "cert-manager.io"
+    resources:
+      - certificates
+      - issuers
+      - clusterissuers
+    verbs:
+      - create
+      - delete
+      - update
+      - list
+      - get
+      - watch
+  - apiGroups:
+      - "trust.cert-manager.io"
+    resources:
+      - bundles
+    verbs:
+      - create
+      - delete
+      - update
+      - list
+      - get
+      - watch
 
 ---
 # Copyright 2020 The Knative Authors
@@ -4103,9 +4240,9 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: knative-operator
-  namespace: default
+  namespace: knative-operator
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 
 ---
@@ -4129,7 +4266,7 @@ kind: ClusterRoleBinding
 metadata:
   name: knative-serving-operator
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -4138,7 +4275,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: knative-operator
-    namespace: default
+    namespace: knative-operator
 ---
 # TODO: Consider restriction of non-aggregated role to knativeeventing namespaces.
 apiVersion: rbac.authorization.k8s.io/v1
@@ -4146,7 +4283,7 @@ kind: ClusterRoleBinding
 metadata:
   name: knative-eventing-operator
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -4155,7 +4292,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: knative-operator
-    namespace: default
+    namespace: knative-operator
 
 ---
 # Copyright 2022 The Knative Authors
@@ -4175,10 +4312,10 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  namespace: default
+  namespace: knative-operator
   name: knative-operator-webhook
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 rules:
   # For manipulating certs into secrets.
@@ -4199,7 +4336,7 @@ kind: ClusterRole
 metadata:
   name: knative-operator-webhook
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 rules:
   # For watching logging configuration and getting certs.
@@ -4288,9 +4425,9 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: operator-webhook
-  namespace: default
+  namespace: knative-operator
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 
 ---
@@ -4311,15 +4448,15 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  namespace: default
+  namespace: knative-operator
   name: operator-webhook
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 subjects:
   - kind: ServiceAccount
     name: operator-webhook
-    namespace: default
+    namespace: knative-operator
 roleRef:
   kind: Role
   name: knative-operator-webhook
@@ -4330,7 +4467,7 @@ kind: ClusterRoleBinding
 metadata:
   name: operator-webhook
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -4339,7 +4476,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: operator-webhook
-    namespace: default
+    namespace: knative-operator
 
 ---
 # Copyright 2020 The Knative Authors
@@ -4361,7 +4498,7 @@ kind: ClusterRoleBinding
 metadata:
   name: knative-serving-operator-aggregated
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -4370,14 +4507,14 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: knative-operator
-    namespace: default
+    namespace: knative-operator
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: knative-serving-operator-aggregated-stable
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -4386,14 +4523,14 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: knative-operator
-    namespace: default
+    namespace: knative-operator
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: knative-eventing-operator-aggregated
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -4402,14 +4539,14 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: knative-operator
-    namespace: default
+    namespace: knative-operator
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: knative-eventing-operator-aggregated-stable
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -4418,7 +4555,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: knative-operator
-    namespace: default
+    namespace: knative-operator
 
 ---
 # Copyright 2019 The Knative Authors
@@ -4439,9 +4576,9 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-logging
-  namespace: default
+  namespace: knative-operator
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 data:
   _example: |
@@ -4502,9 +4639,9 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-observability
-  namespace: default
+  namespace: knative-operator
   labels:
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
     app.kubernetes.io/name: knative-operator
 data:
   _example: |
@@ -4576,10 +4713,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: knative-operator
-  namespace: default
+  namespace: knative-operator
   labels:
     app.kubernetes.io/name: knative-operator
-    app.kubernetes.io/version: "1.11.2"
+    app.kubernetes.io/version: "1.19.5"
 spec:
   replicas: 1
   selector:
@@ -4587,17 +4724,23 @@ spec:
       name: knative-operator
   template:
     metadata:
-      annotations:
-        sidecar.istio.io/inject: "false"
       labels:
         name: knative-operator
         app.kubernetes.io/name: knative-operator
-        app.kubernetes.io/version: "1.11.2"
+        app.kubernetes.io/version: "1.19.5"
+        sidecar.istio.io/inject: "false"
     spec:
       serviceAccountName: knative-operator
       containers:
         - name: knative-operator
-          image: gcr.io/knative-releases/knative.dev/operator/cmd/operator@sha256:cbf89693bc0dadc0e7fa63a0e8d2875a9941e42514137ea529333d8a046b46ea
+          image: gcr.io/knative-releases/knative.dev/operator/cmd/operator@sha256:ead69b68b6e682ca5b37c5db1b3f712c310d9280f1b9fd10c5f7f0c228fbcced
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 1000m
+              memory: 1000Mi
           imagePullPolicy: IfNotPresent
           env:
             - name: POD_NAME
@@ -4616,6 +4759,13 @@ spec:
               value: config-observability
             - name: KUBERNETES_MIN_VERSION
               value: ""
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
           ports:
             - name: metrics
               containerPort: 9090
