@@ -1,12 +1,12 @@
 annotations:
   artifacthub.io/changes: |
-    - kind: fixed
-      description: Templates for global presets properly renders keys as a string instead of map
+    - kind: changed
+      description: Upgrade Argo CD to v2.7.11
   artifacthub.io/signKey: |
     fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
     url: https://argoproj.github.io/argo-helm/pgp_keys.asc
 apiVersion: v2
-appVersion: v2.7.10
+appVersion: v2.7.11
 dependencies:
 - condition: redis-ha.enabled
   name: redis-ha
@@ -28,4 +28,4 @@ name: argo-cd
 sources:
 - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
 - https://github.com/argoproj/argo-cd
-version: 5.42.2
+version: 5.42.3
