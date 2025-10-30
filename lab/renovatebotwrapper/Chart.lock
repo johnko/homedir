@@ -22,12 +22,12 @@ dependencies:
   version: 3.11.0
 - name: openfaas
   repository: https://openfaas.github.io/faas-netes/
-  version: 14.0.9
+  version: 14.0.12
 - name: pihole
   repository: https://mojo2600.github.io/pihole-kubernetes/
   version: 2.18.0
 - name: traefik
   repository: https://traefik.github.io/charts
   version: 24.0.0
-digest: sha256:4b32e7fde9d8c3bccf9a6b2b49c39da62304f3688c900a5f2f6de9da7c700994
-generated: "2025-10-30T00:02:14.379865-04:00"
+digest: sha256:0e32539acdf82586f26a6ebdcbf53b2610e7f7e1e9301b3549cea840b095bd26
+generated: "2025-10-30T05:10:01.971075796Z"
