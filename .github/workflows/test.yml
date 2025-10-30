@@ -11,6 +11,9 @@ name: test
 
 on:
   pull_request:
+    paths:
+      - .github/renovate.json
+      - default.json
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
