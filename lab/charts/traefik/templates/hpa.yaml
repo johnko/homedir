@@ -4,7 +4,7 @@
   {{- fail "ERROR: maxReplicas is required on HPA" }}
 {{- end }}
 
-{{- if semverCompare ">=1.23.0-0" .Capabilities.KubeVersion.Version }}
+{{- if semverCompare ">=v1.23.0-0" .Capabilities.KubeVersion.Version }}
 apiVersion: autoscaling/v2
 {{- else }}
 apiVersion: autoscaling/v2beta2
@@ -17,9 +17,9 @@ metadata:
     {{- include "traefik.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: {{ template "traefik.fullname" . }}
+    apiVersion: {{ .Values.autoscaling.scaleTargetRef.apiVersion }}
+    kind: {{ .Values.autoscaling.scaleTargetRef.kind }}
+    name: {{ tpl .Values.autoscaling.scaleTargetRef.name . }}
 {{- if .Values.autoscaling.minReplicas }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
 {{- end }}
