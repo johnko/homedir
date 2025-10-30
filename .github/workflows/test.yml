@@ -31,7 +31,6 @@ jobs:
     strategy:
       matrix:
         file:
-          - default
           - .github/renovate
 
     steps:
