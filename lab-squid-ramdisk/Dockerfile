@@ -1,4 +1,4 @@
-FROM alpine:3.20
+FROM alpine:3.22
 
 LABEL maintainer="nickgrealy@gmail.com"
 
