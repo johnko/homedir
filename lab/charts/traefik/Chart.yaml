@@ -1,12 +1,13 @@
 annotations:
-  artifacthub.io/changes: "- \"chore(release): \U0001F680 publish v24.0.0\"\n- \"fix:
-    http3 support broken when advertisedPort set\"\n- \"fix: tracing.opentelemetry.tls
-    is optional for all values\"\n- \"chore(deps): update docker.io/helmunittest/helm-unittest
-    docker tag to v3.12.2\"\n- \"chore(tests): \U0001F527 fix typo on tracing test\"\n-
-    \"fix: \U0001F4A5 BREAKING CHANGE on healthchecks and traefik port\"\n- \"feat:
-    multi namespace RBAC manifests\"\n"
+  artifacthub.io/changes: "- \"fix: \U0001F41B namespaced rbac when kubernetesIngress
+    provider is disabled\"\n- \"fix: \U0001F41B  add divisor: '1' to GOMAXPROCS and
+    GOMEMLIMIT\"\n- \"fix(security): \U0001F41B \U0001F512️ mount service account
+    token on pod level\"\n- \"fix(Traefik Hub): remove obsolete CRD\"\n- \"fix(Traefik
+    Hub): remove namespace in mutating webhook\"\n- \"feat: allow setting permanent
+    on redirectTo\"\n- \"chore(release): publish v28.3.0\"\n- \"chore(deps): update
+    traefik docker tag to v3.0.2\"\n"
 apiVersion: v2
-appVersion: v2.10.4
+appVersion: v3.0.2
 description: A Traefik based Kubernetes ingress controller
 home: https://traefik.io/
 icon: https://raw.githubusercontent.com/traefik/traefik/v2.3/docs/content/assets/img/traefik.logo.png
@@ -14,21 +15,18 @@ keywords:
 - traefik
 - ingress
 - networking
-kubeVersion: '>=1.16.0-0'
+kubeVersion: '>=1.22.0-0'
 maintainers:
-- email: emile@vauge.com
-  name: emilevauge
-- email: daniel.tomcej@gmail.com
-  name: dtomcej
-- email: ldez@traefik.io
-  name: ldez
 - email: michel.loiseleur@traefik.io
   name: mloiseleur
 - email: charlie.haley@traefik.io
   name: charlie-haley
+- email: remi.buisson@traefik.io
+  name: darkweaver87
+- name: jnoordsij
 name: traefik
 sources:
 - https://github.com/traefik/traefik
 - https://github.com/traefik/traefik-helm-chart
 type: application
-version: 24.0.0
+version: 28.3.0
