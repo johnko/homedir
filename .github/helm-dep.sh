@@ -18,6 +18,11 @@ if git diff --name-only | grep lab/renovatebotwrapper ; then
   helm dep build
 
   cd ./charts
+  for i in $( ls -1 *.tgz | xargs -t -I{} -P1 tar tf {} 2>/dev/null | cut -f1 -d/ | sort -u ); do
+    if [ -d ./$i/ ]; then
+      rm -fr ./$i/
+    fi
+  done
   ls -1 *.tgz | xargs -t -I{} -P1 tar xvf {}
   rm -v *.tgz
 
