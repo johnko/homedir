@@ -73,7 +73,7 @@ services:
 
     gitlab-runner:
         container_name: gitlab-runner
-        image: gitlab/gitlab-runner:v12.0.0
+        image: gitlab/gitlab-runner:v17.11.4
         environment:
             RUNNER_TAG_LIST: docker,alpine
             REGISTER_RUN_UNTAGGED: 'true'
