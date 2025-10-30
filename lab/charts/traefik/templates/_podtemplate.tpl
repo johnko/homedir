@@ -1,11 +1,11 @@
 {{- define "traefik.podTemplate" }}
     metadata:
       annotations:
-      {{- with .Values.deployment.podAnnotations }}
-      {{- toYaml . | nindent 8 }}
+      {{- if .Values.deployment.podAnnotations }}
+        {{- tpl (toYaml .Values.deployment.podAnnotations) . | nindent 8 }}
       {{- end }}
       {{- if .Values.metrics }}
-      {{- if .Values.metrics.prometheus }}
+      {{- if and (.Values.metrics.prometheus) (not .Values.metrics.prometheus.serviceMonitor) }}
         prometheus.io/scrape: "true"
         prometheus.io/path: "/metrics"
         prometheus.io/port: {{ quote (index .Values.ports .Values.metrics.prometheus.entryPoint).port }}
@@ -49,6 +49,9 @@
       {{- if .Values.deployment.shareProcessNamespace }}
       shareProcessNamespace: true
       {{- end }}
+      {{- with .Values.deployment.runtimeClassName }}
+      runtimeClassName: {{ . }}
+      {{- end }}
       containers:
       - image: {{ template "traefik.image-name" . }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -74,6 +77,10 @@
             port: {{ $healthchecksPort }}
             scheme: {{ $healthchecksScheme }}
           {{- toYaml .Values.livenessProbe | nindent 10 }}
+        {{- with .Values.startupProbe}}
+        startupProbe:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
         lifecycle:
           {{- with .Values.deployment.lifecycle }}
           {{- toYaml . | nindent 10 }}
@@ -96,14 +103,13 @@
           hostIP: {{ $config.hostIP }}
           {{- end }}
           protocol: {{ default "TCP" $config.protocol | quote }}
-        {{- if $config.http3 }}
-        {{- if and $config.http3.enabled $config.hostPort }}
-        {{- $http3Port := default $config.hostPort $config.http3.advertisedPort }}
+        {{- if ($config.http3).enabled }}
         - name: "{{ $name }}-http3"
           containerPort: {{ $config.port }}
-          hostPort: {{ $http3Port }}
-          protocol: UDP
+        {{- if $config.hostPort }}
+          hostPort: {{ default $config.hostPort $config.http3.advertisedPort }}
         {{- end }}
+          protocol: UDP
         {{- end }}
         {{- end }}
         {{- end }}
@@ -125,9 +131,13 @@
             mountPath: {{ .mountPath }}
             readOnly: true
           {{- end }}
-          {{- if .Values.experimental.plugins.enabled }}
+          {{- if gt (len .Values.experimental.plugins) 0 }}
           - name: plugins
             mountPath: "/plugins-storage"
+          {{- end }}
+          {{- if .Values.providers.file.enabled }}
+          - name: traefik-extra-config
+            mountPath: "/etc/traefik/dynamic"
           {{- end }}
           {{- if .Values.additionalVolumeMounts }}
             {{- toYaml .Values.additionalVolumeMounts | nindent 10 }}
@@ -142,7 +152,7 @@
           {{- if $config }}
           - "--entrypoints.{{$name}}.address=:{{ $config.port }}/{{ default "tcp" $config.protocol | lower }}"
           {{- with $config.asDefault }}
-          {{- if semverCompare "<3.0.0-0" (default $.Chart.AppVersion $.Values.image.tag) }}
+          {{- if semverCompare "<3.0.0-0" (include "imageVersion" $) }}
             {{- fail "ERROR: Default entrypoints are only available on Traefik v3. Please set `image.tag` to `v3.x`." }}
           {{- end }}
           - "--entrypoints.{{$name}}.asDefault={{ . }}"
@@ -298,7 +308,7 @@
           {{- end }}
 
           {{- with .Values.metrics.openTelemetry }}
-           {{- if semverCompare "<3.0.0-0" (default $.Chart.AppVersion $.Values.image.tag) }}
+           {{- if semverCompare "<3.0.0-0" (include "imageVersion" $) }}
              {{- fail "ERROR: OpenTelemetry features are only available on Traefik v3. Please set `image.tag` to `v3.x`." }}
            {{- end }}
           - "--metrics.openTelemetry=true"
@@ -357,7 +367,7 @@
           {{- if .Values.tracing }}
 
           {{- if .Values.tracing.openTelemetry }}
-           {{- if semverCompare "<3.0.0-0" (default $.Chart.AppVersion $.Values.image.tag) }}
+           {{- if semverCompare "<3.0.0-0" (include "imageVersion" $) }}
              {{- fail "ERROR: OpenTelemetry features are only available on Traefik v3. Please set `image.tag` to `v3.x`." }}
            {{- end }}
           - "--tracing.openTelemetry=true"
@@ -510,6 +520,13 @@
           {{- end }}
           {{- end }}
           {{- end }}
+          {{- range $pluginName, $plugin := .Values.experimental.plugins }}
+          {{- if or (ne (typeOf $plugin) "map[string]interface {}") (not (hasKey $plugin "moduleName")) (not (hasKey $plugin "version")) }}
+            {{- fail  (printf "ERROR: plugin %s is missing moduleName/version keys !" $pluginName) }}
+          {{- end }}
+          - "--experimental.plugins.{{ $pluginName }}.moduleName={{ $plugin.moduleName }}"
+          - "--experimental.plugins.{{ $pluginName }}.version={{ $plugin.version }}"
+          {{- end }}
           {{- if .Values.providers.kubernetesCRD.enabled }}
           - "--providers.kubernetescrd"
           {{- if .Values.providers.kubernetesCRD.labelSelector }}
@@ -560,12 +577,26 @@
           - "--providers.kubernetesingress.namespaces={{ template "providers.kubernetesIngress.namespaces" $ }}"
           {{- end }}
           {{- end }}
+          {{- with .Values.providers.file }}
+          {{- if .enabled }}
+          - "--providers.file.directory=/etc/traefik/dynamic"
+          {{- if .watch }}
+          - "--providers.file.watch=true"
+          {{- end }}
+          {{- end }}
+          {{- end }}
           {{- range $entrypoint, $config := $.Values.ports }}
           {{- if $config }}
             {{- if $config.redirectTo }}
-            {{- $toPort := index $.Values.ports $config.redirectTo }}
+             {{- if eq (typeOf $config.redirectTo) "string" }}
+               {{- fail "ERROR: Syntax of `ports.web.redirectTo` has changed to `ports.web.redirectTo.port`. Details in PR #934." }}
+             {{- end }}
+             {{- $toPort := index $.Values.ports $config.redirectTo.port }}
           - "--entrypoints.{{ $entrypoint }}.http.redirections.entryPoint.to=:{{ $toPort.exposedPort }}"
           - "--entrypoints.{{ $entrypoint }}.http.redirections.entryPoint.scheme=https"
+             {{- if $config.redirectTo.priority }}
+          - "--entrypoints.{{ $entrypoint }}.http.redirections.entryPoint.priority={{ $config.redirectTo.priority }}"
+             {{- end }}
             {{- end }}
             {{- if $config.middlewares }}
           - "--entrypoints.{{ $entrypoint }}.http.middlewares={{ join "," $config.middlewares }}"
@@ -591,10 +622,10 @@
                 {{- end }}
                 {{- if $config.http3 }}
                   {{- if $config.http3.enabled }}
-                    {{- if semverCompare "<3.0.0-0" (default $.Chart.AppVersion $.Values.image.tag)}}
+                    {{- if semverCompare "<3.0.0-0" (include "imageVersion" $)}}
           - "--experimental.http3=true"
                     {{- end }}
-                    {{- if semverCompare ">=2.6.0-0" (default $.Chart.AppVersion $.Values.image.tag)}}
+                    {{- if semverCompare ">=2.6.0-0" (include "imageVersion" $)}}
           - "--entrypoints.{{ $entrypoint }}.http3"
                     {{- else }}
           - "--entrypoints.{{ $entrypoint }}.enableHTTP3=true"
@@ -714,9 +745,14 @@
         {{- if .Values.deployment.additionalVolumes }}
           {{- toYaml .Values.deployment.additionalVolumes | nindent 8 }}
         {{- end }}
-        {{- if .Values.experimental.plugins.enabled }}
+        {{- if gt (len .Values.experimental.plugins) 0 }}
         - name: plugins
           emptyDir: {}
+        {{- end }}
+        {{- if .Values.providers.file.enabled }}
+        - name: traefik-extra-config
+          configMap:
+            name: {{ template "traefik.fullname" . }}-file-provider
         {{- end }}
       {{- if .Values.affinity }}
       affinity:

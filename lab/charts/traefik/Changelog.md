@@ -1,16 +1,906 @@
 # Change Log
 
+## 26.1.0  ![AppVersion: v2.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v2.11.0&color=success&logo=) ![Kubernetes: >=1.16.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.16.0-0&color=informational&logo=kubernetes) ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+**Release date:** 2024-02-16
+
+* fix: 🐛 set runtimeClassName at pod level
+* fix: 🐛 missing quote on experimental plugin args
+* fix: update traefik v3 serverstransporttcps CRD
+* feat: set runtimeClassName on pod spec
+* feat: create v1 Gateway and GatewayClass Version for Traefik v3
+* feat: allow exposure of ports on internal service only
+* doc: fix invalid suggestion on TLSOption (#996)
+* chore: 🔧 update maintainers
+* chore: 🔧 promote jnoordsij to Traefik Helm Chart maintainer
+* chore(release): publish v26.1.0
+* chore(deps): update traefik docker tag to v2.11.0
+* chore(deps): update traefik docker tag to v2.10.7
+* chore(crds): update definitions for traefik v2.11
+
+### Default value changes
+
+```diff
+diff --git a/traefik/values.yaml b/traefik/values.yaml
+index f9dac91..dbd078f 100644
+--- a/traefik/values.yaml
++++ b/traefik/values.yaml
+@@ -100,6 +100,8 @@ deployment:
+   #     port: 9000
+   #     host: localhost
+   #     scheme: HTTP
++  # -- Set a runtimeClassName on pod
++  runtimeClassName:
+ 
+ # -- Pod disruption budget
+ podDisruptionBudget:
+@@ -629,6 +631,10 @@ ports:
+     exposedPort: 9000
+     # -- The port protocol (TCP/UDP)
+     protocol: TCP
++    # -- Defines whether the port is exposed on the internal service;
++    # note that ports exposed on the default service are exposed on the internal
++    # service by default as well.
++    exposeInternal: false
+   web:
+     ## -- Enable this entrypoint as a default entrypoint. When a service doesn't explicitly set an entrypoint it will only use this entrypoint.
+     # asDefault: true
+@@ -644,6 +650,10 @@ ports:
+     # -- Use nodeport if set. This is useful if you have configured Traefik in a
+     # LoadBalancer.
+     # nodePort: 32080
++    # -- Defines whether the port is exposed on the internal service;
++    # note that ports exposed on the default service are exposed on the internal
++    # service by default as well.
++    exposeInternal: false
+     # Port Redirections
+     # Added in 2.2, you can make permanent redirects via entrypoints.
+     # https://docs.traefik.io/routing/entrypoints/#redirection
+@@ -674,6 +684,10 @@ ports:
+     ## -- The port protocol (TCP/UDP)
+     protocol: TCP
+     # nodePort: 32443
++    # -- Defines whether the port is exposed on the internal service;
++    # note that ports exposed on the default service are exposed on the internal
++    # service by default as well.
++    exposeInternal: false
+     ## -- Specify an application protocol. This may be used as a hint for a Layer 7 load balancer.
+     # appProtocol: https
+     #
+@@ -735,6 +749,10 @@ ports:
+     exposedPort: 9100
+     # -- The port protocol (TCP/UDP)
+     protocol: TCP
++    # -- Defines whether the port is exposed on the internal service;
++    # note that ports exposed on the default service are exposed on the internal
++    # service by default as well.
++    exposeInternal: false
+ 
+ # -- TLS Options are created as TLSOption CRDs
+ # https://doc.traefik.io/traefik/https/tls/#tls-options
+@@ -745,7 +763,7 @@ ports:
+ #     labels: {}
+ #     sniStrict: true
+ #     preferServerCipherSuites: true
+-#   customOptions:
++#   custom-options:
+ #     labels: {}
+ #     curvePreferences:
+ #       - CurveP521
+@@ -796,7 +814,7 @@ service:
+   #   - IPv4
+   #   - IPv6
+   ##
+-  ## -- An additionnal and optional internal Service.
++  ## -- An additional and optional internal Service.
+   ## Same parameters as external Service
+   # internal:
+   #   type: ClusterIP
+```
+
+## 26.0.0  ![AppVersion: v2.10.6](https://img.shields.io/static/v1?label=AppVersion&message=v2.10.6&color=success&logo=) ![Kubernetes: >=1.16.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.16.0-0&color=informational&logo=kubernetes) ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+**Release date:** 2023-12-05
+
+* fix: 🐛 improve confusing suggested value on openTelemetry.grpc
+* fix: 🐛 declare http3 udp port, with or without hostport
+* feat: 💥 deployment.podannotations support interpolation with tpl
+* feat: allow update of namespace policy for websecure listener
+* feat: allow defining startupProbe
+* feat: add file provider
+* feat: :boom: unify plugin import between traefik and this chart
+* chore(release): 🚀 publish v26
+* chore(deps): update traefik docker tag to v2.10.6
+* Release namespace for Prometheus Operator resources
+
+### Default value changes
+
+```diff
+diff --git a/traefik/values.yaml b/traefik/values.yaml
+index 71e377e..f9dac91 100644
+--- a/traefik/values.yaml
++++ b/traefik/values.yaml
+@@ -40,6 +40,7 @@ deployment:
+   # -- Additional deployment labels (e.g. for filtering deployment by custom labels)
+   labels: {}
+   # -- Additional pod annotations (e.g. for mesh injection or prometheus scraping)
++  # It supports templating. One can set it with values like traefik/name: '{{ template "traefik.name" . }}'
+   podAnnotations: {}
+   # -- Additional Pod labels (e.g. for filtering Pod by custom labels)
+   podLabels: {}
+@@ -119,10 +120,12 @@ experimental:
+   # This value is no longer used, set the image.tag to a semver higher than 3.0, e.g. "v3.0.0-beta3"
+   # v3:
+   # -- Enable traefik version 3
+-  #  enabled: false
+-  plugins:
+-    # -- Enable traefik experimental plugins
+-    enabled: false
++
++  # -- Enable traefik experimental plugins
++  plugins: {}
++  # demo:
++  #   moduleName: github.com/traefik/plugindemo
++  #   version: v0.2.1
+   kubernetesGateway:
+     # -- Enable traefik experimental GatewayClass CRD
+     enabled: false
+@@ -206,6 +209,17 @@ livenessProbe:
+   # -- The number of seconds to wait for a probe response before considering it as failed.
+   timeoutSeconds: 2
+ 
++# -- Define Startup Probe for container: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-startup-probes
++# eg.
++# `startupProbe:
++#   exec:
++#     command:
++#       - mycommand
++#       - foo
++#   initialDelaySeconds: 5
++#   periodSeconds: 5`
++startupProbe:
++
+ providers:
+   kubernetesCRD:
+     # -- Load Kubernetes IngressRoute provider
+@@ -241,6 +255,23 @@ providers:
+       # By default this Traefik service
+       # pathOverride: ""
+ 
++  file:
++    # -- Create a file provider
++    enabled: false
++    # -- Allows Traefik to automatically watch for file changes
++    watch: true
++    # -- File content (YAML format, go template supported) (see https://doc.traefik.io/traefik/providers/file/)
++    content: ""
++      # http:
++      #   routers:
++      #     router0:
++      #       entryPoints:
++      #       - web
++      #       middlewares:
++      #       - my-basic-auth
++      #       service: service-foo
++      #       rule: Path(`/foo`)
++
+ #
+ # -- Add volumes to the traefik pod. The volume name will be passed to tpl.
+ # This can be used to mount a cert pair or a configmap that holds a config.toml file.
+@@ -487,7 +518,7 @@ metrics:
+ # -- https://doc.traefik.io/traefik/observability/tracing/overview/
+ tracing: {}
+ #  openTelemetry: # traefik v3+ only
+-#    grpc: {}
++#    grpc: true
+ #    insecure: true
+ #    address: localhost:4317
+ # instana:
+```
+
+## 25.0.0  ![AppVersion: v2.10.5](https://img.shields.io/static/v1?label=AppVersion&message=v2.10.5&color=success&logo=) ![Kubernetes: >=1.16.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.16.0-0&color=informational&logo=kubernetes) ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+**Release date:** 2023-10-23
+
+* revert: "fix: 🐛 remove old CRDs using traefik.containo.us"
+* fix: 🐛 remove old CRDs using traefik.containo.us
+* fix: disable ClusterRole and ClusterRoleBinding when not needed
+* fix: detect correctly v3 version when using sha in `image.tag`
+* fix: allow updateStrategy.rollingUpdate.maxUnavailable to be passed in as an int or string
+* fix: add missing separator in crds
+* fix: add Prometheus scraping annotations only if serviceMonitor not created
+* feat: ✨ add healthcheck ingressRoute
+* feat: :boom: support http redirections and http challenges with cert-manager
+* feat: :boom: rework and allow update of namespace policy for Gateway
+* docs: Fix typo in the default values file
+* chore: remove label whitespace at TLSOption
+* chore(release): publish v25.0.0
+* chore(deps): update traefik docker tag to v2.10.5
+* chore(deps): update docker.io/helmunittest/helm-unittest docker tag to v3.12.3
+* chore(ci): 🔧 👷 add e2e test when releasing
+
+### Default value changes
+
+```diff
+diff --git a/traefik/values.yaml b/traefik/values.yaml
+index aeec85c..71e377e 100644
+--- a/traefik/values.yaml
++++ b/traefik/values.yaml
+@@ -45,60 +45,60 @@ deployment:
+   podLabels: {}
+   # -- Additional containers (e.g. for metric offloading sidecars)
+   additionalContainers: []
+-    # https://docs.datadoghq.com/developers/dogstatsd/unix_socket/?tab=host
+-    # - name: socat-proxy
+-    #   image: alpine/socat:1.0.5
+-    #   args: ["-s", "-u", "udp-recv:8125", "unix-sendto:/socket/socket"]
+-    #   volumeMounts:
+-    #     - name: dsdsocket
+-    #       mountPath: /socket
++  # https://docs.datadoghq.com/developers/dogstatsd/unix_socket/?tab=host
++  # - name: socat-proxy
++  #   image: alpine/socat:1.0.5
++  #   args: ["-s", "-u", "udp-recv:8125", "unix-sendto:/socket/socket"]
++  #   volumeMounts:
++  #     - name: dsdsocket
++  #       mountPath: /socket
+   # -- Additional volumes available for use with initContainers and additionalContainers
+   additionalVolumes: []
+-    # - name: dsdsocket
+-    #   hostPath:
+-    #     path: /var/run/statsd-exporter
++  # - name: dsdsocket
++  #   hostPath:
++  #     path: /var/run/statsd-exporter
+   # -- Additional initContainers (e.g. for setting file permission as shown below)
+   initContainers: []
+-    # The "volume-permissions" init container is required if you run into permission issues.
+-    # Related issue: https://github.com/traefik/traefik-helm-chart/issues/396
+-    # - name: volume-permissions
+-    #   image: busybox:latest
+-    #   command: ["sh", "-c", "touch /data/acme.json; chmod -v 600 /data/acme.json"]
+-    #   securityContext:
+-    #     runAsNonRoot: true
+-    #     runAsGroup: 65532
+-    #     runAsUser: 65532
+-    #   volumeMounts:
+-    #     - name: data
+-    #       mountPath: /data
++  # The "volume-permissions" init container is required if you run into permission issues.
++  # Related issue: https://github.com/traefik/traefik-helm-chart/issues/396
++  # - name: volume-permissions
++  #   image: busybox:latest
++  #   command: ["sh", "-c", "touch /data/acme.json; chmod -v 600 /data/acme.json"]
++  #   securityContext:
++  #     runAsNonRoot: true
++  #     runAsGroup: 65532
++  #     runAsUser: 65532
++  #   volumeMounts:
++  #     - name: data
++  #       mountPath: /data
+   # -- Use process namespace sharing
+   shareProcessNamespace: false
+   # -- Custom pod DNS policy. Apply if `hostNetwork: true`
+   # dnsPolicy: ClusterFirstWithHostNet
+   dnsConfig: {}
+-    # nameservers:
+-    #   - 192.0.2.1 # this is an example
+-    # searches:
+-    #   - ns1.svc.cluster-domain.example
+-    #   - my.dns.search.suffix
+-    # options:
+-    #   - name: ndots
+-    #     value: "2"
+-    #   - name: edns0
++  # nameservers:
++  #   - 192.0.2.1 # this is an example
++  # searches:
++  #   - ns1.svc.cluster-domain.example
++  #   - my.dns.search.suffix
++  # options:
++  #   - name: ndots
++  #     value: "2"
++  #   - name: edns0
+   # -- Additional imagePullSecrets
+   imagePullSecrets: []
+-    # - name: myRegistryKeySecretName
++  # - name: myRegistryKeySecretName
+   # -- Pod lifecycle actions
+   lifecycle: {}
+-    # preStop:
+-    #   exec:
+-    #     command: ["/bin/sh", "-c", "sleep 40"]
+-    # postStart:
+-    #   httpGet:
+-    #     path: /ping
+-    #     port: 9000
+-    #     host: localhost
+-    #     scheme: HTTP
++  # preStop:
++  #   exec:
++  #     command: ["/bin/sh", "-c", "sleep 40"]
++  # postStart:
++  #   httpGet:
++  #     path: /ping
++  #     port: 9000
++  #     host: localhost
++  #     scheme: HTTP
+ 
+ # -- Pod disruption budget
+ podDisruptionBudget:
+@@ -116,9 +116,9 @@ ingressClass:
+ 
+ # Traefik experimental features
+ experimental:
+-  #This value is no longer used, set the image.tag to a semver higher than 3.0, e.g. "v3.0.0-beta3"
+-  #v3:
+-    # -- Enable traefik version 3
++  # This value is no longer used, set the image.tag to a semver higher than 3.0, e.g. "v3.0.0-beta3"
++  # v3:
++  # -- Enable traefik version 3
+   #  enabled: false
+   plugins:
+     # -- Enable traefik experimental plugins
+@@ -126,9 +126,9 @@ experimental:
+   kubernetesGateway:
+     # -- Enable traefik experimental GatewayClass CRD
+     enabled: false
+-    gateway:
+-      # -- Enable traefik regular kubernetes gateway
+-      enabled: true
++    ## Routes are restricted to namespace of the gateway by default.
++    ## https://gateway-api.sigs.k8s.io/references/spec/#gateway.networking.k8s.io/v1beta1.FromNamespaces
++    # namespacePolicy: All
+     # certificate:
+     #   group: "core"
+     #   kind: "Secret"
+@@ -159,6 +159,22 @@ ingressRoute:
+     middlewares: []
+     # -- TLS options (e.g. secret containing certificate)
+     tls: {}
++  healthcheck:
++    # -- Create an IngressRoute for the healthcheck probe
++    enabled: false
++    # -- Additional ingressRoute annotations (e.g. for kubernetes.io/ingress.class)
++    annotations: {}
++    # -- Additional ingressRoute labels (e.g. for filtering IngressRoute by custom labels)
++    labels: {}
++    # -- The router match rule used for the healthcheck ingressRoute
++    matchRule: PathPrefix(`/ping`)
++    # -- Specify the allowed entrypoints to use for the healthcheck ingress route, (e.g. traefik, web, websecure).
++    # By default, it's using traefik entrypoint, which is not exposed.
++    entryPoints: ["traefik"]
++    # -- Additional ingressRoute middlewares (e.g. for authentication)
++    middlewares: []
++    # -- TLS options (e.g. secret containing certificate)
++    tls: {}
+ 
+ updateStrategy:
+   # -- Customize updateStrategy: RollingUpdate or OnDelete
+@@ -204,10 +220,10 @@ providers:
+     # labelSelector: environment=production,method=traefik
+     # -- Array of namespaces to watch. If left empty, Traefik watches all namespaces.
+     namespaces: []
+-      # - "default"
++    # - "default"
+ 
+   kubernetesIngress:
+-    # -- Load Kubernetes IngressRoute provider
++    # -- Load Kubernetes Ingress provider
+     enabled: true
+     # -- Allows to reference ExternalName services in Ingress
+     allowExternalNameServices: false
+@@ -217,7 +233,7 @@ providers:
+     # labelSelector: environment=production,method=traefik
+     # -- Array of namespaces to watch. If left empty, Traefik watches all namespaces.
+     namespaces: []
+-      # - "default"
++    # - "default"
+     # IP used for Kubernetes Ingress endpoints
+     publishedService:
+       enabled: false
+@@ -243,9 +259,9 @@ volumes: []
+ 
+ # -- Additional volumeMounts to add to the Traefik container
+ additionalVolumeMounts: []
+-  # -- For instance when using a logshipper for access logs
+-  # - name: traefik-logs
+-  #   mountPath: /var/log/traefik
++# -- For instance when using a logshipper for access logs
++# - name: traefik-logs
++#   mountPath: /var/log/traefik
+ 
+ logs:
+   general:
+@@ -270,26 +286,26 @@ logs:
+     ## Filtering
+     # -- https://docs.traefik.io/observability/access-logs/#filtering
+     filters: {}
+-      # statuscodes: "200,300-302"
+-      # retryattempts: true
+-      # minduration: 10ms
++    # statuscodes: "200,300-302"
++    # retryattempts: true
++    # minduration: 10ms
+     fields:
+       general:
+         # -- Available modes: keep, drop, redact.
+         defaultmode: keep
+         # -- Names of the fields to limit.
+         names: {}
+-          ## Examples:
+-          # ClientUsername: drop
++        ## Examples:
++        # ClientUsername: drop
+       headers:
+         # -- Available modes: keep, drop, redact.
+         defaultmode: drop
+         # -- Names of the headers to limit.
+         names: {}
+-          ## Examples:
+-          # User-Agent: redact
+-          # Authorization: drop
+-          # Content-Type: keep
++        ## Examples:
++        # User-Agent: redact
++        # Authorization: drop
++        # Content-Type: keep
+ 
+ metrics:
+   ## -- Prometheus is enabled by default.
+@@ -308,118 +324,118 @@ metrics:
+     ## When manualRouting is true, it disables the default internal router in
+     ## order to allow creating a custom router for prometheus@internal service.
+     # manualRouting: true
+-#  datadog:
+-#    ## Address instructs exporter to send metrics to datadog-agent at this address.
+-#    address: "127.0.0.1:8125"
+-#    ## The interval used by the exporter to push metrics to datadog-agent. Default=10s
+-#    # pushInterval: 30s
+-#    ## The prefix to use for metrics collection. Default="traefik"
+-#    # prefix: traefik
+-#    ## Enable metrics on entry points. Default=true
+-#    # addEntryPointsLabels: false
+-#    ## Enable metrics on routers. Default=false
+-#    # addRoutersLabels: true
+-#    ## Enable metrics on services. Default=true
+-#    # addServicesLabels: false
+-#  influxdb:
+-#    ## Address instructs exporter to send metrics to influxdb at this address.
+-#    address: localhost:8089
+-#    ## InfluxDB's address protocol (udp or http). Default="udp"
+-#    protocol: udp
+-#    ## InfluxDB database used when protocol is http. Default=""
+-#    # database: ""
+-#    ## InfluxDB retention policy used when protocol is http. Default=""
+-#    # retentionPolicy: ""
+-#    ## InfluxDB username (only with http). Default=""
+-#    # username: ""
+-#    ## InfluxDB password (only with http). Default=""
+-#    # password: ""
+-#    ## The interval used by the exporter to push metrics to influxdb. Default=10s
+-#    # pushInterval: 30s
+-#    ## Additional labels (influxdb tags) on all metrics.
+-#    # additionalLabels:
+-#    #   env: production
+-#    #   foo: bar
+-#    ## Enable metrics on entry points. Default=true
+-#    # addEntryPointsLabels: false
+-#    ## Enable metrics on routers. Default=false
+-#    # addRoutersLabels: true
+-#    ## Enable metrics on services. Default=true
+-#    # addServicesLabels: false
+-#  influxdb2:
+-#    ## Address instructs exporter to send metrics to influxdb v2 at this address.
+-#    address: localhost:8086
+-#    ## Token with which to connect to InfluxDB v2.
+-#    token: xxx
+-#    ## Organisation where metrics will be stored.
+-#    org: ""
+-#    ## Bucket where metrics will be stored.
+-#    bucket: ""
+-#    ## The interval used by the exporter to push metrics to influxdb. Default=10s
+-#    # pushInterval: 30s
+-#    ## Additional labels (influxdb tags) on all metrics.
+-#    # additionalLabels:
+-#    #   env: production
+-#    #   foo: bar
+-#    ## Enable metrics on entry points. Default=true
+-#    # addEntryPointsLabels: false
+-#    ## Enable metrics on routers. Default=false
+-#    # addRoutersLabels: true
+-#    ## Enable metrics on services. Default=true
+-#    # addServicesLabels: false
+-#  statsd:
+-#    ## Address instructs exporter to send metrics to statsd at this address.
+-#    address: localhost:8125
+-#    ## The interval used by the exporter to push metrics to influxdb. Default=10s
+-#    # pushInterval: 30s
+-#    ## The prefix to use for metrics collection. Default="traefik"
+-#    # prefix: traefik
+-#    ## Enable metrics on entry points. Default=true
+-#    # addEntryPointsLabels: false
+-#    ## Enable metrics on routers. Default=false
+-#    # addRoutersLabels: true
+-#    ## Enable metrics on services. Default=true
+-#    # addServicesLabels: false
+-#  openTelemetry:
+-#    ## Address of the OpenTelemetry Collector to send metrics to.
+-#    address: "localhost:4318"
+-#    ## Enable metrics on entry points.
+-#    addEntryPointsLabels: true
+-#    ## Enable metrics on routers.
+-#    addRoutersLabels: true
+-#    ## Enable metrics on services.
+-#    addServicesLabels: true
+-#    ## Explicit boundaries for Histogram data points.
+-#    explicitBoundaries:
+-#      - "0.1"
+-#      - "0.3"
+-#      - "1.2"
+-#      - "5.0"
+-#    ## Additional headers sent with metrics by the reporter to the OpenTelemetry Collector.
+-#    headers:
+-#      foo: bar
+-#      test: test
+-#    ## Allows reporter to send metrics to the OpenTelemetry Collector without using a secured protocol.
+-#    insecure: true
+-#    ## Interval at which metrics are sent to the OpenTelemetry Collector.
+-#    pushInterval: 10s
+-#    ## Allows to override the default URL path used for sending metrics. This option has no effect when using gRPC transport.
+-#    path: /foo/v1/traces
+-#    ## Defines the TLS configuration used by the reporter to send metrics to the OpenTelemetry Collector.
+-#    tls:
+-#      ## The path to the certificate authority, it defaults to the system bundle.
+-#      ca: path/to/ca.crt
+-#      ## The path to the public certificate. When using this option, setting the key option is required.
+-#      cert: path/to/foo.cert
+-#      ## The path to the private key. When using this option, setting the cert option is required.
+-#      key: path/to/key.key
+-#      ## If set to true, the TLS connection accepts any certificate presented by the server regardless of the hostnames it covers.
+-#      insecureSkipVerify: true
+-#    ## This instructs the reporter to send metrics to the OpenTelemetry Collector using gRPC.
+-#    grpc: true
+-
+-## -- enable optional CRDs for Prometheus Operator
+-##
++  #  datadog:
++  #    ## Address instructs exporter to send metrics to datadog-agent at this address.
++  #    address: "127.0.0.1:8125"
++  #    ## The interval used by the exporter to push metrics to datadog-agent. Default=10s
++  #    # pushInterval: 30s
++  #    ## The prefix to use for metrics collection. Default="traefik"
++  #    # prefix: traefik
++  #    ## Enable metrics on entry points. Default=true
++  #    # addEntryPointsLabels: false
++  #    ## Enable metrics on routers. Default=false
++  #    # addRoutersLabels: true
++  #    ## Enable metrics on services. Default=true
++  #    # addServicesLabels: false
++  #  influxdb:
++  #    ## Address instructs exporter to send metrics to influxdb at this address.
++  #    address: localhost:8089
++  #    ## InfluxDB's address protocol (udp or http). Default="udp"
++  #    protocol: udp
++  #    ## InfluxDB database used when protocol is http. Default=""
++  #    # database: ""
++  #    ## InfluxDB retention policy used when protocol is http. Default=""
++  #    # retentionPolicy: ""
++  #    ## InfluxDB username (only with http). Default=""
++  #    # username: ""
++  #    ## InfluxDB password (only with http). Default=""
++  #    # password: ""
++  #    ## The interval used by the exporter to push metrics to influxdb. Default=10s
++  #    # pushInterval: 30s
++  #    ## Additional labels (influxdb tags) on all metrics.
++  #    # additionalLabels:
++  #    #   env: production
++  #    #   foo: bar
++  #    ## Enable metrics on entry points. Default=true
++  #    # addEntryPointsLabels: false
++  #    ## Enable metrics on routers. Default=false
++  #    # addRoutersLabels: true
++  #    ## Enable metrics on services. Default=true
++  #    # addServicesLabels: false
++  #  influxdb2:
++  #    ## Address instructs exporter to send metrics to influxdb v2 at this address.
++  #    address: localhost:8086
++  #    ## Token with which to connect to InfluxDB v2.
++  #    token: xxx
++  #    ## Organisation where metrics will be stored.
++  #    org: ""
++  #    ## Bucket where metrics will be stored.
++  #    bucket: ""
++  #    ## The interval used by the exporter to push metrics to influxdb. Default=10s
++  #    # pushInterval: 30s
++  #    ## Additional labels (influxdb tags) on all metrics.
++  #    # additionalLabels:
++  #    #   env: production
++  #    #   foo: bar
++  #    ## Enable metrics on entry points. Default=true
++  #    # addEntryPointsLabels: false
++  #    ## Enable metrics on routers. Default=false
++  #    # addRoutersLabels: true
++  #    ## Enable metrics on services. Default=true
++  #    # addServicesLabels: false
++  #  statsd:
++  #    ## Address instructs exporter to send metrics to statsd at this address.
++  #    address: localhost:8125
++  #    ## The interval used by the exporter to push metrics to influxdb. Default=10s
++  #    # pushInterval: 30s
++  #    ## The prefix to use for metrics collection. Default="traefik"
++  #    # prefix: traefik
++  #    ## Enable metrics on entry points. Default=true
++  #    # addEntryPointsLabels: false
++  #    ## Enable metrics on routers. Default=false
++  #    # addRoutersLabels: true
++  #    ## Enable metrics on services. Default=true
++  #    # addServicesLabels: false
++  #  openTelemetry:
++  #    ## Address of the OpenTelemetry Collector to send metrics to.
++  #    address: "localhost:4318"
++  #    ## Enable metrics on entry points.
++  #    addEntryPointsLabels: true
++  #    ## Enable metrics on routers.
++  #    addRoutersLabels: true
++  #    ## Enable metrics on services.
++  #    addServicesLabels: true
++  #    ## Explicit boundaries for Histogram data points.
++  #    explicitBoundaries:
++  #      - "0.1"
++  #      - "0.3"
++  #      - "1.2"
++  #      - "5.0"
++  #    ## Additional headers sent with metrics by the reporter to the OpenTelemetry Collector.
++  #    headers:
++  #      foo: bar
++  #      test: test
++  #    ## Allows reporter to send metrics to the OpenTelemetry Collector without using a secured protocol.
++  #    insecure: true
++  #    ## Interval at which metrics are sent to the OpenTelemetry Collector.
++  #    pushInterval: 10s
++  #    ## Allows to override the default URL path used for sending metrics. This option has no effect when using gRPC transport.
++  #    path: /foo/v1/traces
++  #    ## Defines the TLS configuration used by the reporter to send metrics to the OpenTelemetry Collector.
++  #    tls:
++  #      ## The path to the certificate authority, it defaults to the system bundle.
++  #      ca: path/to/ca.crt
++  #      ## The path to the public certificate. When using this option, setting the key option is required.
++  #      cert: path/to/foo.cert
++  #      ## The path to the private key. When using this option, setting the cert option is required.
++  #      key: path/to/key.key
++  #      ## If set to true, the TLS connection accepts any certificate presented by the server regardless of the hostnames it covers.
++  #      insecureSkipVerify: true
++  #    ## This instructs the reporter to send metrics to the OpenTelemetry Collector using gRPC.
++  #    grpc: true
++
++  ## -- enable optional CRDs for Prometheus Operator
++  ##
+   ## Create a dedicated metrics service for use with ServiceMonitor
+   #  service:
+   #    enabled: false
+@@ -470,55 +486,55 @@ metrics:
+ ## Tracing
+ # -- https://doc.traefik.io/traefik/observability/tracing/overview/
+ tracing: {}
+-  #  openTelemetry: # traefik v3+ only
+-  #    grpc: {}
+-  #    insecure: true
+-  #    address: localhost:4317
+-  # instana:
+-  #   localAgentHost: 127.0.0.1
+-  #   localAgentPort: 42699
+-  #   logLevel: info
+-  #   enableAutoProfile: true
+-  # datadog:
+-  #   localAgentHostPort: 127.0.0.1:8126
+-  #   debug: false
+-  #   globalTag: ""
+-  #   prioritySampling: false
+-  # jaeger:
+-  #   samplingServerURL: http://localhost:5778/sampling
+-  #   samplingType: const
+-  #   samplingParam: 1.0
+-  #   localAgentHostPort: 127.0.0.1:6831
+-  #   gen128Bit: false
+-  #   propagation: jaeger
+-  #   traceContextHeaderName: uber-trace-id
+-  #   disableAttemptReconnecting: true
+-  #   collector:
+-  #      endpoint: ""
+-  #      user: ""
+-  #      password: ""
+-  # zipkin:
+-  #   httpEndpoint: http://localhost:9411/api/v2/spans
+-  #   sameSpan: false
+-  #   id128Bit: true
+-  #   sampleRate: 1.0
+-  # haystack:
+-  #   localAgentHost: 127.0.0.1
+-  #   localAgentPort: 35000
+-  #   globalTag: ""
+-  #   traceIDHeaderName: ""
+-  #   parentIDHeaderName: ""
+-  #   spanIDHeaderName: ""
+-  #   baggagePrefixHeaderName: ""
+-  # elastic:
+-  #   serverURL: http://localhost:8200
+-  #   secretToken: ""
+-  #   serviceEnvironment: ""
++#  openTelemetry: # traefik v3+ only
++#    grpc: {}
++#    insecure: true
++#    address: localhost:4317
++# instana:
++#   localAgentHost: 127.0.0.1
++#   localAgentPort: 42699
++#   logLevel: info
++#   enableAutoProfile: true
++# datadog:
++#   localAgentHostPort: 127.0.0.1:8126
++#   debug: false
++#   globalTag: ""
++#   prioritySampling: false
++# jaeger:
++#   samplingServerURL: http://localhost:5778/sampling
++#   samplingType: const
++#   samplingParam: 1.0
++#   localAgentHostPort: 127.0.0.1:6831
++#   gen128Bit: false
++#   propagation: jaeger
++#   traceContextHeaderName: uber-trace-id
++#   disableAttemptReconnecting: true
++#   collector:
++#      endpoint: ""
++#      user: ""
++#      password: ""
++# zipkin:
++#   httpEndpoint: http://localhost:9411/api/v2/spans
++#   sameSpan: false
++#   id128Bit: true
++#   sampleRate: 1.0
++# haystack:
++#   localAgentHost: 127.0.0.1
++#   localAgentPort: 35000
++#   globalTag: ""
++#   traceIDHeaderName: ""
++#   parentIDHeaderName: ""
++#   spanIDHeaderName: ""
++#   baggagePrefixHeaderName: ""
++# elastic:
++#   serverURL: http://localhost:8200
++#   secretToken: ""
++#   serviceEnvironment: ""
+ 
+ # -- Global command arguments to be passed to all traefik's pods
+ globalArguments:
+-  - "--global.checknewversion"
+-  - "--global.sendanonymoususage"
++- "--global.checknewversion"
++- "--global.sendanonymoususage"
+ 
+ #
+ # Configure Traefik static configuration
+@@ -531,14 +547,14 @@ additionalArguments: []
+ 
+ # -- Environment variables to be passed to Traefik's binary
+ env:
+-  - name: POD_NAME
+-    valueFrom:
+-      fieldRef:
+-        fieldPath: metadata.name
+-  - name: POD_NAMESPACE
+-    valueFrom:
+-      fieldRef:
+-        fieldPath: metadata.namespace
++- name: POD_NAME
++  valueFrom:
++    fieldRef:
++      fieldPath: metadata.name
++- name: POD_NAMESPACE
++  valueFrom:
++    fieldRef:
++      fieldPath: metadata.namespace
+ # - name: SOME_VAR
+ #   value: some-var-value
+ # - name: SOME_VAR_FROM_CONFIG_MAP
+@@ -600,7 +616,10 @@ ports:
+     # Port Redirections
+     # Added in 2.2, you can make permanent redirects via entrypoints.
+     # https://docs.traefik.io/routing/entrypoints/#redirection
+-    # redirectTo: websecure
++    # redirectTo:
++    #   port: websecure
++    #   (Optional)
++    #   priority: 10
+     #
+     # Trust forwarded  headers information (X-Forwarded-*).
+     # forwardedHeaders:
+@@ -638,14 +657,14 @@ ports:
+     # advertisedPort: 4443
+     #
+     ## -- Trust forwarded  headers information (X-Forwarded-*).
+-    #forwardedHeaders:
+-    #  trustedIPs: []
+-    #  insecure: false
++    # forwardedHeaders:
++    #   trustedIPs: []
++    #   insecure: false
+     #
+     ## -- Enable the Proxy Protocol header parsing for the entry point
+-    #proxyProtocol:
+-    #  trustedIPs: []
+-    #  insecure: false
++    # proxyProtocol:
++    #   trustedIPs: []
++    #   insecure: false
+     #
+     ## Set TLS at the entrypoint
+     ## https://doc.traefik.io/traefik/routing/entrypoints/#tls
+@@ -728,16 +747,16 @@ service:
+   # -- Additional entries here will be added to the service spec.
+   # -- Cannot contain type, selector or ports entries.
+   spec: {}
+-    # externalTrafficPolicy: Cluster
+-    # loadBalancerIP: "1.2.3.4"
+-    # clusterIP: "2.3.4.5"
++  # externalTrafficPolicy: Cluster
++  # loadBalancerIP: "1.2.3.4"
++  # clusterIP: "2.3.4.5"
+   loadBalancerSourceRanges: []
+-    # - 192.168.0.1/32
+-    # - 172.16.0.0/16
++  # - 192.168.0.1/32
++  # - 172.16.0.0/16
+   ## -- Class of the load balancer implementation
+   # loadBalancerClass: service.k8s.aws/nlb
+   externalIPs: []
+-    # - 1.2.3.4
++  # - 1.2.3.4
+   ## One of SingleStack, PreferDualStack, or RequireDualStack.
+   # ipFamilyPolicy: SingleStack
+   ## List of IP families (e.g. IPv4 and/or IPv6).
+@@ -789,7 +808,7 @@ persistence:
+   # It can be used to store TLS certificates, see `storage` in certResolvers
+   enabled: false
+   name: data
+-#  existingClaim: ""
++  #  existingClaim: ""
+   accessMode: ReadWriteOnce
+   size: 128Mi
+   # storageClass: ""
+@@ -852,12 +871,12 @@ serviceAccountAnnotations: {}
+ 
+ # -- The resources parameter defines CPU and memory requirements and limits for Traefik's containers.
+ resources: {}
+-  # requests:
+-  #   cpu: "100m"
+-  #   memory: "50Mi"
+-  # limits:
+-  #   cpu: "300m"
+-  #   memory: "150Mi"
++# requests:
++#   cpu: "100m"
++#   memory: "50Mi"
++# limits:
++#   cpu: "300m"
++#   memory: "150Mi"
+ 
+ # -- This example pod anti-affinity forces the scheduler to put traefik pods
+ # -- on nodes where no other traefik pods are scheduled.
+```
+
 ## 24.0.0  ![AppVersion: v2.10.4](https://img.shields.io/static/v1?label=AppVersion&message=v2.10.4&color=success&logo=) ![Kubernetes: >=1.16.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.16.0-0&color=informational&logo=kubernetes) ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 **Release date:** 2023-08-10
 
-* chore(release): 🚀 publish v24.0.0
-* fix: http3 support broken when advertisedPort set
-* fix: tracing.opentelemetry.tls is optional for all values
-* chore(deps): update docker.io/helmunittest/helm-unittest docker tag to v3.12.2
-* chore(tests): 🔧 fix typo on tracing test
 * fix: 💥 BREAKING CHANGE on healthchecks and traefik port
+* fix: tracing.opentelemetry.tls is optional for all values
+* fix: http3 support broken when advertisedPort set
 * feat: multi namespace RBAC manifests
+* chore(tests): 🔧 fix typo on tracing test
+* chore(release): 🚀 publish v24.0.0
+* chore(deps): update docker.io/helmunittest/helm-unittest docker tag to v3.12.2
 
 ### Default value changes
 
@@ -73,17 +963,17 @@ index 947ba56..aeec85c 100644
 
 **Release date:** 2023-07-27
 
-* release: :rocket: publish v23.2.0
-* feat: ✨ add support for traefik v3.0.0-beta3 and openTelemetry
-* feat: add pod_name as default in values.yaml
-* fix: ingressclass name should be customizable (#864)
-* chore(deps): update traefik docker tag to v2.10.4
-* fix: 🐛 traefik or metrics port can be disabled
-* feat: disable allowPrivilegeEscalation
-* fix: 🐛 update traefik.containo.us CRDs to v2.10
-* chore(tests): 🔧 use more accurate asserts on refactor'd isNull test
-* chore(deps): update docker.io/helmunittest/helm-unittest docker tag to v3.11.3
 * ⬆️ Upgrade traefik Docker tag to v2.10.3
+* release: :rocket: publish v23.2.0
+* fix: 🐛 update traefik.containo.us CRDs to v2.10
+* fix: 🐛 traefik or metrics port can be disabled
+* fix: ingressclass name should be customizable (#864)
+* feat: ✨ add support for traefik v3.0.0-beta3 and openTelemetry
+* feat: disable allowPrivilegeEscalation
+* feat: add pod_name as default in values.yaml
+* chore(tests): 🔧 use more accurate asserts on refactor'd isNull test
+* chore(deps): update traefik docker tag to v2.10.4
+* chore(deps): update docker.io/helmunittest/helm-unittest docker tag to v3.11.3
 
 ### Default value changes
 
@@ -198,15 +1088,15 @@ index 345bbd8..947ba56 100644
 **Release date:** 2023-06-06
 
 * release: 🚀 publish v23.1.0
-* feat: ✨ add a warning when labelSelector don't match
-* feat: add optional `appProtocol` field on Service ports
-* fix: use `targetPort` instead of `port` on ServiceMonitor
 * fix: 🐛 use k8s version for hpa api version
 * fix: 🐛 http3 support on traefik v3
+* fix: use `targetPort` instead of `port` on ServiceMonitor
 * feat: ➖ remove Traefik Hub v1 integration
-* doc: added values README via helm-docs cli
-* feat: allow specifying service loadBalancerClass
+* feat: ✨ add a warning when labelSelector don't match
 * feat: common labels for all resources
+* feat: allow specifying service loadBalancerClass
+* feat: add optional `appProtocol` field on Service ports
+* doc: added values README via helm-docs cli
 
 ### Default value changes
 
@@ -997,13 +1887,13 @@ index 71273cc..345bbd8 100644
 
 **Release date:** 2023-04-24
 
-* chore: 🔧 new release
-* added targetPort support
+* test: 👷 Update unit tests tooling
 * fix: 🐛 annotations leaking between aliased subcharts
 * fix: indentation on `TLSOption`
-* test: 👷 Update unit tests tooling
 * feat: override container port
 * feat: allow to set dnsConfig on pod template
+* chore: 🔧 new release
+* added targetPort support
 
 ### Default value changes
 
@@ -1099,8 +1989,8 @@ index 4762b77..9ece303 100644
 
 **Release date:** 2023-03-28
 
-* ⬆️ Upgrade traefik Docker tag to v2.9.9
 * 🎨 Introduce `image.registry` and add explicit default (it may impact custom `image.repository`)
+* ⬆️ Upgrade traefik Docker tag to v2.9.9
 * :memo: Clarify the need of an initContainer when enabling persistence for TLS Certificates
 
 ### Default value changes
@@ -1162,18 +2052,18 @@ index cadc7a6..4762b77 100644
 
 **Release date:** 2023-03-08
 
-* :sparkles: release 21.2.0 (#805)
 * 🚨 Fail when enabling PSP on Kubernetes v1.25+ (#801)
-* Separate UDP hostPort for HTTP/3
 * ⬆️ Upgrade traefik Docker tag to v2.9.8
+* Separate UDP hostPort for HTTP/3
+* :sparkles: release 21.2.0 (#805)
 
 
 ## 21.1.0  ![AppVersion: v2.9.7](https://img.shields.io/static/v1?label=AppVersion&message=v2.9.7&color=success&logo=) ![Kubernetes: >=1.16.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.16.0-0&color=informational&logo=kubernetes) ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 **Release date:** 2023-02-15
 
-* ✨ release 21.1.0
 * ⬆️ Upgrade traefik Docker tag to v2.9.7
+* ✨ release 21.1.0
 * fix: traefik image name for renovate
 * feat: Add volumeName to PersistentVolumeClaim (#792)
 * Allow setting TLS options on dashboard IngressRoute
@@ -1208,16 +2098,16 @@ index 780b04b..cadc7a6 100644
 
 **Release date:** 2023-02-10
 
-* 💥 New release with BREAKING changes (#786)
-* Configure Renovate (#783)
-* :bug: Disabling dashboard ingressroute should delete it (#785)
-* :boom: Rename image.name => image.repository (#784)
-* :necktie: Improve labels settings behavior on metrics providers (#774)
-* ✨ Chart.yaml - add kubeVersion: ">=1.16.0-0"
-* fix: allowExternalNameServices for kubernetes ingress when hub enabled (#772)
 * 🙈 Add a setting disable API check on Prometheus Operator (#769)
 * 📝 Improve documentation on entrypoint options
+* 💥 New release with BREAKING changes (#786)
+* ✨ Chart.yaml - add kubeVersion: ">=1.16.0-0"
+* fix: allowExternalNameServices for kubernetes ingress when hub enabled (#772)
 * fix(service-metrics): invert prometheus svc & fullname length checking
+* Configure Renovate (#783)
+* :necktie: Improve labels settings behavior on metrics providers (#774)
+* :bug: Disabling dashboard ingressroute should delete it (#785)
+* :boom: Rename image.name => image.repository (#784)
 
 ### Default value changes
 
@@ -1381,11 +2271,11 @@ index b77539d..42a27f9 100644
 
 **Release date:** 2022-12-08
 
-* ⬆️  Update default Traefik release to v2.9.6 (#758)
 * 🐛 Don't fail when prometheus is disabled (#756)
-* :bug: Fix typo on bufferingSize for access logs (#753)
+* ⬆️  Update default Traefik release to v2.9.6 (#758)
 * ✨ support for Gateway annotations
 * add keywords [networking], for artifacthub category quering
+* :bug: Fix typo on bufferingSize for access logs (#753)
 * :adhesive_bandage: Add quotes for artifacthub changelog parsing (#748)
 
 ### Default value changes
@@ -1422,8 +2312,8 @@ index 4f2fb2a..b77539d 100644
 **Release date:** 2022-11-30
 
 * 🔍️ Add filePath support on access logs (#747)
-* :bug: Add missing scheme in help on Traefik Hub integration (#746)
 * :memo: Improve documentation on using PVC with TLS certificates
+* :bug: Add missing scheme in help on Traefik Hub integration (#746)
 
 ### Default value changes
 
@@ -1805,9 +2695,9 @@ index 2ec3736..97a1b71 100644
 
 **Release date:** 2022-11-08
 
-* Allow updateStrategy to be configurable
 * 🐛 remove old deployment workflow
 * ✨ migrate to centralised helm repository
+* Allow updateStrategy to be configurable
 
 ### Default value changes
 
@@ -6539,9 +7429,9 @@ index 5eab74b..5401832 100644
 
 **Release date:** 2020-02-13
 
-* Enable configuration of global checknewversion and sendanonymoususage (#80)
 * fix: tests.
 * feat: bump traefik to v2.1.3
+* Enable configuration of global checknewversion and sendanonymoususage (#80)
 
 ### Default value changes
 
@@ -6576,8 +7466,8 @@ index bcc42f8..5eab74b 100644
 
 **Release date:** 2020-02-05
 
-* fix: chart version.
 * fix: deployment environment variables.
+* fix: chart version.
 
 
 ## 3.3.2  ![AppVersion: 2.1.1](https://img.shields.io/static/v1?label=AppVersion&message=2.1.1&color=success&logo=) ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm) ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
