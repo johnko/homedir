@@ -3,7 +3,7 @@
 ##
 image:
   repository: redis
-  tag: 7.0.9-alpine3.17
+  tag: 7.0.11-alpine3.17
   pullPolicy: IfNotPresent
 
 ## Reference to one or more secrets to be used when pulling images
