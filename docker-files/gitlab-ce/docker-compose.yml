@@ -4,7 +4,7 @@ version: "3.5"
 services:
     gitlab-ce:
         container_name: gitlab-ce
-        image: gitlab/gitlab-ce:12.0.0-ce.0
+        image: gitlab/gitlab-ce:12.3.9-ce.0
         environment:
             GITLAB_OMNIBUS_CONFIG: |
                 external_url 'https://gitlab.local'
