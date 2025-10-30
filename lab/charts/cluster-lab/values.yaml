@@ -52,10 +52,7 @@ cluster:
                 enabled: true
                 hosts:
                 - argocd.labcluster.local
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+      syncPolicy: {} # disable autosync
 
 
     cert-manager:
@@ -247,10 +244,7 @@ cluster:
             serviceWeb:
               loadBalancerIP: 192.168.2.9
               type: ClusterIP
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+      syncPolicy: {} # disable autosync
 
 
     traefik:
