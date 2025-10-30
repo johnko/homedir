@@ -56,4 +56,4 @@ dependencies:
     version: 2.18.0
   - name: traefik
     repository: https://traefik.github.io/charts
-    version: 24.0.0
+    version: 27.0.2
