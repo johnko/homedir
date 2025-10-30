@@ -4,7 +4,7 @@ version: "3.5"
 services:
     postgres:
         container_name: gitea-postgres
-        image: postgres:12.6
+        image: postgres:13.21
         command: >
             -c ssl=on
             -c ssl_cert_file=/var/lib/postgresql/server.crt
