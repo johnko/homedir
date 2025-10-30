@@ -53,7 +53,7 @@ dependencies:
     version: 14.2.128
   - name: pihole
     repository: https://mojo2600.github.io/pihole-kubernetes/
-    version: 2.18.0
+    version: 2.34.0
   - name: traefik
     repository: https://traefik.github.io/charts
     version: 37.2.0
