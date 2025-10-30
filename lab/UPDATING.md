@@ -1,7 +1,9 @@
 # Helm Charts
 
 ```bash
-helm dep update
+cd ./lab/renovatebotwrapper && helm dep update
+
+cd ./charts && ls -1 *.tgz | xargs -I{} -P1 tar xvf {} && rm *.tgz
 ```
 
 ## coredns
