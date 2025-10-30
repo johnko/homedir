@@ -1,4 +1,4 @@
-{{- if and .Values.async (not .Values.nats.external.enabled) }}
+{{- if and (or .Values.async (or .Values.eventSubscription.metering.enabled .Values.eventSubscription.auditing.enabled)) (not .Values.nats.external.enabled ) }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,35 +18,32 @@ spec:
   template:
     metadata:
       annotations:
-        prometheus.io/scrape: {{ .Values.nats.metrics.enabled | quote }}
-        {{- if .Values.nats.metrics.enabled }}
-        prometheus.io/port: "7777"
-        {{- end }}
+        prometheus.io/scrape: "false"
       labels:
         app: nats
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
       - name:  nats
         resources:
           {{- .Values.nats.resources | toYaml | nindent 12 }}
-        {{- if eq .Values.queueMode "jetstream" }}
-        image: {{ .Values.nats.image }}
+        {{- if .Values.openfaasPro }}
+        image: {{ include "openfaas.image" (dict "image" .Values.nats.image "registryPrefix" .Values.registryPrefix) }}
         {{- else }}
-        image: {{ .Values.stan.image }}
+        image: {{ include "openfaas.image" (dict "image" .Values.stan.image "registryPrefix" .Values.registryPrefix) }}
         {{- end }}
         imagePullPolicy: {{ .Values.openfaasImagePullPolicy }}
         ports:
         - containerPort: 4222
           protocol: TCP
-        {{- if .Values.nats.enableMonitoring }}
-        - containerPort: 8222
-          protocol: TCP
-        {{- end }}
-        {{- if not (eq .Values.queueMode "jetstream") }}
+        {{- if not .Values.openfaasPro }}
         command: ["/nats-streaming-server"]
         {{- end }}
         args:
-          {{- if eq .Values.queueMode "jetstream" }}
+          {{- if .Values.openfaasPro }}
           - --js
           {{- else}}
           - --store
@@ -54,32 +51,16 @@ spec:
           - --cluster_id
           - faas-cluster
           {{- end }}
-          {{- if or .Values.nats.enableMonitoring .Values.nats.metrics.enabled }}
-          - -m
-          - "8222"
-          {{- end }}
-      {{- if .Values.nats.metrics.enabled }}
-      - name: metrics
-        image: {{ .Values.nats.metrics.image }}
-        imagePullPolicy: {{ .Values.openfaasImagePullPolicy }}
-        ports:
-        - containerPort: 7777
-          protocol: TCP
-        args:
-        - -port
-        - "7777"
-        - -connz
-        - -routez
-        - -subz
-        - -varz
-        {{- if eq .Values.queueMode "jetstream" }}
-        - -jsz=all
-        {{- else }}
-        - -channelz
-        - -serverz
+        {{- if .Values.securityContext }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 10 }}
         {{- end }}
-        - http://localhost:8222
-      {{- end }}
+        volumeMounts:
+        - mountPath: /tmp/nats
+          name: nats-data
+      volumes:
+      - name: nats-data
+        emptyDir: {}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}

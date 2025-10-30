@@ -1,4 +1,4 @@
-# Suggested additional overrides for OpenFaaS Pro users, 
+# Suggested additional overrides for OpenFaaS Pro users (Standard or for Enterprises) 
 # in addition to (not instead of) values.yaml
 
 # Initial configuration to set Pro configurations on
@@ -12,6 +12,19 @@ openfaasPro: true
 operator:
   create: true
 
+  # leaderElection is required if gateway.replicas > 1 and makes sure
+  # that only one instance is running the reconciliation loop to
+  # convert Function CRDs into Kubernetes resources.
+  leaderElection:
+    enabled: true
+
+  # For handling large amounts of functions
+  kubeClientQPS: 100
+  kubeClientBurst: 250
+
+  reconcileQPS: 100
+  reconcileBurst: 250
+  
 # Enable authentication on all OpenFaaS core components.
 # You must not turn off basic_auth for the chart, however, you can pre-create the 
 # secret, if you're using a GitOps tool to create a stable secret
@@ -21,14 +34,25 @@ generateBasicAuth: true
 # Follow docs at: https://docs.openfaas.com/openfaas-pro/dashboard/
 # for setting up the new dashboard
 dashboard:
-  publicURL: localhost
   enabled: true
+
+  # Set to the public URL i.e. https://dashboard.example.com
+  publicURL: localhost
+
+  # The public URL for the gateway - set to enable links for functions within the UI.
+  # i.e. https://gateway.example.com
+  publicURLGateway: ""
 
 # The autoscaler is enabled by default
 # Learn more: 
 # https://docs.openfaas.com/architecture/autoscaling/
 autoscaler:
   enabled: true
+  # Set to "true" to learn how the autoscaler works, both for horizonal Pod scaling 
+  # and for scaling to zero.
+  # The Grafana dashboards can be used in combination to see the effect of the 
+  # autoscaler: https://docs.openfaas.com/openfaas-pro/grafana-dashboards/ 
+  verbose: false
 
 # A cluster role is required for OpenFaaS Pro due to:
 # 1) Autoscaling and metrics for functions - CPU / RAM
@@ -36,10 +60,8 @@ autoscaler:
 # https://docs.openfaas.com/reference/namespaces/
 clusterRole: true
 
-# HPA CPU? 3 <=> 6
-# If you have purchased licenses for 6 gateway replicas for this environment
-# you can create a HPA rule to scale on CPU, but you must not scale beyond
-# what's been purchased.
+# 3x replicas are recommended for production
+# 1x is recommended for staging and development
 gateway:
   replicas: 3
 # Required gateway configuration for Istio
@@ -54,10 +76,6 @@ queueWorker:
 queueWorkerPro:
   maxInflight: 50
 
-# Enable JetStream for OpenFaaS, learn more at:
-# https://www.openfaas.com/blog/jetstream-for-openfaas/
-queueMode: jetstream
-
 # Set stream replication factor.
 # For production a value of at least 3 is recommended for NATS JetStream to be resilient.
 # See https://github.com/openfaas/openfaas-pro/blob/master/jetstream.md
@@ -66,3 +84,41 @@ nats:
 
  # For timeouts longer than 60 seconds see:
  # https://docs.openfaas.com/tutorials/expanded-timeouts/
+
+# securityContext applied to the OpenFaaS components deployed by this chart
+# other than Prometheus, which is a special case. See notes on the prometheus section.
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 10001
+
+# Prometheus configuration for persistent volume access
+# When using persistent volumes with Prometheus, you may need to configure
+# the security context to ensure proper file permissions
+prometheus:
+  # Enable persistent storage for production deployments
+  pvc:
+    enabled: true
+    size: 30Gi
+  
+  # Simplified security context configuration for Prometheus
+  # fsGroup: Set to 65534 (nobody) for persistent volume access
+  fsGroup: 65534
+
+  # securityContext: Applied only at container level, ignoring global chart security context
+  securityContext:
+    runAsUser: 65534
+    runAsGroup: 65534
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false  # Prometheus needs to write to /prometheus/data
+
+# Only applied to Deployments installed by this chart.
+imagePullSecrets: []
+
+# imagePullSecrets:
+# - name: private-registry-pull-secret
+
+# When set, docker.io or ghcr.io will be replaced by the value contained in registryPrefix
+# registryPrefix: "ttl.sh/openfaas"
