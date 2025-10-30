@@ -11,7 +11,7 @@ to 63 chars and it includes 10 chars of hash and a separating '-'.
 {{/*
 Create the name of the controller service account to use
 */}}
-{{- define "argo-cd.controllerServiceAccountName" -}}
+{{- define "argo-cd.controller.serviceAccountName" -}}
 {{- if .Values.controller.serviceAccount.create -}}
     {{ default (include "argo-cd.controller.fullname" .) .Values.controller.serviceAccount.name }}
 {{- else -}}
@@ -40,7 +40,7 @@ Create Dex server endpoint
 {{/*
 Create the name of the dex service account to use
 */}}
-{{- define "argo-cd.dexServiceAccountName" -}}
+{{- define "argo-cd.dex.serviceAccountName" -}}
 {{- if .Values.dex.serviceAccount.create -}}
     {{ default (include "argo-cd.dex.fullname" .) .Values.dex.serviceAccount.name }}
 {{- else -}}
@@ -78,7 +78,7 @@ Return Redis server endpoint
 {{/*
 Create the name of the redis service account to use
 */}}
-{{- define "argo-cd.redisServiceAccountName" -}}
+{{- define "argo-cd.redis.serviceAccountName" -}}
 {{- if .Values.redis.serviceAccount.create -}}
     {{ default (include "argo-cd.redis.fullname" .) .Values.redis.serviceAccount.name }}
 {{- else -}}
@@ -96,7 +96,7 @@ Create argocd server name and version as used by the chart label.
 {{/*
 Create the name of the Argo CD server service account to use
 */}}
-{{- define "argo-cd.serverServiceAccountName" -}}
+{{- define "argo-cd.server.serviceAccountName" -}}
 {{- if .Values.server.serviceAccount.create -}}
     {{ default (include "argo-cd.server.fullname" .) .Values.server.serviceAccount.name }}
 {{- else -}}
@@ -114,7 +114,7 @@ Create argocd repo-server name and version as used by the chart label.
 {{/*
 Create the name of the repo-server service account to use
 */}}
-{{- define "argo-cd.repoServerServiceAccountName" -}}
+{{- define "argo-cd.repoServer.serviceAccountName" -}}
 {{- if .Values.repoServer.serviceAccount.create -}}
     {{ default (include "argo-cd.repoServer.fullname" .) .Values.repoServer.serviceAccount.name }}
 {{- else -}}
@@ -132,7 +132,7 @@ Create argocd application set name and version as used by the chart label.
 {{/*
 Create the name of the application set service account to use
 */}}
-{{- define "argo-cd.applicationSetServiceAccountName" -}}
+{{- define "argo-cd.applicationSet.serviceAccountName" -}}
 {{- if .Values.applicationSet.serviceAccount.create -}}
     {{ default (include "argo-cd.applicationSet.fullname" .) .Values.applicationSet.serviceAccount.name }}
 {{- else -}}
@@ -150,7 +150,7 @@ Create argocd notifications name and version as used by the chart label.
 {{/*
 Create the name of the notifications service account to use
 */}}
-{{- define "argo-cd.notificationsServiceAccountName" -}}
+{{- define "argo-cd.notifications.serviceAccountName" -}}
 {{- if .Values.notifications.serviceAccount.create -}}
     {{ default (include "argo-cd.notifications.fullname" .) .Values.notifications.serviceAccount.name }}
 {{- else -}}
@@ -198,10 +198,10 @@ NOTE: Configuration keys must be stored as dict because YAML treats dot as separ
 {{- end -}}
 {{- range $component := tuple "applicationsetcontroller" "controller" "server" "reposerver" -}}
 {{- $_ := set $presets (printf "%s.log.format" $component) $.Values.global.logging.format -}}
-{{- $_ := set $presets (printf "%s.log.format" $component) $.Values.global.logging.format -}}
+{{- $_ := set $presets (printf "%s.log.level" $component) $.Values.global.logging.level -}}
 {{- end -}}
 {{- if .Values.applicationSet.enabled -}}
-{{- $_ := set $presets "applicationsetcontroller.enable.leader.election" (gt (.Values.applicationSet.replicaCount | int64) 1) -}}
+{{- $_ := set $presets "applicationsetcontroller.enable.leader.election" (gt ((.Values.applicationSet.replicas | default .Values.applicationSet.replicaCount) | int64) 1) -}}
 {{- end -}}
 {{- toYaml $presets }}
 {{- end -}}
