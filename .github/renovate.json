@@ -1,4 +1,7 @@
 {
+  "allowedCommands": [
+    ".github/helm-dep.sh"
+  ],
   "extends": [
     "github>johnko/renovate-config"
   ],
