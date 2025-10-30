@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ template "coredns.fullname" . }}-metrics
+  namespace: {{ .Release.Namespace }}
   labels: {{- include "coredns.labels" . | nindent 4 }}
     app.kubernetes.io/component: metrics
 {{- if .Values.customLabels }}
@@ -22,11 +23,15 @@ metadata:
   {{- end }}
 spec:
   selector:
+    {{- if .Values.prometheus.service.selector }}
+    {{- toYaml .Values.prometheus.service.selector | nindent 4 }}
+    {{- else }}
     app.kubernetes.io/instance: {{ .Release.Name | quote }}
     {{- if .Values.isClusterService }}
     k8s-app: {{ template "coredns.k8sapplabel" . }}
     {{- end }}
     app.kubernetes.io/name: {{ template "coredns.name" . }}
+    {{- end }}
   ports:
   - name: metrics
     port: 9153

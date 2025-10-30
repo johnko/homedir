@@ -34,6 +34,67 @@ The command deploys CoreDNS on the Kubernetes cluster in the default configurati
 
 > **Tip**: List all releases using `helm list --all-namespaces`
 
+## OCI installing
+
+The chart can also be installed using the following:
+
+```console
+$ helm --namespace=kube-system install coredns oci://ghcr.io/coredns/charts/coredns --version 1.38.0
+```
+
+The command deploys the `1.38.0` version of CoreDNS on the Kubernetes cluster in the default configuration.
+
+## Helm Unit Testing & Debugging Guide
+
+This document explains how to write, run, and debug Helm unit tests for this chart using [helm-unittest](https://github.com/helm-unittest/helm-unittest).
+
+---
+
+### Prerequisites
+
+Install the Helm unittest plugin:
+
+```bash
+helm plugin install https://github.com/helm-unittest/helm-unittest
+```
+
+###  Running Unit Tests
+
+Run all unit tests in the chart folder (e.g., `./coredns`):
+
+```bash
+helm unittest ./coredns
+```
+
+To output results in **JUnit XML** format:
+
+```bash
+mkdir -p test-results
+helm unittest --strict \
+  --output-type JUnit \
+  --output-file test-results/helm-unittest-report.xml \
+  ./coredns
+```
+
+---
+
+### Debugging Helm Charts
+
+Render the chart templates with real values to debug:
+
+```bash
+helm template ./coredns  --debug
+```
+## YAML Intellisense in VS Code
+
+Add this line at the top of your unit test YAML files for schema validation and autocompletion in VS Code:
+
+```yaml
+# yaml-language-server: $schema=https://raw.githubusercontent.com/helm-unittest/helm-unittest/main/schema/helm-testsuite.json
+```
+
+This improves YAML editing and error highlighting for test definitions.
+
 ## Uninstalling the Chart
 
 To uninstall/delete the `coredns` deployment:
@@ -47,7 +108,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ## Configuration
 
 | Parameter                                      | Description                                                                                                                               | Default                                                      |
-| :--------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- |
+| :--------------------------------------------- |:------------------------------------------------------------------------------------------------------------------------------------------| :----------------------------------------------------------- |
 | `image.repository`                             | The image repository to pull from                                                                                                         | coredns/coredns                                              |
 | `image.tag`                                    | The image tag to pull from (derived from Chart.yaml)                                                                                      | ``                                                      |
 | `image.pullPolicy`                             | Image pull policy                                                                                                                         | IfNotPresent                                                 |
@@ -60,10 +121,12 @@ The command removes all the Kubernetes components associated with the chart and 
 | `serviceType`                                  | Kubernetes Service type                                                                                                                   | `ClusterIP`                                                  |
 | `prometheus.service.enabled`                   | Set this to `true` to create Service for Prometheus metrics                                                                               | `false`                                                      |
 | `prometheus.service.annotations`               | Annotations to add to the metrics Service                                                                                                 | `{prometheus.io/scrape: "true", prometheus.io/port: "9153"}` |
+| `prometheus.service.selector`                  | Pod selector                                                                                                                              | `{}`                                                         |
 | `prometheus.monitor.enabled`                   | Set this to `true` to create ServiceMonitor for Prometheus operator                                                                       | `false`                                                      |
 | `prometheus.monitor.additionalLabels`          | Additional labels that can be used so ServiceMonitor will be discovered by Prometheus                                                     | {}                                                           |
 | `prometheus.monitor.namespace`                 | Selector to select which namespaces the Endpoints objects are discovered from.                                                            | `""`                                                         |
 | `prometheus.monitor.interval`                  | Scrape interval for polling the metrics endpoint. (E.g. "30s")                                                                            | `""`                                                         |
+| `prometheus.monitor.selector`                  | Service selector                                                                                                                          | `{}`                                                         |
 | `service.clusterIP`                            | IP address to assign to service                                                                                                           | `""`                                                         |
 | `service.clusterIPs`                           | IP addresses to assign to service                                                                                                         | `[]`                                                         |
 | `service.loadBalancerIP`                       | IP address to assign to load balancer (if supported)                                                                                      | `""`                                                         |
@@ -71,10 +134,13 @@ The command removes all the Kubernetes components associated with the chart and 
 | `service.externalTrafficPolicy`                | Enable client source IP preservation                                                                                                      | []                                                           |
 | `service.ipFamilyPolicy`                       | Service dual-stack policy                                                                                                                 | `""`                                                         |
 | `service.annotations`                          | Annotations to add to service                                                                                                             | {}                                                           |
+| `service.selector`                             | Pod selector                                                                                                                              | `{}`                                                         |
+| `service.trafficDistribution`                  | Service traffic routing strategy                                                                                                          |                                                              |
 | `serviceAccount.create`                        | If true, create & use serviceAccount                                                                                                      | false                                                        |
 | `serviceAccount.name`                          | If not set & create is true, use template fullname                                                                                        |                                                              |
 | `rbac.create`                                  | If true, create & use RBAC resources                                                                                                      | true                                                         |
 | `rbac.pspEnable`                               | Specifies whether a PodSecurityPolicy should be created.                                                                                  | `false`                                                      |
+| `rbac.multiclusterEnable`                      | Specifies whether the kubernetes plugin multicluster RBAC should be created.                                                              | `false`                                                      |
 | `isClusterService`                             | Specifies whether chart should be deployed as cluster-service or normal k8s app.                                                          | true                                                         |
 | `priorityClassName`                            | Name of Priority Class to assign pods                                                                                                     | `""`                                                         |
 | `securityContext`                              | securityContext definition for pods                                                                                                       | capabilities.add.NET_BIND_SERVICE                            |
@@ -95,9 +161,11 @@ The command removes all the Kubernetes components associated with the chart and 
 | `nodeSelector`                                 | Node labels for pod assignment                                                                                                            | {}                                                           |
 | `tolerations`                                  | Tolerations for pod assignment                                                                                                            | []                                                           |
 | `zoneFiles`                                    | Configure custom Zone files                                                                                                               | []                                                           |
+| `extraContainers`                              | Optional array of sidecar containers                                                                                                      | []                                                           |
 | `extraVolumes`                                 | Optional array of volumes to create                                                                                                       | []                                                           |
 | `extraVolumeMounts`                            | Optional array of volumes to mount inside the CoreDNS container                                                                           | []                                                           |
 | `extraSecrets`                                 | Optional array of secrets to mount inside the CoreDNS container                                                                           | []                                                           |
+| `env`                                          | Optional array of environment variables for CoreDNS container                                                                             | []                                                           |
 | `customLabels`                                 | Optional labels for Deployment(s), Pod, Service, ServiceMonitor objects                                                                   | {}                                                           |
 | `customAnnotations`                            | Optional annotations for Deployment(s), Pod, Service, ServiceMonitor objects                                                              |
 | `rollingUpdate.maxUnavailable`                 | Maximum number of unavailable replicas during rolling update                                                                              | `1`                                                          |
@@ -105,7 +173,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `podDisruptionBudget`                          | Optional PodDisruptionBudget                                                                                                              | {}                                                           |
 | `podAnnotations`                               | Optional Pod only Annotations                                                                                                             | {}                                                           |
 | `terminationGracePeriodSeconds`                | Optional duration in seconds the pod needs to terminate gracefully.                                                                       | 30                                                           |
-| `preStopSleep`                                 | Definition of Kubernetes preStop hook executed before Pod termination                                                                     | {}                                                           |
 | `hpa.enabled`                                  | Enable Hpa autoscaler instead of proportional one                                                                                         | `false`                                                      |
 | `hpa.minReplicas`                              | Hpa minimum number of CoreDNS replicas                                                                                                    | `1`                                                          |
 | `hpa.maxReplicas`                              | Hpa maximum number of CoreDNS replicas                                                                                                    | `2`                                                          |
@@ -137,9 +204,12 @@ The command removes all the Kubernetes components associated with the chart and 
 | `autoscaler.livenessProbe.timeoutSeconds`      | When the probe times out                                                                                                                  | `5`                                                          |
 | `autoscaler.livenessProbe.failureThreshold`    | Minimum consecutive failures for the probe to be considered failed after having succeeded.                                                | `3`                                                          |
 | `autoscaler.livenessProbe.successThreshold`    | Minimum consecutive successes for the probe to be considered successful after having failed.                                              | `1`                                                          |
+| `autoscaler.extraContainers`                   | Optional array of sidecar containers                                                                                                      | []                                                           |
 | `deployment.enabled`                           | Optionally disable the main deployment and its respective resources.                                                                      | `true`                                                       |
 | `deployment.name`                              | Name of the deployment if `deployment.enabled` is true. Otherwise the name of an existing deployment for the autoscaler or HPA to target. | `""`                                                         |
 | `deployment.annotations`                       | Annotations to add to the main deployment                                                                                                 | `{}`                                                         |
+| `deployment.selector`                          | Pod selector                                                                                                                              | `{}`                                                         |
+| `clusterRole.nameOverride`                     | ClusterRole name override                                                                                                                 |                                                              |
 
 See `values.yaml` for configuration notes. Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -199,7 +269,7 @@ You will also need to annotate and label your existing resources to allow Helm t
 annotations:
   meta.helm.sh/release-name: your-release-name
   meta.helm.sh/release-namespace: your-release-namespace
-label:
+labels:
   app.kubernetes.io/managed-by: Helm
 ```
 
