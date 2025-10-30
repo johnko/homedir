@@ -14,7 +14,7 @@ if git diff --name-only | grep lab/renovatebotwrapper ; then
   helm repo add openfaas https://openfaas.github.io/faas-netes/
   helm repo add traefik https://traefik.github.io/charts
 
-  # helm dep update
+  # to fetch versions that Chart.lock has defined
   helm dep build
 
   cd ./charts
