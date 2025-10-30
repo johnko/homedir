@@ -1,4 +1,4 @@
-FROM node:22.21.0-alpine3.21
+FROM node:24.10.0-alpine3.21
 
 COPY CA.pem /CA.pem
 
