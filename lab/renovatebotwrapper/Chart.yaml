@@ -29,7 +29,7 @@ dependencies:
     version: 5.42.2
   - name: cert-manager
     repository: https://charts.jetstack.io
-    version: v1.11.0
+    version: v1.11.5
   - name: coredns
     repository: https://coredns.github.io/helm
     version: 1.24.4
