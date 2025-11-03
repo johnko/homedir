@@ -15,7 +15,7 @@ cask "firefox"
 
 # Shell / CLI Tools
 # brew "direnv"
-# brew "gh"
+brew "gh"
 # brew "wget"
 # brew "xz"
 
