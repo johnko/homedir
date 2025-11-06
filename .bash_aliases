@@ -192,7 +192,7 @@ d-vol() {
 ########################################
 
 gg() {
-  # GG_GITHUB_MILESTONE=
+  # GG_GITHUB_MILESTONE="--milestone"
   # GG_GITHUB_ORG=
   # GG_GITHUB_PROJECT='18'
   GG_GITHUB_LABEL='devops :test_tube:'
@@ -203,24 +203,28 @@ gg() {
       gh label create "$GG_GITHUB_LABEL" --color '#0E8A16' --force || true
       git push
       set -x
-      gh pr create --assignee '@me' --draft --fill-first --label $GG_GITHUB_LABEL --milestone $GG_GITHUB_MILESTONE 2>&1 | tee $TMP_LOG
+      gh pr create --assignee '@me' --draft --fill-first --label $GG_GITHUB_LABEL $GG_GITHUB_MILESTONE 2>&1 | tee $TMP_LOG
       set +x
       NEW_PR=$(grep "https://github\.com/$GG_GITHUB_ORG/.*/pull/.*" $TMP_LOG | tail -n1)
-      gh project item-add $GG_GITHUB_PROJECT --owner $GG_GITHUB_ORG --url $NEW_PR
+      if [[ -n "$GG_GITHUB_PROJECT" ]]; then
+        gh project item-add $GG_GITHUB_PROJECT --owner $GG_GITHUB_ORG --url $NEW_PR
+      fi
       test -e $TMP_LOG && rm $TMP_LOG
       gh pr view --web
       ;;
     label)
       gh label create "$GG_GITHUB_LABEL" --color '#0E8A16' --force || true
-      gh project item-add $GG_GITHUB_PROJECT --owner $GG_GITHUB_ORG --url $2
+      if [[ -n "$GG_GITHUB_PROJECT" ]]; then
+        gh project item-add $GG_GITHUB_PROJECT --owner $GG_GITHUB_ORG --url $2
+      fi
       if echo $2 | grep -q '/pull/' ; then
         set -x
-        gh pr edit $2 --add-assignee "@me" --add-label $GG_GITHUB_LABEL --milestone $GG_GITHUB_MILESTONE
+        gh pr edit $2 --add-assignee "@me" --add-label $GG_GITHUB_LABEL $GG_GITHUB_MILESTONE
         gh pr view $2 --web
         set +x
       elif echo $2 | grep -q '/issues/' ; then
         set -x
-        gh issue edit $2 --add-assignee "@me" --add-label $GG_GITHUB_LABEL --milestone $GG_GITHUB_MILESTONE
+        gh issue edit $2 --add-assignee "@me" --add-label $GG_GITHUB_LABEL $GG_GITHUB_MILESTONE
         gh issue view $2 --web
         set +x
       fi
