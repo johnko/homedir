@@ -1,8 +1,0 @@
-# ping every minute
-* * * * * root /bin/bash /usr/local/sbin/healthcheck-diff.sh ping {{ ansible_facts['default_ipv4']['gateway'] }}
-
-# netplan apply if stale for 3 min
-*/3 * * * * root /bin/bash /usr/local/sbin/healthcheck-diff.sh netplan 180
-
-# reboot if stale for 10 min
-*/5 * * * * root /bin/bash /usr/local/sbin/healthcheck-diff.sh reboot 600

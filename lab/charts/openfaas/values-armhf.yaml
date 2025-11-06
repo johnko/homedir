@@ -1,5 +1,0 @@
-prometheus:
-  resources:
-    requests:
-      memory: "100Mi"
-
