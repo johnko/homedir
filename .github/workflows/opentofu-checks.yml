@@ -1,0 +1,27 @@
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: opentofu/setup-opentofu@000eeb8522f0572907c393e8151076c205fdba1b # v1.0.6
+        with:
+          tofu_version: 1.10.6 # renovate: datasource=github-releases depName=opentofu/opentofu packageName=opentofu/opentofu
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          show-progress: false
+      - name: Apply terraform fmt and find unformatted files
+        run: |
+          bash -ex .github/opentofu-fmt.sh
+          bash -ex .github/opentofu-validate.sh
+    timeout-minutes: 10
+name: opentofu-checks
+on:
+  pull_request:
+    paths:
+      - .github/opentofu-fmt.sh
+      - .github/workflows/opentofu-checks.yml
+      - '**.otf'
+      - '**.tf'
+      - tf.sh
