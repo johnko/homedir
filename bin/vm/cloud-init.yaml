@@ -1,19 +1,11 @@
 #cloud-config
 autoinstall:
-  version: 1
   identity:
     hostname: vm
-    username: ubuntu
-    password: "$6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0"
+    password: $6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0
     # ubuntu
-  ssh:
-    install-server: true
-    allow-pw: false
-  packages:
-    - openssh-server
-  timezone: "Etc/UTC"
-  updates: all
-  shutdown: poweroff
+
+    username: ubuntu
   late-commands:
     # set random hostname
     - echo vm-$(openssl rand -hex 2) > /target/etc/hostname
@@ -29,31 +21,40 @@ autoinstall:
     # extend logical volume
     - curtin in-target -- lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
     - curtin in-target -- resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+  packages:
+    - openssh-server
+  shutdown: poweroff
+  ssh:
+    allow-pw: false
+    install-server: true
+  timezone: Etc/UTC
+  updates: all
   user-data:
     disable_root: true # disable root user interactive login
-    users:
-      - name: lab
-        homedir: /home/lab
-        shell: /bin/bash
-        lock_passwd: true
-        gecos: lab
-        groups: adm, cdrom, dip, lxd, plugdev, sudo
-        primary_group: lab
-        ssh_import_id:
-          - gh:johnko
-        sudo: ALL=(ALL) NOPASSWD:ALL
-      - name: ubuntu
-        # disable ubuntu interactive login via expire
-        expiredate: "2000-01-01"
-        homedir: /home/ubuntu
-        shell: /bin/bash
-        lock_passwd: true
-        gecos: ubuntu
-        groups: adm, cdrom, dip, lxd, plugdev, sudo
-        primary_group: ubuntu
-        sudo: ALL=(ALL) NOPASSWD:ALL
     package_update: true
     package_upgrade: true
     packages:
       - openssh-server
     ssh_pwauth: false # disable ssh interactive password auth
+    users:
+      - gecos: lab
+        groups: adm, cdrom, dip, lxd, plugdev, sudo
+        homedir: /home/lab
+        lock_passwd: true
+        name: lab
+        primary_group: lab
+        shell: /bin/bash
+        ssh_import_id:
+          - gh:johnko
+        sudo: ALL=(ALL) NOPASSWD:ALL
+      - # disable ubuntu interactive login via expire
+        expiredate: "2000-01-01"
+        gecos: ubuntu
+        groups: adm, cdrom, dip, lxd, plugdev, sudo
+        homedir: /home/ubuntu
+        lock_passwd: true
+        name: ubuntu
+        primary_group: ubuntu
+        shell: /bin/bash
+        sudo: ALL=(ALL) NOPASSWD:ALL
+  version: 1

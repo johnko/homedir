@@ -1,29 +1,26 @@
-name: Renovate
-
-on:
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: "Override default log level"
-        required: false
-        default: "info"
-        type: string
-      overrideSchedule:
-        description: "Override all schedules"
-        required: false
-        default: "false"
-        type: string
-  schedule:
-    - cron: '30 12 * * SUN,SAT' # UTC
-
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
+  group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   call-workflow:
+    secrets: inherit
     uses: johnko/renovate-config/.github/workflows/renovate-shared.yml@main
     with:
       logLevel: ${{ inputs.logLevel }}
       overrideSchedule: ${{ inputs.overrideSchedule == 'true' && 'true' || '' }}
-    secrets: inherit
+name: Renovate
+on:
+  schedule:
+    - cron: 30 12 * * SUN,SAT # UTC
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        default: info
+        description: Override default log level
+        required: false
+        type: string
+      overrideSchedule:
+        default: "false"
+        description: Override all schedules
+        required: false
+        type: string

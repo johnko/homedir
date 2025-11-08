@@ -2,24 +2,31 @@ services:
   caddy:
     build: .
     container_name: caddy
-    entrypoint: [ "caddy", "run", "--config", "/etc/caddy/Caddyfile" ]
+    entrypoint:
+      - caddy
+      - run
+      - --config
+      - /etc/caddy/Caddyfile
     # entrypoint: [ "sleep", "3600" ]
     image: caddy:local
     ports:
       - 8080:8080
     restart: unless-stopped
-  ssh:
-    build: ./ssh/
-    container_name: ssh
-    entrypoint: [ "/usr/sbin/sshd", "-D", "-e" ]
-    image: ssh:local
-    ports:
-      - 2222:2222
-    restart: unless-stopped
-
   dyndns:
     build: ./dyndns/
     container_name: dyndns
-    entrypoint: [ "/entrypoint.sh" ]
+    entrypoint:
+      - /entrypoint.sh
     image: dyndns:local
+    restart: unless-stopped
+  ssh:
+    build: ./ssh/
+    container_name: ssh
+    entrypoint:
+      - /usr/sbin/sshd
+      - -D
+      - -e
+    image: ssh:local
+    ports:
+      - 2222:2222
     restart: unless-stopped

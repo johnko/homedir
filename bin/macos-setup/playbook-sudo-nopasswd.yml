@@ -1,29 +1,29 @@
-- hosts: localhost
-  connection: local
-  become: '{{ lookup("env", "ANSIBLE_BECOME") }}'
+- become: '{{ lookup("env", "ANSIBLE_BECOME") }}'
   become_user: root
+  connection: local
   gather_facts: false
+  hosts: localhost
   tasks:
-    - name: Allow mac local user to sudo
-      lineinfile:
-        path: /etc/sudoers.d/50-local-user
-        state: present
+    - lineinfile:
         create: true
-        regexp: '^{{ lookup("env", "USER") }} .* ALL$'
         line: '{{ lookup("env", "USER") }} ALL = (ALL) ALL'
+        path: /etc/sudoers.d/50-local-user
+        regexp: ^{{ lookup("env", "USER") }} .* ALL$
+        state: present
         validate: /usr/sbin/visudo -cf %s
-    - name: allow all read
-      ansible.builtin.file:
+      name: Allow mac local user to sudo
+    - ansible.builtin.file:
+        group: wheel
+        mode: "0644"
+        owner: root
         path: /etc/sudoers.d/50-local-user
         state: file
-        mode: '0644'
-        owner: root
-        group: wheel
-    - name: Allow mac local user to sudo NOPASSWD
-      lineinfile:
-        path: /etc/sudoers.d/50-local-user
-        state: '{{ lookup("env", "ANSIBLE_ACTION") }}' # present/absent
+      name: allow all read
+    - lineinfile:
         create: true
-        regexp: '^{{ lookup("env", "USER") }} .* NOPASSWD:ALL$'
         line: '{{ lookup("env", "USER") }} ALL = (ALL) NOPASSWD:ALL'
+        path: /etc/sudoers.d/50-local-user
+        regexp: ^{{ lookup("env", "USER") }} .* NOPASSWD:ALL$
+        state: '{{ lookup("env", "ANSIBLE_ACTION") }}' # present/absent
         validate: /usr/sbin/visudo -cf %s
+      name: Allow mac local user to sudo NOPASSWD

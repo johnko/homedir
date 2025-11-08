@@ -1,39 +1,35 @@
 ## See more docs at https://docs.gitea.io/en-us/install-with-docker/  or  https://docs.gitea.io/en-us/config-cheat-sheet/
-version: "3.5"
-
 services:
-    postgres:
-        container_name: gitea-postgres
-        image: postgres:16.8
-        command: >
-            -c ssl=on
-            -c ssl_cert_file=/var/lib/postgresql/server.crt
-            -c ssl_key_file=/var/lib/postgresql/server.key
-        environment:
-            - POSTGRES_USER=gitea
-            - POSTGRES_PASSWORD=gitea
-            - POSTGRES_DB=gitea
-        restart: unless-stopped
-        volumes:
-            - postgres:/var/lib/postgresql/data
-            - ./pgsql-server.pem:/var/lib/postgresql/server.crt:ro
-            - ./pgsql-server.key:/var/lib/postgresql/server.key:ro
-    gitea:
-        container_name: gitea-app
-        image: gitea/gitea:1.25.0
-        depends_on:
-            - postgres
-        environment:
-            - RUN_CROND=true
-        links:
-            - postgres
-        ports:
-            - 127.0.0.1:3000:3000
-            - 127.0.0.1:3022:3022
-        restart: unless-stopped
-        volumes:
-            - data:/data
-
+  gitea:
+    container_name: gitea-app
+    depends_on:
+      - postgres
+    environment:
+      - RUN_CROND=true
+    image: gitea/gitea:1.25.0
+    links:
+      - postgres
+    ports:
+      - 127.0.0.1:3000:3000
+      - 127.0.0.1:3022:3022
+    restart: unless-stopped
+    volumes:
+      - data:/data
+  postgres:
+    command: |
+      -c ssl=on -c ssl_cert_file=/var/lib/postgresql/server.crt -c ssl_key_file=/var/lib/postgresql/server.key
+    container_name: gitea-postgres
+    environment:
+      - POSTGRES_USER=gitea
+      - POSTGRES_PASSWORD=gitea
+      - POSTGRES_DB=gitea
+    image: postgres:16.8
+    restart: unless-stopped
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./pgsql-server.pem:/var/lib/postgresql/server.crt:ro
+      - ./pgsql-server.key:/var/lib/postgresql/server.key:ro
+version: "3.5"
 volumes:
-    postgres:
-    data:
+  data:
+  postgres:
