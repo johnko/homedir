@@ -1,0 +1,22 @@
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
+jobs:
+  yq-pretty:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          show-progress: false
+      - name: Apply yq --prettyPrint and find unformatted files
+        run: |
+          bash -ex .github/yq-pretty.sh
+    timeout-minutes: 10
+name: yaml-checks
+on:
+  pull_request:
+    paths:
+      - .github/workflows/yaml-checks.yml
+      - .github/yq-pretty.sh
+      - '**.yaml'
+      - '**.yml'
