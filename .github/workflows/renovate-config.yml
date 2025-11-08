@@ -23,7 +23,7 @@ jobs:
           show-progress: false
       - name: testing ${{ matrix.file }}
         run: |
-          if [[ -e ${{ matrix.file }}.json ]]; then
+          if [ -e ${{ matrix.file }}.json ]; then
             renovate-config-validator ${{ matrix.file }}.json
           fi
     strategy:
