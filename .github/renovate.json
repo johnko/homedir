@@ -1,5 +1,14 @@
 {
+  "allowedCommands": [
+    ".github/helm-dep.sh"
+  ],
   "extends": [
     "github>johnko/renovate-config"
-  ]
+  ],
+  "postUpgradeTasks": {
+    "commands": [
+      ".github/helm-dep.sh"
+    ],
+    "executionMode": "branch"
+  }
 }
