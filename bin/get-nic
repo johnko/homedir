@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if type ifconfig &>/dev/null ; then
+if type ifconfig &>/dev/null; then
   ifconfig | grep -v -E '(^lo0|\slo0\s|\s::1\s|\sinet\s127\.0\.)' | grep -E '(^[a-z]|inet\s)' | grep -B1 'inet' | sed 's/flags=.*UP,/UP,/' | sed 's/UP,.*//' | sed "s, netmask,\n	netmask," | sed "s, broadcast,\n	broadcast,"
-elif type networkctl &>/dev/null ; then
+elif type networkctl &>/dev/null; then
   networkctl status 2>&1 | grep -v -E '(docker|carrier|Link)'
 fi

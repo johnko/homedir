@@ -15,40 +15,40 @@ generate_selfsigned_cert() {
 
 set +u
 case ${1} in
-open)
-  open http://127.0.0.1:3000
-  ;;
-down)
-  ## Destroy the stack but keep the data
-  docker-compose down
-  ;;
-destroy)
-  ## Destroy the stack and data
-  docker-compose down --volumes
-  ;;
-logs)
-  docker-compose logs
-  ;;
-ps)
-  docker-compose ps
-  ;;
-test-new)
-  docker-compose down --volumes
-  generate_selfsigned_cert
-  docker-compose pull
-  docker-compose up --detach
-  ;;
-top)
-  docker-compose top
-  ;;
-up | *)
-  generate_selfsigned_cert
-  docker-compose pull
-  ## Create and run the stack interactively
-  # docker-compose up
-  ## Create and run the stack in the background
-  docker-compose up --detach
-  ;;
+  open)
+    open http://127.0.0.1:3000
+    ;;
+  down)
+    ## Destroy the stack but keep the data
+    docker-compose down
+    ;;
+  destroy)
+    ## Destroy the stack and data
+    docker-compose down --volumes
+    ;;
+  logs)
+    docker-compose logs
+    ;;
+  ps)
+    docker-compose ps
+    ;;
+  test-new)
+    docker-compose down --volumes
+    generate_selfsigned_cert
+    docker-compose pull
+    docker-compose up --detach
+    ;;
+  top)
+    docker-compose top
+    ;;
+  up | *)
+    generate_selfsigned_cert
+    docker-compose pull
+    ## Create and run the stack interactively
+    # docker-compose up
+    ## Create and run the stack in the background
+    docker-compose up --detach
+    ;;
 esac
 
 cd -

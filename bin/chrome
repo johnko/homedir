@@ -6,32 +6,32 @@ GOOGLE_CHROME_EXTRA_ARGS=""
 PROFILE_NUM="$1"
 URL="$2"
 
-if [[ -z "$OS" ]] ; then
+if [[ -z $OS ]]; then
   echo "!!  Failed to detect OS"
   exit 1
 fi
 
 case $OS in
-  Darwin|darwin)
+  Darwin | darwin)
     GOOGLE_CHROME_APP=$(find /Applications -type d -maxdepth 1 -name "Google Chrome.app" | head -n1)
-    if [[ -n "$GOOGLE_CHROME_APP" ]]; then
+    if [[ -n $GOOGLE_CHROME_APP ]]; then
       GOOGLE_CHROME_BIN=$(find "$GOOGLE_CHROME_APP" -type f -maxdepth 3 -name "Google Chrome" | head -n1)
     fi
     ;;
-  Linux|linux)
-    if type google-chrome &>/dev/null ; then
+  Linux | linux)
+    if type google-chrome &>/dev/null; then
       GOOGLE_CHROME_BIN=google-chrome
     fi
     ;;
 esac
 
-if [[ -z "$GOOGLE_CHROME_BIN" ]] ; then
+if [[ -z $GOOGLE_CHROME_BIN ]]; then
   echo "!!  Failed to detect GOOGLE_CHROME_BIN"
   exit 1
 fi
 
 GOOGLE_CHROME_PROFILE="Profile $PROFILE_NUM"
-if [[ "0" = "$PROFILE_NUM" ]] || [[ -z "$PROFILE_NUM" ]]; then
+if [[ "0" == "$PROFILE_NUM" ]] || [[ -z $PROFILE_NUM ]]; then
   GOOGLE_CHROME_PROFILE="Default"
 fi
 

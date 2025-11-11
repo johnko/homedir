@@ -5,7 +5,7 @@ set -x
 
 defaults -currentHost write com.apple.controlcenter.plist AirplayReceiverEnabled -bool false
 
-defaults -currentHost read  com.apple.controlcenter.plist AirplayReceiverEnabled
+defaults -currentHost read com.apple.controlcenter.plist AirplayReceiverEnabled
 
 set +x
 

@@ -5,10 +5,10 @@ DEVICE_NAME='my-iphone16'
 DEVICE_TYPE='iPhone 16 Pro'
 EXCLUDE_DEVICE_TYPE='Max'
 
-if type xcrun &>/dev/null ; then
+if type xcrun &>/dev/null; then
   set +u
   ID=$(xcrun simctl list devices | grep "$DEVICE_NAME" | awk '{print $2}' | tr -d '()')
-  if [[ -z "$ID" ]] ; then
+  if [[ -z $ID ]]; then
     set -u
     SIM_DEVICE_TYPE=$(xcrun simctl list devicetypes | grep "$DEVICE_TYPE" | grep -v "$EXCLUDE_DEVICE_TYPE" | grep -o '(.*)' | tr -d '()')
 

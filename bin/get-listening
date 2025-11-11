@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if type lsof &>/dev/null ; then
+if type lsof &>/dev/null; then
   lsof -i -nP | grep LISTEN
-elif type ss &>/dev/null ; then
+elif type ss &>/dev/null; then
   # apt update -y && apt install -y iproute2
   ss -lnptu | grep LISTEN
-elif type netstat &>/dev/null ; then
+elif type netstat &>/dev/null; then
   # apt update -y && apt install -y net-tools
   netstat -an | grep LISTEN
 fi

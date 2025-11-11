@@ -2,7 +2,7 @@
 set -eo pipefail
 
 case $1 in
-  on|ON|enable|ENABLE|yes|YES)
+  on | ON | enable | ENABLE | yes | YES)
     export ANSIBLE_ACTION="present"
     ;;
   *)

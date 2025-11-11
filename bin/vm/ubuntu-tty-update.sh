@@ -6,10 +6,10 @@ set -eux
 export PATH="/usr/bin:$PATH"
 
 # don't run in macOS
-if [[ ! -e /Users ]] && whoami | grep "root" ; then
-  if [[ ! -f /etc/.issue.orig ]] ; then
+if [[ ! -e /Users ]] && whoami | grep "root"; then
+  if [[ ! -f /etc/.issue.orig ]]; then
     cp /etc/issue /etc/.issue.orig
   fi
-  grep -q "\\\4" /etc/issue || sed -r "s/^Ubuntu/\\\4 - Ubuntu/" < /etc/.issue.orig > /etc/issue
+  grep -q "\\\4" /etc/issue || sed -r "s/^Ubuntu/\\\4 - Ubuntu/" </etc/.issue.orig >/etc/issue
   systemctl restart getty@tty1
 fi

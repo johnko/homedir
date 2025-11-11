@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if type ifconfig &>/dev/null ; then
+if type ifconfig &>/dev/null; then
   ifconfig | grep -v '\sinet\s127\.0\.' | sed -e 's;broadcast.*;;' -e 's;Bcast.*;;' -e 's;netmast.*;;' -e 's;Mask.*;;' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | uniq
-elif type networkctl &>/dev/null ; then
+elif type networkctl &>/dev/null; then
   networkctl status 2>&1 | grep -v -E '(docker|carrier|Link)' | grep -v 'Gateway' | grep ' on ' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
 fi

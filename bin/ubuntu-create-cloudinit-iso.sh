@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if type docker &>/dev/null ; then
+if type docker &>/dev/null; then
   DOCKER_BIN=docker
 else
-  if type podman &>/dev/null ; then
+  if type podman &>/dev/null; then
     DOCKER_BIN=podman
   fi
 fi

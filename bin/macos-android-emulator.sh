@@ -12,7 +12,7 @@ if [[ -e /opt/homebrew/opt/openjdk/libexec/openjdk.jdk ]]; then
   fi
 fi
 
-if type sdkmanager &>/dev/null ; then
+if type sdkmanager &>/dev/null; then
   ANDROID_PACKAGE=$(sdkmanager --list 2>&1 | grep 'system-images' | grep 'playstore' | grep "$ANDROID_API_VERSION" | grep "$ANDROID_ARCH" | grep -v -E "$EXCLUDE_DEVICE_TYPE" | awk '{print $1}' | sort -u)
 
   set -x

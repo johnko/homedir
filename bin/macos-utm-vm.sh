@@ -3,13 +3,13 @@ set -euo pipefail
 
 set -x
 
-if [[ ! -e /Volumes/RAMDisk/.metadata_never_index ]] ; then
+if [[ ! -e /Volumes/RAMDisk/.metadata_never_index ]]; then
   set +x
   echo "ERROR: missing /Volumes/RAMDisk"
   exit 1
 fi
 
-if [[ -e /Applications/UTM.app/Contents/MacOS/utmctl && ! -e ${HOME}/bin/utmctl ]] ; then
+if [[ -e /Applications/UTM.app/Contents/MacOS/utmctl && ! -e ${HOME}/bin/utmctl ]]; then
   ln -sf /Applications/UTM.app/Contents/MacOS/utmctl ${HOME}/bin/utmctl
 fi
 
@@ -36,7 +36,7 @@ EOS
 
 # parse args
 set +ux
-if [[ -z "$1" ]] ; then
+if [[ -z $1 ]]; then
   usage
 else
   ACTN="$1"
@@ -53,17 +53,17 @@ while getopts ":n:i:c:m:s:" o; do
       ;;
     c)
       c=$OPTARG
-      (( c >= 1 && c <= 4 )) || usage
+      ((c >= 1 && c <= 4)) || usage
       CPUS=$c
       ;;
     m)
       m=$OPTARG
-      (( m >= 1 && m <= 8 )) || usage
+      ((m >= 1 && m <= 8)) || usage
       MEMS=$m
       ;;
     s)
       s=$OPTARG
-      (( s >= 10 && s <= 60 )) || usage
+      ((s >= 10 && s <= 60)) || usage
       STOR=$s
       ;;
     *)
@@ -71,29 +71,29 @@ while getopts ":n:i:c:m:s:" o; do
       ;;
   esac
 done
-shift $((OPTIND-1))
-if  [[ "create" = "$ACTN" || \
-      "destroy" = "$ACTN" || \
-      "info" = "$ACTN" || \
-      "restart" = "$ACTN" || \
-      "stop" = "$ACTN" || \
-      "start" = "$ACTN" ]] && [[ -z "$n" ]] ; then
-    usage
-fi
-if [[ "create" = "$ACTN" ]] && [[ -z "$i" ]] ; then
+shift $((OPTIND - 1))
+if [[ "create" == "$ACTN" ||
+  "destroy" == "$ACTN" ||
+  "info" == "$ACTN" ||
+  "restart" == "$ACTN" ||
+  "stop" == "$ACTN" ||
+  "start" == "$ACTN" ]] && [[ -z $n ]]; then
   usage
 fi
-if [[ -n "$i" ]] ; then
-  ISO=$( find ${HOME}/iso -name '*.iso' | grep -i "$i" )
-  if [[ -z "$ISO" ]] ; then
+if [[ "create" == "$ACTN" ]] && [[ -z $i ]]; then
+  usage
+fi
+if [[ -n $i ]]; then
+  ISO=$(find ${HOME}/iso -name '*.iso' | grep -i "$i")
+  if [[ -z $ISO ]]; then
     usage
   fi
 fi
-CLOUD_INIT_ISO=$( find ${HOME}/iso -name 'cloudinit.iso' )
-[[ -z "$CPUS" ]] && CPUS=1
-[[ -z "$MEMS" ]] && MEMS=1
-[[ -z "$STOR" ]] && STOR=10
-[[ -z "$NIC" ]] && NIC=$(ifconfig | grep -v '127.0.0.1' | grep -E "(^en|inet )" | grep -B1 'inet ' | grep '^en' | tail -n 1 | cut -d: -f1)
+CLOUD_INIT_ISO=$(find ${HOME}/iso -name 'cloudinit.iso')
+[[ -z $CPUS ]] && CPUS=1
+[[ -z $MEMS ]] && MEMS=1
+[[ -z $STOR ]] && STOR=10
+[[ -z $NIC ]] && NIC=$(ifconfig | grep -v '127.0.0.1' | grep -E "(^en|inet )" | grep -B1 'inet ' | grep '^en' | tail -n 1 | cut -d: -f1)
 echo "ACTN=$ACTN"
 echo "NAME=$NAME"
 echo "ISO =$ISO"
@@ -113,14 +113,14 @@ mk_symlink_utmdoc() {
 set -ux
 case $ACTN in
   create)
-    if test -L ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents ; then
-      if ! ls -l ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents/ ; then
-        if test -d ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents.bkp ; then
+    if test -L ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents; then
+      if ! ls -l ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents/; then
+        if test -d ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents.bkp; then
           mkdir_ramdisk_vm
           # cp -a ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents.bkp /Volumes/RAMDisk/vm/utmdocuments
         fi
       fi
-    elif test -d ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents ; then
+    elif test -d ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents; then
       mkdir_ramdisk_vm
       # test -d ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents.bkp || cp -a ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents.bkp
       # mv ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents /Volumes/RAMDisk/vm/utmdocuments
@@ -135,7 +135,7 @@ tell application "UTM"
   set iso to POSIX file "'$ISO'"
   set cloudinit to POSIX file "'$CLOUD_INIT_ISO'"
   set vm to virtual machine named "Linux"
-  duplicate vm with properties {backend:qemu, configuration:{name:"'$NAME'", architecture:"aarch64", machine:"virt", cpu cores:'$CPUS', memory:'$(($MEMS*1000))', network interfaces:{{index:0, mode:bridged, host interface:"'$NIC'"}}, drives:{{removable:true, source:iso}, {removable:true, source:cloudinit}, {guest size:'$(($STOR*1000))'}}}}
+  duplicate vm with properties {backend:qemu, configuration:{name:"'$NAME'", architecture:"aarch64", machine:"virt", cpu cores:'$CPUS', memory:'$((MEMS * 1000))', network interfaces:{{index:0, mode:bridged, host interface:"'$NIC'"}}, drives:{{removable:true, source:iso}, {removable:true, source:cloudinit}, {guest size:'$((STOR * 1000))'}}}}
   --- note the default options for a new VM is no display, one PTTY serial port, and one shared network
   --- so we used duplicate above
 end tell
@@ -153,18 +153,18 @@ tell application "UTM"
   update configuration of vm with config
 end tell
 '
-#     osascript '
-# tell application "UTM"
-#   --- create an Apple VM for booting Linux (only supported on macOS 13+)
-#   make new virtual machine with properties {backend:apple, configuration:{name:"'$NAME'", drives:{{removable:true, source:iso}, {guest size:'$(($STOR*1024))'}}}}
-# end tell
-# '
+    #     osascript '
+    # tell application "UTM"
+    #   --- create an Apple VM for booting Linux (only supported on macOS 13+)
+    #   make new virtual machine with properties {backend:apple, configuration:{name:"'$NAME'", drives:{{removable:true, source:iso}, {guest size:'$(($STOR*1024))'}}}}
+    # end tell
+    # '
     set +x
     echo "REMINDER: find the vm in UTM app and right click and 'Move...' it to /Volumes/RAMDisk/vm"
     ;;
   destroy)
     set +e
-    while utmctl list | grep $NAME ; do
+    while utmctl list | grep $NAME; do
       utmctl stop $NAME
       utmctl delete $NAME
       sleep 1
@@ -197,13 +197,13 @@ end tell
 ' 2>&1 | grep -q "notes:installed" && INSTALLED=true
     [[ "false" == "$INSTALLED" ]] && echo "REMINDER: add 'autoinstall' on the 'linux' boot line"
     STOPPED=false
-    for i in {1..30} ; do
+    for i in {1..30}; do
       [[ "true" == "$STOPPED" ]] && continue
       [[ "true" == "$INSTALLED" ]] && continue
       sleep 60
       utmctl status $NAME | grep -q stopped && STOPPED=true
     done
-    if [[ "true" == "$STOPPED" ]] && [[ "false" == "$INSTALLED" ]] ; then
+    if [[ "true" == "$STOPPED" ]] && [[ "false" == "$INSTALLED" ]]; then
       ${0##*/} unmount-boot-iso -n $NAME
       ${0##*/} start -n $NAME
     fi

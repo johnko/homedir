@@ -3,7 +3,7 @@ set -euo pipefail
 
 set -x
 
-if [[ ! -e /Volumes/RAMDisk/.metadata_never_index ]] ; then
+if [[ ! -e /Volumes/RAMDisk/.metadata_never_index ]]; then
   set +x
   echo "ERROR: missing /Volumes/RAMDisk"
   exit 1
@@ -23,7 +23,7 @@ EOS
 
 # parse args
 set +ux
-if [[ -z "$1" ]] ; then
+if [[ -z $1 ]]; then
   usage
 else
   ACTN="$1"
@@ -40,17 +40,17 @@ while getopts ":n:i:c:m:s:" o; do
       ;;
     c)
       c=$OPTARG
-      (( c >= 1 && c <= 4 )) || usage
+      ((c >= 1 && c <= 4)) || usage
       CPUS=$c
       ;;
     m)
       m=$OPTARG
-      (( m >= 1 && m <= 8 )) || usage
+      ((m >= 1 && m <= 8)) || usage
       MEMS=$m
       ;;
     s)
       s=$OPTARG
-      (( s >= 10 && s <= 60 )) || usage
+      ((s >= 10 && s <= 60)) || usage
       STOR=$s
       ;;
     *)
@@ -58,20 +58,20 @@ while getopts ":n:i:c:m:s:" o; do
       ;;
   esac
 done
-shift $((OPTIND-1))
-if  [[ "create" = "$ACTN" || \
-      "destroy" = "$ACTN" || \
-      "info" = "$ACTN" || \
-      "restart" = "$ACTN" || \
-      "stop" = "$ACTN" || \
-      "start" = "$ACTN" ]] && [[ -z "$n" ]] ; then
-    usage
+shift $((OPTIND - 1))
+if [[ "create" == "$ACTN" ||
+  "destroy" == "$ACTN" ||
+  "info" == "$ACTN" ||
+  "restart" == "$ACTN" ||
+  "stop" == "$ACTN" ||
+  "start" == "$ACTN" ]] && [[ -z $n ]]; then
+  usage
 fi
-[[ -z "$ISO" ]] && ISO=24.04
-[[ -z "$CPUS" ]] && CPUS=1
-[[ -z "$MEMS" ]] && MEMS=1
-[[ -z "$STOR" ]] && STOR=10
-[[ -z "$NIC" ]] && NIC=$(ifconfig | grep -v '127.0.0.1' | grep -E "(^en|inet )" | grep -B1 'inet ' | grep '^en' | tail -n 1 | cut -d: -f1)
+[[ -z $ISO ]] && ISO=24.04
+[[ -z $CPUS ]] && CPUS=1
+[[ -z $MEMS ]] && MEMS=1
+[[ -z $STOR ]] && STOR=10
+[[ -z $NIC ]] && NIC=$(ifconfig | grep -v '127.0.0.1' | grep -E "(^en|inet )" | grep -B1 'inet ' | grep '^en' | tail -n 1 | cut -d: -f1)
 echo "ACTN=$ACTN"
 echo "NAME=$NAME"
 echo "ISO =$ISO"
@@ -97,16 +97,16 @@ mk_symlink_multipassd() {
 set -ux
 case $ACTN in
   create)
-    if sudo test -L /var/root/Library/Application\ Support/multipassd ; then
-      if ! sudo ls -l /var/root/Library/Application\ Support/multipassd/ ; then
-        if sudo test -d /var/root/Library/Application\ Support/multipassd.bkp ; then
+    if sudo test -L /var/root/Library/Application\ Support/multipassd; then
+      if ! sudo ls -l /var/root/Library/Application\ Support/multipassd/; then
+        if sudo test -d /var/root/Library/Application\ Support/multipassd.bkp; then
           stop_multipass_svc
           mkdir_ramdisk_vm
           sudo cp -a /var/root/Library/Application\ Support/multipassd.bkp /Volumes/RAMDisk/vm/multipassd
           start_multipass_svc
         fi
       fi
-    elif sudo test -d /var/root/Library/Application\ Support/multipassd ; then
+    elif sudo test -d /var/root/Library/Application\ Support/multipassd; then
       stop_multipass_svc
       mkdir_ramdisk_vm
       sudo test -d /var/root/Library/Application\ Support/multipassd.bkp || sudo cp -a /var/root/Library/Application\ Support/multipassd /var/root/Library/Application\ Support/multipassd.bkp
@@ -132,7 +132,7 @@ case $ACTN in
     ;;
   destroy)
     set +e
-    while sudo multipass list | grep $NAME ; do
+    while sudo multipass list | grep $NAME; do
       sudo multipass stop $NAME
       sudo multipass delete $NAME
       sudo multipass purge

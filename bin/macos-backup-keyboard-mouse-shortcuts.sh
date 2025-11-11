@@ -6,16 +6,15 @@ set -x
 cd ~/
 
 for i in \
-Library/Preferences/com.apple.symbolichotkeys.plist \
-Library/Containers/com.apple.Desktop-Settings.extension/Data/Library/Preferences/com.apple.symbolichotkeys.plist \
-; do
+  Library/Preferences/com.apple.symbolichotkeys.plist \
+  Library/Containers/com.apple.Desktop-Settings.extension/Data/Library/Preferences/com.apple.symbolichotkeys.plist; do
 
   # not sure if needed anymore in macOS Tahoe ~/Library/Containers/com.apple.Desktop-Settings.extension
 
   # BACKUP TO JSON (sorted)
-  if [[ -e "$i" ]] ; then
+  if [[ -e $i ]]; then
     plutil -convert json -o ./tmp_symbolichotkeys.json $i
-    cat ./tmp_symbolichotkeys.json | jq '.AppleSymbolicHotKeys' --sort-keys > ${i}.json
+    cat ./tmp_symbolichotkeys.json | jq '.AppleSymbolicHotKeys' --sort-keys >${i}.json
     rm ./tmp_symbolichotkeys.json
   fi
 

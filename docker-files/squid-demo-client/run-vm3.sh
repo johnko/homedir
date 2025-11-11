@@ -8,12 +8,11 @@ IMAGE=24.04
 NIC=en1
 NAME=vm3
 
-
 set +u
 case $1 in
   destroy)
     set +e
-    while multipass list | grep $NAME ; do
+    while multipass list | grep $NAME; do
       sleep 1
       multipass stop $NAME
       multipass delete $NAME
@@ -35,9 +34,9 @@ case $1 in
     ;;
   start | *)
     ls -l /Volumes/RAMDisk
-    if test -h /var/root/Library/Application\ Support/multipassd ; then
+    if test -h /var/root/Library/Application\ Support/multipassd; then
       ls -l /var/root/Library/Application\ Support/multipassd
-    elif test -d /var/root/Library/Application\ Support/multipassd ; then
+    elif test -d /var/root/Library/Application\ Support/multipassd; then
       launchctl unload /Library/LaunchDaemons/com.canonical.multipassd.plist
       install -d -v -g wheel -m 755 -o root /Volumes/RAMDisk/vm
       mv /var/root/Library/Application\ Support/multipassd /Volumes/RAMDisk/vm/multipassd
@@ -50,15 +49,15 @@ case $1 in
       launchctl load -w /Library/LaunchDaemons/com.canonical.multipassd.plist
     fi
     multipass get local.driver | grep qemu || multipass set local.driver=qemu
-    multipass start $NAME \
-    || multipass launch \
-      -vvv \
-      --name=$NAME \
-      --cpus=4 \
-      --memory=8G \
-      --disk=10G \
-      --network="name=$NIC,mode=auto" \
-      --cloud-init=./cloud-init.yaml \
-      $IMAGE
+    multipass start $NAME ||
+      multipass launch \
+        -vvv \
+        --name=$NAME \
+        --cpus=4 \
+        --memory=8G \
+        --disk=10G \
+        --network="name=$NIC,mode=auto" \
+        --cloud-init=./cloud-init.yaml \
+        $IMAGE
     ;;
 esac

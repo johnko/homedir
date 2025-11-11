@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if type xcodebuild &>/dev/null ; then
+if type xcodebuild &>/dev/null; then
   set -x
 
   xcodebuild -showsdks
