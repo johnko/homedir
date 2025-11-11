@@ -24,5 +24,5 @@ export IAC_BIN=tofu
 $IAC_BIN version
 
 for WORKSPACE in $(find . \( -name '*.tf' -o -name '*.otf' \) -print0 | xargs -0 -I{} dirname {} | sort -u); do
-  bash -e tf.sh "$WORKSPACE" validate
+  bash -e .github/tf.sh "$WORKSPACE" validate
 done
