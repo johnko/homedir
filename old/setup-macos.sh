@@ -52,11 +52,11 @@ func_cask_pkgs() {
     steam
     vagrant
     "
-    # google-cloud-sdk
-    # fugu
-    # keka
-    # xquartz
-    # inkscape
+  # google-cloud-sdk
+  # fugu
+  # keka
+  # xquartz
+  # inkscape
   # brew cask remove ${CASK_PACKAGES} || true
   brew install --cask ${CASK_PACKAGES}
 }
