@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: opentofu/setup-opentofu@000eeb8522f0572907c393e8151076c205fdba1b # v1.0.6
         with:
-          tofu_version: 1.10.6 # renovate: datasource=github-releases depName=opentofu/opentofu packageName=opentofu/opentofu
+          tofu_version: 1.10.7 # renovate: datasource=github-releases depName=opentofu/opentofu packageName=opentofu/opentofu
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           show-progress: false
