@@ -4,6 +4,7 @@ set -eo pipefail
 if [[ -e .envrc ]]; then
   set +x
   # hide secret env values from output
+  # shellcheck disable=SC1091
   source .envrc
 fi
 
