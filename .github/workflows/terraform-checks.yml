@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
         with:
-          terraform_version: 1.13.5 # renovate: datasource=github-releases depName=hashicorp/terraform packageName=hashicorp/terraform
+          terraform_version: 1.13.4 # renovate: datasource=github-releases depName=hashicorp/terraform packageName=hashicorp/terraform
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           show-progress: false
