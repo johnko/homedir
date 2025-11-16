@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
+if [[ -e .envrc ]]; then
+  set +x
+  # hide secret env values from output
+  # shellcheck disable=SC1091
+  source .envrc
+fi
+
 if [[ -z $IAC_BIN ]]; then
+  set -x
   export IAC_BIN=terraform
+  set +x
 fi
 
 WORKSPACE="$1"
@@ -29,7 +38,6 @@ case $SAFE_ACTION in
     echo "ACTION=$ACTION"
     ;;
   *)
-    set +x
     echo "ERROR: invalid 'ACTION', received '$ACTION'"
     exit 1
     ;;
