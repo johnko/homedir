@@ -16,6 +16,7 @@ name: yaml-checks
 on:
   pull_request:
     paths:
+      - .github/git-has-uncommited-changes.sh
       - .github/workflows/yaml-checks.yml
       - .github/yq-pretty.sh
       - '**.yaml'
