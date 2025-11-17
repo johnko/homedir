@@ -21,7 +21,8 @@ on:
   pull_request:
     paths:
       - .github/opentofu-fmt.sh
+      - .github/opentofu-validate.sh
+      - .github/tf.sh
       - .github/workflows/opentofu-checks.yml
       - '**.otf'
       - '**.tf'
-      - tf.sh
