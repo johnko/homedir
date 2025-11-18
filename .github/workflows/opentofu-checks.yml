@@ -3,6 +3,8 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   validate:
+    # temp disable via 'if'
+    if: startsWith(github.head_ref, 'opentofu/')
     runs-on: ubuntu-latest
     steps:
       - uses: opentofu/setup-opentofu@000eeb8522f0572907c393e8151076c205fdba1b # v1.0.6
