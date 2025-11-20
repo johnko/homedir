@@ -19,7 +19,7 @@ if type podman &>/dev/null; then
   fi
   set -x
   podman machine init --cpus 8 --disk-size 150 --memory $((1024 * MAX_MEMORY))
-  # podman machine set --rootful
+  podman machine set --rootful
   podman machine start
 else
   echo "ERROR: missing 'podman'"
