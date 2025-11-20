@@ -1,7 +1,7 @@
 services:
-  caddy:
+  caddyollama:
     build: .
-    container_name: caddy
+    container_name: caddyollama
     entrypoint:
       - caddy
       - run
