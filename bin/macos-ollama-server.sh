@@ -33,7 +33,7 @@ fi
 relaunch_ollama() {
   case $1 in
     logs)
-      $DOCKER_BIN logs -f caddy 2>&1 | sed "s,^{,\n{,"
+      $DOCKER_BIN logs -f caddyollama 2>&1 | sed "s,^{,\n{,"
       exit 0
       ;;
     pull)
@@ -62,12 +62,12 @@ relaunch_ollama() {
 
         # build temp container image
         touch Caddyfile
-        $DOCKERCOMPOSE_BIN build --no-cache caddy
+        $DOCKERCOMPOSE_BIN build --no-cache caddyollama
 
         export CADDY_OLLAMA_API_PASSWORD1=$( (
           echo $CADDY_OLLAMA_API_TEMP_PASSWORD1
           echo $CADDY_OLLAMA_API_TEMP_PASSWORD1
-        ) | $DOCKER_BIN run --rm -it --entrypoint caddy caddy:local hash-password | tail -n 1)
+        ) | $DOCKER_BIN run --rm -it --entrypoint caddyollama caddyollama:local hash-password | tail -n 1)
 
         if [[ -z $CADDY_OLLAMA_API_PASSWORD1 ]]; then
           exit 1
@@ -79,7 +79,7 @@ relaunch_ollama() {
         envsubst <./dyndns/update-dns.sh.template >./dyndns/update-dns.sh
 
         # rebuild final container image
-        $DOCKERCOMPOSE_BIN build caddy
+        $DOCKERCOMPOSE_BIN build caddyollama
         $DOCKERCOMPOSE_BIN build --no-cache ssh
         $DOCKERCOMPOSE_BIN build --no-cache dyndns
         # clean previous containers
