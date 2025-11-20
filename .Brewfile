@@ -18,6 +18,7 @@ cask "firefox"
 brew "gh"
 brew "shellcheck"
 brew "shfmt"
+brew "switchaudio-osx"
 # brew "wget"
 # brew "xz"
 
