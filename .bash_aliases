@@ -442,6 +442,22 @@ repos-updatemaster() {
 }
 
 ########################################
+# switchaudio aliases
+audio() {
+  FUZZY_MATCH="$1"
+  LIST_CMD=(SwitchAudioSource -a)
+  GREP_CMD=(grep -v -i -E 'microphone|samsung')
+  if type SwitchAudioSource &>/dev/null; then
+    FOUND_AUDIO_DEVICE=$($LIST_CMD | $GREP_CMD | grep -i "$FUZZY_MATCH" | head -n 1)
+    if [[ -n "$FOUND_AUDIO_DEVICE" ]]; then
+      SwitchAudioSource -s "$FOUND_AUDIO_DEVICE"
+    else
+      $LIST_CMD | $GREP_CMD
+    fi
+  fi
+}
+
+########################################
 # vagrant aliases
 alias v=vagrant
 v-exec() {
