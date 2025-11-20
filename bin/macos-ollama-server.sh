@@ -67,7 +67,7 @@ relaunch_ollama() {
         export CADDY_OLLAMA_API_PASSWORD1=$( (
           echo $CADDY_OLLAMA_API_TEMP_PASSWORD1
           echo $CADDY_OLLAMA_API_TEMP_PASSWORD1
-        ) | $DOCKER_BIN run --rm -it --entrypoint caddyollama caddyollama:local hash-password | tail -n 1)
+        ) | $DOCKER_BIN run --rm -it --entrypoint caddy caddyollama:local hash-password | tail -n 1)
 
         if [[ -z $CADDY_OLLAMA_API_PASSWORD1 ]]; then
           exit 1
