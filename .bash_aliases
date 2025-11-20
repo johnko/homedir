@@ -22,7 +22,6 @@ fi
 # macOS aliases
 if [[ -e /Users ]]; then
   alias cdoe="code"
-  alias free="top -l 1 -s 0 | grep PhysMem | sed 's, (.*),,'"
   alias iftop="sudo /usr/local/sbin/iftop -nBP"
   alias ls="ls -1G"
   alias pmgetprevent="pmset -g | grep prevent"
@@ -31,6 +30,10 @@ if [[ -e /Users ]]; then
   # macOS functions
   dff() {
     df -h | grep -v -E '(devfs|auto_home)' | tr -d '%' | sort -r -k5 | awk '$5 > 24 {print $1,$5"%","=",$3,"/",$2,$9,$4}' | column -t
+  }
+  free() {
+    MEMORY_TOTAL=$(sysctl hw.memsize | awk '{print $NF/1024/1024/1024}')
+    top -l 1 -s 0 | grep PhysMem | sed 's, (.*),,' | sed "s/\.$/, ${MEMORY_TOTAL}G total./"
   }
   ppgrep() {
     # Usage: ppgrep bash
