@@ -10,7 +10,7 @@ services:
     # entrypoint: [ "sleep", "3600" ]
     image: caddyollama:local
     ports:
-      - 8080:8080
+      - 8880:8880
     restart: unless-stopped
   dyndns:
     build: ./dyndns/
