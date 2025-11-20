@@ -21,6 +21,11 @@ if type podman &>/dev/null; then
   podman machine init --cpus 8 --disk-size 150 --memory $((1024 * MAX_MEMORY))
   podman machine set --rootful
   podman machine start
+  podman machine ssh 'echo "[network]" >/etc/containers/containers.conf'
+  podman machine ssh 'echo "default_subnet = \"10.99.0.0/16\"" >>/etc/containers/containers.conf'
+  podman machine stop
+  podman machine start
+  podman network inspect podman | grep 10.99.0.0
 else
   echo "ERROR: missing 'podman'"
   exit 1
