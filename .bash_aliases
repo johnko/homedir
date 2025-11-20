@@ -377,13 +377,23 @@ repos-gitbranches() {
     fi
   done
 }
-repos-renovate() {
+repos-renovatebranches() {
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
     if [[ -e "${i}/.git" ]]; then
       pushd "${i}" >/dev/null
       echo "==> ${__YELLOW}${i}${__RESET}"
       git remote prune origin
       git branch -a | grep renovate || true
+      popd >/dev/null
+    fi
+  done
+}
+repos-renovaterun() {
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+    if [[ -e "${i}/.git" ]]; then
+      pushd "${i}" >/dev/null
+      echo "==> ${__YELLOW}${i}${__RESET}"
+      gg renovate || true
       popd >/dev/null
     fi
   done
