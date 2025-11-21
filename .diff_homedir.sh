@@ -24,7 +24,7 @@ NOEXISTSEPERATOR
 .Brewfile
 .gitmodules
 agent.toml
-config
+config.example
 known_hosts
 "
 
