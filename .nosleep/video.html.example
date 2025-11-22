@@ -5,24 +5,23 @@
   <style>
     /* Default styles (e.g., light mode) */
     body {
-      background-color: #ddd;
-      color: #222;
+      /* background-color: #ddd;
+      color: #222; */
+      background-color: #222;
+      color: #ddd;
+      height: 100%;
       margin: 0;
       overflow: hidden;
       padding: 0;
-      height: 100%;
       width: 100%;
     }
 
     video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-      opacity: 66%;
+      height: 100%;
+      /* important so displaysleep is prevented */
+      opacity: 100%;
+      width: 100%;
+      /* important so displaysleep is prevented */
     }
 
     /* Styles for dark mode */
@@ -39,7 +38,7 @@
   </style>
 </head>
 
-<body><video autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
+<body><video autoplay="true" controls="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
 </body>
 
 </html>
