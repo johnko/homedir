@@ -1,0 +1,37 @@
+<html lang="en">
+
+<head>
+  <title>no sleep</title>
+  <style>
+    /* Default styles (e.g., light mode) */
+    body {
+      background-color: #ddd;
+      color: #222;
+      margin: 0;
+      overflow-x: hidden;
+      padding: 0;
+    }
+
+    video {
+      height: 100%;
+      opacity: 66%;
+    }
+
+    /* Styles for dark mode */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #222;
+        color: #ddd;
+      }
+
+      video {
+        opacity: 15%;
+      }
+    }
+  </style>
+</head>
+
+<body><video autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
+</body>
+
+</html>
