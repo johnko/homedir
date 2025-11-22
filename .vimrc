@@ -1,5 +1,5 @@
-" set background=light
-set background=dark
+set background=light
+" set background=dark
 
 " Make Vim more useful
 set nocompatible
