@@ -5,20 +5,20 @@
   "layers": [
     [
       "KC_NO",
-      "KC_BRID",
-      "KC_BRIU",
+      "LCAG(KC_1)",
+      "LCAG(KC_2)",
       "KC_MUTE",
-      "C(KC_UP)",
-      "KC_F4",
-      "KC_F15",
-      "KC_F16",
-      "HYPR(KC_Z)",
       "LCAG(KC_Q)",
+      "KC_UP",
       "LCAG(KC_E)",
-      "HYPR(KC_F)",
-      "KC_MPRV",
-      "KC_MPLY",
-      "KC_MNXT",
+      "LCAG(KC_R)",
+      "KC_LEFT",
+      "KC_DOWN",
+      "KC_RGHT",
+      "KC_RSFT",
+      "LCAG(KC_Z)",
+      "KC_RGUI",
+      "LCAG(KC_X)",
       "TO(1)"
     ],
     [
@@ -78,10 +78,10 @@
   ],
   "encoders": [
     [
-      ["KC_NO", "KC_NO"],
-      ["KC_NO", "KC_NO"],
-      ["KC_NO", "KC_NO"],
-      ["KC_NO", "KC_NO"]
+      ["KC_PGDN", "KC_PGUP"],
+      ["KC_PGDN", "KC_PGUP"],
+      ["KC_PGDN", "KC_PGUP"],
+      ["KC_PGDN", "KC_PGUP"]
     ],
     [
       ["KC_VOLD", "KC_VOLU"],
