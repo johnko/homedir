@@ -1,7 +1,7 @@
 
 # shift + ctrl + alt + cmd - 1 : echo
 # shift + ctrl + alt + cmd - 2 : echo
-# shift + ctrl + alt + cmd - 3 : osascript ~/.osascripts/terminal-toggle-audio.scpt
+shift + ctrl + alt + cmd - 3 : osascript ~/.osascripts/terminal-toggle-audio.scpt
 shift + ctrl + alt + cmd - 4 : osascript ~/.osascripts/terminal-nosleep.scpt
 shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-prune.scpt
 shift + ctrl + alt + cmd - 6 : yabai -m space --balance
