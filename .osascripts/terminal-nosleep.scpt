@@ -3,5 +3,4 @@ tell application "Terminal"
 	activate application "Terminal"
 	-- delay 1
 	do script ("nosleep") in currentTab
-	do script ("exit") in currentTab
 end tell
