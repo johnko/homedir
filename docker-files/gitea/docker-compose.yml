@@ -6,7 +6,7 @@ services:
       - postgres
     environment:
       - RUN_CROND=true
-    image: gitea/gitea:1.25.1
+    image: gitea/gitea:1.25.2
     links:
       - postgres
     ports:
