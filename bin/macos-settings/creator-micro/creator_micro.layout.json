@@ -5,8 +5,8 @@
   "layers": [
     [
       "KC_NO",
-      "LCAG(KC_1)",
-      "LCAG(KC_2)",
+      "LCAG(KC_Z)",
+      "LCAG(KC_X)",
       "KC_MUTE",
       "LCAG(KC_Q)",
       "KC_UP",
@@ -16,9 +16,9 @@
       "KC_DOWN",
       "KC_RGHT",
       "KC_RSFT",
-      "LCAG(KC_Z)",
+      "KC_NO",
       "KC_RGUI",
-      "LCAG(KC_X)",
+      "LCA(KC_RGUI)",
       "TO(1)"
     ],
     [
