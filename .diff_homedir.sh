@@ -9,8 +9,10 @@ EXCLUDE_PATHS="
 agent.sock
 CODEOWNERS
 creator-micro
+gitea
 gitlab-ce
 iso
+jenkins-lts
 keychron
 lab
 lab-squid-ramdisk
@@ -21,8 +23,8 @@ Preferences
 renovate.json
 squid
 squid-demo-client
-test-secrets-template.yaml
 terminal-kctxt-qa-k9s.scpt
+test-secrets-template.yaml
 NOEXISTSEPERATOR
 .Brewfile
 .gitmodules
