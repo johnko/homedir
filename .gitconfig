@@ -17,10 +17,12 @@
 		git submodule foreach 'git checkout master || git checkout main || :'; \
 		git submodule foreach 'git pull --ff-only origin master || git pull --ff-only origin main || :'; \
 		"
+	phs = push
+	psh = push
 	pu = pull
+	puhs = push
 	pul = pull
 	pus = push
-	puhs = push
 	# Clone a repository including all submodules
 	c = clone --recursive
 	# Commit all changes

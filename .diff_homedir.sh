@@ -7,7 +7,9 @@ EXCLUDE_PATHS="
 .DS_Store
 .git
 agent.sock
+CODEOWNERS
 creator-micro
+gitlab-ce
 iso
 keychron
 lab
@@ -16,6 +18,7 @@ nuphy
 old
 ollama-caddy
 Preferences
+renovate.json
 squid
 squid-demo-client
 test-secrets-template.yaml
