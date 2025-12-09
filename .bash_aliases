@@ -8,7 +8,11 @@ alias yless="jless --yaml"
 
 if [[ -x /usr/bin/dircolors || -e /Users ]]; then
   if [[ -x /usr/bin/dircolors ]]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    if test -r ~/.dircolors; then
+      eval "$(dircolors -b ~/.dircolors)"
+    else
+      eval "$(dircolors -b)"
+    fi
   fi
   #alias dir='dir --color=auto'
   #alias vdir='vdir --color=auto'
@@ -84,9 +88,9 @@ alias ll='ls -alF'
 
 ########################################
 # rsync aliases
-alias rsynca="rsync -viaP --exclude-from=${HOME}/.rsync_exclude"
-alias rsyncc="rsync -virchlmP --exclude-from=${HOME}/.rsync_exclude"
-alias rsynct="rsync -virthlmP --exclude-from=${HOME}/.rsync_exclude"
+alias rsynca="rsync -viaP --exclude-from=\${HOME}/.rsync_exclude"
+alias rsyncc="rsync -virchlmP --exclude-from=\${HOME}/.rsync_exclude"
+alias rsynct="rsync -virthlmP --exclude-from=\${HOME}/.rsync_exclude"
 
 ########################################
 # git aliases
@@ -114,7 +118,7 @@ aws-ssm() {
   aws ssm start-session --target $(aws ec2 describe-instances --filters '[{"Name":"tag:Name","Values":["'$ec2name'"]},{"Name":"instance-state-name","Values":["running"]}]' --query "Reservations[0].Instances[0].InstanceId" --output text)
 }
 fetch_cert() {
-  echo | openssl s_client -servername $1 -connect $1:443 2>/dev/null | openssl x509 -text
+  echo | openssl s_client -servername "$1" -connect "$1:443" 2>/dev/null | openssl x509 -text
 }
 firstlastline() {
   head -n1 "${1}"
@@ -193,6 +197,19 @@ d-vol() {
 
 ########################################
 
+dockprom() {
+  if [[ -d ./code ]]; then
+    SCRIPT_PATH=$(find ./code -maxdepth 3 -type f -name dockprom.sh)
+    if [[ -n "$SCRIPT_PATH" ]]; then
+      cd "$(dirname "$SCRIPT_PATH")" || return 1
+      ./dockprom.sh "$@"
+      cd - || return 1
+    fi
+  fi
+}
+
+########################################
+
 gg() {
   # GG_GITHUB_MILESTONE="--milestone"
   # GG_GITHUB_ORG=
@@ -205,29 +222,32 @@ gg() {
       gh label create "$GG_GITHUB_LABEL" --color '#0E8A16' --force || true
       git push
       set -x
-      gh pr create --assignee '@me' --draft --fill-first --label $GG_GITHUB_LABEL $GG_GITHUB_MILESTONE 2>&1 | tee $TMP_LOG
+      # shellcheck disable=SC2086
+      gh pr create --assignee '@me' --draft --fill-first --label $GG_GITHUB_LABEL $GG_GITHUB_MILESTONE 2>&1 | tee "$TMP_LOG"
       set +x
-      NEW_PR=$(grep "https://github\.com/$GG_GITHUB_ORG/.*/pull/.*" $TMP_LOG | tail -n1)
-      if [[ -n $GG_GITHUB_PROJECT ]]; then
-        gh project item-add $GG_GITHUB_PROJECT --owner $GG_GITHUB_ORG --url $NEW_PR
+      NEW_PR=$(grep "https://github\.com/$GG_GITHUB_ORG/.*/pull/.*" "$TMP_LOG" | tail -n1)
+      if [[ -n "$GG_GITHUB_PROJECT" ]]; then
+        gh project item-add "$GG_GITHUB_PROJECT" --owner "$GG_GITHUB_ORG" --url "$NEW_PR"
       fi
-      test -e $TMP_LOG && rm $TMP_LOG
+      test -e "$TMP_LOG" && rm "$TMP_LOG"
       gh pr view --web
       ;;
     label)
       gh label create "$GG_GITHUB_LABEL" --color '#0E8A16' --force || true
-      if [[ -n $GG_GITHUB_PROJECT ]]; then
-        gh project item-add $GG_GITHUB_PROJECT --owner $GG_GITHUB_ORG --url $2
+      if [[ -n "$GG_GITHUB_PROJECT" ]]; then
+        gh project item-add "$GG_GITHUB_PROJECT" --owner "$GG_GITHUB_ORG" --url "$2"
       fi
-      if echo $2 | grep -q '/pull/'; then
+      if echo "$2" | grep -q '/pull/'; then
         set -x
-        gh pr edit $2 --add-assignee "@me" --add-label $GG_GITHUB_LABEL $GG_GITHUB_MILESTONE
-        gh pr view $2 --web
+        # shellcheck disable=SC2086
+        gh pr edit "$2" --add-assignee "@me" --add-label $GG_GITHUB_LABEL $GG_GITHUB_MILESTONE
+        gh pr view "$2" --web
         set +x
-      elif echo $2 | grep -q '/issues/'; then
+      elif echo "$2" | grep -q '/issues/'; then
         set -x
-        gh issue edit $2 --add-assignee "@me" --add-label $GG_GITHUB_LABEL $GG_GITHUB_MILESTONE
-        gh issue view $2 --web
+        # shellcheck disable=SC2086
+        gh issue edit "$2" --add-assignee "@me" --add-label $GG_GITHUB_LABEL $GG_GITHUB_MILESTONE
+        gh issue view "$2" --web
         set +x
       fi
       ;;
@@ -238,9 +258,9 @@ gg() {
         DEFAULT_BRANCH=main
       fi
       set -x
-      git checkout $DEFAULT_BRANCH
-      if [[ $OLD_BRANCH != "$DEFAULT_BRANCH" ]]; then
-        git branch -D $OLD_BRANCH
+      git checkout "$DEFAULT_BRANCH"
+      if [[ "$OLD_BRANCH" != "$DEFAULT_BRANCH" ]]; then
+        git branch -D "$OLD_BRANCH"
       fi
       git pull --ff-only
       # finally, prune old remote branches
@@ -249,8 +269,8 @@ gg() {
       ;;
     renovate)
       RENOVATE_WORKFLOW_NAME=$(gh workflow list | grep -v config | grep -i renovate | awk '{print $1}')
-      if [[ -n $RENOVATE_WORKFLOW_NAME ]]; then
-        gh workflow run $RENOVATE_WORKFLOW_NAME
+      if [[ -n "$RENOVATE_WORKFLOW_NAME" ]]; then
+        gh workflow run "$RENOVATE_WORKFLOW_NAME"
       else
         gh workflow list >/dev/null 2>&1 || echo "ERROR: Cannot list workflows. Try:    gh auth refresh --scopes workflow"
       fi
@@ -280,22 +300,22 @@ kubectlnodeupgraderollstrategy() {
   kubectl get hpa -A -o yaml | grep -E '(^    name:|minReplicas:|maxReplicas:|^      name:    currentReplicas:|    desiredReplicas:)'
 }
 kubectlnodeupgradestuckpods() {
-  for i in $(kubectl get node | grep SchedulingDisabled | awk -F. '{print $1}'); do kubectl get pod -A -o wide | grep $i | grep -v Completed; done
+  for i in $(kubectl get node | grep SchedulingDisabled | awk -F. '{print $1}'); do kubectl get pod -A -o wide | grep "$i" | grep -v Completed; done
 }
 kubectlpermissions() {
-  kubectl auth can-i --list --namespace $1
+  kubectl auth can-i --list --namespace "$1"
 }
 kubectlnodezone() {
   kubectl get node -o yaml | grep -E '^    name:|topology.kubernetes.io/zone:|labels:|^  metadata:'
 }
 helmdryrun() {
-  helm upgrade --atomic --dry-run -f $1 -n$2 $3 .
+  helm upgrade --atomic --dry-run -f "$1" -n"$2" "$3" .
 }
 helmtemplate() {
-  helm template --atomic -f $1 -f ~/test-secrets-template.yaml -n$2 $3 .
+  helm template --atomic -f "$1" -f ~/test-secrets-template.yaml -n"$2" "$3" .
 }
 helmvalidate() {
-  helm template --atomic -f $1 -f ~/test-secrets-template.yaml -n$2 $3 . | kubectl apply --dry-run=client -f -
+  helm template --atomic -f "$1" -f ~/test-secrets-template.yaml -n"$2" "$3" . | kubectl apply --dry-run=client -f -
 }
 
 ########################################
@@ -323,20 +343,20 @@ lint() {
   fi
   while IFS= read -r i; do
     echo "==> $i"
-    if echo $i | grep -q -E '\.(js|ts)$'; then
+    if echo "$i" | grep -q -E '\.(js|ts)$'; then
       set -x
       npx eslint --config .eslintrc.js --fix "$i"
       set +x
-    elif echo $i | grep -q -E '\.(py)$'; then
+    elif echo "$i" | grep -q -E '\.(py)$'; then
       set -x
       black "$i"
       set +x
-    elif echo $i | grep -q -E '\.(tf)$'; then
+    elif echo "$i" | grep -q -E '\.(tf)$'; then
       set -x
       terraform fmt "$i"
       set +x
     fi
-  done <<<$(echo $FILES)
+  done <<<"$FILES"
 }
 
 ########################################
@@ -354,95 +374,108 @@ nosleep() {
 ########################################
 # repos aliases
 repos-fetchorigin() {
+  # shellcheck disable=SC2044
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
     if [[ -e "${i}/.git" ]]; then
-      pushd "${i}" >/dev/null
-      local branch=$(git branch --show-current)
-      local remoteorigin=$(git remote | grep origin | head -n1)
-      local remotebranch=$(git branch -va | grep "remotes/${remoteorigin}/HEAD" | awk '{print $NF}' | sed "s;${remoteorigin}/;;")
+      pushd "${i}" >/dev/null || return
+      localbranch=$(git branch --show-current)
+      local branch=$localbranch
+      localremoteorigin=$(git remote | grep origin | head -n1)
+      local remoteorigin=$localremoteorigin
+      localremotebranch=$(git branch -va | grep "remotes/${remoteorigin}/HEAD" | awk '{print $NF}' | sed "s;${remoteorigin}/;;")
+      local remotebranch=$localremotebranch
       if [[ -z ${remoteorigin} ]]; then
         echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__RED}* No remotes.${__RESET}"
       else
         local cmdfetch="git fetch ${remoteorigin} ${remotebranch}"
         echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__GREEN}* Running: ${__PURPLE}${cmdfetch}${__RESET}"
+        # shellcheck disable=SC2086
         eval ${cmdfetch} 2>&1 | awk '{print "        "$0}'
-        if [[ ${remotebranch} == "${branch}" ]]; then
+        if [[ "${remotebranch}" = "${branch}" ]]; then
           local cmdmerge="git merge --ff-only ${remoteorigin}/${remotebranch}"
           echo "    ${__GREEN}* Running: ${__PURPLE}${cmdmerge}${__RESET}"
+          # shellcheck disable=SC2086
           eval ${cmdmerge} 2>&1 | awk '{print "        "$0}'
         fi
       fi
-      popd >/dev/null
+      popd >/dev/null || return
     fi
   done
 }
 repos-gitbranches() {
+  # shellcheck disable=SC2044
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
     if [[ -e "${i}/.git" ]]; then
-      pushd "${i}" >/dev/null
-      local branch=$(git branch --show-current)
+      pushd "${i}" >/dev/null || return
+      local_branch=$(git branch --show-current)
+      local branch=$local_branch
       echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch}${__RESET}"
-      popd >/dev/null
+      popd >/dev/null || return
     fi
   done
 }
 repos-renovatebranches() {
+  # shellcheck disable=SC2044
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
     if [[ -e "${i}/.git" ]]; then
-      pushd "${i}" >/dev/null
+      pushd "${i}" >/dev/null || return
       echo "==> ${__YELLOW}${i}${__RESET}"
       git remote prune origin
       git branch -a | grep renovate || true
-      popd >/dev/null
+      popd >/dev/null || return
     fi
   done
 }
 repos-renovaterun() {
+  # shellcheck disable=SC2044
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
     if [[ -e "${i}/.git" ]]; then
-      pushd "${i}" >/dev/null
+      pushd "${i}" >/dev/null || return
       echo "==> ${__YELLOW}${i}${__RESET}"
       gg renovate || true
-      popd >/dev/null
+      popd >/dev/null || return
     fi
   done
 }
 repos-status() {
+  # shellcheck disable=SC2044
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
     if [[ -e "${i}/.git" ]]; then
-      pushd "${i}" >/dev/null
+      pushd "${i}" >/dev/null || return
       echo "==> ${__YELLOW}${i}${__RESET}"
       git status -s
-      popd >/dev/null
+      popd >/dev/null || return
     fi
   done
 }
 repos-tmptmp() {
+  # shellcheck disable=SC2044
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
     if [[ -e "${i}/.git" ]]; then
-      pushd "${i}" >/dev/null
+      pushd "${i}" >/dev/null || return
       echo "==> ${__YELLOW}${i}${__RESET}"
       git branch -a | grep tmp/tmp || true
-      popd >/dev/null
+      popd >/dev/null || return
     fi
   done
 }
 repos-updatemaster() {
   TMP_BRANCH=tmp/tmp$(date +%s)
+  # shellcheck disable=SC2044
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
     if [[ -e "${i}/.git" ]]; then
-      pushd "${i}" >/dev/null
+      pushd "${i}" >/dev/null || return
       echo "==> ${__YELLOW}${i}${__RESET}"
       DEFAULT_BRANCH=master
       if git branch -a | grep -q 'remotes/origin/main'; then
         DEFAULT_BRANCH=main
       fi
-      git checkout -b $TMP_BRANCH
-      git fetch origin $DEFAULT_BRANCH
-      git branch -D $DEFAULT_BRANCH || true
-      git checkout -b $DEFAULT_BRANCH --track origin/$DEFAULT_BRANCH
-      git branch -D $TMP_BRANCH
-      popd >/dev/null
+      git checkout -b "$TMP_BRANCH"
+      git fetch origin "$DEFAULT_BRANCH"
+      git branch -D "$DEFAULT_BRANCH" || true
+      git checkout -b "$DEFAULT_BRANCH" --track "origin/$DEFAULT_BRANCH"
+      git branch -D "$TMP_BRANCH"
+      popd >/dev/null || return
     fi
   done
 }
@@ -454,10 +487,12 @@ audio() {
   LIST_CMD=(SwitchAudioSource -a)
   GREP_CMD=(grep -v -i -E 'microphone|samsung')
   if type SwitchAudioSource &>/dev/null; then
+    # shellcheck disable=SC2128
     FOUND_AUDIO_DEVICE=$($LIST_CMD | $GREP_CMD | grep -i "$FUZZY_MATCH" | head -n 1)
     if [[ -n $FOUND_AUDIO_DEVICE ]]; then
       SwitchAudioSource -s "$FOUND_AUDIO_DEVICE"
     else
+      # shellcheck disable=SC2128
       $LIST_CMD | $GREP_CMD
     fi
   fi
