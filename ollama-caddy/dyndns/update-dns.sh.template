@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
+set -euxo pipefail
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Get public IP address
 curl https://checkip.amazonaws.com | tr -d "\n" >/tmp/myip.txt
+
+# Hide the following commands because they contain secrets
+set +x
 
 # Update DNS record
 echo

@@ -5,7 +5,8 @@ apt update -y
 
 apt install -y \
   locales \
-  openssh-server
+  openssh-server \
+  moreutils
 
 locale-gen en_US.UTF-8
 

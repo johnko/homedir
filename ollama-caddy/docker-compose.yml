@@ -23,9 +23,7 @@ services:
     build: ./ssh/
     container_name: ssh
     entrypoint:
-      - /usr/sbin/sshd
-      - -D
-      - -e
+      - /entrypoint.sh
     image: ssh:local
     ports:
       - 2222:2222
