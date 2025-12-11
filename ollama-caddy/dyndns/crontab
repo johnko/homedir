@@ -16,6 +16,5 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
 # |  |  |  |  |
 # *  *  *  *  * user-name command to be executed
-30 * * * * root /bin/bash /update-dns.sh &>>/var/log/my.log
-0 0 * * * root /usr/bin/echo >/var/log/my.log
+08 * * * * root /bin/bash /cron-exec-wrapper.sh
 #

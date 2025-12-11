@@ -23,3 +23,7 @@ RUN mise use -g go@1.25 ;\
 RUN mv /caddy /usr/bin/caddy
 
 COPY Caddyfile /etc/caddy/Caddyfile
+
+COPY entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh

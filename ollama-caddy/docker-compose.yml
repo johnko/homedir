@@ -3,11 +3,7 @@ services:
     build: .
     container_name: caddyollama
     entrypoint:
-      - caddy
-      - run
-      - --config
-      - /etc/caddy/Caddyfile
-    # entrypoint: [ "sleep", "3600" ]
+      - /entrypoint.sh
     image: caddyollama:local
     ports:
       - 8880:8880

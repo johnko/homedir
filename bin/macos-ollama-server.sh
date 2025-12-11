@@ -15,6 +15,8 @@ export CADDY_OLLAMA_API_TEMP_PASSWORD1=$(op read op://Private/1pcli-caddyollama-
 export CADDY_OLLAMA_API_PUBKEY1=$(op read "op://Private/1pcli-caddyollama-api-pubkey1/public key")
 export CADDY_OLLAMA_API_PUBKEY2=$(op read "op://Private/1pcli-caddyollama-api-pubkey2/public key")
 
+export DOLLAR='$'
+
 if type docker-compose &>/dev/null; then
   DOCKERCOMPOSE_BIN="docker-compose"
 else

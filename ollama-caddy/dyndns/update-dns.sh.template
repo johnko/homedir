@@ -4,26 +4,22 @@ set -euxo pipefail
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Get public IP address
-curl https://checkip.amazonaws.com | tr -d "\n" >/tmp/myip.txt
+PUBLIC_IP=$(curl --silent https://checkip.amazonaws.com | tr -d "\n")
 
 # Hide the following commands because they contain secrets
 set +x
 
 # Update DNS record
-echo
-
 curl -sS -X PUT "https://api.cloudflare.com/client/v4/zones/$CADDY_OLLAMA_API_ZONEID/dns_records/$CADDY_OLLAMA_API_RECORDID" \
      -H "Authorization: Bearer $CADDY_OLLAMA_API_CFTOKEN" \
      -H "Content-Type: application/json" \
-     --data '{"type":"A","name":"'$CADDY_OLLAMA_API_DOMAIN'","content":"'`cat /tmp/myip.txt`'","ttl":1,"proxied":true}'
-
+     --data '{"type":"A","name":"'$CADDY_OLLAMA_API_DOMAIN'","content":"'${DOLLAR}PUBLIC_IP'","ttl":1,"proxied":true}'
+# add newline for log
 echo
 
 curl -sS -X PUT "https://api.cloudflare.com/client/v4/zones/$CADDY_OLLAMA_API_ZONEID/dns_records/$CADDY_OLLAMA_API_RECORDID2" \
      -H "Authorization: Bearer $CADDY_OLLAMA_API_CFTOKEN" \
      -H "Content-Type: application/json" \
-     --data '{"type":"A","name":"'$CADDY_OLLAMA_API_DOMAIN2'","content":"'`cat /tmp/myip.txt`'","ttl":1,"proxied":false}'
-
+     --data '{"type":"A","name":"'$CADDY_OLLAMA_API_DOMAIN2'","content":"'${DOLLAR}PUBLIC_IP'","ttl":1,"proxied":false}'
+# add newline for log
 echo
-
-date
