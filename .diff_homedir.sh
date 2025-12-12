@@ -14,7 +14,6 @@ gitlab-ce
 iso
 jenkins-lts
 keychron
-lab
 lab-squid-ramdisk
 nuphy
 old
