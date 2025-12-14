@@ -39,9 +39,9 @@ case ${1} in
       [ -e ./kind-client.key ] || openssl genrsa -out ./kind-client.key 4096
       if [ ! -e ./kind-client.csr ]; then
         openssl req -config ./csr.conf -new -key ./kind-client.key -nodes -out ./kind-client.csr
-        BASE64_CSR=$(cat ./kind-client.csr | base64 | tr -d '\n')
+        BASE64_CSR=$(base64 <./kind-client.csr | tr -d '\n')
         export BASE64_CSR
-        cat ./k8s-csr.yaml | envsubst | kubectl apply -f -
+        envsubst <./k8s-csr.yaml | kubectl apply -f -
         kubectl get csr jenkinsagent
         kubectl certificate approve jenkinsagent
       fi
