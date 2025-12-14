@@ -15,7 +15,7 @@ jobs:
         run: |
           bash -ex .github/terraform-fmt.sh
           bash -ex .github/terraform-validate.sh
-    timeout-minutes: 10
+    timeout-minutes: 20
 name: terraform-checks
 on:
   pull_request:

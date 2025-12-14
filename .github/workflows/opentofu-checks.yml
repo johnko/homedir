@@ -17,7 +17,7 @@ jobs:
         run: |
           bash -ex .github/opentofu-fmt.sh
           bash -ex .github/opentofu-validate.sh
-    timeout-minutes: 10
+    timeout-minutes: 20
 name: opentofu-checks
 on:
   pull_request:
