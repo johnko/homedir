@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -eux
 
+poolname=data
+diskX=/dev/disk99
+
 create_default_zpool() {
   ## See https://openzfsonosx.org/wiki/Zpool#Creating_a_pool
   sudo zpool create -f \
@@ -8,12 +11,12 @@ create_default_zpool() {
     -O casesensitivity=insensitive -O normalization=formD \
     -O atime=off -O compression=lz4 \
     -O copies=2 \
-    ${poolname} ${diskX}
+    "${poolname}" "${diskX}"
   # mirror $diskX $diskY
-  while sudo mdutil -i off /Volumes/${poolname} | grep 'Please try again in a moment'; do
+  while sudo mdutil -i off "/Volumes/${poolname}" | grep 'Please try again in a moment'; do
     sleep 1
   done
-  sudo zpool set feature@encryption=enabled ${poolname}
+  sudo zpool set feature@encryption=enabled "${poolname}"
 }
 
 create_enc_filesystem() {
@@ -21,8 +24,8 @@ create_enc_filesystem() {
     -o encryption=on -o keylocation=prompt -o keyformat=passphrase \
     -o casesensitivity=sensitive \
     -o normalization=formD \
-    ${poolname}/enc
-  while sudo mdutil -i off /Volumes/${poolname}/enc | grep 'Please try again in a moment'; do
+    "${poolname}/enc"
+  while sudo mdutil -i off "/Volumes/${poolname}/enc" | grep 'Please try again in a moment'; do
     sleep 1
   done
 }
@@ -31,8 +34,8 @@ create_data_filesystem() {
   sudo zfs create \
     -o casesensitivity=sensitive \
     -o normalization=formD \
-    ${poolname}/data
-  while sudo mdutil -i off /Volumes/${poolname}/data | grep 'Please try again in a moment'; do
+    "${poolname}/data"
+  while sudo mdutil -i off "/Volumes/${poolname}/data" | grep 'Please try again in a moment'; do
     sleep 1
   done
 }

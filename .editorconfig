@@ -1,0 +1,30 @@
+[.path-for-shfmt-to-ignore]  # replace with the directory that you want shfmt to ignore
+ignore = true
+
+[bin/macos-setup/macos-homebrew.sh]
+ignore = true
+
+# git submodule status | awk '{print "["$2"]\nignore = true\n"}'
+[.bash-git-prompt]
+ignore = true
+
+[.zsh/kube-ps1]
+ignore = true
+
+[.zsh/pure]
+ignore = true
+
+[.zsh/zsh-colored-man-pages]
+ignore = true
+
+[.zsh/zsh-command-time]
+ignore = true
+
+[docker-files/squid/ref/docker-squid-cache-all]
+ignore = true
+
+[docker-files/squid/ref/squid-in-a-can]
+ignore = true
+
+[docker-files/squid/ref/squid-npm]
+ignore = true

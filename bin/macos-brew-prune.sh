@@ -9,13 +9,14 @@ if type brew &>/dev/null; then
     fi
     if type code &>/dev/null; then
       echo "Pruning VSCode extensions"
+      extra_grep_ignore=$(
+        cat Brewfile $EXTRA_BREWFILE | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
+      )
       for i in $(
         code --list-extensions |
-          grep -v -E "docker|terraform|"$(
-            cat Brewfile $EXTRA_BREWFILE | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
-          )
+          grep -v -E "docker|terraform|$extra_grep_ignore"
       ); do
-        code --uninstall-extension $i &>/dev/null && (
+        code --uninstall-extension "$i" &>/dev/null && (
           echo
           echo "code --uninstall-extension $i"
         ) || echo -n "."
@@ -23,13 +24,14 @@ if type brew &>/dev/null; then
     fi
     echo
     echo "Pruning Homebrew packages"
+    extra_grep_ignore=$(
+      cat Brewfile $EXTRA_BREWFILE | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
+    )
     for i in $(
       brew list |
-        grep -v -E "1password|applesimutils|docker|terraform|"$(
-          cat Brewfile $EXTRA_BREWFILE | grep -v 'instance_eval' | grep -v '^#' | grep -v '^$' | tr -d , | tr -d '"' | awk '{print $2}' | tr "\n" '|' | sed 's,|$,,'
-        )
+        grep -v -E "1password|applesimutils|docker|terraform|$extra_grep_ignore"
     ); do
-      brew uninstall $i &>/dev/null && (
+      brew uninstall "$i" &>/dev/null && (
         echo
         echo "brew uninstall $i"
       ) || echo -n "."

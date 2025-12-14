@@ -41,7 +41,9 @@ func_brew_pkgs() {
     watch
     zsh-syntax-highlighting
     "
+  # shellcheck disable=SC2086
   # brew remove ${BREW_PACKAGES} || true
+  # shellcheck disable=SC2086
   brew install ${BREW_PACKAGES}
 }
 
@@ -57,7 +59,9 @@ func_cask_pkgs() {
   # keka
   # xquartz
   # inkscape
+  # shellcheck disable=SC2086
   # brew cask remove ${CASK_PACKAGES} || true
+  # shellcheck disable=SC2086
   brew install --cask ${CASK_PACKAGES}
 }
 

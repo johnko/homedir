@@ -23,6 +23,7 @@ case $1 in
     multipass info $NAME
     ;;
   ps)
+    # shellcheck disable=SC2009
     ps aux | grep qemu
     ;;
   restart)

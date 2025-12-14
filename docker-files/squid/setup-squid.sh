@@ -3,8 +3,8 @@ set -eux
 
 MY_TMP_CONTEXT="${HOME}/docker-files/squid"
 
-[ ! -d ${MY_TMP_CONTEXT} ] && exit 1
-cd ${MY_TMP_CONTEXT}
+[ ! -d "${MY_TMP_CONTEXT}" ] && exit 1
+cd "${MY_TMP_CONTEXT}"
 
 if which docker >/dev/null 2>&1; then
   DOCKER_BIN=docker
@@ -18,7 +18,7 @@ set +u
 case ${1} in
   get-ca)
     ## Extract the CA.pem so it can be used in client containers
-    $DOCKER_BIN cp squid:/squid/certs/CA.pem $PWD/
+    $DOCKER_BIN cp squid:/squid/certs/CA.pem "$PWD/"
     ;;
   down)
     ## Destroy the stack but keep the data

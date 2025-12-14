@@ -531,7 +531,7 @@ Twitter or any other official channels. You are responsible for resolving any
 issues you experience while you are running this ${what}.
 EOS
     )
-" | tr -d '\'
+" | tr -d "\"
   fi
 fi
 

@@ -46,4 +46,4 @@ MAPPING='
   ]
 }'
 
-/usr/bin/hidutil property --set "$(echo $MAPPING | tr -d ' ')"
+/usr/bin/hidutil property --set "$(echo "$MAPPING" | tr -d ' ')"
