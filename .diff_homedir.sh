@@ -37,6 +37,7 @@ for i in $EXCLUDE_PATHS; do
   EXCLUDE_ARG="$EXCLUDE_ARG --exclude $i"
 done
 
+# shellcheck disable=SC2086
 diff -r \
   $EXCLUDE_ARG \
-  $1 $2
+  "$1" "$2"

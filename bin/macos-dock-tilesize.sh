@@ -3,7 +3,7 @@ set -euo pipefail
 
 print_cmd() {
 
-  while read LINE; do
+  while read -r LINE; do
     if [[ -n $LINE ]]; then
       KEY=$(echo "$LINE" | tr -d ' ' | awk -F= '{print $1}')
       VAL=$(echo "$LINE" | tr -d ' ' | awk -F= '{print $2}' | tr -d ';')
@@ -53,7 +53,7 @@ KEYVAL="
 print_cmd
 
 DOMAIN="com.apple.dock"
-KEYVAL="
+KEYVAL='
         enterMissionControlByTopWindowDrag = 0;
         largesize = 64;
         magnification = 1;
@@ -62,7 +62,7 @@ KEYVAL="
         orientation = left;
         showAppExposeGestureEnabled = 0;
         tilesize = 48;
-"
+'
 print_cmd
 
 DOMAIN="com.apple.finder"

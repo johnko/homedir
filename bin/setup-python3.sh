@@ -24,8 +24,9 @@ command -v python3.7 >/dev/null 2>&1 && PY_BIN="python3.7"
 
 VENV_FOLDER="venv-python3"
 VENV_PATH="${HOME}/${VENV_FOLDER}"
-${PY_BIN} -m venv ${VENV_PATH}
-source ${VENV_PATH}/bin/activate
+${PY_BIN} -m venv "${VENV_PATH}"
+# shellcheck disable=SC1091
+source "${VENV_PATH}/bin/activate"
 
 echo "=>  Detecting pip3, pip2 or pip..."
 # Last one wins

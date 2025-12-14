@@ -14,7 +14,7 @@ for i in \
   # BACKUP TO JSON (sorted)
   if [[ -e $i ]]; then
     plutil -convert json -o ./tmp_symbolichotkeys.json $i
-    cat ./tmp_symbolichotkeys.json | jq '.AppleSymbolicHotKeys' --sort-keys >${i}.json
+    jq '.AppleSymbolicHotKeys' --sort-keys <./tmp_symbolichotkeys.json >${i}.json
     rm ./tmp_symbolichotkeys.json
   fi
 

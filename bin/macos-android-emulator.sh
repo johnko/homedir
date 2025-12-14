@@ -17,7 +17,7 @@ if type sdkmanager &>/dev/null; then
 
   set -x
 
-  sdkmanager --install $ANDROID_PACKAGE
+  sdkmanager --install "$ANDROID_PACKAGE"
 
   echo "no" | avdmanager --verbose create avd --force --name "$DEVICE_NAME" --package "$ANDROID_PACKAGE" --tag "google_apis_playstore" --abi "arm64-v8a"
 

@@ -1,19 +1,29 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-export CADDY_OLLAMA_API_DOMAIN=$(op read op://Private/1pcli-caddyollama-api-domain/host)
-export CADDY_OLLAMA_API_ZONEID=$(op read op://Private/1pcli-caddyollama-api-domain/zoneid)
-export CADDY_OLLAMA_API_RECORDID=$(op read op://Private/1pcli-caddyollama-api-domain/recordid)
-export CADDY_OLLAMA_API_CFTOKEN=$(op read op://Private/1pcli-caddyollama-api-domain/credential)
+CADDY_OLLAMA_API_DOMAIN=$(op read op://Private/1pcli-caddyollama-api-domain/host)
+export CADDY_OLLAMA_API_DOMAIN
+CADDY_OLLAMA_API_ZONEID=$(op read op://Private/1pcli-caddyollama-api-domain/zoneid)
+export CADDY_OLLAMA_API_ZONEID
+CADDY_OLLAMA_API_RECORDID=$(op read op://Private/1pcli-caddyollama-api-domain/recordid)
+export CADDY_OLLAMA_API_RECORDID
+CADDY_OLLAMA_API_CFTOKEN=$(op read op://Private/1pcli-caddyollama-api-domain/credential)
+export CADDY_OLLAMA_API_CFTOKEN
 
-export CADDY_OLLAMA_API_DOMAIN2=$(op read op://Private/1pcli-caddyollama-api-domain/host2)
-export CADDY_OLLAMA_API_RECORDID2=$(op read op://Private/1pcli-caddyollama-api-domain/recordid2)
+CADDY_OLLAMA_API_DOMAIN2=$(op read op://Private/1pcli-caddyollama-api-domain/host2)
+export CADDY_OLLAMA_API_DOMAIN2
+CADDY_OLLAMA_API_RECORDID2=$(op read op://Private/1pcli-caddyollama-api-domain/recordid2)
+export CADDY_OLLAMA_API_RECORDID2
 
-export CADDY_OLLAMA_API_USER1=$(op read op://Private/1pcli-caddyollama-api-user1/username)
-export CADDY_OLLAMA_API_TEMP_PASSWORD1=$(op read op://Private/1pcli-caddyollama-api-user1/password)
+CADDY_OLLAMA_API_USER1=$(op read op://Private/1pcli-caddyollama-api-user1/username)
+export CADDY_OLLAMA_API_USER1
+CADDY_OLLAMA_API_TEMP_PASSWORD1=$(op read op://Private/1pcli-caddyollama-api-user1/password)
+export CADDY_OLLAMA_API_TEMP_PASSWORD1
 
-export CADDY_OLLAMA_API_PUBKEY1=$(op read "op://Private/1pcli-caddyollama-api-pubkey1/public key")
-export CADDY_OLLAMA_API_PUBKEY2=$(op read "op://Private/1pcli-caddyollama-api-pubkey2/public key")
+CADDY_OLLAMA_API_PUBKEY1=$(op read "op://Private/1pcli-caddyollama-api-pubkey1/public key")
+export CADDY_OLLAMA_API_PUBKEY1
+CADDY_OLLAMA_API_PUBKEY2=$(op read "op://Private/1pcli-caddyollama-api-pubkey2/public key")
+export CADDY_OLLAMA_API_PUBKEY2
 
 export DOLLAR='$'
 
@@ -41,7 +51,7 @@ relaunch_ollama() {
     pull)
       CONTINUE_CONFIG="$HOME/.continue/config.json"
       if type ollama &>/dev/null; then
-        jq -r '.. | .model? // empty' $CONTINUE_CONFIG | sort -u | xargs -I{} bash -c "echo '==> {}'; ollama pull {}"
+        jq -r '.. | .model? // empty' "$CONTINUE_CONFIG" | sort -u | xargs -I{} bash -c "echo '==> {}'; ollama pull {}"
         exit 0
       else
         echo "ERROR: missing 'ollama'"
@@ -52,10 +62,12 @@ relaunch_ollama() {
       set +e
       set -u
       export OLLAMA_HOST=0.0.0.0:11434
-      export OLLAMA_HOST_LAN=$(get-ip | tail -n1):11434
+      OLLAMA_HOST_LAN=$(get-ip | tail -n1):11434
+      export OLLAMA_HOST_LAN
 
       # run caddy container so we can have some kind of authentication
-      export CADDY_COMPOSE_FOLDER="$(dirname $0)/../ollama-caddy"
+      CADDY_COMPOSE_FOLDER="$(dirname "$0")/../ollama-caddy"
+      export CADDY_COMPOSE_FOLDER
       if [[ -d $CADDY_COMPOSE_FOLDER ]]; then
         pushd "$CADDY_COMPOSE_FOLDER"
         # export CLOUDFLARE_IPV4=$(curl 'https://www.cloudflare.com/ips-v4/#' | tr "\n" ' ')
@@ -66,10 +78,11 @@ relaunch_ollama() {
         touch Caddyfile
         $DOCKERCOMPOSE_BIN build --no-cache caddyollama
 
-        export CADDY_OLLAMA_API_PASSWORD1=$( (
-          echo $CADDY_OLLAMA_API_TEMP_PASSWORD1
-          echo $CADDY_OLLAMA_API_TEMP_PASSWORD1
+        CADDY_OLLAMA_API_PASSWORD1=$( (
+          echo "$CADDY_OLLAMA_API_TEMP_PASSWORD1"
+          echo "$CADDY_OLLAMA_API_TEMP_PASSWORD1"
         ) | $DOCKER_BIN run --rm -it --entrypoint caddy caddyollama:local hash-password | tail -n 1)
+        export CADDY_OLLAMA_API_PASSWORD1
 
         if [[ -z $CADDY_OLLAMA_API_PASSWORD1 ]]; then
           exit 1
@@ -95,7 +108,8 @@ relaunch_ollama() {
       fi
       ;;
     lan)
-      export OLLAMA_HOST=$(get-ip | tail -n1):11434
+      OLLAMA_HOST=$(get-ip | tail -n1):11434
+      export OLLAMA_HOST
       set -u
       ;;
     *)
@@ -115,5 +129,5 @@ relaunch_ollama() {
 
 while true; do
   set +u
-  relaunch_ollama $1
+  relaunch_ollama "$1"
 done

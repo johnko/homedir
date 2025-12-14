@@ -14,19 +14,19 @@ if type xcrun &>/dev/null; then
 
     SIM_RUNTIME_ID=$(xcrun simctl list runtimes | grep -o ' - [^ ]*$' | sed 's, - ,,')
 
-    xcrun simctl create $DEVICE_NAME $SIM_DEVICE_TYPE $SIM_RUNTIME_ID
+    xcrun simctl create "$DEVICE_NAME" "$SIM_DEVICE_TYPE" "$SIM_RUNTIME_ID"
 
     ID=$(xcrun simctl list devices | grep "$DEVICE_NAME")
   fi
 
   echo "My devices:"
-  echo $ID
+  echo "$ID"
 
-  xcrun simctl shutdown $ID || true
+  xcrun simctl shutdown "$ID" || true
 
-  xcrun simctl erase $ID
+  xcrun simctl erase "$ID"
 
-  xcrun simctl boot $ID
+  xcrun simctl boot "$ID"
 
   open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
 else

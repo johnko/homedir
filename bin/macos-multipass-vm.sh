@@ -37,6 +37,7 @@ while getopts ":n:i:c:m:s:" o; do
       ;;
     i)
       i=$OPTARG
+      ISO=$i
       ;;
     c)
       c=$OPTARG
@@ -122,41 +123,42 @@ case $ACTN in
     # sudo multipass get local.driver | grep qemu || sudo multipass set local.driver=qemu
     sudo multipass launch \
       -vvv \
-      --name=$NAME \
-      --cpus=$CPUS \
-      --memory=${MEMS}G \
-      --disk=${STOR}G \
+      --name="$NAME" \
+      --cpus="$CPUS" \
+      --memory="${MEMS}G" \
+      --disk="${STOR}G" \
       --network="name=$NIC,mode=auto" \
-      --cloud-init=$(dirname $0)/../lab-squid-ramdisk/cloud-init.yaml \
-      $ISO
+      --cloud-init="$(dirname "$0")/../lab-squid-ramdisk/cloud-init.yaml" \
+      "$ISO"
     ;;
   destroy)
     set +e
-    while sudo multipass list | grep $NAME; do
-      sudo multipass stop $NAME
-      sudo multipass delete $NAME
+    while sudo multipass list | grep "$NAME"; do
+      sudo multipass stop "$NAME"
+      sudo multipass delete "$NAME"
       sudo multipass purge
       sleep 1
     done
     ;;
   info)
-    sudo multipass info $NAME
+    sudo multipass info "$NAME"
     ;;
   list)
     sudo multipass list
     ;;
   ps)
+    # shellcheck disable=SC2009
     ps aux | grep qemu
     ;;
   restart)
-    sudo multipass stop $NAME
-    sudo multipass start $NAME
+    sudo multipass stop "$NAME"
+    sudo multipass start "$NAME"
     ;;
   start)
-    sudo multipass start $NAME
+    sudo multipass start "$NAME"
     ;;
   stop)
-    sudo multipass stop $NAME
+    sudo multipass stop "$NAME"
     ;;
   *)
     usage

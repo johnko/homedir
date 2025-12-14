@@ -15,7 +15,7 @@ set -u
 echo "=>  Installing sudoers.d..."
 echo "=>  - ANSIBLE_ACTION=$ANSIBLE_ACTION"
 
-pushd $(dirname $0)
+pushd "$(dirname "$0")"
 
 set +e
 set -x

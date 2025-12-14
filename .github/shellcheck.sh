@@ -31,4 +31,11 @@ shellcheck --version
 
 set +e
 
-find . -type f \( -name '*.sh' -o -name '*.envrc' \) -print0 | xargs -0 --max-procs=2 --verbose -I{} shellcheck --check-sourced --external-sources {}
+# git submodule status | awk '{print "-a -not -path **/"$2"/**"}' | tr "\n" " " | sed "s,\*\*/,'*,g" | sed "s,/\*\*,*',g" ; echo "\\"
+
+find . -type f \( -name '*.sh' -o -name '*.envrc' \) \
+  \
+  -a -not -path '*.bash-git-prompt*' -a -not -path '*.zsh/kube-ps1*' -a -not -path '*.zsh/pure*' -a -not -path '*.zsh/zsh-colored-man-pages*' -a -not -path '*.zsh/zsh-command-time*' -a -not -path '*docker-files/squid/ref/docker-squid-cache-all*' -a -not -path '*docker-files/squid/ref/squid-in-a-can*' -a -not -path '*docker-files/squid/ref/squid-npm*' \
+  \
+  -a -not -name 'macos-homebrew.sh' \
+  -print0 | xargs -0 --max-procs=2 --verbose -I{} shellcheck --check-sourced --external-sources {}

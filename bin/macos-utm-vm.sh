@@ -9,8 +9,8 @@ if [[ ! -e /Volumes/RAMDisk/.metadata_never_index ]]; then
   exit 1
 fi
 
-if [[ -e /Applications/UTM.app/Contents/MacOS/utmctl && ! -e ${HOME}/bin/utmctl ]]; then
-  ln -sf /Applications/UTM.app/Contents/MacOS/utmctl ${HOME}/bin/utmctl
+if [[ -e /Applications/UTM.app/Contents/MacOS/utmctl && ! -e "${HOME}"/bin/utmctl ]]; then
+  ln -sf /Applications/UTM.app/Contents/MacOS/utmctl "${HOME}"/bin/utmctl
 fi
 
 usage() {
@@ -84,12 +84,12 @@ if [[ "create" == "$ACTN" ]] && [[ -z $i ]]; then
   usage
 fi
 if [[ -n $i ]]; then
-  ISO=$(find ${HOME}/iso -name '*.iso' | grep -i "$i")
+  ISO=$(find "${HOME}"/iso -name '*.iso' | grep -i "$i")
   if [[ -z $ISO ]]; then
     usage
   fi
 fi
-CLOUD_INIT_ISO=$(find ${HOME}/iso -name 'cloudinit.iso')
+CLOUD_INIT_ISO=$(find "${HOME}"/iso -name 'cloudinit.iso')
 [[ -z $CPUS ]] && CPUS=1
 [[ -z $MEMS ]] && MEMS=1
 [[ -z $STOR ]] && STOR=10
@@ -106,29 +106,30 @@ mkdir_ramdisk_vm() {
   test -d /Volumes/RAMDisk/vm || install -d -v -m 755 /Volumes/RAMDisk/vm
 }
 mk_symlink_utmdoc() {
-  ln -sf /Volumes/RAMDisk/vm/utmdocuments ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents
+  ln -sf /Volumes/RAMDisk/vm/utmdocuments "${HOME}"/Library/Containers/com.utmapp.UTM/Data/Documents
 }
 
 # perform the ACTN
 set -ux
 case $ACTN in
   create)
-    if test -L ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents; then
-      if ! ls -l ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents/; then
-        if test -d ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents.bkp; then
+    if test -L "${HOME}"/Library/Containers/com.utmapp.UTM/Data/Documents; then
+      if ! ls -l "${HOME}"/Library/Containers/com.utmapp.UTM/Data/Documents/; then
+        if test -d "${HOME}"/Library/Containers/com.utmapp.UTM/Data/Documents.bkp; then
           mkdir_ramdisk_vm
-          # cp -a ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents.bkp /Volumes/RAMDisk/vm/utmdocuments
+          # cp -a "${HOME}"/Library/Containers/com.utmapp.UTM/Data/Documents.bkp /Volumes/RAMDisk/vm/utmdocuments
         fi
       fi
-    elif test -d ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents; then
+    elif test -d "${HOME}"/Library/Containers/com.utmapp.UTM/Data/Documents; then
       mkdir_ramdisk_vm
-      # test -d ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents.bkp || cp -a ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents.bkp
-      # mv ${HOME}/Library/Containers/com.utmapp.UTM/Data/Documents /Volumes/RAMDisk/vm/utmdocuments
+      # test -d "${HOME}"/Library/Containers/com.utmapp.UTM/Data/Documents.bkp || cp -a "${HOME}"/Library/Containers/com.utmapp.UTM/Data/Documents "${HOME}"/Library/Containers/com.utmapp.UTM/Data/Documents.bkp
+      # mv "${HOME}"/Library/Containers/com.utmapp.UTM/Data/Documents /Volumes/RAMDisk/vm/utmdocuments
       # mk_symlink_utmdoc
     else
       install -d -v -m 755 /Volumes/RAMDisk/vm/utmdocuments
       # mk_symlink_utmdoc
     fi
+    # shellcheck disable=SC2086
     osascript -e '
 tell application "UTM"
   --- specify a boot ISO
@@ -140,6 +141,7 @@ tell application "UTM"
   --- so we used duplicate above
 end tell
 '
+    # shellcheck disable=SC2086
     osascript -e '
 tell application "UTM"
   set vm to virtual machine named "'$NAME'"
@@ -164,30 +166,32 @@ end tell
     ;;
   destroy)
     set +e
-    while utmctl list | grep $NAME; do
-      utmctl stop $NAME
-      utmctl delete $NAME
+    while utmctl list | grep "$NAME"; do
+      utmctl stop "$NAME"
+      utmctl delete "$NAME"
       sleep 1
     done
     ;;
   info)
-    utmctl status $NAME
-    # utmctl ip-address $NAME
+    utmctl status "$NAME"
+    # utmctl ip-address "$NAME"
     ;;
   list)
     utmctl list
     ;;
   ps)
+    # shellcheck disable=SC2009
     ps aux | grep qemu
     ;;
   restart)
-    utmctl stop $NAME
-    utmctl start $NAME
+    utmctl stop "$NAME"
+    utmctl start "$NAME"
     ;;
   start)
-    utmctl start $NAME
+    utmctl start "$NAME"
     set +x
     INSTALLED=false
+    # shellcheck disable=SC2086
     osascript -e '
 tell application "UTM"
   set vm to virtual machine named "'$NAME'"
@@ -201,19 +205,20 @@ end tell
       [[ "true" == "$STOPPED" ]] && continue
       [[ "true" == "$INSTALLED" ]] && continue
       sleep 60
-      utmctl status $NAME | grep -q stopped && STOPPED=true
+      utmctl status "$NAME" | grep -q stopped && STOPPED=true
     done
     if [[ "true" == "$STOPPED" ]] && [[ "false" == "$INSTALLED" ]]; then
-      ${0##*/} unmount-boot-iso -n $NAME
-      ${0##*/} start -n $NAME
+      ${0##*/} unmount-boot-iso -n "$NAME"
+      ${0##*/} start -n "$NAME"
     fi
     ;;
   stop)
-    utmctl stop $NAME
+    utmctl stop "$NAME"
     ;;
   unmount-boot-iso)
     set +e
-    utmctl stop $NAME
+    utmctl stop "$NAME"
+    # shellcheck disable=SC2086
     osascript -e '
 tell application "UTM"
   set vm to virtual machine named "'$NAME'"

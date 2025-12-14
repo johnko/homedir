@@ -3,8 +3,8 @@ set -eux
 
 MY_TMP_CONTEXT="${HOME}/docker-files/jenkins-lts"
 
-[ ! -d ${MY_TMP_CONTEXT} ] && exit 1
-cd ${MY_TMP_CONTEXT}
+[ ! -d "${MY_TMP_CONTEXT}" ] && exit 1
+cd "${MY_TMP_CONTEXT}"
 
 set +u
 case ${1} in
@@ -13,25 +13,25 @@ case ${1} in
     ;;
   down)
     ## Destroy the stack but keep the data
-    docker-compose down
+    docker compose down
     ;;
   destroy)
     ## Destroy the stack and data
-    docker-compose down --volumes
+    docker compose down --volumes
     ;;
   logs)
-    docker-compose logs
+    docker compose logs
     ;;
   ps)
-    docker-compose ps
+    docker compose ps
     ;;
   top)
-    docker-compose top
+    docker compose top
     ;;
   k8sagents)
     set +x
     echo "==> Automation START"
-    grep certificate-authority-data ${HOME}/.kube/config | awk '{print $NF}' | base64 -d >./kind-ca.crt
+    grep certificate-authority-data "${HOME}/.kube/config" | awk '{print $NF}' | base64 -d >./kind-ca.crt
 
     kubectl apply -f ./k8s-ns.yaml
 
@@ -39,8 +39,9 @@ case ${1} in
       [ -e ./kind-client.key ] || openssl genrsa -out ./kind-client.key 4096
       if [ ! -e ./kind-client.csr ]; then
         openssl req -config ./csr.conf -new -key ./kind-client.key -nodes -out ./kind-client.csr
-        export BASE64_CSR=$(cat ./kind-client.csr | base64 | tr -d '\n')
-        cat ./k8s-csr.yaml | envsubst | kubectl apply -f -
+        BASE64_CSR=$(base64 <./kind-client.csr | tr -d '\n')
+        export BASE64_CSR
+        envsubst <./k8s-csr.yaml | kubectl apply -f -
         kubectl get csr jenkinsagent
         kubectl certificate approve jenkinsagent
       fi
@@ -63,7 +64,7 @@ case ${1} in
     echo "jenkinsagent"
     echo
     echo "==> Credentials:"
-    ls -l $(pwd)/kind-client.pfx
+    ls -l "$(pwd)/kind-client.pfx"
     echo
     echo "==> Jenkins URL:"
     echo "http://jenkins-2.249.1:8080"
@@ -80,11 +81,11 @@ case ${1} in
     rm ./kind-client.key ./kind-client.crt ./kind-ca.crt ./kind-client.csr
     ;;
   up | *)
-    docker-compose pull
+    docker compose pull
     ## Create and run the stack interactively
-    # docker-compose up
+    # docker compose up
     ## Create and run the stack in the background
-    docker-compose up -d
+    docker compose up -d
     ;;
 esac
 
