@@ -1,5 +1,4 @@
 tell application "Terminal"
-	set currentTab to do script ("nosleep")
+	set currentTab to do script ("nosleep ; exit")
 	activate application "Terminal"
-	do script ("exit") in currentTab
 end tell
