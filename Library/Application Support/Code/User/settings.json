@@ -64,11 +64,14 @@
     "{docsmsft.docs-linting}/markdownlint-custom-rules/rules.js"
   ],
   "pgsql.resultsFontSize": 14,
+  "python.defaultInterpreterPath": "~/venv-python3",
   "redhat.telemetry.enabled": false,
   "scm.inputFontSize": 14,
   "telemetry.telemetryLevel": "off",
+  "terminal.explorerKind": "external",
   "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.fontSize": 14,
+  "terminal.integrated.hideOnStartup": "always",
   "terraform.codelens.referenceCount": true,
   "terraform.experimentalFeatures.prefillRequiredFields": true,
   "terraform.experimentalFeatures.validateOnSave": true,
@@ -84,6 +87,5 @@
     "file://~/.vscode/extensions/continue.continue-1.2.11-darwin-arm64/config-yaml-schema.json": [
       ".continue/**/*.yaml"
     ]
-  },
-  "python.defaultInterpreterPath": "~/venv-python3"
+  }
 }
