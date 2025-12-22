@@ -95,7 +95,7 @@
       month: "short",
       day: "numeric",
     });
-  }, 1000);
+  }, 500);
 
   setInterval(() => {
     let clock = document.getElementById('clock');
@@ -122,7 +122,7 @@
     } else {
       fg.style.visibility = 'visible';
     }
-  }, 1000);
+  }, 500);
 </script>
 </body>
 
