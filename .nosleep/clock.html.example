@@ -1,0 +1,111 @@
+<html lang="en">
+
+<head>
+  <title>clock</title>
+  <style>
+    /* Default styles (e.g., light mode) */
+    body {
+      background-color: #fff;
+      color: #222;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      width: 100%;
+    }
+
+    video {
+      top: 0;
+      min-height: 100%;
+      min-width: 100%;
+      opacity: 30%;
+      position: fixed;
+      right: 0;
+    }
+
+    /* Styles for dark mode */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #222;
+        color: #ddd;
+      }
+
+      video {
+        opacity: 15%;
+      }
+    }
+
+    div {
+      font-family: 'Arial Rounded MT Bold';
+      font-weight: bold;
+    }
+
+    #overlay {
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    #day {
+      margin-top: 5%;
+      /* centre */
+      max-width: fit-content;
+      margin-bottom: 0;
+      margin-left: auto;
+      margin-right: auto;
+
+      font-size: 90pt;
+    }
+
+    #clock {
+      /* centre */
+      max-width: fit-content;
+      margin-bottom: 0;
+      margin-left: auto;
+      margin-right: auto;
+
+      font-size: 400pt;
+    }
+
+    #seconds {
+      font-size: 90pt !important;
+    }
+  </style>
+</head>
+
+<body><video autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video><div id="overlay"><div id="day"></div><div id="clock"></div></div>
+<script>
+  setInterval(() => {
+    let day = document.getElementById('day');
+    let now = new Date();
+    day.innerHTML = now.toLocaleDateString('en-US', {
+      weekday: "long",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  }, 1000);
+
+  setInterval(() => {
+    let clock = document.getElementById('clock');
+    let now = new Date();
+    let hourMinute = now.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+    seconds = document.createElement('span');
+    seconds.id = 'seconds';
+    seconds.innerHTML = now.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    }).replace(hourMinute, '');
+    clock.innerHTML = hourMinute + '' + seconds.outerHTML;
+  }, 1000);
+</script>
+</body>
+
+</html>

@@ -5,8 +5,6 @@
   <style>
     /* Default styles (e.g., light mode) */
     body {
-      /* background-color: #ddd;
-      color: #222; */
       background-color: #222;
       color: #ddd;
       height: 100%;
