@@ -55,12 +55,17 @@ yabai -m rule --add app="^(Discord)$" manage=off grid=101:60:1:50:58:25
 # float 4th slot down on vertical screen
 yabai -m rule --add app="^(Music)$" manage=off grid=101:60:1:75:58:25
 
+# Terminal specific so can swap - float middle center quarter
+yabai -m rule --add app="^(Terminal)$" manage=off grid=4:4:1:1:2:2
+# Terminal specific so can swap - almost fullscreen
+# yabai -m rule --add app="^(Terminal)$" manage=off grid=60:60:1:1:58:58
+
 # float some non-resizable apps
-yabai -m rule --add app="^(Archive Utility|Calculator|iPhone Mirroring|Terminal)$" manage=off
+yabai -m rule --add app="^(Archive Utility|Calculator|iPhone Mirroring)$" manage=off
 
 # default to float almost centered
 # cat .yabairc | grep -v grep | grep app= | cut -d= -f2 | sed 's,manage,,' | grep -v noexist | tr -d '"^$)(' | tr "\n" '|' | sed 's, |,|,g'
-yabai -m rule --add app!="^(Google Chrome|Keychain Access|Clock|Gmail|System Preferences|System Settings|Books|GarageBand|GIMP|iMovie|Photos|Code|Xcode|Crunchyroll.*|Netflix|TV|1Password|FaceTime|Finder|Photo Booth|QuickTime.*|TextEdit|Activity Monitor|App Store|Contacts|Dictionary|Voice Memos|Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather|Console|GitHub|Google Drive|Preview|Safari|LuLu|UTM|Docker.*|Podman.*|Netiquette|Podcasts|Google Calendar|Notes|Reminders|Slack|Signal|LINE|Instagram|Messages|WhatsApp.*|Discord|Music|Spotify|Brave Browser|Firefox|Archive Utility|Calculator|iPhone Mirroring|Terminal)$" manage=off grid=24:24:4:2:16:20
+yabai -m rule --add app!="^(1Password|FaceTime|Finder|Photo Booth|QuickTime.*|Terminal|TextEdit|Activity Monitor|App Store|Contacts|Dictionary|Voice Memos|Archive Utility|Calculator|iPhone Mirroring|Books|GarageBand|GIMP|iMovie|Photos|Brave Browser|Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather|Clock|Gmail|System Preferences|System Settings|Code|Xcode|Console|GitHub|Google Drive|Preview|Crunchyroll.*|Netflix|TV|Discord|Docker.*|Podman.*|Netiquette|Podcasts|Firefox|Spotify|Google Calendar|Notes|Reminders|Google Chrome|Keychain Access|Instagram|Messages|WhatsApp.*|LINE|LuLu|Music|Safari|Slack|Signal|UTM)$" manage=off grid=24:24:4:2:16:20
 
 # apply rules on restart
 yabai -m rule --apply
