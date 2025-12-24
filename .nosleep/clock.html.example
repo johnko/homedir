@@ -26,12 +26,12 @@
     /* Styles for dark mode */
     @media (prefers-color-scheme: dark) {
       body {
-        background-color: #222;
-        color: #ddd;
+        background-color: #111;
+        color: #fff;
       }
 
-      video {
-        opacity: 15%;
+      video#bg {
+        opacity: 15% !important;
       }
     }
 
@@ -75,10 +75,9 @@
     video#fg {
       position: absolute;
       top: 50%;
-      max-height: 50%;
       /* important so displaysleep is prevented */
       opacity: 100%;
-      max-width: 100%;
+      width: 100%;
       /* important so displaysleep is prevented */
     }
   </style>

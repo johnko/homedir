@@ -369,7 +369,7 @@ nosleep() {
   export NO_SLEEP_VIDEO_FILE
   envsubst <~/.nosleep/video.html.example >~/.nosleep/video.html
   envsubst <~/.nosleep/clock.html.example >~/.nosleep/clock.html
-  open -a "Brave Browser" ~/.nosleep/video.html
+  # open -a "Brave Browser" ~/.nosleep/video.html
   open -a "Brave Browser" ~/.nosleep/clock.html
 }
 
