@@ -23,7 +23,7 @@ yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice 
 yabai -m rule --add app="^(Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather)$" manage=off grid=12:12:3:4:6:8
 
 # right half tall
-yabai -m rule --add app="^(Console|GitHub|Google Drive|Preview|Safari)$" manage=off grid=99:60:30:0:29:98
+yabai -m rule --add app="^(Console|GitHub|Google Drive|Preview)$" manage=off grid=99:60:30:0:29:98
 
 # top right quarter screen
 yabai -m rule --add app="^(LuLu)$" manage=off grid=99:60:30:0:29:49
@@ -34,24 +34,26 @@ yabai -m rule --add app="^(Docker.*|Podman.*|Netiquette|Podcasts)$" manage=off g
 
 # float 1st slot down on vertical screen
 yabai -m rule --add app="^(Google Calendar|Notes|Reminders)$" manage=off grid=101:60:1:0:58:25
-# float 3/4 vertical screen
-yabai -m rule --add app="^(Slack)$" manage=off grid=101:60:1:25:58:75
-# float 2nd slot down left on vertical screen
-yabai -m rule --add app="^(Signal)$" manage=off grid=101:60:1:25:29:50
+# float 1st slot down top half on vertical screen
+yabai -m rule --add app="^(Brave Browser)$" manage=off grid=101:60:1:0:58:50
+
 # float 2nd slot down right on vertical screen
-yabai -m rule --add app="^(LINE)$" manage=off grid=101:60:30:25:29:50
-# float 2rd slot down middle on vertical screen
-yabai -m rule --add app="^(Instagram|Messages|WhatsApp.*)$" manage=off grid=101:60:16:25:29:50
+yabai -m rule --add app="^(Firefox|Spotify)$" manage=off grid=101:60:30:25:29:25
+
+# float 2nd slot down 3/4 vertical screen
+yabai -m rule --add app="^(Safari|Slack)$" manage=off grid=101:60:1:25:58:75
+# float 3rd slot down left on vertical screen
+yabai -m rule --add app="^(Signal)$" manage=off grid=101:60:1:50:29:50
+# float 3rd slot down right on vertical screen
+yabai -m rule --add app="^(LINE)$" manage=off grid=101:60:30:50:29:50
+# float 3rd slot down middle on vertical screen
+yabai -m rule --add app="^(Instagram|Messages|WhatsApp.*)$" manage=off grid=101:60:16:50:29:50
 
 # float 3rd slot down on vertical screen
 yabai -m rule --add app="^(Discord)$" manage=off grid=101:60:1:50:58:25
 
 # float 4th slot down on vertical screen
-yabai -m rule --add app="^(Music|Spotify)$" manage=off grid=101:60:1:75:58:25
-# float 4th slot down left on vertical screen
-yabai -m rule --add app="^(Brave Browser)$" manage=off grid=101:60:1:75:29:25
-# float 4th slot down right on vertical screen
-yabai -m rule --add app="^(Firefox)$" manage=off grid=101:60:30:75:29:25
+yabai -m rule --add app="^(Music)$" manage=off grid=101:60:1:75:58:25
 
 # float some non-resizable apps
 yabai -m rule --add app="^(Archive Utility|Calculator|iPhone Mirroring|Terminal)$" manage=off
