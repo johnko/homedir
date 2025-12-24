@@ -64,8 +64,8 @@ yabai -m rule --add app="^(Terminal)$" manage=off grid=4:4:1:1:2:2
 yabai -m rule --add app="^(Archive Utility|Calculator|iPhone Mirroring)$" manage=off
 
 # default to float almost centered
-# cat .yabairc | grep -v grep | grep app= | cut -d= -f2 | sed 's,manage,,' | grep -v noexist | tr -d '"^$)(' | tr "\n" '|' | sed 's, |,|,g'
-yabai -m rule --add app!="^(1Password|FaceTime|Finder|Photo Booth|QuickTime.*|Terminal|TextEdit|Activity Monitor|App Store|Contacts|Dictionary|Voice Memos|Archive Utility|Calculator|iPhone Mirroring|Books|GarageBand|GIMP|iMovie|Photos|Brave Browser|Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather|Clock|Gmail|System Preferences|System Settings|Code|Xcode|Console|GitHub|Google Drive|Preview|Crunchyroll.*|Netflix|TV|Discord|Docker.*|Podman.*|Netiquette|Podcasts|Firefox|Spotify|Google Calendar|Notes|Reminders|Google Chrome|Keychain Access|Instagram|Messages|WhatsApp.*|LINE|LuLu|Music|Safari|Slack|Signal|UTM)$" manage=off grid=24:24:4:2:16:20
+# cat .yabairc | grep -v grep | grep -v '^ *#' | grep app= | cut -d= -f2 | sed 's,manage,,' | grep -v noexist | tr -d '"^$)(' | tr '|' "\n" | sort -u | tr "\n" '|' | sed 's, |,|,g'
+yabai -m rule --add app!="^(1Password|Activity Monitor|App Store|Archive Utility|Books|Brave Browser|Calculator|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|TV|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off grid=24:24:4:2:16:20
 
 # apply rules on restart
 yabai -m rule --apply
