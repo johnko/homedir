@@ -36,8 +36,7 @@
     }
 
     div {
-      font-family: 'Arial Rounded MT Bold';
-      font-weight: bold;
+      font-family: 'Arial Black', 'Arial Rounded MT Bold';
     }
 
     #overlay {
@@ -55,7 +54,7 @@
       margin-left: auto;
       margin-right: auto;
 
-      font-size: 90pt;
+      font-size: 80pt;
     }
 
     #clock {
@@ -65,7 +64,7 @@
       margin-left: auto;
       margin-right: auto;
 
-      font-size: 400pt;
+      font-size: 360pt;
     }
 
     #seconds {
@@ -74,7 +73,6 @@
 
     video#fg {
       position: absolute;
-      top: 50%;
       /* important so displaysleep is prevented */
       opacity: 100%;
       width: 100%;
@@ -85,9 +83,19 @@
 
 <body><video id="bg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video><div id="overlay"><div id="day"></div><div id="clock"></div></div><video id="fg" autoplay="true" controls="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
 <script>
+  function detectBrave() {
+    if (typeof navigator.brave !== 'undefined' && typeof navigator.brave.isBrave === 'function') {
+      return navigator.brave.isBrave();
+    }
+    return false;
+  }
+
   setInterval(() => {
     let day = document.getElementById('day');
     let now = new Date();
+    if (detectBrave()) {
+     day.style.fontWeight = 'bold';
+    }
     day.innerHTML = now.toLocaleDateString('en-US', {
       weekday: "long",
       year: "numeric",
@@ -112,8 +120,12 @@
       second: '2-digit',
       hour12: false
     }).replace(hourMinute, '');
+    if (detectBrave()) {
+      clock.style.fontWeight = 'bold';
+    }
     clock.innerHTML = hourMinute + '' + seconds.outerHTML;
     let fg = document.getElementById('fg');
+    fg.style.top = (clock.offsetTop + clock.offsetHeight + 10) + 'px';
     // detect if fg is between clock offsetTop and offsetHeight
     if (fg.offsetTop < clock.offsetTop + clock.offsetHeight) {
       // if so then hide the fg
