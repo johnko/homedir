@@ -16,10 +16,10 @@
       "KC_DOWN",
       "KC_RGHT",
       "KC_RSFT",
-      "KC_NO",
+      "TO(1)",
       "KC_RGUI",
       "LCA(KC_RGUI)",
-      "TO(1)"
+      "KC_NO"
     ],
     [
       "KC_NO",
@@ -34,10 +34,10 @@
       "KC_MPLY",
       "KC_MNXT",
       "KC_MUTE",
-      "KC_NO",
+      "TO(0)",
       "KC_VOLD",
       "KC_VOLU",
-      "TO(0)"
+      "KC_NO"
     ],
     [
       "KC_NO",
