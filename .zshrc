@@ -52,10 +52,11 @@ prompt pure
 ##########
 # Plugins from https://github.com/unixorn/awesome-zsh-plugins#plugins
 # show exec duration in output after 0 seconds (always)
+ZSH_COMMAND_TIME_COLOR="yellow"
 ZSH_COMMAND_TIME_MIN_SECONDS=-1
 ZSH_COMMAND_TIME_MSG="took %s"
-ZSH_COMMAND_TIME_COLOR="yellow"
 source $HOME/.zsh/zsh-command-time/command-time.plugin.zsh
+KUBE_PS1_HIDE_IF_NOCONTEXT=true
 KUBE_PS1_NS_ENABLE=false
 source $HOME/.zsh/kube-ps1/kube-ps1.sh
 PROMPT=$'$(kube_ps1)\n'$PROMPT
