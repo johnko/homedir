@@ -3,4 +3,8 @@ set -euo pipefail
 
 set -x
 
-sed -i '' "s,/Users/$USER/,~/,g" "Library/Application Support/Code/User/settings.json"
+if [ -e "$HOME/Library/Application Support/Code/User/settings.json" ]; then
+
+  sed -i '' "s,$HOME/,~/,g" "$HOME/Library/Application Support/Code/User/settings.json"
+
+fi
