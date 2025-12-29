@@ -36,8 +36,8 @@ zstyle ':completion:*:aliases' list-colors '=*=35'
 
 ##########
 # use zsh pure theme
-PURE_PROMPT_SYMBOL=$'🚀\n⚑'
-export VIRTUAL_ENV_DISABLE_PROMPT=12
+# PURE_PROMPT_SYMBOL=$'⚑'
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 zstyle :prompt:pure:prompt:success color green
@@ -58,7 +58,7 @@ for i in ~/.bash_path ~/.bash_exports ~/.bash_aliases ~/.bash_colors ~/.bash_sec
   [[ -f $i ]] && source $i
 done
 
-PROMPT='[$(arch)]'$PROMPT
+# PROMPT='[$(arch)]'$PROMPT
 
 export npm_config_cache="$HOME/.npm/$(arch)"
 export NVM_DIR="$HOME/.nvm/$(arch)"
