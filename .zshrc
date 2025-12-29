@@ -41,6 +41,7 @@ fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 # custom symbol
 # PURE_PROMPT_SYMBOL=$'⚑'
+# PURE_PROMPT_SYMBOL=$'\n❯'
 # show exec duration in prompt after 0 seconds (always)
 PURE_CMD_MAX_EXEC_TIME=-1
 zstyle :prompt:pure:prompt:success color green
@@ -59,7 +60,7 @@ source $HOME/.zsh/zsh-command-time/command-time.plugin.zsh
 KUBE_PS1_HIDE_IF_NOCONTEXT=true
 KUBE_PS1_NS_ENABLE=false
 source $HOME/.zsh/kube-ps1/kube-ps1.sh
-PROMPT=$'$(kube_ps1)\n'$PROMPT
+PROMPT=$' $(kube_ps1)\n'$PROMPT
 source $HOME/.zsh/zsh-colored-man-pages/colored-man-pages.plugin.zsh
 
 ##########
@@ -79,38 +80,38 @@ export NVM_DIR="$HOME/.nvm/$(arch)"
 export GPG_TTY=$(tty)
 
 ##########
-# Time on left
-PROMPT='%D{%F %T} '$PROMPT
-# refresh time
-# TMOUT=1
-# TRAPALRM() {
-#   zle reset-prompt
-# }
-
-##########
-# Memory on right, only execute on new session, not every second
-free_memory=$(top -l 1 -s 0 | grep 'PhysMem' | grep -o '[0-9A-Z]* unused' | sed 's,unused,RAMfree,')
-if [ -n "$free_memory" ]; then
-  RPROMPT=$RPROMPT" %F{blue}$free_memory"
+# Masked ip addresses on right, only execute on new session, not every second
+if type get-publicip &>/dev/null ; then
+  ip_addresses_public=$(get-publicip | sed 's/\.[0-9]*\.[0-9]*\./.z.z./g' | tr -d "\n")
+  PROMPT=" %F{yellow}$ip_addresses_public%F{reset}"$PROMPT
+fi
+if type get-ip &>/dev/null ; then
+  ip_addresses_local=$(get-ip | sed 's/\.[0-9]*\.[0-9]*\./.y.y./g' | tr "\n" " " | sed 's/ $//')
+  PROMPT=" %F{cyan}$ip_addresses_local"$PROMPT
 fi
 
 ##########
 # Disk used on right, only execute on new session, not every second
 used_disk=$(df /System/Volumes/Data | grep '/System/Volumes/Data' | awk '{print $5"% HDDused"}')
 if [ -n "$used_disk" ]; then
-  RPROMPT=$RPROMPT" %F{magenta}$used_disk"
+  PROMPT=" %F{blue}$used_disk"$PROMPT
 fi
 
 ##########
-# Masked ip addresses on right, only execute on new session, not every second
-if type get-ip &>/dev/null ; then
-  ip_addresses_local=$(get-ip | sed 's/\.[0-9]*\.[0-9]*\./.y.y./g' | tr "\n" " " | sed 's/ $//')
-  RPROMPT=$RPROMPT" %F{cyan}$ip_addresses_local"
+# Memory on right, only execute on new session, not every second
+free_memory=$(top -l 1 -s 0 | grep 'PhysMem' | grep -o '[0-9A-Z]* unused' | sed 's,unused,RAMfree,')
+if [ -n "$free_memory" ]; then
+  PROMPT=" %F{magenta}$free_memory"$PROMPT
 fi
-if type get-publicip &>/dev/null ; then
-  ip_addresses_public=$(get-publicip | sed 's/\.[0-9]*\.[0-9]*\./.z.z./g' | tr -d "\n")
-  RPROMPT=$RPROMPT" %F{yellow}$ip_addresses_public"
-fi
+
+##########
+# Time on left
+PROMPT='%D{%F %T}'$PROMPT
+# refresh time
+# TMOUT=1
+# TRAPALRM() {
+#   zle reset-prompt
+# }
 
 ##########
 # zsh completion
