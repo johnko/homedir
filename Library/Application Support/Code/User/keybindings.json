@@ -154,5 +154,21 @@
     "key": "shift+cmd+c",
     "command": "-workbench.action.terminal.openNativeConsole",
     "when": "!terminalFocus"
+  },
+  {
+    "key": "cmd+l",
+    "command": "workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "alt+cmd+b",
+    "command": "-workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "cmd+l",
+    "command": "-continue.focusContinueInput"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "continue.newSession"
   }
 ]
