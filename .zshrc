@@ -85,6 +85,17 @@ TMOUT=1
 TRAPALRM() {
   zle reset-prompt
 }
+# masked ip addresses on right
+if type get-ip &>/dev/null ; then
+  # only execute on new session, not every second
+  ip_addresses_local=$(get-ip | sed 's/\.[0-9]*\.[0-9]*\./.y.y./g' | tr "\n" "_" | sed 's/_$//' | sed 's/_/  /g')
+  RPROMPT="$ip_addresses_local"$RPROMPT
+fi
+if type get-publicip &>/dev/null ; then
+  # only execute on new session, not every second
+  ip_addresses_public=$(get-publicip | sed 's/\.[0-9]*\.[0-9]*\./.z.z./g' | tr -d "\n")
+  RPROMPT=$RPROMPT"  $ip_addresses_public"
+fi
 
 ##########
 # zsh completion
