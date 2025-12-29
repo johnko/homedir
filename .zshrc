@@ -89,14 +89,14 @@ PROMPT='%D{%F %T} '$PROMPT
 
 ##########
 # Memory on right, only execute on new session, not every second
-free_memory=$(top -l 1 -s 0 | grep 'PhysMem' | grep -o '[0-9A-Z]* unused' | sed 's,unused,freeRAM,')
+free_memory=$(top -l 1 -s 0 | grep 'PhysMem' | grep -o '[0-9A-Z]* unused' | sed 's,unused,RAMfree,')
 if [ -n "$free_memory" ]; then
   RPROMPT=$RPROMPT" %F{blue}$free_memory"
 fi
 
 ##########
 # Disk used on right, only execute on new session, not every second
-used_disk=$(df /System/Volumes/Data | grep '/System/Volumes/Data' | awk '{print $5"% usedSSD"}')
+used_disk=$(df /System/Volumes/Data | grep '/System/Volumes/Data' | awk '{print $5"% HDDused"}')
 if [ -n "$used_disk" ]; then
   RPROMPT=$RPROMPT" %F{magenta}$used_disk"
 fi
