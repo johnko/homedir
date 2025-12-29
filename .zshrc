@@ -89,22 +89,22 @@ PROMPT='%D{%F %T} '$PROMPT
 ##########
 # Memory on right, only execute on new session, not every second
 free_memory=$(top -l 1 -s 0 | grep 'PhysMem' | grep -o '[0-9A-Z]* unused' | sed 's,unused,freeRAM,')
-RPROMPT=$RPROMPT"  %F{blue}$free_memory"
+RPROMPT=$RPROMPT" %F{blue}$free_memory"
 
 ##########
 # Disk used on right, only execute on new session, not every second
 used_disk=$(df /System/Volumes/Data | grep '/System/Volumes/Data' | awk '{print $5"% usedSSD"}')
-RPROMPT=$RPROMPT"  %F{magenta}$used_disk"
+RPROMPT=$RPROMPT" %F{magenta}$used_disk"
 
 ##########
 # Masked ip addresses on right, only execute on new session, not every second
 if type get-ip &>/dev/null ; then
-  ip_addresses_local=$(get-ip | sed 's/\.[0-9]*\.[0-9]*\./.y.y./g' | tr "\n" "_" | sed 's/_$//' | sed 's/_/  /g')
-  RPROMPT=$RPROMPT"  %F{cyan}$ip_addresses_local"
+  ip_addresses_local=$(get-ip | sed 's/\.[0-9]*\.[0-9]*\./.y.y./g' | tr "\n" " " | sed 's/ $//')
+  RPROMPT=$RPROMPT" %F{cyan}$ip_addresses_local"
 fi
 if type get-publicip &>/dev/null ; then
   ip_addresses_public=$(get-publicip | sed 's/\.[0-9]*\.[0-9]*\./.z.z./g' | tr -d "\n")
-  RPROMPT=$RPROMPT"  %F{yellow}$ip_addresses_public"
+  RPROMPT=$RPROMPT" %F{yellow}$ip_addresses_public"
 fi
 
 ##########
