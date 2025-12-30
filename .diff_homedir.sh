@@ -30,6 +30,10 @@ NOEXISTSEPERATOR
 agent.toml
 config.example
 known_hosts
+EXPECTEDDIFFSEPERATOR
+.gitconfig
+.gitignore
+.yabairc
 "
 
 EXCLUDE_ARG=""
