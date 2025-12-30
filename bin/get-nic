@@ -2,7 +2,9 @@
 set -euo pipefail
 
 if type ifconfig &>/dev/null; then
-  ifconfig | grep -v -E '(^lo0|\slo0\s|\s::1\s|\sinet\s127\.0\.)' | grep -E '(^[a-z]|inet\s)' | grep -B1 'inet' | sed 's/flags=.*UP,/UP,/' | sed 's/UP,.*//' | sed "s, netmask,\n	netmask," | sed "s, broadcast,\n	broadcast,"
+  for iface in $(ifconfig | grep -E '(^[a-z]|inet\s)' | grep -B1 'inet' | grep 'UP' | grep -v 'POINTOPOINT' | awk -F: '{print $1}' | grep -v -E '^(lo0)'); do
+    ifconfig $iface | grep -E '(^[a-z]|inet\s)' | grep -B1 'inet' | sed -e 's/flags=.*UP,/UP,/' -e 's/UP,.*//' -e "s, netmask,\n	netmask," -e "s, broadcast,\n	broadcast,"
+  done
 elif type networkctl &>/dev/null; then
   networkctl status 2>&1 | grep -v -E '(docker|carrier|Link)'
 fi
