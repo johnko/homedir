@@ -32,27 +32,27 @@ yabai -m rule --add app="^(UTM)$" manage=off grid=99:60:1:49:29:49
 # bottom right quarter screen
 yabai -m rule --add app="^(Docker.*|Podman.*|Netiquette|Podcasts)$" manage=off grid=99:60:30:49:29:49
 
-# float 1st slot down on vertical screen
+# float 1st slot down, quartertall on vertical screen
 yabai -m rule --add app="^(Google Calendar|Notes|Reminders)$" manage=off grid=101:60:1:0:58:25
-# float 1st slot down halftall top on vertical screen
+# float top half on vertical screen
 yabai -m rule --add app="^(Brave Browser)$" manage=off grid=101:60:1:0:58:50
 
 # float 2nd slot down halfwide middle on vertical screen
 yabai -m rule --add app="^(Instagram|Messages|WhatsApp.*)$" manage=off grid=101:60:16:25:29:50
-# float 2nd slot down halfwide right on vertical screen
+# float 2nd slot down, quartertall halfwide right on vertical screen
 yabai -m rule --add app="^(Firefox|Spotify)$" manage=off grid=101:60:30:25:29:25
 
 # float 2nd slot down 3/4tall vertical screen
 yabai -m rule --add app="^(Safari|Slack)$" manage=off grid=101:60:1:25:58:75
-# float 3rd slot down halftall left on vertical screen
+# float bottom left on vertical screen
 yabai -m rule --add app="^(Signal)$" manage=off grid=101:60:1:50:29:50
-# float 3rd slot down halftall right on vertical screen
+# float bottom right on vertical screen
 yabai -m rule --add app="^(LINE)$" manage=off grid=101:60:30:50:29:50
 
-# float 3rd slot down on vertical screen
+# float 3rd slot down, quartertall on vertical screen
 yabai -m rule --add app="^(Discord)$" manage=off grid=101:60:1:50:58:25
 
-# float 4th slot down on vertical screen
+# float 4th slot down, quartertall on vertical screen
 yabai -m rule --add app="^(Music)$" manage=off grid=101:60:1:75:58:25
 
 # Terminal specific so can swap - float middle center quarter
