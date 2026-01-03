@@ -61,7 +61,7 @@ ctrl + alt + cmd - q : yabai -m window --grid 99:60:1:0:29:98
 # float right
 ctrl + alt + cmd - e : yabai -m window --grid 99:60:30:0:29:98
 # float tall 1/2 of screen for web
-ctrl + alt + cmd - r : yabai -m window --grid 1:4:1:0:2:1
+ctrl + alt + cmd - r : yabai -m window --grid 99:60:15:0:29:98
 f15 :                  osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - y : skhd --restart-service

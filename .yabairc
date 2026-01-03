@@ -5,7 +5,7 @@ yabai -m config layout bsp
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 # float tall 1/2 of screen for web
-yabai -m rule --add app="^(Google Chrome|Keychain Access)$" manage=off grid=1:4:1:0:2:1
+yabai -m rule --add app="^(Google Chrome|Keychain Access)$" manage=off grid=99:60:15:0:29:98
 # float tall
 yabai -m rule --add app="^(Clock|Gmail|System Preferences|System Settings)$" manage=off grid=24:24:5:1:14:22
 # float tall wide 16/24 of screen for editing
@@ -22,7 +22,7 @@ yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice 
 # float bottom center 2/3
 yabai -m rule --add app="^(Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather)$" manage=off grid=12:12:3:4:6:8
 
-# right half tall
+# right half, fulltall
 yabai -m rule --add app="^(Console|GitHub|Google Drive|Preview)$" manage=off grid=99:60:30:0:29:98
 
 # top right quarter screen
