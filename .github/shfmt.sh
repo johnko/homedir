@@ -37,9 +37,12 @@ set -u
 
 shfmt --version
 
-shfmt --diff --simplify --indent 2 --case-indent ./
-
-find . -type f -name '*.envrc' -print0 | xargs -0 --max-procs=2 --verbose -I{} shfmt --diff --simplify --indent 2 --case-indent {}
+# Diff with
+# shfmt --diff --simplify --indent 2 --case-indent ./
+# find . -type f -name '*.envrc' -print0 | xargs -0 --max-procs=2 --verbose -I{} shfmt --diff --simplify --indent 2 --case-indent {}
 
 # Fix with
-# shfmt --write --simplify --indent 2 --case-indent ./
+shfmt --write --simplify --indent 2 --case-indent ./
+find . -type f -name '*.envrc' -print0 | xargs -0 --max-procs=2 --verbose -I{} shfmt --write --simplify --indent 2 --case-indent {}
+
+bash -ex ./.github/git-has-uncommited-changes.sh
