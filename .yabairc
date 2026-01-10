@@ -56,9 +56,11 @@ yabai -m rule --add app="^(Discord)$" manage=off grid=101:60:1:50:58:25
 yabai -m rule --add app="^(Music)$" manage=off grid=101:60:1:75:58:25
 
 # Terminal specific so can swap - float middle center quarter
-yabai -m rule --add app="^(Terminal)$" manage=off grid=4:4:1:1:2:2
+# yabai -m rule --add app="^(Terminal)$" manage=off grid=4:4:1:1:2:2
 # Terminal specific so can swap - almost fullscreen
 # yabai -m rule --add app="^(Terminal)$" manage=off grid=60:60:1:1:58:58
+# Terminal specific so can swap - float 2nd slot down 3/4tall vertical screen
+yabai -m rule --add app="^(Terminal)$" manage=off grid=101:60:1:25:58:75
 
 # float some non-resizable apps
 yabai -m rule --add app="^(Archive Utility|Calculator|iPhone Mirroring)$" manage=off
