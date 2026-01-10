@@ -31,7 +31,10 @@ export IAC_BIN=terraform
 
 $IAC_BIN version
 
+# Diff with
 $IAC_BIN fmt -list=true -check -recursive ./
 
 # Fix with
-# terraform fmt -recursive ./
+$IAC_BIN fmt -recursive ./
+
+bash -ex ./.github/git-has-uncommited-changes.sh
