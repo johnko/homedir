@@ -33,7 +33,6 @@ known_hosts
 EXPECTEDDIFFSEPERATOR
 .gitconfig
 .gitignore
-.yabairc
 "
 
 EXCLUDE_ARG=""
