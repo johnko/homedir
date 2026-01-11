@@ -23,7 +23,6 @@
     "sst-dev.opencode"
   ],
   "docsYaml.telemetry.enableTelemetry": false,
-  "dotfiles.installCommand": ".devcontainer-install-dotfiles.sh",
   "dotfiles.repository": "https://github.com/johnko/homedir.git",
   "editor.fontSize": 14,
   "editor.renderWhitespace": "all",
@@ -69,7 +68,8 @@
   "scm.inputFontSize": 14,
   "settingsSync.ignoredSettings": [
     "-dotfiles.repository",
-    "-dotfiles.installCommand"
+    "-dotfiles.installCommand",
+    "-dotfiles.targetPath"
   ],
   "telemetry.telemetryLevel": "off",
   "terminal.explorerKind": "external",
