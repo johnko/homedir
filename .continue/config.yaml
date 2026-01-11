@@ -1,0 +1,78 @@
+models:
+  - apiBase: http://127.0.0.1:11434
+    model: codellama:13b-code
+    name: codellama:13b-code
+    provider: ollama
+    requestOptions:
+      headers:
+        Authorization: Basic
+  - apiBase: http://127.0.0.1:11434
+    model: codellama:13b-instruct
+    name: codellama:13b-instruct
+    provider: ollama
+    requestOptions:
+      headers:
+        Authorization: Basic
+  - apiBase: http://127.0.0.1:11434
+    capabilities:
+      - tool_use # Add this to enable tools
+    model: deepseek-r1:32b-qwen-distill-q4_K_M
+    name: deepseek-r1:32b-qwen-distill-q4_K_M
+    provider: ollama
+    requestOptions:
+      headers:
+        Authorization: Basic
+  - apiBase: http://127.0.0.1:11434
+    model: gpt-oss:20b
+    name: gpt-oss:20b
+    provider: ollama
+    requestOptions:
+      headers:
+        Authorization: Basic
+  - apiBase: http://127.0.0.1:11434
+    model: llama3.3:70b-instruct-q4_K_M
+    name: llama3.3:70b-instruct-q4_K_M
+    provider: ollama
+    requestOptions:
+      headers:
+        Authorization: Basic
+  - apiBase: http://127.0.0.1:11434
+    model: qwen2.5-coder:32b-base
+    name: qwen2.5-coder:32b-base
+    provider: ollama
+    requestOptions:
+      headers:
+        Authorization: Basic
+  - apiBase: http://127.0.0.1:11434
+    model: qwen2.5-coder:32b-instruct-q4_K_M
+    name: qwen2.5-coder:32b-instruct-q4_K_M
+    provider: ollama
+    requestOptions:
+      headers:
+        Authorization: Basic
+  - apiBase: http://127.0.0.1:11434
+    model: nomic-embed-text:137m-v1.5-fp16
+    name: nomic-embed-text:137m-v1.5-fp16
+    provider: ollama
+    requestOptions:
+      headers:
+        Authorization: Basic
+  - apiBase: http://127.0.0.1:11434
+    capabilities:
+      - tool_use # Add this to enable tools
+    model: qwen3-coder:30b-a3b-q4_K_M
+    name: qwen3-coder:30b-a3b-q4_K_M
+    provider: ollama
+    requestOptions:
+      headers:
+        Authorization: Basic
+  - apiBase: http://127.0.0.1:11434
+    model: starcoder2:15b
+    name: starcoder2:15b
+    provider: ollama
+    requestOptions:
+      headers:
+        Authorization: Basic
+name: My Local Config
+schema: v1
+version: 0.0.1

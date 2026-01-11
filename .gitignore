@@ -1,4 +1,5 @@
 !.continue/config.json
+!.continue/config.yaml
 !Library/Application Support/Code/User/keybindings.json
 !Library/Application Support/Code/User/settings.json
 !Library/Preferences/com.apple.symbolichotkeys.plist.json
