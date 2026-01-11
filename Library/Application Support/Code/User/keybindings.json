@@ -154,20 +154,17 @@
     "command": "-workbench.action.toggleAuxiliaryBar"
   },
   {
-    "key": "cmd+l",
-    "command": "-continue.focusContinueInput"
-  },
-  {
     "key": "ctrl+l",
-    "command": "continue.newSession"
+    "command": "continue.newSession",
+    "when": "activeAuxiliary == 'workbench.view.extension.continue'"
   },
   {
-    "key": "ctrl+1",
+    "key": "ctrl+3",
     "command": "remote-containers.reopenInContainer",
     "when": "remoteName != 'dev-container'"
   },
   {
-    "key": "ctrl+1",
+    "key": "ctrl+3",
     "command": "remote-containers.rebuildContainerNoCache",
     "when": "remoteName == 'dev-container'"
   },
@@ -209,5 +206,77 @@
   {
     "key": "cmd+k cmd+\\",
     "command": "-workbench.action.splitEditorUp"
+  },
+  {
+    "key": "cmd+i",
+    "command": "continue.focusEdit",
+    "when": "editorTextFocus && activeAuxiliary == 'workbench.view.extension.continue'"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-continue.focusEdit"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-workbench.action.chat.startVoiceChat",
+    "when": "chatIsEnabled && hasSpeechProvider && inChatInput && !editorFocus && !notebookEditorFocused && !scopedVoiceChatGettingReady && !speechToTextInProgress || chatIsEnabled && hasSpeechProvider && inlineChatFocused && !editorFocus && !notebookEditorFocused && !scopedVoiceChatGettingReady && !speechToTextInProgress"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-workbench.action.chat.stopListeningAndSubmit",
+    "when": "inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'editor' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'inline' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'quick' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'view' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'editor' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'inline' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'quick' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'view'"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "workbench.action.chat.open",
+    "when": "!chatSetupDisabled && !chatSetupHidden && activeAuxiliary != 'workbench.panel.chat'"
+  },
+  {
+    "key": "ctrl+cmd+i",
+    "command": "-workbench.action.chat.open",
+    "when": "!chatSetupDisabled && !chatSetupHidden"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-workbench.action.chat.holdToVoiceChatInChatView",
+    "when": "chatIsEnabled && hasSpeechProvider && !chatSessionRequestInProgress && !editorFocus && !inChatInput && !inSettingsEditor && !inlineChatFocused && !notebookEditorFocused && !searchViewletFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-inlineChat.holdForSpeech",
+    "when": "hasSpeechProvider && inlineChatVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "workbench.action.chat.openagent",
+    "when": "config.chat.agent.enabled && !chatSetupDisabled && !chatSetupHidden"
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "-workbench.action.chat.openagent",
+    "when": "config.chat.agent.enabled && !chatSetupDisabled && !chatSetupHidden"
+  },
+  {
+    "key": "ctrl+2",
+    "command": "workbench.view.extension.continue",
+    "when": "activeAuxiliary != 'workbench.view.extension.continue'"
+  },
+  {
+    "key": "ctrl+2",
+    "command": "continue.focusContinueInputWithoutClear",
+    "when": "editorFocus && activeAuxiliary == 'workbench.view.extension.continue'"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "-continue.focusContinueInputWithoutClear"
+  },
+  {
+    "key": "cmd+l",
+    "command": "-continue.focusContinueInput"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "workbench.action.chat.attachSelection",
+    "when": "activeAuxiliary == 'workbench.panel.chat'"
   }
 ]
