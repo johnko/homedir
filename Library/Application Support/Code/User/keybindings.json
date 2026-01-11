@@ -297,5 +297,21 @@
     "key": "shift+alt+cmd+l",
     "command": "-workbench.action.quickchat.toggle",
     "when": "chatIsEnabled"
+  },
+  {
+    "key": "shift+alt+`",
+    "command": "opencode.openTerminal"
+  },
+  {
+    "key": "cmd+escape",
+    "command": "-opencode.openTerminal"
+  },
+  {
+    "key": "alt+`",
+    "command": "opencode.openNewTerminal"
+  },
+  {
+    "key": "shift+cmd+escape",
+    "command": "-opencode.openNewTerminal"
   }
 ]
