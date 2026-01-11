@@ -30,6 +30,9 @@
   "git.openRepositoryInParentFolders": "never",
   "git.replaceTagsWhenPull": true,
   "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.enable": {
+    "*": false
+  },
   "githubPullRequests.defaultCreateOption": "createDraft",
   "githubPullRequests.defaultMergeMethod": "squash",
   "githubPullRequests.focusedMode": "overview",
@@ -74,8 +77,5 @@
     "file://~/.vscode/extensions/continue.continue-1.2.11-darwin-arm64/config-yaml-schema.json": [
       ".continue/**/*.yaml"
     ]
-  },
-  "github.copilot.enable": {
-    "*": false
   }
 }
