@@ -299,7 +299,7 @@
     "when": "chatIsEnabled"
   },
   {
-    "key": "shift+alt+`",
+    "key": "ctrl+shift+1",
     "command": "opencode.openTerminal"
   },
   {
@@ -307,7 +307,7 @@
     "command": "-opencode.openTerminal"
   },
   {
-    "key": "alt+`",
+    "key": "ctrl+1",
     "command": "opencode.openNewTerminal"
   },
   {
