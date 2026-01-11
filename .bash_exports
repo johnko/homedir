@@ -30,10 +30,6 @@ fi
 # Make some commands not show up in history
 export HISTIGNORE="cd -:pwd:exit:date"
 
-# Prefer US English and use UTF-8
-export LANG="en_US"
-export LC_ALL="en_US.UTF-8"
-
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md="$ORANGE"
 
@@ -70,4 +66,7 @@ if [[ -n "$VSCODE_SHELL_INTEGRATION" && "$VSCODE_SHELL_INTEGRATION" == "1" ]]; t
 else
   # if not in VSCode, set ssh-agent
   export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+  # Prefer US English and use UTF-8
+  export LANG="en_US"
+  export LC_ALL="en_US.UTF-8"
 fi
