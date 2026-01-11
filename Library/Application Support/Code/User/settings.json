@@ -23,7 +23,7 @@
     "sst-dev.opencode"
   ],
   "docsYaml.telemetry.enableTelemetry": false,
-  "dotfiles.installCommand": "bin/macos-opencode-update.sh",
+  "dotfiles.installCommand": ".devcontainer-install-dotfiles.sh",
   "dotfiles.repository": "https://github.com/johnko/homedir.git",
   "editor.fontSize": 14,
   "editor.renderWhitespace": "all",
