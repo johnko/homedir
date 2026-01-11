@@ -61,3 +61,8 @@ export FX_NO_MOUSE=true
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+
+# if not in VSCode, set ssh-agent
+if [[ -z "$VSCODE_SHELL_INTEGRATION" || "$VSCODE_SHELL_INTEGRATION" != "1" ]]; then
+  export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+fi
