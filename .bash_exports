@@ -65,6 +65,8 @@ export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 if [[ -n "$VSCODE_SHELL_INTEGRATION" && "$VSCODE_SHELL_INTEGRATION" == "1" ]]; then
   ## if in VSCode, unset SSH_AUTH_SOCK to avoid endless 1Password prompt for ssh-agent
   unset SSH_AUTH_SOCK
+  ## also set editor
+  export EDITOR="code --wait"
 else
   # if not in VSCode, set ssh-agent
   export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
