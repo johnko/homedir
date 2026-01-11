@@ -12,6 +12,7 @@
 .aws/*
 .babel.json
 .bash_sessions/*
+.bun/*
 .bundle/*
 .cache/*
 .CFUserTextEncoding
