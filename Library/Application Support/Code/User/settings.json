@@ -77,5 +77,6 @@
   },
   "github.copilot.enable": {
     "*": false
-  }
+  },
+  "chat.commandCenter.enabled": false
 }

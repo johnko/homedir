@@ -1,3 +1,6 @@
+!Library/Application Support/Code/User/keybindings.json
+!Library/Application Support/Code/User/settings.json
+!Library/Preferences/com.apple.symbolichotkeys.plist.json
 .*_history
 .*secret*
 .account
@@ -101,9 +104,6 @@ iso/**/*.gpg
 iso/**/*.iso
 kubeconfig/*
 Library/*
-!Library/Application Support/Code/User/settings.json
-!Library/Application Support/Code/User/keybindings.json
-!Library/Preferences/com.apple.symbolichotkeys.plist.json
 Movies/*
 Music/*
 Pictures/*
