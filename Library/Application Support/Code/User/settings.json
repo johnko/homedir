@@ -19,7 +19,12 @@
   "continue.enableTabAutocomplete": true,
   "continue.telemetryEnabled": false,
   "debug.console.fontSize": 14,
+  "dev.containers.defaultExtensions": [
+    "sst-dev.opencode"
+  ],
   "docsYaml.telemetry.enableTelemetry": false,
+  "dotfiles.installCommand": "bin/macos-opencode-update.sh",
+  "dotfiles.repository": "https://github.com/johnko/homedir.git",
   "editor.fontSize": 14,
   "editor.renderWhitespace": "all",
   "editor.stickyScroll.enabled": true,
@@ -62,6 +67,10 @@
   "python.defaultInterpreterPath": "~/venv-python3",
   "redhat.telemetry.enabled": false,
   "scm.inputFontSize": 14,
+  "settingsSync.ignoredSettings": [
+    "-dotfiles.repository",
+    "-dotfiles.installCommand"
+  ],
   "telemetry.telemetryLevel": "off",
   "terminal.explorerKind": "external",
   "terminal.integrated.defaultLocation": "editor",
