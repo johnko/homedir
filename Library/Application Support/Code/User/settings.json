@@ -13,6 +13,8 @@
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
+  "chat.agent.enabled": false,
+  "chat.disableAIFeatures": true,
   "chat.editor.fontSize": 14,
   "continue.enableTabAutocomplete": true,
   "continue.telemetryEnabled": false,
@@ -29,6 +31,8 @@
   "git.enableCommitSigning": true,
   "git.openRepositoryInParentFolders": "never",
   "git.replaceTagsWhenPull": true,
+  "github.copilot.chat.backgroundAgent.enabled": false,
+  "github.copilot.chat.cloudAgent.enabled": false,
   "github.copilot.editor.enableAutoCompletions": false,
   "github.copilot.enable": {
     "*": false
@@ -50,6 +54,7 @@
   "gitlens.codeLens.enabled": false,
   "gitlens.telemetry.enabled": false,
   "go.survey.prompt": false,
+  "inlineChat.holdToSpeech": false,
   "markdownlint.customRules": [
     "{docsmsft.docs-linting}/markdownlint-custom-rules/rules.js"
   ],
