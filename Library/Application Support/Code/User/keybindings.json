@@ -263,5 +263,9 @@
     "key": "cmd+i",
     "command": "-editor.action.triggerSuggest",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "-editor.action.announceCursorPosition"
   }
 ]
