@@ -67,6 +67,8 @@ if [[ -n "$VSCODE_SHELL_INTEGRATION" && "$VSCODE_SHELL_INTEGRATION" == "1" ]]; t
   unset SSH_AUTH_SOCK
   ## also set editor
   export EDITOR="code --wait"
+  ## also set OPENCODE_CONFIG_CONTENT
+  export OPENCODE_CONFIG_CONTENT=$(cat "$HOME/.config/opencode/opencode.jsonc" | jq --compact-output)
 else
   # if not in VSCode, set ssh-agent
   export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
