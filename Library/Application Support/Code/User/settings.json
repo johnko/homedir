@@ -13,7 +13,6 @@
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  "chat.commandCenter.enabled": false,
   "chat.editor.fontSize": 14,
   "continue.enableTabAutocomplete": true,
   "continue.telemetryEnabled": false,
@@ -31,18 +30,6 @@
   "git.openRepositoryInParentFolders": "never",
   "git.replaceTagsWhenPull": true,
   "github.copilot.editor.enableAutoCompletions": false,
-  "github.copilot.enable": {
-    "*": false,
-    "helm": true,
-    "ini": false,
-    "javascript": true,
-    "markdown": false,
-    "plaintext": false,
-    "scminput": false,
-    "terraform": true,
-    "typescript": true,
-    "yaml": false
-  },
   "githubPullRequests.defaultCreateOption": "createDraft",
   "githubPullRequests.defaultMergeMethod": "squash",
   "githubPullRequests.focusedMode": "overview",
@@ -87,5 +74,8 @@
     "file://~/.vscode/extensions/continue.continue-1.2.11-darwin-arm64/config-yaml-schema.json": [
       ".continue/**/*.yaml"
     ]
+  },
+  "github.copilot.enable": {
+    "*": false
   }
 }

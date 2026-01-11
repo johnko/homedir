@@ -209,15 +209,6 @@
   },
   {
     "key": "cmd+i",
-    "command": "continue.focusEdit",
-    "when": "editorTextFocus && activeAuxiliary == 'workbench.view.extension.continue'"
-  },
-  {
-    "key": "cmd+i",
-    "command": "-continue.focusEdit"
-  },
-  {
-    "key": "cmd+i",
     "command": "-workbench.action.chat.startVoiceChat",
     "when": "chatIsEnabled && hasSpeechProvider && inChatInput && !editorFocus && !notebookEditorFocused && !scopedVoiceChatGettingReady && !speechToTextInProgress || chatIsEnabled && hasSpeechProvider && inlineChatFocused && !editorFocus && !notebookEditorFocused && !scopedVoiceChatGettingReady && !speechToTextInProgress"
   },
@@ -247,7 +238,7 @@
     "when": "hasSpeechProvider && inlineChatVisible && textInputFocus"
   },
   {
-    "key": "ctrl+shift+1",
+    "key": "ctrl+alt+1",
     "command": "workbench.action.chat.openagent",
     "when": "config.chat.agent.enabled && !chatSetupDisabled && !chatSetupHidden"
   },
@@ -263,8 +254,7 @@
   },
   {
     "key": "ctrl+2",
-    "command": "continue.focusContinueInputWithoutClear",
-    "when": "editorFocus && activeAuxiliary == 'workbench.view.extension.continue'"
+    "command": "continue.focusContinueInputWithoutClear"
   },
   {
     "key": "shift+cmd+l",
@@ -275,8 +265,41 @@
     "command": "-continue.focusContinueInput"
   },
   {
-    "key": "ctrl+1",
+    "key": "ctrl+shift+1",
     "command": "workbench.action.chat.attachSelection",
     "when": "activeAuxiliary == 'workbench.panel.chat'"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.inlineSuggest.trigger"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "workbench.panel.chat",
+    "when": "workbench.panel.chat.view.copilot.active"
+  },
+  {
+    "key": "ctrl+cmd+i",
+    "command": "-workbench.panel.chat",
+    "when": "workbench.panel.chat.view.copilot.active"
+  },
+  {
+    "key": "cmd+i",
+    "command": "continue.focusEdit",
+    "when": "editorTextFocus && activeAuxiliary == 'workbench.view.extension.continue'"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-continue.focusEdit"
+  },
+  {
+    "key": "alt+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "-editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
   }
 ]
