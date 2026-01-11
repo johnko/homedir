@@ -12,13 +12,16 @@
     "ollama": {
       "models": {
         "deepseek-r1:32b-qwen-distill-q4_K_M": {
-          "tools": true
+          "reasoning": true,
+          "tool_call": true
         },
         "llama3.3:70b-instruct-q4_K_M": {
-          "tools": true
+          "reasoning": true,
+          "tool_call": true
         },
         "qwen3-coder:30b-a3b-q4_K_M": {
-          "tools": true
+          "reasoning": true,
+          "tool_call": true
         },
       },
       "npm": "@ai-sdk/openai-compatible",
