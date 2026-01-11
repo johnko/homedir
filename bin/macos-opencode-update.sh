@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -euxo pipefail
 
-NODE_VERSION=24.11.0 # renovate: datasource=github-releases depName=nodejs/node packageName=nodejs/node
-OPENCODE_VERSION=1.1.12 # renovate: datasource=github-releases depName=anomalyco/opencode packageName=anomalyco/opencode
+NODE_VERSION=24.11.0         # renovate: datasource=github-releases depName=nodejs/node packageName=nodejs/node
+OPENCODE_VERSION=1.1.12      # renovate: datasource=github-releases depName=anomalyco/opencode packageName=anomalyco/opencode
 DEVCONTAINERS_VERSION=0.80.3 # renovate: datasource=github-releases depName=devcontainers/cli packageName=devcontainers/cli
 
 if type mise &>/dev/null; then
