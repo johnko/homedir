@@ -80,7 +80,7 @@
   {
     "command": "workbench.action.terminal.new",
     "key": "ctrl+`",
-    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+    "when": "terminalProcessSupported && !terminalFocus || !terminalFocus && terminalWebExtensionContributedProfile"
   },
   {
     "command": "-workbench.action.focusSideBar",
@@ -146,16 +146,6 @@
     "when": "textInputFocus"
   },
   {
-    "key": "f16",
-    "command": "workbench.action.terminal.openNativeConsole",
-    "when": "!terminalFocus"
-  },
-  {
-    "key": "shift+cmd+c",
-    "command": "-workbench.action.terminal.openNativeConsole",
-    "when": "!terminalFocus"
-  },
-  {
     "key": "cmd+l",
     "command": "workbench.action.toggleAuxiliaryBar"
   },
@@ -170,5 +160,54 @@
   {
     "key": "ctrl+l",
     "command": "continue.newSession"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "remote-containers.reopenInContainer",
+    "when": "remoteName != 'dev-container'"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "remote-containers.rebuildContainerNoCache",
+    "when": "remoteName == 'dev-container'"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.terminal.splitInActiveWorkspace",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "-workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "-workbench.action.terminal.splitActiveTab",
+    "when": "terminalProcessSupported && terminalTabsFocus"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "-workbench.action.splitEditor"
+  },
+  {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorDown"
+  },
+  {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorLeft"
+  },
+  {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorOrthogonal"
+  },
+  {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorRight"
+  },
+  {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorUp"
   }
 ]
