@@ -221,11 +221,6 @@
   },
   {
     "key": "cmd+l",
-    "command": "workbench.view.extension.continue",
-    "when": "activeAuxiliary != 'workbench.view.extension.continue'"
-  },
-  {
-    "key": "cmd+l",
     "command": "continue.focusContinueInputWithoutClear"
   },
   {
