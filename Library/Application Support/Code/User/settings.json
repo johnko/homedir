@@ -23,7 +23,8 @@
     "sst-dev.opencode"
   ],
   "docsYaml.telemetry.enableTelemetry": false,
-  "dotfiles.repository": "https://github.com/johnko/homedir.git",
+  "dotfiles.installCommand": "./bootstrap.sh",
+  "dotfiles.repository": "https://github.com/johnko/opencode-devcontainer-dotfiles.git",
   "editor.fontSize": 14,
   "editor.renderWhitespace": "all",
   "editor.stickyScroll.enabled": true,
