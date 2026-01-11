@@ -69,6 +69,7 @@
   "update.showReleaseNotes": false,
   "window.autoDetectColorScheme": true,
   "window.confirmSaveUntitledWorkspace": false,
+  "window.title": "${activeRepositoryBranchName}${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
   "workbench.editor.empty.hint": "hidden",
   "workbench.preferredDarkColorTheme": "Visual Studio Dark",
   "workbench.preferredLightColorTheme": "Visual Studio Light",
