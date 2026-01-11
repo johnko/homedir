@@ -96,11 +96,11 @@ bin/skhd
 bin/utmctl
 bin/yabai
 code/*
-Desktop/*
+Desktop/
 dev/*
 Docs Authoring/*
-Documents/*
-Downloads/*
+Documents/
+Downloads/
 go/*
 Google*Drive/*
 iso/**/*.gpg
