@@ -37,6 +37,7 @@ brew "switchaudio-osx"
 # VS Code extensions
 # vscode "linhmtran168.mac-ca-vscode"
 # vscode "mongodb.mongodb-vscode"
+vscode "sst-dev.opencode"
 
 # Keyboard / QMK / VIA
 # cask "via"
