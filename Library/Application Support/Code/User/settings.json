@@ -78,6 +78,7 @@
   "workbench.editor.empty.hint": "hidden",
   "workbench.preferredDarkColorTheme": "Visual Studio Dark",
   "workbench.preferredLightColorTheme": "Visual Studio Light",
+  "workbench.secondarySideBar.showLabels": false,
   "workbench.startupEditor": "none",
   "yaml.schemas": {
     "file://~/.vscode/extensions/continue.continue-1.2.11-darwin-arm64/config-yaml-schema.json": [
