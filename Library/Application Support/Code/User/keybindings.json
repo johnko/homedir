@@ -299,7 +299,7 @@
     "when": "chatIsEnabled"
   },
   {
-    "key": "ctrl+shift+1",
+    "key": "ctrl+2",
     "command": "opencode.openTerminal"
   },
   {
@@ -307,7 +307,7 @@
     "command": "-opencode.openTerminal"
   },
   {
-    "key": "ctrl+1",
+    "key": "ctrl+shift+2",
     "command": "opencode.openNewTerminal"
   },
   {
@@ -321,5 +321,14 @@
   {
     "key": "ctrl+5",
     "command": "remote-containers.pruneVolumes"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "workbench.action.terminal.openNativeConsole"
+  },
+  {
+    "key": "ctrl+shift+2",
+    "command": "-workbench.action.terminal.sendSequence",
+    "when": "terminalFocus"
   }
 ]
