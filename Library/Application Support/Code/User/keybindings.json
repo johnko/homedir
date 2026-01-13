@@ -305,14 +305,6 @@
     "command": "-opencode.openNewTerminal"
   },
   {
-    "key": "ctrl+shift+4",
-    "command": "remote-containers.cleanUpDevContainers"
-  },
-  {
-    "key": "ctrl+shift+4",
-    "command": "remote-containers.pruneVolumes"
-  },
-  {
     "key": "ctrl+shift+`",
     "command": "workbench.action.terminal.openNativeConsole"
   },
