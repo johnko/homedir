@@ -77,9 +77,6 @@
   "telemetry.telemetryLevel": "off",
   "terminal.explorerKind": "external",
   "terminal.integrated.defaultLocation": "editor",
-  "terminal.integrated.env.osx": {
-    "DOCKER_DEFAULT_PLATFORM": "linux/amd64"
-  },
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.hideOnStartup": "always",
   "terminal.integrated.inheritEnv": false,
