@@ -110,7 +110,7 @@
 	format = ssh
 
 [gpg "ssh"]
-	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	program = "/Users/john/bin/op-ssh-sign"
 
 [user]
 	name = johnko

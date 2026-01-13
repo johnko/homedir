@@ -7,6 +7,18 @@ case $1 in
     ;;
   *)
     export ANSIBLE_ACTION="absent"
+
+    # we have passwordless sudo, so we can make a symlink to the bin directory
+    set -x
+    if [[ $USER =~ ^j ]]; then
+      if [[ ! -e /Users/john ]]; then
+        sudo install -d -o $USER -m 700 /Users/john
+      fi
+      if [[ ! -e /Users/john/bin ]]; then
+        ln -sf "$HOME/bin" /Users/john/bin
+      fi
+    fi
+    set +x
     ;;
 esac
 
