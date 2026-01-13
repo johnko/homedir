@@ -83,6 +83,7 @@
   "typescript.surveys.enabled": false,
   "update.showReleaseNotes": false,
   "window.autoDetectColorScheme": true,
+  "window.commandCenter": false,
   "window.confirmSaveUntitledWorkspace": false,
   "window.title": "${activeRepositoryBranchName}${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
   "workbench.editor.empty.hint": "hidden",
