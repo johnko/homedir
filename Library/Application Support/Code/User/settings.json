@@ -87,6 +87,58 @@
   "markdownlint.customRules": [
     "{docsmsft.docs-linting}/markdownlint-custom-rules/rules.js"
   ],
+  "peacock.favoriteColors": [
+    {
+      "name": "black",
+      "value": "#222222"
+    },
+    {
+      "name": "white",
+      "value": "#eeeeee"
+    },
+    {
+      "name": "silver",
+      "value": "gray"
+    },
+    {
+      "name": "red",
+      "value": "#cc0000"
+    },
+    {
+      "name": "green",
+      "value": "green"
+    },
+    {
+      "name": "yellow",
+      "value": "yellow"
+    },
+    {
+      "name": "blue",
+      "value": "#0040ff"
+    },
+    {
+      "name": "purple",
+      "value": "#893de9"
+    },
+    {
+      "name": "magenta",
+      "value": "#ff00ff"
+    },
+    {
+      "name": "pink",
+      "value": "pink"
+    },
+    {
+      "name": "orange",
+      "value": "#ff8000"
+    },
+    {
+      "name": "cyan",
+      "value": "cyan"
+    }
+  ],
+  "peacock.surpriseMeFromFavoritesOnly": true,
+  "peacock.surpriseMeOnStartup": true,
   "pgsql.resultsFontSize": 14,
   "python.defaultInterpreterPath": "~/venv-python3",
   "redhat.telemetry.enabled": false,

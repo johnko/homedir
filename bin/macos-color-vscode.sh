@@ -208,7 +208,7 @@ EOF
     "titleBar.inactiveBackground": "#0040ff99",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#0040FF"
+  "peacock.color": "#0040ff"
 }
 '
       ;;
