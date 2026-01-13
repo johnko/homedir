@@ -67,6 +67,7 @@
   "pgsql.resultsFontSize": 14,
   "python.defaultInterpreterPath": "~/venv-python3",
   "redhat.telemetry.enabled": false,
+  "remote.SSH.enableAgentForwarding": false,
   "scm.inputFontSize": 14,
   "settingsSync.ignoredSettings": [
     "-dotfiles.repository",
@@ -78,6 +79,7 @@
   "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.hideOnStartup": "always",
+  "terminal.integrated.inheritEnv": false,
   "terraform.codelens.referenceCount": true,
   "terraform.experimentalFeatures.prefillRequiredFields": true,
   "terraform.experimentalFeatures.validateOnSave": true,
@@ -85,6 +87,7 @@
   "update.showReleaseNotes": false,
   "window.commandCenter": false,
   "window.confirmSaveUntitledWorkspace": false,
+  "window.newWindowProfile": "Default",
   "window.title": "${activeRepositoryBranchName}${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
   "workbench.colorTheme": "Visual Studio Light",
   "workbench.editor.empty.hint": "hidden",
