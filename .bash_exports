@@ -57,6 +57,9 @@ export FX_NO_MOUSE=true
 # export     CURL_CA_BUNDLE=$SSL_CERT_FILE
 # export      AWS_CA_BUNDLE=$SSL_CERT_FILE
 
+# Docker arch with more compatibility, can unset if needed to auto-detect
+export DOCKER_DEFAULT_PLATFORM="linux/amd64"
+
 # java/openjdk headers
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
