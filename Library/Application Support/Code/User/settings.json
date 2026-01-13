@@ -126,7 +126,7 @@
   "redhat.telemetry.enabled": false,
   "remote.SSH.enableAgentForwarding": false,
   "remoteHub.gitProtocol": "ssh",
-  "scm.countBadge": "focused",
+  "scm.countBadge": "off",
   "scm.diffDecorationsIgnoreTrimWhitespace": "true",
   "scm.inputFontSize": 14,
   "settingsSync.ignoredSettings": [
