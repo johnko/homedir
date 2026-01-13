@@ -73,11 +73,6 @@
     "key": "cmd+9"
   },
   {
-    "command": "-workbench.action.terminal.toggleTerminal",
-    "key": "ctrl+`",
-    "when": "terminal.active"
-  },
-  {
     "command": "workbench.action.terminal.new",
     "key": "ctrl+`",
     "when": "terminalProcessSupported && !terminalFocus || !terminalFocus && terminalWebExtensionContributedProfile"
@@ -98,11 +93,6 @@
     "command": "-workbench.action.terminal.new",
     "key": "ctrl+shift+`",
     "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
-  },
-  {
-    "command": "workbench.action.terminal.toggleTerminal",
-    "key": "ctrl+shift+`",
-    "when": "terminal.active"
   },
   {
     "command": "-workbench.action.openEditorAtIndex1",
@@ -315,20 +305,51 @@
     "command": "-opencode.openNewTerminal"
   },
   {
-    "key": "ctrl+5",
+    "key": "ctrl+shift+4",
     "command": "remote-containers.cleanUpDevContainers"
   },
   {
-    "key": "ctrl+5",
+    "key": "ctrl+shift+4",
     "command": "remote-containers.pruneVolumes"
   },
   {
-    "key": "ctrl+1",
+    "key": "ctrl+shift+`",
     "command": "workbench.action.terminal.openNativeConsole"
   },
   {
     "key": "ctrl+shift+2",
     "command": "-workbench.action.terminal.sendSequence",
     "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+5",
+    "command": "git.createWorktree"
+  },
+  {
+    "key": "ctrl+shift+5",
+    "command": "-workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "ctrl+shift+5",
+    "command": "-workbench.action.terminal.splitActiveTab",
+    "when": "terminalProcessSupported && terminalTabsFocus"
+  },
+  {
+    "key": "ctrl+shift+5",
+    "command": "git.openWorktree"
+  },
+  {
+    "key": "ctrl+3",
+    "command": "workbench.profiles.actions.switchProfile"
+  },
+  {
+    "key": "ctrl+shift+3",
+    "command": "workbench.profiles.actions.createProfile"
   }
 ]

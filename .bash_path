@@ -18,9 +18,9 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/share/android-commandlinetools/emulator:$PATH"
 
 
-# add HOME bin for my scripts late in PATH
-[                   -e "$HOME/bin" ] \
-  && export PATH="$PATH:$HOME/bin"
+# add HOME bin for my scripts early in PATH
+[             -e "$HOME/bin" ] \
+  && export PATH="$HOME/bin:$PATH"
 
 
 # add Homebrew for M1 late in path

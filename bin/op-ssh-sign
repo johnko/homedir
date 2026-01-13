@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" ]]; then
+  ## if in VSCode, unset SSH_AUTH_SOCK to avoid endless 1Password prompt for ssh-agent
+  ## dev container seems to still set it, so we control from ssh wrapper
+  export SSH_AUTH_SOCK=""
+  echo "ERROR: detected running in vscode. Aborting."
+  exit 1
+else
+  # if not in VSCode, set ssh-agent
+  export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+fi
+
+# absolute path so we don't get into endless loop
+/Applications/1Password.app/Contents/MacOS/op-ssh-sign "$@"
