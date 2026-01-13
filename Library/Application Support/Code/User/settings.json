@@ -46,15 +46,20 @@
     "*": false
   },
   "github.gitProtocol": "ssh",
+  "githubPullRequests.defaultCommentType": "single",
   "githubPullRequests.defaultCreateOption": "createDraft",
   "githubPullRequests.defaultMergeMethod": "squash",
-  "githubPullRequests.focusedMode": "overview",
+  "githubPullRequests.devMode": true,
+  "githubPullRequests.focusedMode": false,
+  "githubPullRequests.hideViewedFiles": true,
   "githubPullRequests.ignoreSubmodules": true,
   "githubPullRequests.ignoredPullRequestBranches": [
     "main",
     "master"
   ],
+  "githubPullRequests.notifications": "pullRequests",
   "githubPullRequests.pullBranch": "always",
+  "githubPullRequests.pushBranch": "always",
   "githubPullRequests.quickDiff": true,
   "githubPullRequests.showPullRequestNumberInTree": true,
   "githubPullRequests.useReviewMode": {
@@ -121,6 +126,8 @@
   "redhat.telemetry.enabled": false,
   "remote.SSH.enableAgentForwarding": false,
   "remoteHub.gitProtocol": "ssh",
+  "scm.countBadge": "focused",
+  "scm.diffDecorationsIgnoreTrimWhitespace": "true",
   "scm.inputFontSize": 14,
   "settingsSync.ignoredSettings": [
     "-dev.containers.copyGitConfig",
