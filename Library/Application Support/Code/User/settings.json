@@ -32,6 +32,7 @@
   "editor.stickyScroll.enabled": true,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
+  "explorer.excludeGitIgnore": true,
   "extensions.ignoreRecommendations": true,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
@@ -48,6 +49,7 @@
   "githubPullRequests.defaultCreateOption": "createDraft",
   "githubPullRequests.defaultMergeMethod": "squash",
   "githubPullRequests.focusedMode": "overview",
+  "githubPullRequests.ignoreSubmodules": true,
   "githubPullRequests.ignoredPullRequestBranches": [
     "main",
     "master"
@@ -144,6 +146,12 @@
   "window.title": "${activeRepositoryBranchName}${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
   "workbench.colorTheme": "Visual Studio Light",
   "workbench.editor.empty.hint": "hidden",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.scrollToSwitchTabs": true,
+  "workbench.editor.showTabIndex": true,
+  "workbench.editor.tabActionCloseVisibility": false,
+  "workbench.editor.wrapTabs": true,
   "workbench.preferredDarkColorTheme": "Visual Studio Dark",
   "workbench.preferredLightColorTheme": "Visual Studio Light",
   "workbench.secondarySideBar.showLabels": false,
