@@ -146,7 +146,7 @@
     "when": "remoteName != 'dev-container'"
   },
   {
-    "key": "ctrl+4",
+    "key": "ctrl+shift+4",
     "command": "remote-containers.rebuildContainerNoCache",
     "when": "remoteName == 'dev-container'"
   },
