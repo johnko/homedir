@@ -22,7 +22,7 @@
   "debug.console.fontSize": 14,
   "docsYaml.telemetry.enableTelemetry": false,
   "dotfiles.installCommand": "bootstrap.sh",
-  "dotfiles.repository": "https://github.com/johnko/opencode-devcontainers-dotfiles.git",
+  "dotfiles.repository": "https://github.com/johnko/devcontainer-dotfiles.git",
   "editor.fontSize": 14,
   "editor.renderWhitespace": "all",
   "editor.stickyScroll.enabled": true,
@@ -71,7 +71,8 @@
   "settingsSync.ignoredSettings": [
     "-dotfiles.repository",
     "-dotfiles.installCommand",
-    "-dotfiles.targetPath"
+    "-dotfiles.targetPath",
+    "-dev.containers.copyGitConfig"
   ],
   "telemetry.telemetryLevel": "off",
   "terminal.explorerKind": "external",
