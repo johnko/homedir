@@ -22,8 +22,28 @@
   "debug.console.fontSize": 14,
   "dev.containers.cacheVolume": false,
   "dev.containers.defaultExtensions": [
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "github.vscode-github-actions",
+    "golang.go",
+    "hashicorp.hcl",
+    "hashicorp.terraform",
     "johnpapa.vscode-peacock",
-    "oderwat.indent-rainbow"
+    "ms-azuretools.vscode-containers",
+    "ms-azuretools.vscode-docker",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "ms-ossdata.vscode-pgsql",
+    "ms-python.black-formatter",
+    "ms-python.flake8",
+    "ms-python.isort",
+    "ms-python.python",
+    "ms-vscode.hexeditor",
+    "ms-vscode.makefile-tools",
+    "msjsdiag.vscode-react-native",
+    "oderwat.indent-rainbow",
+    "redhat.ansible",
+    "redhat.vscode-xml",
+    "redhat.vscode-yaml"
   ],
   "docsYaml.telemetry.enableTelemetry": false,
   "dotfiles.installCommand": "bootstrap.sh",
@@ -74,10 +94,10 @@
   "remoteHub.gitProtocol": "ssh",
   "scm.inputFontSize": 14,
   "settingsSync.ignoredSettings": [
-    "-dotfiles.repository",
+    "-dev.containers.copyGitConfig",
     "-dotfiles.installCommand",
-    "-dotfiles.targetPath",
-    "-dev.containers.copyGitConfig"
+    "-dotfiles.repository",
+    "-dotfiles.targetPath"
   ],
   "telemetry.telemetryLevel": "off",
   "terminal.explorerKind": "external",
