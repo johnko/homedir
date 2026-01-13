@@ -15,7 +15,6 @@
   },
   "chat.agent.enabled": false,
   "chat.commandCenter.enabled": false,
-  "chat.disableAIFeatures": true,
   "chat.editor.fontSize": 14,
   "chat.extensionUnification.enabled": false,
   "continue.enableTabAutocomplete": true,
@@ -129,6 +128,10 @@
   "scm.countBadge": "off",
   "scm.diffDecorationsIgnoreTrimWhitespace": "true",
   "scm.inputFontSize": 14,
+  "settingsSync.ignoredExtensions": [
+    "github.copilot-chat",
+    "github.copilot"
+  ],
   "settingsSync.ignoredSettings": [
     "-dev.containers.copyGitConfig",
     "-dotfiles.installCommand",
