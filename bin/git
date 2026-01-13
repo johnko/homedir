@@ -10,9 +10,7 @@ if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" ]]; then
   ## if in VSCode, unset SSH_AUTH_SOCK to avoid endless 1Password prompt for ssh-agent
   ## dev container seems to still set it, so we control from ssh wrapper
   export SSH_AUTH_SOCK=""
-  if echo "$@" | grep -q -E '(amend|commit|merge|reb|rebase|revert)'; then
-    exit_error
-  fi
+  export GPG_SIGN=""
   if echo "$@" | grep -q -E '(fetch|pull|push)'; then
     if /usr/bin/git remote -v | grep -q '@'; then
       exit_error
@@ -24,7 +22,10 @@ if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" ]]; then
 else
   # if not in VSCode, set ssh-agent
   export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+  if echo "$@" | grep -q -E "(amend|commit|merge|rebase|revert|$(/usr/bin/git config --get-regexp '^alias\.' | grep -E 'amend|commit|rebase|merge|revert' | sed -e 's/^alias\.//g' -e 's/ .*//g' | tr '\n' '|' | sed 's,|$,,'))"; then
+    export GPG_SIGN="--gpg-sign"
+  fi
 fi
 
 # absolute path so we don't get into endless loop
-/usr/bin/git "$@"
+/usr/bin/git "$@" $GPG_SIGN
