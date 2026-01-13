@@ -65,19 +65,19 @@ yabai -m rule --add app="^(Terminal)$" manage=off grid=101:60:1:25:58:75
 # Coding grid
 # top left
 yabai -m rule --add app="^(Code|Cursor)$" title="^.*(red|black).*$" manage=off grid=99:60:1:0:29:49
-yabai -m rule --add app="^(Terminal)$" title="^.*(1|6)$" manage=off grid=99:60:1:0:29:49
+yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(1|6)$" manage=off grid=99:60:1:0:29:49
 # top right
 yabai -m rule --add app="^(Code|Cursor)$" title="^.*(green|magenta).*$" manage=off grid=99:60:30:0:29:49
-yabai -m rule --add app="^(Terminal)$" title="^.*(2|7)$" manage=off grid=99:60:30:0:29:49
+yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(2|7)$" manage=off grid=99:60:30:0:29:49
 # middle center
 yabai -m rule --add app="^(Code|Cursor)$" title="^.*(purple|white).*$" manage=off grid=4:4:1:1:2:2
-yabai -m rule --add app="^(Terminal)$" title="^.*(5|0)$" manage=off grid=4:4:1:1:2:2
+yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(5|0)$" manage=off grid=4:4:1:1:2:2
 # bottom left
 yabai -m rule --add app="^(Code|Cursor)$" title="^.*(blue|cyan).*$" manage=off grid=99:60:1:49:29:49
-yabai -m rule --add app="^(Terminal)$" title="^.*(3|8)$" manage=off grid=99:60:1:49:29:49
+yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(3|8)$" manage=off grid=99:60:1:49:29:49
 # bottom right
 yabai -m rule --add app="^(Code|Cursor)$" title="^.*(yellow|orange).*$" manage=off grid=99:60:30:49:29:49
-yabai -m rule --add app="^(Terminal)$" title="^.*(4|9)$" manage=off grid=99:60:30:49:29:49
+yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(4|9)$" manage=off grid=99:60:30:49:29:49
 
 # float some non-resizable apps
 yabai -m rule --add app="^(Archive Utility|Calculator|iPhone Mirroring)$" manage=off
