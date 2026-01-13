@@ -20,6 +20,7 @@
   "continue.enableTabAutocomplete": true,
   "continue.telemetryEnabled": false,
   "debug.console.fontSize": 14,
+  "dev.containers.cacheVolume": false,
   "dev.containers.defaultExtensions": [
     "johnpapa.vscode-peacock",
     "oderwat.indent-rainbow"
