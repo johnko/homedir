@@ -2,11 +2,12 @@
 set -e
 
 EXCLUDE_PATHS="
-.aws
+SAFETOIGNORE
 .devops-tools
 .DS_Store
 .git
 agent.sock
+agent.toml
 CODEOWNERS
 creator-micro
 gitea
@@ -24,13 +25,12 @@ squid
 squid-demo-client
 terminal-kctxt-qa-k9s.scpt
 test-secrets-template.yaml
-NOEXISTSEPERATOR
+EXPECTEDDIFFSEPERATOR
+.aws
 .Brewfile
 .gitmodules
-agent.toml
 config.example
 known_hosts
-EXPECTEDDIFFSEPERATOR
 .gitconfig
 .gitignore
 "

@@ -344,14 +344,14 @@ EOF
       ;;
     test)
       for i in $(macos-color-vscode.sh | grep -- ' - ' | awk '{print $NF}'); do
-        macos-color-vscode.sh $i
+        macos-color-vscode.sh "$i"
         echo "Tested $i ... Press ENTER to contine."
-        read
+        read -r
       done
       exit 1
       ;;
     *)
-      echo "❌ Invalid color: $color"
+      echo "❌ Invalid color: $COLOR"
       exit 1
       ;;
   esac

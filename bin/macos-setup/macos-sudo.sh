@@ -12,7 +12,7 @@ case $1 in
     set -x
     if [[ $USER =~ ^j ]]; then
       if [[ ! -e /Users/john ]]; then
-        sudo install -d -o $USER -m 700 /Users/john
+        sudo install -d -o "$USER" -m 700 /Users/john
       fi
       if [[ ! -e /Users/john/bin ]]; then
         ln -sf "$HOME/bin" /Users/john/bin
