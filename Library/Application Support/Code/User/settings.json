@@ -147,7 +147,6 @@
   "workbench.colorTheme": "Visual Studio Light",
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.enablePreview": false,
-  "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.scrollToSwitchTabs": true,
   "workbench.editor.showTabIndex": true,
   "workbench.editor.tabActionCloseVisibility": false,
