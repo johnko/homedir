@@ -20,7 +20,6 @@
   "continue.enableTabAutocomplete": true,
   "continue.telemetryEnabled": false,
   "debug.console.fontSize": 14,
-  "dev.containers.cacheVolume": false,
   "dev.containers.defaultExtensions": [
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
