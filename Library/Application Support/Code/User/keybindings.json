@@ -146,11 +146,6 @@
     "when": "remoteName != 'dev-container'"
   },
   {
-    "key": "ctrl+shift+4",
-    "command": "remote-containers.rebuildContainerNoCache",
-    "when": "remoteName == 'dev-container'"
-  },
-  {
     "key": "ctrl+`",
     "command": "workbench.action.terminal.splitInActiveWorkspace",
     "when": "terminalFocus"
@@ -343,5 +338,9 @@
   {
     "key": "ctrl+shift+3",
     "command": "peacock.changeColorToFavorite"
+  },
+  {
+    "key": "ctrl+shift+4",
+    "command": "remote-containers.rebuildContainer"
   }
 ]
