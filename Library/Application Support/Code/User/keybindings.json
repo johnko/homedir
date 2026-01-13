@@ -346,10 +346,10 @@
   },
   {
     "key": "ctrl+3",
-    "command": "workbench.profiles.actions.switchProfile"
+    "command": "peacock.changeColorToRandom"
   },
   {
     "key": "ctrl+shift+3",
-    "command": "workbench.profiles.actions.createProfile"
+    "command": "peacock.changeColorToFavorite"
   }
 ]
