@@ -20,9 +20,6 @@
   "continue.enableTabAutocomplete": true,
   "continue.telemetryEnabled": false,
   "debug.console.fontSize": 14,
-  "dev.containers.defaultExtensions": [
-    "sst-dev.opencode"
-  ],
   "docsYaml.telemetry.enableTelemetry": false,
   "dotfiles.installCommand": "bootstrap.sh",
   "dotfiles.repository": "https://github.com/johnko/opencode-devcontainers-dotfiles.git",
@@ -43,6 +40,7 @@
   "github.copilot.enable": {
     "*": false
   },
+  "github.gitProtocol": "ssh",
   "githubPullRequests.defaultCreateOption": "createDraft",
   "githubPullRequests.defaultMergeMethod": "squash",
   "githubPullRequests.focusedMode": "overview",
@@ -68,6 +66,7 @@
   "python.defaultInterpreterPath": "~/venv-python3",
   "redhat.telemetry.enabled": false,
   "remote.SSH.enableAgentForwarding": false,
+  "remoteHub.gitProtocol": "ssh",
   "scm.inputFontSize": 14,
   "settingsSync.ignoredSettings": [
     "-dotfiles.repository",
@@ -78,7 +77,7 @@
   "terminal.explorerKind": "external",
   "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.fontSize": 14,
-  "terminal.integrated.hideOnStartup": "always",
+  "terminal.integrated.hideOnStartup": "whenEmpty",
   "terminal.integrated.inheritEnv": false,
   "terraform.codelens.referenceCount": true,
   "terraform.experimentalFeatures.prefillRequiredFields": true,
