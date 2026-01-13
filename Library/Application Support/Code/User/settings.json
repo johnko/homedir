@@ -79,6 +79,7 @@
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.hideOnStartup": "whenEmpty",
   "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.initialHint": false,
   "terraform.codelens.referenceCount": true,
   "terraform.experimentalFeatures.prefillRequiredFields": true,
   "terraform.experimentalFeatures.validateOnSave": true,
