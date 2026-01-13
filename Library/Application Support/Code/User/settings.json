@@ -150,7 +150,7 @@
   "window.commandCenter": false,
   "window.confirmSaveUntitledWorkspace": false,
   "window.newWindowProfile": "Default",
-  "window.title": "${activeRepositoryBranchName}${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
+  "window.title": "${profileName}${separator}${activeRepositoryBranchName}${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
   "workbench.colorTheme": "Visual Studio Light",
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.enablePreview": false,
