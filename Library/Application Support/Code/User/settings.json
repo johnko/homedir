@@ -66,8 +66,6 @@
     "closed": false,
     "merged": false
   },
-  "gitlens.codeLens.enabled": false,
-  "gitlens.telemetry.enabled": false,
   "go.survey.prompt": false,
   "inlineChat.holdToSpeech": false,
   "markdownlint.customRules": [

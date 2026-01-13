@@ -332,15 +332,15 @@
     "command": "git.openWorktree"
   },
   {
-    "key": "ctrl+3",
-    "command": "peacock.changeColorToRandom"
-  },
-  {
     "key": "ctrl+shift+3",
     "command": "peacock.changeColorToFavorite"
   },
   {
     "key": "ctrl+shift+4",
     "command": "remote-containers.rebuildContainer"
+  },
+  {
+    "key": "ctrl+3",
+    "command": "workbench.profiles.actions.switchProfile"
   }
 ]
