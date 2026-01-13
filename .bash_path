@@ -1,43 +1,36 @@
 #!/usr/bin/env bash
 
 # add Docker Desktop for Mac CLI early in PATH
-[             -e "/usr/local/bin" ] \
-  && export PATH="/usr/local/bin:$PATH"
-
+[ -e "/usr/local/bin" ] &&
+  export PATH="/usr/local/bin:$PATH"
 
 # add rbenv shims early in PATH
-[             -e "${HOME}/.rbenv/shims" ] \
-  && export PATH="${HOME}/.rbenv/shims:$PATH"
-
+[ -e "${HOME}/.rbenv/shims" ] &&
+  export PATH="${HOME}/.rbenv/shims:$PATH"
 
 # add java/openjdk early in PATH
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
-
 # add android early in PATH
 export PATH="/opt/homebrew/share/android-commandlinetools/emulator:$PATH"
 
-
 # add HOME bin for my scripts early in PATH
-[             -e "$HOME/bin" ] \
-  && export PATH="$HOME/bin:$PATH"
-
+[ -e "$HOME/bin" ] &&
+  export PATH="$HOME/bin:$PATH"
 
 # add Homebrew for M1 late in path
 # Set PATH, MANPATH, etc., for Homebrew.
-[        -e "/opt/homebrew/bin/brew" ] \
-  && eval "$(/opt/homebrew/bin/brew shellenv)"
-[        -e "/usr/local/bin/brew" ] \
-  && eval "$(/usr/local/bin/brew shellenv)"
-
+[ -e "/opt/homebrew/bin/brew" ] &&
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+[ -e "/usr/local/bin/brew" ] &&
+  eval "$(/usr/local/bin/brew shellenv)"
 
 # add go bin late in PATH
 export GOPATH="$HOME/go"
-[                   -e "$GOPATH/bin" ] \
-  && export PATH="$PATH:$GOPATH/bin"
+[ -e "$GOPATH/bin" ] &&
+  export PATH="$PATH:$GOPATH/bin"
 # "$GOROOT/bin:$GOPATH/bin:/usr/local/go/bin"
 
-
 # activate a python venv if it exists
-[        -e $HOME/venv-python3/bin/activate ] \
-  && source $HOME/venv-python3/bin/activate
+[ -e $HOME/venv-python3/bin/activate ] &&
+  source $HOME/venv-python3/bin/activate

@@ -200,7 +200,7 @@ d-vol() {
 dockprom() {
   if [[ -d ./code ]]; then
     SCRIPT_PATH=$(find ./code -maxdepth 3 -type f -name dockprom.sh)
-    if [[ -n "$SCRIPT_PATH" ]]; then
+    if [[ -n $SCRIPT_PATH ]]; then
       cd "$(dirname "$SCRIPT_PATH")" || return 1
       ./dockprom.sh "$@"
       cd - || return 1
@@ -226,7 +226,7 @@ gg() {
       gh pr create --assignee '@me' --draft --fill-first --label $GG_GITHUB_LABEL $GG_GITHUB_MILESTONE 2>&1 | tee "$TMP_LOG"
       set +x
       NEW_PR=$(grep "https://github\.com/$GG_GITHUB_ORG/.*/pull/.*" "$TMP_LOG" | tail -n1)
-      if [[ -n "$GG_GITHUB_PROJECT" ]]; then
+      if [[ -n $GG_GITHUB_PROJECT ]]; then
         gh project item-add "$GG_GITHUB_PROJECT" --owner "$GG_GITHUB_ORG" --url "$NEW_PR"
       fi
       test -e "$TMP_LOG" && rm "$TMP_LOG"
@@ -234,7 +234,7 @@ gg() {
       ;;
     label)
       gh label create "$GG_GITHUB_LABEL" --color '#0E8A16' --force || true
-      if [[ -n "$GG_GITHUB_PROJECT" ]]; then
+      if [[ -n $GG_GITHUB_PROJECT ]]; then
         gh project item-add "$GG_GITHUB_PROJECT" --owner "$GG_GITHUB_ORG" --url "$2"
       fi
       if echo "$2" | grep -q '/pull/'; then
@@ -259,7 +259,7 @@ gg() {
       fi
       set -x
       git checkout "$DEFAULT_BRANCH"
-      if [[ "$OLD_BRANCH" != "$DEFAULT_BRANCH" ]]; then
+      if [[ $OLD_BRANCH != "$DEFAULT_BRANCH" ]]; then
         git branch -D "$OLD_BRANCH"
       fi
       git pull --ff-only
@@ -269,7 +269,7 @@ gg() {
       ;;
     renovate)
       RENOVATE_WORKFLOW_NAME=$(gh workflow list | grep -v config | grep -i renovate | awk '{print $1}')
-      if [[ -n "$RENOVATE_WORKFLOW_NAME" ]]; then
+      if [[ -n $RENOVATE_WORKFLOW_NAME ]]; then
         gh workflow run "$RENOVATE_WORKFLOW_NAME"
       else
         gh workflow list >/dev/null 2>&1 || echo "ERROR: Cannot list workflows. Try:    gh auth refresh --scopes workflow"
@@ -393,7 +393,7 @@ repos-fetchorigin() {
         echo "==> ${__YELLOW}${i} ${__CYAN}* ${branch} ${__GREEN}* Running: ${__PURPLE}${cmdfetch}${__RESET}"
         # shellcheck disable=SC2086
         eval ${cmdfetch} 2>&1 | awk '{print "        "$0}'
-        if [[ "${remotebranch}" = "${branch}" ]]; then
+        if [[ ${remotebranch} == "${branch}" ]]; then
           local cmdmerge="git merge --ff-only ${remoteorigin}/${remotebranch}"
           echo "    ${__GREEN}* Running: ${__PURPLE}${cmdmerge}${__RESET}"
           # shellcheck disable=SC2086

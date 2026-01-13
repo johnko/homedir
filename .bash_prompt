@@ -3,13 +3,13 @@
 ## Modified from from https://github.com/gf3/dotfiles
 ## http://stackoverflow.com/questions/16715103/bash-prompt-with-last-exit-code
 
-if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color &>/dev/null ; then
+if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color &>/dev/null; then
   export TERM=gnome-256color
-elif infocmp xterm-256color &>/dev/null ; then
+elif infocmp xterm-256color &>/dev/null; then
   export TERM=xterm-256color
 fi
 
-if tput setaf 1 &>/dev/null ; then
+if tput setaf 1 &>/dev/null; then
   tput sgr0
   #  if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
   #  else
@@ -55,7 +55,7 @@ if [[ "$(whoami)" == "root" ]]; then
   export __USER="\[${__ROOT}\]\u"
 fi
 export __HOST="\[${__BLUE}\]@\[${__CYAN}\]\h"
-export __HOST="\[${__CYAN}\]$(kubectl config current-context 2> /dev/null)\[${__WHITE}\]:"
+export __HOST="\[${__CYAN}\]$(kubectl config current-context 2>/dev/null)\[${__WHITE}\]:"
 export __DIR="\[${__YELLOW}\]\w\[${__RESET}\]"
 export __DATE="\[${__PURPLE}\]\D{%Y-%m-%d %H:%M:%S %Z%z}"
 export __DEFAULT1="\[${__PURPLE}\]"
@@ -68,10 +68,10 @@ export __NEWLINE="\[$__RESET\]\n"
 
 # Set config variables first
 GIT_PROMPT_ONLY_IN_REPO=0
-GIT_PROMPT_FETCH_REMOTE_STATUS=0                                                               # 0 to avoid fetching remote status
-GIT_PROMPT_IGNORE_SUBMODULES=1                                                                 # 1 to avoid searching for changed files in submodules
+GIT_PROMPT_FETCH_REMOTE_STATUS=0 # 0 to avoid fetching remote status
+GIT_PROMPT_IGNORE_SUBMODULES=1   # 1 to avoid searching for changed files in submodules
 #GIT_PROMPT_SHOW_UPSTREAM=1                                                                     # 1 to show upstream tracking branch
-GIT_PROMPT_SHOW_UNTRACKED_FILES=no                                                             # can be no, normal or all; determines counting of untracked files
+GIT_PROMPT_SHOW_UNTRACKED_FILES=no # can be no, normal or all; determines counting of untracked files
 #GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0                                                          # 0 to avoid printing the number of changed files
 GIT_PROMPT_START="_LAST_COMMAND_INDICATOR_ ${__USER}${__HOST}${__DIR} ${__DATE}\[${__RESET}\]" # for custom prompt start sequence
 GIT_PROMPT_END="${__NEWLINE}${__DEFAULT1}${__SIGN} \[${__RESET}\]"                             # for custom prompt end sequence
