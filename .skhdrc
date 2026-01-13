@@ -7,11 +7,9 @@ shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-prune.scpt
 shift + ctrl + alt + cmd - 6 : yabai -m space --balance
 
 # float top left
-ctrl + alt + cmd - 1 :         yabai -m window --grid 99:60:1:0:29:49
 shift + ctrl + alt + cmd - q : yabai -m window --grid 99:60:1:0:29:49
 # shift + ctrl + alt + cmd - w : echo # arrow up
 # float top right
-ctrl + alt + cmd - 2 :         yabai -m window --grid 99:60:30:0:29:49
 shift + ctrl + alt + cmd - e : yabai -m window --grid 99:60:30:0:29:49
 # float middle center quarter
 shift + ctrl + alt + cmd - r : yabai -m window --grid 4:4:1:1:2:2
@@ -50,6 +48,8 @@ shift + ctrl + alt + cmd - b : yabai -m window --grid 101:60:1:75:58:25
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 
+# ctrl + alt + cmd - 1 : echo # mission control left
+# ctrl + alt + cmd - 2 : echo # mission control right
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
 ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
