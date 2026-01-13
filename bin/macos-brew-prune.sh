@@ -2,6 +2,7 @@
 set -euo pipefail
 
 if type brew &>/dev/null; then
+  cd ~/
   if [[ -e Brewfile ]]; then
     EXTRA_BREWFILE=""
     if [[ -e .Brewfile ]]; then
