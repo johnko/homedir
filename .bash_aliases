@@ -110,6 +110,26 @@ if type git &>/dev/null; then
     fi
   }
 fi
+allow-git-remote() {
+  if [[ ! -e "$HOME/.allowed_git_remote" ]]; then
+    touch "$HOME/.allowed_git_remote"
+  fi
+}
+deny-git-remote() {
+  if [[ -e "$HOME/.allowed_git_remote" ]]; then
+    rm "$HOME/.allowed_git_remote"
+  fi
+}
+allow-git-sign() {
+  if [[ ! -e "$HOME/.allowed_git_sign" ]]; then
+    touch "$HOME/.allowed_git_sign"
+  fi
+}
+deny-git-sign() {
+  if [[ ! -e "$HOME/.allowed_git_sign" ]]; then
+    rm "$HOME/.allowed_git_sign"
+  fi
+}
 
 ########################################
 
