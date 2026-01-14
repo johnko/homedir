@@ -26,7 +26,6 @@
     "oderwat.indent-rainbow"
   ],
   "docsYaml.telemetry.enableTelemetry": false,
-  "dotfiles.installCommand": "bootstrap.sh",
   "dotfiles.repository": "https://github.com/johnko/devcontainer-dotfiles.git",
   "editor.fontSize": 14,
   "editor.renderWhitespace": "all",
@@ -37,7 +36,6 @@
   "extensions.ignoreRecommendations": true,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "git.enableCommitSigning": true,
   "git.openRepositoryInParentFolders": "never",
   "git.replaceTagsWhenPull": true,
   "github.copilot.chat.backgroundAgent.enabled": false,
