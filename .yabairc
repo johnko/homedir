@@ -47,7 +47,7 @@ yabai -m rule --add app="^(Safari|Slack)$" manage=off grid=101:60:1:25:58:75
 # float bottom left on vertical screen
 yabai -m rule --add app="^(Signal)$" manage=off grid=101:60:1:50:29:50
 # float bottom right on vertical screen
-yabai -m rule --add app="^(LINE)$" manage=off grid=101:60:30:50:29:50
+yabai -m rule --add app="^(Cursor|LINE)$" manage=off grid=101:60:30:50:29:50
 
 # float 3rd slot down, quartertall on vertical screen
 yabai -m rule --add app="^(Discord)$" manage=off grid=101:60:1:50:58:25
