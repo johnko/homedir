@@ -63,6 +63,11 @@ ALLOWED_HOSTS = [
     "www.schemastore.org",  # endpointAddr, com.microsoft.VSCode.helper:Developer ID Application: Microsoft Corporation (UBF8T346G9)
 ]
 
+
+ALLOWED_IPV4_PATTERNS = [
+    r"^10\.88\.111\.\d{1,3}$"
+]
+
 try:
     # Open the file in read mode
     with open(LULU_RULES_FILE, "r", encoding="utf-8") as file:
@@ -85,8 +90,6 @@ try:
     for app_name in data:
         # Iterate through each rule per app
         for rule in data[app_name]:
-            import re
-
             ipv4_pattern = r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$"
             ipv6_pattern = (
                 r"^[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}::?[0-9a-fA-F]{1,4}.*$|^::1$|^::$"
@@ -110,6 +113,27 @@ try:
                 and rule["endpointAddr"] != "*"
             ):
                 if rule["endpointAddr"] in ALLOWED_HOSTS:
+                    print()
+                    print(f"Converting app {app_name} rule {rule['endpointAddr']}")
+                    rule["type"] = 3
+                    print(f"{rule}")
+
+    # Converting passive rules with ALLOWED_IPV4_PATTERNS to user rules
+    for app_name in data:
+        # Iterate through each rule per app
+        for rule in data[app_name]:
+            for pattern in ALLOWED_IPV4_PATTERNS:
+
+                is_allowed_ipv4 = bool(re.match(pattern, rule["endpointAddr"])) or (
+                    bool(re.match(pattern, rule["endpointHost"]))
+                    if "endpointHost" in rule
+                    else False
+                )
+
+                if (
+                    rule["type"] == 4
+                    and is_allowed_ipv4
+                ):
                     print()
                     print(f"Converting app {app_name} rule {rule['endpointAddr']}")
                     rule["type"] = 3
@@ -157,6 +181,34 @@ try:
                 ):
                     # Seems optional in some rules
                     print(f"\"{rule['endpointHost']}\",  # endpointHost, {app_name}")
+
+    print()
+    print("========== ========== ========== ==========")
+    print("Unhandled passive rules without hostnames:")
+    print("========== ========== ========== ==========")
+    # List passive rules not in ALLOWED_IPV4_PATTERNS
+    for app_name in data:
+        # Iterate through each rule per app
+        for rule in data[app_name]:
+            for pattern in ALLOWED_IPV4_PATTERNS:
+
+                is_allowed_ipv4 = bool(re.match(pattern, rule["endpointAddr"])) or (
+                    bool(re.match(pattern, rule["endpointHost"]))
+                    if "endpointHost" in rule
+                    else False
+                )
+
+                if (
+                    rule["type"] == 4
+                    and not is_allowed_ipv4
+                ):
+                    print(f"\"{rule['endpointAddr']}\",  # endpointAddr, {app_name}")
+                    if (
+                        "endpointHost" in rule
+                        and rule["endpointAddr"] != rule["endpointHost"]
+                    ):
+                        # Seems optional in some rules
+                        print(f"\"{rule['endpointHost']}\",  # endpointHost, {app_name}")
 
 
 except FileNotFoundError:

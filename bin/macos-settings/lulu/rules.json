@@ -531,7 +531,7 @@
       "name": "gvproxy",
       "path": "/opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "894D82C5-F592-4714-8EB5-4E3325EC9E49"
     },
     {
