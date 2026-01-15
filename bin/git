@@ -33,7 +33,7 @@ export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
 # dynamically add gpg-sign if allowed or not vscode
 if [[ -e "$HOME/.allowed_git_sign" ]] || [[ -z $VSCODE_INJECTION || $VSCODE_INJECTION != "1" ]] && [[ -z $VSCODE_GIT_IPC_HANDLE && -z $VSCODE_NONCE ]]; then
-  if echo "$@" | sed -e 's,committer,,ig' -e 's,reverts,,ig' | grep -q -E "(amend|commit|merge|rebase|revert|$(/usr/bin/git config --get-regexp '^alias\.' | grep -E 'amend|commit|rebase|merge|revert' | sed -e 's/^alias\.//g' -e 's/ .*//g' | tr '\n' '|' | sed 's,|$,,'))"; then
+  if echo "$@" | sed -e 's,committer,,ig' -e 's,reverts,,ig' | grep -q -E "(amend|commit|cherry-pick|merge|rebase|revert|$(/usr/bin/git config --get-regexp '^alias\.' | grep -E 'amend|commit|cherry-pick|rebase|merge|revert' | sed -e 's/^alias\.//g' -e 's/ .*//g' | tr '\n' '|' | sed 's,|$,,'))"; then
     export GPG_SIGN="--gpg-sign"
   fi
 fi
