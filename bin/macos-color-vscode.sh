@@ -336,7 +336,7 @@ EOF
   else
     cat .vscode/settings.json |
       jq --argjson str "$JSON_STRING" '. + $str' --sort-keys >.vscode/settings2.json
-    mv .vscode/settings2.json .vscode/settings.json
+    cat .vscode/settings2.json >.vscode/settings.json
   fi
 
   echo "✅ Color set to: $COLOR"
