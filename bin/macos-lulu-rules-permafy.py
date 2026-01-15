@@ -80,7 +80,7 @@ try:
                 rule["type"] = 3
                 print(f"{rule}")
 
-    # List passive rulues with endpointAddr and endpointHost for each rule if either are not IPv4/IPv6 and not wildcard
+    # Converting passive rulues with endpointAddr and endpointHost for each rule if either are not IPv4/IPv6 and not wildcard and in ALLOWED_HOSTS
     for app_name in data:
         # Iterate through each rule per app
         for rule in data[app_name]:
@@ -113,8 +113,6 @@ try:
                     print(f"Converting app {app_name} rule {rule['endpointAddr']}")
                     rule["type"] = 3
                     print(f"{rule}")
-
-    # Converting passive rules with DNS to user rules
 
     # Write the updated rules back to file
     # print(f"{data}")
