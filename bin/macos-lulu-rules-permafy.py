@@ -2,6 +2,7 @@
 
 import json
 import os
+import re
 
 HOME = os.environ.get("HOME")
 LULU_RULES_FILE = f"{HOME}/bin/macos-settings/lulu/rules.json"
@@ -127,8 +128,6 @@ try:
     for app_name in data:
         # Iterate through each rule per app
         for rule in data[app_name]:
-            import re
-
             ipv4_pattern = r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$"
             ipv6_pattern = (
                 r"^[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}::?[0-9a-fA-F]{1,4}.*$|^::1$|^::$"
