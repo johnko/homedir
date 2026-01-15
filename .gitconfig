@@ -109,6 +109,7 @@
 
 [gpg "ssh"]
 	program = "/Users/john/bin/op-ssh-sign"
+	allowedSignersFile =
 
 [user]
 	name = johnko

@@ -23,8 +23,8 @@ models:
       headers:
         Authorization: Basic
     roles:
-      - chat
       - apply
+      - chat
   - apiBase: http://127.0.0.1:11434
     model: gpt-oss:20b
     name: gpt-oss:20b
@@ -70,8 +70,9 @@ models:
       headers:
         Authorization: Basic
     roles:
-      - edit
       - autocomplete
+      - chat
+      - edit
   - apiBase: http://127.0.0.1:11434
     model: starcoder2:15b
     name: starcoder2:15b

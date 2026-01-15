@@ -339,5 +339,55 @@
     "key": "ctrl+shift+3",
     "command": "workbench.profiles.actions.newWindowWithProfile",
     "when": "hasProfiles"
+  },
+  {
+    "key": "cmd+d",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus && activeEditor != 'multiDiffEditor' && activeEditor != 'workbench.editor.notebook' && !textCompareEditorVisible"
+  },
+  {
+    "key": "cmd+d",
+    "command": "-editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+d",
+    "command": "multiDiffEditor.goToNextChange",
+    "when": "activeEditor == 'multiDiffEditor'"
+  },
+  {
+    "key": "alt+f5",
+    "command": "-multiDiffEditor.goToNextChange",
+    "when": "activeEditor == 'multiDiffEditor'"
+  },
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.compareEditor.nextChange",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "key": "alt+f5",
+    "command": "-workbench.action.compareEditor.nextChange",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "multiDiffEditor.goToPreviousChange",
+    "when": "activeEditor == 'multiDiffEditor'"
+  },
+  {
+    "key": "shift+alt+f5",
+    "command": "-multiDiffEditor.goToPreviousChange",
+    "when": "activeEditor == 'multiDiffEditor'"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "workbench.action.compareEditor.previousChange",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "key": "shift+alt+f5",
+    "command": "-workbench.action.compareEditor.previousChange",
+    "when": "textCompareEditorVisible"
   }
 ]

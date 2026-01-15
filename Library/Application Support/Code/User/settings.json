@@ -128,7 +128,6 @@
     "GitHub.vscode-pull-request-github"
   ],
   "remoteHub.gitProtocol": "ssh",
-  "scm.countBadge": "off",
   "scm.diffDecorationsIgnoreTrimWhitespace": "true",
   "scm.inputFontSize": 14,
   "settingsSync.ignoredExtensions": [
