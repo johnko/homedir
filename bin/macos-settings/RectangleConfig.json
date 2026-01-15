@@ -235,6 +235,9 @@
     "unsnapRestore" : {
       "int" : 0
     },
+    "widthStepSize" : {
+      "float" : 30
+    },
     "windowSnapping" : {
       "int" : 2
     }
@@ -253,5 +256,5 @@
       "modifierFlags" : 786432
     }
   },
-  "version" : "96"
+  "version" : "99"
 }
