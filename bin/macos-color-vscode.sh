@@ -339,10 +339,6 @@ EOF
     mv .vscode/settings2.json .vscode/settings.json
   fi
 
-  cat "$HOME/Library/Application Support/Code/User/settings.json" |
-    sed "s,$HOME/,~/,g" |
-    jq --argjson str "$JSON_STRING" '. + $str' --sort-keys | pbcopy
-
-  echo "✅ Copied to clipboard"
+  echo "✅ Color set to: $COLOR"
 
 fi
