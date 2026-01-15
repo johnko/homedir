@@ -161,6 +161,6 @@ try:
 
 
 except FileNotFoundError:
-    print("Error: The file LULU_RULES_FILE was not found.")
+    print(f"Error: The file {LULU_RULES_FILE} was not found.")
 except json.JSONDecodeError as e:
     print(f"Error: Failed to decode JSON from the file - {e}")
