@@ -331,7 +331,7 @@ EOF
 
   mkdir -p .vscode
 
-  if [[ ! -e .vscode/settings.json ]] || ! jq '.' .vscode/settings.json; then
+  if [[ ! -s .vscode/settings.json ]] || ! jq '.' .vscode/settings.json; then
     echo "Generating new .vscode/settings.json"
     jq --argjson str "$JSON_STRING" '. + $str' --sort-keys >.vscode/settings.json
   else
