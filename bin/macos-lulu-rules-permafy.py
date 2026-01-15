@@ -3,6 +3,7 @@
 import json
 import os
 import re
+from pprint import pp
 
 HOME = os.environ.get("HOME")
 LULU_RULES_FILE = f"{HOME}/bin/macos-settings/lulu/rules.json"
@@ -64,8 +65,35 @@ ALLOWED_HOSTS = [
 ]
 
 
-ALLOWED_IPV4_PATTERNS = [
-    r"^10\.88\.111\.\d{1,3}$"
+ALLOWED_IPV4_PATTERNS = [r"^10\.88\.111\.\d{1,3}$"]
+
+ALLOWED_APP_PORTS = [
+    {
+        "apps": ["/opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy"],
+        "ports": [123],
+    },
+    {
+        "apps": [
+            "com.google.Chrome.helper:Developer ID Application: Google LLC "
+            "(EQHXZ8M8AV)"
+        ],
+        "ports": [5228, 5222],
+    },
+    {
+        "apps": [
+            "com.hnc.Discord.helper.Renderer:Developer ID Application: "
+            "Discord, Inc. (53Q6R32WPB)"
+        ],
+        "ports": [50002, 50003, 50004, 50001, 19314],
+    },
+    {
+        "apps": [
+            "com.hnc.Discord.helper:Developer ID Application: Discord, Inc. "
+            "(53Q6R32WPB)"
+        ],
+        "ports": [2083],
+    },
+    {"apps": ["jp.naver.line.mac.LineCall"], "ports": [29494]},
 ]
 
 try:
@@ -130,12 +158,26 @@ try:
                     else False
                 )
 
-                if (
-                    rule["type"] == 4
-                    and is_allowed_ipv4
-                ):
+                if rule["type"] == 4 and is_allowed_ipv4:
                     print()
                     print(f"Converting app {app_name} rule {rule['endpointAddr']}")
+                    rule["type"] = 3
+                    print(f"{rule}")
+
+    # Converting passive rules with ALLOWED_APP_PORTS to user rules
+    for app_name in data:
+        # Iterate through each rule per app
+        for rule in data[app_name]:
+            for allowed_pair in ALLOWED_APP_PORTS:
+                if (
+                    rule["type"] == 4
+                    and int(rule["endpointPort"]) in allowed_pair["ports"]
+                    and rule["key"] in allowed_pair["apps"]
+                ):
+                    print()
+                    print(
+                        f"Converting app {app_name} rule {rule['endpointAddr']} port {rule['endpointPort']}"
+                    )
                     rule["type"] = 3
                     print(f"{rule}")
 
@@ -198,17 +240,48 @@ try:
                     else False
                 )
 
-                if (
-                    rule["type"] == 4
-                    and not is_allowed_ipv4
-                ):
+                if rule["type"] == 4 and not is_allowed_ipv4:
                     print(f"\"{rule['endpointAddr']}\",  # endpointAddr, {app_name}")
                     if (
                         "endpointHost" in rule
                         and rule["endpointAddr"] != rule["endpointHost"]
                     ):
                         # Seems optional in some rules
-                        print(f"\"{rule['endpointHost']}\",  # endpointHost, {app_name}")
+                        print(
+                            f"\"{rule['endpointHost']}\",  # endpointHost, {app_name}"
+                        )
+
+    print()
+    print("========== ========== ========== ==========")
+    print("Unhandled passive rules with non standard ports:")
+    print("========== ========== ========== ==========")
+    # List passive rules not in ALLOWED_APP_PORTS
+    unhandled_apps_ports = {}
+    for app_name in data:
+        # Iterate through each rule per app
+        for rule in data[app_name]:
+            if rule["type"] == 4 and int(rule["endpointPort"]) not in [80, 443, 53]:
+                if app_name not in unhandled_apps_ports:
+                    unhandled_apps_ports[app_name] = {"apps": [app_name], "ports": []}
+                if (
+                    int(rule["endpointPort"])
+                    not in unhandled_apps_ports[app_name]["ports"]
+                ):
+                    unhandled_apps_ports[app_name]["ports"].append(
+                        int(rule["endpointPort"])
+                    )
+                print(
+                    f"# {rule["endpointPort"]} \"{rule['endpointAddr']}\",  # endpointAddr, {app_name}"
+                )
+                if (
+                    "endpointHost" in rule
+                    and rule["endpointAddr"] != rule["endpointHost"]
+                ):
+                    # Seems optional in some rules
+                    print(
+                        f"# {rule["endpointPort"]} \"{rule['endpointHost']}\",  # endpointHost, {app_name}"
+                    )
+    pp([x for x in unhandled_apps_ports.values()])
 
 
 except FileNotFoundError:

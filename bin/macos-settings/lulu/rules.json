@@ -113,7 +113,7 @@
       "name": "gvproxy",
       "path": "/opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "C75E473A-266E-43F2-9572-47B4D67F2FDA"
     },
     {
@@ -132,7 +132,7 @@
       "name": "gvproxy",
       "path": "/opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "33C46DB4-CEF6-48FE-937C-DC4EE216751F"
     },
     {
@@ -151,7 +151,7 @@
       "name": "gvproxy",
       "path": "/opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "DFD27B74-6A00-4EA9-AB38-58866510FB66"
     },
     {
@@ -170,7 +170,7 @@
       "name": "gvproxy",
       "path": "/opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "0C4F19E3-C044-4BB6-AFFB-F8FFEE90F93B"
     },
     {
@@ -7356,7 +7356,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A26CA0DC-3FBE-4CD6-9D46-28F35926EBC2"
     },
     {
@@ -8580,7 +8580,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "902225F1-ADD8-4EDD-B204-4FCF5BF1D4E1"
     },
     {
@@ -9924,7 +9924,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "B23E84ED-3AAC-4DB0-8008-C5921F92901C"
     },
     {
@@ -10576,7 +10576,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A763974C-6405-40D5-88A6-4F2F1A42DED5"
     },
     {
@@ -10600,7 +10600,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "9A215382-3DCD-4244-9FC9-C99B70A76A03"
     },
     {
@@ -10624,7 +10624,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "1E458C41-A5CC-4806-A8E6-43212D855325"
     },
     {
@@ -10648,7 +10648,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "AF36DE48-70BA-42E7-A666-69853339F2C3"
     },
     {
@@ -10672,7 +10672,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "95D3B6DE-C824-4E0E-A47E-885C6696A2CD"
     },
     {
@@ -10696,7 +10696,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "5FE399F4-3096-4724-AA9B-0079431BB453"
     },
     {
@@ -10720,7 +10720,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "BA66F1A4-6BBD-4137-85E1-D62D6B5BC57F"
     },
     {
@@ -10744,7 +10744,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "9D87FE3D-F5E6-4253-BBB1-CDCC86967CDD"
     },
     {
@@ -10768,7 +10768,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "32042392-BFAD-4D8B-B2E7-0AD675CC4C0A"
     },
     {
@@ -10792,7 +10792,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "EC93A044-CEAE-4A07-9422-8E6A9BCA9E71"
     },
     {
@@ -10816,7 +10816,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "34E8F652-2FD2-4356-A1B8-326B1B8FA5E4"
     },
     {
@@ -10840,7 +10840,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "D8CA9AE3-26F7-41BB-955E-1BDF40B127A9"
     },
     {
@@ -10864,7 +10864,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "58E0D00F-0C9F-43BE-B28E-654BDC8A4885"
     },
     {
@@ -10888,7 +10888,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "B57A5EDE-D7F2-4DCB-B24B-B076E6549A6E"
     },
     {
@@ -10912,7 +10912,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A243B33D-C55C-4B00-8F6F-CF8E10A20A78"
     },
     {
@@ -10936,7 +10936,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "71472856-0288-4B8C-B16B-8BD3F10A21C7"
     },
     {
@@ -10960,7 +10960,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "688AD081-497F-41B3-8669-8A7F55FE2FE6"
     },
     {
@@ -10984,7 +10984,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "B1F85385-374C-40DA-8B9E-58B578AEE31C"
     },
     {
@@ -11008,7 +11008,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "3CE05477-161C-42C1-9827-6D8626DED7B3"
     },
     {
@@ -11032,7 +11032,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A5046F7C-4E9B-447C-946C-A5EC754ECB63"
     },
     {
@@ -11056,7 +11056,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "6FCB3F36-2846-4B7F-821A-C4D80C8DD2DD"
     },
     {
@@ -11080,7 +11080,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "D4A96DBA-5BA7-4B7B-B177-E73434C11DB6"
     },
     {
@@ -11104,7 +11104,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A5EB1125-7271-4ACC-B0AF-C531A60C31C0"
     },
     {
@@ -11128,7 +11128,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "41DB4ACA-4CEF-4F22-8563-647F0D452E5C"
     },
     {
@@ -11152,7 +11152,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "B5B7EA6A-9596-4BB8-BB45-C0B466AA5664"
     },
     {
@@ -11176,7 +11176,7 @@
       "name": "Discord Helper (Renderer)",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper (Renderer).app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "8EF0D8F3-CBD5-420B-B618-4EB20C4929F8"
     }
   ],
@@ -11442,7 +11442,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "BBEE9ADC-689F-4C5F-A1CE-E0DFC410FC75"
     },
     {
@@ -12728,7 +12728,7 @@
       "name": "LineCall",
       "path": "/Applications/LINE.app/Contents/Frameworks/LineCall.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "11AB141E-D554-4590-9265-A7ACBE6E6C00"
     },
     {
