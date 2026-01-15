@@ -64,8 +64,13 @@ ALLOWED_HOSTS = [
     "www.schemastore.org",  # endpointAddr, com.microsoft.VSCode.helper:Developer ID Application: Microsoft Corporation (UBF8T346G9)
 ]
 
-
-ALLOWED_IPV4_PATTERNS = [r"^10\.88\.111\.\d{1,3}$"]
+ALLOWED_IPV4_PATTERNS = [
+    r"^10\.88\.111\.\d{1,3}$",
+    r"^142\.250\.137\.(9[0-9])$",
+    r"^142\.250\.137\.(10[0-9]|11[0-9]|12[0-9]|13[0-9])$",
+    r"^142\.250\.139\.(9[0-9])$",
+    r"^142\.250\.139\.(10[0-9]|11[0-9]|12[0-9]|13[0-9]|14[0-9]|19[0-9])$",
+]
 
 ALLOWED_APP_PORTS = [
     {
@@ -232,6 +237,7 @@ try:
     for app_name in data:
         # Iterate through each rule per app
         for rule in data[app_name]:
+            printed = False
             for pattern in ALLOWED_IPV4_PATTERNS:
 
                 is_allowed_ipv4 = bool(re.match(pattern, rule["endpointAddr"])) or (
@@ -240,7 +246,7 @@ try:
                     else False
                 )
 
-                if rule["type"] == 4 and not is_allowed_ipv4:
+                if rule["type"] == 4 and not is_allowed_ipv4 and not printed:
                     print(f"\"{rule['endpointAddr']}\",  # endpointAddr, {app_name}")
                     if (
                         "endpointHost" in rule
@@ -250,6 +256,7 @@ try:
                         print(
                             f"\"{rule['endpointHost']}\",  # endpointHost, {app_name}"
                         )
+                    printed = True
 
     print()
     print("========== ========== ========== ==========")
