@@ -25,6 +25,7 @@
     "johnpapa.vscode-peacock",
     "oderwat.indent-rainbow"
   ],
+  "dev.containers.workspaceMountConsistency": "consistent",
   "docsYaml.telemetry.enableTelemetry": false,
   "dotfiles.repository": "https://github.com/johnko/devcontainer-dotfiles.git",
   "editor.fontSize": 14,
@@ -123,6 +124,9 @@
   "redhat.telemetry.enabled": false,
   "remote.SSH.enableAgentForwarding": false,
   "remote.SSH.experimental.chat": false,
+  "remote.defaultExtensionsIfInstalledLocally": [
+    "GitHub.vscode-pull-request-github"
+  ],
   "remoteHub.gitProtocol": "ssh",
   "scm.countBadge": "off",
   "scm.diffDecorationsIgnoreTrimWhitespace": "true",
@@ -166,6 +170,9 @@
   "workbench.startupEditor": "none",
   "yaml.schemas": {
     "file://~/.vscode/extensions/continue.continue-1.2.11-darwin-arm64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ],
+    "file://~/.vscode/extensions/continue.continue-1.2.14-darwin-arm64/config-yaml-schema.json": [
       ".continue/**/*.yaml"
     ]
   }
