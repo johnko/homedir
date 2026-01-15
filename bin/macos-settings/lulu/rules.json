@@ -6006,7 +6006,7 @@
       "name": "Brave Helper",
       "path": "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/143.1.85.120/Helpers/Brave Browser Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "70181411-C4D6-498B-9BC1-FA3C7D45FB37"
     },
     {
@@ -6030,7 +6030,7 @@
       "name": "Brave Helper",
       "path": "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/143.1.85.120/Helpers/Brave Browser Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "6D8A7C1C-7905-4BFF-8FA9-607EC8F47EEE"
     },
     {
@@ -6078,7 +6078,7 @@
       "name": "Brave Helper",
       "path": "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/143.1.85.120/Helpers/Brave Browser Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "3C5A6BF5-D3BB-4C6E-B997-967BB8335F70"
     },
     {
@@ -6102,7 +6102,7 @@
       "name": "Brave Helper",
       "path": "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/143.1.85.120/Helpers/Brave Browser Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "1C89F4FD-6559-409B-8E37-850BFF89108C"
     },
     {
@@ -6222,7 +6222,7 @@
       "name": "Brave Helper",
       "path": "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/143.1.85.120/Helpers/Brave Browser Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "2CE568DA-5ACA-4062-B398-A73E4446A227"
     },
     {
@@ -6246,7 +6246,7 @@
       "name": "Brave Helper",
       "path": "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/143.1.85.120/Helpers/Brave Browser Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "F038EB70-BFAE-405C-8A31-F0AE218EB4DA"
     },
     {
@@ -6270,7 +6270,7 @@
       "name": "Brave Helper",
       "path": "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/143.1.85.120/Helpers/Brave Browser Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "D273BD27-1667-42CF-9559-6944A85BA2DA"
     },
     {
@@ -6342,7 +6342,7 @@
       "name": "Brave Helper",
       "path": "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/143.1.85.120/Helpers/Brave Browser Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "44B3552F-B63A-4837-BFB5-3B4550BCB98A"
     },
     {
@@ -6414,7 +6414,7 @@
       "name": "Brave Helper",
       "path": "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/143.1.85.120/Helpers/Brave Browser Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "6C93B322-CEB7-4781-AFB0-81DCDC742DD8"
     },
     {
@@ -6438,7 +6438,7 @@
       "name": "Brave Helper",
       "path": "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/143.1.85.120/Helpers/Brave Browser Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "26C7793C-9FDC-48B0-9D7A-0C577E263891"
     },
     {
@@ -6588,7 +6588,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "47E97C2E-3E58-48D5-9F79-C90E435F9883"
     },
     {
@@ -6660,7 +6660,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "EF190525-E865-44C4-810F-7A858DE34FD4"
     },
     {
@@ -6780,7 +6780,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "6C70E9A1-5172-4853-BBFE-927FC776E835"
     },
     {
@@ -6828,7 +6828,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "9FE15633-222B-4A4C-A9BE-3DA64199A79F"
     },
     {
@@ -6852,7 +6852,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "DA71DFB3-E346-47AE-A610-9A38282D2E5B"
     },
     {
@@ -6900,7 +6900,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A503694C-AAFF-4606-963A-78D252FF81A9"
     },
     {
@@ -6972,7 +6972,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "63133DA6-5E00-481A-BE20-CE10A912676E"
     },
     {
@@ -7164,7 +7164,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "AB10D805-3000-4C97-B5B8-1B4707992412"
     },
     {
@@ -7284,7 +7284,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "23A3985F-E280-4455-B71B-51DBEC79A20F"
     },
     {
@@ -7332,7 +7332,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "C6551908-DF6C-47ED-8AA2-3552288C9BA0"
     },
     {
@@ -7404,7 +7404,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "74870EF8-3906-4EBE-B4C1-AA3DC57C3F45"
     },
     {
@@ -7452,7 +7452,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "658DC4D3-D713-43C5-A8B0-8DE36E20B531"
     },
     {
@@ -7476,7 +7476,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "6BB54C9C-0C7F-4B4C-8DF1-CEE9002A45A3"
     },
     {
@@ -7548,7 +7548,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "BD0E0B51-C915-4999-BC1D-F77CC4CF13DF"
     },
     {
@@ -7572,7 +7572,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "26460618-D843-4C49-8F02-F4A910A267EE"
     },
     {
@@ -7596,7 +7596,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "D916C888-7EF3-4AE1-BA02-4C9A89AB3309"
     },
     {
@@ -7620,7 +7620,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "9C027137-6EC9-4A9E-AE3D-754A789B3D5A"
     },
     {
@@ -7740,7 +7740,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "125A3046-69B8-41FC-964A-F24B4079A6EC"
     },
     {
@@ -7764,7 +7764,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "32260990-B0F9-45C3-9607-7B7050633BFB"
     },
     {
@@ -7812,7 +7812,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A3C2EDD7-3309-4A05-8D3E-B1687D7ADD4C"
     },
     {
@@ -7860,7 +7860,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "22B42967-EF5F-49CE-9009-D9798701AA3F"
     },
     {
@@ -7908,7 +7908,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "055B49C1-777F-4940-BD0D-2B92C93944FB"
     },
     {
@@ -8004,7 +8004,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A8678478-D601-4FC2-8E0F-2BE44A1EA0F5"
     },
     {
@@ -8028,7 +8028,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "3776DB73-4095-4AC8-A73B-83C4A63DF772"
     },
     {
@@ -8052,7 +8052,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "DE14FB10-BABD-4E82-A279-351F02C88447"
     },
     {
@@ -8124,7 +8124,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A687CA5F-33AA-4C10-AC97-176B5A7D1C62"
     },
     {
@@ -8244,7 +8244,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "2AAEA44E-32E0-4BD1-B67D-017C36C31A8D"
     },
     {
@@ -8268,7 +8268,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "8E75FDDF-6CF2-4F7F-8E71-45CEEAD61404"
     },
     {
@@ -8316,7 +8316,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "DB88C0D5-B1E1-47D0-9C3F-399DAE7B2F89"
     },
     {
@@ -8340,7 +8340,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "D4BC63E9-C39C-4E20-8C29-DA79209C2FC4"
     },
     {
@@ -8412,7 +8412,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "EE02CF53-AC20-4610-95E1-2F89AA8158E0"
     },
     {
@@ -8484,7 +8484,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "C0411E88-11C0-4713-A3FF-E98A9A234808"
     },
     {
@@ -8532,7 +8532,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "26CF68E1-4954-4B06-90B8-78540E2D37B7"
     },
     {
@@ -8556,7 +8556,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "79D063C2-EA69-4F8E-A2AA-AF7011E28DB2"
     },
     {
@@ -8652,7 +8652,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "E2378B95-C31A-4F9E-9E86-6D542BD5814F"
     },
     {
@@ -8700,7 +8700,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "5651BA1D-6487-4090-87CD-742A72915DD0"
     },
     {
@@ -8724,7 +8724,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "1FB354D8-27EC-48F7-A8A1-0EC753361BFD"
     },
     {
@@ -8844,7 +8844,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "64486883-9507-47C2-8F04-7F291E07E1BC"
     },
     {
@@ -8868,7 +8868,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "F41A7BAB-8FC5-4C47-A023-363459BE876F"
     },
     {
@@ -8892,7 +8892,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "EC06626E-DD8D-44A1-989B-F04D962D288D"
     },
     {
@@ -8940,7 +8940,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "EFDFE5A5-CAEE-4427-BD6E-F56144CB62F3"
     },
     {
@@ -8988,7 +8988,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "37D7C669-764B-4994-A69F-86C5C5FEDE60"
     },
     {
@@ -9228,7 +9228,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "5B9373AC-C5E9-4D3E-A80C-74CF5703C638"
     },
     {
@@ -9252,7 +9252,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "4A12AC1E-2EB4-4AC7-AFD2-8C7BD7B1428B"
     },
     {
@@ -9300,7 +9300,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "C41A8B8C-57F0-473D-8011-42BDCE8B888D"
     },
     {
@@ -9372,7 +9372,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "0F3B5AD1-0287-46FF-8D1E-9047DEB0F76B"
     },
     {
@@ -9396,7 +9396,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "5A6B7187-18EA-448E-B589-0F3B763DA83E"
     },
     {
@@ -9444,7 +9444,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "1C7386A8-ED94-4019-B7E2-896253FEC262"
     },
     {
@@ -9468,7 +9468,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "CE9CC23B-3600-494D-BB23-193B2F59780D"
     },
     {
@@ -9612,7 +9612,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "8B163E84-2A4D-4FCE-B938-C6C282AF0D16"
     },
     {
@@ -9708,7 +9708,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "9B8A61B4-BFD1-400C-95A6-E05C35B72F48"
     },
     {
@@ -9876,7 +9876,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "0D08B9D5-9FCF-4397-BC9D-F982CC67589D"
     },
     {
@@ -9972,7 +9972,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "93BD06D9-1130-48C7-A947-AA61FAFC2C37"
     },
     {
@@ -9996,7 +9996,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "FB09A487-635C-4233-8E8D-BA3140F65214"
     },
     {
@@ -10020,7 +10020,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "F21ED164-D7B9-4FE9-B442-6B79BDC6C152"
     },
     {
@@ -10092,7 +10092,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "5191643F-9DB3-4191-9334-9F3D37F0216A"
     },
     {
@@ -10164,7 +10164,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "5E042851-8DF5-45EF-8F3E-C9101662B047"
     },
     {
@@ -10188,7 +10188,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "B646D1EC-D9AE-4B12-928D-0B5FDCF3CD34"
     },
     {
@@ -10212,7 +10212,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A6B0DAEC-BE23-49C3-89D8-F41DB2DF98A5"
     },
     {
@@ -10260,7 +10260,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "35892F44-CB5D-4760-BDA8-8A72EC3850BD"
     },
     {
@@ -10308,7 +10308,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "C908D9E0-23EC-4066-BDDA-05DED3F9D602"
     },
     {
@@ -10428,7 +10428,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "D31C7060-D488-4431-ACD2-E57E77B83803"
     },
     {
@@ -10476,7 +10476,7 @@
       "name": "Chrome Helper",
       "path": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/144.0.7559.60/Helpers/Google Chrome Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "58419AE0-A9AA-4E67-A5E6-B669D31C4059"
     },
     {
@@ -11226,7 +11226,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "04594E4A-9875-460F-9CDF-79FD2DB7EAB6"
     },
     {
@@ -11250,7 +11250,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "AB7399A8-7821-4B3E-8F20-B5CF52244718"
     },
     {
@@ -11274,7 +11274,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "82AB5434-FF75-4A3D-9F5E-86CC5E22472C"
     },
     {
@@ -11298,7 +11298,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "D866AF0F-075B-4601-BE59-E94C46FBDADA"
     },
     {
@@ -11322,7 +11322,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "B62FEE26-ED9A-4450-A0DB-6FECDC38D571"
     },
     {
@@ -11346,7 +11346,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "52249F73-FDE7-4842-9735-1CC43198F720"
     },
     {
@@ -11370,7 +11370,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "661AF8E3-716F-4601-837A-8B8035A55DC3"
     },
     {
@@ -11394,7 +11394,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "30CDFCC5-D409-4D32-B1D6-6100346ACA91"
     },
     {
@@ -11466,7 +11466,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "9D7DA418-76F2-4D8C-8C7A-BE5240808AE9"
     },
     {
@@ -11490,7 +11490,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "114612DC-C961-4F81-B149-0A34B9B2506F"
     },
     {
@@ -11514,7 +11514,7 @@
       "name": "Discord Helper",
       "path": "/Applications/Discord.app/Contents/Frameworks/Discord Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "150E1AEE-2323-461C-A2C1-99DD77563BFB"
     },
     {
@@ -11686,7 +11686,7 @@
       "name": "Code Helper",
       "path": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "7523988A-036E-48F1-94EE-DA5F1B9A81D1"
     },
     {
@@ -11710,7 +11710,7 @@
       "name": "Code Helper",
       "path": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "7E755110-0F21-420B-B597-D1F3A218E9C0"
     },
     {
@@ -11806,7 +11806,7 @@
       "name": "Code Helper",
       "path": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "547222CF-6336-4127-9326-0C9DEA180B3E"
     },
     {
@@ -11830,7 +11830,7 @@
       "name": "Code Helper",
       "path": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "7900C342-E2D7-47B4-9F3D-3804F808E43D"
     },
     {
@@ -11854,7 +11854,7 @@
       "name": "Code Helper",
       "path": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "B83D9F6C-EB93-4B6F-85CB-6F248B0F22CA"
     },
     {
@@ -12002,7 +12002,7 @@
       "name": "Electron Helper",
       "path": "/Applications/Podman Desktop.app/Contents/Frameworks/Podman Desktop Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "32EF456A-C968-4E18-94A4-6567DA0BCECF"
     },
     {
@@ -12026,7 +12026,7 @@
       "name": "Electron Helper",
       "path": "/Applications/Podman Desktop.app/Contents/Frameworks/Podman Desktop Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "DEE88FD9-8A99-4CBE-9CA6-036BBD16A446"
     },
     {
@@ -12050,7 +12050,7 @@
       "name": "Electron Helper",
       "path": "/Applications/Podman Desktop.app/Contents/Frameworks/Podman Desktop Helper.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "CEF5363B-C951-4AEA-9AD2-B83084FFE2E3"
     }
   ],
@@ -12704,7 +12704,7 @@
       "name": "LineCall",
       "path": "/Applications/LINE.app/Contents/Frameworks/LineCall.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "2FB070FF-B7BA-4642-AE3F-B1B7EEE903E1"
     },
     {
@@ -12802,7 +12802,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "5AA36C2F-E220-4350-83A0-968FECBB81C1"
     },
     {
@@ -12826,7 +12826,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "193DD2FE-1833-45E4-8363-66F541D61E5A"
     },
     {
@@ -12850,7 +12850,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "36AFF363-36E8-4E28-8904-4C0E3181129A"
     },
     {
@@ -12898,7 +12898,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A4043011-0B17-4EED-A8DF-DBAC3CC9E7A9"
     },
     {
@@ -12922,7 +12922,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "8B94BFB5-65EF-4BF5-AE4B-A23F104FA2B9"
     },
     {
@@ -12946,7 +12946,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "0A88261E-2FB6-4D50-9E45-6B483A596862"
     },
     {
@@ -12994,7 +12994,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "87303A04-819F-431C-B6CA-345F9D4D81C4"
     },
     {
@@ -13018,7 +13018,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "561EA482-3EA0-4A82-967B-0E7B0DEB423F"
     },
     {
@@ -13042,7 +13042,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "F29D012E-37A8-4B4A-9ACA-B67A2490916B"
     },
     {
@@ -13397,7 +13397,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "A00A1F82-CA09-40C2-B8B4-BF5ADEDA763D"
     },
     {
@@ -13561,7 +13561,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "19C8F879-0501-4211-BFC2-FCBA3BC2F868"
     },
     {
@@ -13816,7 +13816,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "9DE669A2-5DF3-49CF-9048-05FE426AA6A4"
     },
     {
@@ -13955,7 +13955,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "3A7F3B7D-1595-4674-8541-BD152C48AE27"
     },
     {
@@ -13979,7 +13979,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "1C44E597-F759-4BBA-AC55-FF1047286C58"
     },
     {
@@ -14026,7 +14026,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "7130A7D7-91D1-4C32-9CA2-FAFB91588125"
     },
     {
@@ -14119,7 +14119,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "1A439F6D-0DF0-44D8-87EF-E7678DEAB2F7"
     },
     {
@@ -14166,7 +14166,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "EABCEECF-9FBA-4522-80EE-4CB495CBA581"
     },
     {
@@ -14351,7 +14351,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "1EE816E2-4541-4203-AB51-2B9392DDFD0C"
     },
     {
@@ -14398,7 +14398,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "398971E9-0548-4585-B260-7640BDB80CAC"
     },
     {
@@ -14514,7 +14514,7 @@
       "name": "Firefox",
       "path": "/Applications/Firefox.app",
       "scope": 0,
-      "type": 4,
+      "type": 3,
       "uuid": "8AF1C9CF-CE38-4768-B0BB-8530DC4A165C"
     },
     {
