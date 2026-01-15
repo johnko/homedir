@@ -122,9 +122,9 @@ try:
 
     # List passive rulues with endpointAddr and endpointHost for each rule if either are not IPv4/IPv6 and not wildcard
     print()
-    print("========== ========== ========== ========== ========== ==========")
+    print("========== ========== ========== ==========")
     print("Unhandled passive rules with hostnames:")
-    print("========== ========== ========== ========== ========== ==========")
+    print("========== ========== ========== ==========")
     for app_name in data:
         # Iterate through each rule per app
         for rule in data[app_name]:
