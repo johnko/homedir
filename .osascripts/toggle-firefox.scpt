@@ -7,6 +7,7 @@ global frontApp, frontAppName, windowTitle
 set windowTitle to ""
 tell application "System Events"
 	set frontApp to first application process whose frontmost is true
+	set processPath to (path to frontmost application as text)
 	set frontAppName to name of frontApp
 	tell process frontAppName
 		try
@@ -16,6 +17,9 @@ tell application "System Events"
 		on error errMsg
 		end try
 	end tell
+	if processPath contains appNameToToggle then
+		set frontAppName to appNameToToggle
+	end if
 end tell
 
 set actionTaken to ""
