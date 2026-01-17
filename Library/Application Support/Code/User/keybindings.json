@@ -141,7 +141,7 @@
     "when": "activeAuxiliary == 'workbench.view.extension.continue'"
   },
   {
-    "key": "ctrl+4",
+    "key": "ctrl+5",
     "command": "remote-containers.reopenInContainer",
     "when": "remoteName != 'dev-container'"
   },
@@ -191,6 +191,11 @@
   },
   {
     "key": "cmd+i",
+    "command": "-workbench.action.chat.startVoiceChat",
+    "when": "chatIsEnabled && hasSpeechProvider && inChatInput && !chatSessionRequestInProgress && !editorFocus && !notebookEditorFocused && !scopedVoiceChatGettingReady && !speechToTextInProgress || chatIsEnabled && hasSpeechProvider && inlineChatFocused && !chatSessionRequestInProgress && !editorFocus && !notebookEditorFocused && !scopedVoiceChatGettingReady && !speechToTextInProgress"
+  },
+  {
+    "key": "cmd+i",
     "command": "-workbench.action.chat.stopListeningAndSubmit",
     "when": "inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'editor' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'inline' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'quick' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'view' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'editor' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'inline' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'quick' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'view'"
   },
@@ -201,12 +206,18 @@
   },
   {
     "key": "cmd+i",
+    "command": "-workbench.action.chat.holdToVoiceChatInChatView",
+    "when": "chatIsEnabled && hasSpeechProvider && !chatSessionRequestInProgress && !editorFocus && !inChatInput && !inlineChatFocused && !notebookEditorFocused && !searchViewletFocus"
+  },
+  {
+    "key": "cmd+i",
     "command": "-inlineChat.holdForSpeech",
     "when": "hasSpeechProvider && inlineChatVisible && textInputFocus"
   },
   {
     "key": "cmd+l",
-    "command": "continue.focusContinueInputWithoutClear"
+    "command": "continue.focusContinueInputWithoutClear",
+    "when": "!cursor.agentIdeUnification.enabled"
   },
   {
     "key": "shift+cmd+l",
@@ -306,7 +317,7 @@
     "when": "terminal.active"
   },
   {
-    "key": "ctrl+5",
+    "key": "ctrl+4",
     "command": "git.createWorktree"
   },
   {
@@ -320,15 +331,11 @@
     "when": "terminalProcessSupported && terminalTabsFocus"
   },
   {
-    "key": "ctrl+shift+5",
+    "key": "ctrl+shift+4",
     "command": "git.openWorktree"
   },
   {
-    "key": "ctrl+2",
-    "command": "peacock.changeColorToFavorite"
-  },
-  {
-    "key": "ctrl+shift+4",
+    "key": "ctrl+shift+5",
     "command": "remote-containers.rebuildContainer"
   },
   {
@@ -392,10 +399,22 @@
   },
   {
     "key": "ctrl+6",
-    "command": "remote-containers.reopenLocally"
+    "command": "remote-containers.reopenLocally",
+    "when": "!cursor.agentIdeUnification.enabled"
   },
   {
     "key": "ctrl+6",
-    "command": "remote-containers.reopenFolderLocally"
+    "command": "remote-containers.reopenFolderLocally",
+    "when": "cursor.agentIdeUnification.enabled"
+  },
+  {
+    "key": "alt+cmd+v",
+    "command": "-workbench.action.editorDictation.start",
+    "when": "hasSpeechProvider && !editorReadonly && !speechToTextInProgress"
+  },
+  {
+    "key": "shift+cmd+space",
+    "command": "-composer.toggleVoiceDictation",
+    "when": "!terminalFocus"
   }
 ]
