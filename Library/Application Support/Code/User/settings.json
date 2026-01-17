@@ -71,6 +71,7 @@
   "markdownlint.customRules": [
     "{docsmsft.docs-linting}/markdownlint-custom-rules/rules.js"
   ],
+  "peacock.color": "#cc0000",
   "peacock.favoriteColors": [
     {
       "name": "black",
@@ -155,6 +156,25 @@
   "window.confirmSaveUntitledWorkspace": false,
   "window.newWindowProfile": "Default",
   "window.title": "${activeRepositoryBranchName}${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#ff0000",
+    "activityBar.background": "#ff0000",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#00df00",
+    "activityBarBadge.foreground": "#15202b",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#ff0000",
+    "statusBar.background": "#cc0000",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#ff0000",
+    "statusBarItem.remoteBackground": "#cc0000",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#cc0000",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#cc000099",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
   "workbench.colorTheme": "Visual Studio Light",
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.enablePreview": false,
