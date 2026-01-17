@@ -60,8 +60,8 @@ yabai -m rule --add app="^(Slack)$" manage=off grid=101:52:5:9:23:91
 # float don't block widgets right
 yabai -m rule --add app="^(Safari)$" manage=off grid=101:52:28:9:23:91
 
-# float 3rd slot down, quartertall on vertical screen
-yabai -m rule --add app="^(Discord)$" manage=off grid=101:52:1:50:50:25
+# left above-middle, halfwide
+yabai -m rule --add app="^(Discord)$" manage=off grid=101:52:1:40:25:50
 
 # bottom right <0.5 tall
 yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=101:52:26:65:25:35
