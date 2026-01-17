@@ -16,6 +16,9 @@ iso
 jenkins-lts
 keychron
 lab-squid-ramdisk
+lulu
+macos-lulu-rules-permafy.py
+macos-lulu-rules-prettify.sh
 nuphy
 old
 ollama-caddy
