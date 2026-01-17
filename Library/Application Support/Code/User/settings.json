@@ -118,7 +118,6 @@
     }
   ],
   "peacock.surpriseMeFromFavoritesOnly": true,
-  "peacock.surpriseMeOnStartup": true,
   "pgsql.resultsFontSize": 14,
   "python.defaultInterpreterPath": "~/venv-python3",
   "redhat.telemetry.enabled": false,
