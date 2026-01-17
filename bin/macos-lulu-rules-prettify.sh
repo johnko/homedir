@@ -14,13 +14,14 @@ if [ -e "$LULU_RULES_FILE" ]; then
   ERROR=0
 
   # check if any rules have regex pattern but isEndpointAddrRegex:0
+  # shellcheck disable=SC1003
   if grep -A2 -E 'endpointAddr.*\\' "$LULU_RULES_FILE" | grep -B2 -E 'isEndpointAddrRegex.*0'; then
-    ERROR=$(( ERROR + 1 ))
+    ERROR=$((ERROR + 1))
   fi
 
   # check if any rules have regex pattern but isEndpointAddrRegex:0
   if grep -A2 -E 'endpointAddr.*[^"]\*[^"]' "$LULU_RULES_FILE" | grep -B2 -E 'isEndpointAddrRegex.*0'; then
-    ERROR=$(( ERROR + 1 ))
+    ERROR=$((ERROR + 1))
   fi
 
   exit $ERROR

@@ -389,5 +389,13 @@
     "key": "shift+alt+f5",
     "command": "-workbench.action.compareEditor.previousChange",
     "when": "textCompareEditorVisible"
+  },
+  {
+    "key": "ctrl+6",
+    "command": "remote-containers.reopenLocally"
+  },
+  {
+    "key": "ctrl+6",
+    "command": "remote-containers.reopenFolderLocally"
   }
 ]

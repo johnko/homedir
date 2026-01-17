@@ -329,17 +329,10 @@ EOF
       ;;
   esac
 
-  mkdir -p .vscode
+  cat "$HOME/Library/Application Support/Code/User/settings.json" |
+    sed "s,$HOME/,~/,g" |
+    jq --argjson str "$JSON_STRING" '. + $str' --sort-keys | pbcopy
 
-  if [[ ! -s .vscode/settings.json ]] || ! jq '.' .vscode/settings.json; then
-    echo "Generating new .vscode/settings.json"
-    jq --argjson str "$JSON_STRING" '. + $str' --sort-keys >.vscode/settings.json
-  else
-    cat .vscode/settings.json |
-      jq --argjson str "$JSON_STRING" '. + $str' --sort-keys >.vscode/settings2.json
-    cat .vscode/settings2.json >.vscode/settings.json
-  fi
-
-  echo "✅ Color set to: $COLOR"
+  echo "✅ Copied to clipboard"
 
 fi
