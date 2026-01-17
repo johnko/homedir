@@ -5,7 +5,7 @@ yabai -m config layout bsp
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 # float tall center halfwide for web
-yabai -m rule --add app="^(Google Chrome|Keychain Access)$" manage=off grid=101:4:1:0:2:100
+yabai -m rule --add app="^(Google Chrome)$" manage=off grid=101:4:1:0:2:100
 # right half, fulltall
 yabai -m rule --add app="^(Brave Browser)$" manage=off grid=101:4:1:0:2:100
 # float tall
@@ -18,7 +18,7 @@ yabai -m rule --add app="^(Xcode)$" manage=off grid=24:24:3:3:18:21
 yabai -m rule --add app="^(Crunchyroll.*|Netflix|TV)$" manage=off grid=24:24:2:4:20:19
 
 # float middle center quarter
-yabai -m rule --add app="^(1Password|FaceTime|Finder|Photo Booth|QuickTime.*|TextEdit)$" manage=off grid=4:4:1:1:2:2
+yabai -m rule --add app="^(1Password|FaceTime|Finder|Keychain Access|Photo Booth|QuickTime.*|TextEdit)$" manage=off grid=4:4:1:1:2:2
 yabai -m rule --add app="^(Instagram|Messages|WhatsApp.*)$" manage=off grid=4:4:1:1:2:2
 # float bottom center quarter
 yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice Memos)$" manage=off grid=4:4:1:2:2:2
