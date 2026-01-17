@@ -11,7 +11,7 @@ yabai -m rule --add app="^(Clock|Gmail|System Preferences|System Settings)$" man
 # float tall wide 16/24 of screen for editing
 yabai -m rule --add app="^(Books|GarageBand|GIMP|iMovie|Photos)$" manage=off grid=24:24:4:2:16:20
 # float tall wide 18/24 of screen for focus
-yabai -m rule --add app="^(Code|Xcode)$" manage=off grid=24:24:3:3:18:21
+yabai -m rule --add app="^(Xcode)$" manage=off grid=24:24:3:3:18:21
 # float tall wide 20/24 of screen for video
 yabai -m rule --add app="^(Crunchyroll.*|Netflix|TV)$" manage=off grid=24:24:2:4:20:19
 
@@ -31,33 +31,35 @@ yabai -m rule --add app="^(LuLu)$" manage=off grid=101:52:26:0:25:50
 # bottom left quarter screen
 yabai -m rule --add app="^(Signal|UTM)$" manage=off grid=101:52:1:50:25:50
 # bottom right quarter screen
-yabai -m rule --add app="^(LINE|Netiquette|Podcasts)$" manage=off grid=101:52:26:50:25:50
+yabai -m rule --add app="^(LINE|Netiquette)$" manage=off grid=101:52:26:50:25:50
 
-# float 1st slot down, quartertall on vertical screen
-yabai -m rule --add app="^(Google Calendar|Notes|Reminders)$" manage=off grid=101:52:1:0:50:25
+# float top middle <0.5 tall
+yabai -m rule --add app="^(Google Calendar|Notes|Reminders)$" manage=off grid=8:4:1:0:2:3
 # float top half on vertical screen
 yabai -m rule --add app="^(Brave Browser)$" manage=off grid=101:52:1:0:50:50
 
 # float 2nd slot down, quartertall halfwide right on vertical screen
 yabai -m rule --add app="^(Firefox|Spotify)$" manage=off grid=101:52:26:25:25:25
 
-# float 2nd slot down halftall vertical screen
-yabai -m rule --add app="^(Slack)$" manage=off grid=101:52:1:25:50:50
-# float 2nd slot down 3/4tall vertical screen
-yabai -m rule --add app="^(Safari)$" manage=off grid=101:52:1:25:50:75
+# float don't block widgets left
+yabai -m rule --add app="^(Slack)$" manage=off grid=101:52:5:9:23:91
+# float don't block widgets right
+yabai -m rule --add app="^(Safari)$" manage=off grid=101:52:28:9:23:91
 
 # float 3rd slot down, quartertall on vertical screen
 yabai -m rule --add app="^(Discord)$" manage=off grid=101:52:1:50:50:25
 
-# float 4th slot down, quartertall on vertical screen
-yabai -m rule --add app="^(Docker.*|Podman.*|Music)$" manage=off grid=101:52:1:75:50:25
+# bottom right <0.5 tall
+yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=101:52:26:65:25:35
 
 # Terminal specific so can swap - float middle center quarter
 # yabai -m rule --add app="^(Terminal)$" manage=off grid=4:4:1:1:2:2
 # Terminal specific so can swap - almost fullscreen
 # yabai -m rule --add app="^(Terminal)$" manage=off grid=52:52:1:1:50:50
-# Terminal specific so can swap - float 2nd slot down 3/4tall vertical screen
-yabai -m rule --add app="^(Terminal)$" manage=off grid=101:52:1:25:50:75
+# Terminal specific so can swap - left 1/4 wide, 3/4 tall
+yabai -m rule --add app="^(Terminal)$" manage=off grid=101:52:1:25:25:75
+# bottom right 3/4 wide, 3/4 tall
+yabai -m rule --add app="^(Code|Cursor)$" manage=off grid=101:52:17:25:34:75
 
 # Coding grid
 # top left
@@ -68,22 +70,19 @@ yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(7)$" manage=off gr
 yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(0)$" manage=off grid=4:4:1:1:2:2
 # bottom left
 yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(8)$" manage=off grid=101:52:1:50:25:50
-yabai -m rule --add app="^(Terminal)$" title="^.*(1)$" manage=off grid=101:52:1:50:25:50
 # bottom right
 yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(9)$" manage=off grid=101:52:26:50:25:50
-# bottom right 3/4 wide
-yabai -m rule --add app="^(Cursor)$" manage=off grid=101:52:17:50:34:50
 # left/right split
 yabai -m rule --add app="^(Terminal)$" title="^.*(2|3|4|5)$" manage=off grid=101:52:1:0:25:100
 yabai -m rule --add app="^(Code|Cursor)$" title="^.*(2|3|4|5)$" manage=off grid=101:52:17:0:34:100
 
 
 # float some non-resizable apps
-yabai -m rule --add app="^(Archive Utility|Calculator|iPhone Mirroring)$" manage=off
+yabai -m rule --add app="^(iPhone Mirroring)$" manage=off
 
 # default to float centered
-# cat .yabairc | grep -v grep | grep -v '^ *#' | grep app= | cut -d= -f2 | sed -e 's,manage,,' -e 's, title,,g' -e 's, $,,g' | grep -v noexist | tr -d '"^$)(' | tr '|' "\n" | sort -u | tr "\n" '|' | sed -e 's, |,|,g' -e 's,|$,,'
-yabai -m rule --add app!="^(1Password|Activity Monitor|App Store|Archive Utility|Books|Brave Browser|Calculator|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|TV|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off grid=4:4:1:1:2:2
+# cat .yabairc | grep -v grep | grep -v '^ *#' | grep app= | cut -d= -f2 | sed -e 's,manage,,' -e 's, title,,g' -e 's, $,,g' | grep -v noexist | tr -d '"^$)(' | tr '|' "\n" | sort -u | tr "\n" '|' | sed -e 's, |,|,g' -e 's,|$,,' | pbcopy
+yabai -m rule --add app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|TV|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off grid=4:4:1:1:2:2
 
 # apply rules on restart
 yabai -m rule --apply

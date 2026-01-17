@@ -6,6 +6,7 @@ SAFETOIGNORE
 .devops-tools
 .DS_Store
 .git
+.gitmodules
 agent.sock
 agent.toml
 CODEOWNERS
@@ -16,6 +17,7 @@ gitlab-ce
 iso
 jenkins-lts
 keychron
+known_hosts
 lab-squid-ramdisk
 lulu
 macos-lulu-rules-permafy.py
@@ -34,11 +36,11 @@ test-secrets-template.yaml
 EXPECTEDDIFFSEPERATOR
 .aws
 .Brewfile
-.gitmodules
-config.example
-known_hosts
 .gitconfig
 .gitignore
+.osascripts
+.skhdrc
+config.example
 "
 
 EXCLUDE_ARG=""
