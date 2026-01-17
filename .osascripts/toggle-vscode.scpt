@@ -29,7 +29,7 @@ if frontAppName is appNameToToggle then
 	end tell
 	set actionTaken to "hidden: " & frontAppName
 else
-	tell application appNameToToggle
+	tell application "Visual Studio Code"
 		activate
 	end tell
 	tell application "System Events"

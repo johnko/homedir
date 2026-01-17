@@ -13,8 +13,8 @@ shift + ctrl + alt + cmd - q : yabai -m window --grid 101:52:1:0:25:50
 shift + ctrl + alt + cmd - e : yabai -m window --grid 101:52:26:0:25:50
 # float middle center quarter
 shift + ctrl + alt + cmd - r : yabai -m window --grid 4:4:1:1:2:2
-# float 2nd slot down on vertical screen
-shift + ctrl + alt + cmd - t : yabai -m window --grid 101:52:1:25:50:25
+# float 2nd slot bottom screen
+shift + ctrl + alt + cmd - t : yabai -m window --grid 101:52:13:50:13:50
 shift + ctrl + alt + cmd - y : yabai --restart-service
 
 # shift + ctrl + alt + cmd - a : echo # arrow left
@@ -22,8 +22,8 @@ shift + ctrl + alt + cmd - y : yabai --restart-service
 # shift + ctrl + alt + cmd - d : echo # arrow right
 # float tall wide 16/24 of screen for editing
 shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 24:24:4:2:16:20
-# float 3rd slot down on vertical screen
-shift + ctrl + alt + cmd - g : yabai -m window --grid 101:52:1:50:50:25
+# float middle slot bottom screen
+shift + ctrl + alt + cmd - g : yabai -m window --grid 101:52:19:40:14:60
 shift + ctrl + alt + cmd - h : bash ~/bin/yabai_cycle_clockwise.sh
 
 # float tall wide 20/24 of screen for video
@@ -35,8 +35,8 @@ shift + ctrl + alt + cmd - x : yabai -m window --grid 24:24:3:3:18:21
 shift + ctrl + alt + cmd - c : yabai -m window --grid 101:52:17:0:34:100
 # float tall
 shift + ctrl + alt + cmd - v : yabai -m window --grid 24:24:5:1:14:22
-# float 4th slot down on vertical screen
-shift + ctrl + alt + cmd - b : yabai -m window --grid 101:52:1:75:50:25
+# float 3rd slot bottom screen
+shift + ctrl + alt + cmd - b : yabai -m window --grid 101:52:26:50:13:50
 
 # shift + ctrl + alt + cmd - i : echo
 # shift + ctrl + alt + cmd - o : echo
@@ -87,10 +87,10 @@ ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
 
 ctrl + alt + cmd - up : yabai -m window --grid 101:52:1:0:50:50
 ctrl + alt + cmd - down : yabai -m window --grid 101:52:1:50:50:50
-# float 1st slot down on vertical screen
-ctrl + alt + cmd - left :      yabai -m window --grid 101:52:1:0:50:25
-# float 3/4 vertical screen
-ctrl + alt + cmd - right :     yabai -m window --grid 101:52:1:25:50:75
+# float 1st slot bottom screen
+ctrl + alt + cmd - left :      yabai -m window --grid 101:52:0:50:13:50
+# float 4th slot bottom screen
+ctrl + alt + cmd - right :     yabai -m window --grid 101:52:39:50:13:50
 
 # almost fullscreen
 f13 :                    yabai -m window --toggle float --grid 52:52:1:1:50:50
