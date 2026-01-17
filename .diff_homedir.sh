@@ -10,6 +10,7 @@ agent.sock
 agent.toml
 CODEOWNERS
 creator-micro
+devcontainer
 gitea
 gitlab-ce
 iso
@@ -19,9 +20,11 @@ lab-squid-ramdisk
 lulu
 macos-lulu-rules-permafy.py
 macos-lulu-rules-prettify.sh
+macos-opencode-update.sh
 nuphy
 old
 ollama-caddy
+opencode
 Preferences
 renovate.json
 squid

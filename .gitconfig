@@ -47,10 +47,11 @@
 	mm = branch --set-upstream-to=origin/master master
 	pm = !"set -x; git fetch; git branch -d master; git checkout origin/master; git checkout -b master; git branch --set-upstream-to=origin/master master; git pull"
 	# Credit an author on the latest commit
-	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+	credit = "!f() { git --no-pager commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+	creditcursor = "!f() { git --no-pager commit --amend --trailer \"Co-authored-by: Cursor Agent <cursoragent@cursor.com>\" -C HEAD; }; f"
 	# Interactive rebase with the given number of latest commits
-	reb = "!r() { git rebase -i HEAD~$1; }; r"
-	amend = !"git commit --amend --date=\"$(date -R)\""
+	reb = "!r() { git --no-pager rebase -i HEAD~$1; }; r"
+	amend = !"git --no-pager commit --amend --date=\"$(date -R)\""
 	fm = !"git fetch; git checkout origin/master"
 
 [apply]
