@@ -45,10 +45,12 @@ shift + ctrl + alt + cmd - b : yabai -m window --grid 101:52:26:50:13:50
 # shift + ctrl + alt + cmd - k : echo
 # shift + ctrl + alt + cmd - l : echo
 
+###################################################################
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+###################################################################
 
-# ctrl + alt + cmd - 1 : echo # mission control left
-# ctrl + alt + cmd - 2 : echo # mission control right
+# ctrl + alt + cmd - 1 : echo # mission control space left
+# ctrl + alt + cmd - 2 : echo # mission control space right
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
 # ctrl + alt + cmd - 5 : echo # Arrange in Quarters
@@ -86,6 +88,10 @@ ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
 ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
 ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
 
+###################################################################
+# grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+###################################################################
+
 ctrl + alt + cmd - up : yabai -m window --grid 101:52:1:0:50:50
 ctrl + alt + cmd - down : yabai -m window --grid 101:52:1:50:50:50
 # float 1st slot bottom screen
@@ -97,10 +103,26 @@ ctrl + alt + cmd - right :     yabai -m window --grid 101:52:39:50:13:50
 f13 :                    yabai -m window --toggle float --grid 52:52:1:1:50:50
 # 0x32 is `
 shift + ctrl + alt + cmd - 0x32 : yabai -m window --toggle float --grid 52:52:1:1:50:50
+# ctrl + alt + cmd - 0x32 : echo # Show Notification Center
 
 # shift + ctrl + alt + cmd - tab : echo # Arrange Left and Right
 # ctrl + alt + cmd - tab : echo # Arrange Right and Left
 # shift + ctrl + alt + cmd - space : echo # dictation
 # ctrl + alt + cmd - space : echo # siri
 
+###################################################################
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+###################################################################
+
+# f6 : echo # Turn Do Not Disturb on/off
+# f4 : echo # Show Desktop
+
+# f17 : echo # Emoji & Symbols
+# ctrl + cmd - f : echo # Exit fullscreen
+# shift + ctrl + cmd - f : echo # Enter Full Screen
+# shift + ctrl + cmd - f : echo # Toggle Full Screen
+
+# shift + ctrl + alt + cmd - u : echo # Email Link
+# shift + ctrl + alt + cmd - u : echo # Secure Keyboard Entry
+# shift + ctrl + alt + cmd - u : echo # Finder.app, Name
+# shift + ctrl + alt + cmd - u : echo # Finder.app, Kind
