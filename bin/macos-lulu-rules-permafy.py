@@ -132,7 +132,10 @@ try:
     # You can now access and work with the data like any other Python dictionary
     # print(f"{data}")
 
-    # Converting passive rules with port 53 to user rules
+    print()
+    print("=" * 60)
+    print("Converting passive rules with port 53 to user rules")
+    print("=" * 60)
     for app_name in data:
         # Iterate through each rule per app
         for rule in data[app_name]:
@@ -142,7 +145,10 @@ try:
                 rule["type"] = 3
                 print(f"{rule}")
 
-    # Converting passive rulues with endpointAddr and endpointHost for each rule if either are not IPv4/IPv6 and not wildcard and in ALLOWED_HOSTS
+    print()
+    print("=" * 60)
+    print("Converting passive rulues with endpointAddr and endpointHost for each rule if either are not IPv4/IPv6 and not wildcard and in ALLOWED_HOSTS")
+    print("=" * 60)
     for app_name in data:
         # Iterate through each rule per app
         for rule in data[app_name]:
@@ -174,7 +180,10 @@ try:
                     rule["type"] = 3
                     print(f"{rule}")
 
-    # Converting passive rules with ALLOWED_IPV4_PATTERNS to user rules
+    print()
+    print("=" * 60)
+    print("Converting passive rules with ALLOWED_IPV4_PATTERNS to user rules")
+    print("=" * 60)
     for app_name in data:
         # Iterate through each rule per app
         for rule in data[app_name]:
@@ -192,7 +201,10 @@ try:
                     rule["type"] = 3
                     print(f"{rule}")
 
-    # Converting passive rules with ALLOWED_APP_PORTS to user rules
+    print()
+    print("=" * 60)
+    print("Converting passive rules with ALLOWED_APP_PORTS to user rules")
+    print("=" * 60)
     for app_name in data:
         # Iterate through each rule per app
         for rule in data[app_name]:
@@ -209,16 +221,19 @@ try:
                     rule["type"] = 3
                     print(f"{rule}")
 
-    # Write the updated rules back to file
+    print()
+    print("=" * 60)
+    print("Write the updated rules back to file")
+    print("=" * 60)
     # print(f"{data}")
     with open(LULU_RULES_FILE, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=2)
 
-    # List passive rulues with endpointAddr and endpointHost for each rule if either are not IPv4/IPv6 and not wildcard
     print()
-    print("========== ========== ========== ==========")
+    print("=" * 60)
     print("Unhandled passive rules with hostnames:")
-    print("========== ========== ========== ==========")
+    print("=" * 60)
+    # List passive rulues with endpointAddr and endpointHost for each rule if either are not IPv4/IPv6 and not wildcard
     for app_name in data:
         # Iterate through each rule per app
         for rule in data[app_name]:
@@ -253,9 +268,9 @@ try:
                     print(f"\"{rule['endpointHost']}\",  # endpointHost, {app_name}")
 
     print()
-    print("========== ========== ========== ==========")
+    print("=" * 60)
     print("Unhandled passive rules without hostnames:")
-    print("========== ========== ========== ==========")
+    print("=" * 60)
     # List passive rules not in ALLOWED_IPV4_PATTERNS
     for app_name in data:
         # Iterate through each rule per app
@@ -282,9 +297,9 @@ try:
                     printed = True
 
     print()
-    print("========== ========== ========== ==========")
+    print("=" * 60)
     print("Unhandled passive rules with non standard ports:")
-    print("========== ========== ========== ==========")
+    print("=" * 60)
     # List passive rules not in ALLOWED_APP_PORTS
     unhandled_apps_ports = {}
     for app_name in data:
