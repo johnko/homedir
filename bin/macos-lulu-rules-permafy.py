@@ -167,7 +167,7 @@ ALLOWED_APP_PORTS = [
     {"apps": ["jp.naver.line.mac.LineCall"], "ports": [29494]},
 ]
 
-DELETE_APP_RULES = [r"^com\.brave\..*", r"^org\.whispersystems\.signal.*"]
+OMIT_APP_RULES = [r"^com\.brave\..*", r"^org\.whispersystems\.signal.*"]
 
 try:
     # Open the file in read mode
@@ -270,11 +270,11 @@ try:
 
     print()
     print("=" * 60)
-    print("Deleting rules that match DELETE_APP_RULES")
+    print("Deleting rules that match OMIT_APP_RULES")
     print("=" * 60)
     final_data = {}
     for app_name in data:
-        for pattern in DELETE_APP_RULES:
+        for pattern in OMIT_APP_RULES:
             is_match = bool(re.match(pattern, app_name))
             print(f"{is_match} Checking {app_name}")
             if is_match:
