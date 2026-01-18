@@ -21,7 +21,7 @@ shift + ctrl + alt + cmd - y : skhd --restart-service
 # shift + ctrl + alt + cmd - s : echo # arrow down
 # shift + ctrl + alt + cmd - d : echo # arrow right
 # float tall wide 16/24 of screen for editing
-shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 24:24:4:2:16:20
+shift + ctrl + alt + cmd - f : yabai -m window --grid 24:24:4:2:16:20
 # float middle slot bottom screen
 shift + ctrl + alt + cmd - g : yabai -m window --grid 101:52:19:40:14:60
 shift + ctrl + alt + cmd - h : bash ~/bin/yabai_cycle_clockwise.sh
