@@ -105,7 +105,7 @@ f13 :                    yabai -m window --toggle float --grid 52:52:1:1:50:50
 shift + ctrl + alt + cmd - 0x32 : yabai -m window --toggle float --grid 52:52:1:1:50:50
 # ctrl + alt + cmd - 0x32 : echo # Show Notification Center
 
-# shift + ctrl + alt + cmd - tab : echo # Arrange Left and Right
+# shift + ctrl + alt + cmd - tab : echo # Full Screen Tile Left
 # ctrl + alt + cmd - tab : echo # Arrange Right and Left
 # shift + ctrl + alt + cmd - space : echo # dictation
 # ctrl + alt + cmd - space : echo # siri
