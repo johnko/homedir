@@ -22,17 +22,21 @@ EOS
 
 DOMAIN='"Apple Global Domain"'
 KEYVAL="
+        AppleIconAppearanceTheme = RegularDark;
+        AppleMenuBarVisibleInFullscreen = 1;
         AppleMiniaturizeOnDoubleClick = 0;
         AppleScrollerPagingBehavior = 1;
         AppleShowScrollBars = Always;
-        InitialKeyRepeat = 15;
+        AppleSpacesSwitchOnActivate = 1;
+        InitialKeyRepeat = 30;
         KeyRepeat = 2;
         NSAutomaticCapitalizationEnabled = 0;
         NSAutomaticDashSubstitutionEnabled = 0;
         NSAutomaticPeriodSubstitutionEnabled = 0;
         NSAutomaticQuoteSubstitutionEnabled = 0;
+        NSGlassDiffusionSetting = 0;
         com.apple.sound.beep.feedback = 1;
-        com.apple.sound.beep.flash = 0;
+        com.apple.sound.beep.flash = 1;
         com.apple.sound.beep.volume = 1;
 "
 print_cmd
