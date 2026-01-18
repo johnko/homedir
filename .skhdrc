@@ -3,8 +3,9 @@
 # shift + ctrl + alt + cmd - 2 : echo
 shift + ctrl + alt + cmd - 3 : osascript ~/.osascripts/terminal-toggle-audio.scpt
 shift + ctrl + alt + cmd - 4 : osascript ~/.osascripts/terminal-nosleep.scpt
-shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-prune.scpt
-shift + ctrl + alt + cmd - 6 : yabai -m space --balance
+# shift + ctrl + alt + cmd - 5 : echo # Arrange Top and Bottom
+shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-brew-update.scpt
+# shift + ctrl + alt + cmd - 7 : yabai -m space --balance
 
 # float top left
 shift + ctrl + alt + cmd - q : yabai -m window --grid 101:52:1:0:25:50
@@ -50,7 +51,7 @@ shift + ctrl + alt + cmd - b : yabai -m window --grid 101:52:26:50:13:50
 # ctrl + alt + cmd - 2 : echo # mission control right
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
-ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
+# ctrl + alt + cmd - 5 : echo # Arrange in Quarters
 ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 
 # float left
@@ -94,9 +95,11 @@ ctrl + alt + cmd - right :     yabai -m window --grid 101:52:39:50:13:50
 
 # almost fullscreen
 f13 :                    yabai -m window --toggle float --grid 52:52:1:1:50:50
-ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 52:52:1:1:50:50
+# 0x32 is `
+shift + ctrl + alt + cmd - 0x32 : yabai -m window --toggle float --grid 52:52:1:1:50:50
 
-# shift + ctrl + alt + cmd - tab : echo
+# shift + ctrl + alt + cmd - tab : echo # Arrange Right and Left
+# ctrl + alt + cmd - tab : echo # Arrange Left and Right
 # shift + ctrl + alt + cmd - space : echo # dictation
 # ctrl + alt + cmd - space : echo # siri
 
