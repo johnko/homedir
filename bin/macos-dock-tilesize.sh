@@ -55,11 +55,12 @@ print_cmd
 DOMAIN="com.apple.dock"
 KEYVAL='
         enterMissionControlByTopWindowDrag = 0;
+        "expose-group-apps" = 0;
         largesize = 64;
         magnification = 1;
         mineffect = scale;
         "minimize-to-application" = 1;
-        orientation = left;
+        orientation = right;
         showAppExposeGestureEnabled = 0;
         tilesize = 48;
 '
