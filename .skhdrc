@@ -15,7 +15,7 @@ shift + ctrl + alt + cmd - e : yabai -m window --grid 101:52:26:0:25:50
 shift + ctrl + alt + cmd - r : yabai -m window --grid 4:4:1:1:2:2
 # float 2nd slot bottom screen
 shift + ctrl + alt + cmd - t : yabai -m window --grid 101:52:13:50:13:50
-shift + ctrl + alt + cmd - y : yabai --restart-service
+shift + ctrl + alt + cmd - y : skhd --restart-service
 
 # shift + ctrl + alt + cmd - a : echo # arrow left
 # shift + ctrl + alt + cmd - s : echo # arrow down
@@ -62,7 +62,7 @@ ctrl + alt + cmd - e : yabai -m window --grid 101:52:26:0:25:100
 ctrl + alt + cmd - r : yabai -m window --grid 101:4:1:0:2:100
 f15 :                  osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
-ctrl + alt + cmd - y : skhd --restart-service
+ctrl + alt + cmd - y : yabai --restart-service
 
 # ctrl + alt + cmd - a : echo # arrow left
 # ctrl + alt + cmd - s : echo # arrow down
