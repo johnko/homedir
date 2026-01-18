@@ -36,7 +36,7 @@ KEYVAL="
         NSAutomaticQuoteSubstitutionEnabled = 0;
         NSGlassDiffusionSetting = 0;
         com.apple.sound.beep.feedback = 1;
-        com.apple.sound.beep.flash = 1;
+        com.apple.sound.beep.flash = 0;
         com.apple.sound.beep.volume = 1;
 "
 print_cmd
