@@ -64,7 +64,7 @@ yabai -m rule --add app="^(Safari)$" manage=off grid=101:52:28:9:23:91
 yabai -m rule --add app="^(Discord)$" manage=off grid=101:52:1:40:25:50
 
 # bottom right <0.5 tall
-yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=101:52:26:65:25:35
+yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=8:4:1:0:2:3
 
 # Terminal specific so can swap - float middle center quarter
 # yabai -m rule --add app="^(Terminal)$" manage=off grid=4:4:1:1:2:2
