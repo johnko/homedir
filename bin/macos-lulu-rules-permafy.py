@@ -167,6 +167,8 @@ ALLOWED_APP_PORTS = [
     {"apps": ["jp.naver.line.mac.LineCall"], "ports": [29494]},
 ]
 
+DELETE_APP_RULES = [r"^com\.brave\..*", r"^org\.whispersystems\.signal.*"]
+
 try:
     # Open the file in read mode
     with open(LULU_RULES_FILE, "r", encoding="utf-8") as file:
@@ -265,6 +267,21 @@ try:
                     )
                     rule["type"] = 3
                     print(f"{rule}")
+
+    print()
+    print("=" * 60)
+    print("Deleting rules that match DELETE_APP_RULES")
+    print("=" * 60)
+    final_data = {}
+    for app_name in data:
+        for pattern in DELETE_APP_RULES:
+            is_match = bool(re.match(pattern, app_name))
+            print(f"{is_match} Checking {app_name}")
+            if is_match:
+                print(f"Omitting app {app_name} rule {rule['endpointAddr']}")
+            else:
+                final_data[app_name] = data[app_name]
+    data = final_data
 
     print()
     print("=" * 60)
