@@ -289,7 +289,7 @@ try:
     print("=" * 60)
     # print(f"{data}")
     with open(LULU_RULES_FILE, "w", encoding="utf-8") as file:
-        json.dump(data, file, indent=2)
+        json.dump(final_data, file, indent=2)
 
     print()
     print("=" * 60)
