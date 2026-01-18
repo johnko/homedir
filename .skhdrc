@@ -107,7 +107,7 @@ shift + ctrl + alt + cmd - 0x32 : yabai -m window --toggle float --grid 52:52:1:
 
 # SHIFT for Arrange because SHIFT FOR TILE MAKES IT SLOW ANIMATION
 # shift + ctrl + alt + cmd - tab : echo # Arrange Right and Left
-# ctrl + alt + cmd - tab : echo # Full Screen Tile Left
+# ctrl + alt + cmd - tab : echo # Full Screen Tile Right
 # shift + ctrl + alt + cmd - space : echo # dictation
 # ctrl + alt + cmd - space : echo # siri
 
