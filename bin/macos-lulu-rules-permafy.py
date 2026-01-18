@@ -126,7 +126,7 @@ ALLOWED_APP_PORTS = [
             "com.google.Chrome.helper:Developer ID Application: Google LLC "
             "(EQHXZ8M8AV)"
         ],
-        "ports": [3478, 5222, 5228],
+        "ports": [3478, 5222, 5228, 5353, 19302],
     },
     {
         "apps": [
