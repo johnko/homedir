@@ -53,7 +53,7 @@ shift + ctrl + alt + cmd - b : yabai -m window --grid 101:52:26:50:13:50
 # ctrl + alt + cmd - 2 : echo # mission control space right
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
-# ctrl + alt + cmd - 5 : echo # Arrange in Quarters
+# ctrl + alt + cmd - 5 : echo # Full Screen Tile Right
 ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 
 # float left
@@ -106,8 +106,8 @@ shift + ctrl + alt + cmd - 0x32 : yabai -m window --toggle float --grid 52:52:1:
 # ctrl + alt + cmd - 0x32 : echo # Show Notification Center
 
 # SHIFT for Arrange because SHIFT FOR TILE MAKES IT SLOW ANIMATION
-# shift + ctrl + alt + cmd - tab : echo # Arrange Right and Left
-# ctrl + alt + cmd - tab : echo # Full Screen Tile Right
+# shift + ctrl + alt + cmd - tab : echo # Arrange in Quarters
+# ctrl + alt + cmd - tab : echo # Arrange Right and Left
 # shift + ctrl + alt + cmd - space : echo # dictation
 # ctrl + alt + cmd - space : echo # siri
 
