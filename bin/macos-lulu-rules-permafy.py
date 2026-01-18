@@ -13,6 +13,11 @@ ALLOWED_HOSTS = [
     "api.cloudflare.com",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
     "api.github.com",  # endpointAddr, com.microsoft.VSCode.helper:Developer ID Application: Microsoft Corporation (UBF8T346G9)
     "api.github.com",  # endpointAddr, io.podmandesktop.PodmanDesktop:Developer ID Application: Red Hat, Inc. (HYSCB8KRL2)
+    "api.pwnedpasswords.com",  # endpointAddr, com.1password.1password:Developer ID Application: AgileBits Inc. (2BUA8C4S2C)
+    "api2.cursor.sh",  # endpointAddr, com.github.Electron.helper:Developer ID Application: Hilary Stout (VDXQ22DGB9)
+    "api2.cursor.sh",  # endpointAddr, com.todesktop.230313mzl4w4u92:Developer ID Application: Hilary Stout (VDXQ22DGB9)
+    "api3.cursor.sh",  # endpointAddr, com.github.Electron.helper:Developer ID Application: Hilary Stout (VDXQ22DGB9)
+    "api4.cursor.sh",  # endpointAddr, com.github.Electron.helper:Developer ID Application: Hilary Stout (VDXQ22DGB9)
     "app-updates.agilebits.com",  # endpointAddr, com.1password.1password:Developer ID Application: AgileBits Inc. (2BUA8C4S2C)
     "b5n.1password.ca",  # endpointAddr, com.1password.1password:Developer ID Application: AgileBits Inc. (2BUA8C4S2C)
     "cache.agilebits.com",  # endpointAddr, com.1password.1password:Developer ID Application: AgileBits Inc. (2BUA8C4S2C)
@@ -20,14 +25,19 @@ ALLOWED_HOSTS = [
     "chat.signal.org",  # endpointAddr, org.whispersystems.signal-desktop.helper.Renderer:Developer ID Application: Signal Messenger, LLC (U68MSDN6DR)
     "checkip.amazonaws.com",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
     "checkip.amazonaws.com",  # endpointAddr, com.apple.curl
+    "checkpoint-api.hashicorp.com",  # endpointAddr, terraform:Developer ID Application: Hashicorp, Inc. (D38WU7D763)
+    "cix.line-apps.com",  # endpointAddr, jp.naver.line.mac
+    "codeload.github.com",  # endpointAddr, com.microsoft.VSCode.helper:Developer ID Application: Microsoft Corporation (UBF8T346G9)
     "desktop.line-scdn.net",  # endpointAddr, jp.naver.line.mac
     "detectportal.firefox.com",  # endpointAddr, org.mozilla.firefox:Developer ID Application: Mozilla Corporation (43AQ936H96)
     "discord.com",  # endpointAddr, com.hnc.Discord:Developer ID Application: Discord, Inc. (53Q6R32WPB)
     "dl.cloudsmith.io",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
     "dl.google.com",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
+    "download-installer.cdn.mozilla.net",  # endpointAddr, com.apple.curl
     "downloads.cursor.com",  # endpointAddr, com.apple.curl
     "eu-central-1-1.aws.cloud2.influxdata.com",  # endpointAddr, com.apple.curl
     "formulae.brew.sh",  # endpointAddr, com.apple.curl
+    "ghcr.io",  # endpointAddr, com.apple.curl
     "github.com",  # endpointAddr, com.apple.ssh
     "grafana.com",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
     "hooks.slack.com",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
@@ -39,27 +49,38 @@ ALLOWED_HOSTS = [
     "ly.my.sentry.io",  # endpointAddr, jp.naver.line.mac.LineCall
     "mise-versions.jdx.dev",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
     "mise.jdx.dev",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
+    "mobile.events.data.microsoft.com",  # endpointAddr, com.github.Electron.helper:Developer ID Application: Hilary Stout (VDXQ22DGB9)
     "mozilla.cloudflare-dns.com",  # endpointAddr, org.mozilla.firefox:Developer ID Application: Mozilla Corporation (43AQ936H96)
     "my.1password.ca",  # endpointAddr, com.1password.1password:Developer ID Application: AgileBits Inc. (2BUA8C4S2C)
     "my.1password.ca",  # endpointAddr, com.1password.op:Developer ID Application: AgileBits Inc. (2BUA8C4S2C)
     "my.1password.com",  # endpointAddr, com.1password.1password:Developer ID Application: AgileBits Inc. (2BUA8C4S2C)
+    "objective-see.org",  # endpointAddr, com.objective-see.lulu.app:Developer ID Application: Objective-See, LLC (VBG97UB4TA)
     "obs.line-apps.com",  # endpointAddr, jp.naver.line.mac
+    "obs.line-scdn.net",  # endpointAddr, jp.naver.line.mac
     "ollama.com",  # endpointAddr, ai.ollama.ollama:Developer ID Application: Infra Technologies, Inc (3MU9H2V9Y9)
     "ollama.com",  # endpointAddr, com.electron.ollama:Developer ID Application: Infra Technologies, Inc (3MU9H2V9Y9)
+    "pkg-containers.githubusercontent.com",  # endpointAddr, com.apple.curl
     "podman-desktop.io",  # endpointAddr, io.podmandesktop.PodmanDesktop:Developer ID Application: Red Hat, Inc. (HYSCB8KRL2)
     "ports.ubuntu.com",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
     "proxy.golang.org",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
+    "raw.githubusercontent.com",  # endpointAddr, com.apple.curl
+    "rectangleapp.com",  # endpointAddr, com.knollsoft.Rectangle:Developer ID Application: Ryan Hanson (XSYZ3E4B7D)
     "registry.ollama.ai",  # endpointAddr, ai.ollama.ollama:Developer ID Application: Infra Technologies, Inc (3MU9H2V9Y9)
     "registry.podman-desktop.io",  # endpointAddr, io.podmandesktop.PodmanDesktop:Developer ID Application: Red Hat, Inc. (HYSCB8KRL2)
+    "release-assets.githubusercontent.com",  # endpointAddr, com.apple.curl
+    "secure.gravatar.com",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
     "stats.grafana.org",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
     "stickershop.line-scdn.net",  # endpointAddr, jp.naver.line.mac
     "storage.googleapis.com",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
     "sum.golang.org",  # endpointAddr, /opt/homebrew/Cellar/podman/5.7.1/libexec/podman/gvproxy
     "update.code.visualstudio.com",  # endpointAddr, com.microsoft.VSCode:Developer ID Application: Microsoft Corporation (UBF8T346G9)
     "update.googleapis.com",  # endpointAddr, com.google.GoogleUpdater:Developer ID Application: Google LLC (EQHXZ8M8AV)
+    "updates-cdn.bravesoftware.com",  # endpointAddr, com.apple.curl
     "updates.bravesoftware.com",  # endpointAddr, com.brave.Browser:Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)
     "updates.signal.org",  # endpointAddr, com.apple.curl
+    "us-only.gcpp.cursor.sh",  # endpointAddr, com.github.Electron.helper:Developer ID Application: Hilary Stout (VDXQ22DGB9)
     "uts-front.line-apps.com",  # endpointAddr, jp.naver.line.mac
+    "watchtower.1password.com",  # endpointAddr, com.1password.1password:Developer ID Application: AgileBits Inc. (2BUA8C4S2C)
     "www.podman-desktop.io",  # endpointAddr, io.podmandesktop.PodmanDesktop:Developer ID Application: Red Hat, Inc. (HYSCB8KRL2)
     "www.schemastore.org",  # endpointAddr, com.microsoft.VSCode.helper:Developer ID Application: Microsoft Corporation (UBF8T346G9)
 ]
