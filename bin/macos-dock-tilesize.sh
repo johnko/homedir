@@ -80,8 +80,11 @@ print_cmd
 DOMAIN="com.apple.menuextra.clock"
 KEYVAL="
         FlashDateSeparators = 1;
+        IsAnalog = 0;
+        ShowAMPM = 1;
         ShowDate = 0;
         ShowDayOfWeek = 1;
+        ShowSeconds = 0;
 "
 print_cmd
 
