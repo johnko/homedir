@@ -126,21 +126,38 @@ ALLOWED_APP_PORTS = [
             "com.google.Chrome.helper:Developer ID Application: Google LLC "
             "(EQHXZ8M8AV)"
         ],
-        "ports": [5228, 5222],
+        "ports": [5222, 5228],
     },
     {
         "apps": [
             "com.hnc.Discord.helper.Renderer:Developer ID Application: "
             "Discord, Inc. (53Q6R32WPB)"
         ],
-        "ports": [50002, 50003, 50004, 50001, 19314],
+        "ports": [
+            19295,
+            19296,
+            19299,
+            19304,
+            19314,
+            19316,
+            19317,
+            19325,
+            19332,
+            19333,
+            19335,
+            19341,
+            50001,
+            50002,
+            50003,
+            50004,
+        ],
     },
     {
         "apps": [
             "com.hnc.Discord.helper:Developer ID Application: Discord, Inc. "
             "(53Q6R32WPB)"
         ],
-        "ports": [2083],
+        "ports": [2053, 2083],
     },
     {"apps": ["jp.naver.line.mac.LineCall"], "ports": [29494]},
 ]
@@ -168,7 +185,9 @@ try:
 
     print()
     print("=" * 60)
-    print("Converting passive rulues with endpointAddr and endpointHost for each rule if either are not IPv4/IPv6 and not wildcard and in ALLOWED_HOSTS")
+    print(
+        "Converting passive rulues with endpointAddr and endpointHost for each rule if either are not IPv4/IPv6 and not wildcard and in ALLOWED_HOSTS"
+    )
     print("=" * 60)
     for app_name in data:
         # Iterate through each rule per app
