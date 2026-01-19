@@ -61,7 +61,10 @@ yabai -m rule --add app="^(Slack)$" manage=off grid=101:52:5:9:23:91
 yabai -m rule --add app="^(Safari)$" manage=off grid=101:52:28:9:23:91
 
 # right above-middle, less than halfwide
-yabai -m rule --add app="^(Discord|Crunchyroll.*|Netflix)$" manage=off grid=101:52:32:40:20:56
+yabai -m rule --add app="^(Discord)$" manage=off grid=101:52:32:40:20:49
+yabai -m rule --add app="^(Netflix)$" manage=off grid=101:52:32:40:20:56
+# right above-middle, less than halfwide tall
+yabai -m rule --add app="^(Crunchyroll.*)$" manage=off grid=103:52:34:18:18:80
 
 # bottom right <0.5 tall
 yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=8:4:1:0:2:3
