@@ -22153,7 +22153,7 @@
       "isEndpointAddrRegex": 0,
       "key": "com.google.GoogleUpdater:Developer ID Application: Google LLC (EQHXZ8M8AV)",
       "name": "GoogleUpdater",
-      "path": "/Users/jon/Library/Application Support/Google/GoogleUpdater/145.0.7569.0/GoogleUpdater.app",
+      "path": "~/Library/Application Support/Google/GoogleUpdater/145.0.7569.0/GoogleUpdater.app",
       "scope": 0,
       "type": 3,
       "uuid": "79E63203-4B56-4A73-9C0B-B577D1A8CA64"
@@ -22177,7 +22177,7 @@
       "isEndpointAddrRegex": 0,
       "key": "com.google.GoogleUpdater:Developer ID Application: Google LLC (EQHXZ8M8AV)",
       "name": "GoogleUpdater",
-      "path": "/Users/jon/Library/Application Support/Google/GoogleUpdater/145.0.7569.0/GoogleUpdater.app",
+      "path": "~/Library/Application Support/Google/GoogleUpdater/145.0.7569.0/GoogleUpdater.app",
       "scope": 0,
       "type": 3,
       "uuid": "7EFA1792-7F29-458A-B2F9-E5150EB3DEBD"
