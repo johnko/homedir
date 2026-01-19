@@ -46,13 +46,13 @@ yabai -m rule --add app="^(Messages)$" manage=off grid=101:52:26:50:13:50
 # bottom right 2, halftall quarterwide right on vertical screen
 yabai -m rule --add app="^(Firefox|Spotify)$" manage=off grid=101:52:39:50:13:50
 # middle 3/4tall quarterwide right on vertical screen
-# 101:52:13:40:26:60
-# 101:52:14:40:24:60
-# 101:52:15:40:22:60
-# 101:52:16:40:20:60
-# 101:52:17:40:18:60
-# 101:52:18:40:16:60
-# 101:52:19:40:14:60
+# 101:52:13:40:26:56
+# 101:52:14:40:24:56
+# 101:52:15:40:22:56
+# 101:52:16:40:20:56
+# 101:52:17:40:18:56
+# 101:52:18:40:16:56
+# 101:52:19:40:14:56
 yabai -m rule --add app="^(Instagram|WhatsApp.*)$" manage=off grid=101:52:19:40:14:56
 
 # float don't block widgets left
