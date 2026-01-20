@@ -147,6 +147,12 @@
   "terraform.experimentalFeatures.validateOnSave": true,
   "typescript.surveys.enabled": false,
   "update.showReleaseNotes": false,
+  "vs-kubernetes": {
+    "vs-kubernetes.knownKubeconfigs": [
+      "~/kubeconfig/cursor.config"
+    ],
+    "vs-kubernetes.kubeconfig": "~/kubeconfig/cursor.config"
+  },
   "window.commandCenter": false,
   "window.confirmSaveUntitledWorkspace": false,
   "window.newWindowProfile": "Default",
@@ -254,6 +260,7 @@
     "terraform.experimentalFeatures.validateOnSave",
     "typescript.surveys.enabled",
     "update.showReleaseNotes",
+    "vs-kubernetes",
     "window.commandCenter",
     "window.confirmSaveUntitledWorkspace",
     "window.newWindowProfile",
