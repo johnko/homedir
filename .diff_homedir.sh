@@ -41,6 +41,7 @@ EXPECTEDDIFFSEPERATOR
 .gitignore
 .osascripts
 .skhdrc
+*.code-workspace
 config.example
 settings.json
 tasks.json
