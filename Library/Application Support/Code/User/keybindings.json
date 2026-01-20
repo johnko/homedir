@@ -141,7 +141,7 @@
     "when": "activeAuxiliary == 'workbench.view.extension.continue'"
   },
   {
-    "key": "ctrl+5",
+    "key": "ctrl+4",
     "command": "remote-containers.reopenInContainer",
     "when": "remoteName != 'dev-container'"
   },
@@ -317,10 +317,6 @@
     "when": "terminal.active"
   },
   {
-    "key": "ctrl+4",
-    "command": "git.createWorktree"
-  },
-  {
     "key": "ctrl+shift+5",
     "command": "-workbench.action.terminal.split",
     "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
@@ -332,10 +328,6 @@
   },
   {
     "key": "ctrl+shift+4",
-    "command": "git.openWorktree"
-  },
-  {
-    "key": "ctrl+shift+5",
     "command": "remote-containers.rebuildContainer"
   },
   {
@@ -416,5 +408,24 @@
     "key": "shift+cmd+space",
     "command": "-composer.toggleVoiceDictation",
     "when": "!terminalFocus"
+  },
+  {
+    "key": "cmd+d",
+    "command": "editor.action.inlineDiffs.nextChange",
+    "when": "editorTextFocus && inlineDiffs.activeEditorWithDiffs"
+  },
+  {
+    "key": "alt+j",
+    "command": "-editor.action.inlineDiffs.nextChange",
+    "when": "editorTextFocus && inlineDiffs.activeEditorWithDiffs"
+  },
+  {
+    "key": "shift+cmd+b",
+    "command": "-composer.openBrowserTab"
+  },
+  {
+    "key": "ctrl+5",
+    "command": "workbench.action.tasks.runTask",
+    "args": "gg clone local-repo branch"
   }
 ]
