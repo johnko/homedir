@@ -74,9 +74,9 @@ yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=8
 # Terminal specific so can swap - almost fullscreen
 # yabai -m rule --add app="^(Terminal)$" manage=off grid=52:52:1:1:50:50
 # Terminal specific so can swap - left 1/4 wide, 3/4 tall
-yabai -m rule --add app="^(Terminal)$" manage=off grid=101:52:1:25:25:75
+yabai -m rule --add app="^(Terminal)$" manage=off grid=101:52:1:25:18:75
 # bottom right 3/4 wide, 3/4 tall
-yabai -m rule --add app="^(Code|Cursor)$" manage=off grid=101:52:17:25:34:75
+yabai -m rule --add app="^(Code|Cursor)$" manage=off grid=101:52:19:25:32:75
 
 # Coding grid
 # top left
