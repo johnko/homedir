@@ -235,6 +235,7 @@ gg() {
   # GG_GITHUB_ORG=
   # GG_GITHUB_PROJECT='18'
   GG_GITHUB_LABEL='devops :test_tube:'
+  GG_WORKDIR="${HOME}/code/cursor"
 
   TMP_LOG=$(mktemp)
   case "$1" in
@@ -293,6 +294,32 @@ gg() {
         gh workflow run "$RENOVATE_WORKFLOW_NAME"
       else
         gh workflow list >/dev/null 2>&1 || echo "ERROR: Cannot list workflows. Try:    gh auth refresh --scopes workflow"
+      fi
+      ;;
+    clone)
+      pushd "$GG_WORKDIR" >/dev/null || return
+      LOCAL_REPO="$2"
+      if [[ -e "$LOCAL_REPO" && -e "$LOCAL_REPO/.git" ]]; then
+        SAFE_FOLDER=$( echo "$3" | tr -d -C '0-9a-zA-Z_-' )
+        SAFE_BRANCH=$( echo "$3" | tr -d -C '0-9a-zA-Z_/-' )
+        pushd "$LOCAL_REPO" >/dev/null || return
+        ORIGINAL_REMOTE=$(git remote get-url origin)
+        DEFAULT_BRANCH=master
+        if git branch -a | grep -q 'remotes/origin/main'; then
+          DEFAULT_BRANCH=main
+        fi
+        git fetch origin $DEFAULT_BRANCH &>/dev/null
+        popd &>/dev/null
+        if [[ ! -e "$LOCAL_REPO.$SAFE_FOLDER" ]]; then
+          git clone "$LOCAL_REPO" "$LOCAL_REPO.$SAFE_FOLDER"
+        fi
+        pushd "$LOCAL_REPO.$SAFE_FOLDER" >/dev/null || return
+        git remote set-url origin "$ORIGINAL_REMOTE"
+        git remote get-url origin
+        git fetch origin $DEFAULT_BRANCH &>/dev/null
+        git checkout "$SAFE_BRANCH" &>/dev/null || git checkout -b "$SAFE_BRANCH" origin/$DEFAULT_BRANCH
+        git branch -D $DEFAULT_BRANCH &>/dev/null
+        ${EDITOR% *} .
       fi
       ;;
     *)
