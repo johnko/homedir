@@ -9,6 +9,7 @@ SAFETOIGNORE
 .gitmodules
 agent.sock
 agent.toml
+allow-assume*
 CODEOWNERS
 creator-micro
 devcontainer
@@ -41,6 +42,8 @@ EXPECTEDDIFFSEPERATOR
 .osascripts
 .skhdrc
 config.example
+settings.json
+tasks.json
 "
 
 EXCLUDE_ARG=""
