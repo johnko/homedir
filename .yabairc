@@ -80,18 +80,18 @@ yabai -m rule --add app="^(Code|Cursor)$" manage=off grid=101:52:17:25:34:75
 
 # Coding grid
 # top left
-yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(6)$" manage=off grid=101:52:1:0:25:50
+# yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(6)$" manage=off grid=101:52:1:0:25:50
 # top right
-yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(7)$" manage=off grid=101:52:26:0:25:50
+# yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(7)$" manage=off grid=101:52:26:0:25:50
 # middle center
-yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(0)$" manage=off grid=4:4:1:1:2:2
+# yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(0)$" manage=off grid=4:4:1:1:2:2
 # bottom left
-yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(8)$" manage=off grid=101:52:1:50:25:50
+# yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(8)$" manage=off grid=101:52:1:50:25:50
 # bottom right
-yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(9)$" manage=off grid=101:52:26:50:25:50
+# yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(9)$" manage=off grid=101:52:26:50:25:50
 # left/right split
-yabai -m rule --add app="^(Terminal)$" title="^.*(2|3|4|5)$" manage=off grid=101:52:1:0:25:100
-yabai -m rule --add app="^(Code|Cursor)$" title="^.*(2|3|4|5)$" manage=off grid=101:52:17:0:34:100
+yabai -m rule --add app="^(Terminal)$" title="^.*(2|3|4|5|6|7|8|9)$" manage=off grid=101:52:1:0:25:100
+yabai -m rule --add app="^(Code|Cursor)$" title="^.*(2|3|4|5|6|7|8|9)$" manage=off grid=101:52:17:0:34:100
 
 
 # float some non-resizable apps
