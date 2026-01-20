@@ -142,7 +142,7 @@
   "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.hideOnStartup": "whenEmpty",
-  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.inheritEnv": true,
   "terminal.integrated.initialHint": false,
   "terraform.codelens.referenceCount": true,
   "terraform.experimentalFeatures.prefillRequiredFields": true,
@@ -237,6 +237,7 @@
     "peacock.favoriteColors",
     "peacock.surpriseMeFromFavoritesOnly",
     "pgsql.resultsFontSize",
+    "python.defaultInterpreterPath",
     "redhat.telemetry.enabled",
     "remote.SSH.enableAgentForwarding",
     "remote.SSH.experimental.chat",
@@ -275,8 +276,7 @@
     "workbench.secondarySideBar.showLabels",
     "workbench.settings.applyToAllProfiles",
     "workbench.startupEditor",
-    "yaml.schemas",
-    "python.defaultInterpreterPath"
+    "yaml.schemas"
   ],
   "workbench.startupEditor": "none",
   "yaml.schemas": {
