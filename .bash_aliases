@@ -111,23 +111,23 @@ if type git &>/dev/null; then
   }
 fi
 allow-git-remote() {
-  if [[ ! -e "$HOME/.allowed_git_remote" ]]; then
-    touch "$HOME/.allowed_git_remote"
+  if [[ ! -e ~/.allowed_git_remote ]]; then
+    touch ~/.allowed_git_remote
   fi
 }
 deny-git-remote() {
-  if [[ -e "$HOME/.allowed_git_remote" ]]; then
-    rm "$HOME/.allowed_git_remote"
+  if [[ -e ~/.allowed_git_remote ]]; then
+    rm ~/.allowed_git_remote
   fi
 }
 allow-git-sign() {
-  if [[ ! -e "$HOME/.allowed_git_sign" ]]; then
-    touch "$HOME/.allowed_git_sign"
+  if [[ ! -e ~/.allowed_git_sign ]]; then
+    touch ~/.allowed_git_sign
   fi
 }
 deny-git-sign() {
-  if [[ ! -e "$HOME/.allowed_git_sign" ]]; then
-    rm "$HOME/.allowed_git_sign"
+  if [[ ! -e ~/.allowed_git_sign ]]; then
+    rm ~/.allowed_git_sign
   fi
 }
 
@@ -235,7 +235,7 @@ gg() {
   # GG_GITHUB_ORG=
   # GG_GITHUB_PROJECT='18'
   GG_GITHUB_LABEL='devops :test_tube:'
-  GG_WORKDIR="${HOME}/code/cursor"
+  GG_WORKDIR=~/code/cursor
 
   TMP_LOG=$(mktemp)
   case "$1" in
