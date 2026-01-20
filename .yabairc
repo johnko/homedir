@@ -15,7 +15,7 @@ yabai -m rule --add app="^(Books|GarageBand|GIMP|iMovie|Photos)$" manage=off gri
 # float tall wide 18/24 of screen for focus
 yabai -m rule --add app="^(Xcode)$" manage=off grid=24:24:3:3:18:21
 # float tall wide 20/24 of screen for video
-yabai -m rule --add app="^(Crunchyroll.*|Netflix|TV)$" manage=off grid=24:24:2:4:20:19
+yabai -m rule --add app="^(TV)$" manage=off grid=24:24:2:4:20:19
 
 # float middle center quarter
 yabai -m rule --add app="^(1Password|FaceTime|Finder|Keychain Access|Photo Booth|QuickTime.*|TextEdit)$" manage=off grid=4:4:1:1:2:2
@@ -46,22 +46,25 @@ yabai -m rule --add app="^(Messages)$" manage=off grid=101:52:26:50:13:50
 # bottom right 2, halftall quarterwide right on vertical screen
 yabai -m rule --add app="^(Firefox|Spotify)$" manage=off grid=101:52:39:50:13:50
 # middle 3/4tall quarterwide right on vertical screen
-# 101:52:13:40:26:60
-# 101:52:14:40:24:60
-# 101:52:15:40:22:60
-# 101:52:16:40:20:60
-# 101:52:17:40:18:60
-# 101:52:18:40:16:60
-# 101:52:19:40:14:60
-yabai -m rule --add app="^(Instagram|WhatsApp.*)$" manage=off grid=101:52:19:40:14:60
+# 101:52:13:40:26:56
+# 101:52:14:40:24:56
+# 101:52:15:40:22:56
+# 101:52:16:40:20:56
+# 101:52:17:40:18:56
+# 101:52:18:40:16:56
+# 101:52:19:40:14:56
+yabai -m rule --add app="^(Instagram|WhatsApp.*)$" manage=off grid=101:52:19:40:14:56
 
 # float don't block widgets left
 yabai -m rule --add app="^(Slack)$" manage=off grid=101:52:5:9:23:91
 # float don't block widgets right
 yabai -m rule --add app="^(Safari)$" manage=off grid=101:52:28:9:23:91
 
-# left above-middle, halfwide
-yabai -m rule --add app="^(Discord)$" manage=off grid=101:52:1:40:25:50
+# right above-middle, less than halfwide
+yabai -m rule --add app="^(Discord)$" manage=off grid=101:52:32:40:20:49
+yabai -m rule --add app="^(Netflix)$" manage=off grid=101:52:32:40:20:56
+# right above-middle, less than halfwide tall
+yabai -m rule --add app="^(Crunchyroll.*)$" manage=off grid=103:52:34:18:18:80
 
 # bottom right <0.5 tall
 yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=8:4:1:0:2:3
@@ -71,24 +74,24 @@ yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=8
 # Terminal specific so can swap - almost fullscreen
 # yabai -m rule --add app="^(Terminal)$" manage=off grid=52:52:1:1:50:50
 # Terminal specific so can swap - left 1/4 wide, 3/4 tall
-yabai -m rule --add app="^(Terminal)$" manage=off grid=101:52:1:25:25:75
+yabai -m rule --add app="^(Terminal)$" manage=off grid=101:52:1:25:18:75
 # bottom right 3/4 wide, 3/4 tall
-yabai -m rule --add app="^(Code|Cursor)$" manage=off grid=101:52:17:25:34:75
+yabai -m rule --add app="^(Code|Cursor)$" manage=off grid=101:52:19:25:32:75
 
 # Coding grid
 # top left
-yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(6)$" manage=off grid=101:52:1:0:25:50
+# yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(6)$" manage=off grid=101:52:1:0:25:50
 # top right
-yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(7)$" manage=off grid=101:52:26:0:25:50
+# yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(7)$" manage=off grid=101:52:26:0:25:50
 # middle center
-yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(0)$" manage=off grid=4:4:1:1:2:2
+# yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(0)$" manage=off grid=4:4:1:1:2:2
 # bottom left
-yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(8)$" manage=off grid=101:52:1:50:25:50
+yabai -m rule --add app="^(Terminal)$" title="^.*(9)$" manage=off grid=101:52:1:50:25:50
 # bottom right
-yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(9)$" manage=off grid=101:52:26:50:25:50
+# yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(8)$" manage=off grid=101:52:26:50:25:50
 # left/right split
-yabai -m rule --add app="^(Terminal)$" title="^.*(2|3|4|5)$" manage=off grid=101:52:1:0:25:100
-yabai -m rule --add app="^(Code|Cursor)$" title="^.*(2|3|4|5)$" manage=off grid=101:52:17:0:34:100
+yabai -m rule --add app="^(Terminal)$" title="^.*(2|3|4|5|6|7|8)$" manage=off grid=101:52:1:0:18:100
+yabai -m rule --add app="^(Code|Cursor)$" title="^.*(2|3|4|5|6|7|8|9)$" manage=off grid=101:52:19:0:32:100
 
 
 # float some non-resizable apps

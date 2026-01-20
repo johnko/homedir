@@ -3,8 +3,9 @@
 # shift + ctrl + alt + cmd - 2 : echo
 shift + ctrl + alt + cmd - 3 : osascript ~/.osascripts/terminal-toggle-audio.scpt
 shift + ctrl + alt + cmd - 4 : osascript ~/.osascripts/terminal-nosleep.scpt
-shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-prune.scpt
-shift + ctrl + alt + cmd - 6 : yabai -m space --balance
+# shift + ctrl + alt + cmd - 5 : echo # Arrange Top and Bottom
+shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-brew-update.scpt
+# shift + ctrl + alt + cmd - 7 : yabai -m space --balance
 
 # float top left
 shift + ctrl + alt + cmd - q : yabai -m window --grid 101:52:1:0:25:50
@@ -21,7 +22,7 @@ shift + ctrl + alt + cmd - y : skhd --restart-service
 # shift + ctrl + alt + cmd - s : echo # arrow down
 # shift + ctrl + alt + cmd - d : echo # arrow right
 # float tall wide 16/24 of screen for editing
-shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 24:24:4:2:16:20
+shift + ctrl + alt + cmd - f : yabai -m window --grid 24:24:4:2:16:20
 # float middle slot bottom screen
 shift + ctrl + alt + cmd - g : yabai -m window --grid 101:52:19:40:14:60
 shift + ctrl + alt + cmd - h : bash ~/bin/yabai_cycle_clockwise.sh
@@ -44,13 +45,15 @@ shift + ctrl + alt + cmd - b : yabai -m window --grid 101:52:26:50:13:50
 # shift + ctrl + alt + cmd - k : echo
 # shift + ctrl + alt + cmd - l : echo
 
+###################################################################
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+###################################################################
 
-# ctrl + alt + cmd - 1 : echo # mission control left
-# ctrl + alt + cmd - 2 : echo # mission control right
+# ctrl + alt + cmd - 1 : echo # mission control space left
+# ctrl + alt + cmd - 2 : echo # mission control space right
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
-ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
+# ctrl + alt + cmd - 5 : echo # Full Screen Tile Right
 ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 
 # float left
@@ -85,6 +88,10 @@ ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
 ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
 ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
 
+###################################################################
+# grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+###################################################################
+
 ctrl + alt + cmd - up : yabai -m window --grid 101:52:1:0:50:50
 ctrl + alt + cmd - down : yabai -m window --grid 101:52:1:50:50:50
 # float 1st slot bottom screen
@@ -94,10 +101,29 @@ ctrl + alt + cmd - right :     yabai -m window --grid 101:52:39:50:13:50
 
 # almost fullscreen
 f13 :                    yabai -m window --toggle float --grid 52:52:1:1:50:50
-ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 52:52:1:1:50:50
+# 0x32 is `
+shift + ctrl + alt + cmd - 0x32 : yabai -m window --toggle float --grid 52:52:1:1:50:50
+# ctrl + alt + cmd - 0x32 : echo # Show Notification Center
 
-# shift + ctrl + alt + cmd - tab : echo
+# SHIFT for Arrange because SHIFT FOR TILE MAKES IT SLOW ANIMATION
+# shift + ctrl + alt + cmd - tab : echo # Arrange in Quarters
+# ctrl + alt + cmd - tab : echo # Arrange Right and Left
 # shift + ctrl + alt + cmd - space : echo # dictation
 # ctrl + alt + cmd - space : echo # siri
 
+###################################################################
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+###################################################################
+
+# f6 : echo # Turn Do Not Disturb on/off
+# f4 : echo # Show Desktop
+
+# f17 : echo # Emoji & Symbols
+# ctrl + cmd - f : echo # Exit fullscreen
+# shift + ctrl + cmd - f : echo # Enter Full Screen
+# shift + ctrl + cmd - f : echo # Toggle Full Screen
+
+# shift + ctrl + alt + cmd - u : echo # Email Link
+# shift + ctrl + alt + cmd - u : echo # Secure Keyboard Entry
+# shift + ctrl + alt + cmd - u : echo # Finder.app, Name
+# shift + ctrl + alt + cmd - u : echo # Finder.app, Kind

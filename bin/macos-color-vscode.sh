@@ -329,6 +329,7 @@ EOF
       ;;
   esac
 
+  # shellcheck disable=SC2002
   cat "$HOME/Library/Application Support/Code/User/settings.json" |
     sed "s,$HOME/,~/,g" |
     jq --argjson str "$JSON_STRING" '. + $str' --sort-keys | pbcopy

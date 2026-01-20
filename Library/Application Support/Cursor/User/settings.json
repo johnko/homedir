@@ -121,6 +121,7 @@
   ],
   "peacock.surpriseMeFromFavoritesOnly": true,
   "pgsql.resultsFontSize": 14,
+  "python.defaultInterpreterPath": "~/venv-python3",
   "redhat.telemetry.enabled": false,
   "remote.SSH.enableAgentForwarding": false,
   "remote.SSH.experimental.chat": false,
