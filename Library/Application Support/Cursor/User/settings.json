@@ -13,6 +13,7 @@
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
+  "aws.telemetry": false,
   "chat.agent.enabled": false,
   "chat.commandCenter.enabled": false,
   "chat.editor.fontSize": 14,
@@ -121,6 +122,7 @@
   ],
   "peacock.surpriseMeFromFavoritesOnly": true,
   "pgsql.resultsFontSize": 14,
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
   "redhat.telemetry.enabled": false,
   "remote.SSH.enableAgentForwarding": false,
   "remote.SSH.experimental.chat": false,
@@ -147,12 +149,7 @@
   "terraform.experimentalFeatures.validateOnSave": true,
   "typescript.surveys.enabled": false,
   "update.showReleaseNotes": false,
-  "vs-kubernetes": {
-    "vs-kubernetes.knownKubeconfigs": [
-      "~/kubeconfig/cursor.config"
-    ],
-    "vs-kubernetes.kubeconfig": "~/kubeconfig/cursor.config"
-  },
+  "vs-kubernetes": {},
   "window.commandCenter": false,
   "window.confirmSaveUntitledWorkspace": false,
   "window.newWindowProfile": "Default",
@@ -189,6 +186,7 @@
   "workbench.settings.applyToAllProfiles": [
     "[dockercompose]",
     "[github-actions-workflow]",
+    "aws.telemetry",
     "chat.agent.enabled",
     "chat.commandCenter.enabled",
     "chat.editor.fontSize",
