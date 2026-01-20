@@ -55,6 +55,7 @@ mas "Xcode", id: 497799835
 cask "ollama-app"
 
 # VS Code extensions
+vscode "AmazonWebServices.aws-toolkit-vscode"
 vscode "continue.continue"
 vscode "dbaeumer.vscode-eslint"
 vscode "docsmsft.docs-article-templates"
