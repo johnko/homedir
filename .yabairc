@@ -86,11 +86,11 @@ yabai -m rule --add app="^(Code|Cursor)$" manage=off grid=101:52:19:25:32:75
 # middle center
 # yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(0)$" manage=off grid=4:4:1:1:2:2
 # bottom left
-yabai -m rule --add app="^(Terminal)$" title="^.*(8)$" manage=off grid=101:52:1:50:25:50
+yabai -m rule --add app="^(Terminal)$" title="^.*(9)$" manage=off grid=101:52:1:50:25:50
 # bottom right
-# yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(9)$" manage=off grid=101:52:26:50:25:50
+# yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(8)$" manage=off grid=101:52:26:50:25:50
 # left/right split
-yabai -m rule --add app="^(Terminal)$" title="^.*(2|3|4|5|6|7|8|9)$" manage=off grid=101:52:1:0:18:100
+yabai -m rule --add app="^(Terminal)$" title="^.*(2|3|4|5|6|7|8)$" manage=off grid=101:52:1:0:18:100
 yabai -m rule --add app="^(Code|Cursor)$" title="^.*(2|3|4|5|6|7|8|9)$" manage=off grid=101:52:19:0:32:100
 
 
