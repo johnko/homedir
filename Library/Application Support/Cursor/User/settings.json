@@ -134,13 +134,7 @@
     "github.copilot-chat",
     "github.copilot"
   ],
-  "settingsSync.ignoredSettings": [
-    "-dev.containers.copyGitConfig",
-    "-dotfiles.installCommand",
-    "-dotfiles.repository",
-    "-dotfiles.targetPath",
-    "-python.defaultInterpreterPath"
-  ],
+  "settingsSync.ignoredSettings": [],
   "telemetry.telemetryLevel": "off",
   "terminal.explorerKind": "external",
   "terminal.integrated.defaultLocation": "editor",
