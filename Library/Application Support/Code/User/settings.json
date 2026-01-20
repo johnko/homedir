@@ -277,7 +277,8 @@
     "workbench.secondarySideBar.showLabels",
     "workbench.settings.applyToAllProfiles",
     "workbench.startupEditor",
-    "yaml.schemas"
+    "yaml.schemas",
+    "python.defaultInterpreterPath"
   ],
   "workbench.startupEditor": "none",
   "yaml.schemas": {
