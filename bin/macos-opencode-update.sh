@@ -3,11 +3,12 @@ set -euo pipefail
 
 set -x
 
-NODE_VERSION=v24.11.0          # renovate: datasource=github-releases depName=nodejs/node packageName=nodejs/node
-
-OPENCODE_VERSION=v1.1.12       # renovate: datasource=github-releases depName=anomalyco/opencode packageName=anomalyco/opencode
-
-DEVCONTAINERS_VERSION=v0.80.3 # renovate: datasource=github-releases depName=devcontainers/cli packageName=devcontainers/cli
+# renovate: datasource=github-releases depName=nodejs/node packageName=nodejs/node
+NODE_VERSION=v24.11.0
+# renovate: datasource=github-releases depName=anomalyco/opencode packageName=anomalyco/opencode
+OPENCODE_VERSION=v1.1.12
+# renovate: datasource=github-releases depName=devcontainers/cli packageName=devcontainers/cli
+DEVCONTAINERS_VERSION=v0.80.3
 
 if type mise &>/dev/null; then
   ## install opencode globally in mise environment
