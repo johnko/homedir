@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # renovate: datasource=github-releases depName=nodejs/node packageName=nodejs/node
-NODE_VERSION=24.11.0
+NODE_VERSION=24.12.0
 
 if type mise &>/dev/null; then
   ## run TUI/CLI

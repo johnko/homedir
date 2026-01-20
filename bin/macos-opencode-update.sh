@@ -4,7 +4,7 @@ set -euo pipefail
 set -x
 
 # renovate: datasource=github-releases depName=nodejs/node packageName=nodejs/node
-NODE_VERSION=v24.11.0
+NODE_VERSION=v24.12.0
 # renovate: datasource=github-releases depName=anomalyco/opencode packageName=anomalyco/opencode
 OPENCODE_VERSION=v1.1.12
 # renovate: datasource=github-releases depName=devcontainers/cli packageName=devcontainers/cli
