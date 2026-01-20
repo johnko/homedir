@@ -5,7 +5,7 @@ set -x
 
 NODE_VERSION=24.11.0         # renovate: datasource=github-releases depName=nodejs/node packageName=nodejs/node
 OPENCODE_VERSION=v4.9.1      # renovate: datasource=github-releases depName=anomalyco/opencode packageName=anomalyco/opencode
-DEVCONTAINERS_VERSION=0.80.3 # renovate: datasource=github-releases depName=devcontainers/cli packageName=devcontainers/cli
+DEVCONTAINERS_VERSION=v1.1.15 # renovate: datasource=github-releases depName=devcontainers/cli packageName=devcontainers/cli
 
 if type mise &>/dev/null; then
   ## install opencode globally in mise environment
