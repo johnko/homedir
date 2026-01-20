@@ -299,12 +299,12 @@ gg() {
     clone)
       pushd "$GG_WORKDIR" >/dev/null || return
       LOCAL_REPO="$2"
-      if [[ ! -e "$LOCAL_REPO" && ! -e "$LOCAL_REPO/.git" ]]; then
+      if [[ ! -e $LOCAL_REPO && ! -e "$LOCAL_REPO/.git" ]]; then
         git clone git@github.com:$GG_GITHUB_ORG/$LOCAL_REPO.git "$LOCAL_REPO"
       fi
-      if [[ -e "$LOCAL_REPO" && -e "$LOCAL_REPO/.git" ]]; then
-        SAFE_FOLDER=$( echo "$3" | tr -d -C '0-9a-zA-Z_-' )
-        SAFE_BRANCH=$( echo "$3" | tr -d -C '0-9a-zA-Z_/-' )
+      if [[ -e $LOCAL_REPO && -e "$LOCAL_REPO/.git" ]]; then
+        SAFE_FOLDER=$(echo "$3" | tr -d -C '0-9a-zA-Z_-')
+        SAFE_BRANCH=$(echo "$3" | tr -d -C '0-9a-zA-Z_/-')
         pushd "$LOCAL_REPO" >/dev/null || return
         ORIGINAL_REMOTE=$(git remote get-url origin)
         DEFAULT_BRANCH=master
