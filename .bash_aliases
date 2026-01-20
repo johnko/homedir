@@ -446,8 +446,13 @@ nosleep() {
   export NO_SLEEP_VIDEO_FILE
   envsubst <~/.nosleep/video.html.example >~/.nosleep/video.html
   envsubst <~/.nosleep/clock.html.example >~/.nosleep/clock.html
-  # open -a "Brave Browser" ~/.nosleep/video.html
-  open -a "Brave Browser" ~/.nosleep/clock.html
+  if ls -1 /Applications | grep -q -i brave; then
+    BROWSER_APP="Brave Browser"
+  else
+    BROWSER_APP="Safari"
+  fi
+  # open -a "$BROWSER_APP" ~/.nosleep/video.html
+  open -a "$BROWSER_APP" ~/.nosleep/clock.html
 }
 
 ########################################
@@ -481,7 +486,7 @@ repos-fetchorigin() {
     fi
   done
 }
-repos-gitbranches() {
+repos-branches() {
   # shellcheck disable=SC2044
   for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
     if [[ -e "${i}/.git" ]]; then
@@ -541,7 +546,7 @@ repos-tmptmp() {
 repos-updatemaster() {
   TMP_BRANCH=tmp/tmp$(date +%s)
   # shellcheck disable=SC2044
-  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
+  for i in $(find . -mindepth 1 -maxdepth 1 -type d -not -name '*.*'); do
     if [[ -e "${i}/.git" ]]; then
       pushd "${i}" >/dev/null || return
       echo "==> ${__YELLOW}${i}${__RESET}"
