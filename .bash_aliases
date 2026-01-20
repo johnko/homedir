@@ -300,7 +300,7 @@ gg() {
       pushd "$GG_WORKDIR" >/dev/null || return
       LOCAL_REPO="$2"
       if [[ ! -e $LOCAL_REPO && ! -e "$LOCAL_REPO/.git" ]]; then
-        git clone git@github.com:$GG_GITHUB_ORG/$LOCAL_REPO.git "$LOCAL_REPO"
+        git clone "git@github.com:$GG_GITHUB_ORG/$LOCAL_REPO.git" "$LOCAL_REPO"
       fi
       if [[ -e $LOCAL_REPO && -e "$LOCAL_REPO/.git" ]]; then
         SAFE_FOLDER=$(echo "$3" | tr -d -C '0-9a-zA-Z_-')
@@ -312,7 +312,7 @@ gg() {
           DEFAULT_BRANCH=main
         fi
         git fetch origin $DEFAULT_BRANCH &>/dev/null
-        popd &>/dev/null
+        popd &>/dev/null || return
         if [[ ! -e "$LOCAL_REPO.$SAFE_FOLDER" ]]; then
           git clone "$LOCAL_REPO" "$LOCAL_REPO.$SAFE_FOLDER"
         fi
@@ -322,7 +322,30 @@ gg() {
         git fetch origin $DEFAULT_BRANCH &>/dev/null
         git checkout "$SAFE_BRANCH" &>/dev/null || git checkout -b "$SAFE_BRANCH" origin/$DEFAULT_BRANCH || git checkout -b "$SAFE_FOLDER" origin/$DEFAULT_BRANCH
         git branch -D $DEFAULT_BRANCH &>/dev/null
-        ${EDITOR% *} .
+        if [[ -e ~/.aws/config ]]; then
+          if ! grep -q cursor ~/.aws/config; then
+            echo "ERROR: AWS Profile 'cursor' was not found in ~/.aws/config"
+          else
+            AWS_VAULT_PROMPT=ykman aws-vault export cursor | awk '{print "export "$0}' >~/.aws_temp_credentials_secret
+          fi
+          if [[ -e ~/.aws_temp_credentials_secret ]]; then
+            set +x
+            source ~/.aws_temp_credentials_secret
+          fi
+          if [[ ! -e ~/kubeconfig/cursor.config ]]; then
+            echo "ERROR: kube config was not found at ~/kubeconfig/cursor.config"
+          else
+            mkdir -p ~/.kube
+            cp ~/kubeconfig/cursor.config ~/.kube/config
+          fi
+        fi
+        if [[ -z $CODE_EDITOR ]]; then
+          OPEN_EDITOR=code
+        else
+          OPEN_EDITOR=$CODE_EDITOR
+        fi
+        echo "Opening $OPEN_EDITOR"
+        $OPEN_EDITOR .
       fi
       ;;
     *)
@@ -331,10 +354,14 @@ Usage:
   $0 pr                  Push with 'git' and open PR with 'gh' from current HEAD branch
   $0 label github_url    Tags PR/Issue with my label, milestone and add to GH Project
   $0 clean               Deletes current branch, checkout main/master branch and pull
+  $0 clone local branch  Clones from local and creates branch
 EOF
       ;;
   esac
 }
+if [[ -e ~/.aws_temp_credentials_secret ]]; then
+  source ~/.aws_temp_credentials_secret
+fi
 
 ########################################
 # k8s/helm aliases
