@@ -29,6 +29,8 @@
   "docsYaml.telemetry.enableTelemetry": false,
   "dotfiles.repository": "https://github.com/johnko/devcontainer-dotfiles.git",
   "editor.fontSize": 14,
+  "editor.minimap.enabled": true,
+  "editor.minimap.renderCharacters": false,
   "editor.renderWhitespace": "all",
   "editor.stickyScroll.enabled": true,
   "editor.tabSize": 2,
