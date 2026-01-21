@@ -37,14 +37,18 @@ yabai -m rule --add app="^(Netiquette)$" manage=off grid=101:52:26:50:25:50
 # float top middle <0.5 tall
 yabai -m rule --add app="^(Google Calendar|Notes|Reminders)$" manage=off grid=8:4:1:0:2:3
 
+# top left 1, halftall quarterwide right on vertical screen
+yabai -m rule --add app="^(LINE)$" manage=off grid=101:52:0:0:13:50
+# top right 1, halftall quarterwide right on vertical screen
+yabai -m rule --add app="^(Signal)$" manage=off grid=101:52:39:0:13:50
 # bottom left 1, halftall quarterwide right on vertical screen
-yabai -m rule --add app="^(Signal)$" manage=off grid=101:52:0:50:13:50
+yabai -m rule --add app="^(Messages)$" manage=off grid=101:52:0:50:13:50
 # bottom left 2, halftall quarterwide right on vertical screen
-yabai -m rule --add app="^(LINE)$" manage=off grid=101:52:13:50:13:50
+yabai -m rule --add app="^(NO_APP_1|)$" manage=off grid=101:52:13:50:13:50
 # bottom right 1, halftall quarterwide right on vertical screen
-yabai -m rule --add app="^(Messages)$" manage=off grid=101:52:26:50:13:50
+yabai -m rule --add app="^(NO_APP_2)$" manage=off grid=101:52:26:50:13:50
 # bottom right 2, halftall quarterwide right on vertical screen
-yabai -m rule --add app="^(Firefox|Spotify)$" manage=off grid=101:52:39:50:13:50
+yabai -m rule --add app="^(Firefox|Spotify|WhatsApp.*)$" manage=off grid=101:52:39:50:13:50
 # middle 3/4tall quarterwide right on vertical screen
 # 101:52:13:40:26:56
 # 101:52:14:40:24:56
@@ -53,7 +57,7 @@ yabai -m rule --add app="^(Firefox|Spotify)$" manage=off grid=101:52:39:50:13:50
 # 101:52:17:40:18:56
 # 101:52:18:40:16:56
 # 101:52:19:40:14:56
-yabai -m rule --add app="^(Instagram|WhatsApp.*)$" manage=off grid=101:52:19:40:14:56
+yabai -m rule --add app="^(Instagram)$" manage=off grid=101:52:19:40:14:56
 
 # float don't block widgets left
 yabai -m rule --add app="^(Slack)$" manage=off grid=101:52:5:9:23:91
