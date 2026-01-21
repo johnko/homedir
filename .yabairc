@@ -44,7 +44,7 @@ yabai -m rule --add app="^(Signal)$" manage=off grid=101:52:39:0:13:50
 # bottom left 1, halftall quarterwide right on vertical screen
 yabai -m rule --add app="^(Messages)$" manage=off grid=101:52:0:50:13:50
 # bottom left 2, halftall quarterwide right on vertical screen
-yabai -m rule --add app="^(NO_APP_1|)$" manage=off grid=101:52:13:50:13:50
+yabai -m rule --add app="^(NO_APP_1)$" manage=off grid=101:52:13:50:13:50
 # bottom right 1, halftall quarterwide right on vertical screen
 yabai -m rule --add app="^(NO_APP_2)$" manage=off grid=101:52:26:50:13:50
 # bottom right 2, halftall quarterwide right on vertical screen
@@ -73,10 +73,6 @@ yabai -m rule --add app="^(Crunchyroll.*)$" manage=off grid=103:52:34:18:18:80
 # bottom right <0.5 tall
 yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=8:4:1:0:2:3
 
-# Terminal specific so can swap - float middle center quarter
-# yabai -m rule --add app="^(Terminal)$" manage=off grid=4:4:1:1:2:2
-# Terminal specific so can swap - almost fullscreen
-# yabai -m rule --add app="^(Terminal)$" manage=off grid=52:52:1:1:50:50
 # Terminal specific so can swap - left 1/4 wide, 3/4 tall
 yabai -m rule --add app="^(Terminal)$" manage=off grid=101:52:1:25:18:75
 # bottom right 3/4 wide, 3/4 tall
