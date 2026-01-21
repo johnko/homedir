@@ -56,7 +56,8 @@ yabai -m rule --add app="^(Firefox|Spotify|WhatsApp.*)$" manage=off grid=101:52:
 # 101:52:16:40:20:56
 # 101:52:17:40:18:56
 # 101:52:18:40:16:56
-yabai -m rule --add app="^(Instagram)$" manage=off grid=101:52:18:40:16:56
+# 101:52:19:40:14:56
+yabai -m rule --add app="^(Instagram)$" manage=off grid=101:52:19:40:14:56
 
 # float don't block widgets left
 yabai -m rule --add app="^(Slack)$" manage=off grid=101:52:5:9:23:91
@@ -73,9 +74,9 @@ yabai -m rule --add app="^(Crunchyroll.*)$" manage=off grid=103:52:34:18:18:80
 yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=8:4:1:0:2:3
 
 # Terminal specific so can swap - left 1/4 wide, 3/4 tall
-yabai -m rule --add app="^(Terminal)$" manage=off grid=101:52:0:25:18:75
+yabai -m rule --add app="^(Terminal)$" manage=off grid=101:52:0:25:13:75
 # bottom right 3/4 wide, 3/4 tall
-yabai -m rule --add app="^(Code|Cursor)$" manage=off grid=101:52:18:25:34:75
+yabai -m rule --add app="^(Code|Cursor)$" manage=off grid=101:52:13:25:39:75
 
 # Coding grid
 # top left
@@ -89,8 +90,8 @@ yabai -m rule --add app="^(Terminal)$" title="^.*(9)$" manage=off grid=101:52:1:
 # bottom right
 # yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(8)$" manage=off grid=101:52:26:50:25:50
 # left/right split
-yabai -m rule --add app="^(Terminal)$" title="^.*(2|3|4|5|6|7|8)$" manage=off grid=101:52:0:0:18:100
-yabai -m rule --add app="^(Code|Cursor)$" title="^.*(2|3|4|5|6|7|8|9)$" manage=off grid=101:52:18:0:34:100
+yabai -m rule --add app="^(Terminal)$" title="^.*(2|3|4|5|6|7|8)$" manage=off grid=101:52:0:0:13:100
+yabai -m rule --add app="^(Code|Cursor)$" title="^.*(2|3|4|5|6|7|8|9)$" manage=off grid=101:52:13:0:39:100
 
 
 # float some non-resizable apps

@@ -24,16 +24,19 @@ shift + ctrl + alt + cmd - y : skhd --restart-service
 # float tall wide 16/24 of screen for editing
 shift + ctrl + alt + cmd - f : yabai -m window --grid 24:24:4:2:16:20
 # float middle slot bottom screen
-shift + ctrl + alt + cmd - g : yabai -m window --grid 101:52:19:40:14:60
+shift + ctrl + alt + cmd - g : yabai -m window --grid 101:52:19:40:14:56
 shift + ctrl + alt + cmd - h : bash ~/bin/yabai_cycle_clockwise.sh
 
 # float tall wide 20/24 of screen for video
 shift + ctrl + alt + cmd - z : yabai -m window --grid 24:24:2:4:20:19
 # float tall wide 18/24 of screen for focus
-f14 :                          yabai -m window --grid 24:24:3:3:18:21
-shift + ctrl + alt + cmd - x : yabai -m window --grid 24:24:3:3:18:21
-# cursor/code right 3/4 wide
-shift + ctrl + alt + cmd - c : yabai -m window --grid 101:52:17:0:34:100
+f18 :                          yabai -m window --grid 24:24:3:3:18:21
+# left tall 1/4 screen
+f13 :                          yabai -m window --grid 101:52:0:0:13:100
+shift + ctrl + alt + cmd - x : yabai -m window --grid 101:52:0:0:13:100
+# cursor/code right 3/4 wide for focus
+f14 :                          yabai -m window --grid 101:52:13:0:39:100
+shift + ctrl + alt + cmd - c : yabai -m window --grid 101:52:13:0:39:100
 # float tall
 shift + ctrl + alt + cmd - v : yabai -m window --grid 24:24:5:1:14:22
 # float 3rd slot bottom screen
@@ -100,7 +103,7 @@ ctrl + alt + cmd - left :      yabai -m window --grid 101:52:0:50:13:50
 ctrl + alt + cmd - right :     yabai -m window --grid 101:52:39:50:13:50
 
 # almost fullscreen
-f13 :                    yabai -m window --toggle float --grid 52:52:1:1:50:50
+f19 :                    yabai -m window --toggle float --grid 52:52:1:1:50:50
 # 0x32 is `
 shift + ctrl + alt + cmd - 0x32 : yabai -m window --toggle float --grid 52:52:1:1:50:50
 # ctrl + alt + cmd - 0x32 : echo # Show Notification Center
