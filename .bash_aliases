@@ -311,34 +311,18 @@ gg() {
         if git branch -a | grep -q 'remotes/origin/main'; then
           DEFAULT_BRANCH=main
         fi
-        git fetch origin $DEFAULT_BRANCH &>/dev/null
+        git fetch origin "$DEFAULT_BRANCH" &>/dev/null
         popd &>/dev/null || return
         if [[ ! -e "$LOCAL_REPO.$SAFE_FOLDER" ]]; then
           git clone "$LOCAL_REPO" "$LOCAL_REPO.$SAFE_FOLDER"
         fi
         pushd "$LOCAL_REPO.$SAFE_FOLDER" >/dev/null || return
         git remote set-url origin "$ORIGINAL_REMOTE"
-        git remote get-url origin
-        git fetch origin $DEFAULT_BRANCH &>/dev/null
-        git checkout "$SAFE_BRANCH" &>/dev/null || git checkout -b "$SAFE_BRANCH" origin/$DEFAULT_BRANCH || git checkout -b "$SAFE_FOLDER" origin/$DEFAULT_BRANCH
-        git branch -D $DEFAULT_BRANCH &>/dev/null
-        if [[ -e ~/.aws/config ]]; then
-          if ! grep -q cursor ~/.aws/config; then
-            echo "ERROR: AWS Profile 'cursor' was not found in ~/.aws/config"
-          else
-            AWS_VAULT_PROMPT=ykman aws-vault export cursor | awk '{print "export "$0}' >~/.aws_temp_credentials_secret
-          fi
-          if [[ -e ~/.aws_temp_credentials_secret ]]; then
-            set +x
-            source ~/.aws_temp_credentials_secret
-          fi
-          if [[ ! -e ~/kubeconfig/cursor.config ]]; then
-            echo "ERROR: kube config was not found at ~/kubeconfig/cursor.config"
-          else
-            mkdir -p ~/.kube
-            cp ~/kubeconfig/cursor.config ~/.kube/config
-          fi
-        fi
+        echo "Remote set to $(git remote get-url origin)"
+        git fetch origin "$DEFAULT_BRANCH" &>/dev/null
+        git fetch origin "$SAFE_BRANCH" &>/dev/null || true
+        git checkout "$SAFE_BRANCH" &>/dev/null || git checkout -b "$SAFE_BRANCH" "origin/$DEFAULT_BRANCH" || git checkout -b "$SAFE_FOLDER" "origin/$DEFAULT_BRANCH"
+        git branch -D "$DEFAULT_BRANCH" &>/dev/null
         if [[ -z $CODE_EDITOR ]]; then
           OPEN_EDITOR=code
         else
@@ -348,6 +332,32 @@ gg() {
         $OPEN_EDITOR .
       fi
       ;;
+    vsk8s)
+      if [[ -e ~/.aws/config ]]; then
+        if ! grep -q cursor ~/.aws/config; then
+          echo "ERROR: AWS Profile 'cursor' was not found in ~/.aws/config"
+        else
+          AWS_VAULT_PROMPT=ykman aws-vault export cursor | awk '{print "export "$0}' >~/.aws_temp_credentials_secret
+        fi
+        if [[ -e ~/.aws_temp_credentials_secret ]]; then
+          set +x
+          source ~/.aws_temp_credentials_secret
+        fi
+        if [[ ! -e ~/kubeconfig/cursor.config ]]; then
+          echo "ERROR: kube config was not found at ~/kubeconfig/cursor.config"
+        else
+          mkdir -p ~/.kube
+          cp ~/kubeconfig/cursor.config ~/.kube/config
+        fi
+      fi
+      if [[ -z $CODE_EDITOR ]]; then
+        OPEN_EDITOR=code
+      else
+        OPEN_EDITOR=$CODE_EDITOR
+      fi
+      echo "Opening $OPEN_EDITOR"
+      $OPEN_EDITOR
+      ;;
     *)
       cat <<EOF
 Usage:
@@ -355,6 +365,7 @@ Usage:
   $0 label github_url    Tags PR/Issue with my label, milestone and add to GH Project
   $0 clean               Deletes current branch, checkout main/master branch and pull
   $0 clone local branch  Clones from local and creates branch
+  $0 vsk8s               Open VSCode with k8s config
 EOF
       ;;
   esac
