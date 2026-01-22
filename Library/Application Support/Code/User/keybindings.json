@@ -426,7 +426,8 @@
   {
     "key": "ctrl+5",
     "command": "workbench.action.tasks.runTask",
-    "args": "gg worktree local-repo branch"
+    "args": "gg worktree local-repo branch",
+    "when": "remoteName != 'dev-container'"
   },
   {
     "key": "ctrl+shift+6",
@@ -436,15 +437,20 @@
   {
     "key": "ctrl+shift+6",
     "command": "git.deleteWorktree",
-    "when": "!operationInProgress"
+    "when": "!operationInProgress && remoteName != 'dev-container'"
   },
   {
     "key": "ctrl+1",
     "command": "workbench.view.scm",
-    "when": "workbench.scm.active"
+    "when": "workbench.scm.active && activeViewlet == 'workbench.view.explorer' && remoteName != 'dev-container'"
   },
   {
     "key": "ctrl+shift+1",
     "command": "pr.create"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == 'workbench.view.scm'"
   }
 ]
