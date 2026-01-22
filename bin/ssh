@@ -2,12 +2,23 @@
 set -eo pipefail
 
 exit_error() {
-  echo "ERROR: detected running in vscode. Aborting."
+  echo "ERROR: detected running in cursor. Aborting."
   exit 1
 }
 
+DETECTED=""
 if [[ ! -e "$HOME/.allowed_git_remote" ]]; then
-  if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" ]] || [[ -n $VSCODE_GIT_IPC_HANDLE || -n $VSCODE_NONCE ]]; then
+  if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" || -n $VSCODE_GIT_IPC_HANDLE || -n $VSCODE_NONCE ]]; then
+    if set | grep -v grep | grep -i ASKPASS | grep -q -E '/(Visual Studio Code.app)/'; then
+      DETECTED=code
+    fi
+    if [[ -n $CURSOR_TRACE_ID ]]; then
+      DETECTED=cursor
+    else
+      if set | grep -v grep | grep -i ASKPASS | grep -q -E '/(Cursor.app|.cursor-server)/'; then
+        DETECTED=cursor
+      fi
+    fi
     ## if in VSCode, unset SSH_AUTH_SOCK to avoid endless 1Password prompt for ssh-agent
     ## dev container seems to still set it, so we control from ssh wrapper
     export SSH_AUTH_SOCK=""
@@ -15,7 +26,9 @@ if [[ ! -e "$HOME/.allowed_git_remote" ]]; then
       # allow for devcontainer-dotfiles
       sleep 0
     else
-      exit_error
+      if [[ "cursor" == $DETECTED ]]; then
+        exit_error
+      fi
     fi
   fi
 fi
