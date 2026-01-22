@@ -311,18 +311,23 @@ gg() {
         if git branch -a | grep -q 'remotes/origin/main'; then
           DEFAULT_BRANCH=main
         fi
-        git fetch origin "$DEFAULT_BRANCH" &>/dev/null
-        popd &>/dev/null || return
+        git fetch origin "$DEFAULT_BRANCH"
+        popd >/dev/null || return
+        NEW_CLONE=0
         if [[ ! -e "$LOCAL_REPO.$SAFE_FOLDER" ]]; then
-          git clone "$LOCAL_REPO" "$LOCAL_REPO.$SAFE_FOLDER"
+          git clone "$LOCAL_REPO" -b "origin/$DEFAULT_BRANCH" "$LOCAL_REPO.$SAFE_FOLDER"
+          NEW_CLONE=1
         fi
         pushd "$LOCAL_REPO.$SAFE_FOLDER" >/dev/null || return
-        git remote set-url origin "$ORIGINAL_REMOTE"
-        echo "Remote set to $(git remote get-url origin)"
-        git fetch origin "$DEFAULT_BRANCH" &>/dev/null
-        git fetch origin "$SAFE_BRANCH" &>/dev/null || true
-        git checkout "$SAFE_BRANCH" &>/dev/null || git checkout -b "$SAFE_BRANCH" "origin/$DEFAULT_BRANCH" || git checkout -b "$SAFE_FOLDER" "origin/$DEFAULT_BRANCH"
-        git branch -D "$DEFAULT_BRANCH" &>/dev/null
+        git fetch origin "$DEFAULT_BRANCH"
+        if [[ "1" == $NEW_CLONE ]]; then
+          git checkout "$DEFAULT_BRANCH"
+          git checkout -b "$SAFE_BRANCH" || git checkout -b "$SAFE_FOLDER"
+          git branch -D "$DEFAULT_BRANCH"
+        else
+          git fetch origin "$SAFE_BRANCH" || true
+          git checkout "$SAFE_BRANCH" || git checkout "$SAFE_FOLDER"
+        fi
         if [[ -z $CODE_EDITOR ]]; then
           OPEN_EDITOR=code
         else
