@@ -28,8 +28,8 @@
   ],
   "tasks": [
     {
-      "command": "osascript -e 'tell application \"Terminal\"\n  set newTab to do script (\"gg clone ${input:repo1} ${input:branch1}\")\nend tell'",
-      "label": "gg clone local-repo branch",
+      "command": "osascript -e 'tell application \"Terminal\"\n  set newTab to do script (\"gg worktree ${input:repo1} ${input:branch1}\")\nend tell'",
+      "label": "gg worktree local-repo branch",
       "presentation": {
         "clear": false,
         "echo": true,

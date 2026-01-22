@@ -296,40 +296,26 @@ gg() {
         gh workflow list >/dev/null 2>&1 || echo "ERROR: Cannot list workflows. Try:    gh auth refresh --scopes workflow"
       fi
       ;;
-    clone)
-      pushd "$GG_WORKDIR" >/dev/null || return
+    worktree)
+      pushd "$GG_WORKDIR"
       LOCAL_REPO="$2"
       if [[ ! -e $LOCAL_REPO && ! -e "$LOCAL_REPO/.git" ]]; then
         git clone "git@github.com:$GG_GITHUB_ORG/$LOCAL_REPO.git" "$LOCAL_REPO"
       fi
       if [[ -e $LOCAL_REPO && -e "$LOCAL_REPO/.git" ]]; then
-        SAFE_FOLDER=$(echo "$3" | tr -d -C '0-9a-zA-Z_-')
-        SAFE_BRANCH=$(echo "$3" | tr -d -C '0-9a-zA-Z_/-')
-        pushd "$LOCAL_REPO" >/dev/null || return
-        ORIGINAL_REMOTE=$(git remote get-url origin)
+        SAFE_BRANCH=$(echo "$3" | sed 's/[^a-zA-Z0-9-]/-/g' | cut -c1-50)
+
+        pushd "$LOCAL_REPO"
         DEFAULT_BRANCH=master
         if git branch -a | grep -q 'remotes/origin/main'; then
           DEFAULT_BRANCH=main
         fi
         git fetch origin "$DEFAULT_BRANCH"
-        popd >/dev/null || return
-        NEW_CLONE=0
-        if [[ ! -e "$LOCAL_REPO.$SAFE_FOLDER" ]]; then
-          git clone "$LOCAL_REPO" -b "origin/$DEFAULT_BRANCH" "$LOCAL_REPO.$SAFE_FOLDER"
-          NEW_CLONE=1
-        fi
-        pushd "$LOCAL_REPO.$SAFE_FOLDER" >/dev/null || return
-        git fetch origin "$DEFAULT_BRANCH"
-        if [[ "1" == $NEW_CLONE ]]; then
-          git checkout "$DEFAULT_BRANCH"
-          git checkout -b "$SAFE_BRANCH" || git checkout -b "$SAFE_FOLDER"
-          git branch -D "$DEFAULT_BRANCH"
-        else
-          git fetch origin "$SAFE_BRANCH" || true
-          git checkout "$SAFE_BRANCH" || git checkout "$SAFE_FOLDER"
-        fi
+        git worktree add -b "$SAFE_BRANCH" ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH" "origin/$DEFAULT_BRANCH"
+
+        pushd ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH"
         if [[ -z $CODE_EDITOR ]]; then
-          OPEN_EDITOR=code
+          OPEN_EDITOR=cursor
         else
           OPEN_EDITOR=$CODE_EDITOR
         fi
@@ -366,11 +352,11 @@ gg() {
     *)
       cat <<EOF
 Usage:
-  $0 pr                  Push with 'git' and open PR with 'gh' from current HEAD branch
-  $0 label github_url    Tags PR/Issue with my label, milestone and add to GH Project
-  $0 clean               Deletes current branch, checkout main/master branch and pull
-  $0 clone local branch  Clones from local and creates branch
-  $0 vsk8s               Open VSCode with k8s config
+  $0 pr                     Push with 'git' and open PR with 'gh' from current HEAD branch
+  $0 label github_url       Tags PR/Issue with my label, milestone and add to GH Project
+  $0 clean                  Deletes current branch, checkout main/master branch and pull
+  $0 worktree repo branch   Created worktree from local repo and creates branch and opens cursor
+  $0 vsk8s                  Open VSCode with k8s config
 EOF
       ;;
   esac
