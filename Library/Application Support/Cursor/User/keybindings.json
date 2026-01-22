@@ -442,5 +442,9 @@
     "key": "ctrl+1",
     "command": "workbench.view.scm",
     "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "pr.create"
   }
 ]

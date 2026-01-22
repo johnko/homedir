@@ -28,7 +28,7 @@
   ],
   "tasks": [
     {
-      "command": "osascript -e 'tell application \"Terminal\"\n  set newTab to do script (\"gg worktree ${input:repo1} ${input:branch1}\")\nend tell'",
+      "command": "osascript -e 'tell application \"Terminal\"\n  set newTab to do script (\"gg worktree ${input:repo1} ${input:branch1} ; exit\")\nend tell'",
       "label": "gg worktree local-repo branch",
       "presentation": {
         "clear": false,
