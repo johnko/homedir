@@ -2,7 +2,7 @@
 set -eo pipefail
 
 exit_error() {
-  echo "ERROR: detected running in vscode. Aborting."
+  echo "ERROR: detected running in cursor. Aborting."
   exit 1
 }
 
