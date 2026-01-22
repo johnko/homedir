@@ -6,8 +6,19 @@ exit_error() {
   exit 1
 }
 
+DETECTED=""
 if [[ ! -e "$HOME/.allowed_git_remote" ]]; then
-  if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" ]] || [[ -n $VSCODE_GIT_IPC_HANDLE || -n $VSCODE_NONCE ]]; then
+  if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" || -n $VSCODE_GIT_IPC_HANDLE || -n $VSCODE_NONCE ]]; then
+    if set | grep -v grep | grep -i ASKPASS | grep -q -E '/(Visual Studio Code.app)/'; then
+      DETECTED=code
+    fi
+    if [[ -n $CURSOR_TRACE_ID ]]; then
+      DETECTED=cursor
+    else
+      if set | grep -v grep | grep -i ASKPASS | grep -q -E '/(Cursor.app|.cursor-server)/'; then
+        DETECTED=cursor
+      fi
+    fi
     ## if in VSCode, unset SSH_AUTH_SOCK to avoid endless 1Password prompt for ssh-agent
     ## dev container seems to still set it, so we control from ssh wrapper
     export SSH_AUTH_SOCK=""
@@ -33,7 +44,7 @@ export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
 # dynamically add gpg-sign if allowed or not vscode
 if [[ -e "$HOME/.allowed_git_sign" ]] || [[ -z $VSCODE_INJECTION || $VSCODE_INJECTION != "1" ]] && [[ -z $VSCODE_GIT_IPC_HANDLE && -z $VSCODE_NONCE ]]; then
-  if echo "$@" | sed -e 's,committer,,ig' -e 's,reverts,,ig' | grep -q -E " (amend|commit|cherry-pick|merge|rebase|revert|$(/usr/bin/git config --get-regexp '^alias\.' | grep -E 'amend|commit|cherry-pick|rebase|merge|revert' | sed -e 's/^alias\.//g' -e 's/ .*//g' | tr '\n' '|' | sed 's,|$,,'))"; then
+  if echo "$@" | sed -e 's,committer,,ig' -e 's,reverts,,ig' | grep -q -E " (amend|cherry-pick|commit|merge|rebase|revert|worktree|$(/usr/bin/git config --get-regexp '^alias\.' | grep -E 'amend|cherry-pick|commit|rebase|merge|revert|worktree' | sed -e 's/^alias\.//g' -e 's/ .*//g' | tr '\n' '|' | sed 's,|$,,'))"; then
     export GPG_SIGN="--gpg-sign"
   fi
 fi
