@@ -67,19 +67,21 @@ export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 
+
 if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" || -n $VSCODE_GIT_IPC_HANDLE || -n $VSCODE_NONCE ]]; then
-  # also set editor so vscode integrated terminal opens files in vscode, can change to cursor if using that
   if set | grep -v grep | grep -i ASKPASS | grep -q -E '/(Visual Studio Code.app)/'; then
-    export EDITOR="code --wait"
+    DETECTED=code
   fi
   if [[ -n $CURSOR_TRACE_ID ]]; then
-    export EDITOR="cursor --wait"
+    DETECTED=cursor
   else
     if set | grep -v grep | grep -i ASKPASS | grep -q -E '/(Cursor.app|.cursor-server)/'; then
-      export EDITOR="cursor --wait"
+      DETECTED=cursor
     fi
   fi
 fi
+# also set editor so vscode integrated terminal opens files in vscode, can change to cursor if using that
+export EDITOR="$DETECTED --wait"
 
 # Always set SSH_AUTH_SOCK on MacOS host machine so devcontainers can clone dotfiles
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
