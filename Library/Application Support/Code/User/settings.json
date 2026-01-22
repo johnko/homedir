@@ -152,6 +152,7 @@
   "update.showReleaseNotes": false,
   "vs-kubernetes": {},
   "window.commandCenter": false,
+  "window.confirmBeforeClose": "keyboardOnly",
   "window.confirmSaveUntitledWorkspace": false,
   "window.newWindowProfile": "Default",
   "window.title": "${activeRepositoryBranchName}${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
