@@ -426,6 +426,21 @@
   {
     "key": "ctrl+5",
     "command": "workbench.action.tasks.runTask",
-    "args": "gg clone local-repo branch"
+    "args": "gg worktree local-repo branch"
+  },
+  {
+    "key": "ctrl+shift+6",
+    "command": "-workbench.action.terminal.sendSequence",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+6",
+    "command": "git.deleteWorktree",
+    "when": "!operationInProgress"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
   }
 ]
