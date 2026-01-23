@@ -87,17 +87,7 @@
   {
     "key": "ctrl+1",
     "command": "workbench.view.scm",
-    "when": "workbench.scm.active && activeViewlet == 'workbench.view.explorer' && remoteName != 'dev-container'"
-  },
-  {
-    "key": "ctrl+1",
-    "command": "workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == ''"
-  },
-  {
-    "key": "ctrl+1",
-    "command": "workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet != 'workbench.view.explorer'"
+    "when": "workbench.scm.active && remoteName != 'dev-container'"
   },
   {
     "key": "ctrl+shift+1",

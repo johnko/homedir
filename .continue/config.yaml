@@ -1,4 +1,21 @@
 models:
+  - name: Llama 3.1 8B
+    provider: ollama
+    model: llama3.1:8b
+    roles:
+      - chat
+      - edit
+      - apply
+  - name: Qwen2.5-Coder 1.5B
+    provider: ollama
+    model: qwen2.5-coder:1.5b-base
+    roles:
+      - autocomplete
+  - name: Nomic Embed
+    provider: ollama
+    model: nomic-embed-text:latest
+    roles:
+      - embed
   - apiBase: http://127.0.0.1:11434
     model: codellama:13b-code
     name: codellama:13b-code
@@ -15,7 +32,7 @@ models:
         Authorization: Basic
   - apiBase: http://127.0.0.1:11434
     capabilities:
-      - tool_use # Add this to enable tools
+      - tool_use
     model: deepseek-r1:32b-qwen-distill-q4_K_M
     name: deepseek-r1:32b-qwen-distill-q4_K_M
     provider: ollama
@@ -62,7 +79,7 @@ models:
         Authorization: Basic
   - apiBase: http://127.0.0.1:11434
     capabilities:
-      - tool_use # Add this to enable tools
+      - tool_use
     model: qwen3-coder:30b-a3b-q4_K_M
     name: qwen3-coder:30b-a3b-q4_K_M
     provider: ollama

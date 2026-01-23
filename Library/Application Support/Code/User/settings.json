@@ -161,6 +161,7 @@
   "settingsSync.ignoredSettings": [
     "-dotfiles.repository"
   ],
+  "snowflake.connectionsConfigFile": "~/.snowflake/connections.toml",
   "task.quickOpen.skip": true,
   "telemetry.feedback.enabled": false,
   "telemetry.telemetryLevel": "off",
