@@ -340,7 +340,9 @@
     "zenMode.hideActivityBar",
     "zenMode.hideLineNumbers",
     "zenMode.hideStatusBar",
-    "explorer.fileNesting.expand"
+    "explorer.fileNesting.expand",
+    "git.autofetch",
+    "git.autofetchPeriod"
   ],
   "workbench.startupEditor": "none",
   "yaml.schemas": {
