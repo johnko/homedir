@@ -21,6 +21,8 @@
   "chat.editor.fontSize": 14,
   "chat.extensionUnification.enabled": false,
   "comments.visible": false,
+  "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
+  "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
   "continue.enableTabAutocomplete": true,
   "continue.telemetryEnabled": false,
   "debug.console.fontSize": 14,
