@@ -109,8 +109,26 @@
     "key": "ctrl+2"
   },
   {
+    "key": "ctrl+shift+2",
+    "command": "opencode.openTerminal"
+  },
+  {
+    "key": "ctrl+shift+2",
+    "command": "-workbench.action.terminal.sendSequence",
+    "when": "terminalFocus"
+  },
+  {
     "command": "-workbench.action.openEditorAtIndex3",
     "key": "ctrl+3"
+  },
+  {
+    "key": "ctrl+3",
+    "command": "workbench.profiles.actions.switchProfile"
+  },
+  {
+    "key": "ctrl+shift+3",
+    "command": "workbench.profiles.actions.newWindowWithProfile",
+    "when": "hasProfiles"
   },
   {
     "command": "-workbench.action.openEditorAtIndex4",
