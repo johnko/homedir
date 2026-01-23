@@ -95,14 +95,14 @@
     "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == ''"
   },
   {
-    "key": "ctrl+shift+1",
-    "command": "git.publish",
-    "when": "!operationInProgress"
-  },
-  {
     "key": "ctrl+1",
     "command": "workbench.view.explorer",
     "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet != 'workbench.view.explorer'"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "git.publish",
+    "when": "!operationInProgress"
   },
   {
     "command": "-workbench.action.openEditorAtIndex2",
