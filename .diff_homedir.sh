@@ -38,7 +38,7 @@ EXPECTEDDIFFSEPERATOR
 .aws
 ${3}.Brewfile
 ${3}.gitconfig
-.gitignore
+${3}.gitignore
 ${3}.osascripts
 ${3}.skhdrc
 *.code-workspace
