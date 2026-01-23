@@ -367,11 +367,6 @@
     "command": "workbench.action.terminal.openNativeConsole"
   },
   {
-    "key": "ctrl+shift+2",
-    "command": "-workbench.action.terminal.sendSequence",
-    "when": "terminalFocus"
-  },
-  {
     "key": "ctrl+`",
     "command": "-workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
@@ -440,15 +435,5 @@
     "command": "workbench.action.tasks.runTask",
     "args": "gg worktree local-repo branch",
     "when": "remoteName != 'dev-container'"
-  },
-  {
-    "key": "ctrl+shift+6",
-    "command": "-workbench.action.terminal.sendSequence",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+shift+6",
-    "command": "git.deleteWorktree",
-    "when": "!operationInProgress && remoteName != 'dev-container'"
   }
 ]
