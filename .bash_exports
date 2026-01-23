@@ -80,8 +80,12 @@ if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" || -n $VSCODE_GIT_IPC_HAN
     fi
   fi
 fi
-# also set editor so vscode integrated terminal opens files in vscode, can change to cursor if using that
-export EDITOR="$DETECTED --wait"
+if [[ -n $DETECTED ]]; then
+  # also set editor so vscode integrated terminal opens files in vscode, can change to cursor if using that
+  export EDITOR="$DETECTED --wait"
+else
+  export EDITOR="code --wait"
+fi
 
 # Always set SSH_AUTH_SOCK on MacOS host machine so devcontainers can clone dotfiles
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
