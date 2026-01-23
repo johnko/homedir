@@ -102,7 +102,7 @@
   {
     "key": "ctrl+1",
     "command": "workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == 'workbench.view.scm'"
+    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet != 'workbench.view.explorer'"
   },
   {
     "command": "-workbench.action.openEditorAtIndex2",
