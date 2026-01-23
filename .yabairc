@@ -76,7 +76,7 @@ yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=8
 # Terminal specific so can swap - left 1/4 wide, 3/4 tall
 yabai -m rule --add app="^(Terminal)$" manage=off grid=101:52:0:25:13:75
 # bottom right 3/4 wide, 3/4 tall
-yabai -m rule --add app="^(Code|Cursor)$" manage=off grid=101:52:13:25:39:75
+yabai -m rule --add app="^(Code|Cursor)$" manage=off grid=101:52:13:0:39:100
 
 # Coding grid
 # top left
@@ -91,7 +91,6 @@ yabai -m rule --add app="^(Terminal)$" title="^.*(1)$" manage=off grid=101:52:0:
 # yabai -m rule --add app="^(Code|Cursor|Terminal)$" title="^.*(8)$" manage=off grid=101:52:26:50:25:50
 # left/right split
 yabai -m rule --add app="^(Terminal)$" title="^.*(2|3|4|5|6|7|8|9)$" manage=off grid=101:52:0:0:13:100
-yabai -m rule --add app="^(Code|Cursor)$" title="^.*(2|3|4|5|6|7|8|9)$" manage=off grid=101:52:13:0:39:100
 
 
 # float some non-resizable apps
