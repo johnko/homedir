@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # set layout to bsp (managed), other options are float (unmanaged) or stack (layered fullscreen)
-yabai -m config layout bsp
+yabai -m config layout stack
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 # float tall center halfwide for web
