@@ -215,11 +215,6 @@
     "when": "activeAuxiliary == 'workbench.view.extension.continue'"
   },
   {
-    "key": "ctrl+4",
-    "command": "remote-containers.reopenInContainer",
-    "when": "remoteName != 'dev-container'"
-  },
-  {
     "key": "ctrl+`",
     "command": "workbench.action.terminal.splitInActiveWorkspace",
     "when": "terminalFocus"
