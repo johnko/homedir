@@ -135,6 +135,15 @@
     "key": "ctrl+4"
   },
   {
+    "key": "ctrl+4",
+    "command": "remote-containers.reopenInContainer",
+    "when": "remoteName != 'dev-container'"
+  },
+  {
+    "key": "ctrl+shift+4",
+    "command": "remote-containers.rebuildContainer"
+  },
+  {
     "command": "-workbench.action.openEditorAtIndex5",
     "key": "ctrl+5"
   },
