@@ -21,14 +21,14 @@
   "chat.editor.fontSize": 14,
   "chat.extensionUnification.enabled": false,
   "comments.visible": false,
+  "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
+  "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
   "continue.enableTabAutocomplete": true,
   "continue.telemetryEnabled": false,
   "debug.console.fontSize": 14,
   "debug.terminal.clearBeforeReusing": true,
   "dev.containers.cacheVolume": false,
-  "dev.containers.defaultExtensions": [
-    "oderwat.indent-rainbow"
-  ],
+  "dev.containers.defaultExtensions": [],
   "dev.containers.workspaceMountConsistency": "consistent",
   "docsYaml.telemetry.enableTelemetry": false,
   "dotfiles.repository": "https://github.com/johnko/devcontainer-dotfiles.git",
@@ -49,6 +49,7 @@
   "editor.wordWrap": "on",
   "explorer.excludeGitIgnore": true,
   "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
   "extensions.ignoreRecommendations": true,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
@@ -85,7 +86,6 @@
   "markdownlint.customRules": [
     "{docsmsft.docs-linting}/markdownlint-custom-rules/rules.js"
   ],
-  "peacock.color": "#cc0000",
   "peacock.favoriteColors": [
     {
       "name": "black",
@@ -158,7 +158,10 @@
     "github.copilot-chat",
     "github.copilot"
   ],
-  "settingsSync.ignoredSettings": [],
+  "settingsSync.ignoredSettings": [
+    "-dotfiles.repository"
+  ],
+  "snowflake.connectionsConfigFile": "~/.snowflake/connections.toml",
   "task.quickOpen.skip": true,
   "telemetry.feedback.enabled": false,
   "telemetry.telemetryLevel": "off",
@@ -187,26 +190,7 @@
   "window.openWithoutArgumentsInNewWindow": "on",
   "window.restoreWindows": "preserve",
   "window.title": "${activeRepositoryBranchName}${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
-  "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#ff0000",
-    "activityBar.background": "#ff0000",
-    "activityBar.foreground": "#e7e7e7",
-    "activityBar.inactiveForeground": "#e7e7e799",
-    "activityBarBadge.background": "#00df00",
-    "activityBarBadge.foreground": "#15202b",
-    "commandCenter.border": "#e7e7e799",
-    "sash.hoverBorder": "#ff0000",
-    "statusBar.background": "#cc0000",
-    "statusBar.foreground": "#e7e7e7",
-    "statusBarItem.hoverBackground": "#ff0000",
-    "statusBarItem.remoteBackground": "#cc0000",
-    "statusBarItem.remoteForeground": "#e7e7e7",
-    "titleBar.activeBackground": "#cc0000",
-    "titleBar.activeForeground": "#e7e7e7",
-    "titleBar.inactiveBackground": "#cc000099",
-    "titleBar.inactiveForeground": "#e7e7e799"
-  },
-  "workbench.colorTheme": "Visual Studio Light",
+  "workbench.colorTheme": "Default Light Modern",
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.enablePreview": false,
   "workbench.editor.scrollToSwitchTabs": true,
@@ -214,8 +198,6 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editor.wrapTabs": true,
   "workbench.panel.defaultLocation": "top",
-  "workbench.preferredDarkColorTheme": "Visual Studio Dark",
-  "workbench.preferredLightColorTheme": "Visual Studio Light",
   "workbench.settings.applyToAllProfiles": [
     "[dockercompose]",
     "[github-actions-workflow]",
@@ -354,7 +336,8 @@
     "zenMode.fullScreen",
     "zenMode.hideActivityBar",
     "zenMode.hideLineNumbers",
-    "zenMode.hideStatusBar"
+    "zenMode.hideStatusBar",
+    "explorer.fileNesting.expand"
   ],
   "workbench.startupEditor": "none",
   "yaml.schemas": {
