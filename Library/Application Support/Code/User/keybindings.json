@@ -73,11 +73,6 @@
     "key": "cmd+9"
   },
   {
-    "command": "workbench.action.terminal.new",
-    "key": "ctrl+`",
-    "when": "terminalProcessSupported && !terminalFocus || !terminalFocus && terminalWebExtensionContributedProfile"
-  },
-  {
     "command": "-workbench.action.focusSideBar",
     "key": "cmd+0"
   },
@@ -86,17 +81,28 @@
     "key": "cmd+0"
   },
   {
-    "command": "-workbench.action.zoomReset",
-    "key": "cmd+numpad0"
-  },
-  {
-    "command": "-workbench.action.terminal.new",
-    "key": "ctrl+shift+`",
-    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
-  },
-  {
     "command": "-workbench.action.openEditorAtIndex1",
     "key": "ctrl+1"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active && activeViewlet == 'workbench.view.explorer' && remoteName != 'dev-container'"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == ''"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "git.publish",
+    "when": "!operationInProgress"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == 'workbench.view.scm'"
   },
   {
     "command": "-workbench.action.openEditorAtIndex2",
@@ -438,25 +444,5 @@
     "key": "ctrl+shift+6",
     "command": "git.deleteWorktree",
     "when": "!operationInProgress && remoteName != 'dev-container'"
-  },
-  {
-    "key": "ctrl+1",
-    "command": "workbench.view.scm",
-    "when": "workbench.scm.active && activeViewlet == 'workbench.view.explorer' && remoteName != 'dev-container'"
-  },
-  {
-    "key": "ctrl+1",
-    "command": "workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == ''"
-  },
-  {
-    "key": "ctrl+1",
-    "command": "workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == 'workbench.view.scm'"
-  },
-  {
-    "key": "ctrl+shift+1",
-    "command": "git.publish",
-    "when": "!operationInProgress"
   }
 ]
