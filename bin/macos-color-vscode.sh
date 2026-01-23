@@ -316,7 +316,7 @@ EOF
 '
       ;;
     test)
-      for i in $(macos-color-vscode.sh | grep -- ' - ' | awk '{print $NF}'); do
+      for i in $(macos-color-vscode.sh | grep -- ' - ' | grep -v -E 'white|silver' | awk '{print $NF}'); do
         macos-color-vscode.sh "$i"
         echo "Tested $i ... Press ENTER to contine."
         read -r
