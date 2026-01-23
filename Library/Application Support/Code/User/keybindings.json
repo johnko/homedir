@@ -359,10 +359,6 @@
     "when": "chatIsEnabled"
   },
   {
-    "key": "ctrl+shift+2",
-    "command": "opencode.openTerminal"
-  },
-  {
     "key": "cmd+escape",
     "command": "-opencode.openTerminal"
   },
@@ -391,19 +387,6 @@
     "when": "terminalProcessSupported && terminalTabsFocus"
   },
   {
-    "key": "ctrl+shift+4",
-    "command": "remote-containers.rebuildContainer"
-  },
-  {
-    "key": "ctrl+3",
-    "command": "workbench.profiles.actions.switchProfile"
-  },
-  {
-    "key": "ctrl+shift+3",
-    "command": "workbench.profiles.actions.newWindowWithProfile",
-    "when": "hasProfiles"
-  },
-  {
     "key": "cmd+d",
     "command": "editor.action.addSelectionToNextFindMatch",
     "when": "editorFocus && activeEditor != 'multiDiffEditor' && activeEditor != 'workbench.editor.notebook' && !textCompareEditorVisible"
@@ -419,18 +402,8 @@
     "when": "activeEditor == 'multiDiffEditor'"
   },
   {
-    "key": "alt+f5",
-    "command": "-multiDiffEditor.goToNextChange",
-    "when": "activeEditor == 'multiDiffEditor'"
-  },
-  {
     "key": "cmd+d",
     "command": "workbench.action.compareEditor.nextChange",
-    "when": "textCompareEditorVisible"
-  },
-  {
-    "key": "alt+f5",
-    "command": "-workbench.action.compareEditor.nextChange",
     "when": "textCompareEditorVisible"
   },
   {
@@ -439,18 +412,8 @@
     "when": "activeEditor == 'multiDiffEditor'"
   },
   {
-    "key": "shift+alt+f5",
-    "command": "-multiDiffEditor.goToPreviousChange",
-    "when": "activeEditor == 'multiDiffEditor'"
-  },
-  {
     "key": "shift+cmd+d",
     "command": "workbench.action.compareEditor.previousChange",
-    "when": "textCompareEditorVisible"
-  },
-  {
-    "key": "shift+alt+f5",
-    "command": "-workbench.action.compareEditor.previousChange",
     "when": "textCompareEditorVisible"
   },
   {
