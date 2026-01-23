@@ -95,6 +95,11 @@
     "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == ''"
   },
   {
+    "key": "ctrl+1",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet != 'workbench.view.explorer'"
+  },
+  {
     "key": "ctrl+shift+1",
     "command": "git.publish",
     "when": "!operationInProgress"
@@ -440,10 +445,5 @@
     "key": "cmd+[",
     "command": "editor.fold",
     "when": "editorTextFocus && foldingEnabled"
-  },
-  {
-    "key": "ctrl+1",
-    "command": "workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet != 'workbench.view.explorer'"
   }
 ]
