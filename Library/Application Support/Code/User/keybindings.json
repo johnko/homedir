@@ -215,11 +215,6 @@
     "when": "activeAuxiliary == 'workbench.view.extension.continue'"
   },
   {
-    "key": "ctrl+`",
-    "command": "workbench.action.terminal.splitInActiveWorkspace",
-    "when": "terminalFocus"
-  },
-  {
     "key": "cmd+\\",
     "command": "-workbench.action.terminal.split",
     "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
