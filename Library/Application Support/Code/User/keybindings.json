@@ -417,16 +417,6 @@
     "when": "textCompareEditorVisible"
   },
   {
-    "key": "ctrl+6",
-    "command": "remote-containers.reopenLocally",
-    "when": "!cursor.agentIdeUnification.enabled"
-  },
-  {
-    "key": "ctrl+6",
-    "command": "remote-containers.reopenFolderLocally",
-    "when": "cursor.agentIdeUnification.enabled"
-  },
-  {
     "key": "alt+cmd+v",
     "command": "-workbench.action.editorDictation.start",
     "when": "hasSpeechProvider && !editorReadonly && !speechToTextInProgress"
@@ -439,11 +429,6 @@
   {
     "key": "cmd+d",
     "command": "editor.action.inlineDiffs.nextChange",
-    "when": "editorTextFocus && inlineDiffs.activeEditorWithDiffs"
-  },
-  {
-    "key": "alt+j",
-    "command": "-editor.action.inlineDiffs.nextChange",
     "when": "editorTextFocus && inlineDiffs.activeEditorWithDiffs"
   },
   {
