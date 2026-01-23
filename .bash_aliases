@@ -330,15 +330,13 @@ gg() {
         else
           AWS_VAULT_PROMPT=ykman aws-vault export cursor | awk '{print "export "$0}' >~/.aws_temp_credentials_secret
         fi
+        if [[ ! -e ~/kubeconfig/cursor.config ]]; then
+          echo "ERROR: kube config was not found at ~/kubeconfig/cursor.config"
+        fi
+        export KUBECONFIG=~/kubeconfig/cursor.config
         if [[ -e ~/.aws_temp_credentials_secret ]]; then
           set +x
           source ~/.aws_temp_credentials_secret
-        fi
-        if [[ ! -e ~/kubeconfig/cursor.config ]]; then
-          echo "ERROR: kube config was not found at ~/kubeconfig/cursor.config"
-        else
-          mkdir -p ~/.kube
-          cp ~/kubeconfig/cursor.config ~/.kube/config
         fi
       fi
       if [[ -z $CODE_EDITOR ]]; then
@@ -361,8 +359,25 @@ EOF
       ;;
   esac
 }
-if [[ -e ~/.aws_temp_credentials_secret ]]; then
-  source ~/.aws_temp_credentials_secret
+if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" || -n $VSCODE_GIT_IPC_HANDLE || -n $VSCODE_NONCE ]]; then
+  if set | grep -v grep | grep -i ASKPASS | grep -q -E '/(Visual Studio Code.app)/'; then
+    DETECTED=code
+  fi
+  if [[ -n $CURSOR_TRACE_ID ]]; then
+    DETECTED=cursor
+  else
+    if set | grep -v grep | grep -i ASKPASS | grep -q -E '/(Cursor.app|.cursor-server)/'; then
+      DETECTED=cursor
+    fi
+  fi
+fi
+if [[ $DETECTED == "code" || $DETECTED == "cursor" ]]; then
+  # only load ~/.aws_temp_credentials_secret if vscode/cursor detected to avoid polluting terminal
+  export KUBECONFIG=~/kubeconfig/cursor.config
+  if [[ -e ~/.aws_temp_credentials_secret ]]; then
+    set +x
+    source ~/.aws_temp_credentials_secret
+  fi
 fi
 
 ########################################
