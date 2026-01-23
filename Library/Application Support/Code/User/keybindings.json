@@ -359,10 +359,6 @@
     "when": "chatIsEnabled"
   },
   {
-    "key": "ctrl+shift+`",
-    "command": "workbench.action.terminal.openNativeConsole"
-  },
-  {
     "key": "cmd+d",
     "command": "editor.action.addSelectionToNextFindMatch",
     "when": "editorFocus && activeEditor != 'multiDiffEditor' && activeEditor != 'workbench.editor.notebook' && !textCompareEditorVisible"
@@ -416,5 +412,9 @@
     "command": "workbench.action.tasks.runTask",
     "args": "gg worktree local-repo branch",
     "when": "remoteName != 'dev-container'"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "workbench.action.terminal.openNativeConsole"
   }
 ]
