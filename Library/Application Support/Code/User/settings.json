@@ -49,6 +49,7 @@
   "editor.wordWrap": "on",
   "explorer.excludeGitIgnore": true,
   "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
   "extensions.ignoreRecommendations": true,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
@@ -157,7 +158,9 @@
     "github.copilot-chat",
     "github.copilot"
   ],
-  "settingsSync.ignoredSettings": [],
+  "settingsSync.ignoredSettings": [
+    "-dotfiles.repository"
+  ],
   "task.quickOpen.skip": true,
   "telemetry.feedback.enabled": false,
   "telemetry.telemetryLevel": "off",
@@ -332,7 +335,8 @@
     "zenMode.fullScreen",
     "zenMode.hideActivityBar",
     "zenMode.hideLineNumbers",
-    "zenMode.hideStatusBar"
+    "zenMode.hideStatusBar",
+    "explorer.fileNesting.expand"
   ],
   "workbench.startupEditor": "none",
   "yaml.schemas": {
