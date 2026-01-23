@@ -359,10 +359,6 @@
     "when": "chatIsEnabled"
   },
   {
-    "key": "cmd+escape",
-    "command": "-opencode.openTerminal"
-  },
-  {
     "key": "ctrl+shift+`",
     "command": "workbench.action.terminal.openNativeConsole"
   },
