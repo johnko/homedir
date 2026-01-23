@@ -36,15 +36,15 @@ terminal-kctxt-qa-k9s.scpt
 test-secrets-template.yaml
 EXPECTEDDIFFSEPERATOR
 .aws
-.Brewfile
-.gitconfig
+${3}.Brewfile
+${3}.gitconfig
 .gitignore
-.osascripts
-.skhdrc
+${3}.osascripts
+${3}.skhdrc
 *.code-workspace
 config.example
-settings.json
-tasks.json
+${3}settings.json
+${3}tasks.json
 "
 
 EXCLUDE_ARG=""
