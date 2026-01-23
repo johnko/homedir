@@ -445,12 +445,18 @@
     "when": "workbench.scm.active && activeViewlet == 'workbench.view.explorer' && remoteName != 'dev-container'"
   },
   {
-    "key": "ctrl+shift+1",
-    "command": "pr.create"
+    "key": "ctrl+1",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == ''"
   },
   {
     "key": "ctrl+1",
     "command": "workbench.view.explorer",
     "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == 'workbench.view.scm'"
+  },
+  {
+    "key": "ctrl+shift+1",
+    "command": "git.publish",
+    "when": "!operationInProgress"
   }
 ]
