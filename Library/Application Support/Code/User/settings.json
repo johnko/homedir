@@ -26,9 +26,7 @@
   "debug.console.fontSize": 14,
   "debug.terminal.clearBeforeReusing": true,
   "dev.containers.cacheVolume": false,
-  "dev.containers.defaultExtensions": [
-    "oderwat.indent-rainbow"
-  ],
+  "dev.containers.defaultExtensions": [],
   "dev.containers.workspaceMountConsistency": "consistent",
   "docsYaml.telemetry.enableTelemetry": false,
   "dotfiles.repository": "https://github.com/johnko/devcontainer-dotfiles.git",
