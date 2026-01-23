@@ -92,7 +92,7 @@
   {
     "key": "ctrl+1",
     "command": "workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled  && activeViewlet == ''"
+    "when": "viewContainer.workbench.view.explorer.enabled && activeViewlet == ''"
   },
   {
     "key": "ctrl+shift+1",
