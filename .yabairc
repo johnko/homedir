@@ -58,9 +58,9 @@ yabai -m rule --add app="^(Firefox|Spotify|WhatsApp.*)$" manage=off grid=101:52:
 yabai -m rule --add app="^(NO_APP_3)$" manage=off grid=101:52:19:40:14:56
 
 # float don't block widgets left
-yabai -m rule --add app="^(Slack)$" manage=off grid=101:52:5:9:23:91
+yabai -m rule --add app="^(Slack)$" manage=off grid=101:52:5:8:23:90
 # float don't block widgets right
-yabai -m rule --add app="^(Safari)$" manage=off grid=101:52:28:9:23:91
+yabai -m rule --add app="^(Safari)$" manage=off grid=101:52:28:8:23:90
 
 # right above-middle, less than halfwide
 yabai -m rule --add app="^(Discord)$" manage=off grid=101:52:32:40:20:49
@@ -103,14 +103,17 @@ yabai -m rule --add app!="^(1Password|Activity Monitor|App Store|Books|Brave Bro
 
 # apply rules on restart
 yabai -m rule --apply
-# set padding to not block widgets on 4k monitor
+
+# now set padding to not block widgets on 4k monitor
+# it's after applying rules so that original rule gride is preserved
 yabai -m config top_padding 180
-# yabai -m config bottom_padding 20
-yabai -m config bottom_padding 40
+yabai -m config bottom_padding 20
 yabai -m config left_padding 362
 yabai -m config right_padding 70
 yabai -m config window_gap 4
+
 # set layout to bsp (managed), other options are float (unmanaged) or stack (layered fullscreen)
 yabai -m config layout bsp
+
 # balance resize windows after rules applied
 yabai -m space --balance
