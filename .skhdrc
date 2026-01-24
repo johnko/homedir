@@ -81,7 +81,7 @@ ctrl + alt + cmd - h : yabai -m window --grid 101:4:1:0:2:100
 ctrl + alt + cmd - z : yabai -m window --grid 101:52:1:50:25:50
 # float bottom right
 ctrl + alt + cmd - x : yabai -m window --grid 101:52:26:50:25:50
-ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
+ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-cursor.scpt
 ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
 
