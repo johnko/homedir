@@ -110,7 +110,7 @@ yabai -m config top_padding 180
 yabai -m config bottom_padding 20
 yabai -m config left_padding 362
 yabai -m config right_padding 70
-yabai -m config window_gap 4
+yabai -m config window_gap 2
 
 # set layout to bsp (managed), other options are float (unmanaged) or stack (layered fullscreen)
 yabai -m config layout bsp
