@@ -12,8 +12,7 @@ shift + ctrl + alt + cmd - q : yabai -m window --grid 101:52:1:0:25:50
 # shift + ctrl + alt + cmd - w : echo # arrow up
 # float top right
 shift + ctrl + alt + cmd - e : yabai -m window --grid 101:52:26:0:25:50
-# float middle center quarter
-shift + ctrl + alt + cmd - r : yabai -m window --grid 4:4:1:1:2:2
+shift + ctrl + alt + cmd - r : bash ~/bin/yabai_cycle_clockwise.sh
 # float 2nd slot bottom screen
 shift + ctrl + alt + cmd - t : yabai -m window --grid 101:52:13:50:13:50
 shift + ctrl + alt + cmd - y : skhd --restart-service
@@ -25,7 +24,8 @@ shift + ctrl + alt + cmd - y : skhd --restart-service
 shift + ctrl + alt + cmd - f : yabai -m window --grid 24:24:4:2:16:20
 # float middle slot bottom screen
 shift + ctrl + alt + cmd - g : yabai -m window --grid 101:52:19:40:14:56
-shift + ctrl + alt + cmd - h : bash ~/bin/yabai_cycle_clockwise.sh
+# float middle center quarter
+shift + ctrl + alt + cmd - h : yabai -m window --grid 4:4:1:1:2:2
 
 # float tall wide 20/24 of screen for video
 shift + ctrl + alt + cmd - z : yabai -m window --grid 24:24:2:4:20:19
@@ -64,8 +64,7 @@ ctrl + alt + cmd - q : yabai -m window --grid 101:52:1:0:25:100
 # ctrl + alt + cmd - w : echo # arrow up
 # float right
 ctrl + alt + cmd - e : yabai -m window --grid 101:52:26:0:25:100
-# float tall center halfwide for web
-ctrl + alt + cmd - r : yabai -m window --grid 101:4:1:0:2:100
+ctrl + alt + cmd - r : yabai -m space --rotate 270
 f15 :                  osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - y : yabai --restart-service
@@ -75,7 +74,8 @@ ctrl + alt + cmd - y : yabai --restart-service
 # ctrl + alt + cmd - d : echo # arrow right
 ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
 ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
-ctrl + alt + cmd - h : yabai -m space --rotate 270
+# float tall center halfwide for web
+ctrl + alt + cmd - h : yabai -m window --grid 101:4:1:0:2:100
 
 # float bottom left
 ctrl + alt + cmd - z : yabai -m window --grid 101:52:1:50:25:50
