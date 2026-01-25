@@ -127,10 +127,16 @@ yabai -m config layout bsp
 yabai -m config window_origin_display default
 yabai -m config window_placement first_child
 yabai -m config window_insertion_point first
-yabai -m config focus_follows_mouse autoraise
 yabai -m config split_type vertical
 yabai -m config auto_balance on
 
+yabai -m config focus_follows_mouse autoraise
+# workaround for focus_follows_mouse randomly stopping
+yabai -m signal --add event=display_changed action="yabai -m config focus_follows_mouse autoraise"
+yabai -m signal --add event=space_changed action="yabai -m config focus_follows_mouse autoraise"
+yabai -m signal --add event=mission_control_exit action="yabai -m config focus_follows_mouse autoraise"
+
+# refresh yabai when display disconnect/reconnect
 yabai -m signal --add event=display_added action="yabai --restart-service"
 yabai -m signal --add event=display_removed action="yabai --restart-service"
 yabai -m signal --add event=display_resized action="yabai --restart-service"
