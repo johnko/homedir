@@ -124,9 +124,11 @@ yabai -m config window_gap 0
 # set layout to bsp (managed), other options are float (unmanaged) or stack (layered fullscreen)
 yabai -m config layout bsp
 
-yabai -m config window_origin_display cursor
+yabai -m config window_origin_display default
+yabai -m config window_placement first_child
+yabai -m config window_insertion_point first
 yabai -m config focus_follows_mouse autoraise
-yabai -m config split_type auto
+yabai -m config split_type vertical
 yabai -m config auto_balance on
 
 yabai -m signal --add event=display_added action="yabai --restart-service"
