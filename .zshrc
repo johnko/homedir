@@ -58,15 +58,16 @@ prompt pure
 
 ##########
 # Plugins from https://github.com/unixorn/awesome-zsh-plugins#plugins
-# show exec duration in output after 0 seconds (always)
+# EXIT_STATUS_SYMBOLS is array starting at 1
 EXIT_STATUS_SYMBOLS=("✔" "✗")
 function prompt-exit-status-symbol(){
   PREVIOUS_EXIT_CODE=$?
   ZSH_COMMAND_TIME_COLOR=$([[ $PREVIOUS_EXIT_CODE == 0 ]] && echo green || echo red)
-  ZSH_COMMAND_TIME_MSG=$EXIT_STATUS_SYMBOLS[$([[ $PREVIOUS_EXIT_CODE == 0 ]] && echo 1 || echo 2)]''$([[ $PREVIOUS_EXIT_CODE != 0 ]] && echo '-'$PREVIOUS_EXIT_CODE)'  took %s'
+  ZSH_COMMAND_TIME_MSG=$EXIT_STATUS_SYMBOLS[$([[ $PREVIOUS_EXIT_CODE == 0 ]] && echo 1 || echo 2)]$([[ $PREVIOUS_EXIT_CODE != 0 ]] && echo '-'$PREVIOUS_EXIT_CODE)'  took %s'
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd prompt-exit-status-symbol
+# show exec duration in output after 0 seconds (always)
 ZSH_COMMAND_TIME_MIN_SECONDS=-1
 source $HOME/.zsh/zsh-command-time/command-time.plugin.zsh
 KUBE_PS1_HIDE_IF_NOCONTEXT=true
