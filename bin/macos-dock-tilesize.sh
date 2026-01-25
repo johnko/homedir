@@ -22,7 +22,7 @@ EOS
 
 DOMAIN='"Apple Global Domain"'
 KEYVAL="
-        AppleIconAppearanceTheme = RegularDark;
+        AppleInterfaceStyle = Dark;
         AppleMenuBarVisibleInFullscreen = 1;
         AppleMiniaturizeOnDoubleClick = 0;
         AppleScrollerPagingBehavior = 1;
@@ -34,7 +34,8 @@ KEYVAL="
         NSAutomaticDashSubstitutionEnabled = 0;
         NSAutomaticPeriodSubstitutionEnabled = 0;
         NSAutomaticQuoteSubstitutionEnabled = 0;
-        NSGlassDiffusionSetting = 0;
+        NSAutomaticSpellingCorrectionEnabled = 0;
+        NSGlassDiffusionSetting = 1;
         com.apple.sound.beep.feedback = 1;
         com.apple.sound.beep.flash = 0;
         com.apple.sound.beep.volume = 1;
@@ -64,6 +65,7 @@ KEYVAL='
         magnification = 1;
         mineffect = scale;
         "minimize-to-application" = 1;
+        "mru-spaces" = 0;
         orientation = right;
         showAppExposeGestureEnabled = 0;
         tilesize = 48;
@@ -72,6 +74,7 @@ print_cmd
 
 DOMAIN="com.apple.finder"
 KEYVAL="
+        FinderSpawnTab = 0;
         ShowExternalHardDrivesOnDesktop = 1;
         ShowHardDrivesOnDesktop = 0;
         ShowPathbar = 1;
