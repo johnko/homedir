@@ -81,7 +81,7 @@ yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=8
 # yabai -m rule --add app="^(Terminal)$" manage=off grid=101:52:0:25:13:75
 yabai -m rule --add app="^(Terminal)$" title!="^.*(1|2|3|4|5|6|7|8|9)$" manage=on
 # bottom right 3/4 wide, 3/4 tall
-yabai -m rule --add app="^(Code)$" manage=off grid=101:52:13:0:39:100
+yabai -m rule --add app="^(Code)$" manage=off grid=101:52:13:0:38:100
 # bsp
 yabai -m rule --add app="^(Cursor)$" manage=on
 
@@ -116,9 +116,9 @@ yabai -m rule --apply
 # now set padding to not block widgets on 4k monitor
 # it's after applying rules so that original rule gride is preserved
 yabai -m config top_padding 180
-yabai -m config bottom_padding 20
+yabai -m config bottom_padding 0
 yabai -m config left_padding 362
-yabai -m config right_padding 70
+yabai -m config right_padding 0
 yabai -m config window_gap 0
 
 # set layout to bsp (managed), other options are float (unmanaged) or stack (layered fullscreen)
@@ -126,6 +126,5 @@ yabai -m config layout bsp
 
 yabai -m config window_origin_display cursor
 yabai -m config focus_follows_mouse autoraise
-yabai -m config window_animation_easing easeInOutSine
 yabai -m config split_type auto
 yabai -m config auto_balance on
