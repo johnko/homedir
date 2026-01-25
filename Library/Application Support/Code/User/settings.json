@@ -193,7 +193,7 @@
   "window.openWithoutArgumentsInNewWindow": "on",
   "window.restoreWindows": "preserve",
   "window.title": "${activeRepositoryBranchName}${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
-  "workbench.colorTheme": "Monokai Dimmed",
+  "workbench.colorTheme": "Default Dark+",
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.enablePreview": false,
   "workbench.editor.scrollToSwitchTabs": true,
