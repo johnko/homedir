@@ -45,7 +45,13 @@ autoload -U promptinit; promptinit
 # show exec duration in prompt after 0 seconds (always)
 PURE_CMD_MAX_EXEC_TIME=-1
 zstyle :prompt:pure:prompt:success color green
-zstyle :prompt:pure:execution_time color '#FFFFFF'
+zstyle :prompt:pure:execution_time color '#000000'
+zstyle :prompt:pure:git:branch color '#FF8000'
+zstyle :prompt:pure:host color '#FF8000'
+zstyle :prompt:pure:prompt:continuation color '#FF8000'
+zstyle :prompt:pure:user color '#FF8000'
+zstyle :prompt:pure:virtualenv color '#FF8000'
+
 # turn on git stash status
 zstyle :prompt:pure:git:stash show yes
 prompt pure
