@@ -209,7 +209,7 @@
 	<key>ShowRepresentedURLPathInTitle</key>
 	<true/>
 	<key>name</key>
-	<string>custom</string>
+	<string>custom_light</string>
 	<key>shellExitAction</key>
 	<integer>1</integer>
 	<key>type</key>
