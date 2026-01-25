@@ -40,7 +40,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 # custom symbol
-# PURE_PROMPT_SYMBOL=$'⚑'
+# PURE_PROMPT_SYMBOL=$'⚑❯'
 # PURE_PROMPT_SYMBOL=$'\n❯'
 # show exec duration in prompt after 0 seconds (always)
 PURE_CMD_MAX_EXEC_TIME=-1
@@ -59,9 +59,15 @@ prompt pure
 ##########
 # Plugins from https://github.com/unixorn/awesome-zsh-plugins#plugins
 # show exec duration in output after 0 seconds (always)
-ZSH_COMMAND_TIME_COLOR="yellow"
+EXIT_STATUS_SYMBOLS=("✔" "✗")
+function prompt-exit-status-symbol(){
+  PREVIOUS_EXIT_CODE=$?
+  ZSH_COMMAND_TIME_COLOR=$(if [[ $PREVIOUS_EXIT_CODE == 0 ]]; then echo green; else echo red; fi)
+  ZSH_COMMAND_TIME_MSG=$EXIT_STATUS_SYMBOLS[$([[ $PREVIOUS_EXIT_CODE == 0 ]] && echo 1 || echo 2)]''$([[ $PREVIOUS_EXIT_CODE != 0 ]] && echo '-'$PREVIOUS_EXIT_CODE)'  took %s'
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd prompt-exit-status-symbol
 ZSH_COMMAND_TIME_MIN_SECONDS=-1
-ZSH_COMMAND_TIME_MSG="took %s"
 source $HOME/.zsh/zsh-command-time/command-time.plugin.zsh
 KUBE_PS1_HIDE_IF_NOCONTEXT=true
 KUBE_PS1_NS_ENABLE=false
