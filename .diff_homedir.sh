@@ -41,6 +41,7 @@ ${3}.gitconfig
 ${3}.gitignore
 ${3}.osascripts
 ${3}.skhdrc
+${3}.yabairc
 *.code-workspace
 config.example
 ${3}settings.json

@@ -104,13 +104,15 @@ ctrl + alt + cmd - right :     yabai -m window --grid 101:52:39:50:13:50
 
 # almost fullscreen
 f19 :                    yabai -m window --toggle float --grid 52:52:1:1:50:50
+ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 52:52:1:1:50:50
+shift + ctrl + alt + cmd - tab : yabai -m window --ratio abs:0.75
+
 # 0x32 is `
-shift + ctrl + alt + cmd - 0x32 : yabai -m window --toggle float --grid 52:52:1:1:50:50
+shift + ctrl + alt + cmd - 0x32 : yabai -m window --ratio abs:0.25
 # ctrl + alt + cmd - 0x32 : echo # Show Notification Center
 
 # SHIFT for Arrange because SHIFT FOR TILE MAKES IT SLOW ANIMATION
-shift + ctrl + alt + cmd - tab : yabai -m window --ratio abs:0.25
-ctrl + alt + cmd - tab : yabai -m window --ratio abs:0.75
+
 # shift + ctrl + alt + cmd - space : echo # dictation
 # ctrl + alt + cmd - space : echo # siri
 
