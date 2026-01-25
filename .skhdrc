@@ -102,9 +102,9 @@ ctrl + alt + cmd - right :     yabai -m window --grid 101:52:39:50:13:50
 
 # almost fullscreen
 # --grid 52:52:1:1:50:50
-# toggle float
-f19 :                    yabai -m window --toggle float
-ctrl + alt + cmd - tab : yabai -m window --toggle float
+# toggle float center tall
+f19 :                    yabai -m window --toggle float --grid 101:4:1:0:2:100
+ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 101:4:1:0:2:100
 shift + ctrl + alt + cmd - tab : yabai -m window --ratio abs:0.75
 
 # 0x32 is `
