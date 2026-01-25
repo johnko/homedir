@@ -62,7 +62,7 @@ prompt pure
 EXIT_STATUS_SYMBOLS=("✔" "✗")
 function prompt-exit-status-symbol(){
   PREVIOUS_EXIT_CODE=$?
-  ZSH_COMMAND_TIME_COLOR=$(if [[ $PREVIOUS_EXIT_CODE == 0 ]]; then echo green; else echo red; fi)
+  ZSH_COMMAND_TIME_COLOR=$([[ $PREVIOUS_EXIT_CODE == 0 ]] && echo green || echo red)
   ZSH_COMMAND_TIME_MSG=$EXIT_STATUS_SYMBOLS[$([[ $PREVIOUS_EXIT_CODE == 0 ]] && echo 1 || echo 2)]''$([[ $PREVIOUS_EXIT_CODE != 0 ]] && echo '-'$PREVIOUS_EXIT_CODE)'  took %s'
 }
 autoload -Uz add-zsh-hook
