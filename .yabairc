@@ -62,9 +62,11 @@ yabai -m rule --add app="^(Firefox|Spotify|WhatsApp.*)$" manage=off grid=101:52:
 yabai -m rule --add app="^(NO_APP_3)$" manage=off grid=101:52:19:40:14:56
 
 # float don't block widgets left
-yabai -m rule --add app="^(Slack)$" manage=off grid=101:52:5:8:23:90
+yabai -m rule --add app="^(NO_APP_4)$" manage=off grid=101:52:5:8:23:90
+yabai -m rule --add app="^(Slack)$" manage=on
 # float don't block widgets right
-yabai -m rule --add app="^(Safari)$" manage=off grid=101:52:28:8:23:90
+yabai -m rule --add app="^(NO_APP_5)$" manage=off grid=101:52:28:8:23:90
+yabai -m rule --add app="^(Safari)$" manage=on
 
 # right above-middle, less than halfwide
 yabai -m rule --add app="^(Discord)$" manage=off grid=101:52:32:40:20:49
