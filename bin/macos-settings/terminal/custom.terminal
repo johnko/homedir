@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>BackgroundAlphaInactive</key>
-	<real>0.79545454545454541</real>
+	<real>0.59659090909090906</real>
 	<key>BackgroundBlur</key>
-	<real>0.10000000000000001</real>
+	<real>0.10227272727272728</real>
 	<key>BackgroundBlurInactive</key>
 	<real>0.0</real>
 	<key>BackgroundColor</key>
