@@ -2,8 +2,7 @@
 
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 # float tall center halfwide for web
-yabai -m rule --add app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off grid=103:4:1:0:2:100
-yabai -m rule --add app="^(Google Chrome)$" title="^.*( Tab).*$" manage=on
+yabai -m rule --add app="^(Google Chrome)$" manage=on
 # float 0.9 tall center halfwide for web
 yabai -m rule --add app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off grid=103:4:1:0:2:97
 yabai -m rule --add app="^(Brave Browser)$" title="^.*( Tab).*$" manage=on
