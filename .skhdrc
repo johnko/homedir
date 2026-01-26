@@ -67,7 +67,7 @@ ctrl + alt + cmd - r : yabai -m space --rotate 270
 f15 :                  osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
 # ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
-ctrl + alt + cmd - y : skhd --restart-service && osascript ~/.osascripts/terminal-start-yabai.scpt
+ctrl + alt + cmd - y : skhd --restart-service && osascript ~/.osascripts/terminal-restart-yabai.scpt
 
 # ctrl + alt + cmd - a : echo # arrow left
 # ctrl + alt + cmd - s : echo # arrow down
