@@ -15,7 +15,8 @@
         "opencode-devcontainers",
         "renovate-config",
         "terraform-aws-eks",
-        "terraform-aws-eks-blueprints"
+        "terraform-aws-eks-blueprints",
+        "yabai"
       ],
       "type": "pickString"
     },
