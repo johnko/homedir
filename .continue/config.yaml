@@ -1,19 +1,19 @@
 models:
-  - name: Llama 3.1 8B
+  - model: llama3.1:8b
+    name: Llama 3.1 8B
     provider: ollama
-    model: llama3.1:8b
     roles:
       - chat
       - edit
       - apply
-  - name: Qwen2.5-Coder 1.5B
+  - model: qwen2.5-coder:1.5b-base
+    name: Qwen2.5-Coder 1.5B
     provider: ollama
-    model: qwen2.5-coder:1.5b-base
     roles:
       - autocomplete
-  - name: Nomic Embed
+  - model: nomic-embed-text:latest
+    name: Nomic Embed
     provider: ollama
-    model: nomic-embed-text:latest
     roles:
       - embed
   - apiBase: http://127.0.0.1:11434

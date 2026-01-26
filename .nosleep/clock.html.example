@@ -28,11 +28,18 @@
     @media (prefers-color-scheme: dark) {
       body {
         background-color: #111;
-        color: #fff;
+        color: #aaa;
       }
 
       video#bg {
         opacity: 15% !important;
+      }
+
+      video#fg {
+        /* important so displaysleep is prevented */
+        opacity: 30% !important;
+        width: 100%;
+        /* important so displaysleep is prevented */
       }
     }
 

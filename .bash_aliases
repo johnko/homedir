@@ -314,13 +314,13 @@ gg() {
         git worktree add -b "$SAFE_BRANCH" ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH" "origin/$DEFAULT_BRANCH"
 
         pushd ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH"
-        if [[ -z $CODE_EDITOR ]]; then
-          OPEN_EDITOR=cursor
-        else
-          OPEN_EDITOR=$CODE_EDITOR
+        echo "Opening code and cursor (if possible)"
+        if type code &>/dev/null; then
+          code .
         fi
-        echo "Opening $OPEN_EDITOR"
-        $OPEN_EDITOR .
+        if type cursor &>/dev/null; then
+          cursor .
+        fi
       fi
       ;;
     vsk8s)
@@ -586,7 +586,7 @@ repos-updatemaster() {
 audio() {
   FUZZY_MATCH="$1"
   LIST_CMD=(SwitchAudioSource -a)
-  GREP_CMD=(grep -v -i -E 'microphone|samsung')
+  GREP_CMD=(grep -v -i -E 'microphone|samsung|ultrafine|u32j59x')
   if type SwitchAudioSource &>/dev/null; then
     # shellcheck disable=SC2128
     FOUND_AUDIO_DEVICE=$($LIST_CMD | $GREP_CMD | grep -i "$FUZZY_MATCH" | head -n 1)

@@ -40,22 +40,35 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 # custom symbol
-# PURE_PROMPT_SYMBOL=$'⚑'
+# PURE_PROMPT_SYMBOL=$'⚑❯'
 # PURE_PROMPT_SYMBOL=$'\n❯'
 # show exec duration in prompt after 0 seconds (always)
 PURE_CMD_MAX_EXEC_TIME=-1
 zstyle :prompt:pure:prompt:success color green
-zstyle :prompt:pure:execution_time color '#FFFFFF'
+zstyle :prompt:pure:execution_time color '#000000'
+zstyle :prompt:pure:git:branch color '#FF8000'
+zstyle :prompt:pure:host color '#FF8000'
+zstyle :prompt:pure:prompt:continuation color '#FF8000'
+zstyle :prompt:pure:user color '#FF8000'
+zstyle :prompt:pure:virtualenv color '#FF8000'
+
 # turn on git stash status
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
 ##########
 # Plugins from https://github.com/unixorn/awesome-zsh-plugins#plugins
+# EXIT_STATUS_SYMBOLS is array starting at 1
+EXIT_STATUS_SYMBOLS=("✔" "✗")
+function prompt-exit-status-symbol(){
+  PREVIOUS_EXIT_CODE=$?
+  ZSH_COMMAND_TIME_COLOR=$([[ $PREVIOUS_EXIT_CODE == 0 ]] && echo green || echo red)
+  ZSH_COMMAND_TIME_MSG=$EXIT_STATUS_SYMBOLS[$([[ $PREVIOUS_EXIT_CODE == 0 ]] && echo 1 || echo 2)]$([[ $PREVIOUS_EXIT_CODE != 0 ]] && echo '-'$PREVIOUS_EXIT_CODE)'  took %s'
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd prompt-exit-status-symbol
 # show exec duration in output after 0 seconds (always)
-ZSH_COMMAND_TIME_COLOR="yellow"
 ZSH_COMMAND_TIME_MIN_SECONDS=-1
-ZSH_COMMAND_TIME_MSG="took %s"
 source $HOME/.zsh/zsh-command-time/command-time.plugin.zsh
 KUBE_PS1_HIDE_IF_NOCONTEXT=true
 KUBE_PS1_NS_ENABLE=false
