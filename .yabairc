@@ -93,7 +93,7 @@ yabai -m rule --add app="^(Cursor)$" manage=on
 # manage=off grid=4:4:1:1:2:2
 # bottom left
 yabai -m rule --add app="^(Terminal)$" title="^.*(1)$" manage=off grid=103:52:5:50:21:50
-# yabai -m rule --add app="^(Terminal)$" title="^.*(1)$" manage=off grid=103:52:0:50:26:50
+# yabai -m rule --add app="^(Terminal)$" title="^.*(1)$" manage=off grid=103:52:0:50:5:50
 yabai -m rule --add app="^(Terminal)$" title="^.*(2)$" manage=off grid=103:52:0:50:26:50
 # yabai -m rule --add app="^(Terminal)$" title="^.*(2)$" manage=off grid=103:52:0:0:13:100
 # bottom right
