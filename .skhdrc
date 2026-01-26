@@ -34,8 +34,8 @@ f18 :                          yabai -m window --grid 24:24:3:3:18:21
 f13 :                          yabai -m window --grid 103:52:0:0:13:100
 shift + ctrl + alt + cmd - x : yabai -m window --grid 103:52:0:0:13:100
 # cursor/code right 3/4 wide for focus
-f14 :                          yabai -m window --grid 103:52:13:0:39:100
-shift + ctrl + alt + cmd - c : yabai -m window --grid 103:52:13:0:39:100
+f14 :                          yabai -m window --grid 103:52:13:0:38:100
+shift + ctrl + alt + cmd - c : yabai -m window --grid 103:52:13:0:38:100
 # float tall center halfwide for web
 shift + ctrl + alt + cmd - v : yabai -m window --grid 103:4:1:0:2:100
 # float 3rd slot bottom screen
