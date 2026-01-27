@@ -3,8 +3,8 @@
 # shift + ctrl + alt + cmd - 2 : echo
 shift + ctrl + alt + cmd - 3 : osascript ~/.osascripts/terminal-toggle-audio.scpt
 shift + ctrl + alt + cmd - 4 : osascript ~/.osascripts/terminal-nosleep.scpt
-shift + ctrl + alt + cmd - 5 : yabai -m window --ratio abs:0.5
-shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-brew-update.scpt
+shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
+shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 
 # float top left
 shift + ctrl + alt + cmd - q : yabai -m window --grid 103:52:1:0:25:50
@@ -56,7 +56,7 @@ shift + ctrl + alt + cmd - b : yabai -m window --grid 103:52:26:50:13:50
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
 ctrl + alt + cmd - 5 : yabai -m space --toggle padding
-ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
+ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-vol.scpt
 
 # float left
 ctrl + alt + cmd - q : yabai -m window --grid 103:52:1:0:25:100
@@ -106,10 +106,10 @@ ctrl + alt + cmd - right :     yabai -m window --grid 103:52:39:50:13:50
 # toggle float center tall
 f19 :                    yabai -m window --toggle float --grid 103:4:1:0:2:100
 ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 103:4:1:0:2:100
-shift + ctrl + alt + cmd - tab : yabai -m window --ratio abs:0.75
+shift + ctrl + alt + cmd - tab : yabai -m window --ratio rel:0.1
 
 # 0x32 is `
-shift + ctrl + alt + cmd - 0x32 : yabai -m window --ratio abs:0.25
+shift + ctrl + alt + cmd - 0x32 : yabai -m window --ratio rel:-0.1
 # ctrl + alt + cmd - 0x32 : echo # Show Notification Center
 
 # SHIFT for Arrange because SHIFT FOR TILE MAKES IT SLOW ANIMATION
