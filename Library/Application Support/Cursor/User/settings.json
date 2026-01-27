@@ -152,7 +152,6 @@
   "scm.inputFontSize": 14,
   "scm.repositories.visible": 20,
   "search.defaultViewMode": "tree",
-  "search.mode": "newEditor",
   "search.quickAccess.preserveInput": true,
   "search.searchEditor.defaultNumberOfContextLines": 3,
   "search.showLineNumbers": true,
