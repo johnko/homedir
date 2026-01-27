@@ -598,6 +598,15 @@ audio() {
     fi
   fi
 }
+vol() {
+  for i in $(find "$HOME/.osascripts" -type f -name 'volume-[0-9][0-9].scpt' | sort); do
+    VOLUME_PERCENT=$(echo "$i" | grep -o -E '[0-9]+')
+    echo "❓ Set volume to $VOLUME_PERCENT ❓"
+    read
+    osascript "$i"
+    echo "✅ Volume is now $VOLUME_PERCENT ✅"
+  done
+}
 
 ########################################
 # vagrant aliases
