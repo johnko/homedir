@@ -398,18 +398,8 @@
     "command": "-composer.openBrowserTab"
   },
   {
-    "key": "ctrl+shift+alt+`",
-    "command": "-workbench.action.terminal.newInNewWindow",
-    "when": "terminalHasBeenCreated || terminalProcessSupported"
-  },
-  {
     "key": "ctrl+alt+`",
     "command": "workbench.action.createTerminalEditorSide"
-  },
-  {
-    "key": "ctrl+shift+`",
-    "command": "-workbench.action.terminal.new",
-    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
   },
   {
     "key": "cmd+]",
