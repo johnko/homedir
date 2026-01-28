@@ -129,7 +129,7 @@ yabai -m config window_insertion_point first
 yabai -m config split_type vertical
 yabai -m config auto_balance on
 
-yabai -m config focus_follows_mouse autoraise
+# yabai -m config focus_follows_mouse autoraise
 
 # refresh yabai when display disconnect/reconnect
 yabai -m signal --add event=display_added action="yabai --restart-service"
