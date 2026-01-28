@@ -39,7 +39,6 @@ cask "cursor"
 # vscode "linhmtran168.mac-ca-vscode"
 # vscode "mongodb.mongodb-vscode"
 vscode "snowflake.snowflake-vsc"
-# vscode "sst-dev.opencode"
 
 # Keyboard / QMK / VIA
 # cask "via"
