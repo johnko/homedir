@@ -94,19 +94,21 @@ ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 ###################################################################
 
-ctrl + alt + cmd - up : yabai -m window --grid 103:52:1:0:50:50
-ctrl + alt + cmd - down : yabai -m window --grid 103:52:1:50:50:50
-# float 1st slot bottom screen
-ctrl + alt + cmd - left :      yabai -m window --grid 103:52:0:50:13:50
-# float 4th slot bottom screen
-ctrl + alt + cmd - right :     yabai -m window --grid 103:52:39:50:13:50
+# ctrl + alt + cmd - up :    yabai -m window --focus north
+ctrl + alt + cmd - down :  yabai -m window --toggle split
+ctrl + alt + cmd - left :  yabai -m window --focus west
+ctrl + alt + cmd - right : yabai -m window --focus east
+shift + ctrl + alt + cmd - up :    yabai -m window --grid 103:52:1:0:50:50
+shift + ctrl + alt + cmd - down :  yabai -m window --grid 103:52:1:50:50:50
+shift + ctrl + alt + cmd - left :  yabai -m window --swap west
+shift + ctrl + alt + cmd - right : yabai -m window --swap east
 
 # almost fullscreen
 # --grid 52:52:1:1:50:50
 # toggle float center tall
 f19 :                    yabai -m window --toggle float --grid 103:4:1:0:2:100
 ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 103:4:1:0:2:100
-shift + ctrl + alt + cmd - tab : yabai -m window --ratio rel:0.1
+shift + ctrl + alt + cmd - tab :  yabai -m window --ratio rel:0.1
 
 # 0x32 is `
 shift + ctrl + alt + cmd - 0x32 : yabai -m window --ratio rel:-0.1
