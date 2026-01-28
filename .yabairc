@@ -109,6 +109,19 @@ yabai -m rule --add app="^(iPhone Mirroring)$" manage=off
 # cat .yabairc | grep -v grep | grep -v '^ *#' | grep app= | tr -d '!' | cut -d= -f2 | sed -e 's,manage,,' -e 's, title,,g' -e 's, $,,g' | grep -v noexist | tr -d '"^$)(' | tr '|' "\n" | sort -u | tr "\n" '|' | sed -e 's, |,|,g' -e 's,|$,,' | pbcopy
 yabai -m rule --add app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|NO_APP_1|NO_APP_2|NO_APP_3|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|TV|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off grid=8:4:1:3:2:4
 
+yabai -m config window_origin_display default
+yabai -m config window_placement first_child
+yabai -m config window_insertion_point first
+yabai -m config split_type vertical
+yabai -m config auto_balance on
+
+# yabai -m config focus_follows_mouse autoraise
+
+# refresh yabai when display disconnect/reconnect
+yabai -m signal --add event=display_added action="yabai --restart-service"
+yabai -m signal --add event=display_removed action="yabai --restart-service"
+yabai -m signal --add event=display_resized action="yabai --restart-service"
+
 # apply rules on restart
 yabai -m rule --apply
 
@@ -122,16 +135,3 @@ yabai -m config window_gap 0
 
 # set layout to bsp (managed), other options are float (unmanaged) or stack (layered fullscreen)
 yabai -m config layout bsp
-
-yabai -m config window_origin_display default
-yabai -m config window_placement first_child
-yabai -m config window_insertion_point first
-yabai -m config split_type vertical
-yabai -m config auto_balance on
-
-# yabai -m config focus_follows_mouse autoraise
-
-# refresh yabai when display disconnect/reconnect
-yabai -m signal --add event=display_added action="yabai --restart-service"
-yabai -m signal --add event=display_removed action="yabai --restart-service"
-yabai -m signal --add event=display_resized action="yabai --restart-service"
