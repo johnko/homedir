@@ -330,10 +330,11 @@ gg() {
         else
           AWS_VAULT_PROMPT=ykman aws-vault export cursor | awk '{print "export "$0}' >~/.aws_temp_credentials_secret
         fi
-        if [[ ! -e ~/kubeconfig/cursor.config ]]; then
+        if [[ -e ~/kubeconfig/cursor.config ]]; then
+          export KUBECONFIG=~/kubeconfig/cursor.config
+        else
           echo "ERROR: kube config was not found at ~/kubeconfig/cursor.config"
         fi
-        export KUBECONFIG=~/kubeconfig/cursor.config
         if [[ -e ~/.aws_temp_credentials_secret ]]; then
           set +x
           source ~/.aws_temp_credentials_secret
