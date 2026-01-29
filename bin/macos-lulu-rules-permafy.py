@@ -167,7 +167,7 @@ ALLOWED_APP_PORTS = [
     {"apps": ["jp.naver.line.mac.LineCall"], "ports": [29494]},
 ]
 
-OMIT_APP_RULES = [r"^com\.brave\..*", r"^org\.whispersystems\.signal.*"]
+OMIT_APP_RULES = [r"^com\.brave\..*", r"^org\.whispersystems\.signal.*", r"^.*hak.*"]
 
 try:
     # Open the file in read mode
