@@ -11,6 +11,7 @@ else
   git clone https://github.com/johnko/skhd.git /tmp/skhd.git
   pushd /tmp/skhd.git
   make install
+  codesign -fs - bin/skhd
   cp -a bin/skhd ~/bin/skhd
   popd
   rm -fr /tmp/skhd.git
