@@ -108,10 +108,10 @@ shift + ctrl + alt + cmd - right : yabai -m window --swap east
 # toggle float center tall
 f19 :                    yabai -m window --toggle float --grid 103:4:1:0:2:100
 ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 103:4:1:0:2:100
-shift + ctrl + alt + cmd - tab :  yabai -m window --ratio rel:0.1
+shift + ctrl + alt + cmd - tab :  yabai -m window --resize left:-410:0
 
 # 0x32 is `
-shift + ctrl + alt + cmd - 0x32 : yabai -m window --ratio rel:-0.1
+shift + ctrl + alt + cmd - 0x32 : yabai -m window --resize left:310:0
 # ctrl + alt + cmd - 0x32 : echo # Show Notification Center
 
 # SHIFT for Arrange because SHIFT FOR TILE MAKES IT SLOW ANIMATION
