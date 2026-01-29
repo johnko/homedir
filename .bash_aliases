@@ -374,7 +374,9 @@ if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" || -n $VSCODE_GIT_IPC_HAN
 fi
 if [[ $DETECTED == "code" || $DETECTED == "cursor" ]]; then
   # only load ~/.aws_temp_credentials_secret if vscode/cursor detected to avoid polluting terminal
-  export KUBECONFIG=~/kubeconfig/cursor.config
+  if [[ -e ~/kubeconfig/cursor.config ]]; then
+    export KUBECONFIG=~/kubeconfig/cursor.config
+  fi
   if [[ -e ~/.aws_temp_credentials_secret ]]; then
     set +x
     source ~/.aws_temp_credentials_secret
