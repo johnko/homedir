@@ -311,7 +311,8 @@ gg() {
           DEFAULT_BRANCH=main
         fi
         git fetch origin "$DEFAULT_BRANCH"
-        git worktree add -b "$SAFE_BRANCH" ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH" "origin/$DEFAULT_BRANCH"
+        # add new branch or checkout existing
+        git worktree add -b "$SAFE_BRANCH" ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH" "origin/$DEFAULT_BRANCH" || git worktree add ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH" "$SAFE_BRANCH"
 
         pushd ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH"
         echo "Opening code and cursor (if possible)"
