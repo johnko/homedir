@@ -355,7 +355,7 @@ Usage:
   $0 pr                     Push with 'git' and open PR with 'gh' from current HEAD branch
   $0 label github_url       Tags PR/Issue with my label, milestone and add to GH Project
   $0 clean                  Deletes current branch, checkout main/master branch and pull
-  $0 worktree repo branch   Created worktree from local repo and creates branch and opens cursor
+  $0 worktree repo branch   Creates worktree from local repo and creates branch and opens cursor
   $0 vsk8s                  Open VSCode with k8s config
 EOF
       ;;
