@@ -43,6 +43,9 @@ else
 fi
 
 relaunch_ollama() {
+  # https://docs.ollama.com/context-length#cli
+  export OLLAMA_CONTEXT_LENGTH=64000
+
   case $1 in
     logs)
       $DOCKER_BIN logs -f caddyollama 2>&1 | sed "s,^{,\n{,"
