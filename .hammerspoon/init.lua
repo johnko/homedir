@@ -3,6 +3,7 @@ WarpMouse:start()
 
 PaperWM = hs.loadSpoon("PaperWM")
 PaperWM.external_bar = { bottom = 180 }
+PaperWM.scroll_gain = 100.0
 PaperWM.scroll_window = { "cmd" }
 PaperWM.window_gap = 15
 -- PaperWM.window_ratios = { 1/4, 1/3, 2/4, 2/3, 3/4 }
