@@ -26,11 +26,11 @@ PaperWM:bindHotkeys({
 
     -- position and resize focused window
     center_window        = { { "ctrl", "alt", "cmd", "shift" }, "g" },
-    full_width           = { { "ctrl", "alt", "cmd", "shift" }, "f" },
+    full_width           = { { "ctrl", "alt", "cmd" }, "5" },
     cycle_width          = { { "ctrl", "alt", "cmd" }, "r" },
     reverse_cycle_width  = { { "ctrl", "alt", "cmd", "shift" }, "r" },
-    cycle_height         = { { "ctrl", "alt", "cmd" }, "5" },
-    reverse_cycle_height = { { "ctrl", "alt", "cmd", "shift" }, "5" },
+    cycle_height         = { { "ctrl", "alt", "cmd" }, "6" },
+    reverse_cycle_height = { { "ctrl", "alt", "cmd", "shift" }, "6" },
 
     -- move focused window into / out of a column
     slurp_in = { { "ctrl", "alt", "cmd" }, "z" },
