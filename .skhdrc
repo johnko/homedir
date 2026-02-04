@@ -1,8 +1,8 @@
 
 # shift + ctrl + alt + cmd - 1 : echo
 # shift + ctrl + alt + cmd - 2 : echo
-shift + ctrl + alt + cmd - 3 : osascript ~/.osascripts/terminal-toggle-audio.scpt
-shift + ctrl + alt + cmd - 4 : osascript ~/.osascripts/terminal-nosleep.scpt
+# shift + ctrl + alt + cmd - 3 : echo
+# shift + ctrl + alt + cmd - 4 : echo
 shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
 shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 
@@ -36,10 +36,13 @@ shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 # cursor/code right 3/4 wide for focus
 # f14 :                          yabai -m window --grid 103:52:13:0:38:100
 # shift + ctrl + alt + cmd - c : yabai -m window --grid 103:52:13:0:38:100
+shift + ctrl + alt + cmd - c : osascript ~/.osascripts/terminal-toggle-audio.scpt
 # float tall center halfwide for web
 # shift + ctrl + alt + cmd - v : yabai -m window --grid 103:4:1:0:2:100
+shift + ctrl + alt + cmd - v : osascript ~/.osascripts/terminal-vol.scpt
 # float 3rd slot bottom screen
 # shift + ctrl + alt + cmd - b : yabai -m window --grid 103:52:26:50:13:50
+shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
 
 # shift + ctrl + alt + cmd - i : echo
 # shift + ctrl + alt + cmd - o : echo
@@ -56,7 +59,7 @@ shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
 # ctrl + alt + cmd - 5 : yabai -m space --toggle padding
-ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-vol.scpt
+# ctrl + alt + cmd - 6 : echo
 
 # float left
 # ctrl + alt + cmd - q : yabai -m window --grid 103:52:1:0:25:100
@@ -66,7 +69,8 @@ ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-vol.scpt
 # ctrl + alt + cmd - r : yabai -m space --rotate 270
 f15 :                  osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
-ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
+ctrl + alt + cmd - y : skhd --restart-service
+# ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
 # ctrl + alt + cmd - y : skhd --restart-service && osascript ~/.osascripts/terminal-restart-yabai.scpt
 
 # ctrl + alt + cmd - a : echo # arrow left
