@@ -22,3 +22,6 @@
 [submodule "docker-files/squid/ref/docker-squid-cache-all"]
 	path = docker-files/squid/ref/docker-squid-cache-all
 	url = https://github.com/johnko/docker-squid-cache-all.git
+[submodule ".hammerspoon/Spoons/PaperWM.spoon"]
+	path = .hammerspoon/Spoons/PaperWM.spoon
+	url = https://github.com/johnko/PaperWM.spoon.git
