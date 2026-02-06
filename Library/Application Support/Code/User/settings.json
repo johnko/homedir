@@ -181,6 +181,7 @@
   "typescript.surveys.enabled": false,
   "update.showReleaseNotes": false,
   "vs-kubernetes": {},
+  "window.autoDetectColorScheme": true,
   "window.clickThroughInactive": false,
   "window.commandCenter": false,
   "window.confirmBeforeClose": "keyboardOnly",
@@ -200,6 +201,8 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editor.wrapTabs": true,
   "workbench.panel.defaultLocation": "top",
+  "workbench.preferredDarkColorTheme": "Default Dark+",
+  "workbench.preferredLightColorTheme": "Default Light+",
   "workbench.settings.applyToAllProfiles": [
     "[dockercompose]",
     "[github-actions-workflow]",
@@ -341,7 +344,8 @@
     "zenMode.hideStatusBar",
     "explorer.fileNesting.expand",
     "git.autofetch",
-    "git.autofetchPeriod"
+    "git.autofetchPeriod",
+    "window.autoDetectColorScheme"
   ],
   "workbench.startupEditor": "none",
   "yaml.schemas": {
