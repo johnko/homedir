@@ -6,7 +6,7 @@ networks:
 services:
   jenkins:
     container_name: jenkins
-    image: jenkins/jenkins:2.528.3
+    image: jenkins/jenkins:2.541.1
     networks:
       kind: {}
     ports:
