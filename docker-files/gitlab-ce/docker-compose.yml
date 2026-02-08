@@ -81,7 +81,7 @@ services:
       RUNNER_EXECUTOR: docker
       RUNNER_NAME: docker-runner
       RUNNER_TAG_LIST: docker,alpine
-    image: gitlab/gitlab-runner:v18.7.2
+    image: gitlab/gitlab-runner:v18.8.0
     restart: unless-stopped
     volumes:
       - runnerconf:/etc/gitlab-runner
