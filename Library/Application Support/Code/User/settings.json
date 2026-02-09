@@ -183,7 +183,6 @@
   "update.showReleaseNotes": false,
   "vs-kubernetes": {},
   "window.autoDetectColorScheme": true,
-  "window.clickThroughInactive": false,
   "window.commandCenter": false,
   "window.confirmBeforeClose": "keyboardOnly",
   "window.confirmSaveUntitledWorkspace": false,
