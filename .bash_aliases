@@ -301,12 +301,26 @@ gg() {
       fi
       if [[ -e $LOCAL_REPO && -e "$LOCAL_REPO/.git" ]]; then
         SAFE_BRANCH=$(echo "$3" | sed 's/[^a-zA-Z0-9-]/-/g' | cut -c1-50)
-
         pushd "$LOCAL_REPO"
+        FOLDER_NAME=$(basename "$(pwd)")
+        if [[ -z $DESTINATION_FOLDER ]]; then
+          DESTINATION_FOLDER=../"$FOLDER_NAME.worktrees/$SAFE_BRANCH"
+        fi
+
         DEFAULT_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | sed 's,origin/,,')
         git fetch origin "$DEFAULT_BRANCH"
-        # add new branch or checkout existing
-        git worktree add -b "$SAFE_BRANCH" ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH" "origin/$DEFAULT_BRANCH" || git worktree add ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH" "$SAFE_BRANCH"
+
+        for _ in 1 2; do
+          if [[ ! -e $DESTINATION_FOLDER ]]; then
+            # add new branch or checkout existing
+            git worktree add -b "$SAFE_BRANCH" "$DESTINATION_FOLDER" "origin/$DEFAULT_BRANCH" ||
+              git worktree add "$DESTINATION_FOLDER" "$SAFE_BRANCH" || true
+            if [[ ! -e $DESTINATION_FOLDER ]]; then
+              # still no folder?
+              git worktree prune
+            fi
+          fi
+        done
 
         pushd ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH"
         echo "Opening code and cursor (if possible)"
