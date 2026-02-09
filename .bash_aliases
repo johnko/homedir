@@ -274,10 +274,7 @@ gg() {
       ;;
     clean)
       OLD_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-      DEFAULT_BRANCH=master
-      if git branch -a | grep -q 'remotes/origin/main'; then
-        DEFAULT_BRANCH=main
-      fi
+      DEFAULT_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | sed 's,origin/,,')
       set -x
       git checkout "$DEFAULT_BRANCH"
       if [[ $OLD_BRANCH != "$DEFAULT_BRANCH" ]]; then
@@ -306,10 +303,7 @@ gg() {
         SAFE_BRANCH=$(echo "$3" | sed 's/[^a-zA-Z0-9-]/-/g' | cut -c1-50)
 
         pushd "$LOCAL_REPO"
-        DEFAULT_BRANCH=master
-        if git branch -a | grep -q 'remotes/origin/main'; then
-          DEFAULT_BRANCH=main
-        fi
+        DEFAULT_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | sed 's,origin/,,')
         git fetch origin "$DEFAULT_BRANCH"
         # add new branch or checkout existing
         git worktree add -b "$SAFE_BRANCH" ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH" "origin/$DEFAULT_BRANCH" || git worktree add ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH" "$SAFE_BRANCH"
@@ -571,10 +565,7 @@ repos-updatemaster() {
     if [[ -e "${i}/.git" ]]; then
       pushd "${i}" >/dev/null || return
       echo "==> ${__YELLOW}${i}${__RESET}"
-      DEFAULT_BRANCH=master
-      if git branch -a | grep -q 'remotes/origin/main'; then
-        DEFAULT_BRANCH=main
-      fi
+      DEFAULT_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | sed 's,origin/,,')
       git checkout -b "$TMP_BRANCH"
       git fetch origin "$DEFAULT_BRANCH"
       git branch -D "$DEFAULT_BRANCH" || true
