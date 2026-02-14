@@ -8,6 +8,8 @@ PaperWM.scroll_window = { "cmd" }
 PaperWM.window_gap = 15
 -- PaperWM.window_ratios = { 1/4, 1/3, 2/4, 2/3, 3/4 }
 PaperWM.window_ratios = { 1/4, 2/4, 3/4 }
+-- number of fingers to detect a horizontal swipe, set to 0 to disable (the default)
+PaperWM.swipe_fingers = 4
 PaperWM:bindHotkeys({
   -- switch to a new focused window in tiled grid
   focus_left  = { { "ctrl", "alt", "cmd" }, "left" },
