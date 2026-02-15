@@ -7,41 +7,41 @@ shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
 shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 
 # float top left
-# shift + ctrl + alt + cmd - q : yabai -m window --grid 103:52:1:0:25:50
+# shift + ctrl + alt + cmd - q : echo
 # shift + ctrl + alt + cmd - w : echo # arrow up
 # float top right
-# shift + ctrl + alt + cmd - e : yabai -m window --grid 103:52:26:0:25:50
+# shift + ctrl + alt + cmd - e : echo
 # shift + ctrl + alt + cmd - r : bash ~/bin/yabai_cycle_clockwise.sh
 # float 2nd slot bottom screen
-# shift + ctrl + alt + cmd - t : yabai -m window --grid 103:52:13:50:13:50
-# shift + ctrl + alt + cmd - y : yabai -m space --balance
+# shift + ctrl + alt + cmd - t : echo
+# shift + ctrl + alt + cmd - y : echo
 
 # shift + ctrl + alt + cmd - a : echo # arrow left
 # shift + ctrl + alt + cmd - s : echo # arrow down
 # shift + ctrl + alt + cmd - d : echo # arrow right
 # float tall wide 16/24 of screen for editing
-# shift + ctrl + alt + cmd - f : yabai -m window --grid 24:24:4:2:16:20
+# shift + ctrl + alt + cmd - f : echo
 # float middle center quarter
-# shift + ctrl + alt + cmd - g : yabai -m window --grid 4:4:1:1:2:2
+# shift + ctrl + alt + cmd - g : echo
 # float square
-# shift + ctrl + alt + cmd - h : yabai -m window --grid 24:24:5:1:14:22
+# shift + ctrl + alt + cmd - h : echo
 
 # float tall wide 20/24 of screen for video
-# shift + ctrl + alt + cmd - z : yabai -m window --grid 24:24:2:4:20:19
+# shift + ctrl + alt + cmd - z : echo
 # float tall wide 18/24 of screen for focus
-# f18 :                          yabai -m window --grid 24:24:3:3:18:21
+# f18 :                          echo
 # left tall 1/4 screen
-# f13 :                          yabai -m window --grid 103:52:0:0:13:100
-# shift + ctrl + alt + cmd - x : yabai -m window --grid 103:52:0:0:13:100
+# f13 :                          echo
+# shift + ctrl + alt + cmd - x : echo
 # cursor/code right 3/4 wide for focus
-# f14 :                          yabai -m window --grid 103:52:13:0:38:100
-# shift + ctrl + alt + cmd - c : yabai -m window --grid 103:52:13:0:38:100
+# f14 :                          echo
+# shift + ctrl + alt + cmd - c : echo
 shift + ctrl + alt + cmd - c : osascript ~/.osascripts/terminal-toggle-audio.scpt
 # float tall center halfwide for web
-# shift + ctrl + alt + cmd - v : yabai -m window --grid 103:4:1:0:2:100
+# shift + ctrl + alt + cmd - v : echo
 shift + ctrl + alt + cmd - v : osascript ~/.osascripts/terminal-vol.scpt
 # float 3rd slot bottom screen
-# shift + ctrl + alt + cmd - b : yabai -m window --grid 103:52:26:50:13:50
+# shift + ctrl + alt + cmd - b : echo
 shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
 
 # shift + ctrl + alt + cmd - i : echo
@@ -58,15 +58,15 @@ shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
 # ctrl + alt + cmd - 2 : echo # mission control space right
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
-# ctrl + alt + cmd - 5 : yabai -m space --toggle padding
+# ctrl + alt + cmd - 5 : echo
 # ctrl + alt + cmd - 6 : echo
 
 # float left
-# ctrl + alt + cmd - q : yabai -m window --grid 103:52:1:0:25:100
+# ctrl + alt + cmd - q : echo
 # ctrl + alt + cmd - w : echo # arrow up
 # float right
-# ctrl + alt + cmd - e : yabai -m window --grid 103:52:26:0:25:100
-# ctrl + alt + cmd - r : yabai -m space --rotate 270
+# ctrl + alt + cmd - e : echo
+# ctrl + alt + cmd - r : echo
 f15 :                  osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - y : skhd --restart-service
@@ -81,9 +81,9 @@ ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 ctrl + alt + cmd - h : osascript ~/.osascripts/toggle-cursor.scpt
 
 # float bottom left
-# ctrl + alt + cmd - z : yabai -m window --grid 103:52:1:50:25:50
+# ctrl + alt + cmd - z : echo
 # float bottom right
-# ctrl + alt + cmd - x : yabai -m window --grid 103:52:26:50:25:50
+# ctrl + alt + cmd - x : echo
 ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-cursor.scpt
 ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
@@ -98,24 +98,24 @@ ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 ###################################################################
 
-# ctrl + alt + cmd - up :    yabai -m window --focus north
-# ctrl + alt + cmd - down :  yabai -m window --toggle split
-# ctrl + alt + cmd - left :  yabai -m window --focus west
-# ctrl + alt + cmd - right : yabai -m window --focus east
-# shift + ctrl + alt + cmd - up :    yabai -m window --grid 103:52:1:0:50:50
-# shift + ctrl + alt + cmd - down :  yabai -m window --grid 103:52:1:50:50:50
-# shift + ctrl + alt + cmd - left :  yabai -m window --swap west
-# shift + ctrl + alt + cmd - right : yabai -m window --swap east
+# ctrl + alt + cmd - up :    echo
+# ctrl + alt + cmd - down :  echo
+# ctrl + alt + cmd - left :  echo
+# ctrl + alt + cmd - right : echo
+# shift + ctrl + alt + cmd - up :    echo
+# shift + ctrl + alt + cmd - down :  echo
+# shift + ctrl + alt + cmd - left :  echo
+# shift + ctrl + alt + cmd - right : echo
 
 # almost fullscreen
 # --grid 52:52:1:1:50:50
 # toggle float center tall
-# f19 :                    yabai -m window --toggle float --grid 103:4:1:0:2:100
-# ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 103:4:1:0:2:100
-# shift + ctrl + alt + cmd - tab :  yabai -m window --resize left:-422:0
+# f19 :                    echo
+# ctrl + alt + cmd - tab : echo
+# shift + ctrl + alt + cmd - tab :  echo
 
 # 0x32 is `
-# shift + ctrl + alt + cmd - 0x32 : yabai -m window --resize right:315:0
+# shift + ctrl + alt + cmd - 0x32 : echo
 # ctrl + alt + cmd - 0x32 : echo # Show Notification Center
 
 # SHIFT for Arrange because SHIFT FOR TILE MAKES IT SLOW ANIMATION
