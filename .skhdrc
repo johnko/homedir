@@ -11,7 +11,7 @@ shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 # shift + ctrl + alt + cmd - w : echo # arrow up
 # float top right
 # shift + ctrl + alt + cmd - e : echo
-# shift + ctrl + alt + cmd - r : bash ~/bin/yabai_cycle_clockwise.sh
+# shift + ctrl + alt + cmd - r : echo # PaperWM reverse_cycle_width
 # float 2nd slot bottom screen
 # shift + ctrl + alt + cmd - t : echo
 # shift + ctrl + alt + cmd - y : echo
@@ -19,54 +19,37 @@ shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 # shift + ctrl + alt + cmd - a : echo # arrow left
 # shift + ctrl + alt + cmd - s : echo # arrow down
 # shift + ctrl + alt + cmd - d : echo # arrow right
-# float tall wide 16/24 of screen for editing
 # shift + ctrl + alt + cmd - f : echo
-# float middle center quarter
-# shift + ctrl + alt + cmd - g : echo
-# float square
+# shift + ctrl + alt + cmd - g : echo # PaperWM center_window
 # shift + ctrl + alt + cmd - h : echo
 
 # float tall wide 20/24 of screen for video
 # shift + ctrl + alt + cmd - z : echo
 # float tall wide 18/24 of screen for focus
-# f18 :                          echo
-# left tall 1/4 screen
-# f13 :                          echo
 # shift + ctrl + alt + cmd - x : echo
-# cursor/code right 3/4 wide for focus
-# f14 :                          echo
 # shift + ctrl + alt + cmd - c : echo
 shift + ctrl + alt + cmd - c : osascript ~/.osascripts/terminal-toggle-audio.scpt
-# float tall center halfwide for web
 # shift + ctrl + alt + cmd - v : echo
 shift + ctrl + alt + cmd - v : osascript ~/.osascripts/terminal-vol.scpt
-# float 3rd slot bottom screen
 # shift + ctrl + alt + cmd - b : echo
 shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
 
-# shift + ctrl + alt + cmd - i : echo
-# shift + ctrl + alt + cmd - o : echo
-# shift + ctrl + alt + cmd - p : echo
-# shift + ctrl + alt + cmd - k : echo
-# shift + ctrl + alt + cmd - l : echo
 
 ###################################################################
-# grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
-###################################################################
 
-# ctrl + alt + cmd - 1 : echo # mission control space left
-# ctrl + alt + cmd - 2 : echo # mission control space right
+# ctrl + alt + cmd - 1 : echo # PaperWM swap_left
+# ctrl + alt + cmd - 2 : echo # PaperWM swap_right
 ctrl + alt + cmd - 3 : open -a "Mission Control"
 ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
-# ctrl + alt + cmd - 5 : echo
-# ctrl + alt + cmd - 6 : echo
+# ctrl + alt + cmd - 5 : echo # PaperWM full_width
+# ctrl + alt + cmd - 6 : echo # PaperWM cycle_height
 
 # float left
-# ctrl + alt + cmd - q : echo
+# ctrl + alt + cmd - q : echo # PaperWM focus_prev
 # ctrl + alt + cmd - w : echo # arrow up
 # float right
-# ctrl + alt + cmd - e : echo
-# ctrl + alt + cmd - r : echo
+# ctrl + alt + cmd - e : echo # PaperWM focus_next
+# ctrl + alt + cmd - r : echo # PaperWM cycle_width
 f15 :                  osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - y : skhd --restart-service
@@ -80,10 +63,8 @@ ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
 ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 ctrl + alt + cmd - h : osascript ~/.osascripts/toggle-cursor.scpt
 
-# float bottom left
-# ctrl + alt + cmd - z : echo
-# float bottom right
-# ctrl + alt + cmd - x : echo
+# ctrl + alt + cmd - z : echo # PaperWM slurp_in
+# ctrl + alt + cmd - x : echo # PaperWM barf_out
 ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-cursor.scpt
 ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
@@ -93,44 +74,47 @@ ctrl + alt + cmd - o : open -a "System Settings"
 ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
 ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
 ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
+# shift + ctrl + alt + cmd - i : echo
+# shift + ctrl + alt + cmd - o : echo
+# shift + ctrl + alt + cmd - p : echo
+# shift + ctrl + alt + cmd - k : echo
+# shift + ctrl + alt + cmd - l : echo
 
 ###################################################################
-# grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
-###################################################################
 
-# ctrl + alt + cmd - up :    echo
-# ctrl + alt + cmd - down :  echo
-# ctrl + alt + cmd - left :  echo
-# ctrl + alt + cmd - right : echo
-# shift + ctrl + alt + cmd - up :    echo
-# shift + ctrl + alt + cmd - down :  echo
+#         ctrl + alt + cmd - up :    echo # PaperWM focus_up
+#         ctrl + alt + cmd - down :  echo # PaperWM focus_down
+#         ctrl + alt + cmd - left :  echo # PaperWM focus_left
+#         ctrl + alt + cmd - right : echo # PaperWM focus_right
+# shift + ctrl + alt + cmd - up :    echo # PaperWM swap_up
+# shift + ctrl + alt + cmd - down :  echo # PaperWM swap_down
 # shift + ctrl + alt + cmd - left :  echo
 # shift + ctrl + alt + cmd - right : echo
 
-# almost fullscreen
-# --grid 52:52:1:1:50:50
-# toggle float center tall
-# f19 :                    echo
-# ctrl + alt + cmd - tab : echo
+# f13 : echo
+# f14 : echo
+# f15 : echo
+# f16 : echo
+# f17 : echo
+# f18 : echo
+# f19 : echo # Emoji & Symbols
+
+#         ctrl + alt + cmd - tab : echo # PaperWM toggle_floating
 # shift + ctrl + alt + cmd - tab :  echo
 
 # 0x32 is `
+#         ctrl + alt + cmd - 0x32 : echo # Show Notification Center
 # shift + ctrl + alt + cmd - 0x32 : echo
-# ctrl + alt + cmd - 0x32 : echo # Show Notification Center
 
-# SHIFT for Arrange because SHIFT FOR TILE MAKES IT SLOW ANIMATION
-
+#         ctrl + alt + cmd - space : echo # siri
 # shift + ctrl + alt + cmd - space : echo # dictation
-# ctrl + alt + cmd - space : echo # siri
 
-###################################################################
-# grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+# SHIFT FOR TILE MAKES IT SLOW ANIMATION
 ###################################################################
 
 # f6 : echo # Turn Do Not Disturb on/off
 # f4 : echo # Show Desktop
 
-# f17 : echo # Emoji & Symbols
 # ctrl + cmd - f : echo # Exit fullscreen
 # shift + ctrl + cmd - f : echo # Enter Full Screen
 # shift + ctrl + cmd - f : echo # Toggle Full Screen
