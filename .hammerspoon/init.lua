@@ -1,3 +1,10 @@
+hs.autoLaunch(true)
+hs.automaticallyCheckForUpdates(false)
+hs.consoleOnTop(false)
+hs.dockIcon(false)
+hs.menuIcon(true)
+hs.uploadCrashData(false)
+
 WarpMouse = hs.loadSpoon("WarpMouse")
 WarpMouse:start()
 
