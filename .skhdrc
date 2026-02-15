@@ -1,12 +1,3 @@
-# float top left
-# shift + ctrl + alt + cmd - q : echo
-# shift + ctrl + alt + cmd - w : echo # arrow up
-# float top right
-# shift + ctrl + alt + cmd - e : echo
-# shift + ctrl + alt + cmd - r : echo # PaperWM reverse_cycle_width
-# float 2nd slot bottom screen
-# shift + ctrl + alt + cmd - t : echo
-# shift + ctrl + alt + cmd - y : echo
 
 # shift + ctrl + alt + cmd - a : echo # arrow left
 # shift + ctrl + alt + cmd - s : echo # arrow down
@@ -48,8 +39,12 @@ shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 # ctrl + alt + cmd - r : echo # PaperWM cycle_width
 ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
 ctrl + alt + cmd - y : skhd --restart-service
-# ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
-# ctrl + alt + cmd - y : skhd --restart-service && osascript ~/.osascripts/terminal-restart-yabai.scpt
+# shift + ctrl + alt + cmd - q : echo
+# shift + ctrl + alt + cmd - w : echo # arrow up
+# shift + ctrl + alt + cmd - e : echo
+# shift + ctrl + alt + cmd - r : echo # PaperWM reverse_cycle_width
+# shift + ctrl + alt + cmd - t : echo
+# shift + ctrl + alt + cmd - y : echo
 
 # ctrl + alt + cmd - a : echo # arrow left
 # ctrl + alt + cmd - s : echo # arrow down
