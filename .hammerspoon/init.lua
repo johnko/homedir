@@ -10,7 +10,7 @@ hs.uploadCrashData(false)
 -- --------------------------------------------------
 
 local mousehighlight = require 'mousehighlight'
-      hs.hotkey.bind( { "ctrl", "alt", "cmd" }, "`", mousehighlight.mouseHighlight)
+hs.hotkey.bind( { "ctrl", "alt", "cmd" }, "`", mousehighlight.mouseHighlight)
 
 -- --------------------------------------------------
 
@@ -70,69 +70,19 @@ PaperWM:start()
 config = require 'applications_preferred_display'
 
 local autolayout = require 'autolayout'
-      autolayout.start(config)
+autolayout.start(config)
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "m", autolayout.autoLayout)
 
-runtimeConfig = {}
-runtimeConfig.running = false
-runtimeConfig.restartedPaperWM = false
-runtimeConfig.restartedAutolayout = false
-if not runtimeConfig.num_of_screens then
-  runtimeConfig.num_of_screens = 0
-end
-
-restart_spoons = function()
-  if runtimeConfig.running == false then
-    runtimeConfig.running = true
-    logger.e("3 Called restart_spoons")
-    runtimeConfig.num_of_screens = #hs.screen.allScreens()
-    logger.ef("4 New runtimeConfig.num_of_screens: %d", runtimeConfig.num_of_screens)
-    runtimeConfig.restartedPaperWM = false
-    runtimeConfig.restartedAutolayout = false
-    PaperWM:stop()
-
-    hs.timer.doUntil(function()
-      return runtimeConfig.restartedAutolayout
-    end,
-    function()
-      logger.e("5 Called autolayout.autoLayout")
-      autolayout.autoLayout()
-      runtimeConfig.restartedAutolayout = true
-      logger.e("5 END")
-    end):start()
-
-    hs.timer.doUntil(function()
-      return runtimeConfig.restartedPaperWM
-    end,
-    function()
-      logger.e("6 Called PaperWM:start")
-      if runtimeConfig.restartedAutolayout then
-        PaperWM:start()
-        -- hs.reload()
-        runtimeConfig.restartedPaperWM = true
-        runtimeConfig.running = false
-        logger.ef("6 DONE runtimeConfig.running: %s", runtimeConfig.running)
-      end
-    end):start()
-
-  end
-end
+restart_windowmanager = require 'restart_windowmanager'
 
 hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
   logger.e("1 Called from screen.watcher")
-  logger.ef("2 runtimeConfig.num_of_screens: %d", runtimeConfig.num_of_screens)
   if activeScreenChanged == nil then
-    restart_spoons()
+    restart_windowmanager.restart()
   end
 end):start()
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "y", function()
   logger.e("1 Called from hotkey")
-  logger.ef("2 runtimeConfig.num_of_screens: %d", runtimeConfig.num_of_screens)
-  restart_spoons()
-end)
-
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "m", function()
-  logger.e("1 Called from hotkey")
-  logger.ef("2 runtimeConfig.num_of_screens: %d", runtimeConfig.num_of_screens)
-  autolayout.autoLayout()
+  restart_windowmanager.restart()
 end)
