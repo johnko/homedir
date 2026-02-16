@@ -50,7 +50,7 @@ print_cmd
 DOMAIN="com.apple.WindowManager"
 # GloballyEnabled = StageManager
 KEYVAL="
-        AppWindowGroupingBehavior = 0;
+        AppWindowGroupingBehavior = 1;
         AutoHide = 0;
         EnableTiledWindowMargins = 0;
         EnableTilingByEdgeDrag = 0;
