@@ -34,8 +34,10 @@ PaperWM:bindHotkeys({
   focus_next = { { "ctrl", "alt", "cmd" }, "e" },
 
   -- move windows around in tiled grid
-  swap_left  = { { "ctrl", "alt", "cmd", "shift" }, "q" },
-  swap_right = { { "ctrl", "alt", "cmd", "shift" }, "e" },
+  swap_column_left  = { { "ctrl", "alt", "cmd", "shift" }, "q" },
+  swap_column_right = { { "ctrl", "alt", "cmd", "shift" }, "e" },
+  swap_left  = { { "ctrl", "alt", "cmd", "shift" }, "left" },
+  swap_right = { { "ctrl", "alt", "cmd", "shift" }, "right" },
   swap_up    = { { "ctrl", "alt", "cmd", "shift" }, "up" },
   swap_down  = { { "ctrl", "alt", "cmd", "shift" }, "down" },
 
