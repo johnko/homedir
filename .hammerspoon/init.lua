@@ -106,17 +106,17 @@ config.applications = {
   },
 
   ['Crunchyroll'] = {
-    bundleID = 'com.google.Chrome.app.hjlhbeffadgkonmpnblkfmhckmocohah'
+    bundleID = 'com.google.Chrome.app.hjlhbeffadgkonmpnblkfmhckmocohah',
     preferred_display = config.screen.bottom_right,
     tags = {'#entertain'}
   },
   ['Netflix'] = {
-    bundleID = 'com.google.Chrome.app.eppojlglocelodeimnohnlnionkobfln'
+    bundleID = 'com.google.Chrome.app.eppojlglocelodeimnohnlnionkobfln',
     preferred_display = config.screen.bottom_right,
     tags = {'#entertain'}
   },
   ['Xbox'] = {
-    bundleID = 'com.google.Chrome.app.chcecgcbjkilfgeccdhoeaillkophnhg'
+    bundleID = 'com.google.Chrome.app.chcecgcbjkilfgeccdhoeaillkophnhg',
     preferred_display = config.screen.bottom_right,
     tags = {'#entertain'}
   },
@@ -153,12 +153,12 @@ config.applications = {
   },
 
   ['Keychron'] = {
-    bundleID = 'com.google.Chrome.app.cbfedpnlilnlbdcikokpfoibmlbghlhg'
+    bundleID = 'com.google.Chrome.app.cbfedpnlilnlbdcikokpfoibmlbghlhg',
     preferred_display = config.screen.bottom_left,
     tags = {'#config'}
   },
   ['NuphyIO'] = {
-    bundleID = 'com.google.Chrome.app.opaefnjafkemdihlmdiocmmmmdkhgjfg'
+    bundleID = 'com.google.Chrome.app.opaefnjafkemdihlmdiocmmmmdkhgjfg',
     preferred_display = config.screen.bottom_left,
     tags = {'#config'}
   }
