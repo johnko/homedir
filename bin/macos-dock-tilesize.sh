@@ -48,6 +48,7 @@ KEYVAL="
 print_cmd
 
 DOMAIN="com.apple.WindowManager"
+# GloballyEnabled = StageManager
 KEYVAL="
         AppWindowGroupingBehavior = 0;
         AutoHide = 0;
@@ -55,6 +56,8 @@ KEYVAL="
         EnableTilingByEdgeDrag = 0;
         EnableTilingOptionAccelerator = 0;
         EnableTopTilingByEdgeDrag = 0;
+        GloballyEnabled = 1;
+        GloballyEnabledEver = 1;
         HideDesktop = 1;
         StageManagerHideWidgets = 0;
         StandardHideDesktopIcons = 1;
