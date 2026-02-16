@@ -17,7 +17,6 @@ yabai -m rule --add app="^(Find My)$" manage=on
 yabai -m rule --add app="^(Finder)$" manage=on
 yabai -m rule --add app="^(GitHub)$" manage=on
 yabai -m rule --add app="^(Gmail)$" manage=on
-yabai -m rule --add app="^(Google Chrome)$" manage=on
 yabai -m rule --add app="^(Google Drive)$" manage=on
 yabai -m rule --add app="^(Home)$" manage=on
 yabai -m rule --add app="^(Instagram)$" manage=on
@@ -33,7 +32,6 @@ yabai -m rule --add app="^(Signal)$" manage=on
 yabai -m rule --add app="^(Slack)$" manage=on
 yabai -m rule --add app="^(Stocks)$" manage=on
 yabai -m rule --add app="^(System Information)$" manage=on
-yabai -m rule --add app="^(System Preferences|System Settings)$" manage=on
 yabai -m rule --add app="^(TextEdit)$" manage=on
 yabai -m rule --add app="^(Voice Memos)$" manage=on
 yabai -m rule --add app="^(Weather)$" manage=on
@@ -62,6 +60,7 @@ yabai -m rule --add app="^(Books)$" manage=off grid=1:4:1:0:2:1
 yabai -m rule --add app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off grid=1:4:1:0:2:1
 yabai -m rule --add app="^(Brave Browser)$" title="^.*( Tab).*$" manage=on
 yabai -m rule --add app="^(Preview)$" manage=off grid=1:4:1:0:2:1
+yabai -m rule --add app="^(System Preferences|System Settings)$" manage=off grid=1:4:1:0:2:1
 
 # float middle center quarter grid=4:4:1:1:2:2
 yabai -m rule --add app="^(1Password)$" manage=off grid=4:4:1:1:2:2
@@ -78,6 +77,10 @@ yabai -m rule --add app="^(UTM)$" manage=off grid=2:4:0:1:1:1
 
 # float bottom right half screen grid=2:4:2:1:2:1
 yabai -m rule --add app="^(Netiquette)$" manage=off grid=2:4:2:1:2:1
+
+# float left half screen grid=1:2:0:0:1:1
+yabai -m rule --add app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off grid=1:4:1:0:2:1
+yabai -m rule --add app="^(Google Chrome)$" title="^.*( Tab).*$" manage=on
 
 # float right half screen grid=1:2:1:0:1:1
 yabai -m rule --add app="^(Discord)$" manage=off grid=1:2:1:0:1:1
