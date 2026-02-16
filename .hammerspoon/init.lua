@@ -9,8 +9,15 @@ hs.uploadCrashData(false)
 
 -- --------------------------------------------------
 
+local mousehighlight = require 'mousehighlight'
+      hs.hotkey.bind( { "ctrl", "alt", "cmd" }, "`", mousehighlight.mouseHighlight)
+
+-- --------------------------------------------------
+
 WarpMouse = hs.loadSpoon("WarpMouse")
 WarpMouse:start()
+
+-- --------------------------------------------------
 
 PaperWM = hs.loadSpoon("PaperWM")
 PaperWM.external_bar = { bottom = 180 }
