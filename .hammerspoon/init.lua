@@ -73,6 +73,11 @@ config.applications = {
     preferred_display = 3,
     tags = {'#games'}
   },
+  ['Terminal'] = {
+    bundleID = 'com.apple.Terminal',
+    preferred_display = 2,
+    tags = {'#coding'}
+  },
   ['Visual Studio Code'] = {
     bundleID = 'com.microsoft.VSCode',
     preferred_display = 2,
@@ -103,45 +108,67 @@ config.applications = {
 local autolayout = require 'autolayout'
       autolayout.start(config)
 
-if not num_of_screens then
-  num_of_screens = 0
+runtimeConfig = {}
+runtimeConfig.running = false
+runtimeConfig.restartedPaperWM = false
+runtimeConfig.restartedAutolayout = false
+if not runtimeConfig.num_of_screens then
+  runtimeConfig.num_of_screens = 0
 end
-logger.ef("0 num_of_screens: %d", num_of_screens)
 
 restart_spoons = function()
-  logger.e("3 Called restart_spoons")
-  num_of_screens = #hs.screen.allScreens()
-  logger.ef("4 New num_of_screens: %d", num_of_screens)
-  restarted = false
-  PaperWM:stop()
-  for _, seconds in ipairs({1, 2, 3, 4, 5, 6}) do
-    if seconds < 4 then
-      hs.timer.doAfter(seconds, function()
-        logger.ef("5 Called autolayout.autoLayout %d", seconds)
-        autolayout.autoLayout()
-      end)
-    else
-      hs.timer.doAfter(seconds, function()
-        if restarted ~= true then
-          logger.ef("6 Called PaperWM:start %d", seconds)
-          PaperWM:start()
-          -- hs.reload()
-        end
-      end)
-    end
+  if runtimeConfig.running == false then
+    runtimeConfig.running = true
+    logger.e("3 Called restart_spoons")
+    runtimeConfig.num_of_screens = #hs.screen.allScreens()
+    logger.ef("4 New runtimeConfig.num_of_screens: %d", runtimeConfig.num_of_screens)
+    runtimeConfig.restartedPaperWM = false
+    runtimeConfig.restartedAutolayout = false
+    PaperWM:stop()
+
+    hs.timer.doUntil(function()
+      return runtimeConfig.restartedAutolayout
+    end,
+    function()
+      logger.e("5 Called autolayout.autoLayout")
+      autolayout.autoLayout()
+      runtimeConfig.restartedAutolayout = true
+      logger.e("5 END")
+    end):start()
+
+    hs.timer.doUntil(function()
+      return runtimeConfig.restartedPaperWM
+    end,
+    function()
+      logger.e("6 Called PaperWM:start")
+      if runtimeConfig.restartedAutolayout then
+        PaperWM:start()
+        -- hs.reload()
+        runtimeConfig.restartedPaperWM = true
+        runtimeConfig.running = false
+        logger.ef("6 DONE runtimeConfig.running: %s", runtimeConfig.running)
+      end
+    end):start()
+
   end
 end
 
 hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
   logger.e("1 Called from screen.watcher")
-  logger.ef("2 num_of_screens: %d", num_of_screens)
-  if activeScreenChanged ~= true then
+  logger.ef("2 runtimeConfig.num_of_screens: %d", runtimeConfig.num_of_screens)
+  if activeScreenChanged == nil then
     restart_spoons()
   end
 end):start()
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "y", function()
   logger.e("1 Called from hotkey")
-  logger.ef("2 num_of_screens: %d", num_of_screens)
+  logger.ef("2 runtimeConfig.num_of_screens: %d", runtimeConfig.num_of_screens)
   restart_spoons()
+end)
+
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "m", function()
+  logger.e("1 Called from hotkey")
+  logger.ef("2 runtimeConfig.num_of_screens: %d", runtimeConfig.num_of_screens)
+  autolayout.autoLayout()
 end)
