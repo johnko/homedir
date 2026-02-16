@@ -70,10 +70,25 @@ config.applications = {
     bundleID = 'org.mozilla.firefox',
     preferred_display = 1
   },
-  ['Discord'] = {
-    bundleID = 'com.hnc.Discord',
-    preferred_display = 3,
-    tags = {'#games'}
+  ['Google Calendar'] = {
+    bundleID = 'com.google.Chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep',
+    preferred_display = 1,
+    tags = {'#collab'}
+  },
+  ['Podman Desktop'] = {
+    bundleID = 'io.podmandesktop.PodmanDesktop',
+    preferred_display = 1,
+    tags = {'#coding'}
+  },
+  ['Slack'] = {
+    bundleID = 'com.tinyspeck.slackmacgap',
+    preferred_display = 1,
+    tags = {'#comms'}
+  },
+
+  ['Google Chrome'] = {
+    bundleID = 'com.google.Chrome',
+    preferred_display = 2
   },
   ['Terminal'] = {
     bundleID = 'com.apple.Terminal',
@@ -85,25 +100,26 @@ config.applications = {
     preferred_display = 2,
     tags = {'#coding'}
   },
+
+  ['Discord'] = {
+    bundleID = 'com.hnc.Discord',
+    preferred_display = 3,
+    tags = {'#games'}
+  },
   ['Line'] = {
     bundleID = 'jp.naver.line.mac',
     preferred_display = 3,
-    tags = {'#communication'}
+    tags = {'#comms'}
   },
   ['Messages'] = {
     bundleID = 'com.apple.MobileSMS',
     preferred_display = 3,
-    tags = {'#communication'}
+    tags = {'#comms'}
   },
   ['Signal'] = {
     bundleID = 'org.whispersystems.signal-desktop',
     preferred_display = 3,
-    tags = {'#communication'}
-  },
-  ['Slack'] = {
-    bundleID = 'com.tinyspeck.slackmacgap',
-    preferred_display = 1,
-    tags = {'#communication'}
+    tags = {'#comms'}
   }
 }
 
