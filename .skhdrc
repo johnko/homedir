@@ -1,8 +1,8 @@
 ########## Numbers #########################################################
 
-#         ctrl + alt + cmd - 1 : echo
+#         ctrl + alt + cmd - 1 : # macOS space left
 # shift + ctrl + alt + cmd - 1 : echo
-#         ctrl + alt + cmd - 2 : echo
+#         ctrl + alt + cmd - 2 : # macOS space right
 # shift + ctrl + alt + cmd - 2 : echo
           ctrl + alt + cmd - 3 : open -a "Mission Control"
 # shift + ctrl + alt + cmd - 3 : echo
@@ -105,21 +105,24 @@
 
 # SHIFT FOR TILE MAKES IT SLOW ANIMATION
 
-#  f4 : # Show Desktop
-#  f6 : # Turn Do Not Disturb on/off
-# f19 : # Emoji & Symbols
+#  f4 : # macOS Show Desktop
+#  f6 : # macOS Turn Do Not Disturb on/off
+# f19 : # macOS Emoji & Symbols
+
+#         ctrl + alt + cmd - 1 : # macOS space left
+#         ctrl + alt + cmd - 2 : # macOS space right
 
 # 0x32 is `
-#         ctrl + alt + cmd - 0x32 : # Show Notification Center
+#         ctrl + alt + cmd - 0x32 : # macOS Show Notification Center
 
-#         ctrl + alt + cmd - space : # siri
-# shift + ctrl + alt + cmd - space : # dictation
+#         ctrl + alt + cmd - space : # macOS siri
+# shift + ctrl + alt + cmd - space : # macOS dictation
 
-#         ctrl + cmd - f : # Exit fullscreen
-# shift + ctrl + cmd - f : # Enter Full Screen
-# shift + ctrl + cmd - f : # Toggle Full Screen
+#         ctrl + cmd - f : # macOS Exit fullscreen
+# shift + ctrl + cmd - f : # macOS Enter Full Screen
+# shift + ctrl + cmd - f : # macOS Toggle Full Screen
 
-# shift + ctrl + alt + cmd - u : # Email Link
-# shift + ctrl + alt + cmd - u : # Secure Keyboard Entry
-# shift + ctrl + alt + cmd - u : # Finder.app, Name
-# shift + ctrl + alt + cmd - u : # Finder.app, Kind
+# shift + ctrl + alt + cmd - u : # macOS Email Link
+# shift + ctrl + alt + cmd - u : # macOS Secure Keyboard Entry
+# shift + ctrl + alt + cmd - u : # macOS Finder.app, Name
+# shift + ctrl + alt + cmd - u : # macOS Finder.app, Kind
