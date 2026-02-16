@@ -79,8 +79,8 @@
 #         ctrl + alt + cmd - right : # PaperWM focus_right
 # shift + ctrl + alt + cmd - up :    # PaperWM swap_up
 # shift + ctrl + alt + cmd - down :  # PaperWM swap_down
-# shift + ctrl + alt + cmd - left :  echo
-# shift + ctrl + alt + cmd - right : echo
+# shift + ctrl + alt + cmd - left :  # PaperWM swap_column_left
+# shift + ctrl + alt + cmd - right : # PaperWM swap_column_right
 
 ########## Group Function Keys #########################################################
 
