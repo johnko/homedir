@@ -31,8 +31,8 @@ mousehighlight.drawCircle = function(mousepoint, index)
   mousehighlight.mouseCircle[index]:setFill(false)
   mousehighlight.mouseCircle[index]:setStrokeWidth(5)
   mousehighlight.mouseCircle[index]:show()
-  -- Set a timer to delete the circle after 2 seconds
-  mousehighlight.mouseCircleTimer[index] = hs.timer.doAfter(2, function()
+  -- Set a timer to delete the circle after 1 second
+  mousehighlight.mouseCircleTimer[index] = hs.timer.doAfter(1, function()
     mousehighlight.mouseCircle[index]:delete()
     mousehighlight.mouseCircle[index] = nil
   end)
