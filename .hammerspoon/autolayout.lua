@@ -28,6 +28,8 @@ local autolayout = {}
 
 autolayout.num_of_screens = 0
 
+autolayout.logger = hs.logger.new("autolayout")
+
 -- if not using headspace
 autolayout.config = {}
 
@@ -45,14 +47,19 @@ autolayout.autoLayout = function()
   for _, app_config in pairs(autolayout.config.applications) do
     -- if we have a preferred display
     if app_config.preferred_display ~= nil then
+
+      autolayout.logger.ef("handling windows for %s", app_config.bundleID)
+
       application = hs.application.find(app_config.bundleID)
 
-      if application ~= nil and application:mainWindow() ~= nil then
-        application
-        :mainWindow()
-        :moveToScreen(autolayout.target_display(app_config.preferred_display), true, true, 0) -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
-        -- :moveToUnit(hs.layout.maximized)
+      -- Handle apps with multiple windows
+      if application ~= nil then
+        for i, window in pairs(application:visibleWindows()) do
+          -- autolayout.logger.ef("looping %d, %s", i, window:title())
+          window:moveToScreen(autolayout.target_display(app_config.preferred_display), true, true, 0) -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
+        end
       end
+
     end
   end
 end
@@ -63,14 +70,6 @@ autolayout.start = function(config_table)
   if (module) then
     module.config = autolayout.config
   end
-
-  -- Commented out hs.screen.watcher because i want specific order
-  -- hs.screen.watcher.new(function()
-  --   if num_of_screens ~= #hs.screen.allScreens() then
-  --     autolayout.autoLayout()
-  --     num_of_screens = #hs.screen.allScreens()
-  --   end
-  -- end):start()
 end
 
 return autolayout
