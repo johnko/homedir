@@ -6,9 +6,9 @@
 # shift + ctrl + alt + cmd - 2 : echo
           ctrl + alt + cmd - 3 : open -a "Mission Control"
 # shift + ctrl + alt + cmd - 3 : echo
-          ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1 # Show Desktop
+          ctrl + alt + cmd - 4 : open -a "Mission Control" --args 2 # Application Expose
 # shift + ctrl + alt + cmd - 4 : echo
-          ctrl + alt + cmd - 5 : open -a "Mission Control" --args 2 # Application Expose
+          ctrl + alt + cmd - 5 : open -a "Mission Control" --args 1 # Show Desktop
   shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
 #         ctrl + alt + cmd - 6 : # macOS Toggle StageManager on/off
   shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
