@@ -26,7 +26,7 @@
           ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
 # shift + ctrl + alt + cmd - t : echo
 #         ctrl + alt + cmd - y : # PaperWM restart_spoons
-  shift + ctrl + alt + cmd - y : skhd --restart-service
+  shift + ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
 
 ########## Row A #########################################################
 
