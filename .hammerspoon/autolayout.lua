@@ -64,12 +64,13 @@ autolayout.start = function(config_table)
     module.config = autolayout.config
   end
 
-  hs.screen.watcher.new(function()
-    if num_of_screens ~= #hs.screen.allScreens() then
-      autolayout.autoLayout()
-      num_of_screens = #hs.screen.allScreens()
-    end
-  end):start()
+  -- Commented out hs.screen.watcher bcause i want specific order
+  -- hs.screen.watcher.new(function()
+  --   if num_of_screens ~= #hs.screen.allScreens() then
+  --     autolayout.autoLayout()
+  --     num_of_screens = #hs.screen.allScreens()
+  --   end
+  -- end):start()
 end
 
 return autolayout
