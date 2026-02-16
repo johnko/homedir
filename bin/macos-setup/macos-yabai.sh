@@ -11,7 +11,11 @@ else
   mkdir -p ~/.local/man
   git clone --depth=1 https://github.com/johnko/yabai.git /tmp/yabai.git
   pushd /tmp/yabai.git
-  sh scripts/install.sh ~/bin ~/.local/man
+  make install
+  codesign -fs - bin/yabai
+  cp -a bin/yabai ~/bin/yabai
+  mkdir -p ~/.local/man
+  cp doc/yabai.1 ~/.local/man/
   popd
   rm -fr /tmp/yabai.git
   set +x
