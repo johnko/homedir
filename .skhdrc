@@ -40,7 +40,7 @@
 # shift + ctrl + alt + cmd - f : echo
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 # shift + ctrl + alt + cmd - g : echo
-          ctrl + alt + cmd - h : osascript ~/.osascripts/toggle-cursor.scpt
+#         ctrl + alt + cmd - h : echo
 # shift + ctrl + alt + cmd - h : echo
 
 ########## Row Z #########################################################
