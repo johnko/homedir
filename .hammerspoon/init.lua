@@ -109,10 +109,12 @@ end
 logger.ef("0 num_of_screens: %d", num_of_screens)
 
 restart_spoons = function()
-  logger.e("4 Called restart_spoons")
+  logger.e("3 Called restart_spoons")
   num_of_screens = #hs.screen.allScreens()
+  logger.ef("4 New num_of_screens: %d", num_of_screens)
+  restarted = false
   PaperWM:stop()
-  for _, seconds in ipairs({1, 2, 4}) do
+  for _, seconds in ipairs({1, 2, 3, 4, 5, 6}) do
     if seconds < 4 then
       hs.timer.doAfter(seconds, function()
         logger.ef("5 Called autolayout.autoLayout %d", seconds)
@@ -120,20 +122,20 @@ restart_spoons = function()
       end)
     else
       hs.timer.doAfter(seconds, function()
-        logger.ef("6 Called PaperWM:start %d", seconds)
-        PaperWM:start()
-        -- hs.reload()
+        if restarted ~= true then
+          logger.ef("6 Called PaperWM:start %d", seconds)
+          PaperWM:start()
+          -- hs.reload()
+        end
       end)
     end
   end
 end
 
-hs.screen.watcher.newWithActiveScreen(function()
+hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
   logger.e("1 Called from screen.watcher")
   logger.ef("2 num_of_screens: %d", num_of_screens)
-  if num_of_screens ~= #hs.screen.allScreens() then
-    num_of_screens = #hs.screen.allScreens()
-    logger.ef("3 New num_of_screens: %d", num_of_screens)
+  if activeScreenChanged ~= true then
     restart_spoons()
   end
 end):start()
