@@ -100,6 +100,7 @@ KEYVAL="
         ShowDate = 0;
         ShowDayOfWeek = 1;
         ShowSeconds = 0;
+        TimeAnnouncementsEnabled = 0;
 "
 print_cmd
 
