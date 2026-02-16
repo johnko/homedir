@@ -209,7 +209,7 @@
 	<key>ShowRepresentedURLPathInTitle</key>
 	<true/>
 	<key>columnCount</key>
-	<integer>113</integer>
+	<integer>129</integer>
 	<key>name</key>
 	<string>custom_light</string>
 	<key>shellExitAction</key>
