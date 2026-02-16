@@ -65,6 +65,9 @@
       "type": "standard"
     }
   },
+  "15": {
+    "enabled": false
+  },
   "163": {
     "enabled": true,
     "value": {
@@ -87,6 +90,9 @@
       "type": "standard"
     }
   },
+  "17": {
+    "enabled": false
+  },
   "175": {
     "enabled": true,
     "value": {
@@ -108,6 +114,12 @@
       ],
       "type": "SAE1.0"
     }
+  },
+  "179": {
+    "enabled": false
+  },
+  "19": {
+    "enabled": false
   },
   "190": {
     "enabled": false,
@@ -163,6 +175,9 @@
       ],
       "type": "standard"
     }
+  },
+  "23": {
+    "enabled": false
   },
   "233": {
     "enabled": true,
@@ -417,6 +432,28 @@
       "type": "standard"
     }
   },
+  "32": {
+    "enabled": true,
+    "value": {
+      "parameters": [
+        65535,
+        126,
+        8650752
+      ],
+      "type": "standard"
+    }
+  },
+  "34": {
+    "enabled": true,
+    "value": {
+      "parameters": [
+        65535,
+        126,
+        8781824
+      ],
+      "type": "standard"
+    }
+  },
   "36": {
     "enabled": true,
     "value": {
@@ -481,6 +518,17 @@
         131072
       ],
       "type": "button"
+    }
+  },
+  "52": {
+    "enabled": true,
+    "value": {
+      "parameters": [
+        100,
+        2,
+        1572864
+      ],
+      "type": "standard"
     }
   },
   "53": {
