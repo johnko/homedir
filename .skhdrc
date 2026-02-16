@@ -6,11 +6,11 @@
 # shift + ctrl + alt + cmd - 2 : echo
           ctrl + alt + cmd - 3 : open -a "Mission Control"
 # shift + ctrl + alt + cmd - 3 : echo
-          ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
+          ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1 # Show Desktop
 # shift + ctrl + alt + cmd - 4 : echo
-#         ctrl + alt + cmd - 5 : # PaperWM center_window
+          ctrl + alt + cmd - 5 : open -a "Mission Control" --args 2 # Application Expose
   shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
-#         ctrl + alt + cmd - 6 : # PaperWM cycle_height
+#         ctrl + alt + cmd - 6 : # macOS Toggle StageManager on/off
   shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 
 ########## Row Q #########################################################
@@ -30,9 +30,9 @@
 
 ########## Row A #########################################################
 
-#         ctrl + alt + cmd - a : # arrow left
+          ctrl + alt + cmd - a : osascript ~/.osascripts/terminal-toggle-audio.scpt
 # shift + ctrl + alt + cmd - a : # arrow left
-#         ctrl + alt + cmd - s : # arrow down
+          ctrl + alt + cmd - s : osascript ~/.osascripts/terminal-vol.scpt
 # shift + ctrl + alt + cmd - s : # arrow down
 #         ctrl + alt + cmd - d : # arrow right
 # shift + ctrl + alt + cmd - d : # arrow right
@@ -50,9 +50,9 @@
 #         ctrl + alt + cmd - x : # PaperWM barf_out
 # shift + ctrl + alt + cmd - x : echo
 #         ctrl + alt + cmd - c : echo
-  shift + ctrl + alt + cmd - c : osascript ~/.osascripts/terminal-toggle-audio.scpt
+# shift + ctrl + alt + cmd - c : echo
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
-  shift + ctrl + alt + cmd - v : osascript ~/.osascripts/terminal-vol.scpt
+# shift + ctrl + alt + cmd - v : echo
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
   shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
 #         ctrl + alt + cmd - n : # Rectangle move window to Next Display
@@ -112,6 +112,7 @@
 
 #         ctrl + alt + cmd - 1 : # macOS space left
 #         ctrl + alt + cmd - 2 : # macOS space right
+#         ctrl + alt + cmd - 6 : # macOS Toggle StageManager on/off
 
 # 0x32 is `
 #         ctrl + alt + cmd - 0x32 : # macOS Show Notification Center
