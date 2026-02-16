@@ -67,12 +67,14 @@ KEYVAL='
         enterMissionControlByTopWindowDrag = 0;
         "expose-group-apps" = 0;
         largesize = 64;
+        launchanim = 0;
         magnification = 1;
         mineffect = scale;
-        "minimize-to-application" = 1;
+        "minimize-to-application" = 0;
         "mru-spaces" = 0;
-        orientation = right;
+        orientation = left;
         showAppExposeGestureEnabled = 0;
+        showMissionControlGestureEnabled = 1;
         tilesize = 48;
 '
 print_cmd
