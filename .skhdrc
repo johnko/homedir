@@ -8,7 +8,7 @@
 # shift + ctrl + alt + cmd - 3 : echo
           ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
 # shift + ctrl + alt + cmd - 4 : echo
-#         ctrl + alt + cmd - 5 : # PaperWM full_width
+#         ctrl + alt + cmd - 5 : # PaperWM center_window
   shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
 #         ctrl + alt + cmd - 6 : # PaperWM cycle_height
   shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
@@ -96,7 +96,7 @@
 ########## Left Group Convenient Keys #########################################################
 
 #         ctrl + alt + cmd - tab : # PaperWM toggle_floating
-# shift + ctrl + alt + cmd - tab : # PaperWM center_window
+# shift + ctrl + alt + cmd - tab : echo
 
 # 0x32 is `
 # shift + ctrl + alt + cmd - 0x32 : echo

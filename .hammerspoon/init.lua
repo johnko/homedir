@@ -25,7 +25,7 @@ PaperWM.scroll_gain = 100.0
 PaperWM.scroll_window = { "cmd" }
 PaperWM.window_gap = 15
 -- PaperWM.window_ratios = { 1/4, 1/3, 2/4, 2/3, 3/4 }
-PaperWM.window_ratios = { 1/4, 2/4, 3/4 }
+PaperWM.window_ratios = { 2/9, 3/10, 4/9, 6/9, 9/10 }
 -- number of fingers to detect a horizontal swipe, set to 0 to disable (the default)
 PaperWM.swipe_fingers = 3
 PaperWM:bindHotkeys({
@@ -49,8 +49,7 @@ PaperWM:bindHotkeys({
   swap_down  = { { "ctrl", "alt", "cmd", "shift" }, "down" },
 
   -- position and resize focused window
-  center_window        = { { "ctrl", "alt", "cmd", "shift" }, "tab" },
-  full_width           = { { "ctrl", "alt", "cmd" }, "5" },
+  center_window        = { { "ctrl", "alt", "cmd" }, "5" },
   cycle_width          = { { "ctrl", "alt", "cmd" }, "r" },
   reverse_cycle_width  = { { "ctrl", "alt", "cmd", "shift" }, "r" },
   cycle_height         = { { "ctrl", "alt", "cmd" }, "6" },
