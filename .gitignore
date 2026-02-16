@@ -100,6 +100,7 @@
 /.zoomus/
 /.zsh_sessions/
 /Applications/
+/bin/borders
 /bin/skhd
 /bin/utmctl
 /bin/yabai
