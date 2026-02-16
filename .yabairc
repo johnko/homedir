@@ -95,8 +95,8 @@ yabai -m rule --add app="^(iPhone Mirroring)$" manage=off
 
 yabai -m config window_gap 15
 yabai -m config window_origin_display default
-yabai -m config window_placement first_child
-yabai -m config window_insertion_point first
+yabai -m config window_placement second_child
+yabai -m config window_insertion_point last
 yabai -m config split_type vertical
 yabai -m config auto_balance on
 
