@@ -49,7 +49,7 @@
 # shift + ctrl + alt + cmd - z : echo
 #         ctrl + alt + cmd - x : # PaperWM barf_out
 # shift + ctrl + alt + cmd - x : echo
-          ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-cursor.scpt
+#         ctrl + alt + cmd - c : echo
   shift + ctrl + alt + cmd - c : osascript ~/.osascripts/terminal-toggle-audio.scpt
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
   shift + ctrl + alt + cmd - v : osascript ~/.osascripts/terminal-vol.scpt
