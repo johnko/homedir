@@ -4,7 +4,7 @@ restart_windowmanager.runtimeConfig.running = false
 restart_windowmanager.runtimeConfig.restartedPaperWM = false
 restart_windowmanager.runtimeConfig.restartedAutolayout = false
 
-restart_windowmanager.restart = function()
+restart_windowmanager.restart = function(autolayout, PaperWM)
   if restart_windowmanager.runtimeConfig.running == false then
     restart_windowmanager.runtimeConfig.running = true
     logger.e("2 Called restart_windowmanager.restart")

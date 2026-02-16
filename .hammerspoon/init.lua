@@ -78,11 +78,11 @@ restart_windowmanager = require 'restart_windowmanager'
 hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
   logger.e("1 Called from screen.watcher")
   if activeScreenChanged == nil then
-    restart_windowmanager.restart()
+    restart_windowmanager.restart(autolayout, PaperWM)
   end
 end):start()
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "y", function()
   logger.e("1 Called from hotkey")
-  restart_windowmanager.restart()
+  restart_windowmanager.restart(autolayout, PaperWM)
 end)
