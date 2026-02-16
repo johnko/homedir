@@ -126,6 +126,11 @@ config.applications = {
     preferred_display = config.screen.bottom_left,
     tags = {'#entertain'}
   },
+  ['Instagram'] = {
+    bundleID = 'com.google.Chrome.app.akpamiohjfcnimfljfndmaldlcfphjmp',
+    preferred_display = config.screen.bottom_left,
+    tags = {'#comms'}
+  },
   ['Line'] = {
     bundleID = 'jp.naver.line.mac',
     preferred_display = config.screen.bottom_left,
