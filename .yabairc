@@ -7,26 +7,39 @@
 yabai -m rule --add app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off grid=1:4:1:0:2:1
 yabai -m rule --add app="^(Brave Browser)$" title="^.*( Tab).*$" manage=on
 
+yabai -m rule --add app="^(Cursor)$" manage=off grid=1:8:0:0:6:1 #100:10:0:0:6:91
+yabai -m rule --add app="^(Terminal)$" manage=off grid=1:8:0:0:2:1 #100:10:0:0:3:91
+yabai -m rule --add app="^(Code)$" manage=off grid=1:8:2:0:6:1 #100:10:3:0:6:91
+
+yabai -m rule --add app="^(Firefox)$" manage=off grid=100:4:3:0:1:55
+yabai -m rule --add app="^(Spotify)$" manage=off grid=100:4:3:0:1:55
+
+yabai -m rule --add app="^(Activity Monitor)$" manage=on
+yabai -m rule --add app="^(App Store)$" manage=on
 yabai -m rule --add app="^(Clock)$" manage=on
-yabai -m rule --add app="^(Gmail)$" manage=on
-yabai -m rule --add app="^(Google Chrome)$" manage=on
-yabai -m rule --add app="^(System Preferences|System Settings)$" manage=on
-
-# float tall wide 16/24 of screen for editing
-yabai -m rule --add app="^(Books|GarageBand|GIMP|iMovie|Photos)$" manage=off grid=6:12:1:1:8:5
-# float tall wide 18/24 of screen for focus
-yabai -m rule --add app="^(Xcode)$" manage=off grid=24:24:3:3:18:21
-# float tall wide 20/24 of screen for video
-yabai -m rule --add app="^(TV)$" manage=off grid=24:24:2:4:20:19
-
-# bsp
+yabai -m rule --add app="^(Contacts)$" manage=on
+yabai -m rule --add app="^(Dictionary)$" manage=on
 yabai -m rule --add app="^(Finder)$" manage=on
+yabai -m rule --add app="^(Gmail)$" manage=on
+yabai -m rule --add app="^(Google Calendar)$" manage=on
+yabai -m rule --add app="^(Google Chrome)$" manage=on
 yabai -m rule --add app="^(Instagram)$" manage=on
+yabai -m rule --add app="^(Notes)$" manage=on
+yabai -m rule --add app="^(Reminders)$" manage=on
+yabai -m rule --add app="^(Safari)$" manage=on
+yabai -m rule --add app="^(Slack)$" manage=on
+yabai -m rule --add app="^(System Preferences|System Settings)$" manage=on
+yabai -m rule --add app="^(Voice Memos)$" manage=on
+yabai -m rule --add app="^(WhatsApp.*)$" manage=om
+
+yabai -m rule --add app="^(Books|GarageBand|GIMP|iMovie|Photos)$" manage=off grid=6:12:1:1:8:5
+yabai -m rule --add app="^(Xcode)$" manage=off grid=24:24:3:3:18:21
 
 # float middle center quarter
 yabai -m rule --add app="^(1Password|FaceTime|Keychain Access|Photo Booth|QuickTime.*|TextEdit)$" manage=off grid=4:4:1:1:2:2
-# float bottom center quarter
-yabai -m rule --add app="^(Activity Monitor|App Store|Contacts|Dictionary|Voice Memos)$" manage=off grid=4:4:1:2:2:2
+
+
+
 # float bottom center 2/3
 yabai -m rule --add app="^(Calendar|Disk Utility|Find My|Home|Maps|News|Shortcuts|Stocks|System Information|Weather)$" manage=off grid=12:12:3:4:6:8
 
@@ -41,7 +54,6 @@ yabai -m rule --add app="^(UTM)$" manage=off grid=103:52:1:50:25:50
 yabai -m rule --add app="^(Netiquette)$" manage=off grid=103:52:26:50:25:50
 
 # float top middle <0.5 tall
-yabai -m rule --add app="^(Google Calendar|Notes|Reminders)$" manage=off grid=8:4:1:0:2:3
 
 # top left 1, halftall quarterwide right on vertical screen
 yabai -m rule --add app="^(LINE)$" manage=off grid=103:52:0:0:13:50
@@ -49,30 +61,9 @@ yabai -m rule --add app="^(LINE)$" manage=off grid=103:52:0:0:13:50
 yabai -m rule --add app="^(Signal)$" manage=off grid=103:52:39:0:13:50
 # bottom left 1, halftall quarterwide right on vertical screen
 yabai -m rule --add app="^(Messages)$" manage=off grid=103:52:4:50:9:50
-# bottom left 2, halftall quarterwide right on vertical screen
-yabai -m rule --add app="^(NO_APP_1)$" manage=off grid=103:52:13:50:13:50
-# bottom right 1, halftall quarterwide right on vertical screen
-yabai -m rule --add app="^(NO_APP_2)$" manage=off grid=103:52:26:50:13:50
-# bottom right 2, halftall quarterwide right on vertical screen
-yabai -m rule --add app="^(Firefox|Spotify|WhatsApp.*)$" manage=off grid=103:52:39:50:13:50
-# middle 3/4tall quarterwide right on vertical screen
-# 101:52:13:40:26:56
-# 101:52:14:40:24:56
-# 101:52:15:40:22:56
-# 101:52:16:40:20:56
-# 101:52:17:40:18:56
-# 101:52:18:40:16:56
-# 101:52:19:40:14:56
-yabai -m rule --add app="^(NO_APP_3)$" manage=off grid=103:52:19:40:14:56
 
-# float don't block widgets left
-yabai -m rule --add app="^(NO_APP_4)$" manage=off grid=103:52:5:8:23:90
-yabai -m rule --add app="^(Slack)$" manage=on
-# float don't block widgets right
-yabai -m rule --add app="^(NO_APP_5)$" manage=off grid=103:52:28:8:23:90
-yabai -m rule --add app="^(Safari)$" manage=on
 
-# right above-middle, less than halfwide
+isc# right above-middle, less than halfwide
 yabai -m rule --add app="^(Discord)$" manage=off grid=103:52:32:40:20:49
 yabai -m rule --add app="^(Netflix)$" manage=off grid=103:52:32:40:20:56
 # right above-middle, less than halfwide tall
@@ -81,29 +72,6 @@ yabai -m rule --add app="^(Crunchyroll.*)$" manage=off grid=103:52:34:18:18:80
 # bottom right <0.5 tall
 yabai -m rule --add app="^(Docker.*|Podman.*|Music|Podcasts)$" manage=off grid=8:4:1:0:2:3
 
-# Terminal specific so can swap - left 1/4 wide, 3/4 tall
-# yabai -m rule --add app="^(Terminal)$" manage=off grid=103:52:0:25:13:75
-yabai -m rule --add app="^(Terminal)$" title!="^.*(1|2|3|4|5|6|7|8|9)$" manage=on
-# bottom right 3/4 wide, 3/4 tall
-yabai -m rule --add app="^(Code)$" manage=off grid=1:52:13:0:38:1
-# bsp
-yabai -m rule --add app="^(Cursor)$" manage=on
-
-# Coding grid
-# top left
-# manage=off grid=103:52:1:0:25:50
-# top right
-# manage=off grid=103:52:26:0:25:50
-# middle center
-# manage=off grid=4:4:1:1:2:2
-# bottom left
-yabai -m rule --add app="^(Terminal)$" title="^.*(1)$" manage=off grid=103:52:0:44:5:57
-yabai -m rule --add app="^(Terminal)$" title="^.*(2)$" manage=off grid=103:52:0:50:26:50
-# yabai -m rule --add app="^(Terminal)$" title="^.*(2)$" manage=off grid=103:52:0:0:13:100
-# bottom right
-# manage=off grid=103:52:26:50:25:50
-# left/right split
-yabai -m rule --add app="^(Terminal)$" title="^.*(3|4|5|6|7|8|9)$" manage=off grid=103:52:0:0:13:100
 
 
 # float some non-resizable apps
@@ -111,31 +79,34 @@ yabai -m rule --add app="^(iPhone Mirroring)$" manage=off
 
 # default to float centered
 # cat .yabairc | grep -v grep | grep -v '^ *#' | grep app= | tr -d '!' | cut -d= -f2 | sed -e 's,manage,,' -e 's, title,,g' -e 's, $,,g' | grep -v noexist | tr -d '"^$)(' | tr '|' "\n" | sort -u | tr "\n" '|' | sed -e 's, |,|,g' -e 's,|$,,' | pbcopy
-yabai -m rule --add app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|NO_APP_1|NO_APP_2|NO_APP_3|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|TV|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off grid=8:4:1:3:2:4
+# yabai -m rule --add app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Cursor|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|NO_APP_1|NO_APP_2|NO_APP_3|NO_APP_4|NO_APP_5|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|UTM|Weather|WhatsApp.*|Xcode)$" manage=off grid=8:4:1:3:2:4
 
 yabai -m config window_origin_display default
 yabai -m config window_placement first_child
 yabai -m config window_insertion_point first
 yabai -m config split_type vertical
 yabai -m config auto_balance on
-
-# yabai -m config focus_follows_mouse autoraise
+yabai -m config window_gap 0
 
 # refresh yabai when display disconnect/reconnect
 yabai -m signal --add event=display_added action="yabai --restart-service"
 yabai -m signal --add event=display_removed action="yabai --restart-service"
 yabai -m signal --add event=display_resized action="yabai --restart-service"
 
+yabai -m config top_padding 0
+yabai -m config bottom_padding 190
+yabai -m config left_padding 0
+yabai -m config right_padding 370
+
 # apply rules on restart
 yabai -m rule --apply
 
 # now set padding to not block widgets on 4k monitor
-# it's after applying rules so that original rule gride is preserved
-yabai -m config top_padding 180
-yabai -m config bottom_padding 0
-yabai -m config left_padding 362
-yabai -m config right_padding 0
-yabai -m config window_gap 0
+# it's after applying rules so that original rule grid is preserved
+# yabai -m config top_padding 0
+# yabai -m config bottom_padding 190
+# yabai -m config left_padding 0
+# yabai -m config right_padding 370
 
 # set layout to bsp (managed), other options are float (unmanaged) or stack (layered fullscreen)
 yabai -m config layout bsp

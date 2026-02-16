@@ -19,6 +19,7 @@ WarpMouse:start()
 
 -- --------------------------------------------------
 
+PaperWM = nil
 -- PaperWM = hs.loadSpoon("PaperWM")
 -- PaperWM.external_bar = { bottom = 180 }
 -- PaperWM.scroll_gain = 100.0

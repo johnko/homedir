@@ -96,6 +96,7 @@
 ########## Left Group Convenient Keys #########################################################
 
 #         ctrl + alt + cmd - tab : # PaperWM toggle_floating
+          ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 1:4:1:0:2:1
 # shift + ctrl + alt + cmd - tab : echo
 
 # 0x32 is `

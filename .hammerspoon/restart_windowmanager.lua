@@ -10,14 +10,18 @@ restart_windowmanager.restart = function(autolayout, PaperWM)
     logger.e("2 Called restart_windowmanager.restart")
     restart_windowmanager.runtimeConfig.restartedPaperWM = false
     restart_windowmanager.runtimeConfig.restartedAutolayout = false
-    PaperWM:stop()
+    if PaperWM ~= nil then
+      PaperWM:stop()
+    end
 
     hs.timer.doUntil(function()
       return restart_windowmanager.runtimeConfig.restartedAutolayout
     end,
     function()
       logger.e("4 Called autolayout.autoLayout")
-      autolayout.autoLayout()
+      if autolayout ~= nil then
+        autolayout.autoLayout()
+      end
       restart_windowmanager.runtimeConfig.restartedAutolayout = true
       logger.e("4 END")
     end):start()
@@ -28,7 +32,9 @@ restart_windowmanager.restart = function(autolayout, PaperWM)
     function()
       logger.e("5 Called PaperWM:start")
       if restart_windowmanager.runtimeConfig.restartedAutolayout then
-        PaperWM:start()
+        if PaperWM ~= nil then
+          PaperWM:start()
+        end
         -- hs.reload()
         restart_windowmanager.runtimeConfig.restartedPaperWM = true
         restart_windowmanager.runtimeConfig.running = false
