@@ -84,6 +84,7 @@
 
 ########## Group Function Keys #########################################################
 
+   f4 : open -a "Mission Control" --args 2 # Application Expose
 # f11 : echo
 # f12 : echo
 # f13 : echo
@@ -106,7 +107,7 @@
 
 # SHIFT FOR TILE MAKES IT SLOW ANIMATION
 
-#  f4 : # macOS Show Desktop
+#  f5 : # macOS Show Desktop
 #  f6 : # macOS Turn Do Not Disturb on/off
 # f19 : # macOS Emoji & Symbols
 
