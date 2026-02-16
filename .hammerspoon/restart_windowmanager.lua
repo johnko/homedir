@@ -34,8 +34,9 @@ restart_windowmanager.restart = function(autolayout, PaperWM)
       if restart_windowmanager.runtimeConfig.restartedAutolayout then
         if PaperWM ~= nil then
           PaperWM:start()
+        else
+          hs.reload()
         end
-        -- hs.reload()
         restart_windowmanager.runtimeConfig.restartedPaperWM = true
         restart_windowmanager.runtimeConfig.running = false
         logger.e("6 DONE")

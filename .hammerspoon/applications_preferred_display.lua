@@ -1,8 +1,8 @@
 config = {}
 config.screen = {}
 config.screen.top_left = 1
-config.screen.bottom_left = 3
-config.screen.bottom_right = 2
+config.screen.bottom_left = 2
+config.screen.bottom_right = 3
 config.applications = {
   ['Brave'] = {
     bundleID = 'com.brave.Browser',
