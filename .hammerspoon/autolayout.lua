@@ -50,8 +50,8 @@ autolayout.autoLayout = function()
       if application ~= nil and application:mainWindow() ~= nil then
         application
         :mainWindow()
-        :moveToScreen(autolayout.target_display(app_config.preferred_display), false, true, 0)
-        :moveToUnit(hs.layout.maximized)
+        :moveToScreen(autolayout.target_display(app_config.preferred_display), true, true, 0) -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
+        -- :moveToUnit(hs.layout.maximized)
       end
     end
   end

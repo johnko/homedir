@@ -1,115 +1,125 @@
+########## Numbers #########################################################
 
-# shift + ctrl + alt + cmd - a : echo # arrow left
-# shift + ctrl + alt + cmd - s : echo # arrow down
-# shift + ctrl + alt + cmd - d : echo # arrow right
-# shift + ctrl + alt + cmd - f : echo
-# shift + ctrl + alt + cmd - g : echo # PaperWM center_window
-# shift + ctrl + alt + cmd - h : echo
-
-# float tall wide 20/24 of screen for video
-# shift + ctrl + alt + cmd - z : echo
-# float tall wide 18/24 of screen for focus
-# shift + ctrl + alt + cmd - x : echo
-# shift + ctrl + alt + cmd - c : echo
-shift + ctrl + alt + cmd - c : osascript ~/.osascripts/terminal-toggle-audio.scpt
-# shift + ctrl + alt + cmd - v : echo
-shift + ctrl + alt + cmd - v : osascript ~/.osascripts/terminal-vol.scpt
-# shift + ctrl + alt + cmd - b : echo
-shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
-
-
-###################################################################
-
-# ctrl + alt + cmd - 1 : echo # PaperWM swap_left
-# ctrl + alt + cmd - 2 : echo # PaperWM swap_right
-ctrl + alt + cmd - 3 : open -a "Mission Control"
-ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
-# ctrl + alt + cmd - 5 : echo # PaperWM full_width
-# ctrl + alt + cmd - 6 : echo # PaperWM cycle_height
+#         ctrl + alt + cmd - 1 : echo
 # shift + ctrl + alt + cmd - 1 : echo
+#         ctrl + alt + cmd - 2 : echo
 # shift + ctrl + alt + cmd - 2 : echo
+          ctrl + alt + cmd - 3 : open -a "Mission Control"
 # shift + ctrl + alt + cmd - 3 : echo
+          ctrl + alt + cmd - 4 : open -a "Mission Control" --args 1
 # shift + ctrl + alt + cmd - 4 : echo
-shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
-shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
+#         ctrl + alt + cmd - 5 : # PaperWM full_width
+  shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
+#         ctrl + alt + cmd - 6 : # PaperWM cycle_height
+  shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 
-# ctrl + alt + cmd - q : echo # PaperWM focus_prev
-# ctrl + alt + cmd - w : echo # arrow up
-# ctrl + alt + cmd - e : echo # PaperWM focus_next
-# ctrl + alt + cmd - r : echo # PaperWM cycle_width
-ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
-ctrl + alt + cmd - y : skhd --restart-service
-# shift + ctrl + alt + cmd - q : echo
-# shift + ctrl + alt + cmd - w : echo # arrow up
-# shift + ctrl + alt + cmd - e : echo
-# shift + ctrl + alt + cmd - r : echo # PaperWM reverse_cycle_width
+########## Row Q #########################################################
+
+#         ctrl + alt + cmd - q : # PaperWM focus_prev
+# shift + ctrl + alt + cmd - q : # PaperWM swap_left
+#         ctrl + alt + cmd - w : # arrow up
+# shift + ctrl + alt + cmd - w : # arrow up
+#         ctrl + alt + cmd - e : # PaperWM focus_next
+# shift + ctrl + alt + cmd - e : # PaperWM swap_right
+#         ctrl + alt + cmd - r : # PaperWM cycle_width
+# shift + ctrl + alt + cmd - r : # PaperWM reverse_cycle_width
+          ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
 # shift + ctrl + alt + cmd - t : echo
+          ctrl + alt + cmd - y : skhd --restart-service
 # shift + ctrl + alt + cmd - y : echo
 
-# ctrl + alt + cmd - a : echo # arrow left
-# ctrl + alt + cmd - s : echo # arrow down
-# ctrl + alt + cmd - d : echo # arrow right
-ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
-ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
-ctrl + alt + cmd - h : osascript ~/.osascripts/toggle-cursor.scpt
+########## Row A #########################################################
 
-# ctrl + alt + cmd - z : echo # PaperWM slurp_in
-# ctrl + alt + cmd - x : echo # PaperWM barf_out
-ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-cursor.scpt
-ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
-ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
+#         ctrl + alt + cmd - a : # arrow left
+# shift + ctrl + alt + cmd - a : # arrow left
+#         ctrl + alt + cmd - s : # arrow down
+# shift + ctrl + alt + cmd - s : # arrow down
+#         ctrl + alt + cmd - d : # arrow right
+# shift + ctrl + alt + cmd - d : # arrow right
+          ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
+# shift + ctrl + alt + cmd - f : echo
+          ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
+# shift + ctrl + alt + cmd - g : echo
+          ctrl + alt + cmd - h : osascript ~/.osascripts/toggle-cursor.scpt
+# shift + ctrl + alt + cmd - h : echo
 
-ctrl + alt + cmd - i : open -a "iPhone Mirroring"
-ctrl + alt + cmd - o : open -a "System Settings"
-ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
-ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
-ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
+########## Row Z #########################################################
+
+#         ctrl + alt + cmd - z : # PaperWM slurp_in
+# shift + ctrl + alt + cmd - z : echo
+#         ctrl + alt + cmd - x : # PaperWM barf_out
+# shift + ctrl + alt + cmd - x : echo
+          ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-cursor.scpt
+  shift + ctrl + alt + cmd - c : osascript ~/.osascripts/terminal-toggle-audio.scpt
+          ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
+  shift + ctrl + alt + cmd - v : osascript ~/.osascripts/terminal-vol.scpt
+          ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
+  shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
+#         ctrl + alt + cmd - n : # Rectangle move window to Next Display
+# shift + ctrl + alt + cmd - n : echo
+
+########## Right Group I #########################################################
+
+          ctrl + alt + cmd - i : open -a "iPhone Mirroring"
 # shift + ctrl + alt + cmd - i : echo
+          ctrl + alt + cmd - o : open -a "System Settings"
 # shift + ctrl + alt + cmd - o : echo
+          ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
 # shift + ctrl + alt + cmd - p : echo
+          ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
 # shift + ctrl + alt + cmd - k : echo
+          ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
 # shift + ctrl + alt + cmd - l : echo
 
-###################################################################
+########## Right Group Arrows #########################################################
 
-#         ctrl + alt + cmd - up :    echo # PaperWM focus_up
-#         ctrl + alt + cmd - down :  echo # PaperWM focus_down
-#         ctrl + alt + cmd - left :  echo # PaperWM focus_left
-#         ctrl + alt + cmd - right : echo # PaperWM focus_right
-# shift + ctrl + alt + cmd - up :    echo # PaperWM swap_up
-# shift + ctrl + alt + cmd - down :  echo # PaperWM swap_down
+#         ctrl + alt + cmd - up :    # PaperWM focus_up
+#         ctrl + alt + cmd - down :  # PaperWM focus_down
+#         ctrl + alt + cmd - left :  # PaperWM focus_left
+#         ctrl + alt + cmd - right : # PaperWM focus_right
+# shift + ctrl + alt + cmd - up :    # PaperWM swap_up
+# shift + ctrl + alt + cmd - down :  # PaperWM swap_down
 # shift + ctrl + alt + cmd - left :  echo
 # shift + ctrl + alt + cmd - right : echo
 
+########## Group Function Keys #########################################################
+
+# f11 : echo
+# f12 : echo
 # f13 : echo
 # f14 : echo
 # f15 : echo
 # f16 : echo
 # f17 : echo
 # f18 : echo
-# f19 : echo # Emoji & Symbols
 
-#         ctrl + alt + cmd - tab : echo # PaperWM toggle_floating
-# shift + ctrl + alt + cmd - tab :  echo
+########## Left Group Convenient Keys #########################################################
+
+#         ctrl + alt + cmd - tab : # PaperWM toggle_floating
+# shift + ctrl + alt + cmd - tab : # PaperWM center_window
 
 # 0x32 is `
-#         ctrl + alt + cmd - 0x32 : echo # Show Notification Center
 # shift + ctrl + alt + cmd - 0x32 : echo
 
-#         ctrl + alt + cmd - space : echo # siri
-# shift + ctrl + alt + cmd - space : echo # dictation
+########## MacOS Custom Keyboard Shortcuts #########################################################
 
 # SHIFT FOR TILE MAKES IT SLOW ANIMATION
-###################################################################
 
-# f6 : echo # Turn Do Not Disturb on/off
-# f4 : echo # Show Desktop
+#  f4 : # Show Desktop
+#  f6 : # Turn Do Not Disturb on/off
+# f19 : # Emoji & Symbols
 
-# ctrl + cmd - f : echo # Exit fullscreen
-# shift + ctrl + cmd - f : echo # Enter Full Screen
-# shift + ctrl + cmd - f : echo # Toggle Full Screen
+# 0x32 is `
+#         ctrl + alt + cmd - 0x32 : # Show Notification Center
 
-# shift + ctrl + alt + cmd - u : echo # Email Link
-# shift + ctrl + alt + cmd - u : echo # Secure Keyboard Entry
-# shift + ctrl + alt + cmd - u : echo # Finder.app, Name
-# shift + ctrl + alt + cmd - u : echo # Finder.app, Kind
+#         ctrl + alt + cmd - space : # siri
+# shift + ctrl + alt + cmd - space : # dictation
+
+#         ctrl + cmd - f : # Exit fullscreen
+# shift + ctrl + cmd - f : # Enter Full Screen
+# shift + ctrl + cmd - f : # Toggle Full Screen
+
+# shift + ctrl + alt + cmd - u : # Email Link
+# shift + ctrl + alt + cmd - u : # Secure Keyboard Entry
+# shift + ctrl + alt + cmd - u : # Finder.app, Name
+# shift + ctrl + alt + cmd - u : # Finder.app, Kind
