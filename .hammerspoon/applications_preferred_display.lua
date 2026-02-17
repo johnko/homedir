@@ -14,55 +14,44 @@ config.applications = {
   },
   ['Google Calendar'] = {
     bundleID = 'com.google.Chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep',
-    preferred_display = config.screen.top_left,
-    tags = {'#collab'}
+    preferred_display = config.screen.top_left
   },
   ['Podman Desktop'] = {
     bundleID = 'io.podmandesktop.PodmanDesktop',
-    preferred_display = config.screen.top_left,
-    tags = {'#coding'}
+    preferred_display = config.screen.top_left
   },
   ['Slack'] = {
     bundleID = 'com.tinyspeck.slackmacgap',
-    preferred_display = config.screen.top_left,
-    tags = {'#comms'}
+    preferred_display = config.screen.top_left
   },
 
   ['Google Chrome'] = {
-    bundleID = 'com.google.Chrome',
-    preferred_display = config.screen.bottom_right
+    bundleID = 'com.google.Chrome'
   },
   ['Terminal'] = {
-    bundleID = 'com.apple.Terminal',
-    preferred_display = config.screen.bottom_right,
-    tags = {'#coding'}
+    bundleID = 'com.apple.Terminal'
   },
   ['Visual Studio Code'] = {
     bundleID = 'com.microsoft.VSCode',
-    preferred_display = config.screen.bottom_right,
-    tags = {'#coding'}
+    preferred_display = config.screen.bottom_right
   },
 
   ['Crunchyroll'] = {
     bundleID = 'com.google.Chrome.app.hjlhbeffadgkonmpnblkfmhckmocohah',
-    preferred_display = config.screen.bottom_right,
-    tags = {'#entertain'}
+    preferred_display = config.screen.bottom_right
   },
   ['Netflix'] = {
     bundleID = 'com.google.Chrome.app.eppojlglocelodeimnohnlnionkobfln',
-    preferred_display = config.screen.bottom_right,
-    tags = {'#entertain'}
+    preferred_display = config.screen.bottom_right
   },
   ['Xbox'] = {
     bundleID = 'com.google.Chrome.app.chcecgcbjkilfgeccdhoeaillkophnhg',
-    preferred_display = config.screen.bottom_right,
-    tags = {'#entertain'}
+    preferred_display = config.screen.bottom_right
   },
 
   ['Discord'] = {
     bundleID = 'com.hnc.Discord',
-    preferred_display = config.screen.bottom_left,
-    tags = {'#entertain'}
+    preferred_display = config.screen.bottom_left
   },
   ['Hammerspoon'] = {
     bundleID = 'org.hammerspoon.Hammerspoon',
@@ -70,39 +59,32 @@ config.applications = {
   },
   ['Instagram'] = {
     bundleID = 'com.google.Chrome.app.akpamiohjfcnimfljfndmaldlcfphjmp',
-    preferred_display = config.screen.bottom_left,
-    tags = {'#comms'}
+    preferred_display = config.screen.bottom_left
   },
   ['Line'] = {
     bundleID = 'jp.naver.line.mac',
-    preferred_display = config.screen.bottom_left,
-    tags = {'#comms'}
+    preferred_display = config.screen.bottom_left
   },
   ['Messages'] = {
     bundleID = 'com.apple.MobileSMS',
-    preferred_display = config.screen.bottom_left,
-    tags = {'#comms'}
+    preferred_display = config.screen.bottom_left
   },
   ['Signal'] = {
     bundleID = 'org.whispersystems.signal-desktop',
-    preferred_display = config.screen.bottom_left,
-    tags = {'#comms'}
+    preferred_display = config.screen.bottom_left
   },
   ['WhatsApp'] = {
     bundleID = 'com.google.Chrome.app.hnpfjngllnobngcgfapefoaidbinmjnm',
-    preferred_display = config.screen.bottom_left,
-    tags = {'#comms'}
+    preferred_display = config.screen.bottom_left
   },
 
   ['Keychron'] = {
     bundleID = 'com.google.Chrome.app.cbfedpnlilnlbdcikokpfoibmlbghlhg',
-    preferred_display = config.screen.bottom_left,
-    tags = {'#config'}
+    preferred_display = config.screen.bottom_left
   },
   ['NuphyIO'] = {
     bundleID = 'com.google.Chrome.app.opaefnjafkemdihlmdiocmmmmdkhgjfg',
-    preferred_display = config.screen.bottom_left,
-    tags = {'#config'}
+    preferred_display = config.screen.bottom_left
   }
 }
 

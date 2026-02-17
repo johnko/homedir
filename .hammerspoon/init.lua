@@ -99,3 +99,16 @@ end)
 hs.urlevent.bind("restartwindowmanager", function(eventName, params)
   restart_windowmanager.restart(autolayout, PaperWM)
 end)
+
+-- --------------------------------------------------
+
+local terminalswitcher = require 'terminalswitcher'
+
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "1", function()terminalswitcher.switch(1)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "2", function()terminalswitcher.switch(2)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "3", function()terminalswitcher.switch(3)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "4", function()terminalswitcher.switch(4)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "5", function()terminalswitcher.switch(5)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "6", function()terminalswitcher.switch(6)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "7", function()terminalswitcher.switch(7)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "8", function()terminalswitcher.switch(8)end)

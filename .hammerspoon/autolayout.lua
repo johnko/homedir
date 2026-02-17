@@ -35,9 +35,9 @@ autolayout.config = {}
 
 autolayout.target_display = function(display_int)
   -- detect the current number of monitors
-  displays = hs.screen.allScreens()
-  if displays[display_int] ~= nil then
-    return displays[display_int]
+  autolayout.displays = hs.screen.allScreens()
+  if autolayout.displays[display_int] ~= nil then
+    return autolayout.displays[display_int]
   else
     return hs.screen.primaryScreen()
   end
@@ -50,11 +50,11 @@ autolayout.autoLayout = function()
 
       autolayout.logger.f("handling windows for %s", app_config.bundleID)
 
-      application = hs.application.find(app_config.bundleID)
+      autolayout.application = hs.application.find(app_config.bundleID)
 
       -- Handle apps with multiple windows
-      if application ~= nil then
-        for i, window in pairs(application:visibleWindows()) do
+      if autolayout.application ~= nil then
+        for i, window in pairs(autolayout.application:visibleWindows()) do
           -- autolayout.logger.f("looping %d, %s", i, window:title())
           window:moveToScreen(autolayout.target_display(app_config.preferred_display), true, true, 0) -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
         end
