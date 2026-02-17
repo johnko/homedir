@@ -29,7 +29,8 @@ config.applications = {
     bundleID = 'com.google.Chrome'
   },
   ['Terminal'] = {
-    bundleID = 'com.apple.Terminal'
+    bundleID = 'com.apple.Terminal',
+    preferred_display = config.screen.bottom_right
   },
   ['Visual Studio Code'] = {
     bundleID = 'com.microsoft.VSCode',
