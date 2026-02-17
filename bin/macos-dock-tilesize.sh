@@ -21,8 +21,8 @@ EOS
 }
 
 DOMAIN='"Apple Global Domain"'
+        # AppleInterfaceStyle = Dark;
 KEYVAL="
-        AppleInterfaceStyle = Dark;
         AppleMenuBarVisibleInFullscreen = 1;
         AppleMiniaturizeOnDoubleClick = 0;
         AppleReduceDesktopTinting = 0;
@@ -38,12 +38,18 @@ KEYVAL="
         NSAutomaticPeriodSubstitutionEnabled = 0;
         NSAutomaticQuoteSubstitutionEnabled = 0;
         NSAutomaticSpellingCorrectionEnabled = 0;
+        NSCloseAlwaysConfirmsChanges = 1;
         NSGlassDiffusionSetting = 1;
         NSSmartReplyEnabled = 0;
         WebAutomaticSpellingCorrectionEnabled = 0;
         com.apple.sound.beep.feedback = 1;
         com.apple.sound.beep.flash = 0;
         com.apple.sound.beep.volume = 1;
+        com.apple.springing.delay = "0.5";
+        com.apple.springing.enabled = 1;
+        com.apple.swipescrolldirection = 0;
+        com.apple.trackpad.forceClick = 0;
+        userMenuExtraStyle = 2;
 "
 print_cmd
 

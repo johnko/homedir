@@ -103,27 +103,21 @@
           ctrl + alt + cmd - down  : yabai -m window --focus south
           ctrl + alt + cmd - left  : yabai -m window --focus west
           ctrl + alt + cmd - right : yabai -m window --focus east
-# shift + ctrl + alt + cmd - up    : # PaperWM swap_up
-# shift + ctrl + alt + cmd - down  : # PaperWM swap_down
-# shift + ctrl + alt + cmd - left  : # PaperWM swap_column_left
-# shift + ctrl + alt + cmd - right : # PaperWM swap_column_right
+  shift + ctrl + alt + cmd - up    : yabai -m window --swap north
+  shift + ctrl + alt + cmd - down  : yabai -m window --swap south
+  shift + ctrl + alt + cmd - left  : yabai -m window --swap west
+  shift + ctrl + alt + cmd - right : yabai -m window --swap east
 
 ########## Group Function Keys #########################################################
 
                             f3 : open -a "Mission Control"
-                            f4 : open -a "Mission Control" --args 2 # Application Expose
-#                           f5 : # macOS Show Desktop
+#                           f4 : open -a "Mission Control" --args 2 # macOS Application Expose
+#                           f5 : open -a "Mission Control" --args 1 # macOS Show Desktop
 #                           f6 : # macOS Turn Do Not Disturb on/off
 #                           f7 : # macOS Toggle StageManager on/off
-# f11 : echo
-# f12 : echo
-# f13 : echo
-# f14 : echo
-# f15 : echo
-# f16 : echo
-# f17 : echo
-#                          f18 : open -a "iPhone Mirroring"
-#                          f19 : open -a "System Settings"
+#                          f11 : echo
+#                          f12 : echo
+#                          f13 : echo
 
 ########## Left Group Convenient Keys #########################################################
 
@@ -132,18 +126,18 @@
 # shift + ctrl + alt + cmd - tab : echo
 
 # 0x32 is `
+#         ctrl + alt + cmd - 0x32 : # macOS Show Notification Center
 # shift + ctrl + alt + cmd - 0x32 : echo
 
 ########## MacOS Custom Keyboard Shortcuts #########################################################
 
 # SHIFT FOR TILE MAKES IT SLOW ANIMATION
 
-#                           f5 : # macOS Show Desktop
+#                           f4 : open -a "Mission Control" --args 2 # macOS Application Expose
+#                           f5 : open -a "Mission Control" --args 1 # macOS Show Desktop
 #                           f6 : # macOS Turn Do Not Disturb on/off
 #                           f7 : # macOS Toggle StageManager on/off
 #                  shift - f19 : # macOS Emoji & Symbols
-
-#         ctrl + alt + cmd - 6 : # macOS Toggle StageManager on/off
 
 # 0x32 is `
 #         ctrl + alt + cmd - 0x32 : # macOS Show Notification Center
