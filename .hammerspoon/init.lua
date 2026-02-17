@@ -84,7 +84,7 @@ autolayout.start(config)
 restart_windowmanager = require 'restart_windowmanager'
 
 hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
-  logger.i("1 Called from screen.watcher")
+  logger.i("Called from screen.watcher")
   if activeScreenChanged == nil then
     restart_windowmanager.restart(autolayout, PaperWM)
   end
@@ -94,6 +94,6 @@ hs.urlevent.bind("autolayout", function(eventName, params)
   autolayout.autoLayout()
 end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "h", function()
-  logger.i("1 Called from hotkey")
+  logger.i("Called from hotkey")
   restart_windowmanager.restart(autolayout, PaperWM)
 end)

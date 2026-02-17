@@ -62,7 +62,7 @@ autolayout.autoLayout = function()
 
     end
   end
-  autolayout.logger.e("DONE autoLayout")
+  autolayout.logger.e("DONE autolayout.autoLayout")
 end
 
 -- initialize watchers
