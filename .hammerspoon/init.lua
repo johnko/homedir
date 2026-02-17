@@ -66,6 +66,14 @@ PaperWM = nil
 
 -- --------------------------------------------------
 
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "n", function()
+  local focusedWindow = hs.window.focusedWindow()
+  local screen = focusedWindow:screen()
+  focusedWindow:moveToScreen(screen:next(), true, true, 0)
+end)
+
+-- --------------------------------------------------
+
 config = require 'applications_preferred_display'
 
 local autolayout = require 'autolayout'

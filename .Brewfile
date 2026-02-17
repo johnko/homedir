@@ -4,7 +4,6 @@
 cask "1password"
 # cask "cloudflare-warp"
 cask "discord"
-cask "hammerspoon"
 cask "lulu"
 cask "signal"
 mas "LINE", id: 539883307
