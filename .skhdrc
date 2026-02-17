@@ -4,20 +4,20 @@
 # shift + ctrl + alt + cmd - 1 : echo
 #         ctrl + alt + cmd - 2 : echo
 # shift + ctrl + alt + cmd - 2 : echo
-          ctrl + alt + cmd - 3 : open -a "Mission Control"
+#         ctrl + alt + cmd - 3 : echo
 # shift + ctrl + alt + cmd - 3 : echo
-          ctrl + alt + cmd - 4 : open -a "Mission Control" --args 2 # Application Expose
+#         ctrl + alt + cmd - 4 : echo
 # shift + ctrl + alt + cmd - 4 : echo
-          ctrl + alt + cmd - 5 : open -a "Mission Control" --args 1 # Show Desktop
+#         ctrl + alt + cmd - 5 : echo
 # shift + ctrl + alt + cmd - 5 : echo
-#         ctrl + alt + cmd - 6 : # macOS Toggle StageManager on/off
+#         ctrl + alt + cmd - 6 : echo
 # shift + ctrl + alt + cmd - 6 : echo
 #         ctrl + alt + cmd - 7 : echo
 # shift + ctrl + alt + cmd - 7 : echo
 #         ctrl + alt + cmd - 8 : echo
-  shift + ctrl + alt + cmd - 8 : osascript ~/.osascripts/terminal-brew-update.scpt
-#         ctrl + alt + cmd - 9 : echo
-  shift + ctrl + alt + cmd - 9 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
+# shift + ctrl + alt + cmd - 8 : echo
+          ctrl + alt + cmd - 9 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
+  shift + ctrl + alt + cmd - 9 : osascript ~/.osascripts/terminal-brew-update.scpt
 
 ########## Row Q #########################################################
 
@@ -35,8 +35,8 @@
 
           ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
                            f15 : osascript ~/.osascripts/toggle-terminal.scpt
-# shift + ctrl + alt + cmd - t : echo
-#                  shift - f15 : echo
+  shift + ctrl + alt + cmd - t : yabai -m window --toggle float --grid 1:4:0:0:1:1
+                   shift - f15 : yabai -m window --toggle float --grid 1:4:0:0:1:1
 
           ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
                            f16 : skhd --restart-service && yabai --restart-service
@@ -70,11 +70,17 @@
 #         ctrl + alt + cmd - d : # arrow right
 # shift + ctrl + alt + cmd - d : # arrow right
           ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
-# shift + ctrl + alt + cmd - f : echo
+  shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 2:4:0:0:1:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 # shift + ctrl + alt + cmd - g : echo
 #         ctrl + alt + cmd - h : echo
 # shift + ctrl + alt + cmd - h : echo
+          ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
+# shift + ctrl + alt + cmd - j : echo
+          ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
+# shift + ctrl + alt + cmd - k : echo
+          ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
+# shift + ctrl + alt + cmd - l : echo
 
 ########## Row Z #########################################################
 
@@ -85,33 +91,30 @@
 #         ctrl + alt + cmd - c : echo
 # shift + ctrl + alt + cmd - c : echo
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
-# shift + ctrl + alt + cmd - v : echo
+  shift + ctrl + alt + cmd - v : yabai -m window --toggle float --grid 1:4:1:0:3:1
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
   shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
 #         ctrl + alt + cmd - n : # Rectangle move window to Next Display
 # shift + ctrl + alt + cmd - n : echo
 
-          ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
-# shift + ctrl + alt + cmd - k : echo
-          ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
-# shift + ctrl + alt + cmd - l : echo
-
 ########## Right Group Arrows #########################################################
 
-#         ctrl + alt + cmd - up :    # PaperWM focus_up
-#         ctrl + alt + cmd - down :  # PaperWM focus_down
-#         ctrl + alt + cmd - left :  # PaperWM focus_left
-#         ctrl + alt + cmd - right : # PaperWM focus_right
-# shift + ctrl + alt + cmd - up :    # PaperWM swap_up
-# shift + ctrl + alt + cmd - down :  # PaperWM swap_down
-# shift + ctrl + alt + cmd - left :  # PaperWM swap_column_left
+          ctrl + alt + cmd - up    : yabai -m window --focus north
+          ctrl + alt + cmd - down  : yabai -m window --focus south
+          ctrl + alt + cmd - left  : yabai -m window --focus west
+          ctrl + alt + cmd - right : yabai -m window --focus east
+# shift + ctrl + alt + cmd - up    : # PaperWM swap_up
+# shift + ctrl + alt + cmd - down  : # PaperWM swap_down
+# shift + ctrl + alt + cmd - left  : # PaperWM swap_column_left
 # shift + ctrl + alt + cmd - right : # PaperWM swap_column_right
 
 ########## Group Function Keys #########################################################
 
-   f4 : open -a "Mission Control" --args 2 # Application Expose
+                            f3 : open -a "Mission Control"
+                            f4 : open -a "Mission Control" --args 2 # Application Expose
 #                           f5 : # macOS Show Desktop
 #                           f6 : # macOS Turn Do Not Disturb on/off
+#                           f7 : # macOS Toggle StageManager on/off
 # f11 : echo
 # f12 : echo
 # f13 : echo
@@ -137,6 +140,7 @@
 
 #                           f5 : # macOS Show Desktop
 #                           f6 : # macOS Turn Do Not Disturb on/off
+#                           f7 : # macOS Toggle StageManager on/off
 #                  shift - f19 : # macOS Emoji & Symbols
 
 #         ctrl + alt + cmd - 6 : # macOS Toggle StageManager on/off
