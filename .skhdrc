@@ -9,9 +9,15 @@
           ctrl + alt + cmd - 4 : open -a "Mission Control" --args 2 # Application Expose
 # shift + ctrl + alt + cmd - 4 : echo
           ctrl + alt + cmd - 5 : open -a "Mission Control" --args 1 # Show Desktop
-  shift + ctrl + alt + cmd - 5 : osascript ~/.osascripts/terminal-brew-update.scpt
+# shift + ctrl + alt + cmd - 5 : echo
 #         ctrl + alt + cmd - 6 : # macOS Toggle StageManager on/off
-  shift + ctrl + alt + cmd - 6 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
+# shift + ctrl + alt + cmd - 6 : echo
+#         ctrl + alt + cmd - 7 : echo
+# shift + ctrl + alt + cmd - 7 : echo
+#         ctrl + alt + cmd - 8 : echo
+  shift + ctrl + alt + cmd - 8 : osascript ~/.osascripts/terminal-brew-update.scpt
+#         ctrl + alt + cmd - 9 : echo
+  shift + ctrl + alt + cmd - 9 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 
 ########## Row Q #########################################################
 
@@ -22,11 +28,35 @@
 #         ctrl + alt + cmd - e : # PaperWM focus_next
 # shift + ctrl + alt + cmd - e : # PaperWM swap_right
 #         ctrl + alt + cmd - r : # PaperWM cycle_width
+#                          f14 : echo
 # shift + ctrl + alt + cmd - r : # PaperWM reverse_cycle_width
+
           ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
+                           f15 : osascript ~/.osascripts/toggle-terminal.scpt
 # shift + ctrl + alt + cmd - t : echo
+#                  shift - f15 : echo
+
           ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
 # shift + ctrl + alt + cmd - y : # PaperWM restart_spoons
+                           f16 : skhd --restart-service && yabai --restart-service
+#                  shift - f16 : # PaperWM autolayout
+
+#         ctrl + alt + cmd - u : echo
+# shift + ctrl + alt + cmd - u : echo
+#                  shift - f17 : # PaperWM restart_spoons
+
+          ctrl + alt + cmd - i : open -a "iPhone Mirroring"
+                           f18 : open -a "iPhone Mirroring"
+# shift + ctrl + alt + cmd - i : echo
+#                  shift - f18 : echo
+
+          ctrl + alt + cmd - o : open -a "System Settings"
+                           f19 : open -a "System Settings"
+# shift + ctrl + alt + cmd - o : echo
+#                  shift - f19 : # macOS Emoji & Symbols
+
+          ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
+# shift + ctrl + alt + cmd - p : echo
 
 ########## Row A #########################################################
 
@@ -58,14 +88,6 @@
 #         ctrl + alt + cmd - n : # Rectangle move window to Next Display
 # shift + ctrl + alt + cmd - n : echo
 
-########## Right Group I #########################################################
-
-          ctrl + alt + cmd - i : open -a "iPhone Mirroring"
-# shift + ctrl + alt + cmd - i : echo
-          ctrl + alt + cmd - o : open -a "System Settings"
-# shift + ctrl + alt + cmd - o : echo
-          ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
-# shift + ctrl + alt + cmd - p : echo
           ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
 # shift + ctrl + alt + cmd - k : echo
           ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt

@@ -70,7 +70,6 @@ config = require 'applications_preferred_display'
 
 local autolayout = require 'autolayout'
 autolayout.start(config)
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "m", autolayout.autoLayout)
 
 restart_windowmanager = require 'restart_windowmanager'
 
@@ -81,7 +80,8 @@ hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
   end
 end):start()
 
-hs.hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "y", function()
+hs.hotkey.bind({ "shift" }, "f16", autolayout.autoLayout)
+hs.hotkey.bind({ "shift" }, "f17", function()
   logger.e("1 Called from hotkey")
   restart_windowmanager.restart(autolayout, PaperWM)
 end)
