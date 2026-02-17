@@ -94,7 +94,8 @@ restart_windowmanager = require 'restart_windowmanager'
 hs.urlevent.bind("autolayout", function(eventName, params)
   autolayout.autoLayout()
 end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "h", function()
-  logger.i("Called from hotkey")
+
+-- hs.hotkey.bind({ "shift" }, "f16", function()
+hs.urlevent.bind("restartwindowmanager", function(eventName, params)
   restart_windowmanager.restart(autolayout, PaperWM)
 end)

@@ -28,8 +28,8 @@
           ctrl + alt + cmd - e : yabai -m window --toggle float --grid 1:2:1:0:1:1
 # shift + ctrl + alt + cmd - e : echo
 
-#         ctrl + alt + cmd - r : echo
-#                          f14 : echo
+          ctrl + alt + cmd - r : bash ~/bin/macos-restart-hammerspoon-yabai.sh
+                           f14 : bash ~/bin/macos-restart-hammerspoon-yabai.sh
 # shift + ctrl + alt + cmd - r : echo
 #                  shift - f14 : # macOS Remove Window from Set
 
@@ -40,8 +40,8 @@
 
           ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
                            f16 : skhd --restart-service && yabai --restart-service
-# shift + ctrl + alt + cmd - y : echo
-#                  shift - f16 : echo
+  shift + ctrl + alt + cmd - y : open -g hammerspoon://restartwindowmanager
+                   shift - f16 : open -g hammerspoon://restartwindowmanager
 
           ctrl + alt + cmd - u : osascript ~/.osascripts/toggle-cursor.scpt
                            f17 : osascript ~/.osascripts/toggle-googlecalendar.scpt
@@ -73,8 +73,8 @@
   shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 2:4:0:0:1:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 # shift + ctrl + alt + cmd - g : yabai -m window --toggle float --grid 1:4:1:0:2:1
-          ctrl + alt + cmd - h : bash ~/bin/macos-restart-hammerspoon-yabai.sh
-# shift + ctrl + alt + cmd - h : # Hammerspoon restart_spoons
+#         ctrl + alt + cmd - h : echo
+# shift + ctrl + alt + cmd - h : echo
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
 # shift + ctrl + alt + cmd - j : echo
           ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
