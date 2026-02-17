@@ -41,12 +41,12 @@
           ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
                            f16 : skhd --restart-service && yabai --restart-service
 # shift + ctrl + alt + cmd - y : echo
-#                  shift - f16 : # Hammerspoon autolayout
+#                  shift - f16 : echo
 
-#         ctrl + alt + cmd - u : echo
-#                          f17 : echo
+          ctrl + alt + cmd - u : osascript ~/.osascripts/toggle-cursor.scpt
+                           f17 : osascript ~/.osascripts/toggle-googlecalendar.scpt
 # shift + ctrl + alt + cmd - u : echo
-#                  shift - f17 : Hammerspoon restart_spoons
+                   shift - f17 : yabai -m window --toggle float --grid 4:4:0:1:3:3
 
           ctrl + alt + cmd - i : open -a "iPhone Mirroring"
                            f18 : open -a "iPhone Mirroring"
@@ -73,8 +73,8 @@
   shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 2:4:0:0:1:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 # shift + ctrl + alt + cmd - g : echo
-          ctrl + alt + cmd - h : osascript ~/.osascripts/toggle-googlecalendar.scpt
-  shift + ctrl + alt + cmd - h : yabai -m window --toggle float --grid 4:4:0:1:3:3
+#         ctrl + alt + cmd - h : # Hammerspoon autolayout
+# shift + ctrl + alt + cmd - h : # Hammerspoon restart_spoons
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
 # shift + ctrl + alt + cmd - j : echo
           ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
