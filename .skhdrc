@@ -107,6 +107,8 @@
 ########## Group Function Keys #########################################################
 
    f4 : open -a "Mission Control" --args 2 # Application Expose
+#                           f5 : # macOS Show Desktop
+#                           f6 : # macOS Turn Do Not Disturb on/off
 # f11 : echo
 # f12 : echo
 # f13 : echo
@@ -114,7 +116,8 @@
 # f15 : echo
 # f16 : echo
 # f17 : echo
-# f18 : echo
+#                          f18 : open -a "iPhone Mirroring"
+#                          f19 : open -a "System Settings"
 
 ########## Left Group Convenient Keys #########################################################
 
@@ -129,8 +132,8 @@
 
 # SHIFT FOR TILE MAKES IT SLOW ANIMATION
 
-#  f5 : # macOS Show Desktop
-#  f6 : # macOS Turn Do Not Disturb on/off
+#                           f5 : # macOS Show Desktop
+#                           f6 : # macOS Turn Do Not Disturb on/off
 #                  shift - f19 : # macOS Emoji & Symbols
 
 #         ctrl + alt + cmd - 6 : # macOS Toggle StageManager on/off
