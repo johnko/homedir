@@ -41,12 +41,12 @@
           ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
                            f16 : skhd --restart-service && yabai --restart-service
 # shift + ctrl + alt + cmd - y : echo
-#                  shift - f16 : # Hammerspoon autolayout
+#                  shift - f16 : # Hammerspoon restart_spoons
 
 #         ctrl + alt + cmd - u : echo
 #                          f17 : echo
 # shift + ctrl + alt + cmd - u : echo
-#                  shift - f17 : # Hammerspoon restart_spoons
+#                  shift - f17 : echo
 
           ctrl + alt + cmd - i : open -a "iPhone Mirroring"
                            f18 : open -a "iPhone Mirroring"
@@ -96,6 +96,8 @@
   shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
 #         ctrl + alt + cmd - n : # Rectangle move window to Next Display
 # shift + ctrl + alt + cmd - n : echo
+          ctrl + alt + cmd - m : osascript ~/.osascripts/toggle-googlemeet.scpt
+  shift + ctrl + alt + cmd - m : yabai -m window --toggle float --grid 1:4:0:0:3:1
 
 ########## Right Group Arrows #########################################################
 
