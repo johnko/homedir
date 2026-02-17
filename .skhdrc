@@ -73,7 +73,7 @@
   shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 2:4:0:0:1:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 # shift + ctrl + alt + cmd - g : echo
-          ctrl + alt + cmd - h : yabai --stop-service ; open -g hammerspoon://autolayout ; yabai --start-service
+          ctrl + alt + cmd - h : bash ~/bin/macos-restart-hammerspoon-yabai.sh
 # shift + ctrl + alt + cmd - h : # Hammerspoon restart_spoons
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
 # shift + ctrl + alt + cmd - j : echo
@@ -94,7 +94,7 @@
   shift + ctrl + alt + cmd - v : yabai -m window --toggle float --grid 1:4:1:0:3:1
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
   shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
-          ctrl + alt + cmd - n : bash ~/bin/move_window_to_next_screen.sh
+          ctrl + alt + cmd - n : bash ~/bin/macos-move-window-to-next-screen.sh
 # shift + ctrl + alt + cmd - n : echo
           ctrl + alt + cmd - m : osascript ~/.osascripts/toggle-googlemeet.scpt
   shift + ctrl + alt + cmd - m : yabai -m window --toggle float --grid 1:4:0:0:3:1

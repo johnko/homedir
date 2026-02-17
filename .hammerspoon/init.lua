@@ -84,12 +84,12 @@ autolayout.start(config)
 
 restart_windowmanager = require 'restart_windowmanager'
 
-hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
-  logger.i("Called from screen.watcher")
-  if activeScreenChanged == nil then
-    restart_windowmanager.restart(autolayout, PaperWM)
-  end
-end):start()
+-- hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
+--   logger.i("Called from screen.watcher")
+--   if activeScreenChanged == nil then
+--     restart_windowmanager.restart(autolayout, PaperWM)
+--   end
+-- end):start()
 
 hs.urlevent.bind("autolayout", function(eventName, params)
   autolayout.autoLayout()

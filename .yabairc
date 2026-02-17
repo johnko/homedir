@@ -105,9 +105,9 @@ yabai -m config split_type vertical
 yabai -m config auto_balance on
 
 # refresh yabai when display disconnect/reconnect
-yabai -m signal --add event=display_added action="yabai --restart-service"
-yabai -m signal --add event=display_removed action="yabai --restart-service"
-yabai -m signal --add event=display_resized action="yabai --restart-service"
+yabai -m signal --add event=display_added action="bash ~/bin/macos-restart-hammerspoon-yabai.sh"
+yabai -m signal --add event=display_removed action="bash ~/bin/macos-restart-hammerspoon-yabai.sh"
+yabai -m signal --add event=display_resized action="bash ~/bin/macos-restart-hammerspoon-yabai.sh"
 
 yabai -m config top_padding 0
 yabai -m config bottom_padding 190
