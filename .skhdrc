@@ -85,9 +85,9 @@
 ########## Row Z #########################################################
 
 #         ctrl + alt + cmd - z : # PaperWM slurp_in
-# shift + ctrl + alt + cmd - z : echo
+  shift + ctrl + alt + cmd - z : yabai -m window --display prev --focus
 #         ctrl + alt + cmd - x : # PaperWM barf_out
-# shift + ctrl + alt + cmd - x : echo
+  shift + ctrl + alt + cmd - x : yabai -m window --display next --focus
 #         ctrl + alt + cmd - c : echo
 # shift + ctrl + alt + cmd - c : echo
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
