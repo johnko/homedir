@@ -1,8 +1,8 @@
 ########## Numbers #########################################################
 
-#         ctrl + alt + cmd - 1 : # macOS space left
+#         ctrl + alt + cmd - 1 : echo
 # shift + ctrl + alt + cmd - 1 : echo
-#         ctrl + alt + cmd - 2 : # macOS space right
+#         ctrl + alt + cmd - 2 : echo
 # shift + ctrl + alt + cmd - 2 : echo
           ctrl + alt + cmd - 3 : open -a "Mission Control"
 # shift + ctrl + alt + cmd - 3 : echo
@@ -21,15 +21,15 @@
 
 ########## Row Q #########################################################
 
-#         ctrl + alt + cmd - q : # PaperWM focus_prev
-# shift + ctrl + alt + cmd - q : # PaperWM swap_left
+          ctrl + alt + cmd - q : yabai -m window --toggle float --grid 1:2:0:0:1:1
+# shift + ctrl + alt + cmd - q : echo
 #         ctrl + alt + cmd - w : # arrow up
 # shift + ctrl + alt + cmd - w : # arrow up
-#         ctrl + alt + cmd - e : # PaperWM focus_next
-# shift + ctrl + alt + cmd - e : # PaperWM swap_right
-#         ctrl + alt + cmd - r : # PaperWM cycle_width
+          ctrl + alt + cmd - e : yabai -m window --toggle float --grid 1:2:1:0:1:1
+# shift + ctrl + alt + cmd - e : echo
+#         ctrl + alt + cmd - r : echo
 #                          f14 : echo
-# shift + ctrl + alt + cmd - r : # PaperWM reverse_cycle_width
+# shift + ctrl + alt + cmd - r : echo
 
           ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
                            f15 : osascript ~/.osascripts/toggle-terminal.scpt
@@ -37,13 +37,13 @@
 #                  shift - f15 : echo
 
           ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
-# shift + ctrl + alt + cmd - y : # PaperWM restart_spoons
+# shift + ctrl + alt + cmd - y : echo
                            f16 : skhd --restart-service && yabai --restart-service
-#                  shift - f16 : # PaperWM autolayout
+#                  shift - f16 : # Hammerspoon autolayout
 
 #         ctrl + alt + cmd - u : echo
 # shift + ctrl + alt + cmd - u : echo
-#                  shift - f17 : # PaperWM restart_spoons
+#                  shift - f17 : # Hammerspoon restart_spoons
 
           ctrl + alt + cmd - i : open -a "iPhone Mirroring"
                            f18 : open -a "iPhone Mirroring"
@@ -131,10 +131,8 @@
 
 #  f5 : # macOS Show Desktop
 #  f6 : # macOS Turn Do Not Disturb on/off
-# f19 : # macOS Emoji & Symbols
+#                  shift - f19 : # macOS Emoji & Symbols
 
-#         ctrl + alt + cmd - 1 : # macOS space left
-#         ctrl + alt + cmd - 2 : # macOS space right
 #         ctrl + alt + cmd - 6 : # macOS Toggle StageManager on/off
 
 # 0x32 is `
