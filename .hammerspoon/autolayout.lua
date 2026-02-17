@@ -48,20 +48,21 @@ autolayout.autoLayout = function()
     -- if we have a preferred display
     if app_config.preferred_display ~= nil then
 
-      autolayout.logger.ef("handling windows for %s", app_config.bundleID)
+      autolayout.logger.f("handling windows for %s", app_config.bundleID)
 
       application = hs.application.find(app_config.bundleID)
 
       -- Handle apps with multiple windows
       if application ~= nil then
         for i, window in pairs(application:visibleWindows()) do
-          -- autolayout.logger.ef("looping %d, %s", i, window:title())
+          -- autolayout.logger.f("looping %d, %s", i, window:title())
           window:moveToScreen(autolayout.target_display(app_config.preferred_display), true, true, 0) -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
         end
       end
 
     end
   end
+  autolayout.logger.e("DONE autoLayout")
 end
 
 -- initialize watchers
