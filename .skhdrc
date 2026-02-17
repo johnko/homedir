@@ -31,7 +31,7 @@
 #         ctrl + alt + cmd - r : echo
 #                          f14 : echo
 # shift + ctrl + alt + cmd - r : echo
-#                  shift - f14 : echo
+#                  shift - f14 : # macOS Remove Window from Set
 
           ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
                            f15 : osascript ~/.osascripts/toggle-terminal.scpt
@@ -72,7 +72,7 @@
           ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
   shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 2:4:0:0:1:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
-# shift + ctrl + alt + cmd - g : echo
+# shift + ctrl + alt + cmd - g : yabai -m window --toggle float --grid 1:4:1:0:2:1
           ctrl + alt + cmd - h : bash ~/bin/macos-restart-hammerspoon-yabai.sh
 # shift + ctrl + alt + cmd - h : # Hammerspoon restart_spoons
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
@@ -123,9 +123,8 @@
 
 ########## Left Group Convenient Keys #########################################################
 
-#         ctrl + alt + cmd - tab : # PaperWM toggle_floating
-          ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 1:4:1:0:2:1
-# shift + ctrl + alt + cmd - tab : echo
+          ctrl + alt + cmd - tab : open -a "Mission Control" --args 2 # macOS Application Expose
+  shift + ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 1:4:1:0:2:1
 
 # 0x32 is `
 #         ctrl + alt + cmd - 0x32 : # macOS Show Notification Center
@@ -139,6 +138,7 @@
 #                           f5 : open -a "Mission Control" --args 1 # macOS Show Desktop
 #                           f6 : # macOS Turn Do Not Disturb on/off
 #                           f7 : # macOS Toggle StageManager on/off
+#                  shift - f14 : # macOS Remove Window from Set
 #                  shift - f19 : # macOS Emoji & Symbols
 
 # 0x32 is `

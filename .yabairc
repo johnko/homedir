@@ -60,7 +60,6 @@ yabai -m rule --add app="^(Books)$" manage=off grid=1:4:1:0:2:1
 yabai -m rule --add app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off grid=1:4:1:0:2:1
 yabai -m rule --add app="^(Brave Browser)$" title="^.*( Tab).*$" manage=on
 yabai -m rule --add app="^(Preview)$" manage=off grid=1:4:1:0:2:1
-yabai -m rule --add app="^(System Preferences|System Settings)$" manage=off grid=1:4:1:0:2:1
 
 # float middle center quarter grid=4:4:1:1:2:2
 yabai -m rule --add app="^(1Password)$" manage=off grid=4:4:1:1:2:2
@@ -92,6 +91,7 @@ yabai -m rule --add app="^(Google Calendar)$" manage=off grid=4:4:0:1:3:3
 # float some non-resizable apps because of floating prompts
 yabai -m rule --add app="^(Finder)$" manage=off
 yabai -m rule --add app="^(iPhone Mirroring)$" manage=off
+yabai -m rule --add app="^(System Preferences|System Settings)$" manage=off
 
 # default to float centered
 # cat .yabairc | grep -v grep | grep -v '^ *#' | grep app= | tr -d '!' | cut -d= -f2 | sed -e 's,manage,,' -e 's, title,,g' -e 's, $,,g' | grep -v noexist | tr -d '"^$)(' | tr '|' "\n" | sort -u | tr "\n" '|' | sed -e 's, |,|,g' -e 's,|$,,' | pbcopy
