@@ -69,6 +69,8 @@ PaperWM = nil
 hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "n", function()
   local focusedWindow = hs.window.focusedWindow()
   local screen = focusedWindow:screen()
+  -- if screen is same resolution this preserves position and size
+  -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
   focusedWindow:moveToScreen(screen:next(), true, true, 0)
 end)
 
