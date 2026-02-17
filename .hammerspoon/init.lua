@@ -66,7 +66,8 @@ PaperWM = nil
 
 -- --------------------------------------------------
 
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "n", function()
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "n", function()
+hs.urlevent.bind("movetonextscreen", function(eventName, params)
   local focusedWindow = hs.window.focusedWindow()
   local screen = focusedWindow:screen()
   -- if screen is same resolution this preserves position and size

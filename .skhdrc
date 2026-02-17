@@ -94,7 +94,7 @@
   shift + ctrl + alt + cmd - v : yabai -m window --toggle float --grid 1:4:1:0:3:1
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
   shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
-#         ctrl + alt + cmd - n : # Hammerspoon window:moveToScreen(screen:next
+          ctrl + alt + cmd - n : bash ~/bin/move_window_to_next_screen.sh
 # shift + ctrl + alt + cmd - n : echo
           ctrl + alt + cmd - m : osascript ~/.osascripts/toggle-googlemeet.scpt
   shift + ctrl + alt + cmd - m : yabai -m window --toggle float --grid 1:4:0:0:3:1
