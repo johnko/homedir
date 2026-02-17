@@ -90,8 +90,8 @@ hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
   end
 end):start()
 
-hs.hotkey.bind({ "shift" }, "f16", function()
+hs.hotkey.bind({ "shift" }, "f16", autolayout.autoLayout)
+hs.hotkey.bind({ "shift" }, "f17", function()
   logger.e("1 Called from hotkey")
   restart_windowmanager.restart(autolayout, PaperWM)
 end)
--- hs.hotkey.bind({ "shift" }, "f17", autolayout.autoLayout)
