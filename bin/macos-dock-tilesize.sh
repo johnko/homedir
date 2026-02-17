@@ -115,8 +115,6 @@ print_cmd
 
 DOMAIN="com.apple.Accessibility"
 KEYVAL="
-        AccessibilityEnabled = 1;
-        ApplicationAccessibilityEnabled = 1;
         AutomationEnabled = 0;
         CommandAndControlEnabled = 0;
         DarkenSystemColors = 0;
@@ -124,7 +122,6 @@ KEYVAL="
         EnhancedBackgroundContrastEnabled = 0;
         FullKeyboardAccessEnabled = 0;
         FullKeyboardAccessFocusRingEnabled = 1;
-        GenericAccessibilityClientEnabled = 1;
         GrayscaleDisplay = 0;
         InvertColorsEnabled = 0;
         KeyRepeatDelay = "0.5";
