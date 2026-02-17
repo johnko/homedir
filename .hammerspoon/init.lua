@@ -14,8 +14,8 @@ hs.hotkey.bind( { "ctrl", "alt", "cmd" }, "`", mousehighlight.mouseHighlight)
 
 -- --------------------------------------------------
 
-WarpMouse = hs.loadSpoon("WarpMouse")
-WarpMouse:start()
+-- WarpMouse = hs.loadSpoon("WarpMouse")
+-- WarpMouse:start()
 
 -- --------------------------------------------------
 
