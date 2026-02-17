@@ -108,6 +108,8 @@ yabai -m signal --add event=display_removed action="bash ~/bin/macos-restart-ham
 yabai -m signal --add event=display_resized action="bash ~/bin/macos-restart-hammerspoon-yabai.sh"
 yabai -m signal --add event=window_created action="bash ~/bin/macos-restart-hammerspoon-yabai.sh"
 
+# set padding to not block widgets on 4k monitor
+# it's before applying rules so wont block widgets
 yabai -m config top_padding 10
 yabai -m config bottom_padding 190
 yabai -m config left_padding 11
@@ -115,13 +117,6 @@ yabai -m config right_padding 370
 
 # apply rules on restart
 yabai -m rule --apply
-
-# now set padding to not block widgets on 4k monitor
-# it's after applying rules so that original rule grid is preserved
-# yabai -m config top_padding 0
-# yabai -m config bottom_padding 190
-# yabai -m config left_padding 0
-# yabai -m config right_padding 370
 
 # set layout to bsp (managed), other options are float (unmanaged) or stack (layered fullscreen)
 yabai -m config layout bsp
