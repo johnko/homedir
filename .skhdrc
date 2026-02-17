@@ -73,7 +73,7 @@
   shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 2:4:0:0:1:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
 # shift + ctrl + alt + cmd - g : echo
-#         ctrl + alt + cmd - h : # Hammerspoon autolayout
+          ctrl + alt + cmd - h : yabai --stop-service ; open -g hammerspoon://autolayout.autoLayout ; yabai --start-service
 # shift + ctrl + alt + cmd - h : # Hammerspoon restart_spoons
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
 # shift + ctrl + alt + cmd - j : echo

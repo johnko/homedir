@@ -90,7 +90,9 @@ hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
   end
 end):start()
 
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "h", autolayout.autoLayout)
+hs.urlevent.bind("autolayout.autoLayout", function(eventName, params)
+  autolayout.autoLayout()
+end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "h", function()
   logger.e("1 Called from hotkey")
   restart_windowmanager.restart(autolayout, PaperWM)
