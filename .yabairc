@@ -97,10 +97,7 @@ yabai -m rule --add app="^(iPhone Mirroring)$" manage=off
 # cat .yabairc | grep -v grep | grep -v '^ *#' | grep app= | tr -d '!' | cut -d= -f2 | sed -e 's,manage,,' -e 's, title,,g' -e 's, $,,g' | grep -v noexist | tr -d '"^$)(' | tr '|' "\n" | sort -u | tr "\n" '|' | sed -e 's, |,|,g' -e 's,|$,,' | pbcopy
 yabai -m rule --add app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Google Meet|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off grid=4:4:1:1:2:2
 
-yabai -m config window_gap 15
-yabai -m config window_origin_display default
-yabai -m config window_placement second_child
-yabai -m config window_insertion_point last
+yabai -m config window_gap 25
 yabai -m config split_type vertical
 yabai -m config auto_balance on
 
@@ -108,10 +105,11 @@ yabai -m config auto_balance on
 yabai -m signal --add event=display_added action="bash ~/bin/macos-restart-hammerspoon-yabai.sh"
 yabai -m signal --add event=display_removed action="bash ~/bin/macos-restart-hammerspoon-yabai.sh"
 yabai -m signal --add event=display_resized action="bash ~/bin/macos-restart-hammerspoon-yabai.sh"
+yabai -m signal --add event=window_created action="bash ~/bin/macos-restart-hammerspoon-yabai.sh"
 
-yabai -m config top_padding 0
+yabai -m config top_padding 10
 yabai -m config bottom_padding 190
-yabai -m config left_padding 0
+yabai -m config left_padding 11
 yabai -m config right_padding 370
 
 # apply rules on restart
@@ -128,4 +126,4 @@ yabai -m rule --apply
 yabai -m config layout bsp
 
 # border red active, transparent inactive
-borders active_color=0xffff0000 inactive_color=0x00888888 width=15.0 &
+borders active_color=0xffff0000 inactive_color=0x00888888 width=20.0 &
