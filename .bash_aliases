@@ -313,7 +313,8 @@ gg() {
         for _ in 1 2; do
           if [[ ! -e $DESTINATION_FOLDER ]]; then
             # add new branch or checkout existing
-            git worktree add -b "$SAFE_BRANCH" "$DESTINATION_FOLDER" "origin/$DEFAULT_BRANCH" ||
+            # --no-track so it doesn't try to push to main by default
+            git worktree add --no-track -b "$SAFE_BRANCH" "$DESTINATION_FOLDER" "origin/$DEFAULT_BRANCH" ||
               git worktree add "$DESTINATION_FOLDER" "$SAFE_BRANCH" || true
             if [[ ! -e $DESTINATION_FOLDER ]]; then
               # still no folder?
@@ -323,6 +324,7 @@ gg() {
         done
 
         pushd ../"$LOCAL_REPO.worktrees/$SAFE_BRANCH"
+        git branch -u "origin/$SAFE_BRANCH"
         echo "Opening code and cursor (if possible)"
         if type code &>/dev/null; then
           code .
