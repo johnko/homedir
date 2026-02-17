@@ -16,6 +16,7 @@ yabai -m rule --add app="^(FaceTime)$" manage=on
 yabai -m rule --add app="^(Find My)$" manage=on
 yabai -m rule --add app="^(GitHub)$" manage=on
 yabai -m rule --add app="^(Gmail)$" manage=on
+yabai -m rule --add app="^(Google Calendar)$" manage=on
 yabai -m rule --add app="^(Google Drive)$" manage=on
 yabai -m rule --add app="^(Home)$" manage=on
 yabai -m rule --add app="^(Instagram)$" manage=on
@@ -87,7 +88,6 @@ yabai -m rule --add app="^(Discord)$" manage=off grid=1:2:1:0:1:1
 yabai -m rule --add app="^(LuLu)$" manage=off grid=1:2:1:0:1:1
 
 # float bottom 3/4 screen grid=4:4:0:1:3:3
-yabai -m rule --add app="^(Google Calendar)$" manage=off grid=4:4:0:1:3:3
 
 # float some non-resizable apps because of floating prompts
 yabai -m rule --add app="^(Finder)$" manage=off
