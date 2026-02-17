@@ -64,6 +64,10 @@ config.applications = {
     preferred_display = config.screen.bottom_left,
     tags = {'#entertain'}
   },
+  ['Hammerspoon'] = {
+    bundleID = 'org.hammerspoon.Hammerspoon',
+    preferred_display = config.screen.bottom_left
+  },
   ['Instagram'] = {
     bundleID = 'com.google.Chrome.app.akpamiohjfcnimfljfndmaldlcfphjmp',
     preferred_display = config.screen.bottom_left,
