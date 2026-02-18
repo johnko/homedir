@@ -1,27 +1,13 @@
 local mousehighlight = {}
 
 mousehighlight.mouseCircle = {}
-mousehighlight.mouseCircle[0] = nil
-mousehighlight.mouseCircle[1] = nil
-mousehighlight.mouseCircle[2] = nil
-mousehighlight.mouseCircle[3] = nil
-mousehighlight.mouseCircle[4] = nil
-mousehighlight.mouseCircle[5] = nil
-mousehighlight.mouseCircle[6] = nil
-mousehighlight.mouseCircle[7] = nil
-mousehighlight.mouseCircle[8] = nil
-mousehighlight.mouseCircle[9] = nil
+for index, _ in ipairs({0, 1, 2, 3, 4, 5, 6, 7, 8, 9}) do
+  mousehighlight.mouseCircle[index] = nil
+end
 mousehighlight.mouseCircleTimer = {}
-mousehighlight.mouseCircleTimer[0] = nil
-mousehighlight.mouseCircleTimer[1] = nil
-mousehighlight.mouseCircleTimer[2] = nil
-mousehighlight.mouseCircleTimer[3] = nil
-mousehighlight.mouseCircleTimer[4] = nil
-mousehighlight.mouseCircleTimer[5] = nil
-mousehighlight.mouseCircleTimer[6] = nil
-mousehighlight.mouseCircleTimer[7] = nil
-mousehighlight.mouseCircleTimer[8] = nil
-mousehighlight.mouseCircleTimer[9] = nil
+for index, _ in ipairs({0, 1, 2, 3, 4, 5, 6, 7, 8, 9}) do
+  mousehighlight.mouseCircleTimer[index] = nil
+end
 
 mousehighlight.drawCircle = function(mousepoint, index)
   local radius = index*40
