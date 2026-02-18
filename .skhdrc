@@ -76,11 +76,11 @@
           ctrl + alt + cmd - h : yabai -m space --rotate 90
   shift + ctrl + alt + cmd - h : yabai -m window --toggle split
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
-# shift + ctrl + alt + cmd - j : echo
+  shift + ctrl + alt + cmd - j : yabai -m window --toggle float --grid 2:4:0:1:2:1
           ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
 # shift + ctrl + alt + cmd - k : echo
           ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
-# shift + ctrl + alt + cmd - l : echo
+  shift + ctrl + alt + cmd - l : yabai -m window --toggle float --grid 2:4:2:1:2:1
 
 ########## Row Z #########################################################
 

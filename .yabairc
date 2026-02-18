@@ -53,7 +53,7 @@ yabai -m rule --add app="^(Google Meet)$" manage=off #grid=1:4:0:0:3:1
 yabai -m rule --add app="^(Cursor)$" manage=off #grid=1:4:0:0:3:1
 yabai -m rule --add app="^(Xcode)$" manage=off #grid=1:4:0:0:3:1
 
-# float top left quarter screen grid=2:4:0:0:1:1
+# float top left eigth screen grid=2:4:0:0:1:1
 yabai -m rule --add app="^(Firefox)$" manage=off #grid=2:4:0:0:1:1
 yabai -m rule --add app="^(Spotify)$" manage=off #grid=2:4:0:0:1:1
 
@@ -63,20 +63,20 @@ yabai -m rule --add app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off #gr
 yabai -m rule --add app="^(Brave Browser)$" title="^.*( Tab).*$" manage=on
 yabai -m rule --add app="^(Preview)$" manage=off #grid=1:4:1:0:2:1
 
-# float middle center quarter grid=4:4:1:1:2:2
+# float middle center quarter screen grid=4:4:1:1:2:2
 yabai -m rule --add app="^(1Password)$" manage=off #grid=4:4:1:1:2:2
 yabai -m rule --add app="^(Keychain Access)$" manage=off #grid=4:4:1:1:2:2
 yabai -m rule --add app="^(Photo Booth)$" manage=off #grid=4:4:1:1:2:2
 yabai -m rule --add app="^(QuickTime.*)$" manage=off #grid=4:4:1:1:2:2
 
-# float bottom left quarter screen grid=2:4:0:1:1:1
-yabai -m rule --add app="^(Docker.*)$" manage=off grid=2:4:0:1:1:1
-yabai -m rule --add app="^(Music)$" manage=off grid=2:4:0:1:1:1
-yabai -m rule --add app="^(Podcasts)$" manage=off grid=2:4:0:1:1:1
-yabai -m rule --add app="^(Podman.*)$" manage=off grid=2:4:0:1:1:1
-yabai -m rule --add app="^(UTM)$" manage=off grid=2:4:0:1:1:1
+# float bottom left quarter screen grid=2:4:0:1:2:1
+yabai -m rule --add app="^(Docker.*)$" manage=off grid=2:4:0:1:2:1
+yabai -m rule --add app="^(Music)$" manage=off grid=2:4:0:1:2:1
+yabai -m rule --add app="^(Podcasts)$" manage=off grid=2:4:0:1:2:1
+yabai -m rule --add app="^(Podman.*)$" manage=off grid=2:4:0:1:2:1
+yabai -m rule --add app="^(UTM)$" manage=off grid=2:4:0:1:2:1
 
-# float bottom right half screen grid=2:4:2:1:2:1
+# float bottom right quarter screen grid=2:4:2:1:2:1
 yabai -m rule --add app="^(Netiquette)$" manage=off grid=2:4:2:1:2:1
 
 # float left half screen grid=1:2:0:0:1:1
