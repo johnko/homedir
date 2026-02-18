@@ -14,58 +14,6 @@ hs.hotkey.bind( { "ctrl", "alt", "cmd" }, "`", "Mouse & Notifications", mousehig
 
 -- --------------------------------------------------
 
--- WarpMouse = hs.loadSpoon("WarpMouse")
--- WarpMouse:start()
-
--- --------------------------------------------------
-
-PaperWM = nil
--- PaperWM = hs.loadSpoon("PaperWM")
--- PaperWM.external_bar = { bottom = 180 }
--- PaperWM.scroll_gain = 100.0
--- PaperWM.scroll_window = { "cmd" }
--- PaperWM.window_gap = 15
--- PaperWM.window_ratios = { 3/10, 4/9, 6/10, 8/9 }
--- -- number of fingers to detect a horizontal swipe, set to 0 to disable (the default)
--- PaperWM.swipe_fingers = 3
--- PaperWM:bindHotkeys({
---   -- switch to a new focused window in tiled grid
---   focus_left  = { { "ctrl", "alt", "cmd" }, "left" },
---   focus_right = { { "ctrl", "alt", "cmd" }, "right" },
---   focus_up    = { { "ctrl", "alt", "cmd" }, "up" },
---   focus_down  = { { "ctrl", "alt", "cmd" }, "down" },
-
---   -- switch windows by cycling forward/backward
---   -- (forward = down or right, backward = up or left)
---   focus_prev = { { "ctrl", "alt", "cmd" }, "q" },
---   focus_next = { { "ctrl", "alt", "cmd" }, "e" },
-
---   -- move windows around in tiled grid
---   swap_column_left  = { { "ctrl", "alt", "cmd", "shift" }, "q" },
---   swap_column_right = { { "ctrl", "alt", "cmd", "shift" }, "e" },
---   swap_left  = { { "ctrl", "alt", "cmd", "shift" }, "left" },
---   swap_right = { { "ctrl", "alt", "cmd", "shift" }, "right" },
---   swap_up    = { { "ctrl", "alt", "cmd", "shift" }, "up" },
---   swap_down  = { { "ctrl", "alt", "cmd", "shift" }, "down" },
-
---   -- position and resize focused window
---   center_window        = { { "ctrl", "alt", "cmd" }, "5" },
---   cycle_width          = { { "ctrl", "alt", "cmd" }, "r" },
---   reverse_cycle_width  = { { "ctrl", "alt", "cmd", "shift" }, "r" },
---   cycle_height         = { { "ctrl", "alt", "cmd" }, "6" },
-
---   -- move focused window into / out of a column
---   slurp_in = { { "ctrl", "alt", "cmd" }, "z" },
---   barf_out = { { "ctrl", "alt", "cmd" }, "x" },
-
---   -- move the focused window into / out of the tiling layer
---   toggle_floating = { { "ctrl", "alt", "cmd" }, "tab" }
-
--- })
--- PaperWM:start()
-
--- --------------------------------------------------
-
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "n", function()
 hs.urlevent.bind("movetonextscreen", function(eventName, params)
   local focusedWindow = hs.window.focusedWindow()
@@ -87,7 +35,7 @@ restart_windowmanager = require 'restart_windowmanager'
 -- hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
 --   logger.i("Called from screen.watcher")
 --   if activeScreenChanged == nil then
---     restart_windowmanager.restart(autolayout, PaperWM)
+--     restart_windowmanager.restart(autolayout, nil)
 --   end
 -- end):start()
 
@@ -97,19 +45,19 @@ end)
 
 -- hs.hotkey.bind({ "shift" }, "f16", function()
 hs.urlevent.bind("restartwindowmanager", function(eventName, params)
-  restart_windowmanager.restart(autolayout, PaperWM)
+  restart_windowmanager.restart(autolayout, nil)
 end)
 
 -- --------------------------------------------------
 
 hs.urlevent.bind("movetotopofscreen", function(eventName, params)
-  logger.e("Called from movetotopofscreen")
+  logger.i("Called from movetotopofscreen")
   local focusedWindow = hs.window.focusedWindow()
   local screen = focusedWindow:screen()
   local screenFrame = screen:frame()
   local windowFrame = focusedWindow:frame()
   local topY = (10 + screenFrame.y - windowFrame.y)
-  logger.ef("windowFrame y %d", topY)
+  logger.f("windowFrame y %d", topY)
   if topY < -50 then
     -- to top of screen
     focusedWindow:move(windowFrame:move(0, 10 + screenFrame.y - windowFrame.y), screen, true, 0)
