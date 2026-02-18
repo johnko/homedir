@@ -107,8 +107,14 @@ hs.urlevent.bind("movetotopofscreen", function(eventName, params)
   local focusedWindow = hs.window.focusedWindow()
   local screen = focusedWindow:screen()
   local screenFrame = screen:frame()
-  local frame = focusedWindow:frame()
-  focusedWindow:move(frame:move(0, 10 + screenFrame.y - frame.y), screen, true, 0)
+  local windowFrame = focusedWindow:frame()
+  local topY = (10 + screenFrame.y - windowFrame.y)
+  logger.ef("windowFrame y %d", topY)
+  if topY < -50 then
+    focusedWindow:move(windowFrame:move(0, 10 + screenFrame.y - windowFrame.y), screen, true, 0)
+  else
+    focusedWindow:move(windowFrame:move(0, 101 + screenFrame.y - windowFrame.y), screen, true, 0)
+  end
 end)
 
 -- --------------------------------------------------
