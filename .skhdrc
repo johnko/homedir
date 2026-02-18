@@ -46,12 +46,12 @@
           ctrl + alt + cmd - u : osascript ~/.osascripts/toggle-cursor.scpt
                            f17 : osascript ~/.osascripts/toggle-googlecalendar.scpt
 # shift + ctrl + alt + cmd - u : echo
-                   shift - f17 : yabai -m window --toggle float --grid 4:4:0:1:3:3
+                   shift - f17 : yabai -m window --toggle float --grid 2:2:1:0:1:1
 
           ctrl + alt + cmd - i : open -a "iPhone Mirroring"
                            f18 : open -a "iPhone Mirroring"
-# shift + ctrl + alt + cmd - i : echo
-#                  shift - f18 : echo
+  shift + ctrl + alt + cmd - i : yabai -m window --toggle float --grid 2:2:1:0:1:1
+                   shift - f18 : yabai -m window --toggle float --grid 2:2:1:0:1:1
 
           ctrl + alt + cmd - o : open -a "System Settings"
                            f19 : open -a "System Settings"
