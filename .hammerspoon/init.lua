@@ -111,8 +111,10 @@ hs.urlevent.bind("movetotopofscreen", function(eventName, params)
   local topY = (10 + screenFrame.y - windowFrame.y)
   logger.ef("windowFrame y %d", topY)
   if topY < -50 then
+    -- to top of screen
     focusedWindow:move(windowFrame:move(0, 10 + screenFrame.y - windowFrame.y), screen, true, 0)
   else
+    -- to top of yabai obeying padding
     focusedWindow:move(windowFrame:move(0, 101 + screenFrame.y - windowFrame.y), screen, true, 0)
   end
 end)
