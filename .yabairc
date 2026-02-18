@@ -4,99 +4,99 @@
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 #####################################################################
 
-yabai -m rule --add app="^(Activity Monitor)$" manage=on label=permanent
-yabai -m rule --add app="^(App Store)$" manage=on label=permanent
-yabai -m rule --add app="^(Calendar)$" manage=on label=permanent
-yabai -m rule --add app="^(Clock)$" manage=on label=permanent
-yabai -m rule --add app="^(Console)$" manage=on label=permanent
-yabai -m rule --add app="^(Contacts)$" manage=on label=permanent
-yabai -m rule --add app="^(Dictionary)$" manage=on label=permanent
-yabai -m rule --add app="^(Disk Utility)$" manage=on label=permanent
-yabai -m rule --add app="^(FaceTime)$" manage=on label=permanent
-yabai -m rule --add app="^(Find My)$" manage=on label=permanent
-yabai -m rule --add app="^(GitHub)$" manage=on label=permanent
-yabai -m rule --add app="^(Gmail)$" manage=on label=permanent
-yabai -m rule --add app="^(Google Calendar)$" manage=on label=permanent
-yabai -m rule --add app="^(Google Drive)$" manage=on label=permanent
-yabai -m rule --add app="^(Home)$" manage=on label=permanent
-yabai -m rule --add app="^(Instagram)$" manage=on label=permanent
-yabai -m rule --add app="^(LINE)$" manage=on label=permanent
-yabai -m rule --add app="^(Maps)$" manage=on label=permanent
-yabai -m rule --add app="^(Messages)$" manage=on label=permanent
-yabai -m rule --add app="^(News)$" manage=on label=permanent
-yabai -m rule --add app="^(Notes)$" manage=on label=permanent
-yabai -m rule --add app="^(Reminders)$" manage=on label=permanent
-yabai -m rule --add app="^(Safari)$" manage=on label=permanent
-yabai -m rule --add app="^(Shortcuts)$" manage=on label=permanent
-yabai -m rule --add app="^(Signal)$" manage=on label=permanent
-yabai -m rule --add app="^(Slack)$" manage=on label=permanent
-yabai -m rule --add app="^(Stocks)$" manage=on label=permanent
-yabai -m rule --add app="^(System Information)$" manage=on label=permanent
-yabai -m rule --add app="^(TextEdit)$" manage=on label=permanent
-yabai -m rule --add app="^(Voice Memos)$" manage=on label=permanent
-yabai -m rule --add app="^(Weather)$" manage=on label=permanent
-yabai -m rule --add app="^(WhatsApp.*)$" manage=on label=permanent
+yabai -m rule --add app="^(Activity Monitor)$" manage=on
+yabai -m rule --add app="^(App Store)$" manage=on
+yabai -m rule --add app="^(Calendar)$" manage=on
+yabai -m rule --add app="^(Clock)$" manage=on
+yabai -m rule --add app="^(Console)$" manage=on
+yabai -m rule --add app="^(Contacts)$" manage=on
+yabai -m rule --add app="^(Dictionary)$" manage=on
+yabai -m rule --add app="^(Disk Utility)$" manage=on
+yabai -m rule --add app="^(FaceTime)$" manage=on
+yabai -m rule --add app="^(Find My)$" manage=on
+yabai -m rule --add app="^(GitHub)$" manage=on
+yabai -m rule --add app="^(Gmail)$" manage=on
+yabai -m rule --add app="^(Google Calendar)$" manage=on
+yabai -m rule --add app="^(Google Drive)$" manage=on
+yabai -m rule --add app="^(Home)$" manage=on
+yabai -m rule --add app="^(Instagram)$" manage=on
+yabai -m rule --add app="^(LINE)$" manage=on
+yabai -m rule --add app="^(Maps)$" manage=on
+yabai -m rule --add app="^(Messages)$" manage=on
+yabai -m rule --add app="^(News)$" manage=on
+yabai -m rule --add app="^(Notes)$" manage=on
+yabai -m rule --add app="^(Reminders)$" manage=on
+yabai -m rule --add app="^(Safari)$" manage=on
+yabai -m rule --add app="^(Shortcuts)$" manage=on
+yabai -m rule --add app="^(Signal)$" manage=on
+yabai -m rule --add app="^(Slack)$" manage=on
+yabai -m rule --add app="^(Stocks)$" manage=on
+yabai -m rule --add app="^(System Information)$" manage=on
+yabai -m rule --add app="^(TextEdit)$" manage=on
+yabai -m rule --add app="^(Voice Memos)$" manage=on
+yabai -m rule --add app="^(Weather)$" manage=on
+yabai -m rule --add app="^(WhatsApp.*)$" manage=on
 
 # float fullscreen grid=1:1:0:0:1:1
-yabai -m rule --add app="^(Crunchyroll.*)$" manage=off label=permanent
-yabai -m rule --add app="^(GarageBand)$" manage=off label=permanent
-yabai -m rule --add app="^(GIMP)$" manage=off label=permanent
-yabai -m rule --add app="^(iMovie)$" manage=off label=permanent
-yabai -m rule --add app="^(Netflix)$" manage=off label=permanent
-yabai -m rule --add app="^(Photos)$" manage=off label=permanent
+yabai -m rule --add app="^(Crunchyroll.*)$" manage=off
+yabai -m rule --add app="^(GarageBand)$" manage=off
+yabai -m rule --add app="^(GIMP)$" manage=off
+yabai -m rule --add app="^(iMovie)$" manage=off
+yabai -m rule --add app="^(Netflix)$" manage=off
+yabai -m rule --add app="^(Photos)$" manage=off
 
 # float 1/4 or 3/4
-yabai -m rule --add app="^(Terminal)$" title="^.*(1|2|3|4|5|6|7|8)$" manage=off label=permanent
-yabai -m rule --add app="^(Terminal)$" title!="^.*(1|2|3|4|5|6|7|8)$" manage=on label=permanent
-yabai -m rule --add app="^(Code)$" manage=off label=permanent
-yabai -m rule --add app="^(Google Meet)$" manage=off label=permanent
-yabai -m rule --add app="^(Cursor)$" manage=off label=permanent
-yabai -m rule --add app="^(Xcode)$" manage=off label=permanent
+yabai -m rule --add app="^(Terminal)$" title="^.*(1|2|3|4|5|6|7|8)$" manage=off
+yabai -m rule --add app="^(Terminal)$" title!="^.*(1|2|3|4|5|6|7|8)$" manage=on
+yabai -m rule --add app="^(Code)$" manage=off
+yabai -m rule --add app="^(Google Meet)$" manage=off
+yabai -m rule --add app="^(Cursor)$" manage=off
+yabai -m rule --add app="^(Xcode)$" manage=off
 
 # float top left eigth screen grid=2:4:0:0:1:1
-yabai -m rule --add app="^(Firefox)$" manage=off label=permanent
-yabai -m rule --add app="^(Spotify)$" manage=off label=permanent
+yabai -m rule --add app="^(Firefox)$" manage=off
+yabai -m rule --add app="^(Spotify)$" manage=off
 
 # float centre half screen grid=1:4:1:0:2:1
-yabai -m rule --add app="^(Books)$" manage=off label=permanent
-yabai -m rule --add app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off label=permanent
-yabai -m rule --add app="^(Brave Browser)$" title="^.*( Tab).*$" manage=on label=permanent
-yabai -m rule --add app="^(Preview)$" manage=off label=permanent
+yabai -m rule --add app="^(Books)$" manage=off
+yabai -m rule --add app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off
+yabai -m rule --add app="^(Brave Browser)$" title="^.*( Tab).*$" manage=on
+yabai -m rule --add app="^(Preview)$" manage=off
 
 # float middle center quarter screen grid=4:4:1:1:2:2
-yabai -m rule --add app="^(1Password)$" manage=off label=permanent
-yabai -m rule --add app="^(Finder)$" manage=off label=permanent
-yabai -m rule --add app="^(Keychain Access)$" manage=off label=permanent
-yabai -m rule --add app="^(Photo Booth)$" manage=off label=permanent
-yabai -m rule --add app="^(QuickTime.*)$" manage=off label=permanent
+yabai -m rule --add app="^(1Password)$" manage=off
+yabai -m rule --add app="^(Finder)$" manage=off
+yabai -m rule --add app="^(Keychain Access)$" manage=off
+yabai -m rule --add app="^(Photo Booth)$" manage=off
+yabai -m rule --add app="^(QuickTime.*)$" manage=off
 
 # float bottom left quarter screen grid=2:4:0:1:2:1
-yabai -m rule --add app="^(Docker.*)$" manage=off label=permanent
-yabai -m rule --add app="^(Music)$" manage=off label=permanent
-yabai -m rule --add app="^(Podcasts)$" manage=off label=permanent
-yabai -m rule --add app="^(Podman.*)$" manage=off label=permanent
-yabai -m rule --add app="^(UTM)$" manage=off label=permanent
+yabai -m rule --add app="^(Docker.*)$" manage=off
+yabai -m rule --add app="^(Music)$" manage=off
+yabai -m rule --add app="^(Podcasts)$" manage=off
+yabai -m rule --add app="^(Podman.*)$" manage=off
+yabai -m rule --add app="^(UTM)$" manage=off
 
 # float bottom right quarter screen grid=2:4:2:1:2:1
-yabai -m rule --add app="^(Netiquette)$" manage=off label=permanent
+yabai -m rule --add app="^(Netiquette)$" manage=off
 
 # float left half screen grid=1:2:0:0:1:1
-yabai -m rule --add app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off label=permanent
-yabai -m rule --add app="^(Google Chrome)$" title="^.*( Tab).*$" manage=on label=permanent
+yabai -m rule --add app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off
+yabai -m rule --add app="^(Google Chrome)$" title="^.*( Tab).*$" manage=on
 
 # float right half screen grid=1:2:1:0:1:1
-yabai -m rule --add app="^(Discord)$" manage=off label=permanent label=permanent
-yabai -m rule --add app="^(LuLu)$" manage=off label=permanent label=permanent
+yabai -m rule --add app="^(Discord)$" manage=off
+yabai -m rule --add app="^(LuLu)$" manage=off
 
 # float bottom 3/4 screen grid=4:4:0:1:3:3
 
 # float some non-resizable apps because of floating prompts
-yabai -m rule --add app="^(iPhone Mirroring)$" manage=off label=permanent
-yabai -m rule --add app="^(System Preferences|System Settings)$" manage=off label=permanent
+yabai -m rule --add app="^(iPhone Mirroring)$" manage=off
+yabai -m rule --add app="^(System Preferences|System Settings)$" manage=off
 
 # default to float centered
 # cat .yabairc | grep -v grep | grep -v '^ *#' | grep app= | tr -d '!' | cut -d= -f2 | sed -e 's,manage,,' -e 's, title,,g' -e 's, $,,g' | grep -v noexist | tr -d '"^$)(' | tr '|' "\n" | sort -u | tr "\n" '|' | sed -e 's, |,|,g' -e 's,|$,,' | pbcopy
-yabai -m rule --add app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Google Meet|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off label=permanent
+yabai -m rule --add app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Google Meet|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off
 
 yabai -m config window_gap 25
 yabai -m config split_type vertical
@@ -116,7 +116,11 @@ yabai -m config left_padding 11
 yabai -m config right_padding 370
 
 # apply rules on restart
-yabai -m rule --apply permanent
+yabai -m rule --apply
+
+if [[ -e ~/.yabairc-oneshot ]]; then
+  bash ~/.yabairc-oneshot
+fi
 
 # set layout to bsp (managed), other options are float (unmanaged) or stack (layered fullscreen)
 yabai -m config layout bsp
