@@ -118,10 +118,6 @@ yabai -m config right_padding 370
 # apply rules on restart
 yabai -m rule --apply
 
-if [[ -e ~/.yabairc-oneshot ]]; then
-  bash ~/.yabairc-oneshot
-fi
-
 # set layout to bsp (managed), other options are float (unmanaged) or stack (layered fullscreen)
 yabai -m config layout bsp
 
