@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+
+#####################################################################
+# grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+#####################################################################
+
+yabai -m rule --add --one-shot app="^(Crunchyroll.*)$" manage=off label=temporary grid=1:1:0:0:1:1
+yabai -m rule --add --one-shot app="^(GarageBand)$" manage=off label=temporary grid=1:1:0:0:1:1
+yabai -m rule --add --one-shot app="^(GIMP)$" manage=off label=temporary grid=1:1:0:0:1:1
+yabai -m rule --add --one-shot app="^(iMovie)$" manage=off label=temporary grid=1:1:0:0:1:1
+yabai -m rule --add --one-shot app="^(Netflix)$" manage=off label=temporary grid=1:1:0:0:1:1
+yabai -m rule --add --one-shot app="^(Photos)$" manage=off label=temporary grid=1:1:0:0:1:1
+yabai -m rule --add --one-shot app="^(Terminal)$" title="^.*(1|2|3|4|5|6|7|8)$" manage=off label=temporary grid=1:4:0:0:1:1
+yabai -m rule --add --one-shot app="^(Code)$" manage=off label=temporary grid=1:4:1:0:3:1
+yabai -m rule --add --one-shot app="^(Google Meet)$" manage=off label=temporary grid=1:4:0:0:3:1
+yabai -m rule --add --one-shot app="^(Cursor)$" manage=off label=temporary grid=1:4:0:0:3:1
+yabai -m rule --add --one-shot app="^(Xcode)$" manage=off label=temporary grid=1:4:0:0:3:1
+yabai -m rule --add --one-shot app="^(Firefox)$" manage=off label=temporary grid=2:4:0:0:1:1
+yabai -m rule --add --one-shot app="^(Spotify)$" manage=off label=temporary grid=2:4:0:0:1:1
+yabai -m rule --add --one-shot app="^(Books)$" manage=off label=temporary grid=1:4:1:0:2:1
+yabai -m rule --add --one-shot app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off label=temporary grid=1:4:1:0:2:1
+yabai -m rule --add --one-shot app="^(Preview)$" manage=off label=temporary grid=1:4:1:0:2:1
+yabai -m rule --add --one-shot app="^(1Password)$" manage=off label=temporary grid=4:4:1:1:2:2
+yabai -m rule --add --one-shot app="^(Finder)$" manage=off label=temporary grid=4:4:1:1:2:2
+yabai -m rule --add --one-shot app="^(Keychain Access)$" manage=off label=temporary grid=4:4:1:1:2:2
+yabai -m rule --add --one-shot app="^(Photo Booth)$" manage=off label=temporary grid=4:4:1:1:2:2
+yabai -m rule --add --one-shot app="^(QuickTime.*)$" manage=off label=temporary grid=4:4:1:1:2:2
+yabai -m rule --add --one-shot app="^(Docker.*)$" manage=off label=temporary grid=2:4:0:1:2:1
+yabai -m rule --add --one-shot app="^(Music)$" manage=off label=temporary grid=2:4:0:1:2:1
+yabai -m rule --add --one-shot app="^(Podcasts)$" manage=off label=temporary grid=2:4:0:1:2:1
+yabai -m rule --add --one-shot app="^(Podman.*)$" manage=off label=temporary grid=2:4:0:1:2:1
+yabai -m rule --add --one-shot app="^(UTM)$" manage=off label=temporary grid=2:4:0:1:2:1
+yabai -m rule --add --one-shot app="^(Netiquette)$" manage=off label=temporary grid=2:4:2:1:2:1
+yabai -m rule --add --one-shot app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off label=temporary grid=1:2:0:0:1:1
+yabai -m rule --add --one-shot app="^(Discord)$" manage=off label=permanent label=temporary grid=1:2:1:0:1:1
+yabai -m rule --add --one-shot app="^(LuLu)$" manage=off label=permanent label=temporary grid=1:2:1:0:1:1
+yabai -m rule --add --one-shot app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Google Meet|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off label=temporary grid=4:4:1:1:2:2

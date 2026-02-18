@@ -6,5 +6,7 @@ set +e
 
 yabai -m config layout float
 open -g hammerspoon://autolayout
-yabai -m rule --apply
+if [[ -e ~/.yabairc-oneshot ]]; then
+  bash ~/.yabairc-oneshot
+fi
 yabai -m config layout bsp

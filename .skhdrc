@@ -128,7 +128,7 @@
 
 # 0x32 is `
 #         ctrl + alt + cmd - 0x32 : # macOS Show Notification Center
-  shift + ctrl + alt + cmd - 0x32 : bash ~/bin/macos-restart-hammerspoon-yabai.sh
+  shift + ctrl + alt + cmd - 0x32 : bash ~/bin/macos-reset-window-layout.sh
 
 ########## MacOS Custom Keyboard Shortcuts #########################################################
 
