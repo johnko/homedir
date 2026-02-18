@@ -103,10 +103,10 @@ yabai -m config split_type vertical
 yabai -m config auto_balance on
 
 # refresh yabai when display disconnect/reconnect
-yabai -m signal --add event=display_added action="bash ~/bin/macos-reset-window-layout.sh"
-yabai -m signal --add event=display_removed action="bash ~/bin/macos-reset-window-layout.sh"
-yabai -m signal --add event=display_resized action="bash ~/bin/macos-reset-window-layout.sh"
-yabai -m signal --add event=window_created action="bash ~/bin/macos-reset-window-layout.sh"
+yabai -m signal --add event=display_added action="bash ~/bin/macos-reset-apps-preferred-screens.sh"
+yabai -m signal --add event=display_removed action="bash ~/bin/macos-reset-apps-preferred-screens.sh"
+yabai -m signal --add event=display_resized action="bash ~/bin/macos-reset-apps-preferred-screens.sh"
+yabai -m signal --add event=window_created action="bash ~/bin/macos-reset-apps-preferred-screens.sh"
 
 # set padding to not block widgets on 4k monitor
 # it's before applying rules so wont block widgets
