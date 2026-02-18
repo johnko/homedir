@@ -59,7 +59,7 @@
 #                  shift - f19 : # macOS Emoji & Symbols
 
           ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
-# shift + ctrl + alt + cmd - p : echo
+  shift + ctrl + alt + cmd - p : yabai -m window --toggle float --grid grid 4:4:1:1:2:2
 
 ########## Row A #########################################################
 
