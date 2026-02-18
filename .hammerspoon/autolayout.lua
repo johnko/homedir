@@ -1,6 +1,6 @@
 -- AUTOLAYOUT
 --
--- Original Source: https://github.com/evantravers/hammerspoon-config/blob/master/autolayout.lua
+-- Original Source: https://github.com/evantravers/hammerspoon-config/blob/be5c9284b02f2e509d53385a73e778ba7505532b/autolayout.lua
 --
 -- This is largely stolen from @megalithic's epic work. This lets application's
 -- windows automatically re-settle depending on whether I'm on a single laptop

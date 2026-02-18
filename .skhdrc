@@ -84,10 +84,10 @@
 
 ########## Row Z #########################################################
 
-#         ctrl + alt + cmd - z : # PaperWM slurp_in
-# shift + ctrl + alt + cmd - z : echo
-#         ctrl + alt + cmd - x : # PaperWM barf_out
-# shift + ctrl + alt + cmd - x : echo
+#         ctrl + alt + cmd - z : # Hammerspoon windowpicker
+# shift + ctrl + alt + cmd - z : # Hammerspoon windowpicker
+#         ctrl + alt + cmd - x : # Hammerspoon windowpicker
+# shift + ctrl + alt + cmd - x : # Hammerspoon windowpicker
           ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
 # shift + ctrl + alt + cmd - c : echo
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
@@ -123,7 +123,7 @@
 
 ########## Left Group Convenient Keys #########################################################
 
-          ctrl + alt + cmd - tab : open -a "Mission Control" --args 2 # macOS Application Expose
+#         ctrl + alt + cmd - tab : # Hammerspoon windowpicker
   shift + ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 1:4:1:0:2:1
 
 # 0x32 is `

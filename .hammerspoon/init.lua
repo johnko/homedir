@@ -10,7 +10,7 @@ hs.uploadCrashData(false)
 -- --------------------------------------------------
 
 local mousehighlight = require 'mousehighlight'
-hs.hotkey.bind( { "ctrl", "alt", "cmd" }, "`", mousehighlight.mouseHighlight)
+hs.hotkey.bind( { "ctrl", "alt", "cmd" }, "`", "Mouse & Notifications", mousehighlight.mouseHighlight)
 
 -- --------------------------------------------------
 
@@ -119,13 +119,22 @@ end)
 
 -- --------------------------------------------------
 
+local windowpicker = require 'windowpicker'
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "tab", "Window picker, All Screens", function()windowpicker.switch(nil)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "z",   "Window picker, Screen 1",    function()windowpicker.switch(1)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "z",   "Window picker, Screen 2",    function()windowpicker.switch(2)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "x",   "Window picker, Screen 3",    function()windowpicker.switch(3)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "x",   "Window picker, Screen 4",    function()windowpicker.switch(4)end)
+
+-- --------------------------------------------------
+
 local terminalswitcher = require 'terminalswitcher'
 
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "1", function()terminalswitcher.switch(1)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "2", function()terminalswitcher.switch(2)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "3", function()terminalswitcher.switch(3)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "4", function()terminalswitcher.switch(4)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "5", function()terminalswitcher.switch(5)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "6", function()terminalswitcher.switch(6)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "7", function()terminalswitcher.switch(7)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "8", function()terminalswitcher.switch(8)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "1", "Group 1", function()terminalswitcher.switch(1)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "2", "Group 2", function()terminalswitcher.switch(2)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "3", "Group 3", function()terminalswitcher.switch(3)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "4", "Group 4", function()terminalswitcher.switch(4)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "5", "Group 5", function()terminalswitcher.switch(5)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "6", "Group 6", function()terminalswitcher.switch(6)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "7", "Group 7", function()terminalswitcher.switch(7)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "8", "Group 8", function()terminalswitcher.switch(8)end)
