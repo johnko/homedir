@@ -56,7 +56,12 @@ autolayout.autoLayout = function()
       if autolayout.application ~= nil then
         for i, window in pairs(autolayout.application:visibleWindows()) do
           -- autolayout.logger.f("looping %d, %s", i, window:title())
-          window:moveToScreen(autolayout.target_display(app_config.preferred_display), true, true, 0) -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
+          -- Wrap the potentially erroneous code in an anonymous function for pcall
+          local status, message_or_result = pcall(function()
+            autolayout.logger.i("Attempting operation...")
+            local result = window:moveToScreen(autolayout.target_display(app_config.preferred_display), true, true, 0) -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
+            autolayout.logger.i("Result is: " .. tostring(result)) -- This line will not be reached if an error occurs
+          end)
         end
       end
 
