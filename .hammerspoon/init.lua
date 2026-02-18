@@ -102,6 +102,17 @@ end)
 
 -- --------------------------------------------------
 
+hs.urlevent.bind("movetotopofscreen", function(eventName, params)
+  logger.e("Called from movetotopofscreen")
+  local focusedWindow = hs.window.focusedWindow()
+  local screen = focusedWindow:screen()
+  local screenFrame = screen:frame()
+  local frame = focusedWindow:frame()
+  focusedWindow:move(frame:move(0, 10 + screenFrame.y - frame.y), screen, true, 0)
+end)
+
+-- --------------------------------------------------
+
 local terminalswitcher = require 'terminalswitcher'
 
 hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "1", function()terminalswitcher.switch(1)end)
