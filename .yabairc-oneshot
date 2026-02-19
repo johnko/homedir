@@ -25,11 +25,11 @@ yabai -m rule --add label=oneshot016 app="^(1Password)$" manage=off grid=4:4:1:1
 yabai -m rule --add label=oneshot018 app="^(Keychain Access)$" manage=off grid=4:4:1:1:2:2
 yabai -m rule --add label=oneshot019 app="^(Photo Booth)$" manage=off grid=4:4:1:1:2:2
 yabai -m rule --add label=oneshot020 app="^(QuickTime.*)$" manage=off grid=4:4:1:1:2:2
-yabai -m rule --add label=oneshot021 app="^(Docker.*)$" manage=off grid=2:2:1:0:1:1
+yabai -m rule --add label=oneshot021 app="^(Docker.*)$" manage=off grid=2:2:1:1:1:1
 yabai -m rule --add label=oneshot022 app="^(Music)$" manage=off grid=2:4:0:1:2:1
 yabai -m rule --add label=oneshot023 app="^(Podcasts)$" manage=off grid=2:4:0:1:2:1
-yabai -m rule --add label=oneshot024 app="^(Podman.*)$" manage=off grid=2:2:1:0:1:1
-yabai -m rule --add label=oneshot025 app="^(UTM)$" manage=off grid=2:2:1:0:1:1
+yabai -m rule --add label=oneshot024 app="^(Podman.*)$" manage=off grid=2:2:1:1:1:1
+yabai -m rule --add label=oneshot025 app="^(UTM)$" manage=off grid=2:2:1:1:1:1
 yabai -m rule --add label=oneshot026 app="^(Netiquette)$" manage=off grid=2:4:2:1:2:1
 # yabai -m rule --add label=oneshot027 app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off grid=1:2:0:0:1:1
 yabai -m rule --add label=oneshot028 app="^(Discord)$" manage=off grid=1:2:1:0:1:1
