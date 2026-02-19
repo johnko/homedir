@@ -41,10 +41,6 @@ end
 -- restore the window to hotkey mapping to settings
 windowhotkeys.restore = function ()
   windowhotkeys.state = hs.settings.get(savedHotkeys) or windowhotkeys.emptyState
-  for _, id in ipairs(persisted) do
-    local window = hs.window.get(id)
-  end
-  windowhotkeys.persist()
 end
 
 -- used to assign window using shift+ctrl+alt+cmd 1-8
@@ -73,5 +69,7 @@ end
 windowhotkeys.start = function()
   windowhotkeys.restore()
 end
+
+windowhotkeys.restore()
 
 return windowhotkeys
