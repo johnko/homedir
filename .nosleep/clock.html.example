@@ -72,7 +72,7 @@
       margin-left: auto;
       margin-right: auto;
 
-      font-size: 360pt;
+      font-size: 320pt;
     }
 
     #seconds {
