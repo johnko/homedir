@@ -6,6 +6,7 @@ hs.consoleOnTop(false)
 hs.dockIcon(true)
 hs.menuIcon(true)
 hs.uploadCrashData(false)
+hs.window.animationDuration = 0
 
 -- --------------------------------------------------
 
