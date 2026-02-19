@@ -89,7 +89,7 @@
   </style>
 </head>
 
-<body><video id="bg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video><div id="overlay"><div id="day"></div><div id="clock"></div></div><video id="fg" autoplay="true" controls="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
+<body><video id="bg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video><div id="overlay"><div id="day"></div><div id="clock"></div></div><video id="fg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
 <script>
   function detectBrave() {
     if (typeof navigator.brave !== 'undefined' && typeof navigator.brave.isBrave === 'function') {
