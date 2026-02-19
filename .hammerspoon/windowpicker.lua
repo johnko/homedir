@@ -1,4 +1,4 @@
--- Window shortcuts
+-- Window chooser
 
 -- Original Source: https://github.com/evantravers/hammerspoon-config/blob/be5c9284b02f2e509d53385a73e778ba7505532b/movewindows.lua
 

@@ -79,13 +79,32 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "x",   "Window picker, Screen 
 
 -- --------------------------------------------------
 
-local terminalswitcher = require 'terminalswitcher'
+local windowhotkeys = require 'windowhotkeys'
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "1", "Assign Group 1", function()windowhotkeys.assign(1)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "2", "Assign Group 2", function()windowhotkeys.assign(2)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "3", "Assign Group 3", function()windowhotkeys.assign(3)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "4", "Assign Group 4", function()windowhotkeys.assign(4)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "5", "Assign Group 5", function()windowhotkeys.assign(5)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "6", "Assign Group 6", function()windowhotkeys.assign(6)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "7", "Assign Group 7", function()windowhotkeys.assign(7)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "8", "Assign Group 8", function()windowhotkeys.assign(8)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "1", "Focus Group 1", function()windowhotkeys.focus(1)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "2", "Focus Group 2", function()windowhotkeys.focus(2)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "3", "Focus Group 3", function()windowhotkeys.focus(3)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "4", "Focus Group 4", function()windowhotkeys.focus(4)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "5", "Focus Group 5", function()windowhotkeys.focus(5)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "6", "Focus Group 6", function()windowhotkeys.focus(6)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "7", "Focus Group 7", function()windowhotkeys.focus(7)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "8", "Focus Group 8", function()windowhotkeys.focus(8)end)
 
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "1", "Group 1", function()terminalswitcher.switch(1)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "2", "Group 2", function()terminalswitcher.switch(2)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "3", "Group 3", function()terminalswitcher.switch(3)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "4", "Group 4", function()terminalswitcher.switch(4)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "5", "Group 5", function()terminalswitcher.switch(5)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "6", "Group 6", function()terminalswitcher.switch(6)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "7", "Group 7", function()terminalswitcher.switch(7)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "8", "Group 8", function()terminalswitcher.switch(8)end)
+-- --------------------------------------------------
+
+-- local terminalswitcher = require 'terminalswitcher'
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "1", "Terminal 1", function()terminalswitcher.switch(1)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "2", "Terminal 2", function()terminalswitcher.switch(2)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "3", "Terminal 3", function()terminalswitcher.switch(3)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "4", "Terminal 4", function()terminalswitcher.switch(4)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "5", "Terminal 5", function()terminalswitcher.switch(5)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "6", "Terminal 6", function()terminalswitcher.switch(6)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "7", "Terminal 7", function()terminalswitcher.switch(7)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "8", "Terminal 8", function()terminalswitcher.switch(8)end)
