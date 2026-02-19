@@ -18,15 +18,12 @@ yabai -m rule --add app="^(Google Calendar)$" manage=on
 yabai -m rule --add app="^(Google Drive)$" manage=on
 yabai -m rule --add app="^(Home)$" manage=on
 yabai -m rule --add app="^(Instagram)$" manage=on
-yabai -m rule --add app="^(LINE)$" manage=on
 yabai -m rule --add app="^(Maps)$" manage=on
-yabai -m rule --add app="^(Messages)$" manage=on
 yabai -m rule --add app="^(News)$" manage=on
 yabai -m rule --add app="^(Notes)$" manage=on
 yabai -m rule --add app="^(Reminders)$" manage=on
 yabai -m rule --add app="^(Safari)$" manage=on
 yabai -m rule --add app="^(Shortcuts)$" manage=on
-yabai -m rule --add app="^(Signal)$" manage=on
 yabai -m rule --add app="^(Slack)$" manage=on
 yabai -m rule --add app="^(Stocks)$" manage=on
 yabai -m rule --add app="^(System Information)$" manage=on
@@ -85,6 +82,11 @@ yabai -m rule --add app="^(Google Chrome)$" title="^.*( Tab).*$" manage=on
 # float right half screen grid=1:2:1:0:1:1
 yabai -m rule --add app="^(Discord)$" manage=off
 yabai -m rule --add app="^(LuLu)$" manage=off
+
+# float vertical thirds grid=1:3:0:0:1:1
+yabai -m rule --add app="^(LINE)$" manage=off
+yabai -m rule --add app="^(Messages)$" manage=off
+yabai -m rule --add app="^(Signal)$" manage=off
 
 # float bottom 3/4 screen grid=4:4:0:1:3:3
 
