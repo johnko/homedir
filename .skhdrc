@@ -1,32 +1,32 @@
 ########## Numbers #########################################################
 
 #         ctrl + alt + cmd - 1 : # Hammerspoon switcher
-# shift + ctrl + alt + cmd - 1 : echo
+# shift + ctrl + alt + cmd - 1 : # Hammerspoon switcher
 #         ctrl + alt + cmd - 2 : # Hammerspoon switcher
-# shift + ctrl + alt + cmd - 2 : echo
+# shift + ctrl + alt + cmd - 2 : # Hammerspoon switcher
 #         ctrl + alt + cmd - 3 : # Hammerspoon switcher
-# shift + ctrl + alt + cmd - 3 : echo
+# shift + ctrl + alt + cmd - 3 : # Hammerspoon switcher
 #         ctrl + alt + cmd - 4 : # Hammerspoon switcher
-# shift + ctrl + alt + cmd - 4 : echo
+# shift + ctrl + alt + cmd - 4 : # Hammerspoon switcher
 #         ctrl + alt + cmd - 5 : # Hammerspoon switcher
-# shift + ctrl + alt + cmd - 5 : echo
+# shift + ctrl + alt + cmd - 5 : # Hammerspoon switcher
 #         ctrl + alt + cmd - 6 : # Hammerspoon switcher
-# shift + ctrl + alt + cmd - 6 : echo
+# shift + ctrl + alt + cmd - 6 : # Hammerspoon switcher
 #         ctrl + alt + cmd - 7 : # Hammerspoon switcher
-# shift + ctrl + alt + cmd - 7 : echo
+# shift + ctrl + alt + cmd - 7 : # Hammerspoon switcher
 #         ctrl + alt + cmd - 8 : # Hammerspoon switcher
-# shift + ctrl + alt + cmd - 8 : echo
-          ctrl + alt + cmd - 9 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
-  shift + ctrl + alt + cmd - 9 : osascript ~/.osascripts/terminal-brew-update.scpt
+# shift + ctrl + alt + cmd - 8 : # Hammerspoon switcher
+#         ctrl + alt + cmd - 9 : # Hammerspoon switcher
+# shift + ctrl + alt + cmd - 9 : # Hammerspoon switcher
 
 ########## Row Q #########################################################
 
           ctrl + alt + cmd - q : yabai -m window --toggle float --grid 1:2:0:0:1:1
-# shift + ctrl + alt + cmd - q : echo
-#         ctrl + alt + cmd - w : # arrow up
-# shift + ctrl + alt + cmd - w : # arrow up
+  shift + ctrl + alt + cmd - q : yabai -m window --toggle float --grid 2:2:0:0:1:1
+          ctrl + alt + cmd - w : osascript ~/.osascripts/terminal-brew-update.scpt
+  shift + ctrl + alt + cmd - w : osascript ~/.osascripts/terminal-brew-prune.scpt
           ctrl + alt + cmd - e : yabai -m window --toggle float --grid 1:2:1:0:1:1
-# shift + ctrl + alt + cmd - e : echo
+  shift + ctrl + alt + cmd - e : yabai -m window --toggle float --grid 2:2:1:0:1:1
 
           ctrl + alt + cmd - r : bash ~/bin/macos-move-to-top-of-screen.sh
                            f14 : bash ~/bin/macos-move-to-top-of-screen.sh
@@ -45,8 +45,8 @@
 
           ctrl + alt + cmd - u : osascript ~/.osascripts/toggle-cursor.scpt
                            f17 : osascript ~/.osascripts/toggle-googlecalendar.scpt
-# shift + ctrl + alt + cmd - u : echo
-                   shift - f17 : yabai -m window --toggle float --grid 2:2:1:0:1:1
+  shift + ctrl + alt + cmd - u : yabai -m window --toggle float --grid 1:4:0:0:3:1
+                   shift - f17 : yabai -m window --toggle float --grid 3:190:91:0:90:2
 
           ctrl + alt + cmd - i : open -a "iPhone Mirroring"
                            f18 : open -a "iPhone Mirroring"
@@ -63,24 +63,24 @@
 
 ########## Row A #########################################################
 
-          ctrl + alt + cmd - a : osascript ~/.osascripts/terminal-toggle-audio.scpt
+          ctrl + alt + cmd - a : yabai -m window --toggle float --grid 2:2:0:1:1:1
 # shift + ctrl + alt + cmd - a : # arrow left
-          ctrl + alt + cmd - s : osascript ~/.osascripts/terminal-vol.scpt
-# shift + ctrl + alt + cmd - s : # arrow down
-#         ctrl + alt + cmd - d : # arrow right
-# shift + ctrl + alt + cmd - d : # arrow right
+          ctrl + alt + cmd - s : osascript ~/.osascripts/terminal-toggle-audio.scpt
+  shift + ctrl + alt + cmd - s : osascript ~/.osascripts/terminal-vol.scpt
+          ctrl + alt + cmd - d : yabai -m window --toggle float --grid 2:2:1:1:1:1
+  shift + ctrl + alt + cmd - d : osascript ~/.osascripts/terminal-toggle-sudo.scpt
           ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
-  shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 2:4:0:0:1:1
+  shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 2:3:1:1:2:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
   shift + ctrl + alt + cmd - g : yabai -m window --toggle float --grid 1:4:1:0:2:1
           ctrl + alt + cmd - h : yabai -m space --rotate 90
   shift + ctrl + alt + cmd - h : yabai -m window --toggle split
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
-  shift + ctrl + alt + cmd - j : yabai -m window --toggle float --grid 2:4:0:1:2:1
+  shift + ctrl + alt + cmd - j : yabai -m window --toggle float --grid 1:3:0:0:1:1
           ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
-# shift + ctrl + alt + cmd - k : echo
+  shift + ctrl + alt + cmd - k : yabai -m window --toggle float --grid 2:3:1:0:1:1
           ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
-  shift + ctrl + alt + cmd - l : yabai -m window --toggle float --grid 2:4:2:1:2:1
+  shift + ctrl + alt + cmd - l : yabai -m window --toggle float --grid 2:3:2:0:1:1
 
 ########## Row Z #########################################################
 
@@ -89,7 +89,7 @@
 #         ctrl + alt + cmd - x : # Hammerspoon windowpicker
 # shift + ctrl + alt + cmd - x : # Hammerspoon windowpicker
           ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
-# shift + ctrl + alt + cmd - c : echo
+  shift + ctrl + alt + cmd - c : yabai -m window --toggle float --grid 1:190:0:0:91:1
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
   shift + ctrl + alt + cmd - v : yabai -m window --toggle float --grid 1:4:1:0:3:1
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt

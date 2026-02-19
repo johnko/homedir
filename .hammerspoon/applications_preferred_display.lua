@@ -8,10 +8,6 @@ config.applications = {
     bundleID = 'com.brave.Browser',
     preferred_display = config.screen.top_left
   },
-  ['Firefox'] = {
-    bundleID = 'org.mozilla.firefox',
-    preferred_display = config.screen.top_left
-  },
   ['Google Calendar'] = {
     bundleID = 'com.google.Chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep',
     preferred_display = config.screen.top_left
@@ -36,7 +32,6 @@ config.applications = {
     bundleID = 'com.microsoft.VSCode',
     preferred_display = config.screen.bottom_right
   },
-
   ['Crunchyroll'] = {
     bundleID = 'com.google.Chrome.app.hjlhbeffadgkonmpnblkfmhckmocohah',
     preferred_display = config.screen.bottom_right
@@ -52,6 +47,10 @@ config.applications = {
 
   ['Discord'] = {
     bundleID = 'com.hnc.Discord',
+    preferred_display = config.screen.bottom_left
+  },
+  ['Firefox'] = {
+    bundleID = 'org.mozilla.firefox',
     preferred_display = config.screen.bottom_left
   },
   ['Hammerspoon'] = {
