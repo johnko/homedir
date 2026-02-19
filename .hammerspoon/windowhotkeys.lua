@@ -24,12 +24,6 @@ local windowhotkeys = {}
 
 windowhotkeys.logger = hs.logger.new("windowhotkeys")
 
-windowhotkeys.emptyState = {}
-for _, index in ipairs({1, 2, 3, 4, 5, 6, 7, 8}) do
-  windowhotkeys.emptyState[index] = nil
-end
-windowhotkeys.state = windowhotkeys.emptyState
-
 ---hs.settings key for persisting saved hotkeys, stored as an array of window id
 local savedHotkeys <const> = "windowhotkey_saved"
 
@@ -41,6 +35,10 @@ end
 -- restore the window to hotkey mapping to settings
 windowhotkeys.restore = function ()
   windowhotkeys.state = hs.settings.get(savedHotkeys) or windowhotkeys.emptyState
+end
+
+windowhotkeys.start = function()
+  windowhotkeys.restore()
 end
 
 -- used to assign window using shift+ctrl+alt+cmd 1-8
@@ -66,10 +64,12 @@ windowhotkeys.focus = function(input)
   end
 end
 
-windowhotkeys.start = function()
-  windowhotkeys.restore()
+-- init before return
+windowhotkeys.emptyState = {}
+for _, index in ipairs({1, 2, 3, 4, 5, 6, 7, 8}) do
+  windowhotkeys.emptyState[index] = nil
 end
-
+windowhotkeys.state = windowhotkeys.emptyState
 windowhotkeys.restore()
 
 return windowhotkeys
