@@ -10,7 +10,7 @@ yabai -m rule --add label=oneshot002 app="^(GIMP)$" manage=off grid=1:1:0:0:1:1
 yabai -m rule --add label=oneshot003 app="^(iMovie)$" manage=off grid=1:1:0:0:1:1
 yabai -m rule --add label=oneshot004 app="^(Netflix)$" manage=off grid=1:1:0:0:1:1
 yabai -m rule --add label=oneshot005 app="^(Photos)$" manage=off grid=1:1:0:0:1:1
-yabai -m rule --add label=oneshot006 app="^(Terminal)$" title="^.*(1|2|3|4|5|6|7|8)$" manage=off grid=1:4:0:0:1:1
+# yabai -m rule --add label=oneshot006 app="^(Terminal)$" title="^.*(1|2|3|4|5|6|7|8)$" manage=off grid=1:4:0:0:1:1
 yabai -m rule --add label=oneshot007 app="^(Code)$" manage=off grid=1:4:1:0:3:1
 yabai -m rule --add label=oneshot008 app="^(Google Meet)$" manage=off grid=1:4:0:0:3:1
 yabai -m rule --add label=oneshot009 app="^(Cursor)$" manage=off grid=1:4:0:0:3:1
@@ -21,7 +21,7 @@ yabai -m rule --add label=oneshot013 app="^(Books)$" manage=off grid=1:4:1:0:2:1
 yabai -m rule --add label=oneshot014 app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off grid=1:4:1:0:2:1
 yabai -m rule --add label=oneshot015 app="^(Preview)$" manage=off grid=1:4:1:0:2:1
 yabai -m rule --add label=oneshot016 app="^(1Password)$" manage=off grid=4:4:1:1:2:2
-yabai -m rule --add label=oneshot017 app="^(Finder)$" manage=off grid=4:4:1:1:2:2
+# yabai -m rule --add label=oneshot017 app="^(Finder)$" manage=off grid=4:4:1:1:2:2
 yabai -m rule --add label=oneshot018 app="^(Keychain Access)$" manage=off grid=4:4:1:1:2:2
 yabai -m rule --add label=oneshot019 app="^(Photo Booth)$" manage=off grid=4:4:1:1:2:2
 yabai -m rule --add label=oneshot020 app="^(QuickTime.*)$" manage=off grid=4:4:1:1:2:2
@@ -31,7 +31,7 @@ yabai -m rule --add label=oneshot023 app="^(Podcasts)$" manage=off grid=2:4:0:1:
 yabai -m rule --add label=oneshot024 app="^(Podman.*)$" manage=off grid=2:2:1:0:1:1
 yabai -m rule --add label=oneshot025 app="^(UTM)$" manage=off grid=2:2:1:0:1:1
 yabai -m rule --add label=oneshot026 app="^(Netiquette)$" manage=off grid=2:4:2:1:2:1
-yabai -m rule --add label=oneshot027 app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off grid=1:2:0:0:1:1
+# yabai -m rule --add label=oneshot027 app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off grid=1:2:0:0:1:1
 yabai -m rule --add label=oneshot028 app="^(Discord)$" manage=off grid=1:2:1:0:1:1
 yabai -m rule --add label=oneshot029 app="^(LuLu)$" manage=off grid=1:2:1:0:1:1
 yabai -m rule --add label=oneshot030 app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Google Meet|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off grid=4:4:1:1:2:2
