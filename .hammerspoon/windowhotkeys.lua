@@ -83,7 +83,7 @@ windowhotkeys.drawInfo = function()
     local canvasImageIndex = 2 + index
     win = hs.window(id)
     if win ~= nil then
-      text = win:title():gsub("—","-"):gsub("▸",">"):gsub("⌥⌘","Opt+Cmd")
+      text = win:title():gsub("—","-"):gsub("▸",">"):gsub("⌥⌘","OptCmd"):gsub("•","-"):
       -- windowhotkeys.logger.e(text)
       subText = win:application():title()
       windowhotkeys.canvas[canvasImageIndex].image = hs.image.imageFromAppBundle(win:application():bundleID())
