@@ -34,16 +34,12 @@ autolayout.logger = hs.logger.new("autolayout")
 autolayout.config = {}
 
 autolayout.target_display = function(table_of_partial_display_name)
-  -- for _k1, screen in ipairs(hs.screen.allScreens()) do
-    -- autolayout.logger.ef("screen uuid %s", screen:getUUID())
-    -- autolayout.logger.ef("screen name %s", screen:name())
-  -- end
   for _k2, partial_display_name in ipairs(table_of_partial_display_name) do
     local screen = hs.screen.find(partial_display_name)
     if screen ~= nil then
-      autolayout.logger.ef("screen uuid %s", screen:getUUID())
-      autolayout.logger.ef("screen name %s", screen:name())
-      autolayout.logger.e("found")
+      -- autolayout.logger.ef("screen uuid %s", screen:getUUID())
+      -- autolayout.logger.ef("screen name %s", screen:name())
+      -- autolayout.logger.e("found")
       return screen
     end
   end
@@ -51,6 +47,10 @@ autolayout.target_display = function(table_of_partial_display_name)
 end
 
 autolayout.autoLayout = function()
+  for _k1, screen in ipairs(hs.screen.allScreens()) do
+    autolayout.logger.ef("screen uuid %s", screen:getUUID())
+    autolayout.logger.ef("screen name %s", screen:name())
+  end
   for _, app_config in pairs(autolayout.config.applications) do
     -- if we have a preferred display
     if app_config.preferred_display ~= nil then
@@ -86,6 +86,7 @@ autolayout.start = function(config_table)
   if (module) then
     module.config = autolayout.config
   end
+  autolayout.watcher = hs.screen.watcher.newWithActiveScreen(autolayout.autoLayout):start()
 end
 
 return autolayout

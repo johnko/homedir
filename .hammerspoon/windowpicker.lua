@@ -14,9 +14,9 @@ windowpicker.target_display = function(table_of_partial_display_name)
   for _k2, partial_display_name in ipairs(table_of_partial_display_name) do
     local screen = hs.screen.find(partial_display_name)
     if screen ~= nil then
-      windowpicker.logger.ef("screen uuid %s", screen:getUUID())
-      windowpicker.logger.ef("screen name %s", screen:name())
-      windowpicker.logger.e("found")
+      -- windowpicker.logger.ef("screen uuid %s", screen:getUUID())
+      -- windowpicker.logger.ef("screen name %s", screen:name())
+      -- windowpicker.logger.e("found")
       return screen
     end
   end

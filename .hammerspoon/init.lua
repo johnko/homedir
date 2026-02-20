@@ -2,7 +2,7 @@ logger = hs.logger.new("MyLocal")
 
 hs.autoLaunch(true)
 hs.automaticallyCheckForUpdates(false)
-hs.consoleOnTop(false)
+hs.consoleOnTop(true)
 hs.dockIcon(true)
 hs.menuIcon(true)
 hs.uploadCrashData(false)
@@ -12,42 +12,6 @@ hs.window.animationDuration = 0
 
 local mousehighlight = require 'mousehighlight'
 hs.hotkey.bind( { "ctrl", "alt", "cmd" }, "`", "Mouse & Notifications", mousehighlight.mouseHighlight)
-
--- --------------------------------------------------
-
--- hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "n", function()
-hs.urlevent.bind("movetonextscreen", function(eventName, params)
-  local focusedWindow = hs.window.focusedWindow()
-  local screen = focusedWindow:screen()
-  -- if screen is same resolution this preserves position and size
-  -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
-  focusedWindow:moveToScreen(screen:next(), true, true, 0)
-end)
-
--- --------------------------------------------------
-
-config = require 'applications_preferred_display'
-
-local autolayout = require 'autolayout'
-autolayout.start(config)
-
-restart_windowmanager = require 'restart_windowmanager'
-
--- hs.screen.watcher.newWithActiveScreen(function(activeScreenChanged)
---   logger.i("Called from screen.watcher")
---   if activeScreenChanged == nil then
---     restart_windowmanager.restart(autolayout, nil)
---   end
--- end):start()
-
-hs.urlevent.bind("autolayout", function(eventName, params)
-  autolayout.autoLayout()
-end)
-
--- hs.hotkey.bind({ "shift" }, "f16", function()
-hs.urlevent.bind("restartwindowmanager", function(eventName, params)
-  restart_windowmanager.restart(autolayout, nil)
-end)
 
 -- --------------------------------------------------
 
@@ -66,6 +30,33 @@ hs.urlevent.bind("movetotopofscreen", function(eventName, params)
     -- to top of yabai obeying padding
     focusedWindow:move(windowFrame:move(0, 101 + screenFrame.y - windowFrame.y), screen, true, 0)
   end
+end)
+
+-- --------------------------------------------------
+
+hs.urlevent.bind("movetonextscreen", function(eventName, params)
+  local focusedWindow = hs.window.focusedWindow()
+  local screen = focusedWindow:screen()
+  -- if screen is same resolution this preserves position and size
+  -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
+  focusedWindow:moveToScreen(screen:next(), true, true, 0)
+end)
+
+-- --------------------------------------------------
+
+local config = require 'applications_preferred_display'
+
+-- --------------------------------------------------
+
+local autolayout = require 'autolayout'
+autolayout.start(config)
+
+-- --------------------------------------------------
+
+local restart_windowmanager = require 'restart_windowmanager'
+
+hs.urlevent.bind("restartwindowmanager", function(eventName, params)
+  restart_windowmanager.restart(autolayout, nil)
 end)
 
 -- --------------------------------------------------
@@ -97,3 +88,9 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "6", "Focus Window 6", functio
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "7", "Focus Window 7", function()windowhotkeys.focus(7)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "8", "Focus Window 8", function()windowhotkeys.focus(8)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "9", "Focus Window 9", function()windowhotkeys.focus(9)end)
+windowhotkeys.start(config.screen.bottom_left)
+
+hs.urlevent.bind("autolayout", function(eventName, params)
+  autolayout.autoLayout()
+  windowhotkeys.createCanvas()
+end)

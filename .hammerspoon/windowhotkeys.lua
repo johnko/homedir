@@ -21,11 +21,13 @@
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "7", "Focus Window 7", function()windowhotkeys.focus(7)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "8", "Focus Window 8", function()windowhotkeys.focus(8)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "9", "Focus Window 9", function()windowhotkeys.focus(9)end)
+-- windowhotkeys.start({'6167F4D1-86CB-42BC-97D9-37FCE9CE14EE', 'Built', '(1)', 'U32'})
 
 local windowhotkeys = {}
 
 windowhotkeys.logger = hs.logger.new("windowhotkeys")
 windowhotkeys.canvas = nil
+windowhotkeys.table_of_partial_display_name = nil
 
 ---hs.settings key for persisting saved hotkeys, stored as an array of window id
 local savedHotkeys <const> = "windowhotkey_saved"
@@ -75,6 +77,23 @@ end
 windowhotkeys.state = windowhotkeys.emptyState
 windowhotkeys.restore()
 
+windowhotkeys.target_display = function(table_of_partial_display_name)
+  -- for _k1, screen in ipairs(hs.screen.allScreens()) do
+    -- windowhotkeys.logger.ef("screen uuid %s", screen:getUUID())
+    -- windowhotkeys.logger.ef("screen name %s", screen:name())
+  -- end
+  for _k2, partial_display_name in ipairs(table_of_partial_display_name) do
+    local screen = hs.screen.find(partial_display_name)
+    if screen ~= nil then
+      -- windowhotkeys.logger.ef("screen uuid %s", screen:getUUID())
+      -- windowhotkeys.logger.ef("screen name %s", screen:name())
+      -- windowhotkeys.logger.e("found")
+      return screen
+    end
+  end
+  return hs.screen.primaryScreen()
+end
+
 -- draw helper data
 windowhotkeys.drawInfo = function()
   local lines = {}
@@ -110,14 +129,11 @@ end
 -- draw helper canvas container
 windowhotkeys.createCanvas = function()
   if windowhotkeys.canvas then
-    windowhotkeys.canvas:hide(2)
+    windowhotkeys.canvas:hide()
   end
-  windowhotkeys.screen = hs.screen.primaryScreen():next()
-  if #hs.screen.allScreens() >= 3 then
-    windowhotkeys.screen = hs.screen.primaryScreen():next():next()
-  end
+  windowhotkeys.screen = windowhotkeys.target_display(windowhotkeys.table_of_partial_display_name)
   local frame = windowhotkeys.screen:frame()
-  local canvasW = 320
+  local canvasW = 330
   local canvasX = frame.w - canvasW
   windowhotkeys.canvas = hs.canvas.new({
     x = canvasX,
@@ -150,10 +166,14 @@ windowhotkeys.createCanvas = function()
   windowhotkeys.drawInfo()
 end
 
-windowhotkeys.createCanvas()
--- Start over when any screen geometry changes.
-watcher = hs.screen.watcher.newWithActiveScreen(windowhotkeys.createCanvas):start()
--- Redraw every few seconds.
-timer = hs.timer.doEvery(2, windowhotkeys.createCanvas):start()
+-- initialize watchers
+windowhotkeys.start = function(table_of_partial_display_name)
+  windowhotkeys.table_of_partial_display_name = table_of_partial_display_name
+  windowhotkeys.createCanvas()
+  -- Start over when any screen geometry changes.
+  windowhotkeys.watcher = hs.screen.watcher.newWithActiveScreen(windowhotkeys.createCanvas):start()
+  -- Redraw every few seconds.
+  windowhotkeys.timer = hs.timer.doEvery(2, windowhotkeys.drawInfo):start()
+end
 
 return windowhotkeys
