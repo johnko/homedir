@@ -86,7 +86,7 @@ autolayout.start = function(config_table)
   if (module) then
     module.config = autolayout.config
   end
-  autolayout.watcher = hs.screen.watcher.newWithActiveScreen(autolayout.autoLayout):start()
+  autolayout.watcher = hs.screen.watcher.new(autolayout.autoLayout):start()
 end
 
 return autolayout
