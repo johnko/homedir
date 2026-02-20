@@ -68,7 +68,7 @@ end
 
 -- init before return
 windowhotkeys.emptyState = {}
-for _, index in ipairs({1, 2, 3, 4, 5, 6, 7, 8}) do
+for _, index in ipairs({1, 2, 3, 4, 5, 6, 7, 8, 9}) do
   windowhotkeys.emptyState[index] = nil
 end
 windowhotkeys.state = windowhotkeys.emptyState
