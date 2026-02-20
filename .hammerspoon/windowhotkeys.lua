@@ -133,8 +133,9 @@ windowhotkeys.createCanvas = function()
   end
   windowhotkeys.screen = windowhotkeys.target_display(windowhotkeys.table_of_partial_display_name)
   local frame = windowhotkeys.screen:frame()
-  local canvasW = 330
-  local canvasX = frame.w - canvasW
+  local fullFrame = windowhotkeys.screen:fullFrame()
+  local canvasW = 350
+  local canvasX = fullFrame.w - canvasW
   windowhotkeys.canvas = hs.canvas.new({
     x = canvasX,
     y = frame.y,
