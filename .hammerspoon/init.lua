@@ -71,11 +71,10 @@ end)
 -- --------------------------------------------------
 
 local windowpicker = require 'windowpicker'
-hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "tab", "Window picker, All Screens"                          , function()windowpicker.switch(nil)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "z",   "Window picker, Screen " .. config.screen.top_left    , function()windowpicker.switch(config.screen.top_left)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "z",   "Window picker, Screen " .. config.screen.bottom_left , function()windowpicker.switch(config.screen.bottom_left)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "x",   "Window picker, Screen " .. config.screen.bottom_right, function()windowpicker.switch(config.screen.bottom_right)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "x",   "Window picker, Screen 4"                             , function()windowpicker.switch(4)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "tab", "Window picker, All Screens" , function()windowpicker.switch(nil)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "z",   "Window picker, Screen 1"    , function()windowpicker.switch(config.screen.top)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "z",   "Window picker, Screen 2"    , function()windowpicker.switch(config.screen.bottom_left)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "x",   "Window picker, Screen 3"    , function()windowpicker.switch(config.screen.bottom_right)end)
 
 -- --------------------------------------------------
 

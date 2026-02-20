@@ -33,17 +33,25 @@ autolayout.logger = hs.logger.new("autolayout")
 -- if not using headspace
 autolayout.config = {}
 
-autolayout.target_display = function(display_int)
-  -- detect the current number of monitors
-  autolayout.displays = hs.screen.allScreens()
-  if autolayout.displays[display_int] ~= nil then
-    return autolayout.displays[display_int]
-  else
-    return hs.screen.primaryScreen()
+autolayout.target_display = function(allScreens, table_of_partial_display_name)
+  for _k1, screen in ipairs(allScreens) do
+    -- autolayout.logger.ef("screen uuid %s", screen:getUUID())
+    -- autolayout.logger.ef("screen name %s", screen:name())
+    for _k2, partial_display_name in ipairs(table_of_partial_display_name) do
+      local pattern = ".*" .. partial_display_name .. ".*"
+      -- autolayout.logger.ef("pattern %s", pattern)
+      local found = string.match(screen:name(), pattern)
+      if found ~= nil then
+        -- autolayout.logger.e("found")
+        return screen
+      end
+    end
   end
+  return nil
 end
 
 autolayout.autoLayout = function()
+  local allScreens = hs.screen.allScreens()
   for _, app_config in pairs(autolayout.config.applications) do
     -- if we have a preferred display
     if app_config.preferred_display ~= nil then
@@ -59,7 +67,10 @@ autolayout.autoLayout = function()
           -- Wrap the potentially erroneous code in an anonymous function for pcall
           local status, message_or_result = pcall(function()
             autolayout.logger.i("Attempting operation...")
-            local result = window:moveToScreen(autolayout.target_display(app_config.preferred_display), true, true, 0) -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
+            local preferred_display = autolayout.target_display(allScreens, app_config.preferred_display)
+            if preferred_display ~= nil then
+              local result = window:moveToScreen(preferred_display, true, true, 0) -- hs.window:moveToScreen(screen[, noResize, ensureInScreenBounds][, duration])
+            end
             autolayout.logger.i("Result is: " .. tostring(result)) -- This line will not be reached if an error occurs
           end)
         end

@@ -104,14 +104,15 @@ end
 -- draw helper canvas container
 windowhotkeys.createCanvas = function()
   if windowhotkeys.canvas then
-    windowhotkeys.canvas:hide()
+    windowhotkeys.canvas:hide(2)
   end
-  local firstScreen = hs.screen.primaryScreen()
-  local screen = firstScreen:next()
-  local frame = screen:frame()
-  local columns = 11
-  local canvasW = hs.math.floor(frame.w / columns)
-  local canvasX = hs.math.floor(canvasW * (columns - 1))
+  windowhotkeys.screen = hs.screen.primaryScreen():next()
+  if #hs.screen.allScreens() >= 3 then
+    windowhotkeys.screen = hs.screen.primaryScreen():next():next()
+  end
+  local frame = windowhotkeys.screen:frame()
+  local canvasW = 320
+  local canvasX = frame.w - canvasW
   windowhotkeys.canvas = hs.canvas.new({
     x = canvasX,
     y = frame.y,
@@ -147,6 +148,6 @@ windowhotkeys.createCanvas()
 -- Start over when any screen geometry changes.
 watcher = hs.screen.watcher.newWithActiveScreen(windowhotkeys.createCanvas):start()
 -- Redraw every few seconds.
-timer = hs.timer.doEvery(3, windowhotkeys.drawInfo):start()
+timer = hs.timer.doEvery(2, windowhotkeys.createCanvas):start()
 
 return windowhotkeys

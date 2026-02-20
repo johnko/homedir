@@ -1,24 +1,26 @@
 config = {}
 config.screen = {}
-config.screen.top_left = 1
-config.screen.bottom_left = 3
-config.screen.bottom_right = 2
+
+config.screen.top = {'LG', 'Smart'}
+config.screen.bottom_left = {'Built', '(1)', 'U32'}
+config.screen.bottom_right = {'(2)', 'U32'}
+
 config.applications = {
   ['Brave'] = {
     bundleID = 'com.brave.Browser',
-    preferred_display = config.screen.top_left
+    preferred_display = config.screen.top
   },
   ['Google Calendar'] = {
     bundleID = 'com.google.Chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep',
-    preferred_display = config.screen.top_left
+    preferred_display = config.screen.top
   },
   ['Podman Desktop'] = {
     bundleID = 'io.podmandesktop.PodmanDesktop',
-    preferred_display = config.screen.top_left
+    preferred_display = config.screen.top
   },
   ['Slack'] = {
     bundleID = 'com.tinyspeck.slackmacgap',
-    preferred_display = config.screen.top_left
+    preferred_display = config.screen.top
   },
 
   ['Google Chrome'] = {
@@ -30,6 +32,14 @@ config.applications = {
   },
   ['Visual Studio Code'] = {
     bundleID = 'com.microsoft.VSCode',
+    preferred_display = config.screen.bottom_right
+  },
+  ['Cursor'] = {
+    bundleID = 'com.todesktop.230313mzl4w4u92',
+    preferred_display = config.screen.bottom_right
+  },
+  ['Hammerspoon'] = {
+    bundleID = 'org.hammerspoon.Hammerspoon',
     preferred_display = config.screen.bottom_right
   },
   ['Crunchyroll'] = {
@@ -53,8 +63,8 @@ config.applications = {
     bundleID = 'org.mozilla.firefox',
     preferred_display = config.screen.bottom_left
   },
-  ['Hammerspoon'] = {
-    bundleID = 'org.hammerspoon.Hammerspoon',
+  ['Google Meet'] = {
+    bundleID = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan',
     preferred_display = config.screen.bottom_left
   },
   ['Instagram'] = {

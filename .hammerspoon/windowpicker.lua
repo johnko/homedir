@@ -6,27 +6,41 @@ local windowpicker = {}
 
 windowpicker.logger = hs.logger.new("windowpicker")
 
-windowpicker.target_display = function(display_int)
-  -- detect the current number of monitors
-  windowpicker.displays = hs.screen.allScreens()
-  if windowpicker.displays[display_int] ~= nil then
-    return windowpicker.displays[display_int]
-  else
-    return hs.screen.primaryScreen()
+windowpicker.target_display = function(allScreens, table_of_partial_display_name)
+  for _k1, screen in ipairs(allScreens) do
+    -- windowpicker.logger.ef("screen uuid %s", screen:getUUID())
+    -- windowpicker.logger.ef("screen name %s", screen:name())
+    for _k2, partial_display_name in ipairs(table_of_partial_display_name) do
+      local pattern = ".*" .. partial_display_name .. ".*"
+      -- windowpicker.logger.ef("pattern %s", pattern)
+      local found = string.match(screen:name(), pattern)
+      if found ~= nil then
+        -- windowpicker.logger.e("found")
+        return screen
+      end
+    end
   end
+  return hs.screen.primaryScreen()
 end
 
 windowpicker.switch = function(input)
-
+  local allScreens = hs.screen.allScreens()
+  local placeholderText = nil
+  local wfwindows = nil
   if input ~= nil then
-    windowpicker.placeholderText = "Choose window to activate (Screen " .. input .. ")"
-    windowpicker.wfwindows = hs.window.filter.new():setScreens(windowpicker.target_display(input):id()):getWindows()
-  else
-    windowpicker.placeholderText = "Choose window to activate (All Screens)"
-    windowpicker.wfwindows = hs.window.filter.new():getWindows()
+    local preferred_display = windowpicker.target_display(allScreens, input)
+    if preferred_display ~= nil then
+      placeholderText = "Choose window to activate (" .. preferred_display:name() .. ")"
+      wfwindows = hs.window.filter.new():setScreens(preferred_display:id()):getWindows()
+    end
   end
 
-  local windows = hs.fnutils.map(windowpicker.wfwindows, function(win)
+  if placeholderText == nil then
+    placeholderText = "Choose window to activate (All Screens)"
+    wfwindows = hs.window.filter.new():getWindows()
+  end
+
+  local windows = hs.fnutils.map(wfwindows, function(win)
     if win ~= hs.window.focusedWindow() then
       return {
         text = win:title(),
@@ -47,7 +61,7 @@ windowpicker.switch = function(input)
   end)
 
   chooser
-    :placeholderText(windowpicker.placeholderText)
+    :placeholderText(placeholderText)
     :searchSubText(true)
     :choices(windows)
     :show()
