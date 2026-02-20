@@ -63,7 +63,6 @@ windowhotkeys.focus = function(input)
       window:focus()
     else
       -- clear because we couldn't find window anymore
-      windowhotkeys.state[input] = nil
       windowhotkeys.persist()
     end
   end
