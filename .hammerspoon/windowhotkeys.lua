@@ -25,6 +25,7 @@
 local windowhotkeys = {}
 
 windowhotkeys.logger = hs.logger.new("windowhotkeys")
+windowhotkeys.canvas = nil
 
 ---hs.settings key for persisting saved hotkeys, stored as an array of window id
 local savedHotkeys <const> = "windowhotkey_saved"
@@ -73,5 +74,77 @@ for _, index in ipairs({1, 2, 3, 4, 5, 6, 7, 8, 9}) do
 end
 windowhotkeys.state = windowhotkeys.emptyState
 windowhotkeys.restore()
+
+-- draw helper data
+windowhotkeys.drawInfo = function()
+  local lines = {}
+
+  for index, id in ipairs(windowhotkeys.state) do
+    local canvasImageIndex = 2 + index
+    win = hs.window(id)
+    if win ~= nil then
+      text = win:title()
+      subText = win:application():title()
+      windowhotkeys.canvas[canvasImageIndex].image = hs.image.imageFromAppBundle(win:application():bundleID())
+      table.insert(
+        lines,
+        index .. "        " .. string.sub(text, 1, 30) ..
+              "\n         " .. string.sub(subText, 1, 30) .. "\n"
+    )
+    else
+      table.insert(lines, index .. "\n\n")
+    end
+  end
+
+  windowhotkeys.canvas[2].text = table.concat(lines, "\n")
+end
+
+-- draw helper canvas container
+windowhotkeys.createCanvas = function()
+  if windowhotkeys.canvas then
+    windowhotkeys.canvas:hide()
+  end
+  local firstScreen = hs.screen.primaryScreen()
+  local screen = firstScreen:next()
+  local frame = screen:frame()
+  local columns = 11
+  local canvasW = hs.math.floor(frame.w / columns)
+  local canvasX = hs.math.floor(canvasW * (columns - 1))
+  windowhotkeys.canvas = hs.canvas.new({
+    x = canvasX,
+    y = frame.y,
+    w = canvasW + 1,
+    h = frame.h,
+  })
+  windowhotkeys.canvas[1] = {
+    type = "rectangle",
+    action = "fill",
+    fillColor = {hex="#000000"},
+  }
+  windowhotkeys.canvas[2] = {
+    type = "text",
+    frame = {x=10, y=10, h="100%", w="100%"},
+    textFont = "Monaco",
+    textSize = 13,
+    textColor = {hex="#ffffff"},
+  }
+  for index, _ in ipairs({1, 2, 3, 4, 5, 6, 7, 8, 9}) do
+    local canvasImageIndex = 2 + index
+    windowhotkeys.canvas[canvasImageIndex] = {
+      type  = "image",
+      frame = {x=22, y=((index-1)*48), w=50, h=50},
+      action = "fill",
+    }
+  end
+  windowhotkeys.canvas:show()
+  windowhotkeys.canvas:sendToBack()
+  windowhotkeys.drawInfo()
+end
+
+windowhotkeys.createCanvas()
+-- Start over when any screen geometry changes.
+watcher = hs.screen.watcher.newWithActiveScreen(windowhotkeys.createCanvas):start()
+-- Redraw every few seconds.
+timer = hs.timer.doEvery(3, windowhotkeys.drawInfo):start()
 
 return windowhotkeys
