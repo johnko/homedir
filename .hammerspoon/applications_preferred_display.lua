@@ -2,8 +2,8 @@ config = {}
 config.screen = {}
 
 config.screen.top = {'LG', 'Smart'}
-config.screen.bottom_left = {'Built', '(1)', 'U32'}
-config.screen.bottom_right = {'(2)', 'U32'}
+config.screen.bottom_left =  {'6167F4D1-86CB-42BC-97D9-37FCE9CE14EE', 'Built', '(1)', 'U32'}
+config.screen.bottom_right = {'FBFE6312-2360-4367-B44C-D7C3F83E0737',          '(2)', 'U32'}
 
 config.applications = {
   ['Brave'] = {

@@ -6,29 +6,28 @@ local windowpicker = {}
 
 windowpicker.logger = hs.logger.new("windowpicker")
 
-windowpicker.target_display = function(allScreens, table_of_partial_display_name)
-  for _k1, screen in ipairs(allScreens) do
+windowpicker.target_display = function(table_of_partial_display_name)
+  -- for _k1, screen in ipairs(hs.screen.allScreens()) do
     -- windowpicker.logger.ef("screen uuid %s", screen:getUUID())
     -- windowpicker.logger.ef("screen name %s", screen:name())
-    for _k2, partial_display_name in ipairs(table_of_partial_display_name) do
-      local pattern = ".*" .. partial_display_name .. ".*"
-      -- windowpicker.logger.ef("pattern %s", pattern)
-      local found = string.match(screen:name(), pattern)
-      if found ~= nil then
-        -- windowpicker.logger.e("found")
-        return screen
-      end
+  -- end
+  for _k2, partial_display_name in ipairs(table_of_partial_display_name) do
+    local screen = hs.screen.find(partial_display_name)
+    if screen ~= nil then
+      windowpicker.logger.ef("screen uuid %s", screen:getUUID())
+      windowpicker.logger.ef("screen name %s", screen:name())
+      windowpicker.logger.e("found")
+      return screen
     end
   end
   return hs.screen.primaryScreen()
 end
 
 windowpicker.switch = function(input)
-  local allScreens = hs.screen.allScreens()
   local placeholderText = nil
   local wfwindows = nil
   if input ~= nil then
-    local preferred_display = windowpicker.target_display(allScreens, input)
+    local preferred_display = windowpicker.target_display(input)
     if preferred_display ~= nil then
       placeholderText = "Choose window to activate (" .. preferred_display:name() .. ")"
       wfwindows = hs.window.filter.new():setScreens(preferred_display:id()):getWindows()
