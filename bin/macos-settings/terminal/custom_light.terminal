@@ -209,9 +209,11 @@
 	<key>ShowRepresentedURLPathInTitle</key>
 	<true/>
 	<key>columnCount</key>
-	<integer>129</integer>
+	<integer>238</integer>
 	<key>name</key>
 	<string>custom_light</string>
+	<key>rowCount</key>
+	<integer>53</integer>
 	<key>shellExitAction</key>
 	<integer>1</integer>
 	<key>type</key>
