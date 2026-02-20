@@ -92,6 +92,7 @@ windowhotkeys.drawInfo = function()
               "\n         " .. string.sub(subText, 1, 30) .. "\n"
     )
     else
+      windowhotkeys.canvas[canvasImageIndex].image = nil
       table.insert(lines, index .. "\n\n")
     end
   end
