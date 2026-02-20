@@ -28,8 +28,8 @@
           ctrl + alt + cmd - e : yabai -m window --toggle float --grid 1:2:1:0:1:1
   shift + ctrl + alt + cmd - e : yabai -m window --toggle float --grid 2:2:1:0:1:1
 
-          ctrl + alt + cmd - r : bash ~/bin/macos-move-to-top-of-screen.sh
-                           f14 : bash ~/bin/macos-move-to-top-of-screen.sh
+          ctrl + alt + cmd - r : bash ~/bin/macos-reset-window-layout.sh
+                           f14 : bash ~/bin/macos-reset-window-layout.sh
 # shift + ctrl + alt + cmd - r : echo
 #                  shift - f14 : # macOS Remove Window from Set
 
@@ -128,7 +128,7 @@
 
 # 0x32 is `
 #         ctrl + alt + cmd - 0x32 : # macOS Show Notification Center
-  shift + ctrl + alt + cmd - 0x32 : bash ~/bin/macos-reset-window-layout.sh
+  shift + ctrl + alt + cmd - 0x32 : bash ~/bin/macos-move-to-top-of-screen.sh
 
 ########## MacOS Custom Keyboard Shortcuts #########################################################
 
