@@ -55,11 +55,7 @@ mas "Xcode", id: 497799835
 cask "ollama-app"
 
 # VS Code extensions
-vscode "amazonwebservices.aws-toolkit-vscode"
 vscode "continue.continue"
-vscode "dbaeumer.vscode-eslint"
-vscode "docsmsft.docs-article-templates"
-vscode "docsmsft.docs-scaffolding"
 vscode "github.remotehub"
 vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
@@ -87,8 +83,6 @@ vscode "ms-vscode.hexeditor"
 vscode "ms-vscode.makefile-tools"
 vscode "ms-vscode.remote-explorer"
 vscode "ms-vscode.remote-repositories"
-vscode "msjsdiag.vscode-react-native"
-vscode "redhat.ansible"
 vscode "redhat.vscode-xml"
 vscode "redhat.vscode-yaml"
 

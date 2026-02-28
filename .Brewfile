@@ -36,9 +36,15 @@ brew "switchaudio-osx"
 # brew "sqlfluff"
 
 # VS Code extensions
+# vscode "amazonwebservices.aws-toolkit-vscode"
+# vscode "dbaeumer.vscode-eslint"
+# vscode "docsmsft.docs-article-templates"
+# vscode "docsmsft.docs-scaffolding"
 # vscode "linhmtran168.mac-ca-vscode"
 # vscode "mongodb.mongodb-vscode"
-vscode "snowflake.snowflake-vsc"
+# vscode "snowflake.snowflake-vsc"
+# vscode "msjsdiag.vscode-react-native"
+# vscode "redhat.ansible"
 
 # Keyboard / QMK / VIA
 # cask "via"
