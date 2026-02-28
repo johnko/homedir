@@ -33,6 +33,7 @@
   "dev.containers.cacheVolume": false,
   "dev.containers.defaultExtensions": [],
   "dev.containers.workspaceMountConsistency": "consistent",
+  "diffEditor.ignoreTrimWhitespace": false,
   "docsYaml.telemetry.enableTelemetry": false,
   "dotfiles.repository": "https://github.com/johnko/devcontainer-dotfiles.git",
   "editor.acceptSuggestionOnEnter": "off",
