@@ -24,13 +24,13 @@ Example:
   ubuntu-container.sh
   ubuntu-create-cloudinit-iso.sh
 
-  ${0##*/} create -n test -i ubuntu-24.04 -c 2 -m 4 -s 11
+  ${0##*/} create -n test -i ubuntu-24.04 -c 2 -m 4 -s 15
   ${0##*/} start -n test
 
   bash bin/vm/ubuntu-create-autoinstall-iso.sh
   ${0##*/} destroy -n test
 
-  ${0##*/} create -n vm01 -i autoinstall-24.04 -c 2 -m 4 -s 11
+  ${0##*/} create -n vm01 -i autoinstall-24.04 -c 2 -m 4 -s 15
   ${0##*/} start -n vm01
 EOS
   exit 1
@@ -60,12 +60,12 @@ while getopts ":n:i:c:m:s:" o; do
       ;;
     m)
       m=$OPTARG
-      ((m >= 1 && m <= 8)) || usage
+      ((m >= 1 && m <= 16)) || usage
       MEMS=$m
       ;;
     s)
       s=$OPTARG
-      ((s >= 10 && s <= 60)) || usage
+      ((s >= 15 && s <= 60)) || usage
       STOR=$s
       ;;
     *)
