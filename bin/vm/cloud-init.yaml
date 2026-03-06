@@ -19,7 +19,7 @@ autoinstall:
     - curtin in-target -- chmod 644 /etc/systemd/system/ubuntu-tty-update.service
     - curtin in-target -- systemctl enable ubuntu-tty-update.service
     # extend logical volume
-    - curtin in-target -- lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+    - curtin in-target -- lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv || true
     - curtin in-target -- resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
   packages:
     - openssh-server
