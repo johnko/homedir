@@ -81,6 +81,18 @@ for i in ~/.vim/backups ~/.vim/swaps ~/.vim/undo; do
   test ! -d $i && mkdir -p $i
 done
 
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+    source /usr/share/bash-completion/bash_completion
+  elif [[ -f /etc/bash_completion ]]; then
+    source /etc/bash_completion
+  fi
+  test -f /usr/local/etc/bash_completion && source /usr/local/etc/bash_completion
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
