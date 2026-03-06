@@ -9,7 +9,7 @@ if [[ ! -e /Volumes/RAMDisk/.metadata_never_index ]]; then
   set -x
   # 1 GB = 2097152
   # 2 GB = 4194304
-  diskutil apfs create "$(hdiutil attach -nomount ram://$(($1 * 2097152)) | tr -d ' ')" RAMDisk &&
+  diskutil apfs create "$(hdiutil attach -nomount ram://$(($1 * 2097152)) | tr -d -C '/a-zA-Z0-9')" RAMDisk &&
     touch /Volumes/RAMDisk/.metadata_never_index
 else
   set +x
