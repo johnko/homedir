@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ -e "$HOME/Library/Python/3.8/bin" ]]; then
-  export PATH=$PATH:$HOME/Library/Python/3.8/bin
-fi
-
 # Debian / Ubuntu
 if command -v apt-get >/dev/null 2>&1; then
   echo "=>  Detected apt-get..."
   export DEBIAN_FRONTEND=noninteractive
-  # Dependency for virtualenv
-  sudo apt-get install --yes build-essential libffi-dev
-  type virtualenv &>/dev/null || sudo apt-get install --yes python-virtualenv
+  # Dependency for venv
+  sudo apt-get install --yes python3-venv
   # Dependency for ansible
   sudo apt-get install --yes libssl-dev
 fi
