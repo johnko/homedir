@@ -4,7 +4,7 @@ set -eux
 ssh vm sudo apt update
 ssh vm sudo apt install -y git python3 python3-pip xorriso
 ssh vm sudo rm -fr livefs-editor
-ssh vm git clone https://github.com/mwhudson/livefs-editor
+ssh vm git clone https://github.com/johnko/livefs-editor.git
 ssh vm sudo python3 -m pip install ./livefs-editor/
 rsync -virchlmP "$(dirname "$0")/grub.cfg" vm:/tmp/grub.cfg
 rsync -virchlmP "${HOME}/iso/arm/ubuntu-22.04.5-live-server-arm64.iso" vm:./ubuntu-22.04.5-live-server-arm64.iso
