@@ -10,7 +10,7 @@ if command -v apt-get >/dev/null 2>&1; then
   echo "=>  Detected apt-get..."
   export DEBIAN_FRONTEND=noninteractive
   # Dependency for virtualenv
-  sudo apt-get install --yes build-essential python-dev libffi-dev
+  sudo apt-get install --yes build-essential libffi-dev
   type virtualenv &>/dev/null || sudo apt-get install --yes python-virtualenv
   # Dependency for ansible
   sudo apt-get install --yes libssl-dev
@@ -20,7 +20,6 @@ echo "=>  Detecting python3, python2..."
 # Last one wins
 command -v python >/dev/null 2>&1 && PY_BIN="python"
 command -v python3 >/dev/null 2>&1 && PY_BIN="python3"
-command -v python3.7 >/dev/null 2>&1 && PY_BIN="python3.7"
 
 VENV_FOLDER="venv-python3"
 VENV_PATH="${HOME}/${VENV_FOLDER}"
