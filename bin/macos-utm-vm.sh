@@ -6,6 +6,8 @@ set -x
 if [[ ! -e /Volumes/RAMDisk/.metadata_never_index ]]; then
   set +x
   echo "ERROR: missing /Volumes/RAMDisk"
+  echo "Try:"
+  echo "  macos-ramdisk.sh 30"
   exit 1
 fi
 
