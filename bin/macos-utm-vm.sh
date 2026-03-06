@@ -22,13 +22,13 @@ Example:
   ubuntu-container.sh
   ubuntu-create-cloudinit-iso.sh
 
-  ${0##*/} create -n test -i ubuntu-22.04 -c 1 -m 4 -s 20
+  ${0##*/} create -n test -i ubuntu-24.04 -c 1 -m 4 -s 20
   ${0##*/} start -n test
 
   bash bin/vm/ubuntu-create-autoinstall-iso.sh
   ${0##*/} destroy -n test
 
-  ${0##*/} create -n vm01 -i autoinstall-22.04 -c 1 -m 4 -s 20
+  ${0##*/} create -n vm01 -i autoinstall-24.04 -c 1 -m 4 -s 20
   ${0##*/} start -n vm01
 EOS
   exit 1
