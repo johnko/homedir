@@ -44,7 +44,7 @@ fi
 
 relaunch_ollama() {
   # https://docs.ollama.com/context-length#cli
-  export OLLAMA_CONTEXT_LENGTH=64000
+  export OLLAMA_CONTEXT_LENGTH=500000
 
   case $1 in
     logs)
