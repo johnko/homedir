@@ -22,26 +22,27 @@ config.applications = {
     bundleID = 'com.tinyspeck.slackmacgap',
     preferred_display = config.screen.top
   },
+  ['UTM'] = {
+    bundleID = 'com.utmapp.UTM',
+    preferred_display = config.screen.top
+  },
 
+  ['Cursor'] = {
+    bundleID = 'com.todesktop.230313mzl4w4u92',
+  },
   ['Google Chrome'] = {
     bundleID = 'com.google.Chrome'
   },
+  ['Hammerspoon'] = {
+    bundleID = 'org.hammerspoon.Hammerspoon',
+  },
   ['Terminal'] = {
     bundleID = 'com.apple.Terminal',
-    preferred_display = config.screen.bottom_right
   },
   ['Visual Studio Code'] = {
     bundleID = 'com.microsoft.VSCode',
-    preferred_display = config.screen.bottom_right
   },
-  ['Cursor'] = {
-    bundleID = 'com.todesktop.230313mzl4w4u92',
-    preferred_display = config.screen.bottom_right
-  },
-  ['Hammerspoon'] = {
-    bundleID = 'org.hammerspoon.Hammerspoon',
-    preferred_display = config.screen.bottom_right
-  },
+
   ['Crunchyroll'] = {
     bundleID = 'com.google.Chrome.app.hjlhbeffadgkonmpnblkfmhckmocohah',
     preferred_display = config.screen.bottom_right
