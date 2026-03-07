@@ -45,21 +45,17 @@ config.applications = {
 
   ['Crunchyroll'] = {
     bundleID = 'com.google.Chrome.app.hjlhbeffadgkonmpnblkfmhckmocohah',
-    preferred_display = config.screen.bottom_right
+  },
+  ['Discord'] = {
+    bundleID = 'com.hnc.Discord',
   },
   ['Netflix'] = {
     bundleID = 'com.google.Chrome.app.eppojlglocelodeimnohnlnionkobfln',
-    preferred_display = config.screen.bottom_right
   },
   ['Xbox'] = {
     bundleID = 'com.google.Chrome.app.chcecgcbjkilfgeccdhoeaillkophnhg',
-    preferred_display = config.screen.bottom_right
   },
 
-  ['Discord'] = {
-    bundleID = 'com.hnc.Discord',
-    preferred_display = config.screen.bottom_left
-  },
   ['Firefox'] = {
     bundleID = 'org.mozilla.firefox',
     preferred_display = config.screen.bottom_left
