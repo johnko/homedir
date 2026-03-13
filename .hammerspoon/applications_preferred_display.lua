@@ -63,7 +63,7 @@ config.applications = {
 
   ['Firefox'] = {
     bundleID = 'org.mozilla.firefox',
-    preferred_display = config.screen.bottom_left
+    preferred_display = config.screen.top_right
   },
   ['Google Meet'] = {
     bundleID = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan',
@@ -71,23 +71,23 @@ config.applications = {
   },
   ['Instagram'] = {
     bundleID = 'com.google.Chrome.app.akpamiohjfcnimfljfndmaldlcfphjmp',
-    preferred_display = config.screen.bottom_left
+    preferred_display = config.screen.top_right
   },
   ['Line'] = {
     bundleID = 'jp.naver.line.mac',
-    preferred_display = config.screen.bottom_left
+    preferred_display = config.screen.top_right
   },
   ['Messages'] = {
     bundleID = 'com.apple.MobileSMS',
-    preferred_display = config.screen.bottom_left
+    preferred_display = config.screen.top_right
   },
   ['Signal'] = {
     bundleID = 'org.whispersystems.signal-desktop',
-    preferred_display = config.screen.bottom_left
+    preferred_display = config.screen.top_right
   },
   ['WhatsApp'] = {
     bundleID = 'com.google.Chrome.app.hnpfjngllnobngcgfapefoaidbinmjnm',
-    preferred_display = config.screen.bottom_left
+    preferred_display = config.screen.top_right
   },
 
   ['Keychron'] = {
