@@ -1,43 +1,48 @@
 config = {}
 config.screen = {}
 
-config.screen.top = {'LG', 'Smart'}
-config.screen.bottom_left =  {'6167F4D1-86CB-42BC-97D9-37FCE9CE14EE', 'Built', '(1)', 'U32'}
-config.screen.bottom_right = {'FBFE6312-2360-4367-B44C-D7C3F83E0737',          '(2)', 'U32'}
+config.screen.top_left = {'Smart'}
+config.screen.top_right = {'LG'}
+config.screen.bottom_left =  {'6167F4D1-86CB-42BC-97D9-37FCE9CE14EE', 'Built', 'U32'}
+config.screen.bottom_right = {'FBFE6312-2360-4367-B44C-D7C3F83E0737',          'U32'}
 
 config.applications = {
   ['Brave'] = {
     bundleID = 'com.brave.Browser',
-    preferred_display = config.screen.top
-  },
-  ['Google Calendar'] = {
-    bundleID = 'com.google.Chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep',
-    preferred_display = config.screen.top
+    preferred_display = config.screen.top_left
   },
   ['Podman Desktop'] = {
     bundleID = 'io.podmandesktop.PodmanDesktop',
-    preferred_display = config.screen.top
-  },
-  ['Slack'] = {
-    bundleID = 'com.tinyspeck.slackmacgap',
-    preferred_display = config.screen.top
+    preferred_display = config.screen.top_left
   },
   ['UTM'] = {
     bundleID = 'com.utmapp.UTM',
-    preferred_display = config.screen.top
+    preferred_display = config.screen.top_left
   },
 
-  ['Cursor'] = {
-    bundleID = 'com.todesktop.230313mzl4w4u92',
+  ['Slack'] = {
+    bundleID = 'com.tinyspeck.slackmacgap',
+    preferred_display = config.screen.bottom_left
+  },
+  ['Google Calendar'] = {
+    bundleID = 'com.google.Chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep',
+    preferred_display = config.screen.bottom_left
   },
   ['Google Chrome'] = {
-    bundleID = 'com.google.Chrome'
+    bundleID = 'com.google.Chrome',
+    preferred_display = config.screen.bottom_left
   },
+
+  ['Terminal'] = {
+    bundleID = 'com.apple.Terminal',
+    preferred_display = config.screen.bottom_right
+  },
+
   ['Hammerspoon'] = {
     bundleID = 'org.hammerspoon.Hammerspoon',
   },
-  ['Terminal'] = {
-    bundleID = 'com.apple.Terminal',
+  ['Cursor'] = {
+    bundleID = 'com.todesktop.230313mzl4w4u92',
   },
   ['Visual Studio Code'] = {
     bundleID = 'com.microsoft.VSCode',
