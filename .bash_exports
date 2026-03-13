@@ -59,7 +59,7 @@ export FX_NO_MOUSE=true
 
 if [ -e "$HOME/Library/Application Support/Code/User/settings.json" ]; then
   # if on macos, vscode exist, opens files in vscode
-  export EDITOR="code --wait"
+  # export EDITOR="code --wait"
 fi
 
 # java/openjdk headers
@@ -82,9 +82,9 @@ if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" || -n $VSCODE_GIT_IPC_HAN
 fi
 if [[ -n $DETECTED ]]; then
   # also set editor so vscode integrated terminal opens files in vscode, can change to cursor if using that
-  export EDITOR="$DETECTED --wait"
+  # export EDITOR="$DETECTED --wait"
 else
-  export EDITOR="code --wait"
+  # export EDITOR="code --wait"
 fi
 
 # Always set SSH_AUTH_SOCK on MacOS host machine so devcontainers can clone dotfiles
