@@ -3,8 +3,8 @@ config.screen = {}
 
 config.screen.top_left = {'Smart'}
 config.screen.top_right = {'LG'}
-config.screen.bottom_left =  {'6167F4D1-86CB-42BC-97D9-37FCE9CE14EE', 'Built', 'U32'}
-config.screen.bottom_right = {'FBFE6312-2360-4367-B44C-D7C3F83E0737',          'U32'}
+config.screen.bottom_left =  {'6167F4D1-86CB-42BC-97D9-37FCE9CE14EE', 'FC8F6340-8DC7-433F-A8F3-AC5059C36720', 'Built', 'U32'}
+config.screen.bottom_right = {'FBFE6312-2360-4367-B44C-D7C3F83E0737', '0B235254-0EE7-42B5-B687-D733E26C1AA9',          'U32'}
 
 config.applications = {
   ['Brave'] = {
