@@ -92,11 +92,11 @@ config.applications = {
 
   ['Keychron'] = {
     bundleID = 'com.google.Chrome.app.cbfedpnlilnlbdcikokpfoibmlbghlhg',
-    preferred_display = config.screen.bottom_left
+    preferred_display = config.screen.bottom_right
   },
   ['NuphyIO'] = {
     bundleID = 'com.google.Chrome.app.opaefnjafkemdihlmdiocmmmmdkhgjfg',
-    preferred_display = config.screen.bottom_left
+    preferred_display = config.screen.bottom_right
   }
 }
 
