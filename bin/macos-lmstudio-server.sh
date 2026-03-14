@@ -51,7 +51,9 @@ relaunch_lmstudio() {
     pull)
       CONTINUE_CONFIG="$HOME/.continue/config.yaml"
       if type lms &>/dev/null; then
-        yq '.models[].model' "$CONTINUE_CONFIG" | sort -u | xargs -I{} bash -c "echo '==> {}'; lms get {}"
+        for model in $(yq '.models[].model' "$CONTINUE_CONFIG" | sort -u); do
+          lms get "$model" || true
+        done
         exit 0
       else
         echo "ERROR: missing 'lms'"
