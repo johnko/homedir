@@ -34,3 +34,7 @@ export GOPATH="$HOME/go"
 # activate a python venv if it exists
 [ -e $HOME/venv-python3/bin/activate ] &&
   source $HOME/venv-python3/bin/activate
+
+# lmstudio bin
+[ -e $HOME/.lmstudio/bin ] &&
+  export PATH="$PATH:$HOME/.lmstudio/bin"

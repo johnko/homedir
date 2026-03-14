@@ -42,10 +42,7 @@ else
   fi
 fi
 
-relaunch_ollama() {
-  # https://docs.ollama.com/context-length#cli
-  export OLLAMA_CONTEXT_LENGTH=500000
-
+relaunch_lmstudio() {
   case $1 in
     logs)
       $DOCKER_BIN logs -f caddyollama 2>&1 | sed "s,^{,\n{,"
@@ -53,20 +50,19 @@ relaunch_ollama() {
       ;;
     pull)
       CONTINUE_CONFIG="$HOME/.continue/config.yaml"
-      if type ollama &>/dev/null; then
-        yq '.models[].model' "$CONTINUE_CONFIG" | sort -u | xargs -I{} bash -c "echo '==> {}'; ollama pull {}"
+      if type lms &>/dev/null; then
+        for model in $(yq '.models[].model' "$CONTINUE_CONFIG" | sort -u); do
+          lms get "$model" || true
+        done
         exit 0
       else
-        echo "ERROR: missing 'ollama'"
+        echo "ERROR: missing 'lms'"
         exit 1
       fi
       ;;
     public)
       set +e
       set -u
-      export OLLAMA_HOST=0.0.0.0:11434
-      OLLAMA_HOST_LAN=$(get-ip | tail -n1):11434
-      export OLLAMA_HOST_LAN
 
       # run caddy container so we can have some kind of authentication
       CADDY_COMPOSE_FOLDER="$(dirname "$0")/../ollama-caddy"
@@ -111,26 +107,22 @@ relaunch_ollama() {
       fi
       ;;
     lan)
-      OLLAMA_HOST=$(get-ip | tail -n1):11434
-      export OLLAMA_HOST
       set -u
       ;;
     *)
-      export OLLAMA_HOST=127.0.0.1:11434
       set -u
       ;;
   esac
-  echo "OLLAMA_HOST=$OLLAMA_HOST"
 
-  if type ollama &>/dev/null; then
-    ollama serve
+  if type lms &>/dev/null; then
+    lms server start
   else
-    echo "ERROR: missing 'ollama'"
+    echo "ERROR: missing 'lms'"
     exit 1
   fi
 }
 
 while true; do
   set +u
-  relaunch_ollama "$1"
+  relaunch_lmstudio "$1"
 done
