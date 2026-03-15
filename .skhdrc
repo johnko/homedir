@@ -21,11 +21,11 @@
 
 ########## Row Q #########################################################
 
-          ctrl + alt + cmd - q : yabai -m window --toggle float --grid 1:2:0:0:1:1
+          ctrl + alt + cmd - q : yabai -m window --toggle float --grid 2:1:0:0:1:1
   shift + ctrl + alt + cmd - q : yabai -m window --toggle float --grid 2:2:0:0:1:1
           ctrl + alt + cmd - w : osascript ~/.osascripts/terminal-brew-update.scpt
   shift + ctrl + alt + cmd - w : osascript ~/.osascripts/terminal-brew-prune.scpt
-          ctrl + alt + cmd - e : yabai -m window --toggle float --grid 1:2:1:0:1:1
+          ctrl + alt + cmd - e : yabai -m window --toggle float --grid 2:1:0:1:1:1
   shift + ctrl + alt + cmd - e : yabai -m window --toggle float --grid 2:2:1:0:1:1
 
           ctrl + alt + cmd - r : bash ~/bin/macos-reset-window-layout.sh
@@ -45,7 +45,7 @@
 
           ctrl + alt + cmd - u : osascript ~/.osascripts/toggle-cursor.scpt
                            f17 : osascript ~/.osascripts/toggle-googlecalendar.scpt
-  shift + ctrl + alt + cmd - u : yabai -m window --toggle float --grid 40:4:0:1:3:38
+  shift + ctrl + alt + cmd - u : yabai -m window --toggle float --grid 2:1:0:0:1:1
                    shift - f17 : yabai -m window --toggle float --grid 3:190:91:0:90:2
 
           ctrl + alt + cmd - i : open -a "iPhone Mirroring"
@@ -70,17 +70,17 @@
           ctrl + alt + cmd - d : yabai -m window --toggle float --grid 2:2:1:1:1:1
   shift + ctrl + alt + cmd - d : osascript ~/.osascripts/terminal-toggle-sudo.scpt
           ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
-  shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 2:3:1:1:2:1
+  shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 4:1:0:3:1:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
   shift + ctrl + alt + cmd - g : yabai -m window --toggle float --grid 1:4:1:0:2:1
           ctrl + alt + cmd - h : yabai -m space --rotate 90
   shift + ctrl + alt + cmd - h : yabai -m window --toggle split
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
-  shift + ctrl + alt + cmd - j : yabai -m window --toggle float --grid 1:3:0:0:1:1
+  shift + ctrl + alt + cmd - j : yabai -m window --toggle float --grid 4:1:0:2:1:1
           ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
-  shift + ctrl + alt + cmd - k : yabai -m window --toggle float --grid 2:3:1:0:1:1
+  shift + ctrl + alt + cmd - k : yabai -m window --toggle float --grid 4:2:0:0:1:2
           ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
-  shift + ctrl + alt + cmd - l : yabai -m window --toggle float --grid 2:3:2:0:1:1
+  shift + ctrl + alt + cmd - l : yabai -m window --toggle float --grid 4:2:1:0:1:2
 
 ########## Row Z #########################################################
 
@@ -97,7 +97,7 @@
           ctrl + alt + cmd - n : bash ~/bin/macos-move-window-to-next-screen.sh
 # shift + ctrl + alt + cmd - n : echo
           ctrl + alt + cmd - m : osascript ~/.osascripts/toggle-googlemeet.scpt
-  shift + ctrl + alt + cmd - m : yabai -m window --toggle float --grid 40:4:0:1:3:38
+  shift + ctrl + alt + cmd - m : yabai -m window --toggle float --grid 2:1:0:0:1:1
 
 ########## Right Group Arrows #########################################################
 

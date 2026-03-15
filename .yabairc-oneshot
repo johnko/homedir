@@ -12,10 +12,10 @@ yabai -m rule --add label=oneshot004 app="^(Netflix)$" manage=off grid=2:1:0:1:1
 yabai -m rule --add label=oneshot005 app="^(Photos)$" manage=off grid=1:1:0:0:1:1
 # yabai -m rule --add label=oneshot006 app="^(Terminal)$" title="^.*(1|2|3|4|5|6|7|8)$" manage=off grid=1:4:0:0:1:1
 yabai -m rule --add label=oneshot007 app="^(Code)$" manage=off grid=4:1:0:1:1:3
-yabai -m rule --add label=oneshot008 app="^(Google Meet)$" manage=off grid=40:4:0:1:3:38
-yabai -m rule --add label=oneshot009 app="^(Cursor)$" manage=off grid=40:4:0:1:3:38
-yabai -m rule --add label=oneshot010 app="^(Xcode)$" manage=off grid=1:4:0:0:3:1
-yabai -m rule --add label=oneshot011 app="^(Firefox)$" manage=off grid=2:3:1:1:2:1
+yabai -m rule --add label=oneshot008 app="^(Google Meet)$" manage=off grid=2:1:0:0:1:1
+yabai -m rule --add label=oneshot009 app="^(Cursor)$" manage=off grid=2:1:0:0:1:1
+yabai -m rule --add label=oneshot010 app="^(Xcode)$" manage=off grid=2:1:0:1:1:1
+yabai -m rule --add label=oneshot011 app="^(Firefox)$" manage=off grid=4:1:0:3:1:1
 yabai -m rule --add label=oneshot012 app="^(Spotify)$" manage=off grid=2:4:0:0:1:1
 yabai -m rule --add label=oneshot013 app="^(Books)$" manage=off grid=1:4:1:0:2:1
 yabai -m rule --add label=oneshot014 app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off grid=1:4:1:0:2:1
@@ -34,9 +34,9 @@ yabai -m rule --add label=oneshot026 app="^(Netiquette)$" manage=off grid=2:4:2:
 # yabai -m rule --add label=oneshot027 app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off grid=1:2:0:0:1:1
 yabai -m rule --add label=oneshot028 app="^(Discord)$" manage=off grid=1:2:1:0:1:1
 yabai -m rule --add label=oneshot029 app="^(LuLu)$" manage=off grid=1:2:1:0:1:1
-yabai -m rule --add label=oneshot030 app="^(LINE)$" manage=off grid=2:3:1:0:1:1
-yabai -m rule --add label=oneshot031 app="^(Messages)$" manage=off grid=2:3:2:0:1:1
-yabai -m rule --add label=oneshot032 app="^(Signal)$" manage=off grid=1:3:0:0:1:1
+yabai -m rule --add label=oneshot030 app="^(LINE)$" manage=off grid=4:2:1:0:1:2
+yabai -m rule --add label=oneshot031 app="^(Messages)$" manage=off grid=4:1:0:2:1:1
+yabai -m rule --add label=oneshot032 app="^(Signal)$" manage=off grid=4:2:0:0:1:2
 yabai -m rule --add label=oneshot033 app="^(Google Calendar)$" manage=off grid=6:190:96:0:85:5
 yabai -m rule --add label=oneshot034 app="^(Slack)$" manage=off grid=1:2:0:0:1:1
 yabai -m rule --add label=oneshot035 app="^(Hammerspoon.*)$" manage=off grid=1:4:0:0:1:1
