@@ -1,41 +1,40 @@
 config = {}
 config.screen = {}
 
-config.screen.top_left = {'Smart'}
-config.screen.top_right = {'LG'}
-config.screen.bottom_left =  {'6167F4D1-86CB-42BC-97D9-37FCE9CE14EE', 'FC8F6340-8DC7-433F-A8F3-AC5059C36720', 'Built', 'U32'}
-config.screen.bottom_right = {'FBFE6312-2360-4367-B44C-D7C3F83E0737', '0B235254-0EE7-42B5-B687-D733E26C1AA9',          'U32'}
+config.screen.right = {'Smart'}
+config.screen.middle = {'LG'}
+config.screen.left =  {'DE9FD9B4-DF6B-44AF-8B1E-674E6CB3BF7E', 'FC8F6340-8DC7-433F-A8F3-AC5059C36720', 'Built', 'U32'}
 
 config.applications = {
   ['Brave'] = {
     bundleID = 'com.brave.Browser',
-    preferred_display = config.screen.top_left
+    preferred_display = config.screen.left
   },
   ['Podman Desktop'] = {
     bundleID = 'io.podmandesktop.PodmanDesktop',
-    preferred_display = config.screen.top_left
+    preferred_display = config.screen.left
   },
   ['UTM'] = {
     bundleID = 'com.utmapp.UTM',
-    preferred_display = config.screen.top_left
+    preferred_display = config.screen.left
   },
 
   ['Slack'] = {
     bundleID = 'com.tinyspeck.slackmacgap',
-    preferred_display = config.screen.bottom_left
+    preferred_display = config.screen.right
   },
   ['Google Calendar'] = {
     bundleID = 'com.google.Chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep',
-    preferred_display = config.screen.bottom_left
+    preferred_display = config.screen.right
   },
+
   ['Google Chrome'] = {
     bundleID = 'com.google.Chrome',
-    preferred_display = config.screen.bottom_left
   },
 
   ['Terminal'] = {
     bundleID = 'com.apple.Terminal',
-    preferred_display = config.screen.bottom_right
+    preferred_display = config.screen.middle
   },
 
   ['Hammerspoon'] = {
@@ -63,40 +62,40 @@ config.applications = {
 
   ['Firefox'] = {
     bundleID = 'org.mozilla.firefox',
-    preferred_display = config.screen.top_right
+    preferred_display = config.screen.left
   },
   ['Google Meet'] = {
     bundleID = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan',
-    preferred_display = config.screen.bottom_left
+    preferred_display = config.screen.right
   },
   ['Instagram'] = {
     bundleID = 'com.google.Chrome.app.akpamiohjfcnimfljfndmaldlcfphjmp',
-    preferred_display = config.screen.top_right
+    preferred_display = config.screen.left
   },
   ['Line'] = {
     bundleID = 'jp.naver.line.mac',
-    preferred_display = config.screen.top_right
+    preferred_display = config.screen.left
   },
   ['Messages'] = {
     bundleID = 'com.apple.MobileSMS',
-    preferred_display = config.screen.top_right
+    preferred_display = config.screen.left
   },
   ['Signal'] = {
     bundleID = 'org.whispersystems.signal-desktop',
-    preferred_display = config.screen.top_right
+    preferred_display = config.screen.left
   },
   ['WhatsApp'] = {
     bundleID = 'com.google.Chrome.app.hnpfjngllnobngcgfapefoaidbinmjnm',
-    preferred_display = config.screen.top_right
+    preferred_display = config.screen.left
   },
 
   ['Keychron'] = {
     bundleID = 'com.google.Chrome.app.cbfedpnlilnlbdcikokpfoibmlbghlhg',
-    preferred_display = config.screen.bottom_right
+    preferred_display = config.screen.middle
   },
   ['NuphyIO'] = {
     bundleID = 'com.google.Chrome.app.opaefnjafkemdihlmdiocmmmmdkhgjfg',
-    preferred_display = config.screen.bottom_right
+    preferred_display = config.screen.middle
   }
 }
 
