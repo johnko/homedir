@@ -50,8 +50,8 @@
 
           ctrl + alt + cmd - i : open -a "iPhone Mirroring"
                            f18 : open -a "iPhone Mirroring"
-  shift + ctrl + alt + cmd - i : yabai -m window --toggle float --grid 2:2:1:0:1:1
-                   shift - f18 : yabai -m window --toggle float --grid 2:2:1:0:1:1
+  shift + ctrl + alt + cmd - i : yabai -m window --toggle float --grid 3:3:1:1:1:1
+                   shift - f18 : yabai -m window --toggle float --grid 3:3:1:1:1:1
 
           ctrl + alt + cmd - o : open -a "System Settings"
                            f19 : open -a "System Settings"
@@ -59,7 +59,7 @@
 #                  shift - f19 : # macOS Emoji & Symbols
 
           ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
-  shift + ctrl + alt + cmd - p : yabai -m window --toggle float --grid 4:4:1:1:2:2
+  shift + ctrl + alt + cmd - p : yabai -m window --toggle float --grid 4:1:1:1:1:2
 
 ########## Row A #########################################################
 
