@@ -91,7 +91,7 @@
           ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
   shift + ctrl + alt + cmd - c : yabai -m window --toggle float --grid 1:190:0:0:91:1
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
-  shift + ctrl + alt + cmd - v : yabai -m window --toggle float --grid 40:4:1:1:3:38
+  shift + ctrl + alt + cmd - v : yabai -m window --toggle float --grid 4:1:0:1:1:3
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
   shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
           ctrl + alt + cmd - n : bash ~/bin/macos-move-window-to-next-screen.sh
