@@ -3,7 +3,7 @@ config.screen = {}
 
 config.screen.right = {'Smart'}
 config.screen.middle = {'LG'}
-config.screen.left =  {'DE9FD9B4-DF6B-44AF-8B1E-674E6CB3BF7E', 'FC8F6340-8DC7-433F-A8F3-AC5059C36720', 'Built', 'U32'}
+config.screen.left =  {'Built', 'U32'}
 
 config.applications = {
   ['Brave'] = {
@@ -28,37 +28,34 @@ config.applications = {
     preferred_display = config.screen.right
   },
 
-  ['Google Chrome'] = {
-    bundleID = 'com.google.Chrome',
-  },
+  -- ['Google Chrome'] = {
+  --   bundleID = 'com.google.Chrome',
+  -- },
+  -- ['Terminal'] = {
+  --   bundleID = 'com.apple.Terminal',
+  -- },
+  -- ['Hammerspoon'] = {
+  --   bundleID = 'org.hammerspoon.Hammerspoon',
+  -- },
+  -- ['Cursor'] = {
+  --   bundleID = 'com.todesktop.230313mzl4w4u92',
+  -- },
+  -- ['Visual Studio Code'] = {
+  --   bundleID = 'com.microsoft.VSCode',
+  -- },
 
-  ['Terminal'] = {
-    bundleID = 'com.apple.Terminal',
-    preferred_display = config.screen.middle
-  },
-
-  ['Hammerspoon'] = {
-    bundleID = 'org.hammerspoon.Hammerspoon',
-  },
-  ['Cursor'] = {
-    bundleID = 'com.todesktop.230313mzl4w4u92',
-  },
-  ['Visual Studio Code'] = {
-    bundleID = 'com.microsoft.VSCode',
-  },
-
-  ['Crunchyroll'] = {
-    bundleID = 'com.google.Chrome.app.hjlhbeffadgkonmpnblkfmhckmocohah',
-  },
-  ['Discord'] = {
-    bundleID = 'com.hnc.Discord',
-  },
-  ['Netflix'] = {
-    bundleID = 'com.google.Chrome.app.eppojlglocelodeimnohnlnionkobfln',
-  },
-  ['Xbox'] = {
-    bundleID = 'com.google.Chrome.app.chcecgcbjkilfgeccdhoeaillkophnhg',
-  },
+  -- ['Crunchyroll'] = {
+  --   bundleID = 'com.google.Chrome.app.hjlhbeffadgkonmpnblkfmhckmocohah',
+  -- },
+  -- ['Discord'] = {
+  --   bundleID = 'com.hnc.Discord',
+  -- },
+  -- ['Netflix'] = {
+  --   bundleID = 'com.google.Chrome.app.eppojlglocelodeimnohnlnionkobfln',
+  -- },
+  -- ['Xbox'] = {
+  --   bundleID = 'com.google.Chrome.app.chcecgcbjkilfgeccdhoeaillkophnhg',
+  -- },
 
   ['Firefox'] = {
     bundleID = 'org.mozilla.firefox',
@@ -89,14 +86,12 @@ config.applications = {
     preferred_display = config.screen.left
   },
 
-  ['Keychron'] = {
-    bundleID = 'com.google.Chrome.app.cbfedpnlilnlbdcikokpfoibmlbghlhg',
-    preferred_display = config.screen.middle
-  },
-  ['NuphyIO'] = {
-    bundleID = 'com.google.Chrome.app.opaefnjafkemdihlmdiocmmmmdkhgjfg',
-    preferred_display = config.screen.middle
-  }
+  -- ['Keychron'] = {
+  --   bundleID = 'com.google.Chrome.app.cbfedpnlilnlbdcikokpfoibmlbghlhg',
+  -- },
+  -- ['NuphyIO'] = {
+  --   bundleID = 'com.google.Chrome.app.opaefnjafkemdihlmdiocmmmmdkhgjfg',
+  -- }
 }
 
 return config
