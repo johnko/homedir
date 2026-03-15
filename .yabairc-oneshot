@@ -17,29 +17,29 @@ yabai -m rule --add label=oneshot009 app="^(Cursor)$" manage=off grid=2:1:0:0:1:
 yabai -m rule --add label=oneshot010 app="^(Xcode)$" manage=off grid=2:1:0:1:1:1
 yabai -m rule --add label=oneshot011 app="^(Firefox)$" manage=off grid=4:1:0:3:1:1
 yabai -m rule --add label=oneshot012 app="^(Spotify)$" manage=off grid=4:1:0:3:1:1
-yabai -m rule --add label=oneshot013 app="^(Books)$" manage=off grid=1:4:1:0:2:1
+yabai -m rule --add label=oneshot013 app="^(Books)$" manage=off grid=2:1:0:1:1:1
 yabai -m rule --add label=oneshot014 app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off grid=2:1:0:1:1:1
-yabai -m rule --add label=oneshot015 app="^(Preview)$" manage=off grid=1:4:1:0:2:1
+yabai -m rule --add label=oneshot015 app="^(Preview)$" manage=off grid=2:1:0:1:1:1
 yabai -m rule --add label=oneshot016 app="^(1Password)$" manage=off grid=4:1:1:1:1:2
-# yabai -m rule --add label=oneshot017 app="^(Finder)$" manage=off grid=4:4:1:1:2:2
-yabai -m rule --add label=oneshot018 app="^(Keychain Access)$" manage=off grid=4:4:1:1:2:2
-yabai -m rule --add label=oneshot019 app="^(Photo Booth)$" manage=off grid=4:4:1:1:2:2
-yabai -m rule --add label=oneshot020 app="^(QuickTime.*)$" manage=off grid=4:4:1:1:2:2
-yabai -m rule --add label=oneshot021 app="^(Docker.*)$" manage=off grid=2:2:1:1:1:1
+# yabai -m rule --add label=oneshot017 app="^(Finder)$" manage=off grid=4:1:1:2:1:1
+yabai -m rule --add label=oneshot018 app="^(Keychain Access)$" manage=off grid=4:1:1:1:1:2
+yabai -m rule --add label=oneshot019 app="^(Photo Booth)$" manage=off grid=4:1:1:1:1:2
+yabai -m rule --add label=oneshot020 app="^(QuickTime.*)$" manage=off grid=4:1:1:1:1:2
+yabai -m rule --add label=oneshot021 app="^(Docker.*)$" manage=off grid=8:1:0:1:1:2
 yabai -m rule --add label=oneshot022 app="^(Music)$" manage=off grid=4:1:0:3:1:1
 yabai -m rule --add label=oneshot023 app="^(Podcasts)$" manage=off grid=4:1:0:3:1:1
-yabai -m rule --add label=oneshot024 app="^(Podman.*)$" manage=off grid=2:2:1:1:1:1
-yabai -m rule --add label=oneshot025 app="^(UTM)$" manage=off grid=2:2:1:1:1:1
-yabai -m rule --add label=oneshot026 app="^(Netiquette)$" manage=off grid=2:4:2:1:2:1
+yabai -m rule --add label=oneshot024 app="^(Podman.*)$" manage=off grid=8:1:0:1:1:2
+yabai -m rule --add label=oneshot025 app="^(UTM)$" manage=off grid=8:1:0:1:1:2
+yabai -m rule --add label=oneshot026 app="^(Netiquette)$" manage=off grid=4:1:0:3:1:1
 # yabai -m rule --add label=oneshot027 app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off grid=1:2:0:0:1:1
-yabai -m rule --add label=oneshot028 app="^(Discord)$" manage=off grid=1:2:1:0:1:1
+yabai -m rule --add label=oneshot028 app="^(Discord)$" manage=off grid=4:1:0:1:1:2
 yabai -m rule --add label=oneshot029 app="^(LuLu)$" manage=off grid=1:2:1:0:1:1
 yabai -m rule --add label=oneshot030 app="^(LINE)$" manage=off grid=4:2:1:0:1:2
 yabai -m rule --add label=oneshot031 app="^(Messages)$" manage=off grid=4:1:0:2:1:1
 yabai -m rule --add label=oneshot032 app="^(Signal)$" manage=off grid=4:2:0:0:1:2
 yabai -m rule --add label=oneshot033 app="^(Google Calendar)$" manage=off grid=8:1:0:1:1:2
 yabai -m rule --add label=oneshot034 app="^(Slack)$" manage=off grid=8:1:0:3:1:5
-yabai -m rule --add label=oneshot035 app="^(Hammerspoon.*)$" manage=off grid=1:4:0:0:1:1
+yabai -m rule --add label=oneshot035 app="^(Hammerspoon.*)$" manage=off grid=1:2:0:0:1:1
 yabai -m rule --add label=oneshot036 app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Google Meet|Hammerspoon.*|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off grid=4:4:1:1:2:2
 
 yabai -m rule --apply
