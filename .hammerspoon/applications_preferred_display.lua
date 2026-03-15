@@ -6,10 +6,10 @@ config.screen.middle = {'LG'}
 config.screen.left =  {'Built', 'U32'}
 
 config.applications = {
-  ['Brave'] = {
-    bundleID = 'com.brave.Browser',
-    preferred_display = config.screen.left
-  },
+  -- ['Brave'] = {
+  --   bundleID = 'com.brave.Browser',
+  --   preferred_display = config.screen.left
+  -- },
   ['Podman Desktop'] = {
     bundleID = 'io.podmandesktop.PodmanDesktop',
     preferred_display = config.screen.left
