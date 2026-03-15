@@ -35,8 +35,8 @@
 
           ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
                            f15 : osascript ~/.osascripts/toggle-terminal.scpt
-  shift + ctrl + alt + cmd - t : yabai -m window --toggle float --grid 1:4:0:0:1:1
-                   shift - f15 : yabai -m window --toggle float --grid 1:4:0:0:1:1
+  shift + ctrl + alt + cmd - t : yabai -m window --toggle float --grid 4:1:0:0:1:1
+                   shift - f15 : yabai -m window --toggle float --grid 4:1:0:0:1:1
 
           ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
                            f16 : skhd --restart-service && yabai --restart-service
