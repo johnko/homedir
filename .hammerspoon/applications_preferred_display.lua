@@ -65,10 +65,10 @@ config.applications = {
     bundleID = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan',
     preferred_display = config.screen.right
   },
-  ['Instagram'] = {
-    bundleID = 'com.google.Chrome.app.akpamiohjfcnimfljfndmaldlcfphjmp',
-    preferred_display = config.screen.left
-  },
+  -- ['Instagram'] = {
+  --   bundleID = 'com.google.Chrome.app.akpamiohjfcnimfljfndmaldlcfphjmp',
+  --   preferred_display = config.screen.left
+  -- },
   ['Line'] = {
     bundleID = 'jp.naver.line.mac',
     preferred_display = config.screen.left
