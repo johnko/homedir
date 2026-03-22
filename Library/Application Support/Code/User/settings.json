@@ -349,9 +349,6 @@
   ],
   "workbench.startupEditor": "none",
   "yaml.schemas": {
-    "file://~/.vscode/extensions/continue.continue-1.2.16-darwin-arm64/config-yaml-schema.json": [
-      ".continue/**/*.yaml"
-    ],
     "file://~/.vscode/extensions/continue.continue-1.2.17-darwin-arm64/config-yaml-schema.json": [
       ".continue/**/*.yaml"
     ]
