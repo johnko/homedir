@@ -6,6 +6,7 @@ cask "1password"
 cask "discord"
 cask "lm-studio"
 cask "lulu"
+# cask "ollama-app"
 cask "signal"
 mas "LINE", id: 539883307
 # mas "Slack", id: 803453959
@@ -29,12 +30,10 @@ brew "switchaudio-osx"
 # Dev
 # cask "cursor"
 # brew "cocoapods"
-# brew "go"
 # brew "libyaml"
-# brew "nvm"
-# brew "rbenv"
 # brew "ruby-build"
 # brew "sqlfluff"
+# brew "watchman"
 
 # VS Code extensions
 # vscode "amazonwebservices.aws-toolkit-vscode"
