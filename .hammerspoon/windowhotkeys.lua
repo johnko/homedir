@@ -113,8 +113,8 @@ windowhotkeys.drawInfo = function()
       windowhotkeys.canvas[canvasImageIndex].image = hs.image.imageFromAppBundle(win:application():bundleID())
       table.insert(
         lines,
-        index .. "        " .. string.sub(text, 1, 30) ..
-              "\n         " .. string.sub(subText, 1, 30) .. "\n"
+        index .. "  " .. string.sub(text, 1, 8) ..
+              "\n   " .. string.sub(subText, 1, 8) .. "\n"
     )
     else
       windowhotkeys.canvas[canvasImageIndex].image = nil
@@ -133,7 +133,7 @@ windowhotkeys.createCanvas = function()
   windowhotkeys.screen = windowhotkeys.target_display(windowhotkeys.table_of_partial_display_name)
   local frame = windowhotkeys.screen:frame()
   local fullFrame = windowhotkeys.screen:fullFrame()
-  local canvasW = 350
+  local canvasW = 100
   local canvasX = fullFrame.w - canvasW
   windowhotkeys.canvas = hs.canvas.new({
     x = canvasX,
@@ -157,7 +157,7 @@ windowhotkeys.createCanvas = function()
     local canvasImageIndex = 2 + index
     windowhotkeys.canvas[canvasImageIndex] = {
       type  = "image",
-      frame = {x=22, y=((index-1)*48), w=50, h=50},
+      frame = {x=5, y=22+((index-1)*48), w=24, h=24},
       action = "fill",
     }
   end
