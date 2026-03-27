@@ -63,7 +63,7 @@ config.applications = {
   },
   ['Google Meet'] = {
     bundleID = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan',
-    preferred_display = config.screen.right
+    preferred_display = config.screen.middle
   },
   -- ['Instagram'] = {
   --   bundleID = 'com.google.Chrome.app.akpamiohjfcnimfljfndmaldlcfphjmp',
