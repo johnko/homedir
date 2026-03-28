@@ -201,8 +201,8 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editor.wrapTabs": true,
   "workbench.panel.defaultLocation": "top",
-  "workbench.preferredDarkColorTheme": "Default Dark+",
-  "workbench.preferredLightColorTheme": "Default Light+",
+  "workbench.preferredDarkColorTheme": "Dark+",
+  "workbench.preferredLightColorTheme": "Light+",
   "workbench.settings.applyToAllProfiles": [
     "[dockercompose]",
     "[github-actions-workflow]",
