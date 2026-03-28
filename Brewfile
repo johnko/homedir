@@ -4,9 +4,9 @@
 brew "mas"
 cask "gimp"
 cask "hammerspoon"
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+mas "Keynote", id: 361285480
+mas "Numbers", id: 361304891
+mas "Pages", id: 361309726
 
 # Web Browsers
 cask "google-chrome"
