@@ -453,7 +453,7 @@ lint() {
     echo "==> $i"
     if echo "$i" | grep -q -E '\.(js|ts)$'; then
       set -x
-      npx eslint --config .eslintrc.js --fix "$i"
+      npx eslint --config eslint.config.js --fix "$i"
       set +x
     elif echo "$i" | grep -q -E '\.(py)$'; then
       set -x
