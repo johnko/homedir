@@ -63,9 +63,9 @@ end)
 
 local windowpicker = require 'windowpicker'
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "tab", "Window picker, All Screens" , function()windowpicker.switch(nil)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "z",   "Window picker, Screen 1"    , function()windowpicker.switch(config.screen.middle)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "x",   "Window picker, Screen 2"    , function()windowpicker.switch(config.screen.right)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "z",   "Window picker, Screen 3"    , function()windowpicker.switch(config.screen.left)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "z",   "Window picker, Screen 1"    , function()windowpicker.switch(config.screen.left)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "x",   "Window picker, Screen 2"    , function()windowpicker.switch(config.screen.middle)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "z",   "Window picker, Screen 3"    , function()windowpicker.switch(config.screen.top)end)
 
 -- --------------------------------------------------
 
@@ -88,7 +88,7 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "6", "Focus Window 6", functio
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "7", "Focus Window 7", function()windowhotkeys.focus(7)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "8", "Focus Window 8", function()windowhotkeys.focus(8)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "9", "Focus Window 9", function()windowhotkeys.focus(9)end)
-windowhotkeys.start({'6167F4D1-86CB-42BC-97D9-37FCE9CE14EE', '(1)', 'U32'})
+windowhotkeys.start({'6167F4D1-86CB-42BC-97D9-37FCE9CE14EE', 'U32', 'LG'})
 
 hs.urlevent.bind("autolayout", function(eventName, params)
   autolayout.autoLayout()
