@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 
 # https://github.com/golang/go/issues/65568
 ENV GOTOOLCHAIN=local
