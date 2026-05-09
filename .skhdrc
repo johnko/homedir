@@ -89,7 +89,7 @@
           ctrl + alt + cmd - x : yabai -m window --toggle float --grid 32:1:0:4:1:18
   shift + ctrl + alt + cmd - x : yabai -m window --toggle float --grid 2:1:0:1:1:1
           ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
-  shift + ctrl + alt + cmd - c : yabai -m window --toggle float --grid 16:1:0:2:1:9
+  shift + ctrl + alt + cmd - c : yabai -m window --toggle float --grid 16:1:0:0:1:11
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
   shift + ctrl + alt + cmd - v : yabai -m window --toggle float --grid 40:3:0:1:2:38
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
