@@ -93,6 +93,7 @@
 /.vim/
 /.viminfo
 /.vs-kubernetes/
+/.vscode-shared/
 /.webex/
 /.wget-hsts
 /.Xauthority*
