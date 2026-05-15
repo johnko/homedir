@@ -57,10 +57,10 @@ export FX_NO_MOUSE=true
 # export     CURL_CA_BUNDLE=$SSL_CERT_FILE
 # export      AWS_CA_BUNDLE=$SSL_CERT_FILE
 
-if [ -e "$HOME/Library/Application Support/Code/User/settings.json" ]; then
-  # if on macos, vscode exist, opens files in vscode
-  # export EDITOR="code --wait"
-fi
+# if [ -e "$HOME/Library/Application Support/Code/User/settings.json" ]; then
+#   if on macos, vscode exist, opens files in vscode
+#   export EDITOR="code --wait"
+# fi
 
 # java/openjdk headers
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
@@ -80,12 +80,12 @@ if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" || -n $VSCODE_GIT_IPC_HAN
     fi
   fi
 fi
-if [[ -n $DETECTED ]]; then
-  # also set editor so vscode integrated terminal opens files in vscode, can change to cursor if using that
-  # export EDITOR="$DETECTED --wait"
-else
-  # export EDITOR="code --wait"
-fi
+# if [[ -n $DETECTED ]]; then
+#  # also set editor so vscode integrated terminal opens files in vscode, can change to cursor if using that
+#  # export EDITOR="$DETECTED --wait"
+# else
+#   export EDITOR="code --wait"
+# fi
 
 # Always set SSH_AUTH_SOCK on MacOS host machine so devcontainers can clone dotfiles
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
