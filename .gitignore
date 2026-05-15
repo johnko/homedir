@@ -30,6 +30,7 @@
 /.cagent/
 /.cisco/
 /.cocoapods/repos/
+/.codex/
 /.config/cagent/
 /.config/configstore/
 /.config/containers/
