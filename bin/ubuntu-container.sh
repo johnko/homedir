@@ -11,4 +11,4 @@ fi
 
 set -x
 
-$DOCKER_BIN run --rm --interactive --tty --entrypoint bash ubuntu:24.04
+$DOCKER_BIN run --rm --interactive --tty --entrypoint bash ubuntu:26.04
