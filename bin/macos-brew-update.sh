@@ -18,7 +18,7 @@ if type brew &>/dev/null; then
       sudo chown -h "$(whoami)" /usr/local/bin/kubectl || true
     fi
     set +x
-    for i in $(cat Brewfile $EXTRA_BREWFILE | grep cask | grep -v '^#' | cut -d' ' -f2 | tr -d '"'); do
+    for i in $(cat Brewfile $EXTRA_BREWFILE | grep cask | grep -v '^#' | cut -d' ' -f2 | tr -d '"' | grep -v -E '^(hammerspoon|google-chrome|podman-desktop|visual-studio-code|1password|discord|lm-studio|lulu|signal|brave-browser|firefox)$'); do
       set -x
       brew install --cask "$i" || brew install --force --cask "$i" || true
       set +x
