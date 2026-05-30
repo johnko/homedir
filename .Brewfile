@@ -28,6 +28,7 @@ brew "switchaudio-osx"
 # cask "docker-desktop"
 
 # Dev
+# cask "codex-app"
 # cask "cursor"
 # brew "cocoapods"
 # brew "libyaml"
