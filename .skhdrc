@@ -66,7 +66,7 @@
           ctrl + alt + cmd - a : yabai -m window --toggle float --grid 2:2:0:1:1:1
 # shift + ctrl + alt + cmd - a : # arrow left
           ctrl + alt + cmd - s : osascript ~/.osascripts/terminal-toggle-audio.scpt
-  shift + ctrl + alt + cmd - s : osascript ~/.osascripts/terminal-vol.scpt
+# shift + ctrl + alt + cmd - s : echo
           ctrl + alt + cmd - d : yabai -m window --toggle float --grid 2:2:1:1:1:1
   shift + ctrl + alt + cmd - d : osascript ~/.osascripts/terminal-toggle-sudo.scpt
           ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
@@ -117,9 +117,10 @@
 #                           f5 : open -a "Mission Control" --args 1 # macOS Show Desktop
 #                           f6 : # macOS Turn Do Not Disturb on/off
 #                           f7 : # macOS Toggle StageManager on/off
-#                          f11 : echo
-#                          f12 : echo
-#                          f13 : echo
+                           f11 : osascript ~/.osascripts/volume-25.scpt
+                           f12 : osascript ~/.osascripts/volume-50.scpt
+                           f13 : osascript ~/.osascripts/volume-75.scpt
+
 
 ########## Left Group Convenient Keys #########################################################
 
