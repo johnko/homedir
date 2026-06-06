@@ -133,4 +133,6 @@ KEYVAL="
 "
 print_cmd
 
+echo "defaults write -g com.apple.swipescrolldirection -bool false"
+
 echo "killall Dock"
