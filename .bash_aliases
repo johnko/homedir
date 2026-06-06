@@ -615,7 +615,7 @@ vol() {
     echo -n "❓ Set volume to $VOLUME_PERCENT ...?"
     read
     osascript "$i"
-    echo -n "$VOLUME_PERCENT ✅"
+    echo -n "✅ $VOLUME_PERCENT"
     echo
   done
 }
