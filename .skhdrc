@@ -125,10 +125,6 @@
 #                           f5 : open -a "Mission Control" --args 1 # macOS Show Desktop
 #                           f6 : # macOS Turn Do Not Disturb on/off
 #                           f7 : # macOS Toggle StageManager on/off
-#                          f11 : osascript ~/.osascripts/volume-25.scpt
-#                          f12 : osascript ~/.osascripts/volume-50.scpt
-#                          f13 : osascript ~/.osascripts/volume-75.scpt
-
 
 ########## Left Group Convenient Keys #########################################################
 
