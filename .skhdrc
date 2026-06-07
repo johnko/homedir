@@ -73,6 +73,7 @@
   shift + ctrl + alt + cmd - f : yabai -m window --grid 2:3:1:1:2:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
   shift + ctrl + alt + cmd - g : yabai -m window --grid 1:4:1:0:2:1
+          ctrl + alt + cmd - h : yabai -m window --grid 1:4:1:0:2:1
 #         ctrl + alt + cmd - h : yabai -m space --rotate 90
 # shift + ctrl + alt + cmd - h : yabai -m window --toggle split
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
