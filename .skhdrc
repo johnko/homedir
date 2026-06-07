@@ -35,8 +35,8 @@
 
           ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
                            f15 : osascript ~/.osascripts/toggle-terminal.scpt
-  shift + ctrl + alt + cmd - t : yabai -m window --toggle float --grid 1:6:1:0:4:1
-                   shift - f15 : yabai -m window --toggle float --grid 1:6:1:0:4:1
+  shift + ctrl + alt + cmd - t : yabai -m window --grid 1:6:1:0:4:1
+                   shift - f15 : yabai -m window --grid 1:6:1:0:4:1
 
           ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
                            f16 : skhd --restart-service && yabai --restart-service
@@ -45,13 +45,13 @@
 
           ctrl + alt + cmd - u : osascript ~/.osascripts/toggle-googlecalendar.scpt
                            f17 : osascript ~/.osascripts/toggle-googlecalendar.scpt
-  shift + ctrl + alt + cmd - u : yabai -m window --toggle float --grid 3:1:0:0:1:1
-                   shift - f17 : yabai -m window --toggle float --grid 3:1:0:0:1:1
+  shift + ctrl + alt + cmd - u : yabai -m window --grid 3:1:0:0:1:1
+                   shift - f17 : yabai -m window --grid 3:1:0:0:1:1
 
           ctrl + alt + cmd - i : open -a "iPhone Mirroring"
                            f18 : open -a "iPhone Mirroring"
-  shift + ctrl + alt + cmd - i : yabai -m window --toggle float --grid 3:3:1:1:1:1
-                   shift - f18 : yabai -m window --toggle float --grid 3:3:1:1:1:1
+  shift + ctrl + alt + cmd - i : yabai -m window --grid 3:3:1:1:1:1
+                   shift - f18 : yabai -m window --grid 3:3:1:1:1:1
 
           ctrl + alt + cmd - o : open -a "System Settings"
                            f19 : open -a "System Settings"
@@ -59,7 +59,7 @@
 #                  shift - f19 : # macOS Emoji & Symbols
 
           ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
-  shift + ctrl + alt + cmd - p : yabai -m window --toggle float --grid 4:4:1:1:2:2
+  shift + ctrl + alt + cmd - p : yabai -m window --grid 4:4:1:1:2:2
 
 ########## Row A #########################################################
 
@@ -70,34 +70,34 @@
 #         ctrl + alt + cmd - d : echo
   shift + ctrl + alt + cmd - d : yabai -m window --toggle float --grid 2:2:1:1:1:1
           ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
-  shift + ctrl + alt + cmd - f : yabai -m window --toggle float --grid 2:3:1:1:2:1
+  shift + ctrl + alt + cmd - f : yabai -m window --grid 2:3:1:1:2:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
-  shift + ctrl + alt + cmd - g : yabai -m window --toggle float --grid 1:4:1:0:2:1
+  shift + ctrl + alt + cmd - g : yabai -m window --grid 1:4:1:0:2:1
 #         ctrl + alt + cmd - h : yabai -m space --rotate 90
 # shift + ctrl + alt + cmd - h : yabai -m window --toggle split
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
-  shift + ctrl + alt + cmd - j : yabai -m window --toggle float --grid 2:3:2:0:1:1
+  shift + ctrl + alt + cmd - j : yabai -m window --grid 2:3:2:0:1:1
           ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
-  shift + ctrl + alt + cmd - k : yabai -m window --toggle float --grid 7:3:0:2:1:5
+  shift + ctrl + alt + cmd - k : yabai -m window --grid 7:3:0:2:1:5
           ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
-  shift + ctrl + alt + cmd - l : yabai -m window --toggle float --grid 2:3:1:0:1:1
+  shift + ctrl + alt + cmd - l : yabai -m window --grid 2:3:1:0:1:1
 
 ########## Row Z #########################################################
 
           ctrl + alt + cmd - z : osascript ~/.osascripts/toggle-cursor.scpt
-  shift + ctrl + alt + cmd - z : yabai -m window --toggle float --grid 40:3:0:1:2:38
+  shift + ctrl + alt + cmd - z : yabai -m window --grid 40:3:0:1:2:38
           ctrl + alt + cmd - x : osascript ~/.osascripts/toggle-codex.scpt
-  shift + ctrl + alt + cmd - x : yabai -m window --toggle float --grid 40:3:1:1:2:38
+  shift + ctrl + alt + cmd - x : yabai -m window --grid 40:3:1:1:2:38
           ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
-  shift + ctrl + alt + cmd - c : yabai -m window --toggle float --grid 16:1:0:0:1:11
+  shift + ctrl + alt + cmd - c : yabai -m window --grid 16:1:0:0:1:11
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
-  shift + ctrl + alt + cmd - v : yabai -m window --toggle float --grid 40:3:0:1:2:38
+  shift + ctrl + alt + cmd - v : yabai -m window --grid 40:3:0:1:2:38
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
   shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
           ctrl + alt + cmd - n : bash ~/bin/macos-move-window-to-next-screen.sh
 # shift + ctrl + alt + cmd - n : echo
           ctrl + alt + cmd - m : osascript ~/.osascripts/toggle-googlemeet.scpt
-  shift + ctrl + alt + cmd - m : yabai -m window --toggle float --grid 40:3:1:1:2:38
+  shift + ctrl + alt + cmd - m : yabai -m window --grid 40:3:1:1:2:38
 
 ########## Right Group Arrows #########################################################
 
@@ -128,7 +128,7 @@
 
 ########## Left Group Convenient Keys #########################################################
 
-          ctrl + alt + cmd - tab : yabai -m window --toggle float --grid 1:4:1:0:2:1
+          ctrl + alt + cmd - tab : yabai -m window --grid 1:6:1:0:4:1
 # shift + ctrl + alt + cmd - tab : # Hammerspoon windowpicker
 
 # 0x32 is `
