@@ -62,7 +62,7 @@ end)
 -- --------------------------------------------------
 
 local windowpicker = require 'windowpicker'
-hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "tab", "Window picker, All Screens" , function()windowpicker.switch(nil)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "tab", "Window picker, All Screens" , function()windowpicker.switch(nil)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "z",   "Window picker, Screen 1"    , function()windowpicker.switch(config.screen.left)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "x",   "Window picker, Screen 2"    , function()windowpicker.switch(config.screen.middle)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "z",   "Window picker, Screen 3"    , function()windowpicker.switch(config.screen.top)end)
