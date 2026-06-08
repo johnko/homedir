@@ -46,6 +46,7 @@ yabai -m rule --add app="^(Terminal)$" manage=off
 yabai -m rule --add app="^(Code)$" manage=off
 yabai -m rule --add app="^(Google Meet)$" manage=off
 yabai -m rule --add app="^(Cursor)$" manage=off
+yabai -m rule --add app="^(Codex)$" manage=off
 yabai -m rule --add app="^(Xcode)$" manage=off
 
 # float top left eigth screen grid=2:4:0:0:1:1
