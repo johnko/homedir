@@ -40,8 +40,9 @@ yabai -m rule --add app="^(Photos)$" manage=off
 
 # float 1/4 or 3/4
 yabai -m rule --add app="^(Hammerspoon.*)$" manage=off
-yabai -m rule --add app="^(Terminal)$" title="^.*(1|2|3|4|5|6|7|8)$" manage=off
-yabai -m rule --add app="^(Terminal)$" title!="^.*(1|2|3|4|5|6|7|8)$" manage=on
+# yabai -m rule --add app="^(Terminal)$" title="^.*(1|2|3|4|5|6|7|8)$" manage=off
+# yabai -m rule --add app="^(Terminal)$" title!="^.*(1|2|3|4|5|6|7|8)$" manage=on
+yabai -m rule --add app="^(Terminal)$" manage=off
 yabai -m rule --add app="^(Code)$" manage=off
 yabai -m rule --add app="^(Google Meet)$" manage=off
 yabai -m rule --add app="^(Cursor)$" manage=off
@@ -53,8 +54,9 @@ yabai -m rule --add app="^(Spotify)$" manage=off
 
 # float centre half screen grid=1:4:1:0:2:1
 yabai -m rule --add app="^(Books)$" manage=off
-yabai -m rule --add app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off
-yabai -m rule --add app="^(Brave Browser)$" title="^.*( Tab).*$" manage=on
+# yabai -m rule --add app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off
+# yabai -m rule --add app="^(Brave Browser)$" title="^.*( Tab).*$" manage=on
+yabai -m rule --add app="^(Brave Browser)$" manage=off
 yabai -m rule --add app="^(Preview)$" manage=off
 
 # float middle center quarter screen grid=4:4:1:1:2:2
@@ -75,8 +77,9 @@ yabai -m rule --add app="^(UTM)$" manage=off
 yabai -m rule --add app="^(Netiquette)$" manage=off
 
 # float left half screen grid=1:2:0:0:1:1
-yabai -m rule --add app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off
-yabai -m rule --add app="^(Google Chrome)$" title="^.*( Tab).*$" manage=on
+# yabai -m rule --add app="^(Google Chrome)$" title!="^.*( Tab).*$" manage=off
+# yabai -m rule --add app="^(Google Chrome)$" title="^.*( Tab).*$" manage=on
+yabai -m rule --add app="^(Google Chrome)$" manage=off
 
 # float right half screen grid=1:2:1:0:1:1
 yabai -m rule --add app="^(Discord)$" manage=off
