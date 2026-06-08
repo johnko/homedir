@@ -126,10 +126,9 @@
 #                           f5 : open -a "Mission Control" --args 1 # macOS Show Desktop
 #                           f6 : # macOS Turn Do Not Disturb on/off
 #                           f7 : # macOS Toggle StageManager on/off
-                           f11 : bash ~/bin/macos-move-to-top-of-screen.sh
-                           f12 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
-                           f13 : osascript ~/.osascripts/terminal-brew-update.scpt
-                           f20 : osascript ~/.osascripts/terminal-brew-prune.scpt
+                           f11 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
+                           f12 : osascript ~/.osascripts/terminal-brew-update.scpt
+                           f13 : bash ~/bin/macos-move-to-top-of-screen.sh
 
 ########## Left Group Convenient Keys #########################################################
 
