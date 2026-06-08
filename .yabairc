@@ -137,4 +137,4 @@ yabai -m rule --apply
 yabai -m config layout bsp
 
 # border red active, transparent inactive
-borders active_color=0xffff0000 inactive_color=0x00888888 width=20.0 &
+borders active_color=0xffff0000 inactive_color=0x00888888 width=10.0 &
