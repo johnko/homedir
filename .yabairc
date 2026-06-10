@@ -2,33 +2,33 @@
 # grid format is <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 #####################################################################
 
-yabai -m rule --add app="^(Activity Monitor)$" manage=on
-yabai -m rule --add app="^(App Store)$" manage=on
-yabai -m rule --add app="^(Calendar)$" manage=on
-yabai -m rule --add app="^(Clock)$" manage=on
-yabai -m rule --add app="^(Console)$" manage=on
-yabai -m rule --add app="^(Contacts)$" manage=on
-yabai -m rule --add app="^(Dictionary)$" manage=on
-yabai -m rule --add app="^(Disk Utility)$" manage=on
-yabai -m rule --add app="^(FaceTime)$" manage=on
-yabai -m rule --add app="^(Find My)$" manage=on
-yabai -m rule --add app="^(GitHub)$" manage=on
-yabai -m rule --add app="^(Gmail)$" manage=on
-yabai -m rule --add app="^(Google Drive)$" manage=on
-yabai -m rule --add app="^(Home)$" manage=on
-yabai -m rule --add app="^(Instagram)$" manage=on
-yabai -m rule --add app="^(Maps)$" manage=on
-yabai -m rule --add app="^(News)$" manage=on
-yabai -m rule --add app="^(Notes)$" manage=on
-yabai -m rule --add app="^(Reminders)$" manage=on
-yabai -m rule --add app="^(Safari)$" manage=on
-yabai -m rule --add app="^(Shortcuts)$" manage=on
-yabai -m rule --add app="^(Stocks)$" manage=on
-yabai -m rule --add app="^(System Information)$" manage=on
-yabai -m rule --add app="^(TextEdit)$" manage=on
-yabai -m rule --add app="^(Voice Memos)$" manage=on
-yabai -m rule --add app="^(Weather)$" manage=on
-yabai -m rule --add app="^(WhatsApp.*)$" manage=on
+yabai -m rule --add app="^(Activity Monitor)$" manage=off
+yabai -m rule --add app="^(App Store)$" manage=off
+yabai -m rule --add app="^(Calendar)$" manage=off
+yabai -m rule --add app="^(Clock)$" manage=off
+yabai -m rule --add app="^(Console)$" manage=off
+yabai -m rule --add app="^(Contacts)$" manage=off
+yabai -m rule --add app="^(Dictionary)$" manage=off
+yabai -m rule --add app="^(Disk Utility)$" manage=off
+yabai -m rule --add app="^(FaceTime)$" manage=off
+yabai -m rule --add app="^(Find My)$" manage=off
+yabai -m rule --add app="^(GitHub)$" manage=off
+yabai -m rule --add app="^(Gmail)$" manage=off
+yabai -m rule --add app="^(Google Drive)$" manage=off
+yabai -m rule --add app="^(Home)$" manage=off
+yabai -m rule --add app="^(Instagram)$" manage=off
+yabai -m rule --add app="^(Maps)$" manage=off
+yabai -m rule --add app="^(News)$" manage=off
+yabai -m rule --add app="^(Notes)$" manage=off
+yabai -m rule --add app="^(Reminders)$" manage=off
+yabai -m rule --add app="^(Safari)$" manage=off
+yabai -m rule --add app="^(Shortcuts)$" manage=off
+yabai -m rule --add app="^(Stocks)$" manage=off
+yabai -m rule --add app="^(System Information)$" manage=off
+yabai -m rule --add app="^(TextEdit)$" manage=off
+yabai -m rule --add app="^(Voice Memos)$" manage=off
+yabai -m rule --add app="^(Weather)$" manage=off
+yabai -m rule --add app="^(WhatsApp.*)$" manage=off
 
 # float fullscreen grid=1:1:0:0:1:1
 yabai -m rule --add app="^(Crunchyroll.*)$" manage=off
@@ -134,7 +134,8 @@ yabai -m config right_padding 100
 yabai -m rule --apply
 
 # set layout to bsp (managed), other options are float (unmanaged) or stack (layered fullscreen)
-yabai -m config layout bsp
+# yabai -m config layout bsp
+yabai -m config layout float
 
 # border red active, transparent inactive
 borders active_color=0xffff0000 inactive_color=0x00888888 width=10.0 &
