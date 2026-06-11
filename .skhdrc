@@ -21,12 +21,12 @@
 
 ########## Row Q #########################################################
 
-          ctrl + alt + cmd - q : yabai -m window --toggle float --grid 1:2:0:0:1:1
-  shift + ctrl + alt + cmd - q : yabai -m window --toggle float --grid 2:2:0:0:1:1
+          ctrl + alt + cmd - q : yabai -m window --grid 1:2:0:0:1:1
+  shift + ctrl + alt + cmd - q : yabai -m window --grid 2:2:0:0:1:1
           ctrl + alt + cmd - w : osascript ~/.osascripts/terminal-brew-update.scpt
   shift + ctrl + alt + cmd - w : osascript ~/.osascripts/terminal-brew-prune.scpt
-          ctrl + alt + cmd - e : yabai -m window --toggle float --grid 1:2:1:0:1:1
-  shift + ctrl + alt + cmd - e : yabai -m window --toggle float --grid 2:2:1:0:1:1
+          ctrl + alt + cmd - e : yabai -m window --grid 1:2:1:0:1:1
+  shift + ctrl + alt + cmd - e : yabai -m window --grid 2:2:1:0:1:1
 
           ctrl + alt + cmd - r : bash ~/bin/macos-reset-window-layout.sh
                            f14 : bash ~/bin/macos-reset-window-layout.sh
@@ -64,11 +64,11 @@
 ########## Row A #########################################################
 
 #         ctrl + alt + cmd - a : echo
-  shift + ctrl + alt + cmd - a : yabai -m window --toggle float --grid 2:2:0:1:1:1
+  shift + ctrl + alt + cmd - a : yabai -m window --grid 2:2:0:1:1:1
 #         ctrl + alt + cmd - s : echo
   shift + ctrl + alt + cmd - s : osascript ~/.osascripts/terminal-toggle-sudo.scpt
 #         ctrl + alt + cmd - d : echo
-  shift + ctrl + alt + cmd - d : yabai -m window --toggle float --grid 2:2:1:1:1:1
+  shift + ctrl + alt + cmd - d : yabai -m window --grid 2:2:1:1:1:1
           ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
   shift + ctrl + alt + cmd - f : yabai -m window --grid 2:3:1:1:2:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
@@ -111,13 +111,13 @@
 #         ctrl + alt + cmd - right : yabai -m window --focus east
           ctrl + alt + cmd - right : osascript ~/.osascripts/volume-75.scpt
 # shift + ctrl + alt + cmd - up    : yabai -m window --swap north
-  shift + ctrl + alt + cmd - up    : yabai -m window --toggle float --grid 2:1:0:0:1:1
+  shift + ctrl + alt + cmd - up    : yabai -m window --grid 2:1:0:0:1:1
 # shift + ctrl + alt + cmd - down  : yabai -m window --swap south
-  shift + ctrl + alt + cmd - down  : yabai -m window --toggle float --grid 2:1:0:1:1:1
+  shift + ctrl + alt + cmd - down  : yabai -m window --grid 2:1:0:1:1:1
 # shift + ctrl + alt + cmd - left  : yabai -m window --swap west
-  shift + ctrl + alt + cmd - left  : yabai -m window --toggle float --grid 1:2:0:0:1:1
+  shift + ctrl + alt + cmd - left  : yabai -m window --grid 1:2:0:0:1:1
 # shift + ctrl + alt + cmd - right : yabai -m window --swap east
-  shift + ctrl + alt + cmd - right : yabai -m window --toggle float --grid 1:2:1:0:1:1
+  shift + ctrl + alt + cmd - right : yabai -m window --grid 1:2:1:0:1:1
 
 ########## Group Function Keys #########################################################
 
