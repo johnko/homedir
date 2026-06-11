@@ -86,19 +86,19 @@
 ########## Row Z #########################################################
 
           ctrl + alt + cmd - z : osascript ~/.osascripts/toggle-cursor.scpt
-  shift + ctrl + alt + cmd - z : yabai -m window --grid 40:3:0:1:2:38
+  shift + ctrl + alt + cmd - z : yabai -m window --grid 40:2:0:2:1:35
           ctrl + alt + cmd - x : osascript ~/.osascripts/toggle-codex.scpt
-  shift + ctrl + alt + cmd - x : yabai -m window --grid 40:3:1:1:2:38
+  shift + ctrl + alt + cmd - x : yabai -m window --grid 40:2:1:2:1:35
           ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
   shift + ctrl + alt + cmd - c : yabai -m window --grid 16:1:0:0:1:11
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
-  shift + ctrl + alt + cmd - v : yabai -m window --grid 40:3:0:1:2:38
+  shift + ctrl + alt + cmd - v : yabai -m window --grid 40:3:0:1:2:35
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
   shift + ctrl + alt + cmd - b : osascript ~/.osascripts/terminal-nosleep.scpt
           ctrl + alt + cmd - n : bash ~/bin/macos-move-window-to-next-screen.sh
 # shift + ctrl + alt + cmd - n : echo
           ctrl + alt + cmd - m : osascript ~/.osascripts/toggle-googlemeet.scpt
-  shift + ctrl + alt + cmd - m : yabai -m window --grid 40:3:1:1:2:38
+  shift + ctrl + alt + cmd - m : yabai -m window --grid 40:3:1:1:2:35
 
 ########## Right Group Arrows #########################################################
 
