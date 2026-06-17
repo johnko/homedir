@@ -21,7 +21,7 @@ EOS
 }
 
 DOMAIN='"Apple Global Domain"'
-        # AppleInterfaceStyle = Dark;
+# AppleInterfaceStyle = Dark;
 KEYVAL='
         AppleMenuBarVisibleInFullscreen = 1;
         AppleMiniaturizeOnDoubleClick = 0;
