@@ -22,7 +22,7 @@ EOS
 
 DOMAIN='"Apple Global Domain"'
         # AppleInterfaceStyle = Dark;
-KEYVAL="
+KEYVAL='
         AppleMenuBarVisibleInFullscreen = 1;
         AppleMiniaturizeOnDoubleClick = 0;
         AppleReduceDesktopTinting = 0;
@@ -50,7 +50,7 @@ KEYVAL="
         com.apple.swipescrolldirection = 0;
         com.apple.trackpad.forceClick = 0;
         userMenuExtraStyle = 2;
-"
+'
 print_cmd
 
 DOMAIN="com.apple.WindowManager"
@@ -114,7 +114,7 @@ KEYVAL="
 print_cmd
 
 DOMAIN="com.apple.Accessibility"
-KEYVAL="
+KEYVAL='
         AutomationEnabled = 0;
         CommandAndControlEnabled = 0;
         DarkenSystemColors = 0;
@@ -130,7 +130,7 @@ KEYVAL="
         ReduceMotionEnabled = 1;
         SpeakThisEnabled = 0;
         VoiceOverTouchEnabled = 0;
-"
+'
 print_cmd
 
 echo "defaults write -g com.apple.swipescrolldirection -bool false"

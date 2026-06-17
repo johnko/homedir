@@ -45,8 +45,8 @@
 
           ctrl + alt + cmd - u : osascript ~/.osascripts/toggle-googlecalendar.scpt
                            f17 : osascript ~/.osascripts/toggle-googlecalendar.scpt
-  shift + ctrl + alt + cmd - u : yabai -m window --grid 3:1:0:0:1:1
-                   shift - f17 : yabai -m window --grid 3:1:0:0:1:1
+  shift + ctrl + alt + cmd - u : yabai -m window --grid 16:1:0:0:1:4
+                   shift - f17 : yabai -m window --grid 16:1:0:0:1:4
 
           ctrl + alt + cmd - i : open -a "iPhone Mirroring"
                            f18 : open -a "iPhone Mirroring"
@@ -75,6 +75,7 @@
   shift + ctrl + alt + cmd - g : yabai -m window --grid 1:4:1:0:2:1
           ctrl + alt + cmd - h : yabai -m window --grid 1:4:1:0:2:1
 #         ctrl + alt + cmd - h : yabai -m space --rotate 90
+  shift + ctrl + alt + cmd - h : yabai -m window --grid 1:1:0:0:1:1
 # shift + ctrl + alt + cmd - h : yabai -m window --toggle split
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
   shift + ctrl + alt + cmd - j : yabai -m window --grid 2:3:2:0:1:1
@@ -90,7 +91,7 @@
           ctrl + alt + cmd - x : osascript ~/.osascripts/toggle-codex.scpt
   shift + ctrl + alt + cmd - x : yabai -m window --grid 40:2:1:2:1:35
           ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
-  shift + ctrl + alt + cmd - c : yabai -m window --grid 16:1:0:0:1:11
+  shift + ctrl + alt + cmd - c : yabai -m window --grid 16:1:0:4:1:12
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
   shift + ctrl + alt + cmd - v : yabai -m window --grid 40:3:0:1:2:35
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
