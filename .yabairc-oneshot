@@ -41,7 +41,8 @@ yabai -m rule --add label=oneshot033 app="^(Google Calendar)$" manage=off grid=1
 yabai -m rule --add label=oneshot034 app="^(Slack)$" manage=off grid=16:1:0:4:1:12
 yabai -m rule --add label=oneshot035 app="^(Hammerspoon.*)$" manage=off grid=1:4:0:0:1:1
 yabai -m rule --add label=oneshot036 app="^(Xcode)$" manage=off grid=1:4:0:0:3:1
-yabai -m rule --add label=oneshot037 app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Codex|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Google Meet|Hammerspoon.*|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|UTM|Voice Memos|Weather|WhatsApp.*|Xcode)$" manage=off grid=4:4:1:1:2:2
+yabai -m rule --add label=oneshot037 app="^(Xbox.*)$" manage=off grid=1:1:0:0:1:1
+yabai -m rule --add label=oneshot038 app!="^(1Password|Activity Monitor|App Store|Books|Brave Browser|Calendar|Clock|Code|Codex|Console|Contacts|Crunchyroll.*|Cursor|Dictionary|Discord|Disk Utility|Docker.*|FaceTime|Find My|Finder|Firefox|GarageBand|GIMP|GitHub|Gmail|Google Calendar|Google Chrome|Google Drive|Google Meet|Hammerspoon.*|Home|iMovie|Instagram|iPhone Mirroring|Keychain Access|LINE|LuLu|Maps|Messages|Music|Netflix|Netiquette|News|Notes|Photo Booth|Photos|Podcasts|Podman.*|Preview|QuickTime.*|Reminders|Safari|Shortcuts|Signal|Slack|Spotify|Stocks|System Information|System Preferences|System Settings|Terminal|TextEdit|UTM|Voice Memos|Weather|WhatsApp.*|Xbox.*|Xcode)$" manage=off grid=4:4:1:1:2:2
 
 yabai -m rule --apply
 
