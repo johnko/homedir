@@ -37,6 +37,7 @@ yabai -m rule --add app="^(GIMP)$" manage=off
 yabai -m rule --add app="^(iMovie)$" manage=off
 yabai -m rule --add app="^(Netflix)$" manage=off
 yabai -m rule --add app="^(Photos)$" manage=off
+yabai -m rule --add app="^(Xbox.*)$" manage=off
 
 # float 1/4 or 3/4
 yabai -m rule --add app="^(Hammerspoon.*)$" manage=off
