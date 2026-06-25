@@ -1,23 +1,48 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-print_cmd() {
+ACTION="print"
+set +u
+if [[ -n $1 ]]; then
+  ACTION="$1"
+fi
+set -u
 
-  while read -r LINE; do
-    if [[ -n $LINE ]]; then
-      KEY=$(echo "$LINE" | tr -d ' ' | awk -F= '{print $1}')
-      VAL=$(echo "$LINE" | tr -d ' ' | awk -F= '{print $2}' | tr -d ';')
-      if echo "$VAL" | grep -q -E '^[0-9]+$'; then
-        TYPE="-integer"
-      else
-        TYPE="-string"
+print_cmd() {
+  if [[ "check" = "$ACTION" ]]; then
+    while read -r LINE; do
+      if [[ -n $LINE ]]; then
+        KEY=$(echo "$LINE" | tr -d ' ' | awk -F= '{print $1}' | tr -d '"' | tr -d "'")
+        echo -n .
+        EXPECTED=$(echo "$LINE" | tr -d ' ' | awk -F= '{print $2}' | tr -d ';' | tr -d '"' | tr -d "'")
+        SAFE_DOMAIN=$(echo "$DOMAIN" | tr -d '"' | tr -d "'")
+        ACTUAL=$(defaults read "$SAFE_DOMAIN" "$KEY")
+        if [[ $EXPECTED != $ACTUAL ]]; then
+          echo
+          echo "defaults read $DOMAIN $KEY"
+          echo "EXPECTED: $EXPECTED"
+          echo "  ACTUAL: $ACTUAL"
+        fi
       fi
-      echo "defaults write $DOMAIN $KEY $TYPE $VAL"
-    fi
-  done <<EOS
+    done <<EOS
 $KEYVAL
 EOS
-
+  else
+    while read -r LINE; do
+      if [[ -n $LINE ]]; then
+        KEY=$(echo "$LINE" | tr -d ' ' | awk -F= '{print $1}')
+        VAL=$(echo "$LINE" | tr -d ' ' | awk -F= '{print $2}' | tr -d ';')
+        if echo "$VAL" | grep -q -E '^[0-9]+$'; then
+          TYPE="-integer"
+        else
+          TYPE="-string"
+        fi
+        echo "defaults write $DOMAIN $KEY $TYPE $VAL"
+      fi
+    done <<EOS
+$KEYVAL
+EOS
+  fi
 }
 
 DOMAIN='"Apple Global Domain"'
@@ -133,6 +158,8 @@ KEYVAL='
 '
 print_cmd
 
-echo "defaults write -g com.apple.swipescrolldirection -bool false"
+if [[ "print" = "$ACTION" ]]; then
+  echo "defaults write -g com.apple.swipescrolldirection -bool false"
 
-echo "killall Dock"
+  echo "killall Dock"
+fi
