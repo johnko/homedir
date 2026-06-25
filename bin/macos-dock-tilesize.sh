@@ -74,7 +74,7 @@ print_cmd
 DOMAIN="com.apple.dock"
 KEYVAL='
         enterMissionControlByTopWindowDrag = 0;
-        "expose-group-apps" = 1;
+        "expose-group-apps" = 0;
         largesize = 64;
         launchanim = 0;
         magnification = 1;
