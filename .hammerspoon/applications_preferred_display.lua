@@ -63,7 +63,7 @@ config.applications = {
 
   ['Firefox'] = {
     bundleID = 'org.mozilla.firefox',
-    preferred_display = config.screen.top
+    preferred_display = config.screen.builtin
   },
   -- ['Google Meet'] = {
   --   bundleID = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan',
