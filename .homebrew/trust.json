@@ -1,6 +1,6 @@
 {
   "trustedformulae": [
     "hashicorp/tap/terraform",
-    "wix/brew/applesimutils"
+    "https://github.com/wix-incubator/homebrew-brew.git/applesimutils"
   ]
 }
