@@ -23,7 +23,7 @@ EOS
 DOMAIN='"Apple Global Domain"'
 # AppleInterfaceStyle = Dark;
 KEYVAL='
-        AppleMenuBarVisibleInFullscreen = 1;
+        AppleMenuBarVisibleInFullscreen = 0;
         AppleMiniaturizeOnDoubleClick = 0;
         AppleReduceDesktopTinting = 0;
         AppleScrollerPagingBehavior = 1;
@@ -62,7 +62,7 @@ KEYVAL="
         EnableTilingByEdgeDrag = 0;
         EnableTilingOptionAccelerator = 0;
         EnableTopTilingByEdgeDrag = 0;
-        GloballyEnabled = 1;
+        GloballyEnabled = 0;
         GloballyEnabledEver = 1;
         HideDesktop = 1;
         StageManagerHideWidgets = 0;
