@@ -50,8 +50,8 @@
 
           ctrl + alt + cmd - i : open -a "iPhone Mirroring"
                            f18 : open -a "iPhone Mirroring"
-  shift + ctrl + alt + cmd - i : yabai -m window --grid 3:3:1:1:1:1
-                   shift - f18 : yabai -m window --grid 3:3:1:1:1:1
+  shift + ctrl + alt + cmd - i : yabai -m window --grid 2:3:1:0:1:1
+                   shift - f18 : yabai -m window --grid 2:3:1:0:1:1
 
           ctrl + alt + cmd - o : open -a "System Settings"
                            f19 : open -a "System Settings"
@@ -60,6 +60,7 @@
 
           ctrl + alt + cmd - p : osascript ~/.osascripts/toggle-1password.scpt
   shift + ctrl + alt + cmd - p : yabai -m window --grid 4:4:1:1:2:2
+#3:3:1:1:1:1
 
 ########## Row A #########################################################
 
@@ -70,7 +71,7 @@
 #         ctrl + alt + cmd - d : echo
   shift + ctrl + alt + cmd - d : yabai -m window --grid 2:2:1:1:1:1
           ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
-  shift + ctrl + alt + cmd - f : yabai -m window --grid 2:3:2:1:1:1
+  shift + ctrl + alt + cmd - f : yabai -m window --grid 1:1:0:0:1:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
   shift + ctrl + alt + cmd - g : yabai -m window --grid 1:4:1:0:2:1
           ctrl + alt + cmd - h : yabai -m window --grid 1:4:1:0:2:1
@@ -82,7 +83,7 @@
           ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
   shift + ctrl + alt + cmd - k : yabai -m window --grid 2:3:1:1:1:1
           ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
-  shift + ctrl + alt + cmd - l : yabai -m window --grid 2:3:1:0:1:1
+  shift + ctrl + alt + cmd - l : yabai -m window --grid 2:3:2:1:1:1
 
 ########## Row Z #########################################################
 
