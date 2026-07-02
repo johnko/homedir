@@ -66,6 +66,7 @@ KEYVAL='
         NSCloseAlwaysConfirmsChanges = 1;
         NSGlassDiffusionSetting = 1;
         NSSmartReplyEnabled = 0;
+        SLSMenuBarUseBlurredAppearance = 1;
         WebAutomaticSpellingCorrectionEnabled = 0;
         com.apple.sound.beep.feedback = 1;
         com.apple.sound.beep.flash = 0;
