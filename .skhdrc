@@ -1,8 +1,8 @@
 ########## Numbers #########################################################
 
-#         ctrl + alt + cmd - 1 : # Hammerspoon switcher
+          ctrl + alt + cmd - 1 : osascript ~/.osascripts/macos-space-left.scpt
 # shift + ctrl + alt + cmd - 1 : # Hammerspoon switcher
-#         ctrl + alt + cmd - 2 : # Hammerspoon switcher
+          ctrl + alt + cmd - 2 : osascript ~/.osascripts/macos-space-right.scpt
 # shift + ctrl + alt + cmd - 2 : # Hammerspoon switcher
 #         ctrl + alt + cmd - 3 : # Hammerspoon switcher
 # shift + ctrl + alt + cmd - 3 : # Hammerspoon switcher
