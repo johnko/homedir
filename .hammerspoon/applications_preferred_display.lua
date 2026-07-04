@@ -52,10 +52,10 @@ config.applications = {
     bundleID = 'com.google.Chrome.app.eppojlglocelodeimnohnlnionkobfln',
     preferred_display = config.screen.middle
   },
-  ['Xbox'] = {
-    bundleID = 'com.google.Chrome.app.chcecgcbjkilfgeccdhoeaillkophnhg',
-    preferred_display = config.screen.middle
-  },
+  -- ['Xbox'] = {
+  --   bundleID = 'com.google.Chrome.app.chcecgcbjkilfgeccdhoeaillkophnhg',
+  --   preferred_display = config.screen.middle
+  -- },
 
   -- ['Discord'] = {
   --   bundleID = 'com.hnc.Discord',
