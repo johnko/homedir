@@ -92,3 +92,6 @@ export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
 # use ssh wrapper that unsets sock when vscode
 export GIT_SSH_COMMAND="$HOME/bin/ssh"
+
+# don't use less when aws cli returns more than a page
+export AWS_PAGER=""
