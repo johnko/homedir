@@ -9,7 +9,7 @@ fi
 set -u
 
 print_cmd() {
-  if [[ "check" = "$ACTION" ]]; then
+  if [[ "check" == "$ACTION" ]]; then
     while read -r LINE; do
       if [[ -n $LINE ]]; then
         KEY=$(echo "$LINE" | tr -d ' ' | awk -F= '{print $1}' | tr -d '"' | tr -d "'")
@@ -159,7 +159,7 @@ KEYVAL='
 '
 print_cmd
 
-if [[ "print" = "$ACTION" ]]; then
+if [[ "print" == "$ACTION" ]]; then
   echo "defaults write -g com.apple.swipescrolldirection -bool false"
 
   echo "killall Dock"
