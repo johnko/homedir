@@ -17,7 +17,7 @@ print_cmd() {
         EXPECTED=$(echo "$LINE" | tr -d ' ' | awk -F= '{print $2}' | tr -d ';' | tr -d '"' | tr -d "'")
         SAFE_DOMAIN=$(echo "$DOMAIN" | tr -d '"' | tr -d "'")
         ACTUAL=$(defaults read "$SAFE_DOMAIN" "$KEY")
-        if [[ $EXPECTED != $ACTUAL ]]; then
+        if [[ $EXPECTED != "$ACTUAL" ]]; then
           echo
           echo "defaults read $DOMAIN $KEY"
           echo "EXPECTED: $EXPECTED"
