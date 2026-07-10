@@ -16,10 +16,10 @@ config.applications = {
     preferred_display = config.screen.top
   },
 
-  ['Slack'] = {
-    bundleID = 'com.tinyspeck.slackmacgap',
-    preferred_display = config.screen.left
-  },
+  -- ['Slack'] = {
+  --   bundleID = 'com.tinyspeck.slackmacgap',
+  --   preferred_display = config.screen.left
+  -- },
   ['Google Calendar'] = {
     bundleID = 'com.google.Chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep',
     preferred_display = config.screen.left
