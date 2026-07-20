@@ -6,7 +6,7 @@
     [
       "KC_NO",
       "HYPR(KC_S)",
-      "LCAG(KC_W)",
+      "LCAG(KC_UP)",
       "KC_MUTE",
       "C(KC_UP)",
       "KC_F4",
@@ -17,8 +17,8 @@
       "KC_MNXT",
       "LCAG(KC_F)",
       "TO(3)",
-      "KC_VOLD",
-      "KC_VOLU",
+      "LCAG(KC_DOWN)",
+      "LCAG(KC_RGHT)",
       "KC_NO"
     ],
     [
@@ -59,8 +59,8 @@
     ],
     [
       "KC_NO",
-      "LCAG(KC_Z)",
-      "LCAG(KC_X)",
+      "KC_HOME",
+      "KC_END",
       "KC_MUTE",
       "LCAG(KC_Q)",
       "KC_UP",
