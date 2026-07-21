@@ -44,14 +44,14 @@ config.applications = {
   --   bundleID = 'com.microsoft.VSCode',
   -- },
 
-  ['Crunchyroll'] = {
-    bundleID = 'com.google.Chrome.app.hjlhbeffadgkonmpnblkfmhckmocohah',
-    preferred_display = config.screen.middle
-  },
-  ['Netflix'] = {
-    bundleID = 'com.google.Chrome.app.eppojlglocelodeimnohnlnionkobfln',
-    preferred_display = config.screen.middle
-  },
+  -- ['Crunchyroll'] = {
+  --   bundleID = 'com.google.Chrome.app.hjlhbeffadgkonmpnblkfmhckmocohah',
+  --   preferred_display = config.screen.middle
+  -- },
+  -- ['Netflix'] = {
+  --   bundleID = 'com.google.Chrome.app.eppojlglocelodeimnohnlnionkobfln',
+  --   preferred_display = config.screen.middle
+  -- },
   -- ['Xbox'] = {
   --   bundleID = 'com.google.Chrome.app.chcecgcbjkilfgeccdhoeaillkophnhg',
   --   preferred_display = config.screen.middle
