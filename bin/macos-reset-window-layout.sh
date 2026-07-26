@@ -10,3 +10,5 @@ if [[ -e ~/.yabairc-oneshot ]]; then
   bash ~/.yabairc-oneshot
 fi
 yabai -m config layout bsp
+
+[ -x "$HOME/.nosleep/diskchart.sh" ] && "$HOME/.nosleep/diskchart.sh"

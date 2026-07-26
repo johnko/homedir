@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -eu
 
+[ ! -d "$HOME/.nosleep" ] && exit 0
+
 # 1. Get the percentage from your script (Ensure it is a pure integer between 0 and 100)
 # Example: if your script outputs "42%", strip the "%" sign
 USED_PCT=$(df /System/Volumes/Data | sed 's, *0% *,,' | grep -o -E '[0-9]+%' | tr -d '%')
@@ -19,7 +21,7 @@ DASH_FILL=$(echo "scale=3; ($USED_PCT / 100) * $CIRCUMFERENCE" | bc -l)
 DASH_EMPTY=$(echo "scale=3; $CIRCUMFERENCE - $DASH_FILL" | bc -l)
 
 # 4. Output the complete standalone SVG
-cat <<EOF > diskchart.svg
+cat <<EOF > "$HOME/.nosleep/diskchart.svg"
 <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
   <!-- Background Gray Ring (Free Space) -->
   <circle cx="$CENTER" cy="$CENTER" r="$RADIUS"
