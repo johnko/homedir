@@ -103,6 +103,10 @@
     return false;
   }
 
+  const ONE_SECOND = 1000;
+  const ONE_MINUTE = 60 * ONE_SECOND;
+  const ONE_HOUR = 60 * ONE_MINUTE;
+
   setInterval(() => {
     let day = document.getElementById('day');
     let now = new Date();
@@ -115,7 +119,7 @@
       month: "short",
       day: "numeric",
     });
-  }, 1000);
+  }, ONE_SECOND);
 
   setInterval(() => {
     let clock = document.getElementById('clock');
@@ -146,7 +150,11 @@
     } else {
       fg.style.visibility = 'visible';
     }
-  }, 1000);
+  }, ONE_SECOND);
+
+  setTimeout(() => {
+    window.location.reload();
+  }, 5 * ONE_HOUR);
 </script>
 </body>
 
