@@ -5,7 +5,7 @@ set -eu
 
 # 1. Get the percentage from your script (Ensure it is a pure integer between 0 and 100)
 # Example: if your script outputs "42%", strip the "%" sign
-USED_PCT=$(df /System/Volumes/Data | sed 's, *0% *,,' | grep -o -E '[0-9]+%' | tr -d '%')
+USED_PCT=$(df /System/Volumes/Data | sed 's, 0%,,' | grep -o -E '[0-9]+%' | tr -d '%')
 [[ "$USED_PCT" -lt 0 ]] && USED_PCT=0
 [[ "$USED_PCT" -gt 100 ]] && USED_PCT=100
 
