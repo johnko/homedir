@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
+# add CommandLineTools early in PATH
+[ -e "/Library/Developer/CommandLineTools/usr/bin" ] &&
+  export PATH="/Library/Developer/CommandLineTools/usr/bin:$PATH"
+
 # add Docker Desktop for Mac CLI early in PATH
 [ -e "/usr/local/bin" ] &&
   export PATH="/usr/local/bin:$PATH"
-
-# add rbenv shims early in PATH
-[ -e "${HOME}/.rbenv/shims" ] &&
-  export PATH="${HOME}/.rbenv/shims:$PATH"
 
 # add java/openjdk early in PATH
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -14,9 +14,14 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 # add android early in PATH
 export PATH="/opt/homebrew/share/android-commandlinetools/emulator:$PATH"
 
+# add rbenv shims early in PATH
+[ -e "${HOME}/.rbenv/shims" ] &&
+  export PATH="${HOME}/.rbenv/shims:$PATH"
+
 # add HOME bin for my scripts early in PATH
 [ -e "$HOME/bin" ] &&
   export PATH="$HOME/bin:$PATH"
+
 
 # add Homebrew for M1 late in path
 # Set PATH, MANPATH, etc., for Homebrew.
