@@ -55,14 +55,15 @@
     }
 
     #rowday {
-      margin-top: 3%;
       /* centre */
       max-width: fit-content;
       margin-bottom: 0;
       margin-left: auto;
       margin-right: auto;
+      margin-top: 3%;
+      white-space: preserve nowrap;
 
-      font-size: 30pt;
+      font-size: 32pt;
     }
 
     #rowclock {
@@ -88,13 +89,13 @@
     }
 
     img#creatormicro {
+      float: right;
       margin-left: 50px;
-      vertical-align: middle;
     }
   </style>
 </head>
 
-<body><video id="bg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video><div id="overlay"><div id="rowday"><span id="day"></span><img id="creatormicro" src="./creatormicro.png"/></div><div id="rowclock"><span id="clock"></span><img id="creatormicro" src="./diskchart.svg"/></div></div><video id="fg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
+<body><video id="bg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video><div id="overlay"><div id="rowday"><img id="creatormicro" src="./creatormicro.png"/><span id="weekday"></span><br/><span id="day"></span></div><div id="rowclock"><span id="clock"></span><img id="creatormicro" src="./diskchart.svg"/></div></div><video id="fg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
 <script>
   function detectBrave() {
     if (typeof navigator.brave !== 'undefined' && typeof navigator.brave.isBrave === 'function') {
@@ -108,13 +109,23 @@
   const ONE_HOUR = 60 * ONE_MINUTE;
 
   setInterval(() => {
+    let weekday = document.getElementById('weekday');
+    let now = new Date();
+    if (detectBrave()) {
+     weekday.style.fontWeight = 'bold';
+    }
+    weekday.innerHTML = now.toLocaleDateString('en-US', {
+      weekday: "long"
+    });
+  }, ONE_SECOND);
+
+  setInterval(() => {
     let day = document.getElementById('day');
     let now = new Date();
     if (detectBrave()) {
      day.style.fontWeight = 'bold';
     }
     day.innerHTML = now.toLocaleDateString('en-US', {
-      weekday: "long",
       year: "numeric",
       month: "short",
       day: "numeric",
