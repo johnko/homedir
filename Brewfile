@@ -16,7 +16,6 @@ brew "aws-vault"
 brew "awscli"
 tap "hashicorp/tap"
 brew "hashicorp/tap/terraform"
-brew "tflint"
 cask "sentinel"
 
 # Shell / CLI Tools
