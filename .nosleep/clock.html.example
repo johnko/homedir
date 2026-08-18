@@ -98,7 +98,7 @@
 
     img#creatormicro {
       float: right;
-      margin-left: 120px;
+      margin-left: 150px;
     }
 
     img#diskchart {
