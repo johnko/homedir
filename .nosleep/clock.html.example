@@ -49,6 +49,7 @@
 
     .floatclear {
       clear: both;
+      line-height: 50pt;
     }
 
     #overlay {
@@ -59,27 +60,24 @@
     }
 
     #rowday {
-      /* centre */
-      max-width: fit-content;
-      margin-bottom: 0;
       margin-left: auto;
       margin-right: auto;
       margin-top: 3%;
       white-space: preserve nowrap;
+      width: 80%;
 
-      font-size: 32pt;
+      font-size: 42pt;
     }
 
     #weekday {
-      line-height: 130pt;
+      line-height: 100pt;
     }
 
     #rowclock {
       /* centre */
-      max-width: fit-content;
-      margin-bottom: 0;
       margin-left: auto;
       margin-right: auto;
+      width: 80%;
 
       font-size: 120pt;
     }
@@ -98,18 +96,16 @@
 
     img#creatormicro {
       float: right;
-      margin-left: 150px;
     }
 
     img#diskchart {
       float: right;
-      margin-left: 50px;
       margin-top: 20px;
     }
   </style>
 </head>
 
-<body><video id="bg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video><div id="overlay"><div id="rowday"><img id="creatormicro" src="./creatormicro.png"/><span id="weekday"></span><br/><span id="day"></span></div><br class="floatclear" /><div id="rowclock"><img id="diskchart" src="./diskchart.svg"/><span id="clock"></span></div></div><video id="fg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
+<body><video id="bg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video><div id="overlay"><img id="creatormicro" src="./creatormicro.png"/><div id="rowday"><span id="weekday"></span><br/><span id="day"></span></div><br class="floatclear" /><img id="diskchart" src="./diskchart.svg"/><div id="rowclock"><span id="clock"></span></div></div><video id="fg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
 <script>
   function detectBrave() {
     if (typeof navigator.brave !== 'undefined' && typeof navigator.brave.isBrave === 'function') {
@@ -167,7 +163,7 @@
     }
     clock.innerHTML = hourMinute + '' + seconds.outerHTML;
     let fg = document.getElementById('fg');
-    fg.style.top = (clock.offsetTop + clock.offsetHeight + 10) + 'px';
+    fg.style.top = (clock.offsetTop + clock.offsetHeight + 30) + 'px';
     // detect if fg is between clock offsetTop and offsetHeight
     if (fg.offsetTop < clock.offsetTop + clock.offsetHeight) {
       // if so then hide the fg
