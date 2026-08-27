@@ -420,5 +420,9 @@
     "key": "cmd+[",
     "command": "editor.fold",
     "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "key": "cmd+d",
+    "command": "merge-conflict.next"
   }
 ]
