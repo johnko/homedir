@@ -11,7 +11,7 @@ yabai -m rule --add label=oneshot003 app="^(iMovie)$" manage=off grid=1:1:0:0:1:
 yabai -m rule --add label=oneshot004 app="^(Netflix)$" manage=off grid=1:1:0:0:1:1
 yabai -m rule --add label=oneshot005 app="^(Photos)$" manage=off grid=1:1:0:0:1:1
 # yabai -m rule --add label=oneshot006 app="^(Terminal)$" title="^.*(1|2|3|4|5|6|7|8|9|0)$" manage=off grid=1:6:1:0:4:1
-yabai -m rule --add label=oneshot007 app="^(Code)$" manage=off grid=40:3:0:1:2:35
+# yabai -m rule --add label=oneshot007 app="^(Code)$" manage=off grid=40:3:0:1:2:35
 yabai -m rule --add label=oneshot008 app="^(Google Meet)$" manage=off grid=40:3:1:1:2:35
 yabai -m rule --add label=oneshot009 app="^(Codex)$" manage=off grid=40:2:1:2:1:35
 yabai -m rule --add label=oneshot010 app="^(Cursor)$" manage=off grid=40:2:0:2:1:35
