@@ -2,5 +2,8 @@
   "trustedformulae": [
     "hashicorp/tap/terraform",
     "https://github.com/wix-incubator/homebrew-brew.git/applesimutils"
+  ],
+  "trustedcasks": [
+    "terraform-linters/tap/tflint"
   ]
 }
