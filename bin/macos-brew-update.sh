@@ -11,6 +11,7 @@ if type brew &>/dev/null; then
     set -x
     brew trust --formula hashicorp/tap/terraform || true
     brew trust --formula wix/brew/applesimutils || true
+    brew trust --cask    terraform-linters/tap/tflint || true
     brew bundle || true
     set -x
     # using ls because we might not have permission as user to use test -e /usr/local/bin/kubectl
