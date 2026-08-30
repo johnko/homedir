@@ -350,16 +350,6 @@
   },
   {
     "key": "cmd+d",
-    "command": "editor.action.addSelectionToNextFindMatch",
-    "when": "editorFocus && activeEditor != 'multiDiffEditor' && activeEditor != 'workbench.editor.notebook' && !textCompareEditorVisible"
-  },
-  {
-    "key": "cmd+d",
-    "command": "-editor.action.addSelectionToNextFindMatch",
-    "when": "editorFocus"
-  },
-  {
-    "key": "cmd+d",
     "command": "multiDiffEditor.goToNextChange",
     "when": "activeEditor == 'multiDiffEditor'"
   },
@@ -423,6 +413,17 @@
   },
   {
     "key": "cmd+d",
-    "command": "merge-conflict.next"
+    "command": "merge-conflict.next",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "key": "cmd+d",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus && !textCompareEditorVisible && activeEditor != 'multiDiffEditor' && activeEditor != 'workbench.editor.notebook'"
+  },
+  {
+    "key": "cmd+d",
+    "command": "-editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
   }
 ]
