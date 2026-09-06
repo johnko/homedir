@@ -367,6 +367,7 @@ Usage:
   $0 clean                  Deletes current branch, checkout main/master branch and pull
   $0 worktree repo branch   Creates worktree from local repo and creates branch and opens cursor
   $0 vsk8s                  Open VSCode with k8s config
+  $0 renovate               Start GH workflow for renovatebot
 EOF
       ;;
   esac
