@@ -564,34 +564,6 @@ repos-status() {
     fi
   done
 }
-repos-tmptmp() {
-  # shellcheck disable=SC2044
-  for i in $(find . -mindepth 1 -maxdepth 1 -type d); do
-    if [[ -e "${i}/.git" ]]; then
-      pushd "${i}" >/dev/null || return
-      echo "==> ${__YELLOW}${i}${__RESET}"
-      git branch -a | grep tmp/tmp || true
-      popd >/dev/null || return
-    fi
-  done
-}
-repos-updatemaster() {
-  TMP_BRANCH=tmp/tmp$(date +%s)
-  # shellcheck disable=SC2044
-  for i in $(find . -mindepth 1 -maxdepth 1 -type d -not -name '*.*'); do
-    if [[ -e "${i}/.git" ]]; then
-      pushd "${i}" >/dev/null || return
-      echo "==> ${__YELLOW}${i}${__RESET}"
-      DEFAULT_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | sed 's,origin/,,')
-      git checkout -b "$TMP_BRANCH"
-      git fetch origin "$DEFAULT_BRANCH"
-      git branch -D "$DEFAULT_BRANCH" || true
-      git checkout -b "$DEFAULT_BRANCH" --track "origin/$DEFAULT_BRANCH"
-      git branch -D "$TMP_BRANCH"
-      popd >/dev/null || return
-    fi
-  done
-}
 
 ########################################
 # switchaudio aliases
