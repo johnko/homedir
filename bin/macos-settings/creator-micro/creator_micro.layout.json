@@ -16,10 +16,10 @@
       "LCAG(KC_DOWN)",
       "LCAG(KC_RGHT)",
       "LCAG(KC_F)",
-      "TO(3)",
+      "KC_NO",
       "KC_MPLY",
       "KC_MNXT",
-      "KC_NO"
+      "TO(3)"
     ],
     [
       "KC_NO",
@@ -70,10 +70,10 @@
       "KC_DOWN",
       "KC_RGHT",
       "KC_RSFT",
-      "TO(0)",
+      "KC_NO",
       "KC_RGUI",
       "LCA(KC_RGUI)",
-      "KC_NO"
+      "TO(0)"
     ]
   ],
   "encoders": [
