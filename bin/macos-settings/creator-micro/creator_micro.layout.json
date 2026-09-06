@@ -16,7 +16,7 @@
       "LCAG(KC_DOWN)",
       "LCAG(KC_RGHT)",
       "LCAG(KC_F)",
-      "KC_NO",
+      "KC_SPC",
       "KC_MPLY",
       "KC_MNXT",
       "TO(3)"
@@ -70,7 +70,7 @@
       "KC_DOWN",
       "KC_RGHT",
       "KC_RSFT",
-      "KC_NO",
+      "KC_SPC",
       "KC_RGUI",
       "LCA(KC_RGUI)",
       "TO(0)"
