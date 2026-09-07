@@ -803,10 +803,26 @@
     }
   },
   "42": {
-    "enabled": false
+    "enabled": true,
+    "value": {
+      "parameters": [
+        16,
+        16,
+        0
+      ],
+      "type": "button"
+    }
   },
   "43": {
-    "enabled": false
+    "enabled": true,
+    "value": {
+      "parameters": [
+        16,
+        16,
+        131072
+      ],
+      "type": "button"
+    }
   },
   "52": {
     "enabled": false,
