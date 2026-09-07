@@ -10,6 +10,8 @@ else
   set -x
   git clone -b mouse2 https://github.com/johnko/skhd.git /tmp/skhd.git
   pushd /tmp/skhd.git
+  # sudo xcode-select -switch /Library/Developer/CommandLineTools
+  export CPATH="$(xcrun --show-sdk-path)/usr/include"
   make install
   codesign -fs - bin/skhd
   cp -a bin/skhd ~/bin/skhd
