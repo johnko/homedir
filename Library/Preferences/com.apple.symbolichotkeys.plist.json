@@ -54,6 +54,28 @@
       "type": "standard"
     }
   },
+  "120": {
+    "enabled": true,
+    "value": {
+      "parameters": [
+        65535,
+        20,
+        262144
+      ],
+      "type": "standard"
+    }
+  },
+  "121": {
+    "enabled": true,
+    "value": {
+      "parameters": [
+        65535,
+        21,
+        262144
+      ],
+      "type": "standard"
+    }
+  },
   "13": {
     "enabled": false,
     "value": {
@@ -87,9 +109,6 @@
       "type": "standard"
     }
   },
-  "16": {
-    "enabled": false
-  },
   "160": {
     "enabled": false,
     "value": {
@@ -116,21 +135,11 @@
     "enabled": true,
     "value": {
       "parameters": [
-        65535,
-        65535,
-        0
+        96,
+        50,
+        1835008
       ],
       "type": "standard"
-    }
-  },
-  "164": {
-    "enabled": true,
-    "value": {
-      "parameters": [
-        262144,
-        9223372036854775807
-      ],
-      "type": "modifier"
     }
   },
   "17": {
@@ -166,9 +175,6 @@
       "type": "standard"
     }
   },
-  "18": {
-    "enabled": false
-  },
   "184": {
     "enabled": true,
     "value": {
@@ -201,9 +207,6 @@
       ],
       "type": "standard"
     }
-  },
-  "20": {
-    "enabled": false
   },
   "21": {
     "enabled": false,
@@ -270,9 +273,6 @@
       ],
       "type": "standard"
     }
-  },
-  "22": {
-    "enabled": false
   },
   "222": {
     "enabled": false,
@@ -460,9 +460,6 @@
       ],
       "type": "standard"
     }
-  },
-  "24": {
-    "enabled": false
   },
   "240": {
     "enabled": true,
@@ -827,12 +824,6 @@
       "type": "button"
     }
   },
-  "48": {
-    "enabled": false
-  },
-  "49": {
-    "enabled": false
-  },
   "52": {
     "enabled": false,
     "value": {
@@ -933,7 +924,7 @@
     }
   },
   "64": {
-    "enabled": true,
+    "enabled": false,
     "value": {
       "parameters": [
         32,
@@ -944,7 +935,7 @@
     }
   },
   "65": {
-    "enabled": true,
+    "enabled": false,
     "value": {
       "parameters": [
         32,
