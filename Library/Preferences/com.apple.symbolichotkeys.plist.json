@@ -781,10 +781,26 @@
     }
   },
   "38": {
-    "enabled": false
+    "enabled": true,
+    "value": {
+      "parameters": [
+        8,
+        8,
+        0
+      ],
+      "type": "button"
+    }
   },
   "40": {
-    "enabled": false
+    "enabled": true,
+    "value": {
+      "parameters": [
+        8,
+        8,
+        131072
+      ],
+      "type": "button"
+    }
   },
   "42": {
     "enabled": false
