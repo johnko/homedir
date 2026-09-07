@@ -8,7 +8,7 @@ if [[ -e ~/bin/skhd ]]; then
   exit 1
 else
   set -x
-  git clone https://github.com/johnko/skhd.git /tmp/skhd.git
+  git clone -b mouse2 https://github.com/johnko/skhd.git /tmp/skhd.git
   pushd /tmp/skhd.git
   make install
   codesign -fs - bin/skhd
