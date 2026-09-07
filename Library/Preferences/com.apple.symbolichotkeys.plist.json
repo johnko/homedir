@@ -791,6 +791,9 @@
       "type": "button"
     }
   },
+  "39": {
+    "enabled": false
+  },
   "40": {
     "enabled": true,
     "value": {
@@ -801,6 +804,9 @@
       ],
       "type": "button"
     }
+  },
+  "41": {
+    "enabled": false
   },
   "42": {
     "enabled": true,
