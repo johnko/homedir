@@ -12,6 +12,7 @@ else
   pushd /tmp/skhd.git
   # sudo xcode-select -switch /Library/Developer/CommandLineTools
   export CPATH="$(xcrun --show-sdk-path)/usr/include"
+  export SDKROOT=$(xcrun --show-sdk-path)
   make install
   codesign -fs - bin/skhd
   cp -a bin/skhd ~/bin/skhd
