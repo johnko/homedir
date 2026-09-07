@@ -781,54 +781,22 @@
     }
   },
   "38": {
-    "enabled": true,
-    "value": {
-      "parameters": [
-        8,
-        8,
-        0
-      ],
-      "type": "button"
-    }
+    "enabled": false
   },
   "39": {
     "enabled": false
   },
   "40": {
-    "enabled": true,
-    "value": {
-      "parameters": [
-        8,
-        8,
-        131072
-      ],
-      "type": "button"
-    }
+    "enabled": false
   },
   "41": {
     "enabled": false
   },
   "42": {
-    "enabled": true,
-    "value": {
-      "parameters": [
-        16,
-        16,
-        0
-      ],
-      "type": "button"
-    }
+    "enabled": false
   },
   "43": {
-    "enabled": true,
-    "value": {
-      "parameters": [
-        16,
-        16,
-        131072
-      ],
-      "type": "button"
-    }
+    "enabled": false
   },
   "52": {
     "enabled": false,

@@ -124,8 +124,10 @@
 ########## Group Function Keys #########################################################
 
                             f3 : open -a "Mission Control"
-#                           f4 : open -a "Mission Control" --args 2 # macOS Application Expose
-#                           f5 : open -a "Mission Control" --args 1 # macOS Show Desktop
+                            m3 : open -a "Mission Control"
+#                           -- : open -a "Mission Control" --args 2 # macOS Application Expose
+#                           f4 : open -a "Mission Control" --args 1 # macOS Show Desktop
+                            m4 : open -a "Mission Control" --args 1 # macOS Show Desktop
 #                           f6 : # macOS Turn Do Not Disturb on/off
 #                           f7 : # macOS Toggle StageManager on/off
                            f11 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
