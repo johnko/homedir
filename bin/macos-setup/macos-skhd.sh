@@ -10,7 +10,7 @@ else
   set -x
   git clone -b mouse2 https://github.com/johnko/skhd.git /tmp/skhd.git
   pushd /tmp/skhd.git
-  git log -n 1 | grep c7e900ff7c421399fd74341ce67130896b1481d0 || exit 1
+  git log -n 1 | grep 1e0cf0d3766decd8d9c636c8ea91d034fb5fabf0 || exit 1
   # sudo xcode-select -switch /Library/Developer/CommandLineTools
   export CPATH="$(xcrun --show-sdk-path)/usr/include"
   export SDKROOT=$(xcrun --show-sdk-path)
