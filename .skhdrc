@@ -77,6 +77,7 @@
           ctrl + alt + cmd - h : yabai -m window --grid 1:4:1:0:2:1
 #         ctrl + alt + cmd - h : yabai -m space --rotate 90
   shift + ctrl + alt + cmd - h : yabai -m window --grid 1:1:0:0:1:1
+                      cmd - m4 : yabai -m window --grid 1:1:0:0:1:1
 # shift + ctrl + alt + cmd - h : yabai -m window --toggle split
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
   shift + ctrl + alt + cmd - j : yabai -m window --grid 2:3:2:0:1:1
@@ -98,6 +99,7 @@
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
   shift + ctrl + alt + cmd - b : yabai -m window --grid 7:3:0:2:1:5
           ctrl + alt + cmd - n : bash ~/bin/macos-move-window-to-next-screen.sh
+                      cmd - m3 : bash ~/bin/macos-move-window-to-next-screen.sh
   shift + ctrl + alt + cmd - n : osascript ~/.osascripts/terminal-nosleep.scpt
           ctrl + alt + cmd - m : osascript ~/.osascripts/toggle-googlemeet.scpt
   shift + ctrl + alt + cmd - m : yabai -m window --grid 40:3:1:1:2:35
@@ -114,8 +116,10 @@
           ctrl + alt + cmd - right : osascript ~/.osascripts/volume-75.scpt
 # shift + ctrl + alt + cmd - up    : yabai -m window --swap north
   shift + ctrl + alt + cmd - up    : yabai -m window --grid 2:1:0:0:1:1
+                       alt - m4    : yabai -m window --grid 2:1:0:0:1:1
 # shift + ctrl + alt + cmd - down  : yabai -m window --swap south
   shift + ctrl + alt + cmd - down  : yabai -m window --grid 2:1:0:1:1:1
+                       alt - m3    : yabai -m window --grid 2:1:0:1:1:1
 # shift + ctrl + alt + cmd - left  : yabai -m window --swap west
   shift + ctrl + alt + cmd - left  : yabai -m window --grid 1:2:0:0:1:1
 # shift + ctrl + alt + cmd - right : yabai -m window --swap east
