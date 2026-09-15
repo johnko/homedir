@@ -1,8 +1,10 @@
 ########## Numbers #########################################################
 
-          ctrl + alt + cmd - 1 : osascript ~/.osascripts/macos-space-left.scpt
+          ctrl + alt + cmd - 1 : skhd --key "ctrl - left"
+                     ctrl - m3 : skhd --key "ctrl - left"
 # shift + ctrl + alt + cmd - 1 : # Hammerspoon switcher
-          ctrl + alt + cmd - 2 : osascript ~/.osascripts/macos-space-right.scpt
+          ctrl + alt + cmd - 2 : skhd --key "ctrl - right"
+                     ctrl - m4 : skhd --key "ctrl - right"
 # shift + ctrl + alt + cmd - 2 : # Hammerspoon switcher
 #         ctrl + alt + cmd - 3 : # Hammerspoon switcher
 # shift + ctrl + alt + cmd - 3 : # Hammerspoon switcher
@@ -127,11 +129,11 @@
 
 ########## Group Function Keys #########################################################
 
-                            f3 : open -a "Mission Control"
-                            m3 : open -a "Mission Control"
+                            f3 : skhd --key "ctrl - up"
+                            m3 : skhd --key "ctrl - up"
 #                           -- : open -a "Mission Control" --args 2 # macOS Application Expose
 #                           f4 : open -a "Mission Control" --args 1 # macOS Show Desktop
-                            m4 : open -a "Mission Control" --args 1 # macOS Show Desktop
+                            m4 : skhd --key "f4"
 #                           f6 : # macOS Turn Do Not Disturb on/off
 #                           f7 : # macOS Toggle StageManager on/off
                            f11 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
