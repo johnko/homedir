@@ -1,10 +1,10 @@
 ########## Numbers #########################################################
 
           ctrl + alt + cmd - 1 : skhd --key "ctrl - left"
-                     ctrl - m3 : skhd --key "ctrl - left"
+                     ctrl - m4 : skhd --key "ctrl - left"
 # shift + ctrl + alt + cmd - 1 : # Hammerspoon switcher
           ctrl + alt + cmd - 2 : skhd --key "ctrl - right"
-                     ctrl - m4 : skhd --key "ctrl - right"
+                     ctrl - m3 : skhd --key "ctrl - right"
 # shift + ctrl + alt + cmd - 2 : # Hammerspoon switcher
 #         ctrl + alt + cmd - 3 : # Hammerspoon switcher
 # shift + ctrl + alt + cmd - 3 : # Hammerspoon switcher
