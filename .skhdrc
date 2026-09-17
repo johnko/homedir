@@ -45,8 +45,8 @@
   shift + ctrl + alt + cmd - y : open -g hammerspoon://restartwindowmanager
                    shift - f16 : open -g hammerspoon://restartwindowmanager
 
-          ctrl + alt + cmd - u : osascript ~/.osascripts/toggle-whatsapp.scpt
-                           f17 : osascript ~/.osascripts/toggle-whatsapp.scpt
+          ctrl + alt + cmd - u : osascript ~/.osascripts/toggle-googlecalendar.scpt
+                           f17 : osascript ~/.osascripts/toggle-googlecalendar.scpt
   shift + ctrl + alt + cmd - u : yabai -m window --grid 16:1:0:0:1:4
                    shift - f17 : yabai -m window --grid 16:1:0:0:1:4
 
