@@ -25,7 +25,7 @@
 
           ctrl + alt + cmd - q : yabai -m window --grid 1:2:0:0:1:1
   shift + ctrl + alt + cmd - q : yabai -m window --grid 2:2:0:0:1:1
-          ctrl + alt + cmd - w : osascript ~/.osascripts/terminal-brew-update.scpt
+#         ctrl + alt + cmd - w : echo
   shift + ctrl + alt + cmd - w : osascript ~/.osascripts/terminal-brew-prune.scpt
           ctrl + alt + cmd - e : yabai -m window --grid 1:2:1:0:1:1
   shift + ctrl + alt + cmd - e : yabai -m window --grid 2:2:1:0:1:1
@@ -45,8 +45,8 @@
   shift + ctrl + alt + cmd - y : open -g hammerspoon://restartwindowmanager
                    shift - f16 : open -g hammerspoon://restartwindowmanager
 
-          ctrl + alt + cmd - u : osascript ~/.osascripts/toggle-googlecalendar.scpt
-                           f17 : osascript ~/.osascripts/toggle-googlecalendar.scpt
+          ctrl + alt + cmd - u : osascript ~/.osascripts/toggle-whatsapp.scpt
+                           f17 : osascript ~/.osascripts/toggle-whatsapp.scpt
   shift + ctrl + alt + cmd - u : yabai -m window --grid 16:1:0:0:1:4
                    shift - f17 : yabai -m window --grid 16:1:0:0:1:4
 
@@ -69,7 +69,7 @@
 #         ctrl + alt + cmd - a : echo
   shift + ctrl + alt + cmd - a : yabai -m window --grid 2:2:0:1:1:1
 #         ctrl + alt + cmd - s : echo
-  shift + ctrl + alt + cmd - s : osascript ~/.osascripts/terminal-toggle-sudo.scpt
+# shift + ctrl + alt + cmd - s : echo
 #         ctrl + alt + cmd - d : echo
   shift + ctrl + alt + cmd - d : yabai -m window --grid 2:2:1:1:1:1
           ctrl + alt + cmd - f : osascript ~/.osascripts/toggle-firefox.scpt
@@ -81,12 +81,12 @@
   shift + ctrl + alt + cmd - h : yabai -m window --grid 1:1:0:0:1:1
                       cmd - m4 : yabai -m window --grid 1:1:0:0:1:1
 # shift + ctrl + alt + cmd - h : yabai -m window --toggle split
-          ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
+          ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-whatsapp.scpt
   shift + ctrl + alt + cmd - j : yabai -m window --grid 2:3:2:0:1:1
           ctrl + alt + cmd - k : osascript ~/.osascripts/toggle-signal.scpt
   shift + ctrl + alt + cmd - k : yabai -m window --grid 2:3:1:1:1:1
           ctrl + alt + cmd - l : osascript ~/.osascripts/toggle-line.scpt
-  shift + ctrl + alt + cmd - l : yabai -m window --grid 2:3:2:1:1:1
+  shift + ctrl + alt + cmd - l : yabai -m window --grid 2:3:1:0:1:1
 
 ########## Row Z #########################################################
 
@@ -103,8 +103,9 @@
           ctrl + alt + cmd - n : bash ~/bin/macos-move-window-to-next-screen.sh
                       cmd - m3 : bash ~/bin/macos-move-window-to-next-screen.sh
   shift + ctrl + alt + cmd - n : osascript ~/.osascripts/terminal-nosleep.scpt
-          ctrl + alt + cmd - m : osascript ~/.osascripts/toggle-googlemeet.scpt
-  shift + ctrl + alt + cmd - m : yabai -m window --grid 40:3:1:1:2:35
+          ctrl + alt + cmd - m : osascript ~/.osascripts/toggle-messages.scpt
+# shift + ctrl + alt + cmd - m : yabai -m window --grid 40:3:1:1:2:35
+  shift + ctrl + alt + cmd - m : yabai -m window --grid 2:3:2:1:1:1
 
 ########## Right Group Arrows #########################################################
 
