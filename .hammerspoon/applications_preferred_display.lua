@@ -83,10 +83,10 @@ config.applications = {
     bundleID = 'org.whispersystems.signal-desktop',
     preferred_display = config.screen.top
   },
-  ['WhatsApp'] = {
-    bundleID = 'com.google.Chrome.app.hnpfjngllnobngcgfapefoaidbinmjnm',
-    preferred_display = config.screen.top
-  },
+  -- ['WhatsApp'] = {
+  --   bundleID = 'com.google.Chrome.app.hnpfjngllnobngcgfapefoaidbinmjnm',
+  --   preferred_display = config.screen.top
+  -- },
 
   -- ['Keychron'] = {
   --   bundleID = 'com.google.Chrome.app.cbfedpnlilnlbdcikokpfoibmlbghlhg',
