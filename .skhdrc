@@ -134,6 +134,7 @@
 #                           -- : open -a "Mission Control" --args 2 # macOS Application Expose
 #                           f4 : open -a "Mission Control" --args 1 # macOS Show Desktop
                             m4 : skhd --key "f4"
+                            f5 : skhd --key "shift + cmd - tab"
 #                           f6 : # macOS Turn Do Not Disturb on/off
 #                           f7 : # macOS Toggle StageManager on/off
                            f11 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
