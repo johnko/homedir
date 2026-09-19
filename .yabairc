@@ -126,17 +126,11 @@ yabai -m signal --add event=window_created action="bash ~/bin/macos-reset-apps-p
 # set padding to not block widgets on 4k monitor
 # it's before applying rules so wont block widgets
 
-# horizontal padding
-# yabai -m config top_padding 100
-# yabai -m config bottom_padding 190
-# yabai -m config left_padding 11
-# yabai -m config right_padding 370
-
-# vertical padding
+# screen padding
 yabai -m config top_padding 190
 yabai -m config bottom_padding 30
-yabai -m config left_padding 30
-yabai -m config right_padding 100
+yabai -m config left_padding 190
+yabai -m config right_padding 190
 
 # apply rules on restart
 yabai -m rule --apply
