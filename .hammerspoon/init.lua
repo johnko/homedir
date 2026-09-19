@@ -92,5 +92,5 @@ windowhotkeys.start({'LG', 'U32', 'Built'})
 
 hs.urlevent.bind("autolayout", function(eventName, params)
   autolayout.autoLayout()
-  windowhotkeys.createCanvas()
+  -- windowhotkeys.createCanvas()
 end)

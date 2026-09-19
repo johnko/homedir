@@ -163,17 +163,17 @@ windowhotkeys.createCanvas = function()
   end
   windowhotkeys.canvas:show()
   windowhotkeys.canvas:sendToBack()
-  windowhotkeys.drawInfo()
+  -- windowhotkeys.drawInfo()
 end
 
 -- initialize watchers
 windowhotkeys.start = function(table_of_partial_display_name)
   windowhotkeys.table_of_partial_display_name = table_of_partial_display_name
-  windowhotkeys.createCanvas()
+  -- windowhotkeys.createCanvas()
   -- Start over when any screen geometry changes.
-  windowhotkeys.watcher = hs.screen.watcher.newWithActiveScreen(windowhotkeys.createCanvas):start()
+  -- windowhotkeys.watcher = hs.screen.watcher.newWithActiveScreen(windowhotkeys.createCanvas):start()
   -- Redraw every few seconds.
-  windowhotkeys.timer = hs.timer.doEvery(2, windowhotkeys.drawInfo):start()
+  -- windowhotkeys.timer = hs.timer.doEvery(2, windowhotkeys.drawInfo):start()
 end
 
 return windowhotkeys
