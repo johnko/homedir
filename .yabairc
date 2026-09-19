@@ -127,7 +127,7 @@ yabai -m signal --add event=window_created action="bash ~/bin/macos-reset-apps-p
 # it's before applying rules so wont block widgets
 
 # screen padding
-yabai -m config top_padding 190
+yabai -m config top_padding 180
 yabai -m config bottom_padding 30
 yabai -m config left_padding 190
 yabai -m config right_padding 190
