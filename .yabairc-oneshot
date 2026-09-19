@@ -19,7 +19,8 @@ yabai -m rule --add label=oneshot011 app="^(Firefox)$" manage=off grid=1:1:0:0:1
 yabai -m rule --add label=oneshot012 app="^(Spotify)$" manage=off grid=2:4:0:0:1:1
 yabai -m rule --add label=oneshot013 app="^(Books)$" manage=off grid=1:4:1:0:2:1
 # yabai -m rule --add label=oneshot014 app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off grid=1:12:5:0:6:1
-yabai -m rule --add label=oneshot014 app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off grid=7:3:0:2:1:5
+# yabai -m rule --add label=oneshot014 app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off grid=7:3:0:2:1:5
+yabai -m rule --add label=oneshot014 app="^(Brave Browser)$" title!="^.*( Tab).*$" manage=off grid=80:3:0:7:1:73
 yabai -m rule --add label=oneshot015 app="^(Preview)$" manage=off grid=1:4:1:0:2:1
 yabai -m rule --add label=oneshot016 app="^(1Password)$" manage=off grid=4:4:1:1:2:2
 # yabai -m rule --add label=oneshot017 app="^(Finder)$" manage=off grid=4:4:1:1:2:2
