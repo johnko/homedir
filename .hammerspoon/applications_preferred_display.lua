@@ -71,18 +71,18 @@ config.applications = {
   -- ['Instagram'] = {
   --   bundleID = 'com.google.Chrome.app.akpamiohjfcnimfljfndmaldlcfphjmp',
   -- },
-  ['Line'] = {
-    bundleID = 'jp.naver.line.mac',
-    preferred_display = config.screen.top
-  },
-  ['Messages'] = {
-    bundleID = 'com.apple.MobileSMS',
-    preferred_display = config.screen.top
-  },
-  ['Signal'] = {
-    bundleID = 'org.whispersystems.signal-desktop',
-    preferred_display = config.screen.top
-  },
+  -- ['Line'] = {
+  --   bundleID = 'jp.naver.line.mac',
+  --   preferred_display = config.screen.top
+  -- },
+  -- ['Messages'] = {
+  --   bundleID = 'com.apple.MobileSMS',
+  --   preferred_display = config.screen.top
+  -- },
+  -- ['Signal'] = {
+  --   bundleID = 'org.whispersystems.signal-desktop',
+  --   preferred_display = config.screen.top
+  -- },
   -- ['WhatsApp'] = {
   --   bundleID = 'com.google.Chrome.app.hnpfjngllnobngcgfapefoaidbinmjnm',
   --   preferred_display = config.screen.top
