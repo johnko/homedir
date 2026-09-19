@@ -96,9 +96,11 @@
   shift + ctrl + alt + cmd - x : yabai -m window --grid 40:2:1:2:1:35
           ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
   shift + ctrl + alt + cmd - c : yabai -m window --grid 16:1:0:4:1:12
+                      alt - m3 : yabai -m window --grid 16:1:0:4:1:12
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 # shift + ctrl + alt + cmd - v : yabai -m window --grid 40:3:0:1:2:35
   shift + ctrl + alt + cmd - v : yabai -m window --grid 16:1:0:0:1:12
+                      alt - m4 : yabai -m window --grid 16:1:0:0:1:12
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
   shift + ctrl + alt + cmd - b : yabai -m window --grid 7:3:0:2:1:5
           ctrl + alt + cmd - n : bash ~/bin/macos-move-window-to-next-screen.sh
@@ -120,10 +122,8 @@
           ctrl + alt + cmd - right : osascript ~/.osascripts/volume-75.scpt
 # shift + ctrl + alt + cmd - up    : yabai -m window --swap north
   shift + ctrl + alt + cmd - up    : yabai -m window --grid 2:1:0:0:1:1
-                       alt - m4    : yabai -m window --grid 2:1:0:0:1:1
 # shift + ctrl + alt + cmd - down  : yabai -m window --swap south
   shift + ctrl + alt + cmd - down  : yabai -m window --grid 2:1:0:1:1:1
-                       alt - m3    : yabai -m window --grid 2:1:0:1:1:1
 # shift + ctrl + alt + cmd - left  : yabai -m window --swap west
   shift + ctrl + alt + cmd - left  : yabai -m window --grid 1:2:0:0:1:1
 # shift + ctrl + alt + cmd - right : yabai -m window --swap east
