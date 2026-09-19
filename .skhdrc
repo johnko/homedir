@@ -76,7 +76,7 @@
   shift + ctrl + alt + cmd - f : yabai -m window --grid 1:1:0:0:1:1
           ctrl + alt + cmd - g : osascript ~/.osascripts/toggle-googlechrome.scpt
   shift + ctrl + alt + cmd - g : yabai -m window --grid 1:4:1:0:2:1
-          ctrl + alt + cmd - h : yabai -m window --grid 1:4:1:0:2:1
+          ctrl + alt + cmd - h : yabai -m window --grid 1:6:1:0:4:1
 #         ctrl + alt + cmd - h : yabai -m space --rotate 90
   shift + ctrl + alt + cmd - h : yabai -m window --grid 1:1:0:0:1:1
                       cmd - m4 : yabai -m window --grid 1:1:0:0:1:1
@@ -97,7 +97,8 @@
           ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
   shift + ctrl + alt + cmd - c : yabai -m window --grid 16:1:0:4:1:12
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
-  shift + ctrl + alt + cmd - v : yabai -m window --grid 40:3:0:1:2:35
+# shift + ctrl + alt + cmd - v : yabai -m window --grid 40:3:0:1:2:35
+  shift + ctrl + alt + cmd - v : yabai -m window --grid 16:1:0:0:1:12
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
   shift + ctrl + alt + cmd - b : yabai -m window --grid 7:3:0:2:1:5
           ctrl + alt + cmd - n : bash ~/bin/macos-move-window-to-next-screen.sh
@@ -145,7 +146,7 @@
 ########## Left Group Convenient Keys #########################################################
 
 #         ctrl + alt + cmd - tab : # Hammerspoon windowpicker
-  shift + ctrl + alt + cmd - tab : yabai -m window --grid 1:6:1:0:4:1
+  shift + ctrl + alt + cmd - tab : yabai -m window --grid 1:4:1:0:2:1
 
 # 0x32 is `
 #         ctrl + alt + cmd - 0x32 : # macOS Show Notification Center
