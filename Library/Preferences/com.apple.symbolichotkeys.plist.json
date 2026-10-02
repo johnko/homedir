@@ -786,7 +786,7 @@
       "parameters": [
         65535,
         118,
-        8388608
+        0
       ],
       "type": "standard"
     }
@@ -797,7 +797,7 @@
       "parameters": [
         65535,
         118,
-        8519680
+        131072
       ],
       "type": "standard"
     }
@@ -818,6 +818,12 @@
     "enabled": false
   },
   "43": {
+    "enabled": false
+  },
+  "48": {
+    "enabled": false
+  },
+  "49": {
     "enabled": false
   },
   "52": {
