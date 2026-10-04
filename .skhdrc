@@ -102,7 +102,7 @@
   shift + ctrl + alt + cmd - v : yabai -m window --grid 16:1:0:0:1:12
                       alt - m4 : yabai -m window --grid 16:1:0:0:1:12
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
-  shift + ctrl + alt + cmd - b : yabai -m window --grid 7:3:0:2:1:5
+  shift + ctrl + alt + cmd - b : yabai -m window --grid 80:3:0:7:1:73
           ctrl + alt + cmd - n : bash ~/bin/macos-move-window-to-next-screen.sh
                       cmd - m3 : bash ~/bin/macos-move-window-to-next-screen.sh
   shift + ctrl + alt + cmd - n : osascript ~/.osascripts/terminal-nosleep.scpt
