@@ -23,11 +23,11 @@
 
 ########## Row Q #########################################################
 
-          ctrl + alt + cmd - q : yabai -m window --grid 1:2:0:0:1:1
+          ctrl + alt + cmd - q : yabai -m window --grid 80:100:0:7:49:73
   shift + ctrl + alt + cmd - q : yabai -m window --grid 2:2:0:0:1:1
 #         ctrl + alt + cmd - w : echo
   shift + ctrl + alt + cmd - w : osascript ~/.osascripts/terminal-brew-prune.scpt
-          ctrl + alt + cmd - e : yabai -m window --grid 1:2:1:0:1:1
+          ctrl + alt + cmd - e : yabai -m window --grid 80:100:51:7:49:73
   shift + ctrl + alt + cmd - e : yabai -m window --grid 2:2:1:0:1:1
 
           ctrl + alt + cmd - r : bash ~/bin/macos-reset-window-layout.sh
@@ -79,8 +79,8 @@
   shift + ctrl + alt + cmd - g : yabai -m window --grid 1:4:1:0:2:1
           ctrl + alt + cmd - h : yabai -m window --grid 1:6:1:0:4:1
 #         ctrl + alt + cmd - h : yabai -m space --rotate 90
-  shift + ctrl + alt + cmd - h : yabai -m window --grid 1:1:0:0:1:1
-                      cmd - m4 : yabai -m window --grid 1:1:0:0:1:1
+  shift + ctrl + alt + cmd - h : yabai -m window --grid 80:1:0:0:1:73
+                      cmd - m4 : yabai -m window --grid 80:1:0:0:1:73
 # shift + ctrl + alt + cmd - h : yabai -m window --toggle split
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-whatsapp.scpt
   shift + ctrl + alt + cmd - j : yabai -m window --grid 2:3:2:0:1:1
