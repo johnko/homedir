@@ -37,8 +37,9 @@
 
           ctrl + alt + cmd - t : osascript ~/.osascripts/toggle-terminal.scpt
                            f15 : osascript ~/.osascripts/toggle-terminal.scpt
-  shift + ctrl + alt + cmd - t : yabai -m window --grid 1:6:1:0:4:1
-                   shift - f15 : yabai -m window --grid 1:6:1:0:4:1
+  shift + ctrl + alt + cmd - t : yabai -m window --grid 16:1:0:0:1:12
+                   shift - f15 : yabai -m window --grid 16:1:0:0:1:12
+                      alt - m4 : yabai -m window --grid 16:1:0:0:1:12
 
           ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
                            f16 : skhd --restart-service && yabai --restart-service
@@ -100,7 +101,6 @@
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 # shift + ctrl + alt + cmd - v : yabai -m window --grid 40:3:0:1:2:35
   shift + ctrl + alt + cmd - v : yabai -m window --grid 16:1:0:0:1:12
-                      alt - m4 : yabai -m window --grid 16:1:0:0:1:12
           ctrl + alt + cmd - b : osascript ~/.osascripts/toggle-brave.scpt
   shift + ctrl + alt + cmd - b : yabai -m window --grid 80:3:0:7:1:73
           ctrl + alt + cmd - n : bash ~/bin/macos-move-window-to-next-screen.sh
