@@ -22,11 +22,12 @@ end
 nowplaying.musicBar = hs.menubar.new()
 nowplaying.musicTimer = nil
 nowplaying.showNowPlayingMenuBar = function()
+  nowplaying.menuBarVisible = true
   local song = nowplaying.getNowPlaying()
   local rate = nowplaying.getPlaybackRate()
   if rate == "1" then
     if song then
-      local displayStr = ("🎵 " .. string.gsub(song, "\n", " - ", 1)):gsub("^%s*(.-)%s*$", "%1")
+      local displayStr = ("♫ " .. string.gsub(song, "\n", " - ", 1)):gsub("^%s*(.-)%s*$", "%1")
       nowplaying.musicBar:setTitle(displayStr)
     else
       nowplaying.musicBar:setTitle("")
@@ -34,14 +35,11 @@ nowplaying.showNowPlayingMenuBar = function()
   else
     nowplaying.musicBar:setTitle("")
   end
-  if nowplaying.musicBar then
-    if nowplaying.musicTimer then
-      nowplaying.musicTimer:start()
-    else
-      nowplaying.musicTimer = hs.timer.doEvery(1, nowplaying.showNowPlayingMenuBar)
-    end
+  if nowplaying.musicTimer then
+    nowplaying.musicTimer:start()
+  else
+    nowplaying.musicTimer = hs.timer.doEvery(1, nowplaying.showNowPlayingMenuBar)
   end
-  nowplaying.menuBarVisible = true
 end
 
 -- nowplaying.menuTable = {
@@ -51,9 +49,9 @@ end
 -- nowplaying.musicBar:setMenu(nowplaying.menuTable)
 
 nowplaying.hideNowPlayingMenuBar = function()
+  nowplaying.menuBarVisible = false
   nowplaying.musicBar:setTitle("")
   nowplaying.musicTimer:stop()
-  nowplaying.menuBarVisible = false
 end
 
 nowplaying.toggleNowPlayingMenuBar = function()
