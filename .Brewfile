@@ -18,6 +18,7 @@ cask "firefox"
 # Shell / CLI Tools
 # brew "direnv"
 brew "gh"
+brew "nowplaying-cli"
 brew "shellcheck"
 brew "shfmt"
 brew "switchaudio-osx"
