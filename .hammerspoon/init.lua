@@ -2,9 +2,9 @@ logger = hs.logger.new("MyLocal")
 
 hs.autoLaunch(true)
 hs.automaticallyCheckForUpdates(false)
-hs.consoleOnTop(true)
+hs.consoleOnTop(false)
 hs.dockIcon(true)
-hs.menuIcon(true)
+hs.menuIcon(false)
 hs.uploadCrashData(false)
 hs.window.animationDuration = 0
 
