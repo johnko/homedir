@@ -42,9 +42,9 @@ windowhotkeys.restore = function ()
   windowhotkeys.state = hs.settings.get(savedHotkeys) or windowhotkeys.emptyState
 end
 
-windowhotkeys.start = function()
-  windowhotkeys.restore()
-end
+-- windowhotkeys.start = function()
+--   windowhotkeys.restore()
+-- end
 
 -- used to assign window using shift+ctrl+alt+cmd 1-8
 windowhotkeys.assign = function(input)
