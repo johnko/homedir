@@ -42,11 +42,12 @@ nowplaying.showNowPlayingMenuBar = function()
   end
 end
 
--- nowplaying.menuTable = {
+nowplaying.menuTable = {
+  { title = "Now playing" },
 --   { title = "-" },
 --   { title = "Refresh", fn = nowplaying.showNowPlayingMenuBar }
--- }
--- nowplaying.musicBar:setMenu(nowplaying.menuTable)
+}
+nowplaying.musicBar:setMenu(nowplaying.menuTable)
 
 nowplaying.hideNowPlayingMenuBar = function()
   nowplaying.menuBarVisible = false

@@ -10,6 +10,11 @@ hs.window.animationDuration = 0
 
 -- --------------------------------------------------
 
+local useddisk = require 'useddisk'
+useddisk.showUsedDiskMenuBar()
+
+-- --------------------------------------------------
+
 local mousehighlight = require 'mousehighlight'
 local nowplaying = require 'nowplaying'
 nowplaying.showNowPlayingMenuBar()
