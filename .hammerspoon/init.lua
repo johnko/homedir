@@ -12,9 +12,11 @@ hs.window.animationDuration = 0
 
 local mousehighlight = require 'mousehighlight'
 local nowplaying = require 'nowplaying'
+nowplaying.showNowPlayingMenuBar()
 local mouseAndMusic = function()
-  nowplaying.alertNowPlaying()
   mousehighlight.mouseHighlight()
+  -- nowplaying.alertNowPlaying()
+  nowplaying.toggleNowPlayingMenuBar()
 end
 hs.hotkey.bind( { "ctrl", "alt", "cmd" }, "`", false, mouseAndMusic)
 
