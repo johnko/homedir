@@ -16,7 +16,7 @@ useddisk.showUsedDiskMenuBar()
 -- --------------------------------------------------
 
 local usedmemory = require 'usedmemory'
-usedmemory.showUsedDiskMenuBar()
+usedmemory.showUsedMemoryMenuBar()
 
 -- --------------------------------------------------
 
