@@ -15,6 +15,11 @@ useddisk.showUsedDiskMenuBar()
 
 -- --------------------------------------------------
 
+local usedmemory = require 'usedmemory'
+usedmemory.showUsedDiskMenuBar()
+
+-- --------------------------------------------------
+
 local mousehighlight = require 'mousehighlight'
 local nowplaying = require 'nowplaying'
 nowplaying.showNowPlayingMenuBar()

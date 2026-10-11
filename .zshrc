@@ -105,17 +105,17 @@ fi
 
 ##########
 # Disk used on right, only execute on new session, not every second
-used_disk=$(df /System/Volumes/Data | grep '/System/Volumes/Data' | awk '{print $5"% HDDused"}')
-if [ -n "$used_disk" ]; then
-  PROMPT=" %F{blue}$used_disk"$PROMPT
-fi
+# used_disk=$(df /System/Volumes/Data | grep '/System/Volumes/Data' | awk '{print $5"% HDDused"}')
+# if [ -n "$used_disk" ]; then
+#   PROMPT=" %F{blue}$used_disk"$PROMPT
+# fi
 
 ##########
 # Memory on right, only execute on new session, not every second
-free_memory=$(top -l 1 -s 0 | grep 'PhysMem' | grep -o '[0-9A-Z]* unused' | sed 's,unused,RAMfree,')
-if [ -n "$free_memory" ]; then
-  PROMPT=" %F{magenta}$free_memory"$PROMPT
-fi
+# free_memory=$(top -l 1 -s 0 | grep 'PhysMem' | grep -o '[0-9A-Z]* unused' | sed 's,unused,RAMfree,')
+# if [ -n "$free_memory" ]; then
+#   PROMPT=" %F{magenta}$free_memory"$PROMPT
+# fi
 
 ##########
 # Time on left

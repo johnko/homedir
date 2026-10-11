@@ -2,25 +2,25 @@ local useddisk = {}
 useddisk.menuBarVisible = false
 
 useddisk.getUsedDiskPercent = function()
-  local song = hs.execute("df /System/Volumes/Data | grep '/System/Volumes/Data' | awk '{print $5}'")
-  return song
+  local usedDiskPercent = hs.execute("df /System/Volumes/Data | grep '/System/Volumes/Data' | awk '{print $5}'")
+  return usedDiskPercent
 end
 
-useddisk.musicBar = hs.menubar.new()
-useddisk.musicTimer = nil
+useddisk.menuBar = hs.menubar.new()
+useddisk.timer = nil
 useddisk.showUsedDiskMenuBar = function()
   useddisk.menuBarVisible = true
   local usedDiskPercent = useddisk.getUsedDiskPercent()
   if usedDiskPercent then
     local displayStr = "💾 " .. usedDiskPercent:gsub("^%s*(.-)%s*$", "%1")
-    useddisk.musicBar:setTitle(displayStr)
+    useddisk.menuBar:setTitle(displayStr)
   else
-    useddisk.musicBar:setTitle("")
+    useddisk.menuBar:setTitle("")
   end
-  if useddisk.musicTimer then
-    useddisk.musicTimer:start()
+  if useddisk.timer then
+    useddisk.timer:start()
   else
-    useddisk.musicTimer = hs.timer.doEvery(60, useddisk.showUsedDiskMenuBar)
+    useddisk.timer = hs.timer.doEvery(60, useddisk.showUsedDiskMenuBar)
   end
 end
 
@@ -29,12 +29,12 @@ useddisk.menuTable = {
   -- { title = "-" },
   -- { title = "Refresh", fn = useddisk.showUsedDiskMenuBar }
 }
-useddisk.musicBar:setMenu(useddisk.menuTable)
+useddisk.menuBar:setMenu(useddisk.menuTable)
 
 useddisk.hideUsedDiskMenuBar = function()
   useddisk.menuBarVisible = false
-  useddisk.musicBar:setTitle("")
-  useddisk.musicTimer:stop()
+  useddisk.menuBar:setTitle("")
+  useddisk.timer:stop()
 end
 
 useddisk.toggleUsedDiskMenuBar = function()
