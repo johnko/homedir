@@ -20,7 +20,7 @@ useddisk.showUsedDiskMenuBar = function()
   if useddisk.timer then
     useddisk.timer:start()
   else
-    useddisk.timer = hs.timer.doEvery(60, useddisk.showUsedDiskMenuBar)
+    useddisk.timer = hs.timer.doEvery(600, useddisk.showUsedDiskMenuBar)
   end
 end
 
