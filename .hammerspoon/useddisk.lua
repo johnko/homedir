@@ -12,7 +12,7 @@ useddisk.showUsedDiskMenuBar = function()
   useddisk.menuBarVisible = true
   local usedDiskPercent = useddisk.getUsedDiskPercent()
   if usedDiskPercent then
-    local displayStr = "💾 " .. usedDiskPercent:gsub("^%s*(.-)%s*$", "%1")
+    local displayStr = "💾" .. usedDiskPercent:gsub("^%s*(.-)%s*$", "%1")
     useddisk.menuBar:setTitle(displayStr)
   else
     useddisk.menuBar:setTitle("")

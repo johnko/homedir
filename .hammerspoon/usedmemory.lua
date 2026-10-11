@@ -18,7 +18,7 @@ usedmemory.showUsedDiskMenuBar = function()
   usedmemory.menuBarVisible = true
   local usedMemoryPercent = usedmemory.getUsedDiskPercent()
   if usedMemoryPercent then
-    local displayStr = "💡 " .. usedMemoryPercent:gsub("^%s*(.-)%s*$", "%1")
+    local displayStr = "💡" .. usedMemoryPercent:gsub("^%s*(.-)%s*$", "%1")
     usedmemory.menuBar:setTitle(displayStr)
   else
     usedmemory.menuBar:setTitle("")
