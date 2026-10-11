@@ -105,7 +105,7 @@
   </style>
 </head>
 
-<body><video id="bg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video><div id="overlay"><img id="creatormicro" src="./creatormicro.png"/><div id="rowday"><span id="weekday"></span><br/><span id="day"></span></div><br class="floatclear" /><img id="diskchart" src="./diskchart.svg"/><div id="rowclock"><span id="clock"></span></div></div><video id="fg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
+<body><video id="bg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video><div id="overlay"><img id="creatormicro" src="./creatormicro.png"/><div id="rowday"><span id="weekday"></span><br/><span id="day"></span></div><br class="floatclear" /><!--img id="diskchart" src="./diskchart.svg"/--><div id="rowclock"><span id="clock"></span></div></div><video id="fg" autoplay="true" loop="true" muted="true" src="file://$NO_SLEEP_VIDEO_FILE"></video>
 <script>
   function detectBrave() {
     if (typeof navigator.brave !== 'undefined' && typeof navigator.brave.isBrave === 'function') {
