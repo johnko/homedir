@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+df /System/Volumes/Data | grep '/System/Volumes/Data' | awk '{print $5}'

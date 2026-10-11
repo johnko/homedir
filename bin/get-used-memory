@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+total=$(sysctl -n hw.memsize | awk '{print $1/1024/1024/1024}')
+used=$(top -l 1 -s 0 | grep 'PhysMem' | grep -o '[0-9A-Z]* used' | sed 's/G used//')
+
+echo "$used $total" | awk '{printf "%.0f%%\n", 100*$1/$2}'
