@@ -26,7 +26,7 @@ usedmemory.showUsedDiskMenuBar = function()
   if usedmemory.timer then
     usedmemory.timer:start()
   else
-    usedmemory.timer = hs.timer.doEvery(60, usedmemory.showUsedDiskMenuBar)
+    usedmemory.timer = hs.timer.doEvery(300, usedmemory.showUsedDiskMenuBar)
   end
 end
 
