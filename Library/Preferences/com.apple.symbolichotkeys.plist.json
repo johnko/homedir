@@ -297,12 +297,12 @@
     }
   },
   "222": {
-    "enabled": false,
+    "enabled": true,
     "value": {
       "parameters": [
         65535,
-        65535,
-        0
+        96,
+        8388608
       ],
       "type": "standard"
     }

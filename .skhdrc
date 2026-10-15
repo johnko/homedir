@@ -132,13 +132,12 @@
 ########## Group Function Keys #########################################################
 
                             f3 : skhd --key "ctrl - up"
-                            m3 : skhd --key "ctrl - up"
+                            m3 : skhd --key "ctrl - f4"
 #                           -- : open -a "Mission Control" --args 2 # macOS Application Expose
 #                           f4 : open -a "Mission Control" --args 1 # macOS Show Desktop
                             m4 : skhd --key "f4"
-                            f5 : skhd --key "shift + cmd - tab"
+#                           f5 : # macOS Toggle StageManager on/off
 #                           f6 : # macOS Turn Do Not Disturb on/off
-#                           f7 : # macOS Toggle StageManager on/off
                            f11 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
                            f12 : osascript ~/.osascripts/terminal-brew-update.scpt
                            f13 : bash ~/bin/macos-move-to-top-of-screen.sh
@@ -156,10 +155,9 @@
 
 # SHIFT FOR TILE MAKES IT SLOW ANIMATION
 
-#                           f4 : open -a "Mission Control" --args 2 # macOS Application Expose
-#                           f5 : open -a "Mission Control" --args 1 # macOS Show Desktop
+#                           f4 : open -a "Mission Control" --args 1 # macOS Show Desktop
+#                           f5 : # macOS Toggle StageManager on/off
 #                           f6 : # macOS Turn Do Not Disturb on/off
-#                           f7 : # macOS Toggle StageManager on/off
 #                  shift - f14 : # macOS Remove Window from Set
 #                  shift - f19 : # macOS Emoji & Symbols
 
