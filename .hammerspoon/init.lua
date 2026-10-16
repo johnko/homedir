@@ -79,7 +79,7 @@ end)
 -- --------------------------------------------------
 
 local windowpicker = require 'windowpicker'
-hs.hotkey.bind({ "ctrl", "alt", "cmd"             }, "tab", "Window picker, All Screens" , function()windowpicker.switch(nil)end)
+ hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "tab", "Window picker, All Screens" , function()windowpicker.switch(nil)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "z",   "Window picker, Screen 1"    , function()windowpicker.switch(config.screen.left)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "x",   "Window picker, Screen 2"    , function()windowpicker.switch(config.screen.middle)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "z",   "Window picker, Screen 3"    , function()windowpicker.switch(config.screen.top)end)
@@ -89,8 +89,8 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd"             }, "tab", "Window picker, All 
 local windowhotkeys = require 'windowhotkeys'
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "1", "Assign Window 1", function()windowhotkeys.assign(1)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "2", "Assign Window 2", function()windowhotkeys.assign(2)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "3", "Assign Window 3", function()windowhotkeys.assign(3)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "4", "Assign Window 4", function()windowhotkeys.assign(4)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "3", "Assign Window 3", function()windowhotkeys.assign(3)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "4", "Assign Window 4", function()windowhotkeys.assign(4)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "5", "Assign Window 5", function()windowhotkeys.assign(5)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "6", "Assign Window 6", function()windowhotkeys.assign(6)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "7", "Assign Window 7", function()windowhotkeys.assign(7)end)
@@ -98,8 +98,8 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "8", "Assign Window 8", functi
 hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "9", "Assign Window 9", function()windowhotkeys.assign(9)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "1", "Focus Window 1", function()windowhotkeys.focus(1)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "2", "Focus Window 2", function()windowhotkeys.focus(2)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "3", "Focus Window 3", function()windowhotkeys.focus(3)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "4", "Focus Window 4", function()windowhotkeys.focus(4)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "3", "Focus Window 3", function()windowhotkeys.focus(3)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "4", "Focus Window 4", function()windowhotkeys.focus(4)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "5", "Focus Window 5", function()windowhotkeys.focus(5)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "6", "Focus Window 6", function()windowhotkeys.focus(6)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "7", "Focus Window 7", function()windowhotkeys.focus(7)end)
