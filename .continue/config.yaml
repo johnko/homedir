@@ -114,14 +114,26 @@
 models:
   - apiBase: http://127.0.0.1:1234/v1
     format: --gguf
-    model: nomic-ai/nomic-embed-text-v1.5@q8_0
-    name: nomic-ai/nomic-embed-text-v1.5
+    model: nomic-ai/nomic-embed-text-v1.5-GGUF@q4_k_m
+    name: nomic-ai/nomic-embed-text-v1.5-GGUF
     provider: lmstudio
     requestOptions:
       headers:
         Authorization: Basic
     roles:
       - embed
+  - apiBase: http://127.0.0.1:1234/v1
+    capabilities:
+      - vision
+    format: --gguf
+    model: LiquidAI/d1-omni-600M-GGUF@q8_0
+    name: LiquidAI/d1-omni-600M-GGUF
+    provider: lmstudio
+    requestOptions:
+      headers:
+        Authorization: Basic
+    roles:
+      - decision
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
