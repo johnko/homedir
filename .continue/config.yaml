@@ -113,22 +113,9 @@
 #         Authorization: Basic
 models:
   - apiBase: http://127.0.0.1:1234/v1
-    capabilities:
-      - tool_use
-    model: google/gemma-3-4b
-    name: google/gemma-3-4b
-    provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - apply
-      - autocomplete
-      - chat
-      - edit
-  - apiBase: http://127.0.0.1:1234/v1
-    model: nomic-ai/nomic-embed-text-v1.5-GGUF
-    name: nomic-ai/nomic-embed-text-v1.5-GGUF
+    format: --gguf
+    model: nomic-ai/nomic-embed-text-v1.5@q8_0
+    name: nomic-ai/nomic-embed-text-v1.5
     provider: lmstudio
     requestOptions:
       headers:
@@ -137,8 +124,26 @@ models:
       - embed
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
+      - reasoning
       - tool_use
-    model: openai/gpt-oss-20b
+      - vision
+    format: --mlx
+    model: google/gemma-4-26b-a4b-qat@4bit
+    name: google/gemma-4-26b-a4b-qat
+    provider: lmstudio
+    requestOptions:
+      headers:
+        Authorization: Basic
+    roles:
+      - apply
+      - chat
+      - edit
+  - apiBase: http://127.0.0.1:1234/v1
+    capabilities:
+      - reasoning
+      - tool_use
+    format: --mlx
+    model: openai/gpt-oss-20b@mxfp4
     name: openai/gpt-oss-20b
     provider: lmstudio
     requestOptions:
@@ -150,9 +155,27 @@ models:
       - edit
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
+      - reasoning
       - tool_use
-    model: qwen/qwen3.5-9b
-    name: qwen/qwen3.5-9b
+    format: --gguf
+    model: openai/gpt-oss-120b@mxfp4
+    name: openai/gpt-oss-120b
+    provider: lmstudio
+    requestOptions:
+      headers:
+        Authorization: Basic
+    roles:
+      - apply
+      - chat
+      - edit
+  - apiBase: http://127.0.0.1:1234/v1
+    capabilities:
+      - reasoning
+      - tool_use
+      - vision
+    format: --mlx
+    model: qwen/qwen3.6-35b-a3b@8bit
+    name: qwen/qwen3.6-35b-a3b
     provider: lmstudio
     requestOptions:
       headers:

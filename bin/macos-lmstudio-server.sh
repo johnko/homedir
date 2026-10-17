@@ -1,30 +1,36 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-CADDY_OLLAMA_API_DOMAIN=$(op read op://Private/1pcli-caddyollama-api-domain/host)
-export CADDY_OLLAMA_API_DOMAIN
-CADDY_OLLAMA_API_ZONEID=$(op read op://Private/1pcli-caddyollama-api-domain/zoneid)
-export CADDY_OLLAMA_API_ZONEID
-CADDY_OLLAMA_API_RECORDID=$(op read op://Private/1pcli-caddyollama-api-domain/recordid)
-export CADDY_OLLAMA_API_RECORDID
-CADDY_OLLAMA_API_CFTOKEN=$(op read op://Private/1pcli-caddyollama-api-domain/credential)
-export CADDY_OLLAMA_API_CFTOKEN
+case $1 in
+  pull)
+    # don't load 1password
+    ;;
+  *)
+    CADDY_OLLAMA_API_DOMAIN=$(op read op://Private/1pcli-caddyollama-api-domain/host)
+    export CADDY_OLLAMA_API_DOMAIN
+    CADDY_OLLAMA_API_ZONEID=$(op read op://Private/1pcli-caddyollama-api-domain/zoneid)
+    export CADDY_OLLAMA_API_ZONEID
+    CADDY_OLLAMA_API_RECORDID=$(op read op://Private/1pcli-caddyollama-api-domain/recordid)
+    export CADDY_OLLAMA_API_RECORDID
+    CADDY_OLLAMA_API_CFTOKEN=$(op read op://Private/1pcli-caddyollama-api-domain/credential)
+    export CADDY_OLLAMA_API_CFTOKEN
 
-CADDY_OLLAMA_API_DOMAIN2=$(op read op://Private/1pcli-caddyollama-api-domain/host2)
-export CADDY_OLLAMA_API_DOMAIN2
-CADDY_OLLAMA_API_RECORDID2=$(op read op://Private/1pcli-caddyollama-api-domain/recordid2)
-export CADDY_OLLAMA_API_RECORDID2
+    CADDY_OLLAMA_API_DOMAIN2=$(op read op://Private/1pcli-caddyollama-api-domain/host2)
+    export CADDY_OLLAMA_API_DOMAIN2
+    CADDY_OLLAMA_API_RECORDID2=$(op read op://Private/1pcli-caddyollama-api-domain/recordid2)
+    export CADDY_OLLAMA_API_RECORDID2
 
-CADDY_OLLAMA_API_USER1=$(op read op://Private/1pcli-caddyollama-api-user1/username)
-export CADDY_OLLAMA_API_USER1
-CADDY_OLLAMA_API_TEMP_PASSWORD1=$(op read op://Private/1pcli-caddyollama-api-user1/password)
-export CADDY_OLLAMA_API_TEMP_PASSWORD1
+    CADDY_OLLAMA_API_USER1=$(op read op://Private/1pcli-caddyollama-api-user1/username)
+    export CADDY_OLLAMA_API_USER1
+    CADDY_OLLAMA_API_TEMP_PASSWORD1=$(op read op://Private/1pcli-caddyollama-api-user1/password)
+    export CADDY_OLLAMA_API_TEMP_PASSWORD1
 
-CADDY_OLLAMA_API_PUBKEY1=$(op read "op://Private/1pcli-caddyollama-api-pubkey1/public key")
-export CADDY_OLLAMA_API_PUBKEY1
-CADDY_OLLAMA_API_PUBKEY2=$(op read "op://Private/1pcli-caddyollama-api-pubkey2/public key")
-export CADDY_OLLAMA_API_PUBKEY2
-
+    CADDY_OLLAMA_API_PUBKEY1=$(op read "op://Private/1pcli-caddyollama-api-pubkey1/public key")
+    export CADDY_OLLAMA_API_PUBKEY1
+    CADDY_OLLAMA_API_PUBKEY2=$(op read "op://Private/1pcli-caddyollama-api-pubkey2/public key")
+    export CADDY_OLLAMA_API_PUBKEY2
+    ;;
+esac
 export DOLLAR='$'
 
 if type docker-compose &>/dev/null; then
@@ -51,8 +57,12 @@ relaunch_lmstudio() {
     pull)
       CONTINUE_CONFIG="$HOME/.continue/config.yaml"
       if type lms &>/dev/null; then
-        for model in $(yq '.models[].model' "$CONTINUE_CONFIG" | sort -u); do
-          lms get "$model" || true
+        yq '.models[] | (.model +","+ .format)' "$CONTINUE_CONFIG" | sort -u | while IFS= read -r line; do
+          # echo "$line"
+          model=$( echo "$line" | cut -d, -f1 )
+          format=$( echo "$line" | cut -d, -f2 )
+          echo lms get $format "$model"
+          lms get $format "$model" || true
         done
         exit 0
       else
