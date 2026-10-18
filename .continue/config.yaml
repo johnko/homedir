@@ -180,6 +180,23 @@ models:
       - apply
       - chat
       - edit
+#
+  - apiBase: http://127.0.0.1:1234/v1
+    capabilities:
+      - reasoning
+      - tool_use
+      - vision
+    format: --gguf
+    model: nvidia/nemotron-3.5-super-vl@q4_k_m
+    name: nvidia/nemotron-3.5-super-vl
+    provider: lmstudio
+    requestOptions:
+      headers:
+        Authorization: Basic
+    roles:
+      - apply
+      - chat
+      - edit
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
