@@ -113,6 +113,7 @@
 #         Authorization: Basic
 models:
   - apiBase: http://127.0.0.1:1234/v1
+    context: 2048
     format: --gguf
     model: nomic-ai/nomic-embed-text-v1.5-GGUF@q4_k_m
     name: nomic-ai/nomic-embed-text-v1.5-GGUF
@@ -125,6 +126,7 @@ models:
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - vision
+    context: 16,384
     format: --gguf
     model: LiquidAI/d1-omni-600M-GGUF@q8_0
     name: LiquidAI/d1-omni-600M-GGUF
@@ -139,6 +141,7 @@ models:
       - reasoning
       - tool_use
       - vision
+    context: 256,000
     format: --mlx
     model: google/gemma-4-26b-a4b-qat@4bit
     name: google/gemma-4-26b-a4b-qat
@@ -154,6 +157,7 @@ models:
     capabilities:
       - reasoning
       - tool_use
+    context: 131,072
     format: --mlx
     model: openai/gpt-oss-20b@mxfp4
     name: openai/gpt-oss-20b
@@ -169,6 +173,7 @@ models:
     capabilities:
       - reasoning
       - tool_use
+    context: 131,072
     format: --gguf
     model: openai/gpt-oss-120b@mxfp4
     name: openai/gpt-oss-120b
@@ -180,12 +185,12 @@ models:
       - apply
       - chat
       - edit
-#
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
       - tool_use
       - vision
+    context: 1,000,000
     format: --gguf
     model: nvidia/nemotron-3.5-super-vl@q4_k_m
     name: nvidia/nemotron-3.5-super-vl
@@ -202,6 +207,7 @@ models:
       - reasoning
       - tool_use
       - vision
+    context: 262,144
     format: --mlx
     model: qwen/qwen3.6-35b-a3b@8bit
     name: qwen/qwen3.6-35b-a3b
