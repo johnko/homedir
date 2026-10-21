@@ -131,10 +131,10 @@
 ########## Group Function Keys #########################################################
 
                               f3 : skhd --key "ctrl - up"
-                        cmd - m4 : skhd --key "ctrl - up"
+                              m4 : skhd --key "ctrl - up"
 #                             -- : open -a "Mission Control" --args 2 # macOS Application Expose
 #                             f4 : open -a "Mission Control" --args 1 # macOS Show Desktop
-                              m4 : skhd --key "f4"
+                        cmd - m4 : skhd --key "f4"
                       shift - m4 : skhd --key "f6"
                       shift - m3 : skhd --key "f5"
 #                             f5 : # macOS Toggle StageManager on/off
