@@ -140,6 +140,22 @@ models:
     capabilities:
       - reasoning
       - tool_use
+    context: 262,144
+    format: --gguf
+    model: recursivesi/flint@q4_k_m
+    name: recursivesi/flint
+    provider: lmstudio
+    requestOptions:
+      headers:
+        Authorization: Basic
+    roles:
+      - apply
+      - chat
+      - edit
+  - apiBase: http://127.0.0.1:1234/v1
+    capabilities:
+      - reasoning
+      - tool_use
       - vision
     context: 256,000
     format: --mlx
