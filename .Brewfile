@@ -10,6 +10,7 @@ cask "lulu"
 cask "signal"
 mas "LINE", id: 539883307
 # mas "Slack", id: 803453959
+mas "Tailscale", id: 1475387142
 
 # Web Browsers
 cask "brave-browser"
