@@ -25,6 +25,7 @@ cask "1password-cli"
 brew "podman"
 cask "podman-desktop"
 brew "docker-compose"
+brew "kubernetes-cli"
 
 # Dev
 cask "visual-studio-code"

@@ -40,7 +40,6 @@ brew "switchaudio-osx"
 # brew "helm"
 # brew "k9s"
 # brew "kind"
-# brew "kubernetes-cli"
 # cask "kui"
 
 # Dev
