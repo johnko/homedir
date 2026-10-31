@@ -30,7 +30,7 @@ if type brew &>/dev/null; then
     )
     for i in $(
       brew list |
-        grep -v -E "1password|applesimutils|docker|terraform|$extra_grep_ignore"
+        grep -v -E "1password|docker|$extra_grep_ignore"
     ); do
       brew uninstall "$i" &>/dev/null && (
         echo
