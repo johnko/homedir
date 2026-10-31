@@ -12,7 +12,7 @@ mas "Pages", id: 361309726
 cask "google-chrome"
 
 # Cloud / AWS
-brew "aws-vault"
+# brew "aws-vault"
 brew "awscli"
 tap "hashicorp/tap"
 brew "hashicorp/tap/terraform"

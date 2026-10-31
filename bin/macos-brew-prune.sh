@@ -15,7 +15,7 @@ if type brew &>/dev/null; then
       )
       for i in $(
         code --list-extensions |
-          grep -v -E "docker|terraform|$extra_grep_ignore"
+          grep -v -E "$extra_grep_ignore"
       ); do
         code --uninstall-extension "$i" &>/dev/null && (
           echo
