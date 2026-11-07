@@ -22,7 +22,7 @@
     }
   },
   "118": {
-    "enabled": true,
+    "enabled": false,
     "value": {
       "parameters": [
         65535,
@@ -33,7 +33,7 @@
     }
   },
   "119": {
-    "enabled": true,
+    "enabled": false,
     "value": {
       "parameters": [
         65535,
@@ -55,7 +55,7 @@
     }
   },
   "120": {
-    "enabled": true,
+    "enabled": false,
     "value": {
       "parameters": [
         65535,
