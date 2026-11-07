@@ -11,36 +11,34 @@ exit_error() {
 
 DETECTED=""
 if [[ ! -e "$HOME/.allowed_git_remote" ]]; then
-  if [[ -n $VSCODE_INJECTION && $VSCODE_INJECTION == "1" || -n $VSCODE_GIT_IPC_HANDLE || -n $VSCODE_NONCE ]]; then
-    if set | grep -v grep | grep -i ASKPASS | grep -q -E '/(Visual Studio Code.app)/'; then
-      DETECTED=code
-    fi
-    if [[ -n $CURSOR_TRACE_ID ]]; then
-      DETECTED=cursor
-    else
-      if set | grep -v grep | grep -i ASKPASS | grep -q -E '/(Cursor.app|.cursor-server)/'; then
-        DETECTED=cursor
-      fi
-    fi
-    ## if in VSCode, unset SSH_AUTH_SOCK to avoid endless 1Password prompt for ssh-agent
-    ## dev container seems to still set it, so we control from ssh wrapper
+  if [[ -n $CODEX_SHELL && $CODEX_SHELL == "1" ]]; then
+    DETECTED=codex
     export SSH_AUTH_SOCK=""
     export GPG_SIGN=""
+    exit_error
+  fi
+  if set | grep -v grep | grep VSCODE | grep -q -E '/(Cursor|cursor)/'; then
+    DETECTED=cursor
+    export SSH_AUTH_SOCK=""
+    export GPG_SIGN=""
+    exit_error
+  fi
+  if set | grep -v grep | grep VSCODE | grep -q -E '/(Visual Studio Code.app)/'; then
+    DETECTED=code
+    ## if in VSCode, unset SSH_AUTH_SOCK to avoid endless 1Password prompt for ssh-agent
+    ## dev container seems to still set it, so we control from ssh wrapper
     if echo "$@" | grep -q -E '(devcontainer-dotfiles)'; then
       # allow for devcontainer-dotfiles
       sleep 0
     else
-      if [[ "cursor" == $DETECTED ]]; then
-        exit_error
-      fi
+      export SSH_AUTH_SOCK=""
+      export GPG_SIGN=""
+      exit_error
     fi
-  fi
-  if [[ -n $CODEX_SHELL && $CODEX_SHELL == "1" ]]; then
-    DETECTED=codex
   fi
 fi
 
-# if not in VSCode (eg Terminal), set ssh-agent
+# if not in Codex/Cursor (eg Terminal), set ssh-agent
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
 # dynamically add gpg-sign if allowed (Terminal) or not cursor
