@@ -95,9 +95,9 @@
 ########## Row Z #########################################################
 
           ctrl + alt + cmd - z : osascript ~/.osascripts/toggle-cursor.scpt
-  shift + ctrl + alt + cmd - z : yabai -m window --grid 40:2:0:2:1:35
+  shift + ctrl + alt + cmd - z : yabai -m window --grid 2:2:0:1:1:1
           ctrl + alt + cmd - x : osascript ~/.osascripts/toggle-codex.scpt
-  shift + ctrl + alt + cmd - x : yabai -m window --grid 40:2:1:2:1:35
+  shift + ctrl + alt + cmd - x : yabai -m window --grid 2:2:1:1:1:1
           ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
   shift + ctrl + alt + cmd - c : yabai -m window --grid 16:1:0:4:1:12
                       alt - m3 : yabai -m window --grid 16:1:0:4:1:12
