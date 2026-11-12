@@ -1,5 +1,8 @@
 {
   "trustedcasks": [
     "terraform-linters/tap/tflint"
+  ],
+  "trustedformulae": [
+    "hashicorp/tap/terraform"
   ]
 }
