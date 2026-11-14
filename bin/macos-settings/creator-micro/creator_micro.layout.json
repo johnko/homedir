@@ -4,7 +4,7 @@
   "macros": [],
   "layers": [
     [
-      "KC_NO",
+      "KC_MUTE",
       "LCAG(KC_N)",
       "LCAG(KC_UP)",
       "KC_MUTE",
@@ -61,7 +61,7 @@
       "KC_NO",
       "KC_HOME",
       "KC_END",
-      "KC_MUTE",
+      "KC_NO",
       "LCAG(KC_Q)",
       "KC_UP",
       "LCAG(KC_E)",
@@ -78,7 +78,7 @@
   ],
   "encoders": [
     [
-      ["KC_PGDN", "KC_PGUP"],
+      ["KC_VOLD", "KC_VOLU"],
       ["KC_PGDN", "KC_PGUP"],
       ["KC_PGDN", "KC_PGUP"],
       ["KC_PGDN", "KC_PGUP"]
@@ -87,7 +87,7 @@
       ["KC_VOLD", "KC_VOLU"],
       ["KC_VOLD", "KC_VOLU"],
       ["KC_VOLD", "KC_VOLU"],
-      ["KC_VOLD", "KC_VOLU"]
+      ["KC_MS_WH_LEFT", "KC_MS_WH_RIGHT"]
     ]
   ]
 }
