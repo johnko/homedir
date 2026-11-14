@@ -43,7 +43,7 @@
                            f15 : osascript ~/.osascripts/toggle-terminal.scpt
   shift + ctrl + alt + cmd - t : yabai -m window --grid 16:1:0:0:1:12
                    shift - f15 : yabai -m window --grid 16:1:0:0:1:12
-                      alt - m4 : yabai -m window --grid 16:1:0:0:1:12
+                    shift - m4 : yabai -m window --grid 16:1:0:0:1:12
 
           ctrl + alt + cmd - y : skhd --restart-service && yabai --restart-service
                            f16 : skhd --restart-service && yabai --restart-service
@@ -100,7 +100,7 @@
   shift + ctrl + alt + cmd - x : yabai -m window --grid 2:2:1:1:1:1
           ctrl + alt + cmd - c : osascript ~/.osascripts/toggle-slack.scpt
   shift + ctrl + alt + cmd - c : yabai -m window --grid 16:1:0:4:1:12
-                      alt - m3 : yabai -m window --grid 16:1:0:4:1:12
+                    shift - m3 : yabai -m window --grid 16:1:0:4:1:12
           ctrl + alt + cmd - v : osascript ~/.osascripts/toggle-vscode.scpt
 # shift + ctrl + alt + cmd - v : yabai -m window --grid 40:3:0:1:2:35
   shift + ctrl + alt + cmd - v : yabai -m window --grid 16:1:0:0:1:12
@@ -125,8 +125,10 @@
           ctrl + alt + cmd - right : osascript ~/.osascripts/volume-75.scpt
 # shift + ctrl + alt + cmd - up    : yabai -m window --swap north
   shift + ctrl + alt + cmd - up    : yabai -m window --grid 100:1:0:0:1:49
+                          alt - m4 : yabai -m window --grid 100:1:0:0:1:49
 # shift + ctrl + alt + cmd - down  : yabai -m window --swap south
   shift + ctrl + alt + cmd - down  : yabai -m window --grid 100:1:0:51:1:49
+                          alt - m3 : yabai -m window --grid 100:1:0:51:1:49
 # shift + ctrl + alt + cmd - left  : yabai -m window --swap west
   shift + ctrl + alt + cmd - left  : yabai -m window --grid 80:100:0:7:49:73
 # shift + ctrl + alt + cmd - right : yabai -m window --swap east
@@ -139,8 +141,6 @@
 #                             -- : open -a "Mission Control" --args 2 # macOS Application Expose
 #                             f4 : open -a "Mission Control" --args 1 # macOS Show Desktop
                         cmd - m4 : skhd --key "f4"
-                      shift - m4 : skhd --key "f6"
-                      shift - m3 : skhd --key "f5"
 #                             f5 : # macOS Toggle StageManager on/off
 #                             f6 : # macOS Turn Do Not Disturb on/off
                              f11 : osascript ~/.osascripts/terminal-toggle-sudo.scpt
