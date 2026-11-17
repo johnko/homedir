@@ -5,8 +5,8 @@
   "layers": [
     [
       "KC_MUTE",
-      "LCAG(KC_N)",
-      "LCAG(KC_UP)",
+      "KC_SPC",
+      "LCAG(KC_F)",
       "KC_MUTE",
       "C(KC_UP)",
       "KC_F4",
@@ -15,8 +15,8 @@
       "LCAG(KC_LEFT)",
       "LCAG(KC_DOWN)",
       "LCAG(KC_RGHT)",
-      "LCAG(KC_F)",
-      "KC_SPC",
+      "LCAG(KC_UP)",
+      "KC_NO",
       "KC_MPLY",
       "KC_MNXT",
       "TO(3)"
