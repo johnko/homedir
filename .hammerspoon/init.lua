@@ -104,7 +104,7 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "5", "Focus Window 5", functio
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "6", "Focus Window 6", function()windowhotkeys.focus(6)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "7", "Focus Window 7", function()windowhotkeys.focus(7)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "8", "Focus Window 8", function()windowhotkeys.focus(8)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "9", "Focus Window 9", function()windowhotkeys.focus(9)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "9", "Focus Window 9", function()windowhotkeys.focus(9)end)
 windowhotkeys.start({'LG', 'U32', 'Built'})
 
 hs.urlevent.bind("autolayout", function(eventName, params)
