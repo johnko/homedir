@@ -11,7 +11,7 @@
       "C(KC_UP)",
       "KC_F4",
       "KC_F5",
-      "KC_F6",
+      "C(G(KC_Q))",
       "LCAG(KC_LEFT)",
       "LCAG(KC_DOWN)",
       "LCAG(KC_RGHT)",
