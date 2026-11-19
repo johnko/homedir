@@ -83,7 +83,7 @@
   shift + ctrl + alt + cmd - g : yabai -m window --grid 1:4:1:0:2:1
           ctrl + alt + cmd - h : yabai -m window --grid 80:6:1:0:4:77
 #         ctrl + alt + cmd - h : yabai -m space --rotate 90
-  shift + ctrl + alt + cmd - h : yabai -m window --grid 80:1:0:0:1:80
+  shift + ctrl + alt + cmd - h : yabai -m window --grid 80:1:0:0:1:77
 # shift + ctrl + alt + cmd - h : yabai -m window --toggle split
           ctrl + alt + cmd - j : osascript ~/.osascripts/toggle-messages.scpt
   shift + ctrl + alt + cmd - j : yabai -m window --grid 2:3:2:0:1:1
