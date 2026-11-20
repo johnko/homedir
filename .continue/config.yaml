@@ -1,141 +1,19 @@
-# models:
-#   - apiBase: http://127.0.0.1:11434
-#     model: qwen3.5:9b-q4_K_M
-#     name: qwen3.5:9b-q4_K_M
-#     provider: ollama
-#     requestOptions:
-#       headers:
-#         Authorization: Basic
-#     roles:
-#       - autocomplete
-#       - chat
-#       - edit
-#       - apply
-#   - model: llama3.1:8b
-#     name: Llama 3.1 8B
-#     provider: ollama
-#     roles:
-#       - chat
-#       - edit
-#       - apply
-#   - model: qwen2.5-coder:1.5b-base
-#     name: Qwen2.5-Coder 1.5B
-#     provider: ollama
-#     roles:
-#       - autocomplete
-#   - model: nomic-embed-text:latest
-#     name: Nomic Embed
-#     provider: ollama
-#     roles:
-#       - embed
-#   - apiBase: http://127.0.0.1:11434
-#     model: codellama:13b-code
-#     name: codellama:13b-code
-#     provider: ollama
-#     requestOptions:
-#       headers:
-#         Authorization: Basic
-#   - apiBase: http://127.0.0.1:11434
-#     model: codellama:13b-instruct
-#     name: codellama:13b-instruct
-#     provider: ollama
-#     requestOptions:
-#       headers:
-#         Authorization: Basic
-#   - apiBase: http://127.0.0.1:11434
-#     capabilities:
-#       - tool_use
-#     model: deepseek-r1:32b-qwen-distill-q4_K_M
-#     name: deepseek-r1:32b-qwen-distill-q4_K_M
-#     provider: ollama
-#     requestOptions:
-#       headers:
-#         Authorization: Basic
-#     roles:
-#       - apply
-#       - chat
-#   - apiBase: http://127.0.0.1:11434
-#     model: gpt-oss:20b
-#     name: gpt-oss:20b
-#     provider: ollama
-#     requestOptions:
-#       headers:
-#         Authorization: Basic
-#   - apiBase: http://127.0.0.1:11434
-#     model: llama3.3:70b-instruct-q4_K_M
-#     name: llama3.3:70b-instruct-q4_K_M
-#     provider: ollama
-#     requestOptions:
-#       headers:
-#         Authorization: Basic
-#   - apiBase: http://127.0.0.1:11434
-#     model: qwen2.5-coder:32b-base
-#     name: qwen2.5-coder:32b-base
-#     provider: ollama
-#     requestOptions:
-#       headers:
-#         Authorization: Basic
-#   - apiBase: http://127.0.0.1:11434
-#     model: qwen2.5-coder:32b-instruct-q4_K_M
-#     name: qwen2.5-coder:32b-instruct-q4_K_M
-#     provider: ollama
-#     requestOptions:
-#       headers:
-#         Authorization: Basic
-#   - apiBase: http://127.0.0.1:11434
-#     model: nomic-embed-text:137m-v1.5-fp16
-#     name: nomic-embed-text:137m-v1.5-fp16
-#     provider: ollama
-#     requestOptions:
-#       headers:
-#         Authorization: Basic
-#     roles:
-#       - embed
-#   - apiBase: http://127.0.0.1:11434
-#     capabilities:
-#       - tool_use
-#     model: qwen3-coder:30b-a3b-q4_K_M
-#     name: qwen3-coder:30b-a3b-q4_K_M
-#     provider: ollama
-#     requestOptions:
-#       headers:
-#         Authorization: Basic
-#     roles:
-#       - autocomplete
-#       - chat
-#       - edit
-#   - apiBase: http://127.0.0.1:11434
-#     model: starcoder2:15b
-#     name: starcoder2:15b
-#     provider: ollama
-#     requestOptions:
-#       headers:
-#         Authorization: Basic
 models:
   - apiBase: http://127.0.0.1:1234/v1
+    capabilities:
+      - embed
     context: 2048
     format: --gguf
     model: https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF/blob/main/nomic-embed-text-v1.5.Q4_K_M.gguf
-    name: nomic-ai/nomic-embed-text-v1.5-GGUF
     provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - embed
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
+      - decision
       - vision
     context: 16,384
     format: --gguf
     model: https://huggingface.co/LiquidAI/d1-omni-600M-GGUF/blob/main/d1-omni-600M-Q8_0.gguf
-    name: LiquidAI/d1-omni-600M-GGUF
     provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - decision
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
@@ -144,15 +22,7 @@ models:
     context: 262,144
     format: --mlx
     model: prism-ml/bonsai-27b@2bit
-    name: prism-ml/bonsai-27b
     provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - apply
-      - chat
-      - edit
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
@@ -160,15 +30,14 @@ models:
     context: 262,144
     format: --gguf
     model: recursivesi/flint@q4_k_m
-    name: recursivesi/flint
     provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - apply
-      - chat
-      - edit
+  - apiBase: http://127.0.0.1:1234/v1
+    capabilities:
+      - drafting
+    context: 262,144
+    format: --gguf
+    model: https://huggingface.co/incoai/Flint-DFlash2-GGUF
+    provider: lmstudio
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
@@ -177,15 +46,7 @@ models:
     context: 256,000
     format: --mlx
     model: google/gemma-4-26b-a4b-qat@4bit
-    name: google/gemma-4-26b-a4b-qat
     provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - apply
-      - chat
-      - edit
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
@@ -193,15 +54,7 @@ models:
     context: 131,072
     format: --mlx
     model: openai/gpt-oss-20b@mxfp4
-    name: openai/gpt-oss-20b
     provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - apply
-      - chat
-      - edit
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
@@ -209,15 +62,7 @@ models:
     context: 131,072
     format: --gguf
     model: openai/gpt-oss-120b@mxfp4
-    name: openai/gpt-oss-120b
     provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - apply
-      - chat
-      - edit
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
@@ -226,15 +71,14 @@ models:
     context: 131,072
     format: --gguf
     model: meta/muse-glimmer@q4_k_m
-    name: meta/muse-glimmer
     provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - apply
-      - chat
-      - edit
+  - apiBase: http://127.0.0.1:1234/v1
+    capabilities:
+      - drafter
+    context: 131,072
+    format: --gguf
+    model: https://huggingface.co/incoai/Muse-Glimmer-30B-DFlash2-GGUF
+    provider: lmstudio
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
@@ -243,15 +87,7 @@ models:
     context: 1,000,000
     format: --gguf
     model: nvidia/nemotron-3.5-super-vl@q4_k_m
-    name: nvidia/nemotron-3.5-super-vl
     provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - apply
-      - chat
-      - edit
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
@@ -260,15 +96,7 @@ models:
     context: 262,144
     format: --mlx
     model: qwen/qwen3.6-35b-a3b@8bit
-    name: qwen/qwen3.6-35b-a3b
     provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - apply
-      - chat
-      - edit
   - apiBase: http://127.0.0.1:1234/v1
     capabilities:
       - reasoning
@@ -277,15 +105,16 @@ models:
     context: 262,144
     format: --mlx
     model: qwen/qwen3.8-27b@8bit
-    name: qwen/qwen3.8-27b
     provider: lmstudio
-    requestOptions:
-      headers:
-        Authorization: Basic
-    roles:
-      - apply
-      - chat
-      - edit
+  - apiBase: http://127.0.0.1:1234/v1
+    capabilities:
+      - reasoning
+      - tool_use
+      - vision
+    context: 262,144
+    format: --gguf
+    model: https://huggingface.co/incoai/Qwen3.8-27B-DFlash2-GGUF
+    provider: lmstudio
 name: My Local Config
 schema: v1
 version: 0.0.1
