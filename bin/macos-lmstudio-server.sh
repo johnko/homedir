@@ -63,6 +63,7 @@ relaunch_lmstudio() {
           format=$( echo "$line" | cut -d, -f2 )
           echo lms get $format "$model"
           lms get $format "$model" || true
+          sleep 1
         done
         exit 0
       else
