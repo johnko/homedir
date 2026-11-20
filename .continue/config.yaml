@@ -115,7 +115,7 @@ models:
   - apiBase: http://127.0.0.1:1234/v1
     context: 2048
     format: --gguf
-    model: https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF/blob/main/nomic-embed-text-v1.5.Q8_0.gguf
+    model: https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF/blob/main/nomic-embed-text-v1.5.Q4_K_M.gguf
     name: nomic-ai/nomic-embed-text-v1.5-GGUF
     provider: lmstudio
     requestOptions:
