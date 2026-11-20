@@ -58,7 +58,7 @@ relaunch_lmstudio() {
       CONTINUE_CONFIG="$HOME/.continue/config.yaml"
       if type lms &>/dev/null; then
         yq '.models[] | (.model +","+ .format)' "$CONTINUE_CONFIG" | sort -u | while IFS= read -r line; do
-          # echo "$line"
+          echo "$line"
           model=$( echo "$line" | cut -d, -f1 )
           format=$( echo "$line" | cut -d, -f2 )
           echo lms get $format "$model"
