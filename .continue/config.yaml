@@ -68,6 +68,24 @@ models:
       - reasoning
       - tool_use
       - vision
+    context: 1,048,576
+    format: --gguf
+    model: thinkingmachines/inkling-2-mini@q4_k_m
+    provider: lmstudio
+  - apiBase: http://127.0.0.1:1234/v1
+    capabilities:
+      - reasoning
+      - tool_use
+      - vision
+    context: 1,048,576
+    format: --gguf
+    model: thinkingmachines/inkling-2-mini@q8_0
+    provider: lmstudio
+  - apiBase: http://127.0.0.1:1234/v1
+    capabilities:
+      - reasoning
+      - tool_use
+      - vision
     context: 131,072
     format: --gguf
     model: meta/muse-glimmer@q4_k_m
