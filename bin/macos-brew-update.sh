@@ -10,7 +10,7 @@ if type brew &>/dev/null; then
     fi
     set -x
     brew trust --formula hashicorp/tap/terraform || true
-    brew trust --formula wix/brew/applesimutils || true
+    # brew trust --formula wix/brew/applesimutils || true
     brew trust --cask    terraform-linters/tap/tflint || true
     brew bundle || true
     set -x

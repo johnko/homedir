@@ -103,4 +103,5 @@ brew "switchaudio-osx"
 
 # Lab / Virtualization
 # cask "multipass" if Hardware::CPU.intel?
+# cask "utm" if Hardware::CPU.intel?
 # cask "virtualbox" if Hardware::CPU.intel?

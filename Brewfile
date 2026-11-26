@@ -32,7 +32,4 @@ cask "visual-studio-code"
 brew "mise"
 mas "Xcode", id: 497799835
 
-# Lab / Virtualization
-cask "utm" if Hardware::CPU.intel?
-
 instance_eval(File.read(".Brewfile"))
