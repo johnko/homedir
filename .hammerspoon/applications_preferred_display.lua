@@ -7,14 +7,14 @@ config.screen.builtin =  {'Built', 'LG'}
 config.screen.left =  {'LG'}
 
 config.applications = {
-  ['Podman Desktop'] = {
-    bundleID = 'io.podmandesktop.PodmanDesktop',
-    preferred_display = config.screen.top
-  },
-  ['UTM'] = {
-    bundleID = 'com.utmapp.UTM',
-    preferred_display = config.screen.top
-  },
+  -- ['Podman Desktop'] = {
+  --   bundleID = 'io.podmandesktop.PodmanDesktop',
+  --   preferred_display = config.screen.top
+  -- },
+  -- ['UTM'] = {
+  --   bundleID = 'com.utmapp.UTM',
+  --   preferred_display = config.screen.top
+  -- },
 
   -- ['Slack'] = {
   --   bundleID = 'com.tinyspeck.slackmacgap',
