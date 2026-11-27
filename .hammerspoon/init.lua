@@ -61,19 +61,19 @@ end)
 
 -- --------------------------------------------------
 
-local config = require 'applications_preferred_display'
+-- local config = require 'applications_preferred_display'
 
 -- --------------------------------------------------
 
-local autolayout = require 'autolayout'
-autolayout.start(config)
+-- local autolayout = require 'autolayout'
+-- autolayout.start(config)
 
 -- --------------------------------------------------
 
 local restart_windowmanager = require 'restart_windowmanager'
 
 hs.urlevent.bind("restartwindowmanager", function(eventName, params)
-  restart_windowmanager.restart(autolayout, nil)
+  -- restart_windowmanager.restart(autolayout, nil)
 end)
 
 -- --------------------------------------------------
@@ -102,13 +102,13 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "8", "Assign Window 8", functi
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "4", "Focus Window 4", function()windowhotkeys.focus(4)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "5", "Focus Window 5", function()windowhotkeys.focus(5)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "6", "Focus Window 6", function()windowhotkeys.focus(6)end)
--- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "7", "Focus Window 7", function()windowhotkeys.focus(7)end)
--- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "8", "Focus Window 8", function()windowhotkeys.focus(8)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "7", "Focus Window 7", function()windowhotkeys.focus(7)end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "8", "Focus Window 8", function()windowhotkeys.focus(8)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "9", "Focus Window 9", function()windowhotkeys.focus(9)end)
 windowhotkeys.start({'LG', 'U32', 'Built'})
 
 hs.urlevent.bind("autolayout", function(eventName, params)
-  autolayout.autoLayout()
+  -- autolayout.autoLayout()
   -- windowhotkeys.createCanvas()
 end)
 

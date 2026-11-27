@@ -20,10 +20,10 @@ config.applications = {
   --   bundleID = 'com.tinyspeck.slackmacgap',
   --   preferred_display = config.screen.left
   -- },
-  ['Google Calendar'] = {
-    bundleID = 'com.google.Chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep',
-    preferred_display = config.screen.left
-  },
+  -- ['Google Calendar'] = {
+  --   bundleID = 'com.google.Chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep',
+  --   preferred_display = config.screen.left
+  -- },
 
   -- ['Brave'] = {
   --   bundleID = 'com.brave.Browser',
@@ -61,10 +61,10 @@ config.applications = {
   --   bundleID = 'com.hnc.Discord',
   -- },
 
-  ['Firefox'] = {
-    bundleID = 'org.mozilla.firefox',
-    preferred_display = config.screen.builtin
-  },
+  -- ['Firefox'] = {
+  --   bundleID = 'org.mozilla.firefox',
+  --   preferred_display = config.screen.builtin
+  -- },
   -- ['Google Meet'] = {
   --   bundleID = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan',
   -- },
