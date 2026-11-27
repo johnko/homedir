@@ -102,8 +102,8 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "8", "Assign Window 8", functi
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "4", "Focus Window 4", function()windowhotkeys.focus(4)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "5", "Focus Window 5", function()windowhotkeys.focus(5)end)
 hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "6", "Focus Window 6", function()windowhotkeys.focus(6)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "7", "Focus Window 7", function()windowhotkeys.focus(7)end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "8", "Focus Window 8", function()windowhotkeys.focus(8)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "7", "Focus Window 7", function()windowhotkeys.focus(7)end)
+-- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "8", "Focus Window 8", function()windowhotkeys.focus(8)end)
 -- hs.hotkey.bind({ "ctrl", "alt", "cmd"          }, "9", "Focus Window 9", function()windowhotkeys.focus(9)end)
 windowhotkeys.start({'LG', 'U32', 'Built'})
 
@@ -111,3 +111,18 @@ hs.urlevent.bind("autolayout", function(eventName, params)
   autolayout.autoLayout()
   -- windowhotkeys.createCanvas()
 end)
+
+-- hs.grid.setGrid("20x34") -- 20 columns wide, 40 rows tall
+-- hs.grid.setMargins({ 8, 8 }) -- optional gaps between windows, in points
+-- hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "q", function()
+--   local win = hs.window.focusedWindow()
+--   if win then
+--     hs.grid.set(win, { x = 1, y = 3, w = 9, h = 30 })
+--   end
+-- end)
+-- hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "e", function()
+--   local win = hs.window.focusedWindow()
+--   if win then
+--     hs.grid.set(win, { x = 10, y = 3, w = 9, h = 30 })
+--   end
+-- end)
